@@ -7,7 +7,7 @@
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "non"
+		"url": "https://github.com/S-STALWART-S/teletalk-client"
 	},
 	"scripts": {
 		"start": "react-scripts start",
