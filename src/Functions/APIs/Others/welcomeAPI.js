@@ -5,8 +5,6 @@ const welcomeAPI = async () => {
 		url: "/",
 	});
 
-	console.log(response.data);
-
 	return response;
 };
 

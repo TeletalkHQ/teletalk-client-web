@@ -1,10 +1,10 @@
 import { INITIAL_STATE } from "~/Variables/constants/others";
 
-const reducer = (action, state = INITIAL_STATE) => {
+const reducer = (state = INITIAL_STATE, action) => {
 	try {
 		switch (action.type) {
-			case "value":
-				break;
+			case "test":
+				return { hmmm: "hmmm" };
 
 			default:
 				return state;

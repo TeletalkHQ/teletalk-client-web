@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 
-import useThunkReducer from "react-hook-thunk-reducer";
+import useThunkReducer from "~/Functions/Hooks/useThunkReducer";
 
 import { reducer } from "~/Functions/StateManagers/reducer";
 import { dispatchInjector } from "~/Functions/Others/Injectors/dispatchInjector";
@@ -8,7 +8,6 @@ import { dispatchInjector } from "~/Functions/Others/Injectors/dispatchInjector"
 import { welcomeAPI } from "~/Functions/APIs/Others/welcomeAPI";
 
 import { INITIAL_STATE } from "~/Variables/constants/others";
-import axios from "axios";
 
 export function App() {
 	const [state, dispatch] = useThunkReducer(reducer, INITIAL_STATE);
@@ -21,13 +20,14 @@ export function App() {
 
 	useEffect(() => {
 		welcomeAPI();
-	}, []);
 
-	useEffect(() => {
-		axios({ method: "GET", url: "http://localhost:8080/" }).then((response) => {
-			console.log(response);
-		});
-	}, []);
+		setTimeout(() => {
+			dispatch({ type: "test", value: "test" });
+		}, 3000);
+		setTimeout(() => {
+			console.log(state);
+		}, 6000);
+	}, [dispatch, state]);
 
 	return (
 		<div>
