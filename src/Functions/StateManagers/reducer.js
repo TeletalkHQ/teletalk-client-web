@@ -4,7 +4,7 @@ const reducer = (state = INITIAL_STATE, action) => {
 	try {
 		switch (action.type) {
 			case "test":
-				return { hmmm: "hmmm" };
+				return { hmmm: action.value };
 
 			default:
 				return state;
