@@ -2,9 +2,10 @@ import axios from "axios";
 
 import { baseURL } from "~/Variables/constants/requestConstants";
 
-axios.create({
+const myAxios = axios.create({
 	baseURL,
-	headers: { "Content-Type": "application/json" },
+	headers: { "Content-Type": "application/x-www-form-urlencoded" },
+	// headers: { "Content-Type": "application/json" },
 	timeout: 10000,
 });
 
@@ -165,4 +166,4 @@ axios.create({
 //   return config;
 // });
 
-export { axios as myAxios };
+export { myAxios };

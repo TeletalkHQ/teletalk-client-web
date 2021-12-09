@@ -1,6 +1,5 @@
 import { myAxios } from "~/Functions/Utils/myAxios";
 import { responseHandler } from "~/Functions/Utils/responseHandler";
-import { baseURL } from "~/Variables/constants/requestConstants";
 
 const initialOptions = { method: "GET", url: "", data: {}, headers: {} };
 
@@ -11,7 +10,7 @@ const requester = async (options = initialOptions) => {
 			throw error;
 		}
 
-		const finalOptions = { ...initialOptions, ...options, url: baseURL + options.url };
+		const finalOptions = { ...initialOptions, ...options, url: options.url };
 
 		if (!Object.keys(finalOptions.data).length) {
 			delete options.data;
