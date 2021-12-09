@@ -19,8 +19,6 @@ const requester = async (options = initialOptions) => {
 
 		const response = await myAxios(finalOptions);
 
-		console.log(response);
-
 		const checkedResponse = responseHandler(response);
 
 		return checkedResponse;
