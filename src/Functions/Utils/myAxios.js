@@ -4,8 +4,7 @@ import { baseURL } from "~/Variables/constants/requestConstants";
 
 const myAxios = axios.create({
 	baseURL,
-	headers: { "Content-Type": "application/x-www-form-urlencoded" },
-	// headers: { "Content-Type": "application/json" },
+	headers: { "Content-Type": "application/json" },
 	timeout: 10000,
 });
 
