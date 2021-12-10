@@ -1,6 +1,8 @@
 import { useCallback, useReducer } from "react";
 
-function useThunkReducer(reducer, initialState) {
+let useDispatch = () => {};
+
+const useThunkReducer = (reducer, initialState) => {
 	try {
 		const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -13,12 +15,14 @@ function useThunkReducer(reducer, initialState) {
 			[getState],
 		);
 
+		useDispatch = useCallback(() => myDispatch, [myDispatch]);
+
 		return [state, myDispatch];
 	} catch (error) {
 		throw error;
 	}
-}
+};
 
 export default useThunkReducer;
 
-export { useThunkReducer };
+export { useThunkReducer, useDispatch };

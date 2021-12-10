@@ -1,4 +1,4 @@
-import { RUNTIME_MODE } from "./others";
+import { RUNTIME_MODE } from "~/Variables/constants/others";
 
 const baseURL =
 	RUNTIME_MODE === "production"

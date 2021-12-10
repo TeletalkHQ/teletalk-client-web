@@ -7,7 +7,15 @@
 	},
 	"exclude": ["node_modules"],
 	"typeAcquisition": {
-		"exclude": ["defer-to-connect", "safe-stable-stringify", "source-map", "agent-base"],
+		"exclude": [
+			"defer-to-connect",
+			"safe-stable-stringify",
+			"source-map",
+			"agent-base",
+			"node_modules",
+			"dotenv",
+			"https-proxy-agent"
+		],
 		"include": ["./src/function/utility/myConsole.js"]
 	}
 }

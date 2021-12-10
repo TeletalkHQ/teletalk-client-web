@@ -12,7 +12,7 @@ const dispatchInjector = ({ dispatch }) => {
 				throw error;
 			}
 
-			dispatch();
+			dispatch(data);
 		} catch (error) {}
 	};
 };
