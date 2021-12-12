@@ -16,9 +16,11 @@ const requester = async (options = initialOptions) => {
 			delete options.data;
 		}
 
-		const response = await myAxios(finalOptions);
+		const response = myAxios(finalOptions);
 
-		const checkedResponse = responseHandler(response);
+		console.log(response);
+		const checkedResponse = await responseHandler(response);
+		console.log(checkedResponse);
 
 		return checkedResponse;
 	} catch (error) {
