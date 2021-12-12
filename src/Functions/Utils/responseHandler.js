@@ -1,13 +1,15 @@
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 
-const responseHandler = (response) => {
-	try {
-		let error = null;
+const responseHandler = async (response) => {
+	// try {
 
-		const rejection = () => Promise.reject(error);
-
-		if (response.status >= 500) {
-			switch (response.status) {
+	const rejection = () => {
+		return response;
+	};
+	return await response.then((res) => {
+		console.log(res);
+		if (res.status >= 500) {
+			switch (res.status) {
 				case 500:
 					appDispatch();
 					// helperRequestFailedModal(
@@ -15,7 +17,7 @@ const responseHandler = (response) => {
 					// ),
 					rejection();
 
-					return;
+					return res;
 
 				default:
 					appDispatch();
@@ -24,42 +26,49 @@ const responseHandler = (response) => {
 					// ),
 					rejection();
 
-					return;
+					return res;
 			}
 		}
 
-		if (response.status >= 400) {
-			switch (response.status) {
+		if (res.status >= 400) {
+			switch (res.status) {
+				case 400:
+					rejection();
+					return res;
+
 				case 401:
 					localStorage.clear();
 					appDispatch({ type: "USER_CLEARED" });
-					return rejection();
+					rejection();
+					return res;
 
 				case 805:
-					error.detail === "Cellphone not exist"
-						? appDispatch()
-						: // helperRequestFailedModal(
-						  // 	"شماره موردنظر ثبت نشده است. به صفحه ثبت نام مراجعه شود",
-						  // 	incorrectNumber,
-						  // 	"cellphoneNotExist",
-						  // ),
-						  appDispatch();
+					// ? appDispatch()
+					// : // helperRequestFailedModal(
+					// 	"شماره موردنظر ثبت نشده است. به صفحه ثبت نام مراجعه شود",
+					// 	incorrectNumber,
+					// 	"cellphoneNotExist",
+					// ),
+					appDispatch();
 					// helperRequestFailedModal(
 					// 	"شماره قبلا ثبت شده است. به صفحه ورود مراجعه شود",
 					// 	incorrectNumber,
 					// 	"cellphoneExist",
 					// ),
-					return rejection();
+					rejection();
+					return res;
 
 				case 804:
 					appDispatch();
 					// helperRequestFailedNotify("کد واردشده صحیح نمی باشد")
-					return rejection();
+					rejection();
+					return res;
 
 				case 823:
 					appDispatch();
 					// helperRequestFailedNotify("سفارش موردنظر لغو نشد")
-					return rejection();
+					rejection();
+					return res;
 
 				case 826:
 					appDispatch();
@@ -67,17 +76,22 @@ const responseHandler = (response) => {
 					// 	"خدمات دهنده موردنظر قابل انتخاب نمی باشد. لطفا خدمات دهنده دیگری را انتخاب کنید و یا صفحه را مجددا بارگذاری کنید",
 					// ),
 
-					return rejection();
+					rejection();
+					return res;
 
 				default:
 					appDispatch();
 					// helperRequestFailedNotify()
-					return rejection();
+					rejection();
+					return res;
 			}
 		}
 
-		return response;
-	} catch (error) {}
+		return res;
+		// } catch (error) {
+		// return response;
+		// }
+	});
 };
 
 export { responseHandler };

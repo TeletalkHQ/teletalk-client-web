@@ -6,24 +6,20 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Copyright from "~/Components/Utils/Copyright";
 
-import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
+import { signInCRL } from "~/Functions/Controllers/AuthControllers/signInCRL";
 import { useMyContext } from "~/Functions/Hooks/useMyContext";
+import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 
 import { welcomeAPI } from "~/APIs/Others/welcomeAPI";
 
 const theme = createTheme();
 
-export default function SignIn() {
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get("email"),
-			password: data.get("password"),
-		});
-	};
-
+const SignIn = () => {
 	const { state } = useMyContext();
+
+	const handleSignInClick = () => {
+		signInCRL({ cellphone: state.cellphone });
+	};
 
 	useEffect(() => {
 		(async () => {
@@ -32,8 +28,6 @@ export default function SignIn() {
 			appDispatch({ type: "sign", payload: response.data });
 		})();
 	}, []);
-
-	console.log(state);
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -52,23 +46,28 @@ export default function SignIn() {
 					<Typography component="h1" variant="h5">
 						Sign in
 					</Typography>
-					<Box onSubmit={handleSubmit} sx={{ mt: 1 }}>
+					<Box sx={{ mt: 1 }}>
 						<TextField
 							margin="normal"
 							required
 							fullWidth
-							id="email"
-							label="Email Address"
-							name="email"
-							autoComplete="email"
+							id="phoneNumber"
+							label="Your phone number"
+							name="phoneNumber"
+							autoComplete="tel-national"
 							autoFocus
-							value={state?.cellphone}
+							value={state?.phoneNumber}
 							onChange={(e) => {
-								appDispatch({ type: "cellphoneInput", payload: e.target.value });
+								appDispatch({ type: "phoneNumberInput", payload: e.target.value });
 							}}
 						/>
 
-						<Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+						<Button
+							onClick={handleSignInClick}
+							fullWidth
+							variant="contained"
+							sx={{ mt: 3, mb: 2 }}
+						>
 							Sign In
 						</Button>
 					</Box>
@@ -77,4 +76,6 @@ export default function SignIn() {
 			</Container>
 		</ThemeProvider>
 	);
-}
+};
+
+export default SignIn;
