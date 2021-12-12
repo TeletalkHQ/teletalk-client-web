@@ -1,3 +1,4 @@
-1. How to use swr
-2. How to use react-query
-3. How to use immer
+How to use swr
+How to use react-query
+How to use immer
+Add super logger like tts logger

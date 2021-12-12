@@ -17,6 +17,7 @@ export function App() {
 		dispatchInjector({ dispatch });
 	}, [dispatch]);
 
+	console.log(state);
 	return (
 		<MainContext.Provider value={{ state, dispatch }}>
 			<MainContainer />
