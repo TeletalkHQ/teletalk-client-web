@@ -8,25 +8,7 @@ const responseHandler = (response) => {
 
 		const statusCode = response.data.statusCode || response.status;
 
-		if (statusCode >= 500) {
-			switch (statusCode) {
-				case 500:
-					appDispatch({ type: "reject", payload: response });
-
-					rejection();
-
-					break;
-
-				default:
-					appDispatch();
-
-					rejection();
-
-					break;
-			}
-		}
-
-		if (statusCode >= 400) {
+		if (statusCode >= 400 && statusCode < 500) {
 			switch (statusCode) {
 				case 400:
 					appDispatch({ type: "request result", payload: "BAD REQUEST!" });
@@ -41,7 +23,6 @@ const responseHandler = (response) => {
 
 				case 805:
 					appDispatch();
-
 					rejection();
 					break;
 
@@ -57,7 +38,6 @@ const responseHandler = (response) => {
 
 				case 826:
 					appDispatch();
-
 					rejection();
 					break;
 
@@ -66,6 +46,21 @@ const responseHandler = (response) => {
 					rejection();
 					break;
 			}
+		} else if (statusCode >= 500 && statusCode < 600) {
+			switch (statusCode) {
+				case 500:
+					appDispatch({ type: "reject", payload: response });
+					rejection();
+					break;
+
+				default:
+					appDispatch();
+					rejection();
+					break;
+			}
+		} else if (statusCode >= 600) {
+			//...
+			rejection();
 		}
 
 		return response;
