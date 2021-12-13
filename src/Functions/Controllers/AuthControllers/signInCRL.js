@@ -1,9 +1,14 @@
 import { signInAPI } from "~/APIs/Auth/signInAPI";
 
-const signInCRL = async ({ cellphone: { phoneNumber, countryCode, countryName } }) => {
-	const response = await signInAPI({ phoneNumber, countryCode: "98", countryName: "ir" });
+const signInCRL = async (data) => {
+	try {
+		const response = await signInAPI(data);
 
-	console.log(response);
+		console.log(response);
+		return response;
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 export { signInCRL };

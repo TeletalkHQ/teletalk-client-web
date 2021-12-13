@@ -1,14 +1,8 @@
 import { requester } from "~/Functions/Utils/requester";
 
-const signInAPI = ({ phoneNumber, countryCode, countryName }) => {
+const signInAPI = (data) => {
 	const response = requester({
-		data: {
-			cellphone: {
-				phoneNumber,
-				countryCode,
-				countryName,
-			},
-		},
+		data,
 		method: "POST",
 		url: "/user/signIn/normal",
 	});

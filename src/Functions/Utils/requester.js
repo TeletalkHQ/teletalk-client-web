@@ -10,17 +10,15 @@ const requester = async (options = initialOptions) => {
 			throw error;
 		}
 
-		const finalOptions = { ...initialOptions, ...options, url: options.url };
+		const finalOptions = { ...initialOptions, ...options };
 
 		if (!Object.keys(finalOptions.data).length) {
 			delete options.data;
 		}
 
-		const response = myAxios(finalOptions);
+		const response = await myAxios(finalOptions);
 
-		console.log(response);
-		const checkedResponse = await responseHandler(response);
-		console.log(checkedResponse);
+		const checkedResponse = responseHandler(response);
 
 		return checkedResponse;
 	} catch (error) {
