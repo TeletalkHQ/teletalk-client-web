@@ -6,6 +6,7 @@ const myAxios = axios.create({
 	baseURL,
 	headers: { "Content-Type": "application/json" },
 	timeout: 10000,
+	validateStatus: false,
 });
 
 // //* Return is interceptor, so if you want to remove interceptor you need that.

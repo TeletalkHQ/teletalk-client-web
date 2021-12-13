@@ -2,7 +2,7 @@ import { INITIAL_STATE } from "~/Variables/constants/initialState";
 
 const reducer = (state = INITIAL_STATE, action) => {
 	try {
-		console.log(action.type);
+		console.log(action);
 
 		switch (action.type) {
 			case "test":
