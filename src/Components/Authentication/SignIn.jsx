@@ -18,7 +18,9 @@ const SignIn = () => {
 	const { state } = useMyContext();
 
 	const handleSignInClick = () => {
-		signInCRL({ cellphone: state.cellphone });
+		const { cellphone } = state.auth.user;
+
+		signInCRL({ cellphone });
 	};
 
 	useEffect(() => {

@@ -1,6 +1,6 @@
-const { useContext } = require("react");
+import { useContext } from "react";
 
-const { MainContext } = require("~/Functions/Others/Contexts/Contexts");
+import { MainContext } from "~/Functions/Others/Contexts/MainContext";
 
 const initialContext = MainContext;
 
