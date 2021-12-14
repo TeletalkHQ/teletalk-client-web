@@ -4,16 +4,23 @@ let appDispatch = (action = initialOptions) => {};
 
 const dispatchInjector = ({ dispatch }) => {
 	appDispatch = (action) => {
-		const data = { ...initialOptions, ...action };
-
 		try {
-			if (!data.type) {
+			if (!action) {
+				const error = "Yo! you must provide action!";
+				throw error;
+			}
+
+			const finalAction = { ...initialOptions, ...action };
+
+			if (!finalAction.type && typeof action === "object") {
 				const error = "Yo! you must provide action type";
 				throw error;
 			}
 
-			dispatch(data);
-		} catch (error) {}
+			dispatch(finalAction);
+		} catch (error) {
+			console.log("appDispatch catch", error);
+		}
 	};
 };
 

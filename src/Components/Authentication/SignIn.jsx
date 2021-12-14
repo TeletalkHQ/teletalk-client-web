@@ -18,16 +18,14 @@ const SignIn = () => {
 	const { state } = useMyContext();
 
 	const handleSignInClick = () => {
-		const { cellphone } = state.auth.user;
-
-		signInCRL({ cellphone });
+		appDispatch(signInCRL());
 	};
 
 	useEffect(() => {
 		(async () => {
 			const response = await welcomeAPI();
 
-			appDispatch({ type: "sign", payload: response.data });
+			appDispatch({ type: "WELCOME", payload: response.data });
 		})();
 	}, []);
 
@@ -58,7 +56,7 @@ const SignIn = () => {
 							name="phoneNumber"
 							autoComplete="tel-national"
 							autoFocus
-							value={state?.phoneNumber}
+							value={state.auth.user.cellphone.phoneNumber}
 							onChange={(e) => {
 								appDispatch({ type: "phoneNumberInput", payload: e.target.value });
 							}}
