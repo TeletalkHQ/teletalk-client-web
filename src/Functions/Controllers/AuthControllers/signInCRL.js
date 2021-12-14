@@ -1,13 +1,19 @@
 import { signInAPI } from "~/APIs/Auth/signInAPI";
 
-const signInCRL = (data) => {
-	return async (dispatch, getState) => {
+import { INITIAL_STATE } from "~/Variables/constants/initialStates";
+
+const signInCRL = () => {
+	return async (dispatch, getState = INITIAL_STATE) => {
 		try {
-			const response = await signInAPI(data);
+			const {
+				auth: {
+					user: { cellphone },
+				},
+			} = getState();
 
-			console.log(response);
+			const response = await signInAPI({ cellphone });
 
-			dispatch({ type: "USER_DATA", payload: response });
+			dispatch({ type: "USER_DATA", payload: response.data });
 			return response;
 		} catch (error) {
 			console.log(error);
