@@ -6,7 +6,7 @@ const initialOptions = { method: "GET", url: "", data: {}, headers: {} };
 const requester = async (options = initialOptions) => {
 	try {
 		if (!options.url) {
-			const error = "Yo! you forget send me url";
+			const error = "Yo! you forget send me url!!!";
 			throw error;
 		}
 
@@ -19,6 +19,8 @@ const requester = async (options = initialOptions) => {
 		const response = await myAxios(finalOptions);
 
 		const checkedResponse = responseHandler(response);
+
+		console.log(checkedResponse);
 
 		return checkedResponse;
 	} catch (error) {
