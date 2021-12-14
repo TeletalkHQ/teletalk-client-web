@@ -2,19 +2,20 @@ import { useMemo } from "react";
 
 import MainContainer from "~/Components/MainContainer/MainContainer";
 
-import { reducer } from "~/Functions/StateManagers/reducer";
+import { otherReducer, authReducer } from "~/Functions/StateManagers/index";
 import { combineReducers, useThunkReducer } from "~/Functions/Hooks/useThunkReducer";
 import { dispatchInjector } from "~/Functions/Others/Injectors/dispatchInjector";
-import { MainContext } from "~/Functions/Others/Contexts/Contexts";
+import { MainContext } from "~/Functions/Others/Contexts/MainContext";
 
-import { INITIAL_STATE } from "~/Variables/constants/initialState";
+import { INITIAL_STATE } from "~/Variables/constants/initialStates";
 
 const rootReducer = combineReducers({
-	main: reducer,
+	auth: authReducer,
+	other: otherReducer,
 });
 
 export function App() {
-	const [state, dispatch] = useThunkReducer(rootReducer, INITIAL_STATE);
+	const [state = INITIAL_STATE, dispatch] = useThunkReducer(rootReducer, INITIAL_STATE);
 
 	useMemo(() => {
 		console.log("dispatchInjector useMemo");
@@ -22,6 +23,7 @@ export function App() {
 	}, [dispatch]);
 
 	console.log(state);
+	//
 	return (
 		<MainContext.Provider value={{ state, dispatch }}>
 			<MainContainer />
