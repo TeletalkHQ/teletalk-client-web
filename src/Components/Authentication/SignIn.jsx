@@ -15,7 +15,7 @@ import { welcomeAPI } from "~/APIs/Others/welcomeAPI";
 const theme = createTheme();
 
 const SignIn = () => {
-	const { state, dispatch } = useMyContext();
+	const { state } = useMyContext();
 
 	const handleSignInClick = () => {
 		appDispatch(signInCRL());
@@ -25,13 +25,13 @@ const SignIn = () => {
 		appDispatch({ type: "PHONE_NUMBER_ONCHANGE", payload: e.target.value });
 	};
 
-	// useEffect(() => {
-	// 	(async () => {
-	// 		const response = await welcomeAPI();
+	useEffect(() => {
+		(async () => {
+			const response = await welcomeAPI();
 
-	// 		appDispatch({ type: "WELCOME", payload: response.data });
-	// 	})();
-	// }, []);
+			appDispatch({ type: "WELCOME", payload: response.data });
+		})();
+	}, []);
 
 	return (
 		<ThemeProvider theme={theme}>
