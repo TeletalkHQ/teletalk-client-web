@@ -1,8 +1,17 @@
 import { other } from "~/Variables/constants/initialStates";
 
-const otherReducer = (state = other, action) => {
+const initialAction = { type: "", payload: "" };
+
+const otherReducer = (state = other, action = initialAction) => {
 	try {
-		switch (action.type) {
+		const { payload, type } = action;
+
+		const stateMan = (newState) => ({ ...state, ...newState });
+
+		switch (type) {
+			case "WELCOME":
+				return stateMan({ welcome: payload });
+
 			default:
 				return state;
 		}

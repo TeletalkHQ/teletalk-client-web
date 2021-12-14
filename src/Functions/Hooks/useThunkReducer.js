@@ -20,9 +20,9 @@ const useThunkReducer = (reducer, initialState) => {
 
 		const myDispatch = useCallback(
 			(action) => {
-				return typeof action === "function" ? action(myDispatch, getState) : dispatch(action);
+				return typeof action === "function" ? action(dispatch, getState) : dispatch(action);
 			},
-			[getState],
+			[getState, dispatch],
 		);
 
 		useDispatch = useCallback(() => myDispatch, [myDispatch]);

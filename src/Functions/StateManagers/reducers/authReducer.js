@@ -1,8 +1,16 @@
 import { auth } from "~/Variables/constants/initialStates";
 
-const authReducer = (state = auth, action) => {
+const initialAction = { type: "", payload: "" };
+
+const authReducer = (state = auth, action = initialAction) => {
+	const { payload, type } = action;
+
+	const stateMan = (newState) => ({ ...state, ...newState });
+
 	try {
-		switch (action.type) {
+		switch (type) {
+			case "USER_DATA":
+				return stateMan({ user: payload });
 			default:
 				return state;
 		}
