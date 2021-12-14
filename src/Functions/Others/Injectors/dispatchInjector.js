@@ -10,14 +10,12 @@ const dispatchInjector = ({ dispatch }) => {
 				throw error;
 			}
 
-			const finalAction = { ...initialOptions, ...action };
-
-			if (!finalAction.type && typeof action === "object") {
+			if (typeof action === "object" && !action.type) {
 				const error = "Yo! you must provide action type";
 				throw error;
 			}
 
-			dispatch(finalAction);
+			dispatch(action);
 		} catch (error) {
 			console.log("appDispatch catch", error);
 		}

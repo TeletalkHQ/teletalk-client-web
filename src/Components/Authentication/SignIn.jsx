@@ -15,19 +15,23 @@ import { welcomeAPI } from "~/APIs/Others/welcomeAPI";
 const theme = createTheme();
 
 const SignIn = () => {
-	const { state } = useMyContext();
+	const { state, dispatch } = useMyContext();
 
 	const handleSignInClick = () => {
 		appDispatch(signInCRL());
 	};
 
-	useEffect(() => {
-		(async () => {
-			const response = await welcomeAPI();
+	const handlePhoneNumberChange = (e) => {
+		appDispatch({ type: "PHONE_NUMBER_ONCHANGE", payload: e.target.value });
+	};
 
-			appDispatch({ type: "WELCOME", payload: response.data });
-		})();
-	}, []);
+	// useEffect(() => {
+	// 	(async () => {
+	// 		const response = await welcomeAPI();
+
+	// 		appDispatch({ type: "WELCOME", payload: response.data });
+	// 	})();
+	// }, []);
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -57,9 +61,7 @@ const SignIn = () => {
 							autoComplete="tel-national"
 							autoFocus
 							value={state.auth.user.cellphone.phoneNumber}
-							onChange={(e) => {
-								appDispatch({ type: "phoneNumberInput", payload: e.target.value });
-							}}
+							onChange={handlePhoneNumberChange}
 						/>
 
 						<Button
