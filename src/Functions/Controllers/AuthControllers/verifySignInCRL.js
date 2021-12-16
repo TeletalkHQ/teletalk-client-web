@@ -14,9 +14,9 @@ const verifySignInCRL = () => {
 
 			const response = await verifySignInAPI({ verifyCode });
 
-			const { token, ...user } = response.data;
+			const { user } = response.data;
 
-			localStorage.setItem("token", token);
+			localStorage.setItem("token", user.tokens[0]?.token);
 
 			dispatch({ type: "USER_DATA", payload: user });
 			dispatch({ type: "LOADING", payload: false });
