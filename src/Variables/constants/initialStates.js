@@ -1,3 +1,5 @@
+import jwtDecode from "jwt-decode";
+
 const otherInitialState = {
 	welcome: {},
 };
@@ -21,6 +23,22 @@ const INITIAL_STATE = {
 };
 
 const initialState = () => INITIAL_STATE;
+
+const fn = () => {
+	const token = localStorage.getItem("token");
+	console.log(token);
+
+	if (token) {
+		const decodedToken = jwtDecode(token);
+
+		if (decodedToken) {
+			console.log("tokenDecoder");
+			authInitialState.user = decodedToken;
+		}
+	}
+};
+
+fn();
 
 export {
 	otherInitialState,
