@@ -1,11 +1,16 @@
 const { requester } = require("~/Functions/Utils/requester");
 
 const welcomeAPI = async () => {
-	const response = await requester({
-		url: "/",
-	});
+	try {
+		const response = await requester({
+			url: "/other/welcome",
+		});
 
-	return response;
+		return response;
+	} catch (error) {
+		console.log("welcomeAPI catch", error);
+		throw error;
+	}
 };
 
 export { welcomeAPI };

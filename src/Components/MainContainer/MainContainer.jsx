@@ -1,12 +1,15 @@
 import { CssBaseline } from "@mui/material";
 
-import SignIn from "~/Components/Authentication/SignIn";
+import Auth from "~/Components/Authentication/Auth";
+
+import { useMyContext } from "~/Functions/Hooks/useMyContext";
 
 const MainContainer = () => {
+	const { state } = useMyContext();
 	return (
 		<>
 			<CssBaseline />
-			<SignIn />
+			{!state.auth.user.privateID ? <Auth /> : <div>Hi!</div>}
 		</>
 	);
 };

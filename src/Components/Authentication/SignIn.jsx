@@ -1,55 +1,25 @@
-import { useEffect } from "react";
-
-import { Box, Avatar, Button, TextField, Typography, Container } from "@mui/material";
+import { Box, Avatar, TextField, Typography, Container } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { LoadingButton } from "@mui/lab";
 
-import Copyright from "~/Components/Utils/Copyright";
-
-import { signInCRL } from "~/Functions/Controllers/AuthControllers/signInCRL";
-import { useMyContext } from "~/Functions/Hooks/useMyContext";
-import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
-
-import { welcomeAPI } from "~/APIs/Others/welcomeAPI";
-
-const theme = createTheme();
-
-const SignIn = () => {
-	const { state } = useMyContext();
-
-	const handleSignInClick = () => {
-		appDispatch(signInCRL());
-	};
-
-	const handlePhoneNumberChange = (e) => {
-		appDispatch({ type: "PHONE_NUMBER_ONCHANGE", payload: e.target.value });
-	};
-
-	useEffect(() => {
-		(async () => {
-			const response = await welcomeAPI();
-
-			appDispatch({ type: "WELCOME", payload: response.data });
-		})();
-	}, []);
-
+const SignIn = ({ phoneNumber, onPhoneNumberChange, onSignInClick, loading }) => {
 	return (
-		<ThemeProvider theme={theme}>
-			<Container maxWidth="lg">
-				<Box
-					sx={{
-						marginTop: 8,
-						display: "flex",
-						flexDirection: "column",
-						alignItems: "center",
-					}}
-				>
-					<Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-						<LockOutlined />
-					</Avatar>
-					<Typography component="h1" variant="h5">
-						Sign in
-					</Typography>
+		<Container maxWidth="xl">
+			<Box
+				sx={{
+					marginTop: 8,
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+				}}
+			>
+				<Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+					<LockOutlined />
+				</Avatar>
+				<Typography component="h1" variant="h5">
+					Sign in
+				</Typography>
+				<Container maxWidth="xs">
 					<Box sx={{ mt: 1 }}>
 						<TextField
 							margin="normal"
@@ -60,23 +30,45 @@ const SignIn = () => {
 							name="phoneNumber"
 							autoComplete="tel-national"
 							autoFocus
-							value={state.auth.user.cellphone.phoneNumber}
-							onChange={handlePhoneNumberChange}
+							InputLabelProps={{ shrink: true }}
+							InputProps={{
+								onBlur: (e) => e.target.focus(),
+								sx: { borderRadius: "10px" },
+							}}
+							value={phoneNumber}
+							onChange={onPhoneNumberChange}
 						/>
 
-						<Button
-							onClick={handleSignInClick}
+						{/* <LoadingButton
+							onClick={onSignInClick}
+							size="large"
 							fullWidth
+							sx={{ mt: 3, mb: 2, borderRadius: "10px" }}
+							loading={loading}
+							loadingIndicator="Please wait..."
 							variant="contained"
-							sx={{ mt: 3, mb: 2 }}
+							loadingPosition="end"
+							endIcon={<Save />}
 						>
-							Sign In
-						</Button>
+							Next
+						</LoadingButton> */}
+
+						<LoadingButton
+							fullWidth
+							loading={loading}
+							// loadingPosition="start"
+							onClick={onSignInClick}
+							size="large"
+							// startIcon={<Fingerprint />}
+							sx={{ mt: 3, mb: 2, borderRadius: "10px" }}
+							variant="contained"
+						>
+							Next
+						</LoadingButton>
 					</Box>
-				</Box>
-				<Copyright sx={{ mt: 8, mb: 4 }} />
-			</Container>
-		</ThemeProvider>
+				</Container>
+			</Box>
+		</Container>
 	);
 };
 

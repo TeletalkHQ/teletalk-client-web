@@ -1,9 +1,9 @@
 import { signInAPI } from "~/APIs/Auth/signInAPI";
 
-import { INITIAL_STATE } from "~/Variables/constants/initialStates";
+import { initialState } from "~/Variables/constants/initialStates";
 
 const signInCRL = () => {
-	return async (dispatch, getState = INITIAL_STATE) => {
+	return async (dispatch, getState = initialState) => {
 		try {
 			const {
 				auth: {
@@ -11,12 +11,20 @@ const signInCRL = () => {
 				},
 			} = getState();
 
+			dispatch({ type: "LOADING", payload: true });
+
 			const response = await signInAPI({ cellphone });
 
+			localStorage.setItem("token", response.data.token);
+
 			dispatch({ type: "USER_DATA", payload: response.data });
+			dispatch({ type: "VIEW_MODE_ONCHANGE", payload: "verifySignIn" });
+
+			dispatch({ type: "LOADING", payload: false });
 			return response;
 		} catch (error) {
-			console.log(error);
+			console.log("signInCRL catch", error);
+			dispatch({ type: "LOADING", payload: false });
 		}
 	};
 };

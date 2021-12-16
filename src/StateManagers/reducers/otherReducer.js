@@ -1,8 +1,7 @@
-import { error } from "~/Variables/constants/initialStates";
+import { initialAction } from "~/Variables/constants/actionTypes";
+import { otherInitialState } from "~/Variables/constants/initialStates";
 
-const initialAction = { type: "", payload: "" };
-
-const otherReducer = (state = error, action = initialAction) => {
+const otherReducer = (state = otherInitialState, action = initialAction) => {
 	try {
 		const { payload, type } = action;
 
