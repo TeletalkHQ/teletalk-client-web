@@ -24,6 +24,7 @@ export function App() {
 	}, [dispatch]);
 
 	console.log(state);
+	useMemo(() => localStorage.removeItem("token"), []);
 	//
 	return (
 		<ThemeProvider theme={baseTheme}>
