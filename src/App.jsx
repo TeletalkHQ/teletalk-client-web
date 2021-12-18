@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { CssBaseline } from "@mui/material";
+import { Alert, CssBaseline, Snackbar } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
 import MainContainer from "~/Components/MainContainer/MainContainer";
@@ -30,6 +30,20 @@ export function App() {
 			<CssBaseline />
 			<MainContext.Provider value={{ state, dispatch }}>
 				<MainContainer />
+
+				<Snackbar
+					open={global.verifyCode}
+					autoHideDuration={6000}
+					onClose={() => dispatch({ type: "verifyCode", payload: "" })}
+				>
+					<Alert
+						onClose={() => dispatch({ type: "verifyCode", payload: "" })}
+						severity="success"
+						sx={{ width: "100%" }}
+					>
+						دیوص بیا اینم کد تاییدت {state.auth.user.verifyCode}
+					</Alert>
+				</Snackbar>
 			</MainContext.Provider>{" "}
 		</ThemeProvider>
 	);
