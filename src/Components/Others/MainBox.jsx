@@ -75,9 +75,10 @@ const MainBox = () => {
 					onClick={() => {
 						requester({
 							data: {
-								privateID: "yvfq-JebECGtjLAwpNPZOqzAAInnGTIfOov",
+								privateID: "dc0rlpB8xIZI2bj7-twaiLIzvnMzt8_kMEj",
 							},
 							url: "/chat/private/start/chat",
+							method: "POST",
 						});
 					}}
 				>
