@@ -32,7 +32,6 @@ const fn = () => {
 		const decodedToken = jwtDecode(token);
 
 		if (decodedToken) {
-			console.log("tokenDecoder");
 			authInitialState.user = decodedToken;
 		}
 	}

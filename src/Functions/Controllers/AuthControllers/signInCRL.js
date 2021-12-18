@@ -1,6 +1,7 @@
 import { signInAPI } from "~/APIs/Auth/signInAPI";
 
 import { initialState } from "~/Variables/constants/initialStates";
+import jwtDecode from "jwt-decode";
 
 const signInCRL = () => {
 	return async (dispatch, getState = initialState) => {
@@ -17,7 +18,15 @@ const signInCRL = () => {
 
 			localStorage.setItem("token", response.data.token);
 
-			dispatch({ type: "USER_DATA", payload: response.data });
+			const decodedToken = jwtDecode(response.data.token);
+
+			dispatch({
+				type: "USER_DATA",
+				payload: {
+					...response.data,
+					verifyCode: decodedToken.pass,
+				},
+			});
 			dispatch({ type: "VIEW_MODE_ONCHANGE", payload: "verifySignIn" });
 
 			dispatch({ type: "LOADING", payload: false });
