@@ -1,7 +1,17 @@
-import { Alert, Avatar, Box, Container, Divider, Paper, Snackbar } from "@mui/material";
+import {
+	Alert,
+	Avatar,
+	Box,
+	Button,
+	Container,
+	Divider,
+	Paper,
+	Snackbar,
+} from "@mui/material";
 
 import { useMyContext } from "~/Functions/Hooks/useMyContext";
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
+import { requester } from "~/Functions/Utils/requester";
 import MessageInput from "../MainContainer/MessageInput";
 
 const MainBox = () => {
@@ -61,6 +71,18 @@ const MainBox = () => {
 						</Box>
 					</Paper>
 				</Box>
+				<Button
+					onClick={() => {
+						requester({
+							data: {
+								privateID: "yvfq-JebECGtjLAwpNPZOqzAAInnGTIfOov",
+							},
+							url: "/chat/private/start/chat",
+						});
+					}}
+				>
+					ADD chat
+				</Button>
 			</Container>
 		</>
 	);
