@@ -16,7 +16,7 @@ const verifySignInCRL = () => {
 
 			const { user } = response.data;
 
-			localStorage.setItem("token", user.tokens[0]?.token);
+			localStorage.setItem("token", user.token);
 
 			dispatch({ type: "USER_DATA", payload: user });
 			dispatch({ type: "LOADING", payload: false });
