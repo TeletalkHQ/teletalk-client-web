@@ -32,6 +32,8 @@ const fn = () => {
 		const decodedToken = jwtDecode(token);
 
 		if (decodedToken) {
+			delete decodedToken.iat;
+
 			authInitialState.user = decodedToken;
 		}
 	}
