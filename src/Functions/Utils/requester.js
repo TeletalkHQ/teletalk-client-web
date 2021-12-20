@@ -1,15 +1,15 @@
 import { myAxios } from "~/Functions/Utils/myAxios";
 import { responseHandler } from "~/Functions/Utils/responseHandler";
 
-const initialOptions = { method: "GET", url: "", data: {}, headers: { Authorization: "" } };
+import { initialRequestOptions } from "~/Variables/constants/initialOptions";
 
-const requester = async (options = initialOptions) => {
+const requester = async (options = initialRequestOptions) => {
 	try {
 		const finalOptions = {
-			...initialOptions,
+			...initialRequestOptions,
 			...options,
-			data: { ...initialOptions.data, ...options?.data },
-			headers: { ...initialOptions.headers, ...options?.headers },
+			data: { ...initialRequestOptions.data, ...options?.data },
+			headers: { ...initialRequestOptions.headers, ...options?.headers },
 		};
 
 		if (!finalOptions.url) {
@@ -17,12 +17,10 @@ const requester = async (options = initialOptions) => {
 			throw error;
 		}
 
-		const token = localStorage.getItem("token");
+		//TODO Need fix for mainToken
+		const token = options?.data?.token || JSON.parse(localStorage.getItem("mainToken"))?.value;
 
-		// if (token) {
-		// 	finalOptions.headers.Authorization = token;
-		// }
-
+		console.log(options);
 		if (!Object.keys(finalOptions.data).length) {
 			delete options.data;
 		}

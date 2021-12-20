@@ -12,11 +12,33 @@ const verifySignInCRL = () => {
 				},
 			} = getState();
 
-			const response = await verifySignInAPI({ verifyCode });
+			const verifyToken = localStorage.getItem("verifyToken");
+
+			if (!verifyToken) {
+				const error = "verifyToken is not defined";
+
+				dispatch({ type: "VIEW_MODE_ONCHANGE", payload: "signIn" });
+
+				throw error;
+			}
+
+			const parseVerifyToken = JSON.parse(verifyToken);
+
+			if (!parseVerifyToken?.value) {
+				const error = "verifyToken.value is not defined";
+
+				dispatch({ type: "VIEW_MODE_ONCHANGE", payload: "signIn" });
+
+				throw error;
+			}
+
+			const response = await verifySignInAPI({ verifyCode, token: parseVerifyToken.value });
 
 			const { user } = response.data;
 
-			localStorage.setItem("token", user.token);
+			const mainToken = { value: user.token, condition: "alive" };
+
+			localStorage.setItem("mainToken", JSON.stringify(mainToken));
 
 			dispatch({ type: "USER_DATA", payload: user });
 			dispatch({ type: "LOADING", payload: false });

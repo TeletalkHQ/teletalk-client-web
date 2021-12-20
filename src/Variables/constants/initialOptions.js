@@ -1,3 +1,10 @@
-const initialOptions = { type: "", payload: "" };
+const initialAction = { type: "", payload: "" };
 
-export { initialOptions };
+const initialRequestOptions = {
+	method: "GET",
+	url: "",
+	data: { token: { value: "", condition: "" } },
+	headers: { Authorization: "" },
+};
+
+export { initialRequestOptions, initialAction };
