@@ -10,7 +10,7 @@ const MessageInput = () => {
 			auth: { user },
 			global: { messageInputText },
 		},
-		dispatch,
+		hooksOutput: { dispatch },
 	} = useMyContext();
 
 	const handleAddNewMessage = async () => {

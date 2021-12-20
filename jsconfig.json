@@ -13,6 +13,7 @@
 			"defer-to-connect",
 			"safe-stable-stringify",
 			"source-map",
+			"source-map-js",
 			"agent-base",
 			"node_modules",
 			"dotenv",
