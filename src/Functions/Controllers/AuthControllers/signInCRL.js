@@ -3,6 +3,7 @@ import { signInAPI } from "~/APIs/Auth/signInAPI";
 import { initialState } from "~/Variables/constants/initialStates";
 import jwtDecode from "jwt-decode";
 
+//FIXME //? You know what needs to be done!
 const signInCRL = () => {
 	return async (dispatch, getState = initialState) => {
 		try {
@@ -16,7 +17,9 @@ const signInCRL = () => {
 
 			const response = await signInAPI({ cellphone });
 
-			localStorage.setItem("token", response.data.token);
+			const verifyToken = { value: response.data.token, condition: "alive" };
+
+			localStorage.setItem("verifyToken", JSON.stringify(verifyToken));
 
 			const decodedToken = jwtDecode(response.data.token);
 
@@ -27,6 +30,7 @@ const signInCRL = () => {
 					verifyCode: decodedToken.pass,
 				},
 			});
+
 			dispatch({ type: "VIEW_MODE_ONCHANGE", payload: "verifySignIn" });
 
 			dispatch({ type: "LOADING", payload: false });

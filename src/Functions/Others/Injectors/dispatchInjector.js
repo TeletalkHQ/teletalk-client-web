@@ -1,6 +1,6 @@
-import { initialOptions } from "~/Variables/constants/initialOptions";
+import { initialAction } from "~/Variables/constants/initialOptions";
 
-let appDispatch = (action = initialOptions) => {};
+let appDispatch = (action = initialAction) => {};
 
 const dispatchInjector = ({ dispatch }) => {
 	appDispatch = (action) => {

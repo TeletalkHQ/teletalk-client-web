@@ -11,6 +11,9 @@ const globalReducer = (state = globalInitialState, action = initialAction) => {
 			case "VIEW_MODE_ONCHANGE":
 				return stateMan({ viewMode: payload });
 
+			case "BACKDROP_STATE_CHANGE":
+				return stateMan({ backdropState: { ...state.backdropState, ...payload } });
+
 			//
 			//
 			default:
