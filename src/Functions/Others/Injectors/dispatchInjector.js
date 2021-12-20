@@ -1,4 +1,4 @@
-const initialOptions = { type: "", payload: "" };
+import { initialOptions } from "~/Variables/constants/initialOptions";
 
 let appDispatch = (action = initialOptions) => {};
 

@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 
-import { Alert, CssBaseline, Snackbar } from "@mui/material";
+import { SnackbarProvider } from "notistack";
+
+import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
 import MainContainer from "~/Components/MainContainer/MainContainer";
@@ -19,33 +21,19 @@ export function App() {
 	const [state = INITIAL_STATE, dispatch] = useThunkReducer(rootReducer, INITIAL_STATE);
 
 	useMemo(() => {
-		console.log("dispatchInjector useMemo");
 		dispatchInjector({ dispatch });
 	}, [dispatch]);
 
 	console.log(state);
 
-	//
 	return (
-		<ThemeProvider theme={baseTheme}>
-			<CssBaseline />
-			<MainContext.Provider value={{ state, dispatch }}>
-				<MainContainer />
-
-				<Snackbar
-					open={global.verifyCode}
-					autoHideDuration={6000}
-					onClose={() => dispatch({ type: "verifyCode", payload: "" })}
-				>
-					<Alert
-						onClose={() => dispatch({ type: "verifyCode", payload: "" })}
-						severity="success"
-						sx={{ width: "100%" }}
-					>
-						دیوص بیا اینم کد تاییدت {state.auth.user.verifyCode}
-					</Alert>
-				</Snackbar>
-			</MainContext.Provider>{" "}
-		</ThemeProvider>
+		<MainContext.Provider value={{ state, dispatch, hooksOutput: { dispatch } }}>
+			<ThemeProvider theme={baseTheme}>
+				<CssBaseline />
+				<SnackbarProvider>
+					<MainContainer />
+				</SnackbarProvider>
+			</ThemeProvider>
+		</MainContext.Provider>
 	);
 }

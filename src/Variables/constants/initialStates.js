@@ -14,6 +14,7 @@ const authInitialState = {
 
 const globalInitialState = {
 	viewMode: "signIn",
+	backdropState: { open: false,progressColor:"inherit",color:"#ff" },
 };
 
 const INITIAL_STATE = {
