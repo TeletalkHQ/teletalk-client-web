@@ -22,23 +22,13 @@ const verifySignInCRL = () => {
 				throw error;
 			}
 
-			const parseVerifyToken = JSON.parse(verifyToken);
-
-			if (!parseVerifyToken?.value) {
-				const error = "verifyToken.value is not defined";
-
-				dispatch({ type: "VIEW_MODE_ONCHANGE", payload: "signIn" });
-
-				throw error;
-			}
-
-			const response = await verifySignInAPI({ verifyCode, token: parseVerifyToken.value });
+			const response = await verifySignInAPI({ verifyCode, token: verifyToken });
 
 			const { user } = response.data;
 
-			const mainToken = { value: user.token, condition: "alive" };
+			const mainToken = user.token;
 
-			localStorage.setItem("mainToken", JSON.stringify(mainToken));
+			localStorage.setItem("mainToken", mainToken);
 
 			dispatch({ type: "USER_DATA", payload: user });
 			dispatch({ type: "LOADING", payload: false });

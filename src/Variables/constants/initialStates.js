@@ -1,15 +1,17 @@
+import { userInitializer } from "~/Functions/Helpers/userInitializer";
+
 const otherInitialState = {
 	welcome: {},
 };
 
 const authInitialState = {
-	user: {
+	user: userInitializer() || {
 		cellphone: { phoneNumber: "", countryCode: "98", countryName: "iran" },
+		privateID: "",
 		verifyCode: "",
 		mainToken: "",
 		verifyToken: "",
 	},
-	loading: false,
 };
 
 const globalInitialState = {

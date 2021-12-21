@@ -17,18 +17,15 @@ const requester = async (options = initialRequestOptions) => {
 			throw error;
 		}
 
-		//TODO Need fix for mainToken
-		const token = options?.data?.token || JSON.parse(localStorage.getItem("mainToken"))?.value;
+		const token = options?.data?.token || localStorage.getItem("mainToken");
 
-		console.log(options);
-		if (!Object.keys(finalOptions.data).length) {
-			delete options.data;
+		finalOptions.headers.Authorization = `Bearer ${token}`;
+
+		if (options.data && !Object.keys(options?.data)?.length) {
+			delete finalOptions.data;
 		}
 
-		const response = await myAxios({
-			...finalOptions,
-			headers: { ...finalOptions.headers, Authorization: `Bearer ${token}` },
-		});
+		const response = await myAxios(finalOptions);
 
 		const checkedResponse = responseHandler(response);
 

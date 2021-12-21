@@ -1,23 +1,13 @@
-import {
-	Alert,
-	Avatar,
-	Box,
-	Button,
-	Container,
-	Divider,
-	Paper,
-	Snackbar,
-} from "@mui/material";
+import { Avatar, Box, Button, Container, Divider, Paper } from "@mui/material";
 
 import { useMyContext } from "~/Functions/Hooks/useMyContext";
-import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 import { requester } from "~/Functions/Utils/requester";
 import MessageInput from "../MainContainer/MessageInput";
 
 const MainBox = () => {
 	const {
 		state: {
-			auth: { user, chats },
+			auth: { user },
 		},
 	} = useMyContext();
 

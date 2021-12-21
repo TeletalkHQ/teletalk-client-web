@@ -17,11 +17,11 @@ const signInCRL = () => {
 
 			const response = await signInAPI({ cellphone });
 
-			const verifyToken = { value: response.data.token, condition: "alive" };
+			const verifyToken = response.data.token;
 
-			localStorage.setItem("verifyToken", JSON.stringify(verifyToken));
+			localStorage.setItem("verifyToken", verifyToken);
 
-			const decodedToken = jwtDecode(response.data.token);
+			const decodedToken = jwtDecode(verifyToken);
 
 			dispatch({
 				type: "USER_DATA",
