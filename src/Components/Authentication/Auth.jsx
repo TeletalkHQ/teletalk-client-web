@@ -10,6 +10,8 @@ import { welcomeCRL } from "~/Functions/Controllers/otherControllers/welcomeCRL"
 import { useMyContext } from "~/Functions/Hooks/useMyContext";
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 
+localStorage.clear();
+
 const Auth = () => {
 	const {
 		state: {
