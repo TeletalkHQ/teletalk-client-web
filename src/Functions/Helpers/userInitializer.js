@@ -2,7 +2,7 @@ import { tokenDecoder } from "~/Functions/Utils/tokenDecoder";
 
 const userInitializer = () => {
 	try {
-		//FIXME CLEANME!
+		// FIXME CLEANME!
 		const user = {
 			cellphone: { phoneNumber: "", countryCode: "98", countryName: "iran" },
 			privateID: "",
@@ -17,6 +17,7 @@ const userInitializer = () => {
 			// const error = "mainToken not defined";
 			localStorage.clear();
 			// throw error;
+			return user;
 		}
 
 		const { decodedToken } = tokenDecoder({ token: mainToken });

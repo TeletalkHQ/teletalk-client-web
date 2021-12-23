@@ -1,15 +1,26 @@
+import { useEffect } from "react";
+
 import { Avatar, Box, Button, Container, Divider, Paper } from "@mui/material";
+
+import MessageInput from "../MainContainer/MessageInput";
 
 import { useMyContext } from "~/Functions/Hooks/useMyContext";
 import { requester } from "~/Functions/Utils/requester";
-import MessageInput from "../MainContainer/MessageInput";
+import { getChatsCRL } from "~/Functions/Controllers/otherControllers/getChatsCRL";
 
 const MainBox = () => {
 	const {
 		state: {
 			auth: { user },
 		},
+		hooksOutput: { dispatch },
 	} = useMyContext();
+
+	useEffect(() => {
+		if (user.chats?.length) {
+			dispatch(getChatsCRL());
+		}
+	}, [user, user.chats]);
 
 	return (
 		<>
@@ -65,7 +76,7 @@ const MainBox = () => {
 					onClick={() => {
 						requester({
 							data: {
-								privateID: "dc0rlpB8xIZI2bj7-twaiLIzvnMzt8_kMEj",
+								privateID: "sjopAzdBsfubfBA6sj7853zqbHMJjqoL85U",
 							},
 							url: "/chat/private/start/chat",
 							method: "POST",

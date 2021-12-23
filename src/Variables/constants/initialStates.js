@@ -5,13 +5,14 @@ const otherInitialState = {
 };
 
 const authInitialState = {
-	user: userInitializer() || {
-		cellphone: { phoneNumber: "", countryCode: "98", countryName: "iran" },
-		privateID: "",
-		verifyCode: "",
-		mainToken: "",
-		verifyToken: "",
-	},
+	user: userInitializer(),
+	// 	|| {
+	// 	cellphone: { phoneNumber: "", countryCode: "98", countryName: "iran" },
+	// 	privateID: "",
+	// 	verifyCode: "",
+	// 	mainToken: "",
+	// 	verifyToken: "",
+	// },
 };
 
 const globalInitialState = {

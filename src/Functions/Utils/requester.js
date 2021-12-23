@@ -17,6 +17,7 @@ const requester = async (options = initialRequestOptions) => {
 			throw error;
 		}
 
+		//TODO get out token from data!
 		const token = options?.data?.token || localStorage.getItem("mainToken");
 
 		finalOptions.headers.Authorization = `Bearer ${token}`;
@@ -25,6 +26,7 @@ const requester = async (options = initialRequestOptions) => {
 			delete finalOptions.data;
 		}
 
+		console.log(finalOptions);
 		const response = await myAxios(finalOptions);
 
 		const checkedResponse = responseHandler(response);
