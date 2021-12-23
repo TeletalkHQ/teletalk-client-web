@@ -1,4 +1,5 @@
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
+import { userInitializer } from "~/Functions/Helpers/userInitializer";
 
 const responseHandler = (response) => {
 	try {
@@ -6,8 +7,9 @@ const responseHandler = (response) => {
 			throw response;
 		};
 
-		const statusCode = response.data.statusCode || response.status;
+		const statusCode = response.statusCode || response.status;
 
+		console.log(statusCode);
 		if (statusCode >= 400 && statusCode < 500) {
 			switch (statusCode) {
 				case 400:
@@ -17,7 +19,8 @@ const responseHandler = (response) => {
 
 				case 401:
 					localStorage.clear();
-					appDispatch({ type: "USER_CLEARED" });
+					appDispatch({ type: "USER_DATA", payload: userInitializer() });
+					appDispatch({ type: "VIEW_MODE_ONCHANGE", payload: "signIn" });
 					rejection();
 					break;
 
