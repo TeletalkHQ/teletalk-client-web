@@ -9,7 +9,8 @@ const responseHandler = (response) => {
 
 		const statusCode = response.statusCode || response.status;
 
-		console.log(statusCode);
+		console.log("responseHandler", statusCode);
+
 		if (statusCode >= 400 && statusCode < 500) {
 			switch (statusCode) {
 				case 400:

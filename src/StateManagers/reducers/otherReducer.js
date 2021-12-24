@@ -11,6 +11,12 @@ const otherReducer = (state = otherInitialState, action = initialAction) => {
 			case "WELCOME":
 				return stateMan({ welcome: payload });
 
+			case "USER_CHATS":
+				return stateMan({ chats: payload });
+
+			case "INPUT_TEXT":
+				return stateMan({ messageInputText: payload });
+
 			default:
 				return state;
 		}

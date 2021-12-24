@@ -73,7 +73,7 @@ const VerifySignIn = ({
 							Next
 						</LoadingButton> */}
 						<LoadingButton
-							color="secondary"
+							// color="secondary"
 							fullWidth
 							loading={loading}
 							loadingPosition="start"

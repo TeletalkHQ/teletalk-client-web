@@ -20,7 +20,7 @@ const globalReducer = (state = globalInitialState, action = initialAction) => {
 				return state;
 		}
 	} catch (error) {
-		console.log("authReducer catch", error);
+		console.log("globalReducer catch", error);
 	}
 };
 
