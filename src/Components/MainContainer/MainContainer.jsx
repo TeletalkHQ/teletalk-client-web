@@ -7,9 +7,9 @@ import MainBox from "~/Components/Others/MainBox";
 import PortalContainer from "~/Components/Portals/PortalContainer";
 
 import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector";
-import { useMyContext } from "~/Functions/Hooks/useMyContext";
+import { useMyContext } from "~/Hooks/useMyContext";
 
-import { userStatusCheckerCRL } from "~/Functions/Controllers/AuthControllers/userStatusCheckerCRL";
+import { userStatusCheckerCRL } from "~/Controllers/AuthControllers/userStatusCheckerCRL";
 
 const MainContainer = () => {
 	const {

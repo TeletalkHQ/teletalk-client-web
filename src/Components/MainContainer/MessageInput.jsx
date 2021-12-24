@@ -1,8 +1,8 @@
 import { MicNone, Telegram } from "@mui/icons-material";
 import { IconButton, Paper, TextField } from "@mui/material";
-import { getChatsCRL } from "~/Functions/Controllers/otherControllers/getChatsCRL";
+import { getChatsCRL } from "~/Controllers/otherControllers/getChatsCRL";
 
-import { useMyContext } from "~/Functions/Hooks/useMyContext";
+import { useMyContext } from "~/Hooks/useMyContext";
 import { requester } from "~/Functions/Utils/requester";
 
 const MessageInput = () => {

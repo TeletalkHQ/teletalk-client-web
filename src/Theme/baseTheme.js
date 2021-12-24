@@ -12,7 +12,7 @@ const baseTheme = createTheme({
 		},
 	},
 	palette: {
-		// mode: "light",
+		// mode: "dark",
 	},
 });
 
