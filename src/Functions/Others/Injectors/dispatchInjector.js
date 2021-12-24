@@ -16,8 +16,6 @@ const dispatchInjector = ({ dispatch }) => {
 			}
 
 			dispatch(action);
-			console.log(action);
-			console.log(dispatch);
 		} catch (error) {
 			console.log("appDispatch catch", error);
 		}

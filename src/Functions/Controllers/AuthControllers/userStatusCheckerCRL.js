@@ -6,8 +6,6 @@ const userStatusCheckerCRL = () => {
 		try {
 			const response = await userStatusCheckerAPI();
 
-			console.log(response);
-
 			dispatch({ type: "USER_DATA", payload: response.data.user });
 		} catch (error) {
 			console.log("userStatusCheckerCRL", error);

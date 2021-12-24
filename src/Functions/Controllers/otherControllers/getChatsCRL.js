@@ -10,7 +10,7 @@ const getChatsCRL = () => {
 				method: "POST",
 			});
 
-			console.log(result);
+			dispatch({ type: "USER_CHATS", payload: result.data.chat });
 		} catch (error) {
 			console.log("getChatsCRL", error);
 		}

@@ -5,7 +5,7 @@ import { baseURL } from "~/Variables/constants/requestConstants";
 const myAxios = axios.create({
 	baseURL,
 	headers: { "Content-Type": "application/json", Authorization: "" },
-	// timeout: 10000,
+	timeout: 10000,
 	validateStatus: false,
 });
 

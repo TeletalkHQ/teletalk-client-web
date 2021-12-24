@@ -2,6 +2,8 @@ import { myAxios } from "~/Functions/Utils/myAxios";
 import { responseHandler } from "~/Functions/Utils/responseHandler";
 
 import { initialRequestOptions } from "~/Variables/constants/initialOptions";
+import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
+import { handleMakeSnack } from "~/Functions/Others/Injectors/snackbarInjector";
 
 const requester = async (options = initialRequestOptions) => {
 	try {
@@ -26,7 +28,6 @@ const requester = async (options = initialRequestOptions) => {
 			delete finalOptions.data;
 		}
 
-		console.log(finalOptions);
 		const response = await myAxios(finalOptions);
 
 		const checkedResponse = responseHandler(response);
@@ -36,6 +37,10 @@ const requester = async (options = initialRequestOptions) => {
 		return checkedResponse;
 	} catch (error) {
 		console.log("requester catch, error:", error);
+		if (error.code === "ECONNABORTED") {
+			appDispatch({ type: "ECONNABORTED" });
+			handleMakeSnack("ECONNABORTED", { variant: "error" });
+		}
 
 		throw error;
 	}

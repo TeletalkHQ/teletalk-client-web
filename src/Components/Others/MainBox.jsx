@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 
-import { Avatar, Box, Button, Container, Divider, Paper } from "@mui/material";
+import { Avatar, Box, Container, Divider, Paper } from "@mui/material";
 
 import MessageInput from "../MainContainer/MessageInput";
 
 import { useMyContext } from "~/Functions/Hooks/useMyContext";
-import { requester } from "~/Functions/Utils/requester";
+// import { requester } from "~/Functions/Utils/requester";
 import { getChatsCRL } from "~/Functions/Controllers/otherControllers/getChatsCRL";
 
 const MainBox = () => {
 	const {
 		state: {
 			auth: { user },
+			other: { chats },
 		},
 		hooksOutput: { dispatch },
 	} = useMyContext();
@@ -19,6 +20,8 @@ const MainBox = () => {
 	useEffect(() => {
 		if (user.chats?.length) {
 			dispatch(getChatsCRL());
+			// setInterval(() => {
+			// }, 2000);
 		}
 	}, [user, user.chats]);
 
@@ -49,30 +52,36 @@ const MainBox = () => {
 							<Box>
 								<Avatar />
 							</Box>
-							<Box>Name</Box>
+							{/* <Box>{Name}</Box> */}
 						</Box>
 						<Divider />
 						<Box>
-							{[]?.map((item) => (
-								<Box
-									sx={{
-										padding: "5px",
-										display: "flex",
-										justifyContent: item.senderID === user.privateID ? "flex-end" : "flex-end",
-									}}
-								>
-									<Paper elevation={9} sx={{ width: "300px", minHeight: "50px" }}>
-										{item}
-									</Paper>
-								</Box>
-							))}
+							{chats?.messages?.map((item, index) => {
+								return (
+									<Box
+										key={index}
+										sx={{
+											padding: "5px",
+											display: "flex",
+											justifyContent:
+												item.messageSender?.senderID === user.privateID
+													? "flex-end"
+													: "flex-start",
+										}}
+									>
+										<Paper elevation={9} sx={{ width: "300px", minHeight: "50px" }}>
+											{item.messageText}
+										</Paper>
+									</Box>
+								);
+							})}
 						</Box>
 						<Box>
 							<MessageInput />
 						</Box>
 					</Paper>
 				</Box>
-				<Button
+				{/* <Button
 					onClick={() => {
 						requester({
 							data: {
@@ -84,7 +93,7 @@ const MainBox = () => {
 					}}
 				>
 					ADD chat
-				</Button>
+				</Button> */}
 			</Container>
 		</>
 	);

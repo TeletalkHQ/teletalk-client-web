@@ -1,5 +1,6 @@
-import { AttachFile, EmojiEmotions, MicNone, Telegram } from "@mui/icons-material";
+import { MicNone, Telegram } from "@mui/icons-material";
 import { IconButton, Paper, TextField } from "@mui/material";
+import { getChatsCRL } from "~/Functions/Controllers/otherControllers/getChatsCRL";
 
 import { useMyContext } from "~/Functions/Hooks/useMyContext";
 import { requester } from "~/Functions/Utils/requester";
@@ -8,26 +9,34 @@ const MessageInput = () => {
 	const {
 		state: {
 			auth: { user },
-			global: { messageInputText },
+			other: { messageInputText },
 		},
 		hooksOutput: { dispatch },
 	} = useMyContext();
 
 	const handleAddNewMessage = async () => {
-		requester({
-			data: { chatID: "", participantID: user.privateID, messageText: messageInputText },
+		await requester({
+			data: {
+				chatID: "Xfl0OHSW-4FrHgX7fUrXHUKGr_jhIqaZApb",
+				participantID: user.privateID,
+				messageText: messageInputText,
+			},
+			method: "POST",
+			url: "/chat/private/send/message",
 		});
+		dispatch({ type: "INPUT_TEXT", payload: "" });
+		dispatch(getChatsCRL());
 	};
 
 	const handleInputChange = ({ target: { value } }) => {
-		dispatch({ type: "inputText", payload: value });
+		dispatch({ type: "INPUT_TEXT", payload: value });
 	};
 
 	return (
 		<Paper elevation={9} sx={{ width: "100%" }}>
-			<IconButton onClick={() => console.log("Pin Clicked")}>
+			{/* <IconButton onClick={() =>  }>
 				<AttachFile />
-			</IconButton>
+			</IconButton> */}
 
 			<TextField
 				id="standard-multiline-flexible"
@@ -40,16 +49,16 @@ const MessageInput = () => {
 				className="textarea"
 				sx={{ width: "55%" }}
 			/>
-			<IconButton>
+			{/* <IconButton>
 				<EmojiEmotions />
-			</IconButton>
+			</IconButton> */}
 			{messageInputText ? (
 				<IconButton onClick={() => handleAddNewMessage()}>
 					<Telegram color="primary" />
 				</IconButton>
 			) : (
 				<>
-					<IconButton onClick={() => console.log("Mic Clicked")}>
+					<IconButton onClick={() => {}}>
 						<MicNone />
 					</IconButton>
 				</>

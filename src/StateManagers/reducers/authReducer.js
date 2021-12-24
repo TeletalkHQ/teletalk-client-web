@@ -6,8 +6,6 @@ const authReducer = (state = authInitialState, action = initialAction) => {
 
 	const stateMan = (newState) => ({ ...state, ...newState });
 
-	console.log(state);
-
 	try {
 		switch (type) {
 			case "USER_DATA":
@@ -36,7 +34,9 @@ const authReducer = (state = authInitialState, action = initialAction) => {
 			default:
 				return state;
 		}
-	} catch (error) {}
+	} catch (error) {
+		console.log("authReducer catch", error);
+	}
 };
 
 export { authReducer };

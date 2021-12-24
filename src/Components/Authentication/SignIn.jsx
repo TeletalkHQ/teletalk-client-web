@@ -39,27 +39,12 @@ const SignIn = ({ phoneNumber, onPhoneNumberChange, onSignInClick, loading }) =>
 							onChange={onPhoneNumberChange}
 						/>
 
-						{/* <LoadingButton
-							onClick={onSignInClick}
-							size="large"
-							fullWidth
-							sx={{ mt: 3, mb: 2, borderRadius: "10px" }}
-							loading={loading}
-							loadingIndicator="Please wait..."
-							variant="contained"
-							loadingPosition="end"
-							endIcon={<Save />}
-						>
-							Next
-						</LoadingButton> */}
-
 						<LoadingButton
 							fullWidth
 							loading={loading}
-							// loadingPosition="start"
+							loadingIndicator="Please wait..."
 							onClick={onSignInClick}
 							size="large"
-							// startIcon={<Fingerprint />}
 							sx={{ mt: 3, mb: 2, borderRadius: "10px" }}
 							variant="contained"
 						>

@@ -8,7 +8,7 @@ const otherReducer = (state = error, action = initialAction) => {
 		const stateMan = (newState) => ({ ...state, ...newState });
 
 		switch (type) {
-			case "WELCOME":
+			case "ECONNABORTED":
 				return stateMan({ welcome: payload });
 
 			default:
