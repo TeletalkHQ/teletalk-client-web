@@ -7,11 +7,11 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import MainContainer from "~/Components/MainContainer/MainContainer";
 
-import { useThunkReducer } from "~/Functions/Hooks/useThunkReducer";
+import { useThunkReducer } from "~/Hooks/useThunkReducer";
 import { dispatchInjector } from "~/Functions/Others/Injectors/dispatchInjector";
-import { MainContext } from "~/Functions/Others/Contexts/MainContext";
+import { MainContext } from "~/Contexts/MainContext";
 
-import { rootReducer } from "~/StateManagers/index";
+import { rootReducer } from "~/Reducers/index";
 
 import { INITIAL_STATE } from "~/Variables/constants/initialStates";
 

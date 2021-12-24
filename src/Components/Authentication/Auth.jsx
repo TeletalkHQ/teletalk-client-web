@@ -4,10 +4,10 @@ import SignIn from "~/Components/Authentication/SignIn";
 import VerifySignIn from "~/Components/Authentication/VerifySignIn";
 import Copyright from "~/Components/Utils/Copyright";
 
-import { signInCRL } from "~/Functions/Controllers/AuthControllers/signInCRL";
-import { verifySignInCRL } from "~/Functions/Controllers/AuthControllers/verifySignInCRL";
-import { welcomeCRL } from "~/Functions/Controllers/otherControllers/welcomeCRL";
-import { useMyContext } from "~/Functions/Hooks/useMyContext";
+import { signInCRL } from "~/Controllers/AuthControllers/signInCRL";
+import { verifySignInCRL } from "~/Controllers/AuthControllers/verifySignInCRL";
+import { welcomeCRL } from "~/Controllers/otherControllers/welcomeCRL";
+import { useMyContext } from "~/Hooks/useMyContext";
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 
 const Auth = () => {

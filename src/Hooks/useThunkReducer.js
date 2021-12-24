@@ -1,6 +1,7 @@
 import { useCallback, useReducer } from "react";
 
 let useDispatch = () => {};
+let useSelector = () => {};
 
 const combineReducers = (reducers) => {
 	return (state = {}, action) => {
@@ -26,6 +27,7 @@ const useThunkReducer = (reducer, initialState) => {
 		);
 
 		useDispatch = useCallback(() => myDispatch, [myDispatch]);
+		useSelector = useCallback(() => state, [state]);
 
 		return [state, myDispatch];
 	} catch (error) {
@@ -35,4 +37,4 @@ const useThunkReducer = (reducer, initialState) => {
 
 export default useThunkReducer;
 
-export { useThunkReducer, useDispatch, combineReducers };
+export { useThunkReducer, useDispatch, combineReducers, useSelector };

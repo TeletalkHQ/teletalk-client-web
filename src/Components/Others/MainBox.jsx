@@ -4,9 +4,9 @@ import { Avatar, Box, Container, Divider, Paper } from "@mui/material";
 
 import MessageInput from "../MainContainer/MessageInput";
 
-import { useMyContext } from "~/Functions/Hooks/useMyContext";
+import { useMyContext } from "~/Hooks/useMyContext";
 // import { requester } from "~/Functions/Utils/requester";
-import { getChatsCRL } from "~/Functions/Controllers/otherControllers/getChatsCRL";
+import { getChatsCRL } from "~/Controllers/otherControllers/getChatsCRL";
 
 const MainBox = () => {
 	const {
