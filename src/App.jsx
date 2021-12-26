@@ -29,7 +29,7 @@ export function App() {
 	return (
 		<MainContext.Provider value={{ state, dispatch, hooksOutput: { dispatch } }}>
 			<ThemeProvider theme={baseTheme}>
-				<CssBaseline />
+				<CssBaseline enableColorScheme />
 				<SnackbarProvider>
 					<MainContainer />
 				</SnackbarProvider>

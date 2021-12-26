@@ -6,18 +6,15 @@ const otherInitialState = {
 
 const authInitialState = {
 	user: userInitializer(),
-	// 	|| {
-	// 	cellphone: { phoneNumber: "", countryCode: "98", countryName: "iran" },
-	// 	privateID: "",
-	// 	verifyCode: "",
-	// 	mainToken: "",
-	// 	verifyToken: "",
-	// },
 };
 
 const globalInitialState = {
 	viewMode: "signIn",
 	backdropState: { open: true, progressColor: "inherit", color: "#ff" },
+	appDrawerState: {
+		anchor: { top: false, left: true, bottom: false, right: false },
+		currentAnchor: "left",
+	},
 };
 
 const INITIAL_STATE = {
