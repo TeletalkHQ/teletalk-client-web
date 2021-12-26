@@ -3,9 +3,12 @@ import { Backdrop, CircularProgress } from "@mui/material";
 import Portal from "~/Components/Portals/Portal";
 
 import { INITIAL_STATE } from "~/Variables/constants/initialStates";
+import AppDrawer from "~/Components/MainContainer/AppDrawer";
 
 const PortalContainer = ({ state = INITIAL_STATE, onBackdropClose }) => {
-	const { global:{backdropState} } = state;
+	const {
+		global: { backdropState },
+	} = state;
 
 	return (
 		<Portal>
@@ -16,6 +19,7 @@ const PortalContainer = ({ state = INITIAL_STATE, onBackdropClose }) => {
 			>
 				<CircularProgress color={backdropState.progressColor} />
 			</Backdrop>
+			<AppDrawer />
 		</Portal>
 	);
 };

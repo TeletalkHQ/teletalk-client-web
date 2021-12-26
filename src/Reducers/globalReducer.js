@@ -14,6 +14,14 @@ const globalReducer = (state = globalInitialState, action = initialAction) => {
 			case "BACKDROP_STATE_CHANGE":
 				return stateMan({ backdropState: { ...state.backdropState, ...payload } });
 
+			case "APP_DRAWER_STATE_CHANGE":
+				return stateMan({
+					appDrawerState: {
+						...state.appDrawerState,
+						anchor: { ...state.appDrawerState.anchor, [payload.anchor]: payload.open },
+					},
+				});
+
 			//
 			//
 			default:
