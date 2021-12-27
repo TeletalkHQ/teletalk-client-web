@@ -10,7 +10,7 @@
 		"url": "https://github.com/S-STALWART-S/teletalk-client"
 	},
 	"scripts": {
-		"start": "cross-env REACT_APP_NODE_ENV=production react-app-rewired start",
+		"start": "cross-env REACT_APP_NODE_ENV=production react-scripts start",
 		"dev": "cross-env REACT_APP_NODE_ENV=development react-app-rewired start",
 		"build": "react-app-rewired build",
 		"test": "react-app-rewired test",
