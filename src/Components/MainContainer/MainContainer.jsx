@@ -117,6 +117,7 @@ const MainContainer = () => {
 												<>
 													<ListItem
 														button
+														key={index}
 														selected={index === 4}
 														sx={{
 															display: "flex",

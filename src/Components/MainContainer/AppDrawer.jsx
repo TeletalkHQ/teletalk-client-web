@@ -1,17 +1,32 @@
-import { useState } from "react";
-
 import {
 	Box,
-	SwipeableDrawer,
-	List,
 	Divider,
+	List,
 	ListItem,
 	ListItemIcon,
 	ListItemText,
+	SwipeableDrawer,
 } from "@mui/material";
 
-import { Inbox as InboxIcon, Mail as MailIcon } from "@mui/icons-material";
+import {
+	Brightness4Outlined,
+	CallOutlined,
+	CampaignOutlined,
+	PeopleOutline,
+	PermIdentity,
+	SettingsOutlined,
+} from "@mui/icons-material";
+
 import { useMyContext } from "~/Hooks/useMyContext";
+
+const icons = [
+	{ text: "New Group", Icon: PeopleOutline },
+	{ text: "New Channel", Icon: CampaignOutlined },
+	{ text: "Contacts", Icon: PermIdentity },
+	{ text: "Calls", Icon: CallOutlined },
+	{ text: "Settings", Icon: SettingsOutlined },
+	{ text: "Night Mode", Icon: Brightness4Outlined },
+];
 
 const iOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -41,19 +56,13 @@ const AppDrawer = () => {
 			onClick={toggleDrawer(anchor, false)}
 			onKeyDown={toggleDrawer(anchor, false)}
 		>
-			<List>
-				{["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-					<ListItem button key={text}>
-						<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
-			</List>
 			<Divider />
 			<List>
-				{["All mail", "Trash", "Spam"].map((text, index) => (
-					<ListItem button key={text}>
-						<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+				{icons.map(({ text, Icon }, index) => (
+					<ListItem button key={index}>
+						<ListItemIcon>
+							<Icon />
+						</ListItemIcon>
 						<ListItemText primary={text} />
 					</ListItem>
 				))}
