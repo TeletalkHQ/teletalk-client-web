@@ -12,7 +12,7 @@ const globalInitialState = {
 	viewMode: "signIn",
 	backdropState: { open: true, progressColor: "inherit", color: "#ff" },
 	appDrawerState: {
-		anchor: { top: false, left: true, bottom: false, right: false },
+		anchor: { top: false, left: false, bottom: false, right: false },
 		currentAnchor: "left",
 	},
 };

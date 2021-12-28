@@ -3,8 +3,7 @@ const initialAction = { type: "", payload: "" };
 const initialRequestOptions = {
 	method: "GET",
 	url: "",
-	data: {},
-	token: "",
+	data: { token: "" },
 	headers: { Authorization: "" },
 };
 

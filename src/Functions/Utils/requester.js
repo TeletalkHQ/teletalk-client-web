@@ -20,7 +20,7 @@ const requester = async (options = initialRequestOptions) => {
 		}
 
 		//TODO get out token from data!
-		const token = options?.token || localStorage.getItem("mainToken");
+		const token = options?.data?.token || localStorage.getItem("mainToken");
 
 		finalOptions.headers.Authorization = `Bearer ${token}`;
 
