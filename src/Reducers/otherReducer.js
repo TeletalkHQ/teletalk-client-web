@@ -1,5 +1,5 @@
-import { initialAction } from "~/Variables/constants/actionTypes";
-import { otherInitialState } from "~/Variables/constants/initialStates";
+import { initialAction } from "~/Variables/constants/Initials/initialOptions";
+import { otherInitialState } from "~/Variables/constants/Initials/initialStates";
 
 const otherReducer = (state = otherInitialState, action = initialAction) => {
 	try {

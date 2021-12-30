@@ -1,20 +1,23 @@
-import { initialAction } from "~/Variables/constants/actionTypes";
-import { error } from "~/Variables/constants/initialStates";
+import { errorActions } from "~/Variables/constants/actions";
+import { initialAction } from "~/Variables/constants/Initials/initialOptions";
+import { errorInitialState } from "~/Variables/constants/Initials/initialStates";
 
-const otherReducer = (state = error, action = initialAction) => {
+const errorReducer = (state = errorInitialState, action = initialAction) => {
 	try {
 		const { payload, type } = action;
 
 		const stateMan = (newState) => ({ ...state, ...newState });
 
 		switch (type) {
-			case "ECONNABORTED":
-				return stateMan({ welcome: payload });
+			case errorActions.econnaborted.type:
+				return stateMan({ error: payload });
 
 			default:
 				return state;
 		}
-	} catch (error) {}
+	} catch (error) {
+		console.log("errorReducer", error);
+	}
 };
 
-export { otherReducer };
+export { errorReducer };

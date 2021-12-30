@@ -1,5 +1,8 @@
-import { initialAction } from "~/Variables/constants/actionTypes";
-import { authInitialState } from "~/Variables/constants/initialStates";
+import { authActions } from "~/Variables/constants/actions";
+import { initialAction } from "~/Variables/constants/Initials/initialOptions";
+import { authInitialState } from "~/Variables/constants/Initials/initialStates";
+
+const { userState, phoneNumber, verifyCode, loading } = authActions;
 
 const authReducer = (state = authInitialState, action = initialAction) => {
 	const { payload, type } = action;
@@ -8,27 +11,27 @@ const authReducer = (state = authInitialState, action = initialAction) => {
 
 	try {
 		switch (type) {
-			case "USER_DATA":
-				return stateMan({ user: { ...state.user, ...payload } });
+			case userState.type:
+				return stateMan({ userState: { ...state.userState, ...payload } });
 
-			case "PHONE_NUMBER_ONCHANGE":
+			case phoneNumber.type:
 				return stateMan({
-					user: {
-						...state.user,
-						cellphone: { ...state.user.cellphone, phoneNumber: payload },
+					userState: {
+						...state.userState,
+						cellphone: { ...state.userState.cellphone, ...payload },
 					},
 				});
 
-			case "VERIFY_CODE_ONCHANGE":
+			case verifyCode.type:
 				return stateMan({
-					user: {
-						...state.user,
-						verifyCode: payload,
+					userState: {
+						...state.userState,
+						...payload,
 					},
 				});
 
-			case "LOADING":
-				return stateMan({ loading: payload });
+			case loading.type:
+				return stateMan({ ...payload });
 			//
 			//
 			default:

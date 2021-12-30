@@ -2,7 +2,7 @@ import { Backdrop, CircularProgress } from "@mui/material";
 
 import Portal from "~/Components/Portals/Portal";
 
-import { INITIAL_STATE } from "~/Variables/constants/initialStates";
+import { INITIAL_STATE } from "~/Variables/constants/Initials/initialStates";
 import AppDrawer from "~/Components/MainContainer/AppDrawer";
 
 const PortalContainer = ({ state = INITIAL_STATE, onBackdropClose }) => {

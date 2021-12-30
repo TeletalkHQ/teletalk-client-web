@@ -13,7 +13,7 @@ import { MainContext } from "~/Contexts/MainContext";
 
 import { rootReducer } from "~/Reducers/index";
 
-import { INITIAL_STATE } from "~/Variables/constants/initialStates";
+import { INITIAL_STATE } from "~/Variables/constants/Initials/initialStates";
 
 import { baseTheme } from "~/Theme/baseTheme";
 

@@ -1,18 +1,33 @@
 import { userStatusCheckerAPI } from "~/APIs/Auth/userStatusCheckerAPI";
-import { authInitialState } from "~/Variables/constants/initialStates";
 
+import { authInitialState } from "~/Variables/constants/Initials/initialStates";
+import { authActions, globalActions } from "~/Variables/constants/actions";
+
+const { userState } = authActions;
+const { backdropState } = globalActions;
 const userStatusCheckerCRL = () => {
-	return async (dispatch, getState) => {
+	return async (dispatch) => {
 		try {
 			const response = await userStatusCheckerAPI();
 
-			dispatch({ type: "USER_DATA", payload: response.data.user });
+			const { user } = response.data;
+
+			delete user.token;
+
+			dispatch({
+				type: userState.type,
+				payload: user,
+			});
 		} catch (error) {
 			console.log("userStatusCheckerCRL", error);
 			localStorage.clear();
-			dispatch({ type: "USER_DATA", payload: authInitialState.user });
+
+			dispatch({
+				type: userState.type,
+				payload: authInitialState.userState,
+			});
 		} finally {
-			dispatch({ type: "BACKDROP_STATE_CHANGE", payload: { open: false } });
+			dispatch({ type: backdropState.type, payload: { open: false } });
 		}
 	};
 };

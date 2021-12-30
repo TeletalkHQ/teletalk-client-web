@@ -1,11 +1,15 @@
 import { combineReducers } from "~/Hooks/useThunkReducer";
 
-import { otherReducer, authReducer, globalReducer } from "~/Reducers/index";
+import { authReducer } from "~/Reducers/authReducer";
+import { errorReducer } from "~/Reducers/errorReducer";
+import { globalReducer } from "~/Reducers/globalReducer";
+import { otherReducer } from "~/Reducers/otherReducer";
 
 const rootReducer = combineReducers({
 	auth: authReducer,
-	other: otherReducer,
+	error: errorReducer,
 	global: globalReducer,
+	other: otherReducer,
 });
 
 export { rootReducer };

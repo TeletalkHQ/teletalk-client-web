@@ -13,6 +13,8 @@ const combineReducers = (reducers) => {
 	};
 };
 
+const reducerLogger = () => {};
+
 const useThunkReducer = (reducer, initialState) => {
 	try {
 		const [state, dispatch] = useReducer(reducer, initialState);

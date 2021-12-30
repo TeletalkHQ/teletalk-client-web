@@ -1,11 +1,12 @@
 import { userInitializer } from "~/Functions/Helpers/userInitializer";
 
 const otherInitialState = {
-	welcome: {},
+	welcome: { message: "" },
 };
 
 const authInitialState = {
-	user: userInitializer(),
+	userState: userInitializer(),
+	loading: false,
 };
 
 const globalInitialState = {
@@ -17,18 +18,24 @@ const globalInitialState = {
 	},
 };
 
+const errorInitialState = {
+	error: "",
+};
+
 const INITIAL_STATE = {
 	other: otherInitialState,
 	auth: authInitialState,
 	global: globalInitialState,
+	error: errorInitialState,
 };
 
 const initialState = () => INITIAL_STATE;
 
 export {
-	otherInitialState,
-	INITIAL_STATE,
 	authInitialState,
+	errorInitialState,
 	globalInitialState,
+	INITIAL_STATE,
 	initialState,
+	otherInitialState,
 };
