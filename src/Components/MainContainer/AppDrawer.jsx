@@ -1,6 +1,5 @@
 import {
 	Box,
-	Divider,
 	List,
 	ListItem,
 	ListItemIcon,
@@ -8,25 +7,14 @@ import {
 	SwipeableDrawer,
 } from "@mui/material";
 
-import {
-	Brightness4Outlined,
-	CallOutlined,
-	CampaignOutlined,
-	PeopleOutline,
-	PermIdentity,
-	SettingsOutlined,
-} from "@mui/icons-material";
-
 import { useMyContext } from "~/Hooks/useMyContext";
 
-const icons = [
-	{ text: "New Group", Icon: PeopleOutline },
-	{ text: "New Channel", Icon: CampaignOutlined },
-	{ text: "Contacts", Icon: PermIdentity },
-	{ text: "Calls", Icon: CallOutlined },
-	{ text: "Settings", Icon: SettingsOutlined },
-	{ text: "Night Mode", Icon: Brightness4Outlined },
-];
+import { initialValues } from "~/Variables/constants/Initials/initialValues";
+import { globalActions } from "~/Variables/constants/actions";
+
+const { calls, contacts, newChannel, newGroup, nightMode, settings } = initialValues;
+
+const drawerList = [calls, contacts, newChannel, newGroup, nightMode, settings];
 
 const iOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -41,34 +29,13 @@ const AppDrawer = () => {
 		hooksOutput: { dispatch },
 	} = useMyContext();
 
-	const toggleDrawer = (anchor, open) => (event) => {
-		if (event && event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
+	const toggleDrawer = (event, anchor, open) => {
+		if (event?.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
 			return;
 		}
 
-		dispatch({ type: "APP_DRAWER_STATE_CHANGE", payload: { anchor, open } });
+		dispatch({ type: globalActions.appDrawerState.type, payload: { anchor, open } });
 	};
-
-	const list = (anchor) => (
-		<Box
-			sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-			role="presentation"
-			onClick={toggleDrawer(anchor, false)}
-			onKeyDown={toggleDrawer(anchor, false)}
-		>
-			<Divider />
-			<List>
-				{icons.map(({ text, Icon }, index) => (
-					<ListItem button key={index}>
-						<ListItemIcon>
-							<Icon />
-						</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
-			</List>
-		</Box>
-	);
 
 	return (
 		<div>
@@ -77,10 +44,29 @@ const AppDrawer = () => {
 				disableDiscovery={iOS}
 				anchor={currentAnchor}
 				open={appDrawerState.anchor[currentAnchor]}
-				onClose={toggleDrawer(currentAnchor, false)}
-				onOpen={toggleDrawer(currentAnchor, true)}
+				onClose={(e) => toggleDrawer(e, currentAnchor, false)}
+				onOpen={(e) => toggleDrawer(e, currentAnchor, true)}
 			>
-				{list(currentAnchor)}
+				<Box
+					sx={{ width: currentAnchor === "top" || currentAnchor === "bottom" ? "auto" : 250 }}
+					role="presentation"
+					onKeyDown={(e) => toggleDrawer(e, currentAnchor, false)}
+				>
+					<List>
+						{drawerList.map(({ text, Icon }, index) => (
+							<ListItem
+								button
+								key={index}
+								onClick={(e) => toggleDrawer(e, currentAnchor, false)}
+							>
+								<ListItemIcon>
+									<Icon />
+								</ListItemIcon>
+								<ListItemText primary={text} />
+							</ListItem>
+						))}
+					</List>
+				</Box>
 			</SwipeableDrawer>
 		</div>
 	);

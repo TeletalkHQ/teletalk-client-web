@@ -11,32 +11,31 @@ import {
 	ListItem,
 } from "@mui/material";
 
-import {
-	Menu as MenuIcon,
-	Search as SearchIcon,
-	ForumOutlined,
-	PersonOutlineOutlined,
-	GroupOutlined,
-	CampaignOutlined,
-	SmartToyOutlined,
-	AnnouncementOutlined,
-	SettingsApplicationsOutlined,
-	SettingsInputComponentOutlined,
-} from "@mui/icons-material";
-
 import { useSnackbar } from "notistack";
 
 import Auth from "~/Components/Authentication/Auth";
 import PortalContainer from "~/Components/Portals/PortalContainer";
 
 import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector";
+
 import { useMyContext } from "~/Hooks/useMyContext";
 
 import { userStatusCheckerCRL } from "~/Controllers/AuthControllers/userStatusCheckerCRL";
 
+import { initialValues } from "~/Variables/constants/Initials/initialValues";
+import { globalActions } from "~/Variables/constants/actions";
+
+const { appDrawerState, backdropState } = globalActions;
+
+const { allChats, bot, channels, unread, editChats, groups, personal, menu, search } =
+	initialValues;
+
+const sidebarList = [allChats, unread, personal, channels, groups, bot, editChats];
+
 const MainContainer = () => {
 	const {
 		state,
+
 		hooksOutput: { dispatch },
 	} = useMyContext();
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -48,20 +47,20 @@ const MainContainer = () => {
 
 	useEffect(() => {
 		try {
-			if (state.auth.user.privateID) {
+			if (state.auth.userState.privateID) {
 				dispatch(userStatusCheckerCRL());
 			}
 		} catch (error) {
 			console.log("MainContainer auth catch", error);
 		} finally {
-			dispatch({ type: "BACKDROP_STATE_CHANGE", payload: { open: false } });
+			dispatch({ type: backdropState.type, payload: { open: false } });
 		}
 		// eslint-disable-next-line
-	}, [state.auth.user.mainToken]);
+	}, [state.auth.userState.mainToken]);
 
 	return (
 		<>
-			{!state.auth.user.privateID ? (
+			{!state.auth.userState.privateID ? (
 				<Auth />
 			) : (
 				<>
@@ -73,7 +72,7 @@ const MainContainer = () => {
 										<IconButton
 											onClick={() =>
 												dispatch({
-													type: "APP_DRAWER_STATE_CHANGE",
+													type: appDrawerState.type,
 													payload: {
 														anchor: state.global.appDrawerState.currentAnchor,
 														open: true,
@@ -81,7 +80,7 @@ const MainContainer = () => {
 												})
 											}
 										>
-											<MenuIcon />
+											<menu.Icon />
 										</IconButton>
 									</Box>
 									<Box p={1} sx={{ width: "100%" }}>
@@ -95,7 +94,7 @@ const MainContainer = () => {
 												},
 												startAdornment: (
 													<InputAdornment position="start">
-														<SearchIcon />
+														<search.Icon />
 													</InputAdornment>
 												),
 											}}
@@ -104,15 +103,7 @@ const MainContainer = () => {
 								</Box>
 								<Box display="flex" justifyContent="space-between">
 									<List sx={{ width: "20%" }}>
-										{[
-											ForumOutlined,
-											PersonOutlineOutlined,
-											GroupOutlined,
-											CampaignOutlined,
-											SmartToyOutlined,
-											AnnouncementOutlined,
-											SettingsInputComponentOutlined,
-										].map((Item, index) => {
+										{sidebarList.map((item, index) => {
 											return (
 												<>
 													<ListItem
@@ -127,7 +118,7 @@ const MainContainer = () => {
 															alignItems: "center",
 														}}
 													>
-														<Item
+														<item.Icon
 														// fontSize="small"
 														/>
 													</ListItem>

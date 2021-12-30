@@ -1,5 +1,8 @@
-import { initialAction } from "~/Variables/constants/actionTypes";
-import { globalInitialState } from "~/Variables/constants/initialStates";
+import { globalActions } from "~/Variables/constants/actions";
+import { globalInitialState } from "~/Variables/constants/Initials/initialStates";
+import { initialAction } from "~/Variables/constants/Initials/initialOptions";
+
+const { appDrawerState, backdropState, viewMode } = globalActions;
 
 const globalReducer = (state = globalInitialState, action = initialAction) => {
 	const { payload, type } = action;
@@ -8,13 +11,13 @@ const globalReducer = (state = globalInitialState, action = initialAction) => {
 
 	try {
 		switch (type) {
-			case "VIEW_MODE_ONCHANGE":
-				return stateMan({ viewMode: payload });
+			case viewMode.type:
+				return stateMan({ ...payload });
 
-			case "BACKDROP_STATE_CHANGE":
+			case backdropState.type:
 				return stateMan({ backdropState: { ...state.backdropState, ...payload } });
 
-			case "APP_DRAWER_STATE_CHANGE":
+			case appDrawerState.type:
 				return stateMan({
 					appDrawerState: {
 						...state.appDrawerState,
@@ -22,8 +25,6 @@ const globalReducer = (state = globalInitialState, action = initialAction) => {
 					},
 				});
 
-			//
-			//
 			default:
 				return state;
 		}

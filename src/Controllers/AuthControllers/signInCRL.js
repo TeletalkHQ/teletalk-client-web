@@ -1,19 +1,22 @@
 import { signInAPI } from "~/APIs/Auth/signInAPI";
 
-import { initialState } from "~/Variables/constants/initialStates";
-import jwtDecode from "jwt-decode";
+import { initialState } from "~/Variables/constants/Initials/initialStates";
+import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
+import { authActions, globalActions } from "~/Variables/constants/actions";
 
-//FIXME //? You know what needs to be done!
+const { loading, userState } = authActions;
+const { viewMode } = globalActions;
+
 const signInCRL = () => {
 	return async (dispatch, getState = initialState) => {
 		try {
 			const {
 				auth: {
-					user: { cellphone },
+					userState: { cellphone },
 				},
 			} = getState();
 
-			dispatch({ type: "LOADING", payload: true });
+			dispatch({ type: loading.type, payload: { loading: true } });
 
 			const response = await signInAPI({ cellphone });
 
@@ -21,23 +24,20 @@ const signInCRL = () => {
 
 			localStorage.setItem("verifyToken", verifyToken);
 
-			const decodedToken = jwtDecode(verifyToken);
-
 			dispatch({
-				type: "USER_DATA",
+				type: userState.type,
 				payload: {
 					...response.data,
-					verifyCode: decodedToken.pass,
 				},
 			});
 
-			dispatch({ type: "VIEW_MODE_ONCHANGE", payload: "verifySignIn" });
+			dispatch({ type: viewMode.type, payload: { viewMode: initialViewMode.verifySignIn } });
 
-			dispatch({ type: "LOADING", payload: false });
 			return response;
 		} catch (error) {
 			console.log("signInCRL catch", error);
-			dispatch({ type: "LOADING", payload: false });
+		} finally {
+			dispatch({ type: loading.type, payload: { loading: false } });
 		}
 	};
 };

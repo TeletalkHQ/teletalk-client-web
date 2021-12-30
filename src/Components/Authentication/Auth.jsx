@@ -4,17 +4,22 @@ import SignIn from "~/Components/Authentication/SignIn";
 import VerifySignIn from "~/Components/Authentication/VerifySignIn";
 import Copyright from "~/Components/Utils/Copyright";
 
+import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
+
+import { useMyContext } from "~/Hooks/useMyContext";
+
 import { signInCRL } from "~/Controllers/AuthControllers/signInCRL";
 import { verifySignInCRL } from "~/Controllers/AuthControllers/verifySignInCRL";
 import { welcomeCRL } from "~/Controllers/otherControllers/welcomeCRL";
-import { useMyContext } from "~/Hooks/useMyContext";
-import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
+
+import { authActions, globalActions } from "~/Variables/constants/actions";
+import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
 
 const Auth = () => {
 	const {
 		state: {
 			auth: {
-				user: {
+				userState: {
 					cellphone: { phoneNumber, countryCode },
 					verifyCode,
 				},
@@ -33,7 +38,10 @@ const Auth = () => {
 	};
 
 	const handlePhoneNumberChange = (e) => {
-		appDispatch({ type: "PHONE_NUMBER_ONCHANGE", payload: e.target.value });
+		appDispatch({
+			type: authActions.phoneNumber.type,
+			payload: { phoneNumber: e.target.value },
+		});
 	};
 
 	const handleVerifyClick = () => {
@@ -45,11 +53,14 @@ const Auth = () => {
 
 		if (value?.length > 6) return;
 
-		appDispatch({ type: "VERIFY_CODE_ONCHANGE", payload: value });
+		appDispatch({ type: authActions.verifyCode.type, payload: { verifyCode: value } });
 	};
 
 	const handleBackClick = () => {
-		appDispatch({ type: "VIEW_MODE_ONCHANGE", payload: "signIn" });
+		appDispatch({
+			type: globalActions.viewMode.type,
+			payload: { viewMode: initialViewMode.signIn },
+		});
 	};
 
 	return (
