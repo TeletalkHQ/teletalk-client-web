@@ -2,7 +2,7 @@ import { signInAPI } from "~/APIs/Auth/signInAPI";
 
 import { initialState } from "~/Variables/constants/Initials/initialStates";
 import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
-import { authActions, globalActions } from "~/Variables/constants/actions";
+import { authActions, globalActions } from "~/Variables/constants/initialActions";
 
 const { loading, userState } = authActions;
 const { viewMode } = globalActions;
@@ -16,7 +16,7 @@ const signInCRL = () => {
 				},
 			} = getState();
 
-			dispatch({ type: loading.type, payload: { loading: true } });
+			dispatch({ type: loadingAction.type, payload: { loading: true } });
 
 			const response = await signInAPI({ cellphone });
 
@@ -25,19 +25,22 @@ const signInCRL = () => {
 			localStorage.setItem("verifyToken", verifyToken);
 
 			dispatch({
-				type: userState.type,
+				type: userAction.type,
 				payload: {
 					...response.data,
 				},
 			});
 
-			dispatch({ type: viewMode.type, payload: { viewMode: initialViewMode.verifySignIn } });
+			dispatch({
+				type: viewModeAction.type,
+				payload: { viewMode: initialViewMode.verifySignIn },
+			});
 
 			return response;
 		} catch (error) {
 			console.log("signInCRL catch", error);
 		} finally {
-			dispatch({ type: loading.type, payload: { loading: false } });
+			dispatch({ type: loadingAction.type, payload: { loading: false } });
 		}
 	};
 };

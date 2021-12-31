@@ -1,5 +1,5 @@
 import { welcomeAPI } from "~/APIs/Others/welcomeAPI";
-import { otherActions } from "~/Variables/constants/actions";
+import { otherActions } from "~/Variables/constants/initialActions";
 
 const welcomeCRL = () => {
 	return async (dispatch, getState) => {
@@ -7,7 +7,7 @@ const welcomeCRL = () => {
 			const response = await welcomeAPI();
 
 			dispatch({
-				type: otherActions.welcome.type,
+				type: otherActions.welcomeAction.type,
 				payload: {
 					message: response.data.message,
 				},

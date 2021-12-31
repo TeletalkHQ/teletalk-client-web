@@ -1,4 +1,4 @@
-import { globalActions } from "~/Variables/constants/actions";
+import { globalActions } from "~/Variables/constants/initialActions";
 import { globalInitialState } from "~/Variables/constants/Initials/initialStates";
 import { initialAction } from "~/Variables/constants/Initials/initialOptions";
 
@@ -11,13 +11,13 @@ const globalReducer = (state = globalInitialState, action = initialAction) => {
 
 	try {
 		switch (type) {
-			case viewMode.type:
+			case viewModeAction.type:
 				return stateMan({ ...payload });
 
-			case backdropState.type:
+			case backdropAction.type:
 				return stateMan({ backdropState: { ...state.backdropState, ...payload } });
 
-			case appDrawerState.type:
+			case appDrawerAction.type:
 				return stateMan({
 					appDrawerState: {
 						...state.appDrawerState,

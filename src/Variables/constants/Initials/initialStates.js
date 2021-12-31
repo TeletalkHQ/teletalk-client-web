@@ -2,6 +2,8 @@ import { userInitializer } from "~/Functions/Helpers/userInitializer";
 
 const otherInitialState = {
 	welcome: { message: "" },
+	onlineStatusCondition: !window.navigator.onLine,
+	status: window.navigator.onLine,
 };
 
 const authInitialState = {

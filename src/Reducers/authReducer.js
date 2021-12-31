@@ -1,4 +1,4 @@
-import { authActions } from "~/Variables/constants/actions";
+import { authActions } from "~/Variables/constants/initialActions";
 import { initialAction } from "~/Variables/constants/Initials/initialOptions";
 import { authInitialState } from "~/Variables/constants/Initials/initialStates";
 
@@ -11,10 +11,10 @@ const authReducer = (state = authInitialState, action = initialAction) => {
 
 	try {
 		switch (type) {
-			case userState.type:
+			case userAction.type:
 				return stateMan({ userState: { ...state.userState, ...payload } });
 
-			case phoneNumber.type:
+			case phoneNumberAction.type:
 				return stateMan({
 					userState: {
 						...state.userState,
@@ -22,7 +22,7 @@ const authReducer = (state = authInitialState, action = initialAction) => {
 					},
 				});
 
-			case verifyCode.type:
+			case verifyCodeAction.type:
 				return stateMan({
 					userState: {
 						...state.userState,
@@ -30,7 +30,7 @@ const authReducer = (state = authInitialState, action = initialAction) => {
 					},
 				});
 
-			case loading.type:
+			case loadingAction.type:
 				return stateMan({ ...payload });
 			//
 			//

@@ -1,4 +1,4 @@
-import { errorActions } from "~/Variables/constants/actions";
+import { errorActions } from "~/Variables/constants/initialActions";
 import { initialAction } from "~/Variables/constants/Initials/initialOptions";
 import { errorInitialState } from "~/Variables/constants/Initials/initialStates";
 
@@ -9,7 +9,7 @@ const errorReducer = (state = errorInitialState, action = initialAction) => {
 		const stateMan = (newState) => ({ ...state, ...newState });
 
 		switch (type) {
-			case errorActions.econnaborted.type:
+			case errorActions.econnabortedAction.type:
 				return stateMan({ error: payload });
 
 			default:

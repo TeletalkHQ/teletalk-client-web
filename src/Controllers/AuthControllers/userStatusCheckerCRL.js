@@ -1,7 +1,7 @@
 import { userStatusCheckerAPI } from "~/APIs/Auth/userStatusCheckerAPI";
 
 import { authInitialState } from "~/Variables/constants/Initials/initialStates";
-import { authActions, globalActions } from "~/Variables/constants/actions";
+import { authActions, globalActions } from "~/Variables/constants/initialActions";
 
 const { userState } = authActions;
 const { backdropState } = globalActions;
@@ -15,7 +15,7 @@ const userStatusCheckerCRL = () => {
 			delete user.token;
 
 			dispatch({
-				type: userState.type,
+				type: userAction.type,
 				payload: user,
 			});
 		} catch (error) {
@@ -23,11 +23,11 @@ const userStatusCheckerCRL = () => {
 			localStorage.clear();
 
 			dispatch({
-				type: userState.type,
+				type: userAction.type,
 				payload: authInitialState.userState,
 			});
 		} finally {
-			dispatch({ type: backdropState.type, payload: { open: false } });
+			dispatch({ type: backdropAction.type, payload: { open: false } });
 		}
 	};
 };

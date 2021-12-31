@@ -4,7 +4,7 @@ import { responseHandler } from "~/Functions/Utils/responseHandler";
 import { initialRequestOptions } from "~/Variables/constants/Initials/initialOptions";
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 import { handleMakeSnack } from "~/Functions/Others/Injectors/snackbarInjector";
-import { errorActions } from "~/Variables/constants/actions";
+import { errorActions } from "~/Variables/constants/initialActions";
 
 const requester = async (options = initialRequestOptions) => {
 	try {
@@ -39,7 +39,7 @@ const requester = async (options = initialRequestOptions) => {
 	} catch (error) {
 		console.log("requester catch, error:", error);
 		if (error.code === "ECONNABORTED") {
-			appDispatch({ type: errorActions.econnaborted.type });
+			appDispatch({ type: errorActions.econnabortedAction.type });
 			handleMakeSnack("ECONNABORTED", { variant: "error" });
 		}
 
