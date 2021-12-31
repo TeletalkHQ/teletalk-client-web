@@ -8,48 +8,48 @@ const {
 } = INITIAL_STATE;
 
 const globalActions = {
-	appDrawerState: {
+	appDrawerAction: {
 		type: "APP_DRAWER_STATE_CHANGE",
 		payload: appDrawerState,
 	},
-	backdropState: {
+	backdropAction: {
 		type: "BACKDROP_STATE_CHANGE",
 		payload: backdropState,
 	},
-	viewMode: {
+	viewModeAction: {
 		type: "VIEW_MODE_ONCHANGE",
 		payload: { viewMode },
 	},
 };
 
 const authActions = {
-	userState: {
+	userAction: {
 		type: "USER_DATA",
 		payload: userState,
 	},
-	phoneNumber: {
+	phoneNumberAction: {
 		type: "PHONE_NUMBER_ONCHANGE",
 		payload: { phoneNumber: userState.cellphone.phoneNumber },
 	},
-	verifyCode: {
+	verifyCodeAction: {
 		type: "VERIFY_CODE_ONCHANGE",
 		payload: { verifyCode: userState.verifyCode },
 	},
-	loading: {
+	loadingAction: {
 		type: "LOADING",
 		payload: { loading },
 	},
 };
 
 const otherActions = {
-	welcome: {
+	welcomeAction: {
 		type: "WELCOME",
 		payload: welcome,
 	},
 };
 
 const errorActions = {
-	econnaborted: {
+	econnabortedAction: {
 		type: "ECONNABORTED",
 		payload: { error },
 	},

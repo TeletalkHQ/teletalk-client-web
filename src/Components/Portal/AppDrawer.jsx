@@ -10,7 +10,7 @@ import {
 import { useMyContext } from "~/Hooks/useMyContext";
 
 import { initialValues } from "~/Variables/constants/Initials/initialValues";
-import { globalActions } from "~/Variables/constants/actions";
+import { globalActions } from "~/Variables/constants/initialActions";
 
 const { calls, contacts, newChannel, newGroup, nightMode, settings } = initialValues;
 
@@ -34,7 +34,7 @@ const AppDrawer = () => {
 			return;
 		}
 
-		dispatch({ type: globalActions.appDrawerState.type, payload: { anchor, open } });
+		dispatch({ type: globalActions.appDrawerAction.type, payload: { anchor, open } });
 	};
 
 	return (

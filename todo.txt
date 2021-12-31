@@ -1,5 +1,3 @@
-How to use swr
-How to use react-query
-How to use immer
+Use swr ?
 Add super logger like tts logger
-Use framer/motion for animation
+Use framer/motion for animation ?

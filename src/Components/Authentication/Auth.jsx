@@ -12,7 +12,7 @@ import { signInCRL } from "~/Controllers/AuthControllers/signInCRL";
 import { verifySignInCRL } from "~/Controllers/AuthControllers/verifySignInCRL";
 import { welcomeCRL } from "~/Controllers/otherControllers/welcomeCRL";
 
-import { authActions, globalActions } from "~/Variables/constants/actions";
+import { authActions, globalActions } from "~/Variables/constants/initialActions";
 import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
 
 const Auth = () => {
@@ -39,7 +39,7 @@ const Auth = () => {
 
 	const handlePhoneNumberChange = (e) => {
 		appDispatch({
-			type: authActions.phoneNumber.type,
+			type: authActions.phoneNumberAction.type,
 			payload: { phoneNumber: e.target.value },
 		});
 	};
@@ -53,12 +53,12 @@ const Auth = () => {
 
 		if (value?.length > 6) return;
 
-		appDispatch({ type: authActions.verifyCode.type, payload: { verifyCode: value } });
+		appDispatch({ type: authActions.verifyCodeAction.type, payload: { verifyCode: value } });
 	};
 
 	const handleBackClick = () => {
 		appDispatch({
-			type: globalActions.viewMode.type,
+			type: globalActions.viewModeAction.type,
 			payload: { viewMode: initialViewMode.signIn },
 		});
 	};

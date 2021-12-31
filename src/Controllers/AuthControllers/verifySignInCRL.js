@@ -2,7 +2,7 @@ import { verifySignInAPI } from "~/APIs/Auth/verifySignInAPI";
 
 import { initialState } from "~/Variables/constants/Initials/initialStates";
 import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
-import { authActions, globalActions } from "~/Variables/constants/actions";
+import { authActions, globalActions } from "~/Variables/constants/initialActions";
 
 const { loading, userState } = authActions;
 const { viewMode } = globalActions;
@@ -10,7 +10,7 @@ const { viewMode } = globalActions;
 const verifySignInCRL = () => {
 	return async (dispatch, getState = initialState) => {
 		try {
-			dispatch({ type: loading.type, payload: { loading: true } });
+			dispatch({ type: loadingAction.type, payload: { loading: true } });
 
 			const {
 				auth: {
@@ -23,7 +23,7 @@ const verifySignInCRL = () => {
 			if (!verifyToken) {
 				const error = "verifyToken is not defined";
 
-				dispatch({ type: viewMode.type, payload: { viewMode: initialViewMode.signIn } });
+				dispatch({ type: viewModeAction.type, payload: { viewMode: initialViewMode.signIn } });
 
 				throw error;
 			}
@@ -39,13 +39,13 @@ const verifySignInCRL = () => {
 			localStorage.setItem("mainToken", mainToken);
 
 			dispatch({
-				type: userState.type,
+				type: userAction.type,
 				payload: user,
 			});
 		} catch (error) {
 			console.log("verifySignInCRL", error);
 		} finally {
-			dispatch({ type: loading.type, payload: { loading: false } });
+			dispatch({ type: loadingAction.type, payload: { loading: false } });
 		}
 	};
 };
