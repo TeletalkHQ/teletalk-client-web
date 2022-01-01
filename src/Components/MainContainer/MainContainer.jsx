@@ -3,10 +3,10 @@ import { useEffect, useMemo } from "react";
 import { Grid } from "@mui/material";
 import { useSnackbar } from "notistack";
 
-import ChatList from "~/Components/ChatContainer/ChatList";
+import ChatContainer from "~/Components/ChatContainer/ChatContainer";
 import MessageContainer from "~/Components/MessageContainer/MessageContainer";
-import Auth from "~/Components/Authentication/Auth";
 import PortalContainer from "~/Components/Portal/PortalContainer";
+import Auth from "~/Components/Authentication/Auth";
 
 import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector";
 
@@ -68,7 +68,7 @@ const MainContainer = () => {
 				<>
 					<Grid container style={{ height: "100vh" }}>
 						<Grid sx={{ backgroundColor: "lightcyan" }} item container sm={12} md={4} lg={3}>
-							<ChatList />
+							<ChatContainer />
 						</Grid>
 
 						<Grid sx={{ backgroundColor: "tomato" }} item container lg={9} md={8}>

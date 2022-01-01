@@ -16,6 +16,8 @@ const { calls, contacts, newChannel, newGroup, nightMode, settings } = initialVa
 
 const drawerList = [calls, contacts, newChannel, newGroup, nightMode, settings];
 
+const { appDrawerAction, dialogAction } = globalActions;
+
 const iOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const AppDrawer = () => {
@@ -29,12 +31,25 @@ const AppDrawer = () => {
 		hooksOutput: { dispatch },
 	} = useMyContext();
 
-	const toggleDrawer = (event, anchor, open) => {
+	const toggleDrawer = (event, anchor, open, target) => {
 		if (event?.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
 			return;
 		}
 
-		dispatch({ type: globalActions.appDrawerAction.type, payload: { anchor, open } });
+		handleDrawerItemClick(target);
+
+		dispatch({ type: appDrawerAction.type, payload: { anchor, open } });
+	};
+
+	const handleDrawerItemClick = (target) => {
+		if (!target || typeof target !== "string") {
+			return;
+		}
+
+		dispatch({
+			type: dialogAction.type,
+			payload: { [target]: { open: true, dialogName: target } },
+		});
 	};
 
 	return (
@@ -53,11 +68,11 @@ const AppDrawer = () => {
 					onKeyDown={(e) => toggleDrawer(e, currentAnchor, false)}
 				>
 					<List>
-						{drawerList.map(({ text, Icon }, index) => (
+						{drawerList.map(({ text, key, Icon }, index) => (
 							<ListItem
 								button
 								key={index}
-								onClick={(e) => toggleDrawer(e, currentAnchor, false)}
+								onClick={(e) => toggleDrawer(e, currentAnchor, false, key)}
 							>
 								<ListItemIcon>
 									<Icon />

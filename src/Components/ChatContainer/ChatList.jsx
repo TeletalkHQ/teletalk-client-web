@@ -12,6 +12,7 @@ import { useMyContext } from "~/Hooks/useMyContext";
 
 import { globalActions } from "~/Variables/constants/initialActions";
 import { initialValues } from "~/Variables/constants/Initials/initialValues";
+import ChatListItem from "./ChatListItem";
 
 const { allChats, bot, channels, unread, editChats, groups, personal, menu, search } =
 	initialValues;
@@ -67,54 +68,28 @@ const ChatList = () => {
 					<List sx={{ width: "20%" }}>
 						{sidebarList.map((item, index) => {
 							return (
-								<>
-									<ListItem
-										button
-										key={index}
-										selected={index === 4}
-										sx={{
-											display: "flex",
-											flexDirection: "column",
-											height: "65px",
-											justifyContent: "center",
-											alignItems: "center",
-										}}
-									>
-										<item.Icon
-										// fontSize="small"
-										/>
-									</ListItem>
-								</>
+								<ListItem
+									button
+									key={index}
+									selected={index === 4}
+									sx={{
+										display: "flex",
+										flexDirection: "column",
+										height: "65px",
+										justifyContent: "center",
+										alignItems: "center",
+									}}
+								>
+									<item.Icon
+									// fontSize="small"
+									/>
+								</ListItem>
 							);
 						})}
 					</List>
 					<List sx={{ width: "80%" }}>
 						{Array.from({ length: 5 }).map((item, index) => {
-							return (
-								<ListItem
-									key={index}
-									button
-									selected={index === 3}
-									sx={{
-										display: "flex",
-										height: "65px",
-									}}
-								>
-									<Box>
-										<Avatar />
-									</Box>
-									<Box display="flex" sx={{ width: "100%" }} flexDirection="column">
-										<Box display="flex" justifyContent="space-between" alignItems="center">
-											<Box>name</Box>
-											<Box>clock</Box>
-										</Box>
-										<Box display="flex" justifyContent="space-between" alignItems="center">
-											<Box>message</Box>
-											<Box>icons</Box>
-										</Box>
-									</Box>
-								</ListItem>
-							);
+							return <ChatListItem key={index} selected={index === 3} />;
 						})}
 					</List>
 				</Box>

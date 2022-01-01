@@ -2,25 +2,39 @@ import { tokenDecoder } from "~/Functions/Utils/tokenDecoder";
 
 const userInitializer = () => {
 	try {
-		// FIXME CLEANME!
 		const user = {
+			bio: "",
+			//FIXME
+			blacklist: [
+				{
+					countryCode: "",
+					countryName: "",
+					phoneNumber: "",
+				},
+			],
 			cellphone: { phoneNumber: "", countryCode: "98", countryName: "iran" },
-			privateID: "",
-			verifyCode: "",
+			chats: [{ chatID: "" }],
+			contacts: [
+				{ countryCode: "", countryName: "", firstName: "", lastName: "", phoneNumber: "" },
+			],
+			firstName: "",
+			lastName: "",
 			mainToken: "",
+			privateID: "",
+			username: "",
+			verifyCode: "",
 			verifyToken: "",
 		};
 
 		const mainToken = localStorage.getItem("mainToken");
 
 		if (!mainToken) {
-			// const error = "mainToken not defined";
 			localStorage.clear();
-			// throw error;
 			return user;
 		}
 
 		const { decodedToken } = tokenDecoder({ token: mainToken });
+
 		delete decodedToken.iat;
 
 		user.cellphone = decodedToken.cellphone;

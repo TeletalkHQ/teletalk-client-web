@@ -1,41 +1,63 @@
-import { Dialog, DialogActions, DialogContent, DialogTitle, Grow } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import {
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogTitle,
+	Grow,
+	useMediaQuery,
+} from "@mui/material";
 
 const transitions = { Grow };
 
 const DialogTemplate = ({
-	titleContent,
 	actionContent,
 	dialogContent,
+	dialogStyle,
 	noOnClose,
-	open,
-	TransitionComponent = "Grow",
-	transitionDuration,
 	onClose,
 	onEscapeKeyDown,
 	onKeyDown,
+	paperStyle,
+	target,
+	titleContent,
+	TransitionComponent = "Grow",
+	transitionDuration,
 }) => {
+	const theme = useTheme();
+	const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
 	const { [TransitionComponent]: Transition } = transitions;
 
 	return (
 		<Dialog
+			fullScreen={fullScreen}
+			keepMounted
+			{...(!noOnClose && { onClose: () => onClose(target.dialogName) })}
 			onEscapeKeyDown={onEscapeKeyDown}
 			onKeyDown={onKeyDown}
-			open={!!open}
-			PaperProps={{ style: { borderRadius: "15px" } }}
+			open={target.open}
+			PaperProps={{
+				style: {
+					borderRadius: !fullScreen ? "15px" : "",
+					minWidth: !fullScreen ? "450px" : "auto",
+					...paperStyle,
+					height: !fullScreen ? paperStyle?.height : "100vh",
+				},
+			}}
+			sx={{ ...dialogStyle }}
 			TransitionComponent={Transition}
-			keepMounted
 			transitionDuration={transitionDuration || 500}
-			{...(!noOnClose && { onClose })}
 			// aria-labelledby="alert-dialog-slide-title"
 			// aria-describedby="alert-dialog-slide-description"
 		>
-			<>
-				<DialogTitle id="draggable-dialog-title">{titleContent}</DialogTitle>
+			{/* <Box sx={{}}> */}
+			<DialogTitle>{titleContent}</DialogTitle>
 
-				<DialogContent>{dialogContent}</DialogContent>
+			<DialogContent>{dialogContent}</DialogContent>
 
-				<DialogActions>{actionContent}</DialogActions>
-			</>
+			<DialogActions>{actionContent}</DialogActions>
+			{/* </Box> */}
 		</Dialog>
 	);
 };
