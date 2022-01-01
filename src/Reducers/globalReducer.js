@@ -2,7 +2,7 @@ import { globalActions } from "~/Variables/constants/initialActions";
 import { globalInitialState } from "~/Variables/constants/Initials/initialStates";
 import { initialAction } from "~/Variables/constants/Initials/initialOptions";
 
-const { appDrawerState, backdropState, viewMode } = globalActions;
+const { appDrawerAction, backdropAction, viewModeAction } = globalActions;
 
 const globalReducer = (state = globalInitialState, action = initialAction) => {
 	const { payload, type } = action;

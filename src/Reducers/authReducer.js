@@ -2,7 +2,7 @@ import { authActions } from "~/Variables/constants/initialActions";
 import { initialAction } from "~/Variables/constants/Initials/initialOptions";
 import { authInitialState } from "~/Variables/constants/Initials/initialStates";
 
-const { userState, phoneNumber, verifyCode, loading } = authActions;
+const { userAction, phoneNumberAction, verifyCodeAction, loadingAction } = authActions;
 
 const authReducer = (state = authInitialState, action = initialAction) => {
 	const { payload, type } = action;
