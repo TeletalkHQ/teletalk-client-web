@@ -12,7 +12,7 @@ const signInCRL = () => {
 		try {
 			const {
 				auth: {
-					userAction: { cellphone },
+					userState: { cellphone },
 				},
 			} = getState();
 
