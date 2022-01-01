@@ -12,5 +12,27 @@
 		"notistack",
 		"soheil",
 		"teletalk"
-	]
+	],
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		"config-overrides.js": true,
+		"jsconfig.json": true,
+		"yarn.lock": true,
+		"reportWebVitals.js": true,
+		"src/reportWebVitals.js": true,
+		"src/setupTest.js": true,
+		".babelrc": true,
+		"**/globals.d.ts": true,
+		"**/.gitignore": true,
+		"README.md": true,
+		"**/yarn-error.log": true,
+		"**/package.json": true,
+		"index.js": true
+	},
+	"explorerExclude.backup": null
 }

@@ -15,6 +15,8 @@ import { welcomeCRL } from "~/Controllers/otherControllers/welcomeCRL";
 import { authActions, globalActions } from "~/Variables/constants/initialActions";
 import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
 
+const { viewModeAction } = globalActions;
+
 const Auth = () => {
 	const {
 		state: {
@@ -58,7 +60,7 @@ const Auth = () => {
 
 	const handleBackClick = () => {
 		appDispatch({
-			type: globalActions.viewModeAction.type,
+			type: viewModeAction.type,
 			payload: { viewMode: initialViewMode.signIn },
 		});
 	};

@@ -2,7 +2,7 @@ import { INITIAL_STATE } from "~/Variables/constants/Initials/initialStates";
 
 const {
 	auth: { userState, loading },
-	global: { appDrawerState, backdropState, viewMode },
+	global: { appDrawerState, backdropState, viewMode, dialogState },
 	other: { welcome },
 	error: { error },
 } = INITIAL_STATE;
@@ -19,6 +19,10 @@ const globalActions = {
 	viewModeAction: {
 		type: "VIEW_MODE_ONCHANGE",
 		payload: { viewMode },
+	},
+	dialogAction: {
+		type: "DIALOG_STATE_CHANGE",
+		payload: dialogState,
 	},
 };
 

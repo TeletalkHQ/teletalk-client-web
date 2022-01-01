@@ -2,7 +2,7 @@ import { globalActions } from "~/Variables/constants/initialActions";
 import { globalInitialState } from "~/Variables/constants/Initials/initialStates";
 import { initialAction } from "~/Variables/constants/Initials/initialOptions";
 
-const { appDrawerAction, backdropAction, viewModeAction } = globalActions;
+const { appDrawerAction, backdropAction, viewModeAction, dialogAction } = globalActions;
 
 const globalReducer = (state = globalInitialState, action = initialAction) => {
 	const { payload, type } = action;
@@ -22,6 +22,14 @@ const globalReducer = (state = globalInitialState, action = initialAction) => {
 					appDrawerState: {
 						...state.appDrawerState,
 						anchor: { ...state.appDrawerState.anchor, [payload.anchor]: payload.open },
+					},
+				});
+
+			case dialogAction.type:
+				return stateMan({
+					dialogState: {
+						...state.dialogState,
+						...payload,
 					},
 				});
 

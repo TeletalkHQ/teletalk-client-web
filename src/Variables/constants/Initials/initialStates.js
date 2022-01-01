@@ -18,6 +18,16 @@ const globalInitialState = {
 		anchor: { top: false, left: false, bottom: false, right: false },
 		currentAnchor: "left",
 	},
+	dialogState: {
+		contacts: {
+			open: false,
+			dialogName: "contacts",
+		},
+		addContact: {
+			open: false,
+			dialogName: "addContact",
+		},
+	},
 };
 
 const errorInitialState = {
