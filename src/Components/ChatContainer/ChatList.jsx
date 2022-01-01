@@ -18,7 +18,7 @@ const { allChats, bot, channels, unread, editChats, groups, personal, menu, sear
 
 const sidebarList = [allChats, unread, personal, channels, groups, bot, editChats];
 
-const { appDrawerState } = globalActions;
+const { appDrawerAction } = globalActions;
 
 const ChatList = () => {
 	const {

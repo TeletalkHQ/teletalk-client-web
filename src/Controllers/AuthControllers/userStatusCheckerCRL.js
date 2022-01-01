@@ -3,8 +3,8 @@ import { userStatusCheckerAPI } from "~/APIs/Auth/userStatusCheckerAPI";
 import { authInitialState } from "~/Variables/constants/Initials/initialStates";
 import { authActions, globalActions } from "~/Variables/constants/initialActions";
 
-const { userState } = authActions;
-const { backdropState } = globalActions;
+const { userAction } = authActions;
+const { backdropAction } = globalActions;
 const userStatusCheckerCRL = () => {
 	return async (dispatch) => {
 		try {
