@@ -4,6 +4,10 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 
 import DialogTemplate from "~/Components/DialogContainer/DialogTemplate";
 
+import { addNewContactCRL } from "~/Controllers/cellphoneController/addNewContactCRL";
+
+import { useMyContext } from "~/Hooks/useMyContext";
+
 import { INITIAL_STATE } from "~/Variables/constants/Initials/initialStates";
 
 const AddContactDialog = ({ state = INITIAL_STATE, onClose }) => {
@@ -11,7 +15,15 @@ const AddContactDialog = ({ state = INITIAL_STATE, onClose }) => {
 		global: { dialogState },
 	} = state;
 
-	const [contact, setContact] = useState({ firstName: "", lastName: "", phoneNumber: "" });
+	const [contact, setContact] = useState({
+		firstName: "",
+		lastName: "",
+		phoneNumber: "",
+	});
+
+	const {
+		hooksOutput: { dispatch },
+	} = useMyContext();
 
 	const handleInputChange = (event) => {
 		setContact({ ...contact, [event.target.name]: event.target.value });
@@ -21,7 +33,7 @@ const AddContactDialog = ({ state = INITIAL_STATE, onClose }) => {
 		<>
 			<Box display="flex" justifyContent="space-between" alignItems="center">
 				<Box>
-					<Typography>Add Contact</Typography>
+					<Typography>New Contact</Typography>
 				</Box>
 				<Box></Box>
 			</Box>
@@ -69,7 +81,23 @@ const AddContactDialog = ({ state = INITIAL_STATE, onClose }) => {
 					<Button>Cancel</Button>
 				</Box>{" "}
 				<Box>
-					<Button>Create</Button>
+					<Button
+						onClick={() =>
+							dispatch(
+								addNewContactCRL({
+									cellphone: {
+										countryCode: "98",
+										countryName: "iran",
+										phoneNumber: contact.phoneNumber,
+									},
+									firstName: contact.firstName,
+									lastName: contact.lastName,
+								}),
+							)
+						}
+					>
+						Create
+					</Button>
 				</Box>
 			</Box>
 		</>
