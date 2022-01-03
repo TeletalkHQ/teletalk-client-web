@@ -1,27 +1,48 @@
+import { useEffect } from "react";
+
 import { Box, Button, Typography } from "@mui/material";
 
 import DialogTemplate from "~/Components/DialogContainer/DialogTemplate";
-import ChatListItem from "~/Components/ChatContainer/ChatListItem";
+import ContactListItem from "~/Components/DialogContainer/ContactListItem";
 
-import { INITIAL_STATE } from "~/Variables/constants/Initials/initialStates";
-import { useEffect } from "react";
+import { getContactsCRL } from "~/Controllers/cellphoneController/getContactsCRL";
 
-const ContactsDialog = ({
-	state = INITIAL_STATE,
-	onClose,
-	onGetContacts,
-	onAddContactClick,
-}) => {
+import { useMyContext } from "~/Hooks/useMyContext";
+
+import { authActions, globalActions } from "~/Variables/constants/initialActions";
+
+const { dialogAction } = globalActions;
+const { userAction } = authActions;
+
+const ContactsDialog = ({ onClose }) => {
 	const {
-		global: { dialogState },
-		auth: { userState },
-	} = state;
+		state: {
+			global: { dialogState },
+			auth: { userState },
+		},
+		hooksOutput: { dispatch },
+	} = useMyContext();
 
 	useEffect(() => {
-		onGetContacts();
+		handleGetContacts();
 
 		return () => {};
 	}, []);
+
+	const handleAddContactClick = () => {
+		dispatch({
+			type: dialogAction.type,
+			payload: { addContact: { open: true, dialogName: "addContact" } },
+		});
+	};
+
+	const handleGetContacts = () => {
+		dispatch(getContactsCRL());
+	};
+
+	const handleContactClick = (contact) => {
+		dispatch({ type: userAction.type, payload: { selectedUserID: contact.privateID } });
+	};
 
 	const titleContent = (
 		<>
@@ -35,7 +56,11 @@ const ContactsDialog = ({
 	);
 
 	const dialogContent = userState.contacts.map((contact, index) => (
-		<ChatListItem key={index} contact={contact} />
+		<ContactListItem
+			key={index}
+			name={`${contact.firstName} ${contact.lastName}`}
+			onContactClick={() => handleContactClick(contact)}
+		/>
 	));
 
 	const actionContent = (
@@ -47,13 +72,7 @@ const ContactsDialog = ({
 				alignItems="center"
 			>
 				<Box>
-					<Button
-						onClick={() => {
-							onAddContactClick();
-						}}
-					>
-						Add Contact
-					</Button>
+					<Button onClick={handleAddContactClick}>Add Contact</Button>
 				</Box>
 				<Box>
 					<Button onClick={() => onClose("contacts")}>Close</Button>
