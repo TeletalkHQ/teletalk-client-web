@@ -50,6 +50,10 @@ const otherActions = {
 		type: "WELCOME",
 		payload: welcome,
 	},
+	selectContactAction: {
+		type: "SELECT_CONTACT",
+		payload: {},
+	},
 };
 
 const errorActions = {

@@ -82,7 +82,7 @@ const AddContactDialog = ({ state = INITIAL_STATE, onClose }) => {
 				</Box>{" "}
 				<Box>
 					<Button
-						onClick={() =>
+						onClick={() => {
 							dispatch(
 								addNewContactCRL({
 									cellphone: {
@@ -93,8 +93,8 @@ const AddContactDialog = ({ state = INITIAL_STATE, onClose }) => {
 									firstName: contact.firstName,
 									lastName: contact.lastName,
 								}),
-							)
-						}
+							);
+						}}
 					>
 						Create
 					</Button>

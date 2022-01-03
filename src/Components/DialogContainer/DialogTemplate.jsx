@@ -34,7 +34,7 @@ const DialogTemplate = ({
 			fullScreen={fullScreen}
 			keepMounted
 			{...(!noOnClose && { onClose: () => onClose(target.dialogName) })}
-			onEscapeKeyDown={onEscapeKeyDown}
+			// onEscapeKeyDown={onEscapeKeyDown}
 			onKeyDown={onKeyDown}
 			open={target.open}
 			PaperProps={{
