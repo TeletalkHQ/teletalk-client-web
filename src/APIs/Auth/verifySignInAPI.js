@@ -1,10 +1,14 @@
 import { requester } from "~/Functions/Utils/requester";
 
+import { userRouteTemplate } from "~/Templates/routeTemplate/userRouteTemplate";
+
+const { baseRoute, verifySignInNormal } = userRouteTemplate;
+
 const verifySignInAPI = (data) => {
 	const response = requester({
 		data,
-		method: "POST",
-		url: "/user/verify/signIn/normal",
+		method: verifySignInNormal.properties.method,
+		url: `${baseRoute.properties.route}${verifySignInNormal.properties.route}`,
 	});
 
 	return response;
