@@ -21,11 +21,9 @@ const globalInitialState = {
 	dialogState: {
 		contacts: {
 			open: false,
-			dialogName: "contacts",
 		},
 		addContact: {
 			open: false,
-			dialogName: "addContact",
 		},
 	},
 };
@@ -34,11 +32,16 @@ const errorInitialState = {
 	error: "",
 };
 
+const tempInitialState = {
+	messages: [{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" }],
+};
+
 const INITIAL_STATE = {
 	other: otherInitialState,
 	user: userInitialState,
 	global: globalInitialState,
 	error: errorInitialState,
+	temp: tempInitialState,
 };
 
 const initialState = () => INITIAL_STATE;
@@ -50,4 +53,5 @@ export {
 	initialState,
 	otherInitialState,
 	userInitialState,
+	tempInitialState,
 };

@@ -2,12 +2,14 @@ import { errorInitialActions } from "~/Variables/Constants/Initials/InitialActio
 import { globalInitialActions } from "~/Variables/Constants/Initials/InitialActions/globalInitialActions";
 import { otherInitialActions } from "~/Variables/Constants/Initials/InitialActions/otherInitialActions";
 import { userInitialActions } from "~/Variables/Constants/Initials/InitialActions/userInitialActions";
+import { tempInitialActions } from "~/Variables/Constants/Initials/InitialActions/tempInitialActions";
 
 const actions = {
 	errorInitialActions,
 	otherInitialActions,
 	userInitialActions,
 	globalInitialActions,
+	tempInitialActions,
 };
 
 export {
@@ -16,4 +18,5 @@ export {
 	globalInitialActions,
 	otherInitialActions,
 	userInitialActions,
+	tempInitialActions,
 };

@@ -13,8 +13,6 @@ const userReducer = (state = userInitialState, action = initialAction) => {
 	try {
 		const { payload, type } = action;
 
-		console.log(payload);
-
 		const stateMan = () => ({ ...state, ...payload });
 
 		switch (type) {

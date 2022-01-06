@@ -8,6 +8,8 @@ import { addNewContactCRL } from "~/Controllers/cellphoneController/addNewContac
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
+const initialContact = { firstName: "", lastName: "", phoneNumber: "" };
+
 const AddContactDialog = ({ onClose }) => {
 	const {
 		hooksOutput: { dispatch },
@@ -16,11 +18,7 @@ const AddContactDialog = ({ onClose }) => {
 		},
 	} = useMyContext();
 
-	const [contact, setContact] = useState({
-		firstName: "",
-		lastName: "",
-		phoneNumber: "",
-	});
+	const [contact, setContact] = useState(initialContact);
 
 	const handleInputChange = (event) => {
 		setContact({ ...contact, [event.target.name]: event.target.value });
@@ -36,6 +34,13 @@ const AddContactDialog = ({ onClose }) => {
 				lastName: contact.lastName,
 			}),
 		);
+
+		handleOnClose();
+		setContact(initialContact);
+	};
+
+	const handleOnClose = () => {
+		onClose("addContact");
 	};
 
 	const titleContent = (
@@ -102,9 +107,9 @@ const AddContactDialog = ({ onClose }) => {
 				titleContent={titleContent}
 				actionContent={actionContent}
 				dialogContent={dialogContent}
-				target={dialogState.addContact}
+				open={dialogState.addContact.open}
 				paperStyle={{ height: "50vh" }}
-				onClose={onClose}
+				onClose={handleOnClose}
 			/>
 		</>
 	);
