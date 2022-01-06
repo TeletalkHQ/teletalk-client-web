@@ -9,8 +9,8 @@ import {
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { initialValues } from "~/Variables/constants/Initials/initialValues";
-import { globalActions } from "~/Variables/constants/Initials/initialActions";
+import { initialValues } from "~/Variables/constants/Initials/InitialValues/initialValues";
+import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
 
 const { calls, contacts, newChannel, newGroup, nightMode, settings } = initialValues;
 

@@ -12,7 +12,9 @@ const userInitializer = () => {
 					phoneNumber: "",
 				},
 			],
-			cellphone: { phoneNumber: "", countryCode: "98", countryName: "iran" },
+			phoneNumber: "",
+			countryCode: "98",
+			countryName: "iran",
 			chats: [{ chatID: "" }],
 			contacts: [
 				{ countryCode: "", countryName: "", firstName: "", lastName: "", phoneNumber: "" },
@@ -37,10 +39,9 @@ const userInitializer = () => {
 
 		delete decodedToken.iat;
 
-		user.cellphone = decodedToken.cellphone;
-		user.privateID = decodedToken.privateID;
+		const { phoneNumber, countryCode, countryName, privateID } = decodedToken;
 
-		return user;
+		return { ...user, phoneNumber, countryCode, countryName, privateID };
 	} catch (error) {
 		console.log("userInitializer catch", userInitializer);
 		// throw error;

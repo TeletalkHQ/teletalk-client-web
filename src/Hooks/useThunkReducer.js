@@ -1,7 +1,12 @@
 import { useCallback, useReducer } from "react";
 
-let useDispatch = () => {};
-let useSelector = () => {};
+import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
+
+import { INITIAL_STATE } from "~/Variables/constants/Initials/InitialStates/initialStates";
+
+let useDispatch = () => appDispatch;
+let useSelector = () => INITIAL_STATE;
+let reducerLogger = () => {};
 
 const combineReducers = (reducers) => {
 	return (state = {}, action) => {
@@ -12,8 +17,6 @@ const combineReducers = (reducers) => {
 		return newState;
 	};
 };
-
-const reducerLogger = () => {};
 
 const useThunkReducer = (reducer, initialState) => {
 	try {

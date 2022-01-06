@@ -1,6 +1,6 @@
-import { globalActions } from "~/Variables/constants/Initials/initialActions";
-import { globalInitialState } from "~/Variables/constants/Initials/initialStates";
-import { initialAction } from "~/Variables/constants/Initials/initialOptions";
+import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
+import { globalInitialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
+import { initialAction } from "~/Variables/constants/Initials/InitialOptions/initialOptions";
 
 const { appDrawerAction, backdropAction, viewModeAction, dialogAction } = globalActions;
 

@@ -29,11 +29,9 @@ const AddContactDialog = ({ onClose }) => {
 	const handleAddNewContact = () => {
 		dispatch(
 			addNewContactCRL({
-				cellphone: {
-					countryCode: "98",
-					countryName: "iran",
-					phoneNumber: contact.phoneNumber,
-				},
+				countryCode: "98",
+				countryName: "iran",
+				phoneNumber: contact.phoneNumber,
 				firstName: contact.firstName,
 				lastName: contact.lastName,
 			}),

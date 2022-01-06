@@ -3,7 +3,7 @@ import AddContactDialog from "~/Components/DialogContainer/AddContactDialog";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { globalActions } from "~/Variables/constants/Initials/initialActions";
+import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
 
 const { dialogAction } = globalActions;
 

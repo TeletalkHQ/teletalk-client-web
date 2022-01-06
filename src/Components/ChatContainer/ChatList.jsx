@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { globalActions } from "~/Variables/constants/Initials/initialActions";
-import { initialValues } from "~/Variables/constants/Initials/initialValues";
+import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
+import { initialValues } from "~/Variables/constants/Initials/InitialValues/initialValues";
 import ChatListItem from "./ChatListItem";
 
 const { allChats, bot, channels, unread, editChats, groups, personal, menu, search } =

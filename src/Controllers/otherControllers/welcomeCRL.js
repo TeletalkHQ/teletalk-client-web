@@ -1,5 +1,5 @@
 import { welcomeAPI } from "~/APIs/Others/welcomeAPI";
-import { otherActions } from "~/Variables/constants/Initials/initialActions";
+import { otherActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
 
 const welcomeCRL = () => {
 	return async (dispatch, getState) => {

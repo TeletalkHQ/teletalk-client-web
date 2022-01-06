@@ -1,7 +1,7 @@
 import { addNewContactAPI } from "~/APIs/Cellphone/addNewContactAPI";
 
-import { authActions } from "~/Variables/constants/Initials/initialActions";
-import { initialState } from "~/Variables/constants/Initials/initialStates";
+import { userActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
+import { initialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
 
 const addNewContactCRL = (contact) => {
 	return async (dispatch, getState = initialState) => {
@@ -9,9 +9,9 @@ const addNewContactCRL = (contact) => {
 			const result = await addNewContactAPI(contact);
 
 			dispatch({
-				type: authActions.userAction.type,
+				type: userActions.userAction.type,
 				payload: {
-					contacts: [...getState().auth.userState.contacts, result.data.contact],
+					contacts: [...getState().user.contacts, result.data.contact],
 				},
 			});
 		} catch (error) {

@@ -1,24 +1,25 @@
 import { signInAPI } from "~/APIs/Auth/signInAPI";
 
-import { initialState } from "~/Variables/constants/Initials/initialStates";
-import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
-import { authActions, globalActions } from "~/Variables/constants/Initials/initialActions";
+import { initialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
+import { initialViewMode } from "~/Variables/constants/Initials/InitialValues/initialValues";
+import {
+	userActions,
+	globalActions,
+} from "~/Variables/constants/Initials/InitialActions/initialActions";
 
-const { loadingAction, userAction } = authActions;
+const { loadingAction, userAction } = userActions;
 const { viewModeAction } = globalActions;
 
 const signInCRL = () => {
 	return async (dispatch, getState = initialState) => {
 		try {
 			const {
-				auth: {
-					userState: { cellphone },
-				},
+				user: { phoneNumber, countryCode, countryName },
 			} = getState();
 
 			dispatch({ type: loadingAction.type, payload: { loading: true } });
 
-			const response = await signInAPI({ cellphone });
+			const response = await signInAPI({ phoneNumber, countryCode, countryName });
 
 			const verifyToken = response.data.token;
 
