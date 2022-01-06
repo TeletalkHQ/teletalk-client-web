@@ -2,12 +2,18 @@ import { userInitialActions } from "~/Variables/Constants/Initials/InitialAction
 import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
-const { userInitialAction, phoneNumberInitialAction, verifyCodeInitialAction, loadingAction } =
-	userInitialActions;
+const {
+	userInitialAction,
+	phoneNumberInitialAction,
+	verifyCodeInitialAction,
+	loadingInitialAction,
+} = userInitialActions;
 
 const userReducer = (state = userInitialState, action = initialAction) => {
 	try {
 		const { payload, type } = action;
+
+		console.log(payload);
 
 		const stateMan = () => ({ ...state, ...payload });
 
@@ -21,7 +27,7 @@ const userReducer = (state = userInitialState, action = initialAction) => {
 			case verifyCodeInitialAction.type:
 				return stateMan();
 
-			case loadingAction.type:
+			case loadingInitialAction.type:
 				return stateMan();
 			//
 			//

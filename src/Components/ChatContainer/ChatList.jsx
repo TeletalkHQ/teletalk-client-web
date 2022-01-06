@@ -21,7 +21,9 @@ const sidebarList = [allChats, unread, personal, channels, groups, bot, editChat
 
 const ChatList = () => {
 	const {
-		state,
+		state: {
+			global: { appDrawerState },
+		},
 		hooksOutput: { dispatch },
 	} = useMyContext();
 
@@ -34,8 +36,13 @@ const ChatList = () => {
 							onClick={() =>
 								dispatch(
 									appDrawerAction({
-										anchor: state.global.appDrawerState.currentAnchor,
-										open: true,
+										appDrawerState: {
+											...appDrawerState,
+											anchor: {
+												...appDrawerState.anchor,
+												[appDrawerState.currentAnchor]: true,
+											},
+										},
 									}),
 								)
 							}

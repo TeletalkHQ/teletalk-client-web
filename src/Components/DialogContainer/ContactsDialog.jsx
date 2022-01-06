@@ -28,7 +28,11 @@ const ContactsDialog = ({ onClose }) => {
 	}, []);
 
 	const handleAddContactClick = () => {
-		dispatch(dialogAction({ addContact: { open: true, dialogName: "addContact" } }));
+		dispatch(
+			dialogAction({
+				dialogState: { ...dialogState, addContact: { open: true, dialogName: "addContact" } },
+			}),
+		);
 	};
 
 	const handleGetContacts = () => {

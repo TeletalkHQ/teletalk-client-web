@@ -7,11 +7,11 @@ const {
 const globalInitialActions = {
 	appDrawerInitialAction: {
 		type: "APP_DRAWER_STATE_CHANGE",
-		payload: appDrawerState,
+		payload: { appDrawerState },
 	},
 	backdropInitialAction: {
 		type: "BACKDROP_STATE_CHANGE",
-		payload: backdropState,
+		payload: { backdropState },
 	},
 	viewModeInitialAction: {
 		type: "VIEW_MODE_ONCHANGE",
@@ -19,7 +19,7 @@ const globalInitialActions = {
 	},
 	dialogInitialAction: {
 		type: "DIALOG_STATE_CHANGE",
-		payload: dialogState,
+		payload: { dialogState },
 	},
 };
 
