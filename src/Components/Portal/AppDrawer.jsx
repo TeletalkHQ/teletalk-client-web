@@ -55,7 +55,7 @@ const AppDrawer = () => {
 
 		dispatch(
 			dialogAction({
-				dialogState: { ...dialogState, [target]: { open: true, dialogName: target } },
+				dialogState: { ...dialogState, [target]: { open: true } },
 			}),
 		);
 	};

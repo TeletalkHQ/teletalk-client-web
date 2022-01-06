@@ -14,12 +14,11 @@ const DialogTemplate = ({
 	actionContent,
 	dialogContent,
 	dialogStyle,
-	noOnClose,
 	onClose,
 	onEscapeKeyDown,
 	onKeyDown,
+	open,
 	paperStyle,
-	target,
 	titleContent,
 	TransitionComponent = "Grow",
 	transitionDuration,
@@ -33,10 +32,10 @@ const DialogTemplate = ({
 		<Dialog
 			fullScreen={fullScreen}
 			keepMounted
-			{...(!noOnClose && { onClose: () => onClose(target.dialogName) })}
+			{...(onClose && typeof onClose === "function" && { onClose: () => onClose() })}
 			// onEscapeKeyDown={onEscapeKeyDown}
 			onKeyDown={onKeyDown}
-			open={target.open}
+			open={open}
 			PaperProps={{
 				style: {
 					borderRadius: !fullScreen ? "15px" : "",

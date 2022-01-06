@@ -10,6 +10,7 @@ import { getContactsCRL } from "~/Controllers/cellphoneController/getContactsCRL
 import { useMyContext } from "~/Hooks/useMyContext";
 
 import { dialogAction } from "~/Actions/GlobalActions/globalActions";
+import { tempInitialActions } from "~/Variables/Constants/Initials/InitialActions/tempInitialActions";
 
 const ContactsDialog = ({ onClose }) => {
 	const {
@@ -21,16 +22,18 @@ const ContactsDialog = ({ onClose }) => {
 	} = useMyContext();
 
 	useEffect(() => {
-		handleGetContacts();
+		if (dialogState.contacts.open) {
+			handleGetContacts();
+		}
 
 		return () => {};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [dialogState.contacts.open]);
 
 	const handleAddContactClick = () => {
 		dispatch(
 			dialogAction({
-				dialogState: { ...dialogState, addContact: { open: true, dialogName: "addContact" } },
+				dialogState: { ...dialogState, addContact: { ...dialogState.addContact, open: true } },
 			}),
 		);
 	};
@@ -41,7 +44,11 @@ const ContactsDialog = ({ onClose }) => {
 
 	//TODO ???
 	const handleContactClick = (contact) => {
-		// dispatch({ selectedUserID: contact.privateID });
+		dispatch({ type: tempInitialActions.selectedUserChat.type, payload: contact.privateID });
+	};
+
+	const handleOnClose = () => {
+		onClose("contacts");
 	};
 
 	const titleContent = (
@@ -86,9 +93,9 @@ const ContactsDialog = ({ onClose }) => {
 			titleContent={titleContent}
 			actionContent={actionContent}
 			dialogContent={dialogContent}
-			target={dialogState.contacts}
+			open={dialogState.contacts.open}
 			paperStyle={{ height: "90vh" }}
-			onClose={onClose}
+			onClose={handleOnClose}
 		/>
 	);
 };
