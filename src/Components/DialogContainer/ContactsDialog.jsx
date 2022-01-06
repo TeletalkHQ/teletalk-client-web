@@ -9,7 +9,7 @@ import { getContactsCRL } from "~/Controllers/cellphoneController/getContactsCRL
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { authActions, globalActions } from "~/Variables/constants/initialActions";
+import { authActions, globalActions } from "~/Variables/constants/Initials/initialActions";
 
 const { dialogAction } = globalActions;
 const { userAction } = authActions;

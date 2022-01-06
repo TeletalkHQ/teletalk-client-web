@@ -1,5 +1,6 @@
-import { baseURL } from "~/Variables/constants/requestConstants";
 import { Typography, Link } from "@mui/material";
+
+import { baseURL } from "~/Variables/constants/Others/otherConstants";
 
 const Copyright = (props) => {
 	return (

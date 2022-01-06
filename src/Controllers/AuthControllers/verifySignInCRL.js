@@ -2,7 +2,7 @@ import { verifySignInAPI } from "~/APIs/Auth/verifySignInAPI";
 
 import { initialState } from "~/Variables/constants/Initials/initialStates";
 import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
-import { authActions, globalActions } from "~/Variables/constants/initialActions";
+import { authActions, globalActions } from "~/Variables/constants/Initials/initialActions";
 
 const { loadingAction, userAction } = authActions;
 const { viewModeAction } = globalActions;

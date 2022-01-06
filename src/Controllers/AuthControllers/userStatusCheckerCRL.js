@@ -1,7 +1,7 @@
 import { userStatusCheckerAPI } from "~/APIs/Auth/userStatusCheckerAPI";
 
 import { authInitialState } from "~/Variables/constants/Initials/initialStates";
-import { authActions, globalActions } from "~/Variables/constants/initialActions";
+import { authActions, globalActions } from "~/Variables/constants/Initials/initialActions";
 
 const { userAction } = authActions;
 const { backdropAction } = globalActions;

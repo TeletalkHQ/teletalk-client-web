@@ -1,4 +1,4 @@
-import { errorActions } from "~/Variables/constants/initialActions";
+import { errorActions } from "~/Variables/constants/Initials/initialActions";
 import { initialAction } from "~/Variables/constants/Initials/initialOptions";
 import { errorInitialState } from "~/Variables/constants/Initials/initialStates";
 

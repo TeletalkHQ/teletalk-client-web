@@ -19,7 +19,7 @@ import {
 	onlineConnectionCheckerClearTimeout,
 } from "~/Functions/eventListeners/onlineConnectionsChecker";
 
-import { globalActions } from "~/Variables/constants/initialActions";
+import { globalActions } from "~/Variables/constants/Initials/initialActions";
 
 const { backdropAction } = globalActions;
 

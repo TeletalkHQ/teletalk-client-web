@@ -12,7 +12,7 @@ import { signInCRL } from "~/Controllers/AuthControllers/signInCRL";
 import { verifySignInCRL } from "~/Controllers/AuthControllers/verifySignInCRL";
 import { welcomeCRL } from "~/Controllers/otherControllers/welcomeCRL";
 
-import { authActions, globalActions } from "~/Variables/constants/initialActions";
+import { authActions, globalActions } from "~/Variables/constants/Initials/initialActions";
 import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
 
 const { viewModeAction } = globalActions;
