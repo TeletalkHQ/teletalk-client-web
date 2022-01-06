@@ -1,4 +1,4 @@
-import { authActions } from "~/Variables/constants/initialActions";
+import { authActions } from "~/Variables/constants/Initials/initialActions";
 import { initialAction } from "~/Variables/constants/Initials/initialOptions";
 import { authInitialState } from "~/Variables/constants/Initials/initialStates";
 

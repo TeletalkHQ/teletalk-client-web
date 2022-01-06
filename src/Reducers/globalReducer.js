@@ -1,4 +1,4 @@
-import { globalActions } from "~/Variables/constants/initialActions";
+import { globalActions } from "~/Variables/constants/Initials/initialActions";
 import { globalInitialState } from "~/Variables/constants/Initials/initialStates";
 import { initialAction } from "~/Variables/constants/Initials/initialOptions";
 

@@ -32,7 +32,8 @@
 		"README.md": true,
 		"**/yarn-error.log": true,
 		"**/package.json": true,
-		"index.js": true
+		"index.js": true,
+		"node_modules": true
 	},
 	"explorerExclude.backup": null
 }

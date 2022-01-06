@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { globalActions } from "~/Variables/constants/initialActions";
+import { globalActions } from "~/Variables/constants/Initials/initialActions";
 import { initialValues } from "~/Variables/constants/Initials/initialValues";
 import ChatListItem from "./ChatListItem";
 
