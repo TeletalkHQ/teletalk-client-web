@@ -1,9 +1,14 @@
-const { requester } = require("~/Functions/Utils/requester");
+import { requester } from "~/Functions/Utils/requester";
+
+import { otherRouteTemplate } from "~/Templates/routeTemplate/otherRouteTemplate";
+
+const { baseRoute, welcome } = otherRouteTemplate;
 
 const welcomeAPI = async () => {
 	try {
 		const response = await requester({
-			url: "/other/welcome",
+			method: welcome.properties.method,
+			url: `${baseRoute.properties.route}${welcome.properties.route}`,
 		});
 
 		return response;

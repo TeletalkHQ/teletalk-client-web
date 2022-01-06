@@ -1,7 +1,14 @@
 import { requester } from "~/Functions/Utils/requester";
 
+import { userRouteTemplate } from "~/Templates/routeTemplate/userRouteTemplate";
+
+const { baseRoute, statusCheck } = userRouteTemplate;
+
 const userStatusCheckerAPI = () => {
-	const response = requester({ method: "GET", url: "user/status/check" });
+	const response = requester({
+		method: statusCheck.properties.method,
+		url: `${baseRoute.properties.route}${statusCheck.properties.route}`,
+	});
 
 	return response;
 };
