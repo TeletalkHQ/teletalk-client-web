@@ -8,7 +8,7 @@ import { requester } from "~/Functions/Utils/requester";
 const MessageInput = () => {
 	const {
 		state: {
-			auth: { user },
+			user: { user },
 			other: { messageInputText },
 		},
 		hooksOutput: { dispatch },

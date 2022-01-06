@@ -12,21 +12,18 @@ import { signInCRL } from "~/Controllers/AuthControllers/signInCRL";
 import { verifySignInCRL } from "~/Controllers/AuthControllers/verifySignInCRL";
 import { welcomeCRL } from "~/Controllers/otherControllers/welcomeCRL";
 
-import { authActions, globalActions } from "~/Variables/constants/Initials/initialActions";
-import { initialViewMode } from "~/Variables/constants/Initials/initialValues";
+import {
+	userActions,
+	globalActions,
+} from "~/Variables/constants/Initials/InitialActions/initialActions";
+import { initialViewMode } from "~/Variables/constants/Initials/InitialValues/initialValues";
 
 const { viewModeAction } = globalActions;
 
 const Auth = () => {
 	const {
 		state: {
-			auth: {
-				userState: {
-					cellphone: { phoneNumber, countryCode },
-					verifyCode,
-				},
-				loading,
-			},
+			user: { phoneNumber, countryCode, verifyCode, loading },
 			global: { viewMode },
 		},
 	} = useMyContext();
@@ -41,7 +38,7 @@ const Auth = () => {
 
 	const handlePhoneNumberChange = (e) => {
 		appDispatch({
-			type: authActions.phoneNumberAction.type,
+			type: userActions.phoneNumberAction.type,
 			payload: { phoneNumber: e.target.value },
 		});
 	};
@@ -55,7 +52,7 @@ const Auth = () => {
 
 		if (value?.length > 6) return;
 
-		appDispatch({ type: authActions.verifyCodeAction.type, payload: { verifyCode: value } });
+		appDispatch({ type: userActions.verifyCodeAction.type, payload: { verifyCode: value } });
 	};
 
 	const handleBackClick = () => {

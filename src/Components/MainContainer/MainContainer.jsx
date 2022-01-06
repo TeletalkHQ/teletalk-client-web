@@ -19,14 +19,14 @@ import {
 	onlineConnectionCheckerClearTimeout,
 } from "~/Functions/eventListeners/onlineConnectionsChecker";
 
-import { globalActions } from "~/Variables/constants/Initials/initialActions";
+import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
 
 const { backdropAction } = globalActions;
 
 const MainContainer = () => {
 	const {
 		state: {
-			auth: { userState },
+			user,
 			other: { onlineStatusCondition, onlineStatus },
 		},
 		hooksOutput: { dispatch },
@@ -49,7 +49,7 @@ const MainContainer = () => {
 
 	useEffect(() => {
 		try {
-			if (userState.privateID) {
+			if (user.privateID) {
 				dispatch(userStatusCheckerCRL());
 			}
 		} catch (error) {
@@ -58,11 +58,11 @@ const MainContainer = () => {
 			dispatch({ type: backdropAction.type, payload: { open: false } });
 		}
 		// eslint-disable-next-line
-	}, [userState.mainToken]);
+	}, [user.mainToken]);
 
 	return (
 		<>
-			{!userState.privateID ? (
+			{!user.privateID ? (
 				<Auth />
 			) : (
 				<>

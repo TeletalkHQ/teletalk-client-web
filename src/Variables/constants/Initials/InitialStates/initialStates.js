@@ -6,8 +6,8 @@ const otherInitialState = {
 	status: window.navigator.onLine,
 };
 
-const authInitialState = {
-	userState: userInitializer(),
+const userInitialState = {
+	...userInitializer(),
 	loading: false,
 };
 
@@ -36,7 +36,7 @@ const errorInitialState = {
 
 const INITIAL_STATE = {
 	other: otherInitialState,
-	auth: authInitialState,
+	user: userInitialState,
 	global: globalInitialState,
 	error: errorInitialState,
 };
@@ -44,10 +44,10 @@ const INITIAL_STATE = {
 const initialState = () => INITIAL_STATE;
 
 export {
-	authInitialState,
 	errorInitialState,
 	globalInitialState,
 	INITIAL_STATE,
 	initialState,
 	otherInitialState,
+	userInitialState,
 };

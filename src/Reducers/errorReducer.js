@@ -1,6 +1,6 @@
-import { errorActions } from "~/Variables/constants/Initials/initialActions";
-import { initialAction } from "~/Variables/constants/Initials/initialOptions";
-import { errorInitialState } from "~/Variables/constants/Initials/initialStates";
+import { errorActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
+import { initialAction } from "~/Variables/constants/Initials/InitialOptions/initialOptions";
+import { errorInitialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
 
 const errorReducer = (state = errorInitialState, action = initialAction) => {
 	try {

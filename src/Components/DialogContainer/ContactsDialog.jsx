@@ -9,16 +9,19 @@ import { getContactsCRL } from "~/Controllers/cellphoneController/getContactsCRL
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { authActions, globalActions } from "~/Variables/constants/Initials/initialActions";
+import {
+	userActions,
+	globalActions,
+} from "~/Variables/constants/Initials/InitialActions/initialActions";
 
 const { dialogAction } = globalActions;
-const { userAction } = authActions;
+const { userAction } = userActions;
 
 const ContactsDialog = ({ onClose }) => {
 	const {
 		state: {
 			global: { dialogState },
-			auth: { userState },
+			user,
 		},
 		hooksOutput: { dispatch },
 	} = useMyContext();
@@ -55,7 +58,7 @@ const ContactsDialog = ({ onClose }) => {
 		</>
 	);
 
-	const dialogContent = userState.contacts.map((contact, index) => (
+	const dialogContent = user.contacts.map((contact, index) => (
 		<ContactListItem
 			key={index}
 			name={`${contact.firstName} ${contact.lastName}`}

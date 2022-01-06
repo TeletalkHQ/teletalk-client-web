@@ -1,9 +1,12 @@
 import { userStatusCheckerAPI } from "~/APIs/Auth/userStatusCheckerAPI";
 
-import { authInitialState } from "~/Variables/constants/Initials/initialStates";
-import { authActions, globalActions } from "~/Variables/constants/Initials/initialActions";
+import { userInitialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
+import {
+	userActions,
+	globalActions,
+} from "~/Variables/constants/Initials/InitialActions/initialActions";
 
-const { userAction } = authActions;
+const { userAction } = userActions;
 const { backdropAction } = globalActions;
 const userStatusCheckerCRL = () => {
 	return async (dispatch) => {
@@ -24,7 +27,7 @@ const userStatusCheckerCRL = () => {
 
 			dispatch({
 				type: userAction.type,
-				payload: authInitialState.userState,
+				payload: userInitialState,
 			});
 		} finally {
 			dispatch({ type: backdropAction.type, payload: { open: false } });

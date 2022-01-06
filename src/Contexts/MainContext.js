@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
-import { initialAction } from "~/Variables/constants/Initials/initialOptions";
-import { INITIAL_STATE } from "~/Variables/constants/Initials/initialStates";
+import { initialAction } from "~/Variables/constants/Initials/InitialOptions/initialOptions";
+import { INITIAL_STATE } from "~/Variables/constants/Initials/InitialStates/initialStates";
 
 const MainContext = createContext({
 	state: INITIAL_STATE,
