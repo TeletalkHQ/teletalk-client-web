@@ -1,14 +1,10 @@
 import { signInAPI } from "~/APIs/Auth/signInAPI";
 
-import { initialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
-import { initialViewMode } from "~/Variables/constants/Initials/InitialValues/initialValues";
-import {
-	userActions,
-	globalActions,
-} from "~/Variables/constants/Initials/InitialActions/initialActions";
+import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
-const { loadingAction, userAction } = userActions;
-const { viewModeAction } = globalActions;
+import { loadingAction, userAction } from "~/Actions/UserActions/userActions";
+import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
 const signInCRL = () => {
 	return async (dispatch, getState = initialState) => {
@@ -17,7 +13,7 @@ const signInCRL = () => {
 				user: { phoneNumber, countryCode, countryName },
 			} = getState();
 
-			dispatch({ type: loadingAction.type, payload: { loading: true } });
+			dispatch(loadingAction({ loading: true }));
 
 			const response = await signInAPI({ phoneNumber, countryCode, countryName });
 
@@ -25,23 +21,19 @@ const signInCRL = () => {
 
 			localStorage.setItem("verifyToken", verifyToken);
 
-			dispatch({
-				type: userAction.type,
-				payload: {
+			dispatch(
+				userAction({
 					...response.data,
-				},
-			});
+				}),
+			);
 
-			dispatch({
-				type: viewModeAction.type,
-				payload: { viewMode: initialViewMode.verifySignIn },
-			});
+			dispatch(viewModeAction({ viewMode: initialViewMode.verifySignIn }));
 
 			return response;
 		} catch (error) {
 			console.log("signInCRL catch", error);
 		} finally {
-			dispatch({ type: loadingAction.type, payload: { loading: false } });
+			dispatch(loadingAction({ loading: false }));
 		}
 	};
 };

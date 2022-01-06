@@ -9,14 +9,13 @@ import {
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { initialValues } from "~/Variables/constants/Initials/InitialValues/initialValues";
-import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
+import { initialValues } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+
+import { appDrawerAction, dialogAction } from "~/Actions/GlobalActions/globalActions";
 
 const { calls, contacts, newChannel, newGroup, nightMode, settings } = initialValues;
 
 const drawerList = [calls, contacts, newChannel, newGroup, nightMode, settings];
-
-const { appDrawerAction, dialogAction } = globalActions;
 
 const iOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -38,7 +37,7 @@ const AppDrawer = () => {
 
 		handleDrawerItemClick(target);
 
-		dispatch({ type: appDrawerAction.type, payload: { anchor, open } });
+		dispatch(appDrawerAction({ anchor, open }));
 	};
 
 	const handleDrawerItemClick = (target) => {
@@ -46,10 +45,7 @@ const AppDrawer = () => {
 			return;
 		}
 
-		dispatch({
-			type: dialogAction.type,
-			payload: { [target]: { open: true, dialogName: target } },
-		});
+		dispatch(dialogAction({ [target]: { open: true, dialogName: target } }));
 	};
 
 	return (

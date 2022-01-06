@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { baseURL } from "~/Variables/constants/Others/otherConstants";
+import { baseURL } from "~/Variables/Constants/Others/otherConstants";
 
 const myAxios = axios.create({
 	baseURL,

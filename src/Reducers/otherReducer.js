@@ -1,21 +1,21 @@
-import { initialAction } from "~/Variables/constants/Initials/InitialOptions/initialOptions";
-import { otherInitialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
+import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
+import { otherInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 const otherReducer = (state = otherInitialState, action = initialAction) => {
 	try {
 		const { payload, type } = action;
 
-		const stateMan = (newState) => ({ ...state, ...newState });
+		const stateMan = () => ({ ...state, ...payload });
 
 		switch (type) {
 			case "WELCOME":
-				return stateMan({ welcome: payload });
+				return stateMan();
 
 			case "USER_CHATS":
-				return stateMan({ chats: payload });
+				return stateMan();
 
 			case "INPUT_TEXT":
-				return stateMan({ messageInputText: payload });
+				return stateMan();
 
 			default:
 				return state;

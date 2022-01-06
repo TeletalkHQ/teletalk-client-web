@@ -24,12 +24,12 @@ const MessageInput = () => {
 			method: "POST",
 			url: "/chat/private/send/message",
 		});
-		dispatch({ type: "INPUT_TEXT", payload: "" });
+		// dispatch({ type: "INPUT_TEXT", payload: "" });
 		dispatch(getChatsCRL());
 	};
 
 	const handleInputChange = ({ target: { value } }) => {
-		dispatch({ type: "INPUT_TEXT", payload: value });
+		// dispatch({ type: "INPUT_TEXT", payload: value });
 	};
 
 	return (

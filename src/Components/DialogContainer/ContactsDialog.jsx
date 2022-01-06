@@ -9,13 +9,7 @@ import { getContactsCRL } from "~/Controllers/cellphoneController/getContactsCRL
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import {
-	userActions,
-	globalActions,
-} from "~/Variables/constants/Initials/InitialActions/initialActions";
-
-const { dialogAction } = globalActions;
-const { userAction } = userActions;
+import { dialogAction } from "~/Actions/GlobalActions/globalActions";
 
 const ContactsDialog = ({ onClose }) => {
 	const {
@@ -30,21 +24,20 @@ const ContactsDialog = ({ onClose }) => {
 		handleGetContacts();
 
 		return () => {};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleAddContactClick = () => {
-		dispatch({
-			type: dialogAction.type,
-			payload: { addContact: { open: true, dialogName: "addContact" } },
-		});
+		dispatch(dialogAction({ addContact: { open: true, dialogName: "addContact" } }));
 	};
 
 	const handleGetContacts = () => {
 		dispatch(getContactsCRL());
 	};
 
+	//TODO ???
 	const handleContactClick = (contact) => {
-		dispatch({ type: userAction.type, payload: { selectedUserID: contact.privateID } });
+		// dispatch({ selectedUserID: contact.privateID });
 	};
 
 	const titleContent = (

@@ -8,6 +8,7 @@ const onlineConnectionChecker = () => {
 	const eventListener = () => {
 		clearLastTimeOut();
 		const status = window.navigator.onLine;
+		//TODO Add it to global
 		appDispatch({
 			onlineStatusCondition: window.navigator.onLine,
 			status,

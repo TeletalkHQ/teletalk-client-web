@@ -1,8 +1,9 @@
-import { userActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
-import { initialAction } from "~/Variables/constants/Initials/InitialOptions/initialOptions";
-import { userInitialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
+import { userInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
+import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
+import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
-const { userAction, phoneNumberAction, verifyCodeAction, loadingAction } = userActions;
+const { userInitialAction, phoneNumberInitialAction, verifyCodeInitialAction, loadingAction } =
+	userInitialActions;
 
 const userReducer = (state = userInitialState, action = initialAction) => {
 	try {
@@ -11,13 +12,13 @@ const userReducer = (state = userInitialState, action = initialAction) => {
 		const stateMan = () => ({ ...state, ...payload });
 
 		switch (type) {
-			case userAction.type:
+			case userInitialAction.type:
 				return stateMan();
 
-			case phoneNumberAction.type:
+			case phoneNumberInitialAction.type:
 				return stateMan();
 
-			case verifyCodeAction.type:
+			case verifyCodeInitialAction.type:
 				return stateMan();
 
 			case loadingAction.type:

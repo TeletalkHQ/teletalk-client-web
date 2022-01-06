@@ -1,3 +1,4 @@
+import { userAction } from "~/Actions/UserActions/userActions";
 import { requester } from "~/Functions/Utils/requester";
 
 const getChatsCRL = () => {
@@ -10,7 +11,7 @@ const getChatsCRL = () => {
 				method: "POST",
 			});
 
-			dispatch({ type: "USER_CHATS", payload: result.data.chat });
+			dispatch(userAction({ chats: result.data.chat }));
 		} catch (error) {
 			console.log("getChatsCRL", error);
 		}
