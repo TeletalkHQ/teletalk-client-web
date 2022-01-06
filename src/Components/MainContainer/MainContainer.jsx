@@ -50,7 +50,7 @@ const MainContainer = () => {
 		} catch (error) {
 			console.log("MainContainer auth catch", error);
 		} finally {
-			dispatch(backdropAction({ open: false }));
+			dispatch(backdropAction({ backdropState: { open: false } }));
 		}
 		// eslint-disable-next-line
 	}, [user.mainToken]);

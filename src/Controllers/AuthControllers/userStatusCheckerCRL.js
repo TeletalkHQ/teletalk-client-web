@@ -21,7 +21,7 @@ const userStatusCheckerCRL = () => {
 
 			dispatch(userAction({ ...userInitialState }));
 		} finally {
-			dispatch(backdropAction({ open: false }));
+			dispatch(backdropAction({ backdropState: { open: false } }));
 		}
 	};
 };

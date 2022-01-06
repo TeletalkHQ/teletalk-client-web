@@ -25,6 +25,7 @@ const AppDrawer = () => {
 			global: {
 				appDrawerState,
 				appDrawerState: { currentAnchor },
+				dialogState,
 			},
 		},
 		hooksOutput: { dispatch },
@@ -37,7 +38,14 @@ const AppDrawer = () => {
 
 		handleDrawerItemClick(target);
 
-		dispatch(appDrawerAction({ anchor, open }));
+		dispatch(
+			appDrawerAction({
+				appDrawerState: {
+					...appDrawerState,
+					anchor: { ...appDrawerState.anchor, [anchor]: open },
+				},
+			}),
+		);
 	};
 
 	const handleDrawerItemClick = (target) => {
@@ -45,7 +53,11 @@ const AppDrawer = () => {
 			return;
 		}
 
-		dispatch(dialogAction({ [target]: { open: true, dialogName: target } }));
+		dispatch(
+			dialogAction({
+				dialogState: { ...dialogState, [target]: { open: true, dialogName: target } },
+			}),
+		);
 	};
 
 	return (

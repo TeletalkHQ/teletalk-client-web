@@ -12,7 +12,7 @@ const DialogContainer = () => {
 	} = useMyContext();
 
 	const handleClose = (target) => {
-		dispatch(dialogAction({ [target]: { open: false, dialogName: target } }));
+		dispatch(dialogAction({ dialogState: { [target]: { open: false, dialogName: target } } }));
 	};
 
 	return (
