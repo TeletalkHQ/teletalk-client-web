@@ -1,10 +1,10 @@
 import { myAxios } from "~/Functions/Utils/myAxios";
 import { responseHandler } from "~/Functions/Utils/responseHandler";
 
-import { initialRequestOptions } from "~/Variables/constants/Initials/InitialOptions/initialOptions";
+import { initialRequestOptions } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 import { handleMakeSnack } from "~/Functions/Others/Injectors/snackbarInjector";
-import { errorActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
+import { errorInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
 
 const requester = async (options = initialRequestOptions) => {
 	try {
@@ -39,7 +39,8 @@ const requester = async (options = initialRequestOptions) => {
 	} catch (error) {
 		console.log("requester catch, error:", error);
 		if (error.code === "ECONNABORTED") {
-			appDispatch({ type: errorActions.econnabortedAction.type });
+			//FIXME
+			appDispatch({ type: errorInitialActions.econnabortedAction.type });
 			handleMakeSnack("ECONNABORTED", { variant: "error" });
 		}
 

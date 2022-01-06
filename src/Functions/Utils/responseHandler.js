@@ -1,5 +1,8 @@
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 import { userInitializer } from "~/Functions/Helpers/userInitializer";
+import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
+import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { userAction } from "~/Actions/UserActions/userActions";
 
 const responseHandler = (response) => {
 	try {
@@ -20,8 +23,12 @@ const responseHandler = (response) => {
 
 				case 401:
 					localStorage.clear();
-					appDispatch({ type: "USER_DATA", payload: userInitializer() });
-					appDispatch({ type: "VIEW_MODE_ONCHANGE", payload: "signIn" });
+					appDispatch(userAction({ ...userInitializer() }));
+					appDispatch(
+						viewModeAction({
+							viewMode: initialViewMode.signIn,
+						}),
+					);
 					rejection();
 					break;
 

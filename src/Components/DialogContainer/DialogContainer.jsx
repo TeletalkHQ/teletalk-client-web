@@ -3,9 +3,7 @@ import AddContactDialog from "~/Components/DialogContainer/AddContactDialog";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
-
-const { dialogAction } = globalActions;
+import { dialogAction } from "~/Actions/GlobalActions/globalActions";
 
 const DialogContainer = () => {
 	const {
@@ -14,10 +12,7 @@ const DialogContainer = () => {
 	} = useMyContext();
 
 	const handleClose = (target) => {
-		dispatch({
-			type: dialogAction.type,
-			payload: { [target]: { open: false, dialogName: target } },
-		});
+		dispatch(dialogAction({ [target]: { open: false, dialogName: target } }));
 	};
 
 	return (

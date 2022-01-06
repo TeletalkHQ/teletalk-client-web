@@ -17,18 +17,13 @@ import { userStatusCheckerCRL } from "~/Controllers/AuthControllers/userStatusCh
 import {
 	onlineConnectionChecker,
 	onlineConnectionCheckerClearTimeout,
-} from "~/Functions/eventListeners/onlineConnectionsChecker";
+} from "~/Functions/EventListeners/onlineConnectionsChecker";
 
-import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
-
-const { backdropAction } = globalActions;
+import { backdropAction } from "~/Actions/GlobalActions/globalActions";
 
 const MainContainer = () => {
 	const {
-		state: {
-			user,
-			other: { onlineStatusCondition, onlineStatus },
-		},
+		state: { user },
 		hooksOutput: { dispatch },
 	} = useMyContext();
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -55,7 +50,7 @@ const MainContainer = () => {
 		} catch (error) {
 			console.log("MainContainer auth catch", error);
 		} finally {
-			dispatch({ type: backdropAction.type, payload: { open: false } });
+			dispatch(backdropAction({ open: false }));
 		}
 		// eslint-disable-next-line
 	}, [user.mainToken]);

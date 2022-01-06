@@ -2,7 +2,7 @@ import { useCallback, useReducer } from "react";
 
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 
-import { INITIAL_STATE } from "~/Variables/constants/Initials/InitialStates/initialStates";
+import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 let useDispatch = () => appDispatch;
 let useSelector = () => INITIAL_STATE;

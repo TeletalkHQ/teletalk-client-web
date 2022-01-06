@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 
 const ConnectionChecker = () => {
+	//TODO Move it to global
 	const [{ condition, status }, setNetwork] = useState({
 		condition: !window.navigator.onLine,
 		status: window.navigator.onLine,

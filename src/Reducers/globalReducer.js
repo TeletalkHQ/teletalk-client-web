@@ -1,37 +1,32 @@
-import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
-import { globalInitialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
-import { initialAction } from "~/Variables/constants/Initials/InitialOptions/initialOptions";
+import { globalInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
+import { globalInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 
-const { appDrawerAction, backdropAction, viewModeAction, dialogAction } = globalActions;
+const {
+	appDrawerInitialAction,
+	backdropInitialAction,
+	viewModeInitialAction,
+	dialogInitialAction,
+} = globalInitialActions;
 
 const globalReducer = (state = globalInitialState, action = initialAction) => {
 	const { payload, type } = action;
 
-	const stateMan = (newState) => ({ ...state, ...newState });
+	const stateMan = () => ({ ...state, ...payload });
 
 	try {
 		switch (type) {
-			case viewModeAction.type:
-				return stateMan({ ...payload });
+			case viewModeInitialAction.type:
+				return stateMan();
 
-			case backdropAction.type:
-				return stateMan({ backdropState: { ...state.backdropState, ...payload } });
+			case backdropInitialAction.type:
+				return stateMan();
 
-			case appDrawerAction.type:
-				return stateMan({
-					appDrawerState: {
-						...state.appDrawerState,
-						anchor: { ...state.appDrawerState.anchor, [payload.anchor]: payload.open },
-					},
-				});
+			case appDrawerInitialAction.type:
+				return stateMan();
 
-			case dialogAction.type:
-				return stateMan({
-					dialogState: {
-						...state.dialogState,
-						...payload,
-					},
-				});
+			case dialogInitialAction.type:
+				return stateMan();
 
 			default:
 				return state;

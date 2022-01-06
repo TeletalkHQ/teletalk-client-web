@@ -1,19 +1,15 @@
 import { verifySignInAPI } from "~/APIs/Auth/verifySignInAPI";
 
-import { initialState } from "~/Variables/constants/Initials/InitialStates/initialStates";
-import { initialViewMode } from "~/Variables/constants/Initials/InitialValues/initialValues";
-import {
-	userActions,
-	globalActions,
-} from "~/Variables/constants/Initials/InitialActions/initialActions";
+import { loadingAction, userAction } from "~/Actions/UserActions/userActions";
+import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
-const { loadingAction, userAction } = userActions;
-const { viewModeAction } = globalActions;
+import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const verifySignInCRL = () => {
 	return async (dispatch, getState = initialState) => {
 		try {
-			dispatch({ type: loadingAction.type, payload: { loading: true } });
+			dispatch(loadingAction({ loading: true }));
 
 			const {
 				user: { verifyCode },
@@ -24,7 +20,7 @@ const verifySignInCRL = () => {
 			if (!verifyToken) {
 				const error = "verifyToken is not defined";
 
-				dispatch({ type: viewModeAction.type, payload: { viewMode: initialViewMode.signIn } });
+				dispatch(viewModeAction({ viewMode: initialViewMode.signIn }));
 
 				throw error;
 			}
@@ -39,14 +35,11 @@ const verifySignInCRL = () => {
 
 			localStorage.setItem("mainToken", mainToken);
 
-			dispatch({
-				type: userAction.type,
-				payload: user,
-			});
+			dispatch(userAction({ ...user }));
 		} catch (error) {
 			console.log("verifySignInCRL", error);
 		} finally {
-			dispatch({ type: loadingAction.type, payload: { loading: false } });
+			dispatch(loadingAction({ loading: false }));
 		}
 	};
 };

@@ -4,21 +4,15 @@ import SignIn from "~/Components/Authentication/SignIn";
 import VerifySignIn from "~/Components/Authentication/VerifySignIn";
 import Copyright from "~/Components/Utils/Copyright";
 
-import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
-
 import { useMyContext } from "~/Hooks/useMyContext";
 
 import { signInCRL } from "~/Controllers/AuthControllers/signInCRL";
 import { verifySignInCRL } from "~/Controllers/AuthControllers/verifySignInCRL";
 import { welcomeCRL } from "~/Controllers/otherControllers/welcomeCRL";
 
-import {
-	userActions,
-	globalActions,
-} from "~/Variables/constants/Initials/InitialActions/initialActions";
-import { initialViewMode } from "~/Variables/constants/Initials/InitialValues/initialValues";
-
-const { viewModeAction } = globalActions;
+import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { phoneNumberAction, verifyCodeAction } from "~/Actions/UserActions/userActions";
+import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
 const Auth = () => {
 	const {
@@ -26,25 +20,24 @@ const Auth = () => {
 			user: { phoneNumber, countryCode, verifyCode, loading },
 			global: { viewMode },
 		},
+		hooksOutput: { dispatch },
 	} = useMyContext();
 
 	useEffect(() => {
-		appDispatch(welcomeCRL());
+		dispatch(welcomeCRL());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleSignInClick = () => {
-		appDispatch(signInCRL());
-	};
-
-	const handlePhoneNumberChange = (e) => {
-		appDispatch({
-			type: userActions.phoneNumberAction.type,
-			payload: { phoneNumber: e.target.value },
-		});
+		dispatch(signInCRL());
 	};
 
 	const handleVerifyClick = () => {
-		appDispatch(verifySignInCRL());
+		dispatch(verifySignInCRL());
+	};
+
+	const handlePhoneNumberChange = (e) => {
+		dispatch(phoneNumberAction({ phoneNumber: e.target.value }));
 	};
 
 	const handleVerifyCodeChange = (e) => {
@@ -52,14 +45,11 @@ const Auth = () => {
 
 		if (value?.length > 6) return;
 
-		appDispatch({ type: userActions.verifyCodeAction.type, payload: { verifyCode: value } });
+		dispatch(verifyCodeAction({ verifyCode: value }));
 	};
 
 	const handleBackClick = () => {
-		appDispatch({
-			type: viewModeAction.type,
-			payload: { viewMode: initialViewMode.signIn },
-		});
+		dispatch(viewModeAction({ viewMode: initialViewMode.signIn }));
 	};
 
 	return (

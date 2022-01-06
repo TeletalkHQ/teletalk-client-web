@@ -1,25 +1,23 @@
 import {
-	Avatar,
+	// Avatar,
 	Box,
-	Grid,
+	// Grid,
 	IconButton,
 	InputAdornment,
 	List,
 	ListItem,
 	TextField,
 } from "@mui/material";
+import { appDrawerAction } from "~/Actions/GlobalActions/globalActions";
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { globalActions } from "~/Variables/constants/Initials/InitialActions/initialActions";
-import { initialValues } from "~/Variables/constants/Initials/InitialValues/initialValues";
+import { initialValues } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import ChatListItem from "./ChatListItem";
 
 const { allChats, bot, channels, unread, editChats, groups, personal, menu, search } =
 	initialValues;
 
 const sidebarList = [allChats, unread, personal, channels, groups, bot, editChats];
-
-const { appDrawerAction } = globalActions;
 
 const ChatList = () => {
 	const {
@@ -34,13 +32,12 @@ const ChatList = () => {
 					<Box>
 						<IconButton
 							onClick={() =>
-								dispatch({
-									type: appDrawerAction.type,
-									payload: {
+								dispatch(
+									appDrawerAction({
 										anchor: state.global.appDrawerState.currentAnchor,
 										open: true,
-									},
-								})
+									}),
+								)
 							}
 						>
 							<menu.Icon />

@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import {
 	Dialog,
-	DialogActions,
+	dialogInitialActions,
 	DialogContent,
 	DialogTitle,
 	Grow,
@@ -56,7 +56,7 @@ const DialogTemplate = ({
 
 			<DialogContent>{dialogContent}</DialogContent>
 
-			<DialogActions>{actionContent}</DialogActions>
+			<dialogInitialActions>{actionContent}</dialogInitialActions>
 			{/* </Box> */}
 		</Dialog>
 	);
