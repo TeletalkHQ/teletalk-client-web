@@ -8,12 +8,13 @@ import { addNewContactCRL } from "~/Controllers/cellphoneController/addNewContac
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { INITIAL_STATE } from "~/Variables/constants/Initials/initialStates";
-
-const AddContactDialog = ({ state = INITIAL_STATE, onClose }) => {
+const AddContactDialog = ({ onClose }) => {
 	const {
-		global: { dialogState },
-	} = state;
+		hooksOutput: { dispatch },
+		state: {
+			global: { dialogState },
+		},
+	} = useMyContext();
 
 	const [contact, setContact] = useState({
 		firstName: "",
@@ -21,12 +22,22 @@ const AddContactDialog = ({ state = INITIAL_STATE, onClose }) => {
 		phoneNumber: "",
 	});
 
-	const {
-		hooksOutput: { dispatch },
-	} = useMyContext();
-
 	const handleInputChange = (event) => {
 		setContact({ ...contact, [event.target.name]: event.target.value });
+	};
+
+	const handleAddNewContact = () => {
+		dispatch(
+			addNewContactCRL({
+				cellphone: {
+					countryCode: "98",
+					countryName: "iran",
+					phoneNumber: contact.phoneNumber,
+				},
+				firstName: contact.firstName,
+				lastName: contact.lastName,
+			}),
+		);
 	};
 
 	const titleContent = (
@@ -81,23 +92,7 @@ const AddContactDialog = ({ state = INITIAL_STATE, onClose }) => {
 					<Button>Cancel</Button>
 				</Box>{" "}
 				<Box>
-					<Button
-						onClick={() => {
-							dispatch(
-								addNewContactCRL({
-									cellphone: {
-										countryCode: "98",
-										countryName: "iran",
-										phoneNumber: contact.phoneNumber,
-									},
-									firstName: contact.firstName,
-									lastName: contact.lastName,
-								}),
-							);
-						}}
-					>
-						Create
-					</Button>
+					<Button onClick={handleAddNewContact}>Create</Button>
 				</Box>
 			</Box>
 		</>
