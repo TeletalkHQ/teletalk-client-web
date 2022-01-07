@@ -1,13 +1,9 @@
-import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/initialStates";
-
-const {
-	temp: { messages },
-} = INITIAL_STATE;
+import { initialContact } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const tempInitialActions = {
-	selectedUserChat: {
-		type: "SELECTED_CHAT_MESSAGES",
-		payload: messages,
+	contactSelected: {
+		type: "CONTACT_SELECTED",
+		payload: { contact: initialContact },
 	},
 };
 

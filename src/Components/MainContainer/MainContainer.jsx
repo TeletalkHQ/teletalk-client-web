@@ -66,7 +66,13 @@ const MainContainer = () => {
 							<ChatContainer />
 						</Grid>
 
-						<Grid sx={{ backgroundColor: "tomato" }} item container lg={9} md={8}>
+						<Grid
+							sx={{ backgroundColor: "tomato", height: "100%" }}
+							item
+							container
+							lg={9}
+							md={8}
+						>
 							<MessageContainer />
 						</Grid>
 					</Grid>

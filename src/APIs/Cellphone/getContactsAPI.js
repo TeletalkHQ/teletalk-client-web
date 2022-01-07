@@ -6,13 +6,13 @@ const { baseRoute, getContacts } = cellphoneRouteTemplate;
 
 const getContactsAPI = (data) => {
 	try {
-		const result = requester({
+		const response = requester({
 			data,
 			method: getContacts.properties.method,
 			url: `${baseRoute.properties.route}${getContacts.properties.route}`,
 		});
 
-		return result;
+		return response;
 	} catch (error) {}
 };
 

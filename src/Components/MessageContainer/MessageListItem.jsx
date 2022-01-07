@@ -1,4 +1,4 @@
-import { Grid, Paper, Slide, Typography } from "@mui/material";
+import { Box, Paper, Slide, Typography } from "@mui/material";
 
 const MessageListItem = ({
 	message,
@@ -11,9 +11,10 @@ const MessageListItem = ({
 }) => {
 	return (
 		<>
-			<Grid container justify={justify} className={messageItemContainerClassName}>
+			<Box display="flex" sx={{ width: "100%", padding: "3px" }} justifyContent={justify}>
 				<Slide direction={direction} in={true} mountOnEnter unmountOnExit>
 					<Paper
+						sx={{ padding: "3px" }}
 						className={`${messageItemClassName}`}
 						elevation={1}
 						// onContextMenu={(e) => onOtherStateChange(e)}
@@ -24,7 +25,7 @@ const MessageListItem = ({
 						</Typography>
 					</Paper>
 				</Slide>
-			</Grid>
+			</Box>
 		</>
 	);
 };

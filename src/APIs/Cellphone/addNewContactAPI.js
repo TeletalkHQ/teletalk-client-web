@@ -5,13 +5,13 @@ import { cellphoneRouteTemplate } from "~/Templates/routeTemplate/cellphoneRoute
 const { baseRoute, addContact } = cellphoneRouteTemplate;
 
 const addNewContactAPI = (data) => {
-	const result = requester({
+	const response = requester({
 		data,
 		method: addContact.properties.method,
 		url: `${baseRoute.properties.route}${addContact.properties.route}`,
 	});
 
-	return result;
+	return response;
 };
 
 export { addNewContactAPI };

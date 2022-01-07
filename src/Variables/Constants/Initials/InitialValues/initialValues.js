@@ -39,4 +39,6 @@ const initialValues = {
 	unread: fn("Unread Messages", "unread", AnnouncementOutlined),
 };
 
-export { initialValues, initialViewMode };
+const initialContact = { firstName: "", lastName: "", phoneNumber: "", privateID: "" };
+
+export { initialValues, initialViewMode, initialContact };
