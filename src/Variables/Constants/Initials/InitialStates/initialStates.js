@@ -1,4 +1,5 @@
 import { userInitializer } from "~/Functions/Helpers/userInitializer";
+import { initialContact } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const otherInitialState = {
 	welcome: { message: "" },
@@ -33,7 +34,38 @@ const errorInitialState = {
 };
 
 const tempInitialState = {
-	messages: [{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" }],
+	messages: [
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
+		{
+			text: "HI!!!!!!!sdasdas!!!!!!!!!!!",
+			messageID: "",
+			senderID: "mHy-1dpYKV9XYnQuw1iudFVAh-dvamFjzcQ",
+		},
+	],
+	messageInputText: "",
+	contact: initialContact,
 };
 
 const INITIAL_STATE = {

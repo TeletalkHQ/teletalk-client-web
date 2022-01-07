@@ -10,7 +10,7 @@ import { getContactsCRL } from "~/Controllers/cellphoneController/getContactsCRL
 import { useMyContext } from "~/Hooks/useMyContext";
 
 import { dialogAction } from "~/Actions/GlobalActions/globalActions";
-import { tempInitialActions } from "~/Variables/Constants/Initials/InitialActions/tempInitialActions";
+import { contactClickAction } from "~/Actions/TempActions/tempActions";
 
 const ContactsDialog = ({ onClose }) => {
 	const {
@@ -44,7 +44,7 @@ const ContactsDialog = ({ onClose }) => {
 
 	//TODO ???
 	const handleContactClick = (contact) => {
-		dispatch({ type: tempInitialActions.selectedUserChat.type, payload: contact.privateID });
+		dispatch(contactClickAction({ contact }));
 	};
 
 	const handleOnClose = () => {
