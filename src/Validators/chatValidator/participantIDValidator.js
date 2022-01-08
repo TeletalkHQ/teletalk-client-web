@@ -16,4 +16,4 @@ const participantIDValidation = {
 
 const participantIDValidator = v.compile(participantIDValidation.properties);
 
-module.exports = { participantIDValidator, participantIDValidation };
+export { participantIDValidator, participantIDValidation };

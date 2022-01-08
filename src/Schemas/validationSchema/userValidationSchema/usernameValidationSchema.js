@@ -26,4 +26,4 @@ const usernameValidationSchema = {
 	},
 };
 
-module.exports = { usernameValidationSchema };
+export { usernameValidationSchema };

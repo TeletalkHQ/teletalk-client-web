@@ -25,4 +25,4 @@ const countryCodeValidationSchema = {
 	},
 };
 
-module.exports = { countryCodeValidationSchema };
+export { countryCodeValidationSchema };

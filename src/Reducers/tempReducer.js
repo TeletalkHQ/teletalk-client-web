@@ -2,7 +2,7 @@ import { tempInitialActions } from "~/Variables/Constants/Initials/InitialAction
 import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 import { tempInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
-const { contactSelected } = tempInitialActions;
+const { contactSelectedInitialAction, messageInputInitialAction } = tempInitialActions;
 
 const tempReducer = (state = tempInitialState, action = initialAction) => {
 	try {
@@ -11,7 +11,10 @@ const tempReducer = (state = tempInitialState, action = initialAction) => {
 		const stateMan = () => ({ ...state, ...payload });
 
 		switch (type) {
-			case contactSelected.type:
+			case contactSelectedInitialAction.type:
+				return stateMan();
+
+			case messageInputInitialAction.type:
 				return stateMan();
 			//
 			//

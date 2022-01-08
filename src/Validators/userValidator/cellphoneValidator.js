@@ -27,4 +27,4 @@ const cellphoneValidation = {
 
 const cellphoneValidator = v.compile(cellphoneValidation.properties);
 
-module.exports = { cellphoneValidator, cellphoneValidation };
+export { cellphoneValidator, cellphoneValidation };

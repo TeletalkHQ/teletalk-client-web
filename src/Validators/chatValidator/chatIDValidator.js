@@ -16,4 +16,4 @@ const chatIDValidation = {
 
 const chatIDValidator = v.compile(chatIDValidation.properties);
 
-module.exports = { chatIDValidator, chatIDValidation };
+export { chatIDValidator, chatIDValidation };

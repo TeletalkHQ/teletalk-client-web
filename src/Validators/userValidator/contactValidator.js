@@ -20,4 +20,4 @@ const contactValidation = {
 
 const contactValidator = v.compile(contactValidation.properties);
 
-module.exports = { contactValidator, contactValidation };
+export { contactValidator, contactValidation };

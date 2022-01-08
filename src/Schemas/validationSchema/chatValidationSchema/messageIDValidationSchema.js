@@ -27,4 +27,4 @@ const messageIDValidationSchema = {
 	},
 };
 
-module.exports = { messageIDValidationSchema };
+export { messageIDValidationSchema };

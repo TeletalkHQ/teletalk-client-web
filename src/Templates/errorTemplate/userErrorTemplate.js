@@ -448,9 +448,8 @@ const userErrorTemplate = {
 	VERIFICATION_CODE_INVALID_LENGTH,
 };
 
-module.exports = {
+export {
 	userErrorTemplate,
-
 	BLACKLIST_INVALID_TYPE,
 	BIO_INVALID_TYPE,
 	BIO_MAXLENGTH_REACH,

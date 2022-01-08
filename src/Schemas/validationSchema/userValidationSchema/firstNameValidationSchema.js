@@ -25,4 +25,4 @@ const firstNameValidationSchema = {
 	},
 };
 
-module.exports = { firstNameValidationSchema };
+export { firstNameValidationSchema };

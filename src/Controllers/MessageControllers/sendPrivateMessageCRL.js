@@ -1,7 +1,7 @@
 import { sendPrivateMessageAPI } from "~/APIs/MessageAPIs/sendPrivateMessageAPI";
 import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
-const sendPrivateMessageController = ({ messageInputText }) => {
+const sendPrivateMessageCRL = ({ messageInputText }) => {
 	return async (dispatch, getState = initialState) => {
 		try {
 			const { user } = getState();
@@ -12,9 +12,9 @@ const sendPrivateMessageController = ({ messageInputText }) => {
 				messageText: messageInputText,
 			});
 		} catch (error) {
-			console.log("sendPrivateMessageController", error);
+			console.log("sendPrivateMessageCRL", error);
 		}
 	};
 };
 
-export { sendPrivateMessageController };
+export { sendPrivateMessageCRL };

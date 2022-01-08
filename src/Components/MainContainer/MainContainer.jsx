@@ -9,24 +9,31 @@ import PortalContainer from "~/Components/Portal/PortalContainer";
 import Auth from "~/Components/Authentication/Auth";
 
 import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector";
-
-import { useMyContext } from "~/Hooks/useMyContext";
-
-import { userStatusCheckerCRL } from "~/Controllers/AuthControllers/userStatusCheckerCRL";
-
 import {
 	onlineConnectionChecker,
 	onlineConnectionCheckerClearTimeout,
 } from "~/Functions/EventListeners/onlineConnectionsChecker";
 
+import { useMyContext } from "~/Hooks/useMyContext";
+
+import { userStatusCheckerCRL } from "~/Controllers/AuthControllers/userStatusCheckerCRL";
+
 import { backdropAction } from "~/Actions/GlobalActions/globalActions";
 
 const MainContainer = () => {
 	const {
-		state: { user },
+		state: {
+			user,
+			temp: { selectedContact },
+		},
 		hooksOutput: { dispatch },
 	} = useMyContext();
 	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+	useMemo(
+		() => snackbarInjector({ enqueueSnackbar, closeSnackbar }),
+		[enqueueSnackbar, closeSnackbar],
+	);
 
 	useEffect(() => {
 		onlineConnectionChecker();
@@ -36,11 +43,6 @@ const MainContainer = () => {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-
-	useMemo(
-		() => snackbarInjector({ enqueueSnackbar, closeSnackbar }),
-		[enqueueSnackbar, closeSnackbar],
-	);
 
 	useEffect(() => {
 		try {
@@ -73,7 +75,7 @@ const MainContainer = () => {
 							lg={9}
 							md={8}
 						>
-							<MessageContainer />
+							{selectedContact.privateID && <MessageContainer />}
 						</Grid>
 					</Grid>
 				</>

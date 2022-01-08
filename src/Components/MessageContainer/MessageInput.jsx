@@ -1,25 +1,7 @@
 import { AttachFile, EmojiEmotions, MicNone, Telegram } from "@mui/icons-material";
 import { Box, IconButton, Paper, TextField } from "@mui/material";
-import { getChatsCRL } from "~/Controllers/otherControllers/getChatsCRL";
 
-import { useMyContext } from "~/Hooks/useMyContext";
-
-const MessageInput = () => {
-	const {
-		state: {
-			temp: { messageInputText },
-		},
-		hooksOutput: { dispatch },
-	} = useMyContext();
-
-	const handleAddNewMessage = async () => {
-		dispatch(getChatsCRL());
-	};
-
-	const handleInputChange = ({ target: { value } }) => {
-		// dispatch({ type: "INPUT_TEXT", payload: value });
-	};
-
+const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
 	return (
 		<Paper sx={{ width: "100%" }}>
 			<Box
@@ -41,8 +23,8 @@ const MessageInput = () => {
 						multiline
 						maxRows={8}
 						autoFocus
-						// onChange={handleInputChange}
-						// value={messageInputText}
+						onChange={onInputChange}
+						value={messageInputText}
 						fullWidth
 						variant="standard"
 					/>
@@ -56,7 +38,7 @@ const MessageInput = () => {
 
 				<Box>
 					{messageInputText ? (
-						<IconButton onClick={() => handleAddNewMessage()}>
+						<IconButton onClick={() => onAddNewMessage()}>
 							<Telegram color="primary" />
 						</IconButton>
 					) : (

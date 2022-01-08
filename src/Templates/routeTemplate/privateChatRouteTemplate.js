@@ -8,6 +8,17 @@ const baseRoute = {
 	},
 };
 
+const getAllChats = {
+	properties: {
+		description: "Use for Start new chat",
+		method: "get",
+		route: "/get/all/chats",
+	},
+	info: {
+		version: "1.0.0",
+	},
+};
+
 const getMessages = {
 	properties: {
 		description: "Use for Start new chat",
@@ -69,6 +80,7 @@ const privateChatRouteTemplate = {
 	},
 
 	baseRoute,
+	getAllChats,
 	getMessages,
 	startChat,
 	sendMessage,
@@ -76,10 +88,10 @@ const privateChatRouteTemplate = {
 	template,
 };
 
-module.exports = {
+export {
 	privateChatRouteTemplate,
-
 	baseRoute,
+	getAllChats,
 	getMessages,
 	startChat,
 	sendMessage,

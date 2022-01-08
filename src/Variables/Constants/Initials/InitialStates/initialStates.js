@@ -36,28 +36,6 @@ const errorInitialState = {
 const tempInitialState = {
 	messages: [
 		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
 		{
 			text: "HI!!!!!!!sdasdas!!!!!!!!!!!",
 			messageID: "",
@@ -65,7 +43,7 @@ const tempInitialState = {
 		},
 	],
 	messageInputText: "",
-	contact: initialContact,
+	selectedContact: initialContact,
 };
 
 const INITIAL_STATE = {

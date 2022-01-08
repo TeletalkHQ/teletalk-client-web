@@ -23,4 +23,4 @@ const lastNameValidationSchema = {
 	},
 };
 
-module.exports = { lastNameValidationSchema };
+export { lastNameValidationSchema };

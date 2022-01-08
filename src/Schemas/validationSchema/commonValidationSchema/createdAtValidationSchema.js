@@ -17,4 +17,4 @@ const createdAtValidationSchema = {
 	},
 };
 
-module.exports = { createdAtValidationSchema };
+export { createdAtValidationSchema };

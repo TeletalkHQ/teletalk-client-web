@@ -23,4 +23,4 @@ const messageTextValidationSchema = {
 	},
 };
 
-module.exports = { messageTextValidationSchema };
+export { messageTextValidationSchema };

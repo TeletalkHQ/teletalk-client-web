@@ -26,8 +26,4 @@ const commonSchemaTemplate = {
 	createdAt,
 };
 
-module.exports = {
-	commonSchemaTemplate,
-
-	createdAt,
-};
+export { commonSchemaTemplate, createdAt };

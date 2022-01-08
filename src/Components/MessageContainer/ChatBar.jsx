@@ -1,7 +1,7 @@
 import { Box, IconButton, Paper, Avatar, Typography } from "@mui/material";
 import { Close, MoreVert } from "@mui/icons-material";
 
-const ChatBar = ({ chatName = "chatName" }) => {
+const ChatBar = ({ chatName, onMessageContainerCloseClick }) => {
 	return (
 		<>
 			<Paper sx={{ width: "100%", height: "100%" }}>
@@ -12,7 +12,7 @@ const ChatBar = ({ chatName = "chatName" }) => {
 					alignItems="center"
 				>
 					<Box>
-						<IconButton>
+						<IconButton onClick={onMessageContainerCloseClick}>
 							<Close />
 						</IconButton>
 					</Box>

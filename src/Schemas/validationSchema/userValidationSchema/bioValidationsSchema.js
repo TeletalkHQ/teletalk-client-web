@@ -22,4 +22,4 @@ const bioValidationsSchema = {
 	},
 };
 
-module.exports = { bioValidationsSchema };
+export { bioValidationsSchema };

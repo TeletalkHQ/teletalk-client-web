@@ -16,4 +16,4 @@ const bioValidation = {
 
 const bioValidator = v.compile(bioValidation.properties);
 
-module.exports = { bioValidator, bioValidation };
+export { bioValidator, bioValidation };

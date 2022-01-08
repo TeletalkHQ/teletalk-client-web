@@ -76,9 +76,8 @@ const userRouteTemplate = {
 	template,
 };
 
-module.exports = {
+export {
 	userRouteTemplate,
-
 	baseRoute,
 	signInNormal,
 	statusCheck,

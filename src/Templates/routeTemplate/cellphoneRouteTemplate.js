@@ -193,9 +193,8 @@ const cellphoneRouteTemplate = {
 	template,
 };
 
-module.exports = {
+export {
 	cellphoneRouteTemplate,
-
 	baseRoute,
 	addBlock,
 	addBlocks,

@@ -23,4 +23,4 @@ const chatIDValidationSchema = {
 	},
 };
 
-module.exports = { chatIDValidationSchema };
+export { chatIDValidationSchema };
