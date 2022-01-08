@@ -16,4 +16,4 @@ const countryNameValidation = {
 
 const countryNameValidator = v.compile(countryNameValidation.properties);
 
-module.exports = { countryNameValidator, countryNameValidation };
+export { countryNameValidator, countryNameValidation };

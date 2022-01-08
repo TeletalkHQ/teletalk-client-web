@@ -16,4 +16,4 @@ const messageTextValidation = {
 
 const messageTextValidator = v.compile(messageTextValidation.properties);
 
-module.exports = { messageTextValidator, messageTextValidation };
+export { messageTextValidator, messageTextValidation };

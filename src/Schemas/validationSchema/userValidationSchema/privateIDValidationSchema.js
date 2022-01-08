@@ -27,4 +27,4 @@ const privateIDValidationSchema = {
 	},
 };
 
-module.exports = { privateIDValidationSchema };
+export { privateIDValidationSchema };

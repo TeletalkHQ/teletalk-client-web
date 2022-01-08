@@ -16,4 +16,4 @@ const macAddressValidation = {
 
 const macAddressValidator = v.compile(macAddressValidation.properties);
 
-module.exports = { macAddressValidator, macAddressValidation };
+export { macAddressValidator, macAddressValidation };

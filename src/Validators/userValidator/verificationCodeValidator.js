@@ -16,4 +16,4 @@ const verificationCodeValidation = {
 
 const verificationCodeValidator = v.compile(verificationCodeValidation.properties);
 
-module.exports = { verificationCodeValidator, verificationCodeValidation };
+export { verificationCodeValidator, verificationCodeValidation };

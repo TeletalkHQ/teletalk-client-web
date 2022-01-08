@@ -16,4 +16,4 @@ const messageIDValidation = {
 
 const messageIDValidator = v.compile(messageIDValidation.properties);
 
-module.exports = { messageIDValidator, messageIDValidation };
+export { messageIDValidator, messageIDValidation };

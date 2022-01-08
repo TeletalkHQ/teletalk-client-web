@@ -16,4 +16,4 @@ const usernameValidation = {
 
 const usernameValidator = v.compile(usernameValidation.properties);
 
-module.exports = { usernameValidator, usernameValidation };
+export { usernameValidator, usernameValidation };

@@ -1,9 +1,12 @@
 import { actionCreator } from "~/Functions/Utils/actionCreator";
 import { tempInitialActions } from "~/Variables/Constants/Initials/InitialActions/tempInitialActions";
 
-const { contactSelected } = tempInitialActions;
+const { contactSelectedInitialAction, messageInputInitialAction } = tempInitialActions;
 
-const contactClickAction = (payload = contactSelected.payload) =>
-	actionCreator(contactSelected.type, payload);
+const contactClickAction = (payload = contactSelectedInitialAction.payload) =>
+	actionCreator(contactSelectedInitialAction.type, payload);
 
-export { contactClickAction };
+const messageInputOnChangeAction = (payload = messageInputInitialAction.payload) =>
+	actionCreator(messageInputInitialAction.type, payload);
+
+export { contactClickAction, messageInputOnChangeAction };

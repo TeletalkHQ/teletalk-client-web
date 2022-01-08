@@ -26,4 +26,4 @@ const phoneNumberValidationSchema = {
 	},
 };
 
-module.exports = { phoneNumberValidationSchema };
+export { phoneNumberValidationSchema };

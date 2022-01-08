@@ -44,10 +44,12 @@ const ContactsDialog = ({ onClose }) => {
 
 	//TODO ???
 	const handleContactClick = (contact) => {
-		dispatch(contactClickAction({ contact }));
+		dispatch(contactClickAction({ selectedContact: contact }));
+
+		handleClose();
 	};
 
-	const handleOnClose = () => {
+	const handleClose = () => {
 		onClose("contacts");
 	};
 
@@ -95,7 +97,7 @@ const ContactsDialog = ({ onClose }) => {
 			dialogContent={dialogContent}
 			open={dialogState.contacts.open}
 			paperStyle={{ height: "90vh" }}
-			onClose={handleOnClose}
+			onClose={handleClose}
 		/>
 	);
 };

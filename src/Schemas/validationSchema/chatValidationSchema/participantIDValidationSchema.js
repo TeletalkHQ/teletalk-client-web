@@ -27,4 +27,4 @@ const participantIDValidationSchema = {
 	},
 };
 
-module.exports = { participantIDValidationSchema };
+export { participantIDValidationSchema };

@@ -27,4 +27,4 @@ const macAddressValidationSchema = {
 	},
 };
 
-module.exports = { macAddressValidationSchema };
+export { macAddressValidationSchema };

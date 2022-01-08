@@ -170,9 +170,8 @@ const chatErrorTemplate = {
 	USER_NO_LONGER_PARTICIPANT,
 };
 
-module.exports = {
+export {
 	chatErrorTemplate,
-
 	CHAT_EXIST,
 	CHAT_ID_EXIST,
 	CHAT_ID_INVALID_TYPE,

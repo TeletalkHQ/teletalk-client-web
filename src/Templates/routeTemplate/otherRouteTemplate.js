@@ -37,10 +37,4 @@ const otherRouteTemplate = {
 	error,
 };
 
-module.exports = {
-	otherRouteTemplate,
-
-	baseRoute,
-	welcome,
-	error,
-};
+export { otherRouteTemplate, baseRoute, welcome, error };

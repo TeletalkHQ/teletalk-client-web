@@ -16,4 +16,4 @@ const privateIDValidation = {
 
 const privateIDValidator = v.compile(privateIDValidation.properties);
 
-module.exports = { privateIDValidator, privateIDValidation };
+export { privateIDValidator, privateIDValidation };

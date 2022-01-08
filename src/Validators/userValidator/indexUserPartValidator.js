@@ -50,7 +50,7 @@ const {
 	verificationCodeValidation,
 } = require("~/validator/userValidator/verificationCodeValidator");
 
-module.exports = {
+export {
 	bioValidation,
 	bioValidator,
 	cellphoneValidation,

@@ -132,9 +132,8 @@ const chatSchemaTemplate = {
 	participantVisibility,
 };
 
-module.exports = {
+export {
 	chatSchemaTemplate,
-
 	chatID,
 	createdAt,
 	messageID,

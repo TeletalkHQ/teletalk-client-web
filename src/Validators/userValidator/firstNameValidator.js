@@ -16,4 +16,4 @@ const firstNameValidation = {
 
 const firstNameValidator = v.compile(firstNameValidation.properties);
 
-module.exports = { firstNameValidator, firstNameValidation };
+export { firstNameValidator, firstNameValidation };

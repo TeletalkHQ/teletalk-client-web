@@ -243,9 +243,8 @@ const userSchemaTemplate = {
 	verificationCode,
 };
 
-module.exports = {
+export {
 	userSchemaTemplate,
-
 	bio,
 	blacklist,
 	contacts,

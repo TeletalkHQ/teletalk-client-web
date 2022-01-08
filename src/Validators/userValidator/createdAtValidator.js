@@ -16,4 +16,4 @@ const createdAtValidation = {
 
 const createdAtValidator = v.compile(createdAtValidation.properties);
 
-module.exports = { createdAtValidator, createdAtValidation };
+export { createdAtValidator, createdAtValidation };

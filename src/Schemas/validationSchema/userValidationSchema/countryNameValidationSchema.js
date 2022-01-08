@@ -24,4 +24,4 @@ const countryNameValidationSchema = {
 	},
 };
 
-module.exports = { countryNameValidationSchema };
+export { countryNameValidationSchema };
