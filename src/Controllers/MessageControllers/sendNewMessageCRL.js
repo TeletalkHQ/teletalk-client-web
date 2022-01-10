@@ -2,6 +2,7 @@ import { sendPrivateMessageAPI } from "~/APIs/MessageAPIs/sendPrivateMessageAPI"
 
 import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { userAction } from "~/Actions/UserActions/userActions";
+import { messageInputOnChangeAction } from "~/Actions/TempActions/tempActions";
 
 const sendNewMessageCRL = () => {
 	return async (dispatch, getState = initialState) => {
@@ -39,8 +40,7 @@ const sendNewMessageCRL = () => {
 			}
 
 			dispatch(userAction({ chats: copyUser.chats }));
-
-			console.log(copyUser);
+			dispatch(messageInputOnChangeAction({ messageInputText: "" }));
 		} catch (error) {
 			console.log("sendNewMessageCRL", error);
 		}

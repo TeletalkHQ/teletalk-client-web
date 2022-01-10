@@ -8,15 +8,16 @@ import MessageContainer from "~/Components/MessageContainer/MessageContainer";
 import PortalContainer from "~/Components/Portal/PortalContainer";
 import Auth from "~/Components/Authentication/Auth";
 
+import { useMyContext } from "~/Hooks/useMyContext";
+
+import { userStatusCheckerCRL } from "~/Controllers/AuthControllers/userStatusCheckerCRL";
+import { getUserChatsLastMessageCRL } from "~/Controllers/MessageControllers/getUserChatsLastMessageCRL";
+
 import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector";
 import {
 	onlineConnectionChecker,
 	onlineConnectionCheckerClearTimeout,
 } from "~/Functions/EventListeners/onlineConnectionsChecker";
-
-import { useMyContext } from "~/Hooks/useMyContext";
-
-import { userStatusCheckerCRL } from "~/Controllers/AuthControllers/userStatusCheckerCRL";
 
 import { backdropAction } from "~/Actions/GlobalActions/globalActions";
 
@@ -45,15 +46,20 @@ const MainContainer = () => {
 	}, []);
 
 	useEffect(() => {
-		try {
-			if (user.privateID) {
-				dispatch(userStatusCheckerCRL());
+		(async () => {
+			try {
+				if (user.privateID) {
+					const { user } = await dispatch(userStatusCheckerCRL());
+
+					console.log(user.chats);
+					await dispatch(getUserChatsLastMessageCRL({ user }));
+				}
+			} catch (error) {
+				console.log("MainContainer auth catch", error);
+			} finally {
+				dispatch(backdropAction({ backdropState: { open: false } }));
 			}
-		} catch (error) {
-			console.log("MainContainer auth catch", error);
-		} finally {
-			dispatch(backdropAction({ backdropState: { open: false } }));
-		}
+		})();
 		// eslint-disable-next-line
 	}, [user.mainToken]);
 
