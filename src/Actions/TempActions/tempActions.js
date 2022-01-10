@@ -9,4 +9,6 @@ const contactClickAction = (payload = contactSelectedInitialAction.payload) =>
 const messageInputOnChangeAction = (payload = messageInputInitialAction.payload) =>
 	actionCreator(messageInputInitialAction.type, payload);
 
-export { contactClickAction, messageInputOnChangeAction };
+const tempActions = { contactClickAction, messageInputOnChangeAction };
+
+export { contactClickAction, messageInputOnChangeAction, tempActions };

@@ -6,7 +6,7 @@ import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/init
 
 let useDispatch = () => appDispatch;
 let useSelector = () => INITIAL_STATE;
-let reducerLogger = () => {};
+// let reducerLogger = () => {};
 
 const combineReducers = (reducers) => {
 	return (state = {}, action) => {

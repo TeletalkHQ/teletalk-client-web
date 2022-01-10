@@ -15,9 +15,12 @@ const userStatusCheckerCRL = () => {
 			delete user.token;
 
 			dispatch(userAction({ ...user }));
+
+			return { user };
 		} catch (error) {
 			console.log("userStatusCheckerCRL", error);
-			localStorage.clear();
+			//TODO Do this in special cases =>
+			// localStorage.clear();
 
 			dispatch(userAction({ ...userInitialState }));
 		} finally {
