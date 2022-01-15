@@ -1,6 +1,6 @@
 import { Avatar, Box, ListItem } from "@mui/material";
 
-const ChatListItem = ({ selected }) => {
+const ChatListItem = ({ selected, message, name }) => {
 	return (
 		<ListItem
 			button
@@ -19,7 +19,7 @@ const ChatListItem = ({ selected }) => {
 					<Box>clock</Box>
 				</Box>
 				<Box display="flex" justifyContent="space-between" alignItems="center">
-					<Box>message</Box>
+					<Box>{message}</Box>
 					<Box>icons</Box>
 				</Box>
 			</Box>

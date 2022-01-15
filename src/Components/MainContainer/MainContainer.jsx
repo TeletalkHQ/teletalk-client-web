@@ -51,7 +51,6 @@ const MainContainer = () => {
 				if (user.privateID) {
 					const { user } = await dispatch(userStatusCheckerCRL());
 
-					console.log(user.chats);
 					await dispatch(getUserChatsLastMessageCRL({ user }));
 				}
 			} catch (error) {

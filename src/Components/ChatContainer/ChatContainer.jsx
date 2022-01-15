@@ -15,6 +15,7 @@ const ChatContainer = () => {
 		state: {
 			global: { appDrawerState },
 			temp: { selectedContact },
+			user: { chats },
 		},
 	} = useMyContext();
 
@@ -32,7 +33,7 @@ const ChatContainer = () => {
 		);
 	};
 
-	const selectedChat = selectedContact.privateID;
+	const selectedChat = selectedContact;
 
 	return (
 		<>
@@ -42,7 +43,7 @@ const ChatContainer = () => {
 				</Box>
 				<Box display="flex" justifyContent="space-between" sx={{ height: "100%" }}>
 					<SideBarList />
-					<ChatList selectedChat={selectedChat} />
+					<ChatList selectedChat={selectedChat} chats={chats} />
 				</Box>
 			</Box>
 		</>

@@ -18,13 +18,13 @@ const ChatList = ({ selectedChat, chats = [] }) => {
 
 							const lastMessage = messages[messages.length - 1];
 
-							const senderName = lastMessage
-							
+							const senderName = lastMessage;
+
 							return (
 								<ChatListItem
 									key={index}
 									message={lastMessage.messageText}
-									name={}
+									// name={}
 									selected={selectedChat.chatID === chat?.chatID}
 								/>
 							);
