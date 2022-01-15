@@ -34,14 +34,7 @@ const errorInitialState = {
 };
 
 const tempInitialState = {
-	messages: [
-		{ text: "HI!!!!!!!!!!!!!!!!!!", messageID: "" },
-		{
-			text: "HI!!!!!!!sdasdas!!!!!!!!!!!",
-			messageID: "",
-			senderID: "mHy-1dpYKV9XYnQuw1iudFVAh-dvamFjzcQ",
-		},
-	],
+	messages: [],
 	messageInputText: "",
 	selectedContact: initialContact,
 };

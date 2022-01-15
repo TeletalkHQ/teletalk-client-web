@@ -41,4 +41,10 @@ const initialValues = {
 
 const initialContact = { firstName: "", lastName: "", phoneNumber: "", privateID: "" };
 
-export { initialValues, initialViewMode, initialContact };
+const initialMessage = {
+	text: "",
+	messageID: "",
+	senderID: "",
+};
+
+export { initialValues, initialViewMode, initialContact, initialMessage };
