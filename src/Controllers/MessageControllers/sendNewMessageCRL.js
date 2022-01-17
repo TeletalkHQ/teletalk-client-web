@@ -17,7 +17,7 @@ const sendNewMessageCRL = () => {
 
 			const response = await sendPrivateMessageAPI({
 				participantID: privateID,
-				messageText: messageInputText,
+				message: messageInputText,
 			});
 
 			const { chatID, newMessage } = response.data;

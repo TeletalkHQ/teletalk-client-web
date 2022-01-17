@@ -15,7 +15,7 @@ const ChatContainer = () => {
 		state: {
 			global: { appDrawerState },
 			temp: { selectedContact },
-			user: { chats },
+			user: { chats, contacts },
 		},
 	} = useMyContext();
 
@@ -33,8 +33,6 @@ const ChatContainer = () => {
 		);
 	};
 
-	const selectedChat = selectedContact;
-
 	return (
 		<>
 			<Box display="flex" flexDirection="column" style={{ width: "100%", height: "100%" }}>
@@ -43,7 +41,7 @@ const ChatContainer = () => {
 				</Box>
 				<Box display="flex" justifyContent="space-between" sx={{ height: "100%" }}>
 					<SideBarList />
-					<ChatList selectedChat={selectedChat} chats={chats} />
+					<ChatList selectedContact={selectedContact} chats={chats} contacts={contacts} />
 				</Box>
 			</Box>
 		</>
