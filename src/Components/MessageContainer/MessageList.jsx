@@ -1,13 +1,20 @@
 import MessageListItem from "~/Components/MessageContainer/MessageListItem";
 
 const MessageList = ({ messages, user }) => {
-	const listOfMessages = messages.map((message, index) => {
+	console.log(messages);
+
+	const listOfMessages = messages.map((messageItem, index) => {
+		console.log(messageItem.messageSender.senderID);
+		console.log(user.privateID === messageItem.messageSender.senderID);
+
 		return (
 			<MessageListItem
 				key={index}
-				message={message.text}
-				justify={user.privateID === message.senderID ? "flex-end" : "flex-start"}
-				direction={user.privateID === message.senderID ? "left" : "right"}
+				message={messageItem.message}
+				justify={
+					user.privateID === messageItem.messageSender.senderID ? "flex-end" : "flex-start"
+				}
+				direction={user.privateID === messageItem.messageSender.senderID ? "left" : "right"}
 			/>
 		);
 	});

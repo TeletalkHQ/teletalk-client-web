@@ -2,7 +2,16 @@ import { List } from "@mui/material";
 
 import ChatListItem from "~/Components/ChatContainer/ChatListItem";
 
-const ChatList = ({ selectedChat, chats = [] }) => {
+import { useMyContext } from "~/Hooks/useMyContext";
+
+import { contactClickAction, setMessagesAction } from "~/Actions/TempActions/tempActions";
+
+const ChatList = ({ chats = [], contacts, selectedContact }) => {
+	const {
+		hooksOutput: { dispatch },
+		state: { user },
+	} = useMyContext();
+
 	return (
 		<>
 			<List
@@ -11,26 +20,37 @@ const ChatList = ({ selectedChat, chats = [] }) => {
 				{(() => {
 					try {
 						const chatList = chats?.map((chat, index) => {
-							// const findParticipant = item.participants.find(
-							// 	(participant) => participant.participantID === );
-
 							const messages = chat.messages;
 
+							console.log(messages);
 							const lastMessage = messages[messages.length - 1];
 
-							const senderName = lastMessage;
+							const senderID = lastMessage.messageSender.senderID;
+
+							const sender =
+								contacts.find((contact) => contact.privateID === senderID) || user;
+
+							const findParticipant = chat.participants.find(
+								(participant) => participant?.participantID === selectedContact?.privateID,
+							);
 
 							return (
 								<ChatListItem
 									key={index}
-									message={lastMessage.messageText}
-									// name={}
-									selected={selectedChat.chatID === chat?.chatID}
+									message={lastMessage.message}
+									name={`${sender?.firstName} ${sender?.lastName}`}
+									selected={!!findParticipant}
+									onChatListItemClick={() => {
+										dispatch(
+											contactClickAction({
+												selectedContact: sender,
+											}),
+										);
+										dispatch(setMessagesAction({ messages }));
+									}}
 								/>
 							);
 						});
-
-						console.log(chatList);
 
 						return chatList;
 					} catch (error) {
