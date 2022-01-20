@@ -16,6 +16,7 @@ import { rootReducer } from "~/Reducers/index";
 import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 import { baseTheme } from "~/Theme/baseTheme";
+import { socket } from "./Socket/socket";
 
 export function App() {
 	const [state = INITIAL_STATE, dispatch] = useThunkReducer(rootReducer, INITIAL_STATE);
