@@ -4,21 +4,12 @@ const userInitializer = () => {
 	try {
 		const user = {
 			bio: "",
-			//FIXME
-			blacklist: [
-				{
-					countryCode: "",
-					countryName: "",
-					phoneNumber: "",
-				},
-			],
+			blacklist: [],
 			phoneNumber: "",
 			countryCode: "98",
 			countryName: "iran",
-			chats: [{ chatID: "" }],
-			contacts: [
-				{ countryCode: "", countryName: "", firstName: "", lastName: "", phoneNumber: "" },
-			],
+			chats: [],
+			contacts: [],
 			firstName: "",
 			lastName: "",
 			mainToken: "",
