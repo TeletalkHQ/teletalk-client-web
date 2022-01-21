@@ -7,8 +7,11 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import MainContainer from "~/Components/MainContainer/MainContainer";
 
-import { useThunkReducer } from "~/Hooks/useThunkReducer";
+import { socket } from "~/Functions/Others/socket";
 import { dispatchInjector } from "~/Functions/Others/Injectors/dispatchInjector";
+
+import { useThunkReducer } from "~/Hooks/useThunkReducer";
+
 import { MainContext } from "~/Contexts/MainContext";
 
 import { rootReducer } from "~/Reducers/index";
@@ -16,7 +19,6 @@ import { rootReducer } from "~/Reducers/index";
 import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 import { baseTheme } from "~/Theme/baseTheme";
-import { socket } from "./Socket/socket";
 
 export function App() {
 	const [state = INITIAL_STATE, dispatch] = useThunkReducer(rootReducer, INITIAL_STATE);
