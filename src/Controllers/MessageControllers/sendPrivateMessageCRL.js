@@ -1,20 +1,58 @@
 import { sendPrivateMessageAPI } from "~/APIs/MessageAPIs/sendPrivateMessageAPI";
-import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
-const sendPrivateMessageCRL = ({ messageInputText }) => {
+import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { userAction } from "~/Actions/UserActions/userActions";
+import { messageInputOnChangeAction } from "~/Actions/TempActions/tempActions";
+
+const sendNewMessageCRL = () => {
 	return async (dispatch, getState = initialState) => {
 		try {
-			const { user } = getState();
+			const {
+				temp: {
+					messageInputText,
+					selectedContact: { privateID },
+				},
+				user,
+			} = getState();
 
-			await sendPrivateMessageAPI({
-				chatID: "Xfl0OHSW-4FrHgX7fUrXHUKGr_jhIqaZApb",
-				participantID: user.privateID,
-				messageText: messageInputText,
+			const response = await sendPrivateMessageAPI({
+				participantID: privateID,
+				message: messageInputText,
 			});
+
+			const { chatID, newMessage } = response.data;
+
+			const copyUser = { ...user };
+
+			const chatIndex = copyUser.chats?.findIndex((chat) => chat?.chatID === chatID);
+
+			if (chatIndex !== -1) {
+				console.log(chatIndex);
+				const chat = copyUser.chats.find((chat) => chat.chatID === chatID) || {
+					chatID,
+					messages: [newMessage],
+				};
+				const messages = handleAddNewMessage({ newMessage, messages: chat.messages || [] });
+
+				const newChat = { ...chat, messages };
+
+				copyUser.chats.splice(chatIndex, 1, newChat);
+			}
+
+			dispatch(userAction({ chats: copyUser.chats }));
+			dispatch(messageInputOnChangeAction({ messageInputText: "" }));
 		} catch (error) {
-			console.log("sendPrivateMessageCRL", error);
+			console.log("sendNewMessageCRL", error);
 		}
 	};
 };
 
-export { sendPrivateMessageCRL };
+const handleAddNewMessage = ({ messages, newMessage }) => {
+	const copyMessages = [...messages];
+
+	copyMessages.push(newMessage);
+
+	return copyMessages;
+};
+
+export { sendNewMessageCRL };
