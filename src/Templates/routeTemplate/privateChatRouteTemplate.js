@@ -21,8 +21,8 @@ const getAllChats = {
 
 const getMessages = {
 	properties: {
-		description: "Use for Start new chat",
-		method: "get",
+		description: "Use for get all messages of specific chat",
+		method: "post",
 		route: "/get/messages",
 	},
 	info: {

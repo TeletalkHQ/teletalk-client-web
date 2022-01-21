@@ -4,7 +4,8 @@ import ChatListItem from "~/Components/ChatContainer/ChatListItem";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { contactClickAction, setMessagesAction } from "~/Actions/TempActions/tempActions";
+import { contactClickAction } from "~/Actions/TempActions/tempActions";
+import { getAllChatMessagesCRL } from "~/Controllers/MessageControllers/getAllChatMessagesCRL";
 
 const ChatList = ({ chats = [], contacts, selectedContact }) => {
 	const {
@@ -22,34 +23,36 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
 						const chatList = chats?.map((chat, index) => {
 							const messages = chat.messages;
 
-							console.log(messages);
-							const lastMessage = messages[messages.length - 1];
+							if (messages?.length) {
+								const lastMessage = messages[messages.length - 1];
 
-							const senderID = lastMessage.messageSender.senderID;
+								const senderID = lastMessage.messageSender.senderID;
 
-							const sender =
-								contacts.find((contact) => contact.privateID === senderID) || user;
+								const sender =
+									contacts.find((contact) => contact.privateID === senderID) || user;
 
-							const findParticipant = chat.participants.find(
-								(participant) => participant?.participantID === selectedContact?.privateID,
-							);
+								const findParticipant = chat.participants.find(
+									(participant) => participant?.participantID === selectedContact?.privateID,
+								);
 
-							return (
-								<ChatListItem
-									key={index}
-									message={lastMessage.message}
-									name={`${sender?.firstName} ${sender?.lastName}`}
-									selected={!!findParticipant}
-									onChatListItemClick={() => {
-										dispatch(
-											contactClickAction({
-												selectedContact: sender,
-											}),
-										);
-										dispatch(setMessagesAction({ messages }));
-									}}
-								/>
-							);
+								return (
+									<ChatListItem
+										key={index}
+										message={lastMessage.message}
+										name={`${sender?.firstName} ${sender?.lastName}`}
+										selected={!!findParticipant}
+										onChatListItemClick={() => {
+											dispatch(
+												contactClickAction({
+													selectedContact: sender,
+												}),
+											);
+
+											dispatch(getAllChatMessagesCRL({ chatID: chat.chatID }));
+										}}
+									/>
+								);
+							}
 						});
 
 						return chatList;

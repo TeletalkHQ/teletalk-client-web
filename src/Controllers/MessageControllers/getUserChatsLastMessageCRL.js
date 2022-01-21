@@ -42,8 +42,6 @@ const getUserChatsLastMessageCRL = ({ user }) => {
 		try {
 			const response = await getUserChatsLastMessageAPI();
 
-			// const { user } = getState(); // ???
-
 			const { chatsWithLastMessage } = handleAddUserLastMessage({
 				chats: user.chats,
 				chatsWithLastMessage: response.data.chats,

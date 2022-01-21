@@ -13,19 +13,34 @@ import {
 
 import { initialContact } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { sendNewMessageCRL } from "~/Controllers/MessageControllers/sendPrivateMessageCRL";
+import { useEffect } from "react";
+import { getAllChatMessagesCRL } from "~/Controllers/MessageControllers/getAllChatMessagesCRL";
 
 const MessageContainer = () => {
 	const {
 		state: {
 			temp: {
-				selectedContact: { firstName, lastName },
+				selectedContact: { firstName, lastName, privateID },
 				messageInputText,
-				messages,
 			},
 			user,
 		},
 		hooksOutput: { dispatch },
 	} = useMyContext();
+
+	useEffect(() => {
+		const chat = user.chats.find((chat) => {
+			return chat.participants.find((participant) => participant.participantID === privateID);
+		});
+
+		const intervalID = setInterval(() => {
+			dispatch(getAllChatMessagesCRL({ chatID: chat.chatID }));
+		}, 1000);
+
+		return () => {
+			clearInterval(intervalID);
+		};
+	}, []);
 
 	const handleInputChange = ({ target: { value } }) => {
 		dispatch(messageInputOnChangeAction({ messageInputText: value }));
@@ -38,6 +53,15 @@ const MessageContainer = () => {
 	const handleMessageContainerCloseClick = () => {
 		dispatch(contactClickAction({ selectedContact: { ...initialContact } }));
 	};
+
+	//FIXME
+	const chat = user.chats.find((chat) => {
+		return chat.participants.find((participant) => participant.participantID === privateID);
+	});
+
+	if (!chat) {
+		return null;
+	}
 
 	return (
 		<Box
@@ -55,7 +79,7 @@ const MessageContainer = () => {
 			</Box>
 
 			<Box sx={{ height: "100%", width: "100%" }}>
-				<MessageList messages={messages} user={user} />
+				<MessageList messages={chat.messages} user={user} />
 			</Box>
 
 			<Box sx={{ width: "100%" }}>
