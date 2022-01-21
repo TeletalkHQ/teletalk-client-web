@@ -12,7 +12,7 @@ import {
 } from "~/Actions/TempActions/tempActions";
 
 import { initialContact } from "~/Variables/Constants/Initials/InitialValues/initialValues";
-import { sendNewMessageCRL } from "~/Controllers/MessageControllers/sendNewMessageCRL";
+import { sendNewMessageCRL } from "~/Controllers/MessageControllers/sendPrivateMessageCRL";
 
 const MessageContainer = () => {
 	const {
