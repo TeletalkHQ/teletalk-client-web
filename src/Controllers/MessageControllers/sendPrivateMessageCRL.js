@@ -28,7 +28,7 @@ const sendNewMessageCRL = () => {
 
 			if (chatIndex !== -1) {
 				console.log(chatIndex);
-				const chat = copyUser.chats.find((chat) => chat.chatID === chatID) || {
+				const chat = copyUser.chats[chatIndex] || {
 					chatID,
 					messages: [newMessage],
 				};
@@ -36,7 +36,10 @@ const sendNewMessageCRL = () => {
 
 				const newChat = { ...chat, messages };
 
+				console.log(newChat);
 				copyUser.chats.splice(chatIndex, 1, newChat);
+
+				console.log(copyUser);
 			}
 
 			dispatch(userAction({ chats: copyUser.chats }));

@@ -4,9 +4,6 @@ const MessageList = ({ messages, user }) => {
 	console.log(messages);
 
 	const listOfMessages = messages.map((messageItem, index) => {
-		console.log(messageItem.messageSender.senderID);
-		console.log(user.privateID === messageItem.messageSender.senderID);
-
 		return (
 			<MessageListItem
 				key={index}
