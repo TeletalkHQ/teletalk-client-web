@@ -1,8 +1,6 @@
 import MessageListItem from "~/Components/MessageContainer/MessageListItem";
 
 const MessageList = ({ messages, user }) => {
-	console.log(messages);
-
 	const listOfMessages = messages.map((messageItem, index) => {
 		return (
 			<MessageListItem

@@ -21,6 +21,7 @@ const MessageContainer = () => {
 		state: {
 			temp: {
 				selectedContact: { firstName, lastName, privateID },
+				selectedContact,
 				messageInputText,
 			},
 			user,
@@ -29,17 +30,25 @@ const MessageContainer = () => {
 	} = useMyContext();
 
 	useEffect(() => {
-		const chat = user.chats.find((chat) => {
-			return chat.participants.find((participant) => participant.participantID === privateID);
-		});
+		try {
+			const chat = user.chats.find((chat) => {
+				return chat.participants.find(
+					(participant) => participant.participantID === privateID,
+				);
+			});
 
-		const intervalID = setInterval(() => {
-			dispatch(getAllChatMessagesCRL({ chatID: chat.chatID }));
-		}, 1000);
+			if (chat) {
+				const intervalID = setInterval(() => {
+					dispatch(getAllChatMessagesCRL({ chatID: chat.chatID }));
+				}, 1000);
 
-		return () => {
-			clearInterval(intervalID);
-		};
+				return () => {
+					clearInterval(intervalID);
+				};
+			}
+		} catch (error) {
+			console.log("MessageContainer useEffect for chat updater", error);
+		}
 	}, []);
 
 	const handleInputChange = ({ target: { value } }) => {
@@ -59,7 +68,7 @@ const MessageContainer = () => {
 		return chat.participants.find((participant) => participant.participantID === privateID);
 	});
 
-	if (!chat) {
+	if (!chat && !selectedContact) {
 		return null;
 	}
 
@@ -79,7 +88,7 @@ const MessageContainer = () => {
 			</Box>
 
 			<Box sx={{ height: "100%", width: "100%" }}>
-				<MessageList messages={chat.messages} user={user} />
+				<MessageList messages={chat?.messages || []} user={user} />
 			</Box>
 
 			<Box sx={{ width: "100%" }}>
