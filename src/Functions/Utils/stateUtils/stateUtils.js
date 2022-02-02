@@ -20,4 +20,6 @@ const copyMan = ({ state, cb }) => {
 	}
 };
 
-export { copyMan };
+const newStateReplacer = ({ state, payload }) => ({ ...state, ...payload });
+
+export { copyMan, newStateReplacer };

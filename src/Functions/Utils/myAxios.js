@@ -9,6 +9,8 @@ const myAxios = axios.create({
 	validateStatus: false,
 });
 
+export { myAxios };
+
 // //* Return is interceptor, so if you want to remove interceptor you need that.
 // axios.interceptors.response.use(
 // 	function (response) {
@@ -165,5 +167,3 @@ const myAxios = axios.create({
 //   }
 //   return config;
 // });
-
-export { myAxios };

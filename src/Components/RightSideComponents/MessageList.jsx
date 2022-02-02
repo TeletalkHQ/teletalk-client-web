@@ -1,4 +1,4 @@
-import MessageListItem from "~/Components/MessageContainer/MessageListItem";
+import MessageListItem from "~/Components/RightSideComponents/MessageListItem";
 
 const MessageList = ({ messages, user }) => {
 	const listOfMessages = messages.map((messageItem, index) => {

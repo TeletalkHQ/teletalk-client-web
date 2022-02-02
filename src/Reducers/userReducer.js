@@ -1,3 +1,5 @@
+import { newStateReplacer } from "~/Functions/Utils/stateUtils/stateUtils";
+
 import { userInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
 import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
@@ -13,22 +15,21 @@ const userReducer = (state = userInitialState, action = initialAction) => {
 	try {
 		const { payload, type } = action;
 
-		const stateMan = () => ({ ...state, ...payload });
+		const fn = () => newStateReplacer({ state, payload });
 
 		switch (type) {
 			case userInitialAction.type:
-				return stateMan();
+				return fn();
 
 			case phoneNumberInitialAction.type:
-				return stateMan();
+				return fn();
 
 			case verifyCodeInitialAction.type:
-				return stateMan();
+				return fn();
 
 			case loadingInitialAction.type:
-				return stateMan();
-			//
-			//
+				return fn();
+
 			default:
 				return state;
 		}

@@ -1,6 +1,6 @@
 import { List } from "@mui/material";
 
-import ChatListItem from "~/Components/ChatContainer/ChatListItem";
+import ChatListItem from "~/Components/LeftSideComponents/ChatListItem";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 

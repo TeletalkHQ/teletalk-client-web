@@ -1,6 +1,6 @@
 import { requester } from "~/Functions/Utils/requester";
 
-import { userRouteTemplate } from "~/Templates/routeTemplate/userRouteTemplate";
+import { userRouteTemplate } from "~/Templates/routeTemplates/userRouteTemplate";
 
 const { baseRoute, verifySignInNormal } = userRouteTemplate;
 

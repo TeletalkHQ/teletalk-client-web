@@ -1,7 +1,7 @@
 import { globalInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
 import { globalInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
-
+import { newStateReplacer } from "~/Functions/Utils/stateUtils/stateUtils";
 const {
 	appDrawerInitialAction,
 	backdropInitialAction,
@@ -12,21 +12,21 @@ const {
 const globalReducer = (state = globalInitialState, action = initialAction) => {
 	const { payload, type } = action;
 
-	const stateMan = () => ({ ...state, ...payload });
+	const fn = () => newStateReplacer({ state, payload });
 
 	try {
 		switch (type) {
 			case viewModeInitialAction.type:
-				return stateMan();
+				return fn();
 
 			case backdropInitialAction.type:
-				return stateMan();
+				return fn();
 
 			case appDrawerInitialAction.type:
-				return stateMan();
+				return fn();
 
 			case dialogInitialAction.type:
-				return stateMan();
+				return fn();
 
 			default:
 				return state;

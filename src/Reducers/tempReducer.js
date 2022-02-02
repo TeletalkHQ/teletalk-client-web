@@ -1,6 +1,7 @@
 import { tempInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
 import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 import { tempInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { newStateReplacer } from "~/Functions/Utils/stateUtils/stateUtils";
 
 const { contactSelectedInitialAction, messageInputInitialAction, setMessagesInitialAction } =
 	tempInitialActions;
@@ -9,17 +10,17 @@ const tempReducer = (state = tempInitialState, action = initialAction) => {
 	try {
 		const { payload, type } = action;
 
-		const stateMan = () => ({ ...state, ...payload });
+		const fn = () => newStateReplacer({ state, payload });
 
 		switch (type) {
 			case contactSelectedInitialAction.type:
-				return stateMan();
+				return fn();
 
 			case setMessagesInitialAction.type:
-				return stateMan();
+				return fn();
 
 			case messageInputInitialAction.type:
-				return stateMan();
+				return fn();
 			//
 			//
 			default:

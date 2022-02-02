@@ -1,6 +1,6 @@
 import { requester } from "~/Functions/Utils/requester";
 
-import { cellphoneRouteTemplate } from "~/Templates/routeTemplate/cellphoneRouteTemplate";
+import { cellphoneRouteTemplate } from "~/Templates/routeTemplates/cellphoneRouteTemplate";
 
 const { baseRoute, getContacts } = cellphoneRouteTemplate;
 
