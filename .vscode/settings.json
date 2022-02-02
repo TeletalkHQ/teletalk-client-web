@@ -22,7 +22,7 @@
 		"**/Thumbs.db": true,
 		"config-overrides.js": true,
 		"jsconfig.json": true,
-		"yarn.lock": true,
+		"yarn.lock": false,
 		"reportWebVitals.js": true,
 		"src/reportWebVitals.js": true,
 		"src/setupTest.js": true,
