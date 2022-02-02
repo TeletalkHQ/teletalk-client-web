@@ -1,5 +1,5 @@
 import { requester } from "~/Functions/Utils/requester";
-import { privateChatRouteTemplate } from "~/Templates/routeTemplate/privateChatRouteTemplate";
+import { privateChatRouteTemplate } from "~/Templates/routeTemplates/privateChatRouteTemplate";
 
 const { baseRoute, sendMessage } = privateChatRouteTemplate;
 

@@ -1,21 +1,22 @@
 import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 import { otherInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { newStateReplacer } from "~/Functions/Utils/stateUtils/stateUtils";
 
 const otherReducer = (state = otherInitialState, action = initialAction) => {
 	try {
 		const { payload, type } = action;
 
-		const stateMan = () => ({ ...state, ...payload });
+		const fn = () => newStateReplacer({ state, payload });
 
 		switch (type) {
 			case "WELCOME":
-				return stateMan();
+				return fn();
 
 			case "USER_CHATS":
-				return stateMan();
+				return fn();
 
 			case "INPUT_TEXT":
-				return stateMan();
+				return fn();
 
 			default:
 				return state;

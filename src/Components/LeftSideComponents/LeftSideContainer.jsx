@@ -1,15 +1,15 @@
 import { Box } from "@mui/material";
 
-import ChatList from "~/Components/ChatContainer/ChatList";
+import ChatList from "~/Components/LeftSideComponents/ChatList";
 
 import { appDrawerAction } from "~/Actions/GlobalActions/globalActions";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import SearchBar from "~/Components/ChatContainer/SearchBar";
-import SideBarList from "~/Components/ChatContainer/SideBarList";
+import SearchBar from "~/Components/LeftSideComponents/SearchBar";
+import SideBarList from "~/Components/LeftSideComponents/SideBarList";
 
-const ChatContainer = () => {
+const LeftSideContainer = () => {
 	const {
 		hooksOutput: { dispatch },
 		state: {
@@ -48,4 +48,4 @@ const ChatContainer = () => {
 	);
 };
 
-export default ChatContainer;
+export default LeftSideContainer;

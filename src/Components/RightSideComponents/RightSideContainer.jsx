@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 
-import MessageInput from "~/Components/MessageContainer/MessageInput";
-import MessageList from "~/Components/MessageContainer/MessageList";
-import ChatBar from "~/Components/MessageContainer/ChatBar";
+import MessageInput from "~/Components/RightSideComponents/MessageInput";
+import MessageList from "~/Components/RightSideComponents/MessageList";
+import ChatBar from "~/Components/RightSideComponents/ChatBar";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
@@ -16,7 +16,7 @@ import { sendNewMessageCRL } from "~/Controllers/MessageControllers/sendPrivateM
 import { useEffect } from "react";
 import { getAllChatMessagesCRL } from "~/Controllers/MessageControllers/getAllChatMessagesCRL";
 
-const MessageContainer = () => {
+const RightSideContainer = () => {
 	const {
 		state: {
 			temp: {
@@ -47,7 +47,7 @@ const MessageContainer = () => {
 				};
 			}
 		} catch (error) {
-			console.log("MessageContainer useEffect for chat updater", error);
+			console.log("RightSideContainer useEffect for chat updater", error);
 		}
 	}, []);
 
@@ -102,4 +102,4 @@ const MessageContainer = () => {
 	);
 };
 
-export default MessageContainer;
+export default RightSideContainer;

@@ -31,7 +31,7 @@
 		"**/.gitignore": true,
 		"README.md": true,
 		"**/yarn-error.log": true,
-		"**/package.json": true,
+		"**/package.json": false,
 		"index.js": true,
 		"node_modules": true
 	},

@@ -3,8 +3,8 @@ import { useEffect, useMemo } from "react";
 import { Grid } from "@mui/material";
 import { useSnackbar } from "notistack";
 
-import ChatContainer from "~/Components/ChatContainer/ChatContainer";
-import MessageContainer from "~/Components/MessageContainer/MessageContainer";
+import LeftSideContainer from "~/Components/LeftSideComponents/LeftSideContainer";
+import RightSideContainer from "~/Components/RightSideComponents/RightSideContainer";
 import PortalContainer from "~/Components/Portal/PortalContainer";
 import Auth from "~/Components/Authentication/Auth";
 
@@ -51,7 +51,7 @@ const MainContainer = () => {
 				if (user.privateID) {
 					const { user } = await dispatch(userStatusCheckerCRL());
 
-					await dispatch(getUserChatsLastMessageCRL({ user }));
+					dispatch(getUserChatsLastMessageCRL({ user }));
 				}
 			} catch (error) {
 				console.log("MainContainer auth catch", error);
@@ -70,7 +70,7 @@ const MainContainer = () => {
 				<>
 					<Grid container style={{ height: "100vh" }}>
 						<Grid sx={{ backgroundColor: "lightcyan" }} item container sm={12} md={4} lg={3}>
-							<ChatContainer />
+							<LeftSideContainer />
 						</Grid>
 
 						<Grid
@@ -80,7 +80,7 @@ const MainContainer = () => {
 							lg={9}
 							md={8}
 						>
-							{selectedContact.privateID && <MessageContainer />}
+							{selectedContact.privateID && <RightSideContainer />}
 						</Grid>
 					</Grid>
 				</>

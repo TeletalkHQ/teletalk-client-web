@@ -1,6 +1,6 @@
 import { requester } from "~/Functions/Utils/requester";
 
-import { otherRouteTemplate } from "~/Templates/routeTemplate/otherRouteTemplate";
+import { otherRouteTemplate } from "~/Templates/routeTemplates/otherRouteTemplate";
 
 const { baseRoute, welcome } = otherRouteTemplate;
 
