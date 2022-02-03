@@ -2,3 +2,4 @@ Use swr ?
 Add super logger like tts logger
 Use framer/motion for animation ?
 Add versioning system
+Add notification system

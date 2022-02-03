@@ -7,7 +7,6 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import MainContainer from "~/Components/MainContainer/MainContainer";
 
-import { socket } from "~/Functions/Others/socket";
 import { dispatchInjector } from "~/Functions/Others/Injectors/dispatchInjector";
 
 import { useThunkReducer } from "~/Hooks/useThunkReducer";

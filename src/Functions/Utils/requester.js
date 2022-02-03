@@ -13,6 +13,7 @@ const requester = async (options = initialRequestOptions) => {
 			...options,
 			data: { ...initialRequestOptions.data, ...options?.data },
 			headers: { ...initialRequestOptions.headers, ...options?.headers },
+			token: options?.token || localStorage.getItem("mainToken"),
 		};
 
 		if (!finalOptions.url) {
@@ -20,10 +21,7 @@ const requester = async (options = initialRequestOptions) => {
 			throw error;
 		}
 
-		//TODO get out token from data!
-		const token = options?.data?.token || localStorage.getItem("mainToken");
-
-		finalOptions.headers.Authorization = `Bearer ${token}`;
+		finalOptions.headers.Authorization = `Bearer ${finalOptions.token}`;
 
 		if (options.data && !Object.keys(options?.data)?.length) {
 			delete finalOptions.data;
@@ -38,8 +36,11 @@ const requester = async (options = initialRequestOptions) => {
 		return checkedResponse;
 	} catch (error) {
 		console.log("requester catch, error:", error);
-		if (error.code === "ECONNABORTED") {
-			//FIXME
+
+		if (!window?.navigator?.onLine) {
+			appDispatch({ type: errorInitialActions.econnabortedAction.type });
+			handleMakeSnack("ECONNABORTED", { variant: "error" });
+		} else if (error?.code === "ECONNABORTED") {
 			appDispatch({ type: errorInitialActions.econnabortedAction.type });
 			handleMakeSnack("ECONNABORTED", { variant: "error" });
 		}

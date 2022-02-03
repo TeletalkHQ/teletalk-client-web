@@ -27,6 +27,8 @@ const verifySignInCRL = () => {
 
 			const response = await verifySignInAPI({ verifyCode, token: verifyToken });
 
+			localStorage.removeItem("verifyToken");
+
 			const { user } = response.data;
 
 			const mainToken = user.token;

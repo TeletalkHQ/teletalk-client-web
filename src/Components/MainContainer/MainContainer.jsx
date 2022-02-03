@@ -14,10 +14,7 @@ import { userStatusCheckerCRL } from "~/Controllers/AuthControllers/userStatusCh
 import { getUserChatsLastMessageCRL } from "~/Controllers/MessageControllers/getUserChatsLastMessageCRL";
 
 import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector";
-import {
-	onlineConnectionChecker,
-	onlineConnectionCheckerClearTimeout,
-} from "~/Functions/EventListeners/onlineConnectionsChecker";
+import { onlineConnectionChecker } from "~/Functions/EventListeners/onlineConnectionsChecker";
 
 import { backdropAction } from "~/Actions/GlobalActions/globalActions";
 
@@ -39,9 +36,6 @@ const MainContainer = () => {
 	useEffect(() => {
 		onlineConnectionChecker();
 
-		return () => {
-			onlineConnectionCheckerClearTimeout();
-		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -51,7 +45,7 @@ const MainContainer = () => {
 				if (user.privateID) {
 					const { user } = await dispatch(userStatusCheckerCRL());
 
-					dispatch(getUserChatsLastMessageCRL({ user }));
+					await dispatch(getUserChatsLastMessageCRL({ user }));
 				}
 			} catch (error) {
 				console.log("MainContainer auth catch", error);
