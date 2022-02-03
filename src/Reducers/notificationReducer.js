@@ -4,7 +4,7 @@ import { errorInitialState } from "~/Variables/Constants/Initials/InitialStates/
 import { newStateReplacer } from "~/Functions/Utils/stateUtils/stateUtils";
 const { econnabortedAction } = errorInitialActions;
 
-const errorReducer = (state = errorInitialState, action = initialAction) => {
+const notificationReducer = (state = errorInitialState, action = initialAction) => {
 	try {
 		const { payload, type } = action;
 
@@ -18,8 +18,8 @@ const errorReducer = (state = errorInitialState, action = initialAction) => {
 				return state;
 		}
 	} catch (error) {
-		console.log("errorReducer", error);
+		console.log("notificationReducer", error);
 	}
 };
 
-export { errorReducer };
+export { notificationReducer };

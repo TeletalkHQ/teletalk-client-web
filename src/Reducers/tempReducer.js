@@ -3,8 +3,12 @@ import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/ini
 import { tempInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { newStateReplacer } from "~/Functions/Utils/stateUtils/stateUtils";
 
-const { contactSelectedInitialAction, messageInputInitialAction, setMessagesInitialAction } =
-	tempInitialActions;
+const {
+	contactSelectedInitialAction,
+	messageInputInitialAction,
+	onlineStatusInitialAction,
+	setMessagesInitialAction,
+} = tempInitialActions;
 
 const tempReducer = (state = tempInitialState, action = initialAction) => {
 	try {
@@ -21,8 +25,10 @@ const tempReducer = (state = tempInitialState, action = initialAction) => {
 
 			case messageInputInitialAction.type:
 				return fn();
-			//
-			//
+
+			case onlineStatusInitialAction.type:
+				return fn();
+
 			default:
 				return state;
 		}

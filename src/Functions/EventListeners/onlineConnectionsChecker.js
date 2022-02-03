@@ -1,24 +1,11 @@
+import { onlineStatusOnChange } from "~/Actions/TempActions/tempActions";
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 
-let timeoutID = null;
-
 const onlineConnectionChecker = () => {
-	const clearLastTimeOut = () => clearTimeout(timeoutID);
-
 	const eventListener = () => {
-		clearLastTimeOut();
-		const status = window.navigator.onLine;
-		//TODO Add it to global
-		appDispatch({
-			onlineStatusCondition: window.navigator.onLine,
-			status,
-		});
+		const isOnline = window.navigator.onLine;
 
-		!status && appDispatch("لطفا اتصال اینترنت خود را بررسی کنید");
-
-		timeoutID = setTimeout(() => {
-			status && appDispatch({ onlineStatusCondition: false, status: null });
-		}, 4000);
+		appDispatch(onlineStatusOnChange({ onlineStatus: { isOnline } }));
 	};
 
 	const addEventListener = (type) =>
@@ -35,8 +22,4 @@ const onlineConnectionChecker = () => {
 	addEventListener("online");
 };
 
-const onlineConnectionCheckerClearTimeout = () => {
-	clearTimeout(timeoutID);
-};
-
-export { onlineConnectionCheckerClearTimeout, onlineConnectionChecker };
+export { onlineConnectionChecker };

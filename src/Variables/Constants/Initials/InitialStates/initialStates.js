@@ -37,6 +37,7 @@ const tempInitialState = {
 	messages: [],
 	messageInputText: "",
 	selectedContact: initialContact,
+	onlineStatus: { isOnline: true },
 };
 
 const INITIAL_STATE = {
