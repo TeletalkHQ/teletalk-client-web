@@ -1,4 +1,4 @@
-import { userStatusCheckerAPI } from "~/APIs/Auth/userStatusCheckerAPI";
+import { userStatusCheckerAPI } from "~/APIs/Authentication/userStatusCheckerAPI";
 
 import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 

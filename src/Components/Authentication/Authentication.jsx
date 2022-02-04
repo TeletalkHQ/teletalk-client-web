@@ -14,7 +14,7 @@ import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/in
 import { phoneNumberAction, verifyCodeAction } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
-const Auth = () => {
+const Authentication = () => {
 	const {
 		state: {
 			user: { phoneNumber, countryCode, verifyCode, loading },
@@ -54,7 +54,7 @@ const Auth = () => {
 
 	return (
 		<>
-			{viewMode === "signIn" && (
+			{viewMode === initialViewMode.signIn && (
 				<SignIn
 					phoneNumber={phoneNumber}
 					onPhoneNumberChange={handlePhoneNumberChange}
@@ -63,7 +63,16 @@ const Auth = () => {
 				/>
 			)}
 
-			{viewMode === "verifySignIn" && (
+			{viewMode === initialViewMode.newUserProfile && (
+				<SignIn
+					phoneNumber={phoneNumber}
+					onPhoneNumberChange={handlePhoneNumberChange}
+					onSignInClick={handleSignInClick}
+					loading={loading}
+				/>
+			)}
+
+			{viewMode === initialViewMode.verifySignIn && (
 				<VerifySignIn
 					countryCode={countryCode}
 					onBackClick={handleBackClick}
@@ -79,4 +88,4 @@ const Auth = () => {
 	);
 };
 
-export default Auth;
+export default Authentication;
