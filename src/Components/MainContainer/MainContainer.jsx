@@ -6,7 +6,7 @@ import { useSnackbar } from "notistack";
 import LeftSideContainer from "~/Components/LeftSideComponents/LeftSideContainer";
 import RightSideContainer from "~/Components/RightSideComponents/RightSideContainer";
 import PortalContainer from "~/Components/Portal/PortalContainer";
-import Auth from "~/Components/Authentication/Auth";
+import Authentication from "~/Components/Authentication/Authentication";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
@@ -35,8 +35,6 @@ const MainContainer = () => {
 
 	useEffect(() => {
 		onlineConnectionChecker();
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -59,7 +57,7 @@ const MainContainer = () => {
 	return (
 		<>
 			{!user.privateID ? (
-				<Auth />
+				<Authentication />
 			) : (
 				<>
 					<Grid container style={{ height: "100vh" }}>

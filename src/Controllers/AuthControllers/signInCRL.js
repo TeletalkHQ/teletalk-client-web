@@ -1,4 +1,4 @@
-import { signInAPI } from "~/APIs/Auth/signInAPI";
+import { signInAPI } from "~/APIs/Authentication/signInAPI";
 
 import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";

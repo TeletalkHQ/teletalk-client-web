@@ -1,4 +1,4 @@
-import { verifySignInAPI } from "~/APIs/Auth/verifySignInAPI";
+import { verifySignInAPI } from "~/APIs/Authentication/verifySignInAPI";
 
 import { loadingAction, userAction } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";

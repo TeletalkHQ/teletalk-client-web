@@ -16,9 +16,11 @@ import {
 
 const fn = (text, key, Icon) => ({ text, key, Icon });
 
+//TODO Uppercase initialViewMode values
 const initialViewMode = {
 	signIn: "signIn",
 	verifySignIn: "verifySignIn",
+	newUserProfile: "newUserProfile",
 };
 
 const initialValues = {
