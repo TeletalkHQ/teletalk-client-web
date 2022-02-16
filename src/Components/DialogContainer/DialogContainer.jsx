@@ -1,5 +1,6 @@
-import ContactsDialog from "~/Components/DialogContainer/ContactsDialog";
 import AddContactDialog from "~/Components/DialogContainer/AddContactDialog";
+import ContactsDialog from "~/Components/DialogContainer/ContactsDialog";
+import LogoutDialog from "~/Components/DialogContainer/LogoutDialog";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
@@ -23,9 +24,11 @@ const DialogContainer = () => {
 
 	return (
 		<>
+			<AddContactDialog onClose={handleClose} />
+
 			<ContactsDialog onClose={handleClose} />
 
-			<AddContactDialog onClose={handleClose} />
+			<LogoutDialog onClose={handleClose} />
 		</>
 	);
 };

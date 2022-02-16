@@ -13,9 +13,9 @@ import { initialValues } from "~/Variables/Constants/Initials/InitialValues/init
 
 import { appDrawerAction, dialogAction } from "~/Actions/GlobalActions/globalActions";
 
-const { calls, contacts, newChannel, newGroup, nightMode, settings } = initialValues;
+const { calls, contacts, newChannel, newGroup, nightMode, settings, logout } = initialValues;
 
-const drawerList = [calls, contacts, newChannel, newGroup, nightMode, settings];
+const drawerList = [calls, contacts, newChannel, newGroup, nightMode, settings, logout];
 
 const iOS = typeof navigator !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -31,12 +31,12 @@ const AppDrawer = () => {
 		hooksOutput: { dispatch },
 	} = useMyContext();
 
-	const toggleDrawer = (event, anchor, open, target) => {
+	const toggleDrawer = ({ event, anchor, open, target }) => {
 		if (event?.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
 			return;
 		}
 
-		handleDrawerItemClick(target);
+		target && handleDrawerItemClick(target);
 
 		dispatch(
 			appDrawerAction({
@@ -67,20 +67,22 @@ const AppDrawer = () => {
 				disableDiscovery={iOS}
 				anchor={currentAnchor}
 				open={appDrawerState.anchor[currentAnchor]}
-				onClose={(e) => toggleDrawer(e, currentAnchor, false)}
-				onOpen={(e) => toggleDrawer(e, currentAnchor, true)}
+				onClose={(event) => toggleDrawer({ event, anchor: currentAnchor, open: false })}
+				onOpen={(event) => toggleDrawer({ event, anchor: currentAnchor, open: true })}
 			>
 				<Box
 					sx={{ width: currentAnchor === "top" || currentAnchor === "bottom" ? "auto" : 250 }}
 					role="presentation"
-					onKeyDown={(e) => toggleDrawer(e, currentAnchor, false)}
+					onKeyDown={(event) => toggleDrawer({ event, anchor: currentAnchor, open: false })}
 				>
 					<List>
-						{drawerList.map(({ text, key, Icon }, index) => (
+						{drawerList.map(({ text, target, Icon }, index) => (
 							<ListItem
 								button
 								key={index}
-								onClick={(e) => toggleDrawer(e, currentAnchor, false, key)}
+								onClick={(event) =>
+									toggleDrawer({ event, anchor: currentAnchor, open: false, target })
+								}
 							>
 								<ListItemIcon>
 									<Icon />
