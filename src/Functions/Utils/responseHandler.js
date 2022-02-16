@@ -1,8 +1,10 @@
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 import { userInitializer } from "~/Functions/Helpers/userInitializer";
+
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
-import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { userAction } from "~/Actions/UserActions/userActions";
+
+import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const responseHandler = (response) => {
 	try {

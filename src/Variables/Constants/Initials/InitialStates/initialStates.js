@@ -26,6 +26,7 @@ const globalInitialState = {
 		addContact: {
 			open: false,
 		},
+		logout: { open: false },
 	},
 };
 

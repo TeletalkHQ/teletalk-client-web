@@ -15,12 +15,12 @@ const DialogTemplate = ({
 	dialogContent,
 	dialogStyle,
 	onClose,
-	onEscapeKeyDown,
+	// onEscapeKeyDown,
 	onKeyDown,
 	open,
 	paperStyle,
 	titleContent,
-	TransitionComponent = "Grow",
+	TransitionComponent = "Grow", //TODO Read from initial value
 	transitionDuration,
 }) => {
 	const theme = useTheme();

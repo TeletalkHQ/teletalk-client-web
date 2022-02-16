@@ -12,11 +12,12 @@ import {
 	SmartToyOutlined,
 	AnnouncementOutlined,
 	SettingsInputComponentOutlined,
+	LogoutOutlined,
 } from "@mui/icons-material";
 
-const fn = (text, key, Icon) => ({ text, key, Icon });
+const fn = (text, target, Icon) => ({ text, target, Icon });
 
-//TODO Uppercase initialViewMode values
+//TODO Uppercase initialViewMode keys values
 const initialViewMode = {
 	signIn: "signIn",
 	verifySignIn: "verifySignIn",
@@ -39,6 +40,7 @@ const initialValues = {
 	search: fn("Search", "search", SearchIcon),
 	settings: fn("Settings", "settings", SettingsOutlined),
 	unread: fn("Unread Messages", "unread", AnnouncementOutlined),
+	logout: fn("Logout", "logout", LogoutOutlined),
 };
 
 const initialContact = { firstName: "", lastName: "", phoneNumber: "", privateID: "" };
