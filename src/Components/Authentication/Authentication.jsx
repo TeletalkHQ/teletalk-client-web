@@ -60,7 +60,7 @@ const Authentication = () => {
 		const value = event.target.value;
 		const isNumber = numberRegex.test(value);
 
-		if ((isNumber && value?.length < 6) || value === "") {
+		if ((isNumber && value?.length <= 6) || value === "") {
 			dispatch(countryCodeAction({ countryCode: value }));
 			const country = countries.find((c) => c.countryCode === value) || null;
 			dispatch(selectedCountryAction({ selectedCountry: country }));
@@ -70,7 +70,7 @@ const Authentication = () => {
 	const handleVerifyCodeChange = (e) => {
 		const value = e?.target?.value;
 
-		(value?.length < 6 || value === "") && dispatch(verifyCodeAction({ verifyCode: value }));
+		(value?.length <= 6 || value === "") && dispatch(verifyCodeAction({ verifyCode: value }));
 	};
 
 	const handleBackClick = () => {
