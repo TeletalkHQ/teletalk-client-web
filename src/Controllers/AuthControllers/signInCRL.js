@@ -5,6 +5,7 @@ import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/in
 
 import { loadingAction, userAction } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
+import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
 const signInCRL = () => {
 	return async (dispatch, getState = initialState) => {
@@ -19,7 +20,7 @@ const signInCRL = () => {
 
 			const verifyToken = response.data.token;
 
-			localStorage.setItem("verifyToken", verifyToken);
+			PersistentStorage.setItem({ key: "verifyToken", value: verifyToken });
 
 			dispatch(
 				userAction({

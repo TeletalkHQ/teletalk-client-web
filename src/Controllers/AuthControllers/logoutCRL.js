@@ -2,6 +2,7 @@ import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 import { userAction } from "~/Actions/UserActions/userActions";
 import { logoutAPI } from "~/APIs/Authentication/logoutAPI";
 import { userInitializer } from "~/Functions/Helpers/userInitializer";
+import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const logoutCRL = () => {
@@ -9,7 +10,7 @@ const logoutCRL = () => {
 		try {
 			/*const response = */ await logoutAPI();
 
-			localStorage.clear();
+			PersistentStorage.clear();
 
 			dispatch(userAction({ ...userInitializer() }));
 
