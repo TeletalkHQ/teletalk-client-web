@@ -5,21 +5,35 @@ const {
 } = INITIAL_STATE;
 
 const userInitialActions = {
-	userInitialAction: {
-		type: "USER_DATA",
-		payload: user,
+	countryNameInitialAction: {
+		type: "COUNTRY_NAME_ONCHANGE",
+		payload: { countryName: user.countryName },
 	},
-	phoneNumberInitialAction: {
-		type: "PHONE_NUMBER_ONCHANGE",
-		payload: { phoneNumber: user.phoneNumber },
-	},
-	verifyCodeInitialAction: {
-		type: "VERIFY_CODE_ONCHANGE",
-		payload: { verifyCode: user.verifyCode },
+	countryCodeInitialAction: {
+		type: "COUNTRY_CODE_ONCHANGE",
+		payload: { countryCode: user.countryCode },
 	},
 	loadingInitialAction: {
 		type: "LOADING",
-		payload: { loading },
+		payload: {
+			loading,
+		},
+	},
+	phoneNumberInitialAction: {
+		payload: {
+			phoneNumber: user.phoneNumber,
+		},
+		type: "PHONE_NUMBER_ONCHANGE",
+	},
+	userInitialAction: {
+		payload: user,
+		type: "USER_DATA",
+	},
+	verifyCodeInitialAction: {
+		payload: {
+			verifyCode: user.verifyCode,
+		},
+		type: "VERIFY_CODE_ONCHANGE",
 	},
 };
 

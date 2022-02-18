@@ -1,4 +1,4 @@
-import AddContactDialog from "~/Components/DialogContainer/AddContactDialog";
+import AddNewContactDialog from "~/Components/DialogContainer/AddNewContactDialog";
 import ContactsDialog from "~/Components/DialogContainer/ContactsDialog";
 import LogoutDialog from "~/Components/DialogContainer/LogoutDialog";
 
@@ -24,7 +24,7 @@ const DialogContainer = () => {
 
 	return (
 		<>
-			<AddContactDialog onClose={handleClose} />
+			<AddNewContactDialog onClose={handleClose} />
 
 			<ContactsDialog onClose={handleClose} />
 

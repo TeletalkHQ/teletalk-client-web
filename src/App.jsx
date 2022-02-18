@@ -20,7 +20,9 @@ import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/init
 import { baseTheme } from "~/Theme/baseTheme";
 
 export function App() {
-	const [state = INITIAL_STATE, dispatch] = useThunkReducer(rootReducer, INITIAL_STATE);
+	const [state = INITIAL_STATE, dispatch] = useThunkReducer(rootReducer, INITIAL_STATE, {
+		actionLogger: true,
+	});
 
 	useMemo(() => {
 		dispatchInjector({ dispatch });

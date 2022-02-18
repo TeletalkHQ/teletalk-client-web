@@ -13,15 +13,6 @@ const {
 	verifyCodeInitialAction,
 } = userInitialActions;
 
-const phoneNumberAction = (payload = phoneNumberInitialAction.payload) =>
-	actionCreator(phoneNumberInitialAction.type, payload);
-
-const userAction = (payload = userInitialAction.payload) =>
-	actionCreator(userInitialAction.type, payload);
-
-const verifyCodeAction = (payload = verifyCodeInitialAction.payload) =>
-	actionCreator(verifyCodeInitialAction.type, payload);
-
 const countryCodeAction = (payload = countryCodeInitialAction.payload) =>
 	actionCreator(countryCodeInitialAction.type, payload);
 
@@ -36,6 +27,15 @@ const lastNameAction = (payload = lastNameInitialAction.payload) =>
 
 const loadingAction = (payload = loadingInitialAction.payload) =>
 	actionCreator(loadingInitialAction.type, payload);
+
+const phoneNumberAction = (payload = phoneNumberInitialAction.payload) =>
+	actionCreator(phoneNumberInitialAction.type, payload);
+
+const userAction = (payload = userInitialAction.payload) =>
+	actionCreator(userInitialAction.type, payload);
+
+const verifyCodeAction = (payload = verifyCodeInitialAction.payload) =>
+	actionCreator(verifyCodeInitialAction.type, payload);
 
 export {
 	countryCodeAction,

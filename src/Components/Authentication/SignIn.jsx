@@ -2,7 +2,22 @@ import { Box, Avatar, TextField, Typography, Container } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
-const SignIn = ({ phoneNumber, onPhoneNumberChange, onSignInClick, loading }) => {
+import CountrySelector from "~/Components/Others/CountrySelector";
+
+const SignIn = ({
+	countries,
+	countryCode,
+	countryName,
+	countryNameInputValue,
+	loading,
+	onCountryCodeChange,
+	onPhoneNumberChange,
+	onCountryNameOnchange,
+	onCountryNameOnInputChange,
+	onSignInClick,
+	phoneNumber,
+	selectedCountry,
+}) => {
 	return (
 		<Container maxWidth="xl">
 			<Box
@@ -21,23 +36,51 @@ const SignIn = ({ phoneNumber, onPhoneNumberChange, onSignInClick, loading }) =>
 				</Typography>
 				<Container maxWidth="xs">
 					<Box sx={{ mt: 1 }}>
-						<TextField
-							margin="normal"
-							required
-							fullWidth
-							id="phoneNumber"
-							label="Your phone number"
-							name="phoneNumber"
-							autoComplete="tel-national"
-							autoFocus
-							InputLabelProps={{ shrink: true }}
-							InputProps={{
-								onBlur: (e) => e.target.focus(),
-								sx: { borderRadius: "10px" },
-							}}
-							value={phoneNumber}
-							onChange={onPhoneNumberChange}
+						<CountrySelector
+							countries={countries}
+							countryName={countryName}
+							countryNameInputValue={countryNameInputValue}
+							onCountryNameOnchange={onCountryNameOnchange}
+							onCountryNameOnInputChange={onCountryNameOnInputChange}
+							selectedCountry={selectedCountry}
 						/>
+
+						<Box display="flex" justifyContent={"space-between"}>
+							<TextField
+								style={{ width: "90px" }}
+								margin="normal"
+								required
+								id="countryCode"
+								label="Code"
+								name="countryCode"
+								autoComplete="off"
+								InputProps={{
+									sx: { borderRadius: "10px" },
+									startAdornment: (
+										<>
+											<span>+</span>
+										</>
+									),
+								}}
+								value={countryCode}
+								onChange={onCountryCodeChange}
+							/>
+							<TextField
+								margin="normal"
+								required
+								fullWidth
+								id="phoneNumber"
+								label="Phone number"
+								name="phoneNumber"
+								autoComplete="tel-national"
+								style={{ marginLeft: "5px" }}
+								InputProps={{
+									sx: { borderRadius: "10px" },
+								}}
+								value={phoneNumber}
+								onChange={onPhoneNumberChange}
+							/>
+						</Box>
 
 						<LoadingButton
 							fullWidth

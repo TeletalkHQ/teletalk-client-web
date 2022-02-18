@@ -5,6 +5,8 @@ const otherInitialState = {
 	welcome: { message: "" },
 	onlineStatusCondition: !window.navigator.onLine,
 	status: window.navigator.onLine,
+	countries: [],
+	selectedCountry: null, // { countryName: "", countryShortName: "", countryCode: "" },
 };
 
 const userInitialState = {

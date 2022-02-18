@@ -38,6 +38,7 @@ const verifySignInCRL = () => {
 			localStorage.setItem("mainToken", mainToken);
 
 			dispatch(userAction({ ...user }));
+			dispatch(viewModeAction({ viewMode: initialViewMode.messenger }));
 		} catch (error) {
 			console.log("verifySignInCRL", error);
 		} finally {

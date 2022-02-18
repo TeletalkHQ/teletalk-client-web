@@ -22,6 +22,7 @@ const initialViewMode = {
 	signIn: "signIn",
 	verifySignIn: "verifySignIn",
 	newUserProfile: "newUserProfile",
+	messenger: "messenger",
 };
 
 const initialValues = {
@@ -32,6 +33,7 @@ const initialValues = {
 	contacts: fn("Contacts", "contacts", PeopleOutline),
 	editChats: fn("Edit Chats", "editChats", SettingsInputComponentOutlined),
 	groups: fn("Groups", "groups", CampaignOutlined),
+	logout: fn("Logout", "logout", LogoutOutlined),
 	menu: fn("Menu", "menu", MenuIcon),
 	newChannel: fn("New Channel", "newChannel", CallOutlined),
 	newGroup: fn("New Group", "newGroup", CampaignOutlined),
@@ -40,7 +42,6 @@ const initialValues = {
 	search: fn("Search", "search", SearchIcon),
 	settings: fn("Settings", "settings", SettingsOutlined),
 	unread: fn("Unread Messages", "unread", AnnouncementOutlined),
-	logout: fn("Logout", "logout", LogoutOutlined),
 };
 
 const initialContact = { firstName: "", lastName: "", phoneNumber: "", privateID: "" };
@@ -51,4 +52,6 @@ const initialMessage = {
 	senderID: "",
 };
 
-export { initialValues, initialViewMode, initialContact, initialMessage };
+const initialCountry = { countryCode: "", countryName: "", countryShortName: "" };
+
+export { initialContact, initialCountry, initialMessage, initialValues, initialViewMode };

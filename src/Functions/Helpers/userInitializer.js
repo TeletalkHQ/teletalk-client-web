@@ -6,8 +6,8 @@ const userInitializer = () => {
 			bio: "",
 			blacklist: [],
 			phoneNumber: "",
-			countryCode: "98",
-			countryName: "iran",
+			countryCode: "",
+			countryName: "Select Country",
 			chats: [],
 			contacts: [],
 			firstName: "",
@@ -18,6 +18,8 @@ const userInitializer = () => {
 			verifyCode: "",
 			verifyToken: "",
 		};
+
+		console.log(user);
 
 		const mainToken = localStorage.getItem("mainToken");
 
@@ -32,6 +34,7 @@ const userInitializer = () => {
 
 		const { phoneNumber, countryCode, countryName, privateID } = decodedToken;
 
+		console.log(...user, phoneNumber, countryCode, countryName, privateID);
 		return { ...user, phoneNumber, countryCode, countryName, privateID };
 	} catch (error) {
 		console.log("userInitializer catch", userInitializer);

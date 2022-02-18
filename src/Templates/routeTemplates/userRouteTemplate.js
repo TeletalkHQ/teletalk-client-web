@@ -8,6 +8,17 @@ const baseRoute = {
 	},
 };
 
+const countries = {
+	properties: {
+		description: "Use for get countries for normal account",
+		method: "get",
+		route: "/countries/normal",
+	},
+	info: {
+		version: "1.0.0",
+	},
+};
+
 const logoutNormal = {
 	properties: {
 		description: "Use for logout client as a normal account",
@@ -80,6 +91,7 @@ const userRouteTemplate = {
 	},
 
 	baseRoute,
+	countries,
 	signInNormal,
 	statusCheck,
 	logoutNormal,
@@ -91,6 +103,7 @@ const userRouteTemplate = {
 export {
 	userRouteTemplate,
 	baseRoute,
+	countries,
 	signInNormal,
 	statusCheck,
 	verifySignInNormal,
