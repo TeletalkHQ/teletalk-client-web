@@ -22,6 +22,7 @@ import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
 import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { selectedCountryAction } from "~/Actions/OtherActions/otherActions";
+import { useMemo } from "react";
 
 const numberRegex = new RegExp("^[0-9]+$");
 
@@ -88,7 +89,9 @@ const Authentication = () => {
 		dispatch(countryNameAction({ countryName: newInputValue }));
 	};
 
-	const component = (() => {
+	console.log(countryName);
+
+	const component = useMemo(() => {
 		switch (viewMode) {
 			case initialViewMode.signIn:
 				return (
@@ -135,7 +138,26 @@ const Authentication = () => {
 			default:
 				break;
 		}
-	})();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [
+		countries,
+		countryCode,
+		countryName,
+		countryNameInputValue,
+		// handleBackClick,
+		// handleCountryCodeChange,
+		// handleCountryNameOnInputChange,
+		// handleCountryNameOnchange,
+		// handlePhoneNumberChange,
+		// handleSignInClick,
+		// handleVerifyClick,
+		// handleVerifyCodeChange,
+		loading,
+		phoneNumber,
+		selectedCountry,
+		verifyCode,
+		viewMode,
+	]);
 
 	return (
 		<>

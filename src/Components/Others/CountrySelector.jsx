@@ -6,11 +6,11 @@ import Autocomplete from "@mui/material/Autocomplete";
 const CountrySelector = ({
 	countries,
 	countryName,
-	countryNameInputValue,
 	onCountryNameOnchange,
 	onCountryNameOnInputChange,
 	selectedCountry,
 }) => {
+	console.log(countryName, selectedCountry);
 	return (
 		<Autocomplete
 			value={selectedCountry}

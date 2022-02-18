@@ -64,7 +64,7 @@ const ContactsDialog = ({ onClose }) => {
 		</>
 	);
 
-	const dialogContent = user.contacts.map((contact, index) => (
+	const dialogContent = user.contacts?.map((contact, index) => (
 		<ContactListItem
 			key={index}
 			name={`${contact.firstName} ${contact.lastName}`}
