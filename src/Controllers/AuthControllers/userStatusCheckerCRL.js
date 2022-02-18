@@ -5,6 +5,7 @@ import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/i
 import { userAction } from "~/Actions/UserActions/userActions";
 import { backdropAction, viewModeAction } from "~/Actions/GlobalActions/globalActions";
 import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
 const userStatusCheckerCRL = () => {
 	return async (dispatch) => {
@@ -22,7 +23,7 @@ const userStatusCheckerCRL = () => {
 			console.log("userStatusCheckerCRL", error);
 			//TODO Do this in special cases =>
 			if (error.statusCode === 401) {
-				localStorage.clear();
+				PersistentStorage.clear();
 				dispatch(viewModeAction({ viewMode: initialViewMode.signIn }));
 			}
 

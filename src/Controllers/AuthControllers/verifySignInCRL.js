@@ -5,6 +5,7 @@ import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
 import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
 const verifySignInCRL = () => {
 	return async (dispatch, getState = initialState) => {
@@ -15,7 +16,7 @@ const verifySignInCRL = () => {
 				user: { verifyCode },
 			} = getState();
 
-			const verifyToken = localStorage.getItem("verifyToken");
+			const verifyToken = PersistentStorage.getItem({ key: "verifyToken" });
 
 			if (!verifyToken) {
 				const error = "verifyToken is not defined";
@@ -27,7 +28,7 @@ const verifySignInCRL = () => {
 
 			const response = await verifySignInAPI({ verifyCode, token: verifyToken });
 
-			localStorage.removeItem("verifyToken");
+			PersistentStorage.removeItem({ key: "verifyToken" });
 
 			const { user } = response.data;
 
@@ -35,7 +36,7 @@ const verifySignInCRL = () => {
 
 			delete user.token;
 
-			localStorage.setItem("mainToken", mainToken);
+			PersistentStorage.setItem({ key: "mainToken", value: mainToken });
 
 			dispatch(userAction({ ...user }));
 			dispatch(viewModeAction({ viewMode: initialViewMode.messenger }));

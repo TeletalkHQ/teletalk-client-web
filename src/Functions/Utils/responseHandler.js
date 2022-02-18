@@ -1,5 +1,6 @@
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 import { userInitializer } from "~/Functions/Helpers/userInitializer";
+import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 import { userAction } from "~/Actions/UserActions/userActions";
@@ -24,7 +25,7 @@ const responseHandler = (response) => {
 					break;
 
 				case 401:
-					localStorage.clear();
+					PersistentStorage.clear();
 					appDispatch(userAction({ ...userInitializer() }));
 					appDispatch(
 						viewModeAction({

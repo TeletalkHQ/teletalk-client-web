@@ -1,4 +1,5 @@
 import { tokenDecoder } from "~/Functions/Utils/tokenDecoder";
+import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
 const userInitializer = () => {
 	try {
@@ -19,10 +20,10 @@ const userInitializer = () => {
 			verifyToken: "",
 		};
 
-		const mainToken = localStorage.getItem("mainToken");
+		const mainToken = PersistentStorage.getItem({ key: "mainToken" });
 
 		if (!mainToken) {
-			localStorage.clear();
+			PersistentStorage.clear();
 			return user;
 		}
 

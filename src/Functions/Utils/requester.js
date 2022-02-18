@@ -1,9 +1,10 @@
 import { myAxios } from "~/Functions/Utils/myAxios";
 import { responseHandler } from "~/Functions/Utils/responseHandler";
-
-import { initialRequestOptions } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
+import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 import { appDispatch } from "~/Functions/Others/Injectors/dispatchInjector";
 import { handleMakeSnack } from "~/Functions/Others/Injectors/snackbarInjector";
+
+import { initialRequestOptions } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 import { errorInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
 
 const requester = async (options = initialRequestOptions) => {
@@ -13,7 +14,7 @@ const requester = async (options = initialRequestOptions) => {
 			...options,
 			data: { ...initialRequestOptions.data, ...options?.data },
 			headers: { ...initialRequestOptions.headers, ...options?.headers },
-			token: options?.token || localStorage.getItem("mainToken"),
+			token: options?.token || PersistentStorage.getItem({ key: "mainToken" }),
 		};
 
 		if (!finalOptions.url) {
