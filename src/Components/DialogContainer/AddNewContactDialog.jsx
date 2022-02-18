@@ -10,7 +10,7 @@ import { useMyContext } from "~/Hooks/useMyContext";
 
 import { initialContact } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
-const AddContactDialog = ({ onClose }) => {
+const AddNewContactDialog = ({ onClose }) => {
 	const {
 		hooksOutput: { dispatch },
 		state: {
@@ -115,4 +115,4 @@ const AddContactDialog = ({ onClose }) => {
 	);
 };
 
-export default AddContactDialog;
+export default AddNewContactDialog;

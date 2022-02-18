@@ -5,10 +5,12 @@ import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/ini
 import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 const {
-	userInitialAction,
-	phoneNumberInitialAction,
-	verifyCodeInitialAction,
+	countryCodeInitialAction,
+	countryNameInitialAction,
 	loadingInitialAction,
+	phoneNumberInitialAction,
+	userInitialAction,
+	verifyCodeInitialAction,
 } = userInitialActions;
 
 const userReducer = (state = userInitialState, action = initialAction) => {
@@ -18,16 +20,22 @@ const userReducer = (state = userInitialState, action = initialAction) => {
 		const fn = () => newStateReplacer({ state, payload });
 
 		switch (type) {
-			case userInitialAction.type:
+			case countryCodeInitialAction.type:
+				return fn();
+
+			case countryNameInitialAction.type:
+				return fn();
+
+			case loadingInitialAction.type:
 				return fn();
 
 			case phoneNumberInitialAction.type:
 				return fn();
 
-			case verifyCodeInitialAction.type:
+			case userInitialAction.type:
 				return fn();
 
-			case loadingInitialAction.type:
+			case verifyCodeInitialAction.type:
 				return fn();
 
 			default:

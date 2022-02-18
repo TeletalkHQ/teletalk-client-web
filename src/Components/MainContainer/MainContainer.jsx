@@ -17,12 +17,14 @@ import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector"
 import { onlineConnectionChecker } from "~/Functions/EventListeners/onlineConnectionsChecker";
 
 import { backdropAction } from "~/Actions/GlobalActions/globalActions";
+import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const MainContainer = () => {
 	const {
 		state: {
 			user,
 			temp: { selectedContact },
+			global: { viewMode },
 		},
 		hooksOutput: { dispatch },
 	} = useMyContext();
@@ -56,7 +58,7 @@ const MainContainer = () => {
 
 	return (
 		<>
-			{!user.privateID ? (
+			{!user.privateID || viewMode !== initialViewMode.messenger ? (
 				<Authentication />
 			) : (
 				<>

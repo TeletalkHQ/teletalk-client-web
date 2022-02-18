@@ -6,7 +6,13 @@ import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/init
 
 let useDispatch = () => appDispatch;
 let useSelector = () => INITIAL_STATE;
-// let reducerLogger = () => {};
+let actionLogger = (action) => {
+	console.log(`actionLogger:`, action);
+};
+
+const config = {
+	actionLogger: false,
+};
 
 const combineReducers = (reducers) => {
 	return (state = {}, action) => {
@@ -18,7 +24,7 @@ const combineReducers = (reducers) => {
 	};
 };
 
-const useThunkReducer = (reducer, initialState) => {
+const useThunkReducer = (reducer, initialState, configFromDev = config) => {
 	try {
 		const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -26,8 +32,14 @@ const useThunkReducer = (reducer, initialState) => {
 
 		const myDispatch = useCallback(
 			(action) => {
-				return typeof action === "function" ? action(dispatch, getState) : dispatch(action);
+				return typeof action === "function"
+					? action(dispatch, getState)
+					: (() => {
+							configFromDev.actionLogger && actionLogger(action);
+							dispatch(action);
+					  })();
 			},
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 			[getState, dispatch],
 		);
 
@@ -42,4 +54,4 @@ const useThunkReducer = (reducer, initialState) => {
 
 export default useThunkReducer;
 
-export { useThunkReducer, useDispatch, combineReducers, useSelector };
+export { actionLogger, combineReducers, useDispatch, useSelector, useThunkReducer };
