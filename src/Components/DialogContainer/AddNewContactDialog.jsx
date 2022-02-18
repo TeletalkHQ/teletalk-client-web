@@ -92,7 +92,7 @@ const AddNewContactDialog = ({ onClose }) => {
 		<>
 			<Box display="flex" justifyContent="flex-end" alignItems="center">
 				<Box>
-					<Button>Cancel</Button>
+					<Button onClick={handleOnClose}>Cancel</Button>
 				</Box>{" "}
 				<Box>
 					<Button onClick={handleAddNewContact}>Create</Button>
