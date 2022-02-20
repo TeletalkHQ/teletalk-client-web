@@ -10,7 +10,7 @@ let actionLogger = (action) => {
 	console.log(`actionLogger:`, action);
 };
 
-const config = {
+const configs = {
 	actionLogger: false,
 };
 
@@ -24,7 +24,7 @@ const combineReducers = (reducers) => {
 	};
 };
 
-const useThunkReducer = (reducer, initialState, configFromDev = config) => {
+const useThunkReducer = (reducer, initialState, configsFromDev = configs) => {
 	try {
 		const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -35,7 +35,7 @@ const useThunkReducer = (reducer, initialState, configFromDev = config) => {
 				return typeof action === "function"
 					? action(dispatch, getState)
 					: (() => {
-							configFromDev.actionLogger && actionLogger(action);
+							configsFromDev.actionLogger && actionLogger(action);
 							dispatch(action);
 					  })();
 			},

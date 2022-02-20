@@ -6,6 +6,9 @@ import { handleMakeSnack } from "~/Functions/Others/Injectors/snackbarInjector";
 
 import { initialRequestOptions } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 import { errorInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
+import { configs } from "~/Configs/configs";
+
+const { successResponseLogger, failureResponseLogger } = configs.requester;
 
 const requester = async (options = initialRequestOptions) => {
 	try {
@@ -32,11 +35,11 @@ const requester = async (options = initialRequestOptions) => {
 
 		const checkedResponse = responseHandler(response);
 
-		console.log(checkedResponse);
+		successResponseLogger && console.log(checkedResponse);
 
 		return checkedResponse;
 	} catch (error) {
-		console.log("requester catch, error:", error);
+		failureResponseLogger && console.log("requester catch, error:", error);
 
 		if (!window?.navigator?.onLine) {
 			appDispatch({ type: errorInitialActions.econnabortedAction.type });
