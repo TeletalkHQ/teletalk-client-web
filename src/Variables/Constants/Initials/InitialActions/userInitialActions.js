@@ -13,6 +13,20 @@ const userInitialActions = {
 		type: "COUNTRY_CODE_ONCHANGE",
 		payload: { countryCode: user.countryCode },
 	},
+
+	firstNameInitialAction: {
+		type: "FIRST_NAME_ONCHANGE",
+		payload: {
+			firstName: user.firstName,
+		},
+	},
+	lastNameInitialAction: {
+		type: "LAST_NAME_ONCHANGE",
+		payload: {
+			lastName: user.lastName,
+		},
+	},
+
 	loadingInitialAction: {
 		type: "LOADING",
 		payload: {

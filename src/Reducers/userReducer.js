@@ -7,6 +7,8 @@ import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/i
 const {
 	countryCodeInitialAction,
 	countryNameInitialAction,
+	firstNameInitialAction,
+	lastNameInitialAction,
 	loadingInitialAction,
 	phoneNumberInitialAction,
 	userInitialAction,
@@ -24,6 +26,12 @@ const userReducer = (state = userInitialState, action = initialAction) => {
 				return fn();
 
 			case countryNameInitialAction.type:
+				return fn();
+
+			case firstNameInitialAction.type:
+				return fn();
+
+			case lastNameInitialAction.type:
 				return fn();
 
 			case loadingInitialAction.type:

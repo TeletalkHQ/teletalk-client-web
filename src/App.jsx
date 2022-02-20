@@ -19,7 +19,7 @@ import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/init
 
 import { baseTheme } from "~/Theme/baseTheme";
 
-export function App() {
+const App = () => {
 	const [state = INITIAL_STATE, dispatch] = useThunkReducer(rootReducer, INITIAL_STATE, {
 		actionLogger: true,
 	});
@@ -40,4 +40,6 @@ export function App() {
 			</ThemeProvider>
 		</MainContext.Provider>
 	);
-}
+};
+
+export default App;

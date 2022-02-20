@@ -28,18 +28,21 @@ const verifySignInCRL = () => {
 
 			const response = await verifySignInAPI({ verifyCode, token: verifyToken });
 
-			PersistentStorage.removeItem({ key: "verifyToken" });
-
 			const { user } = response.data;
 
-			const mainToken = user.token;
+			if (user.newUser) {
+				dispatch(viewModeAction({ viewMode: initialViewMode.newUserProfile }));
+			} else {
+				PersistentStorage.removeItem({ key: "verifyToken" });
 
-			delete user.token;
+				const mainToken = user.token;
+				delete user.token;
 
-			PersistentStorage.setItem({ key: "mainToken", value: mainToken });
+				PersistentStorage.setItem({ key: "mainToken", value: mainToken });
 
-			dispatch(userAction({ ...user }));
-			dispatch(viewModeAction({ viewMode: initialViewMode.messenger }));
+				dispatch(userAction({ ...user }));
+				dispatch(viewModeAction({ viewMode: initialViewMode.messenger }));
+			}
 		} catch (error) {
 			console.log("verifySignInCRL", error);
 		} finally {

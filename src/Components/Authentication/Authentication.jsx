@@ -17,19 +17,29 @@ import {
 	verifyCodeAction,
 	countryCodeAction,
 	countryNameAction,
+	firstNameAction,
+	lastNameAction,
 } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
 import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { selectedCountryAction } from "~/Actions/OtherActions/otherActions";
-import { useMemo } from "react";
+import { createNewUserCRL } from "~/Controllers/AuthControllers/createNewUserCRL";
 
 const numberRegex = new RegExp("^[0-9]+$");
 
 const Authentication = () => {
 	const {
 		state: {
-			user: { phoneNumber, countryCode, countryName, verifyCode, loading },
+			user: {
+				phoneNumber,
+				countryCode,
+				countryName,
+				verifyCode,
+				loading,
+				firstName,
+				lastName,
+			},
 			global: { viewMode },
 			other: { countries, countryNameInputValue, selectedCountry },
 		},
@@ -89,9 +99,19 @@ const Authentication = () => {
 		dispatch(countryNameAction({ countryName: newInputValue }));
 	};
 
-	console.log(countryName);
+	const handleFirstNameOnChange = (e) => {
+		dispatch(firstNameAction({ firstName: e.target.value }));
+	};
 
-	const component = useMemo(() => {
+	const handleLastNameOnChange = (e) => {
+		dispatch(lastNameAction({ lastName: e.target.value }));
+	};
+
+	const handleConfirmClick = () => {
+		dispatch(createNewUserCRL());
+	};
+
+	const component = () => {
 		switch (viewMode) {
 			case initialViewMode.signIn:
 				return (
@@ -111,17 +131,6 @@ const Authentication = () => {
 					/>
 				);
 
-			case initialViewMode.newUserProfile:
-				return (
-					<NewUserProfile
-						countries={countries}
-						loading={loading}
-						onPhoneNumberChange={handlePhoneNumberChange}
-						onSignInClick={handleSignInClick}
-						phoneNumber={phoneNumber}
-					/>
-				);
-
 			case initialViewMode.verifySignIn:
 				return (
 					<VerifySignIn
@@ -135,33 +144,27 @@ const Authentication = () => {
 					/>
 				);
 
+			case initialViewMode.newUserProfile:
+				return (
+					<NewUserProfile
+						onBackClick={handleBackClick}
+						loading={loading}
+						firstNameInput={firstName}
+						lastNameInput={lastName}
+						onLastNameOnChange={handleLastNameOnChange}
+						onConfirmClick={handleConfirmClick}
+						onFirstNameOnChange={handleFirstNameOnChange}
+					/>
+				);
+
 			default:
 				break;
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [
-		countries,
-		countryCode,
-		countryName,
-		countryNameInputValue,
-		// handleBackClick,
-		// handleCountryCodeChange,
-		// handleCountryNameOnInputChange,
-		// handleCountryNameOnchange,
-		// handlePhoneNumberChange,
-		// handleSignInClick,
-		// handleVerifyClick,
-		// handleVerifyCodeChange,
-		loading,
-		phoneNumber,
-		selectedCountry,
-		verifyCode,
-		viewMode,
-	]);
+	};
 
 	return (
 		<>
-			{component}
+			{component()}
 			<Copyright sx={{ mt: 8, mb: 4 }} />
 		</>
 	);

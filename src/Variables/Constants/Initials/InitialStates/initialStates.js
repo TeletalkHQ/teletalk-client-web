@@ -1,5 +1,8 @@
 import { userInitializer } from "~/Functions/Helpers/userInitializer";
-import { initialContact } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import {
+	initialContact,
+	initialViewMode,
+} from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const otherInitialState = {
 	welcome: { message: "" },
@@ -15,7 +18,7 @@ const userInitialState = {
 };
 
 const globalInitialState = {
-	viewMode: "signIn",
+	viewMode: initialViewMode.signIn,
 	backdropState: { open: true, progressColor: "inherit", color: "#ff" },
 	appDrawerState: {
 		anchor: { top: false, left: false, bottom: false, right: false },

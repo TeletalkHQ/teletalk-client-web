@@ -1,4 +1,11 @@
-import { Box, Avatar, TextField, Typography, Container } from "@mui/material";
+import {
+	Box,
+	Avatar,
+	TextField,
+	Typography,
+	Container,
+	CircularProgress,
+} from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
@@ -36,6 +43,9 @@ const SignIn = ({
 				</Typography>
 				<Container maxWidth="xs">
 					<Box sx={{ mt: 1 }}>
+						<Typography component="p" variant="p" color="GrayText">
+							Please verify your country code and enter your mobile phone number.
+						</Typography>
 						<CountrySelector
 							countries={countries}
 							countryName={countryName}
@@ -85,7 +95,12 @@ const SignIn = ({
 						<LoadingButton
 							fullWidth
 							loading={loading}
-							loadingIndicator="Please wait..."
+							loadingIndicator={
+								<>
+									<span>Please wait...</span> &nbsp;&nbsp;
+									<CircularProgress size={25} color="info" />
+								</>
+							}
 							onClick={onSignInClick}
 							size="large"
 							sx={{ mt: 3, mb: 2, borderRadius: "10px" }}

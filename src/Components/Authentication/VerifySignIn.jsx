@@ -39,11 +39,10 @@ const VerifySignIn = ({
 							+{countryCode} {phoneNumber}
 						</Typography>
 						<Typography component="p" variant="p" color="GrayText">
-							We've sent the code to the Teletalk app on your other device.
+							We've sent the code to the Teletalk app to your phone number.
 						</Typography>
 						<TextField
-							sx={{ borderRadius: "10px" }}
-							margin="normal"
+							margin="dense"
 							required
 							fullWidth
 							id="phoneNumber"
@@ -54,32 +53,17 @@ const VerifySignIn = ({
 							onChange={onVerifyCodeChange}
 							InputLabelProps={{ shrink: true }}
 							InputProps={{
-								onBlur: (e) => e.target.focus(),
 								sx: { borderRadius: "10px" },
 							}}
 						/>
 
-						{/* <LoadingButton
-							onClick={onVerifyClick}
-							size="large"
-							fullWidth
-							variant="contained"
-							sx={{ mt: 3, mb: 2, borderRadius: "10px" }}
-							loading={loading}
-							loadingIndicator="Please wait..."
-							loadingPosition="end"
-							endIcon={<Send />}
-						>
-							Next
-						</LoadingButton> */}
 						<LoadingButton
-							// color="secondary"
 							fullWidth
 							loading={loading}
-							loadingPosition="start"
+							loadingPosition="end"
 							onClick={onVerifyClick}
 							size="large"
-							startIcon={<Fingerprint />}
+							endIcon={<Fingerprint />}
 							sx={{ mt: 3, mb: 2, borderRadius: "10px" }}
 							variant="contained"
 						>

@@ -8,6 +8,18 @@ const baseRoute = {
 	},
 };
 
+//CLEANME Cleanup this shits ASAP!
+const createNewUser = {
+	properties: {
+		description: "Use for create new user for normal account",
+		method: "post",
+		route: "/createNewUser/normal",
+	},
+	info: {
+		version: "1.0.0",
+	},
+};
+
 const countries = {
 	properties: {
 		description: "Use for get countries for normal account",
@@ -92,6 +104,7 @@ const userRouteTemplate = {
 
 	baseRoute,
 	countries,
+	createNewUser,
 	signInNormal,
 	statusCheck,
 	logoutNormal,
@@ -104,6 +117,7 @@ export {
 	userRouteTemplate,
 	baseRoute,
 	countries,
+	createNewUser,
 	signInNormal,
 	statusCheck,
 	verifySignInNormal,
