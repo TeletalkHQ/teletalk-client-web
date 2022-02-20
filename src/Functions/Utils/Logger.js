@@ -1,12 +1,3 @@
-//TODO: Super logger coming to here.
-//* features =>
-/*
-//* log level
-//* disable/enable all
-//* disable/enable with log level
-//*
-//*
-*/
 let _level;
 
 class Logger {
@@ -15,13 +6,11 @@ class Logger {
 	constructor(level) {
 		if (!_level) {
 			_level = level || "debug";
+			this.setLevel(level);
 		}
 
-		this.isBrowser =
-			typeof process === "undefined" ||
-			process.type === "renderer" ||
-			process.browser === true ||
-			process.__nwjs;
+		this.isBrowser = this.browserDetector();
+
 		if (!this.isBrowser) {
 			this.colors = {
 				start: "\x1b[2m",
@@ -44,12 +33,28 @@ class Logger {
 		this.messageFormat = "[%t] [%l] - [%m]";
 	}
 
-	static setLevel(level) {
+	browserDetector() {
+		return (
+			typeof process === "undefined" ||
+			process.type === "renderer" ||
+			process.browser === true ||
+			process.__nwjs
+		);
+	}
+
+	setLevel(level) {
 		_level = level;
+		if (this.isBrowser || this.browserDetector()) {
+			localStorage?.setItem("logLevel", level);
+		}
+	}
+
+	removeLevel() {
+		_level = undefined;
+		localStorage?.removeItem("logLevel");
 	}
 
 	/**
-	 *
 	 * @param level {string}
 	 * @returns {boolean}
 	 */
@@ -63,7 +68,6 @@ class Logger {
 	warn(message) {
 		// todo remove later
 		if (_level === "debug") {
-			// eslint-disable-next-line no-console
 			console.error(new Error().stack);
 		}
 		this._log("warn", message, this.colors.warn);
@@ -87,11 +91,6 @@ class Logger {
 	 * @param message {string}
 	 */
 	error(message) {
-		// todo remove later
-		if (_level === "debug") {
-			// eslint-disable-next-line no-console
-			console.error(new Error().stack);
-		}
 		this._log("error", message, this.colors.error);
 	}
 
@@ -112,12 +111,10 @@ class Logger {
 			return;
 		}
 		if (this.canSend(level)) {
-			if (!this.isBrowser) {
-				// eslint-disable-next-line no-console
-				console.log(color + this.format(message, level) + this.colors.end);
-			} else {
-				// eslint-disable-next-line no-console
+			if (this.isBrowser) {
 				console.log(this.colors.start + this.format(message, level), color);
+			} else {
+				console.log(color + this.format(message, level) + this.colors.end);
 			}
 		}
 	}

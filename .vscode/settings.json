@@ -1,7 +1,9 @@
 {
 	"cSpell.ignoreWords": [
+		"Axios",
 		"CLEANME",
 		"Swipeable",
+		"__nwjs",
 		"bgcolor",
 		"fontawesome",
 		"fortawesome",
@@ -27,7 +29,7 @@
 		"src/reportWebVitals.js": true,
 		"src/setupTest.js": true,
 		".babelrc": true,
-		"**/globals.d.ts": true,
+		"**/globals.d.ts": false,
 		"**/.gitignore": true,
 		"README.md": true,
 		"**/yarn-error.log": true,
