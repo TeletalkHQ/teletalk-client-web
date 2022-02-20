@@ -1,7 +1,6 @@
 //TODO Args controller
 function PersistentStorage() {
 	try {
-		console.log(this);
 		this.storage = localStorage;
 
 		this.clear = () => {

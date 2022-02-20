@@ -10,7 +10,6 @@ const CountrySelector = ({
 	onCountryNameOnInputChange,
 	selectedCountry,
 }) => {
-	console.log(countryName, selectedCountry);
 	return (
 		<Autocomplete
 			value={selectedCountry}

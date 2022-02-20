@@ -95,7 +95,6 @@ const Authentication = () => {
 	};
 
 	const handleCountryNameOnInputChange = (newInputValue) => {
-		console.log(newInputValue);
 		dispatch(countryNameAction({ countryName: newInputValue }));
 	};
 
