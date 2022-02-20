@@ -1,6 +1,5 @@
-import { myConsole as console } from "~/Functions/Utils/myConsole";
+import { Logger as ConsoleLogger } from "~/Functions/Utils/Logger";
 
 declare global {
-	var myConsole = console;
-	var logger = console;
+	var logger = ConsoleLogger;
 }
