@@ -22,4 +22,7 @@ const copyMan = ({ state, cb }) => {
 
 const newStateReplacer = ({ state, payload }) => ({ ...state, ...payload });
 
-export { copyMan, newStateReplacer };
+//UNUSED
+const actionInitializer = (type, payload) => ({ type, payload: { ...payload } });
+
+export { actionInitializer, copyMan, newStateReplacer };

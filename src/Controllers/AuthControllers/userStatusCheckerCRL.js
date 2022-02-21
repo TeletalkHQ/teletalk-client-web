@@ -4,7 +4,7 @@ import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/i
 
 import { userAction } from "~/Actions/UserActions/userActions";
 import { backdropAction, viewModeAction } from "~/Actions/GlobalActions/globalActions";
-import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
 const userStatusCheckerCRL = () => {
@@ -24,7 +24,7 @@ const userStatusCheckerCRL = () => {
 			//TODO Do this in special cases =>
 			if (error.statusCode === 401) {
 				PersistentStorage.clear();
-				dispatch(viewModeAction({ viewMode: initialViewMode.signIn }));
+				dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.signIn }));
 			}
 
 			dispatch(userAction({ ...userInitialState }));

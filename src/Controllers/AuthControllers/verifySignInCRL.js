@@ -4,7 +4,7 @@ import { loadingAction, userAction } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
 import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
-import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
 const verifySignInCRL = () => {
@@ -21,7 +21,7 @@ const verifySignInCRL = () => {
 			if (!verifyToken) {
 				const error = "verifyToken is not defined";
 
-				dispatch(viewModeAction({ viewMode: initialViewMode.signIn }));
+				dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.signIn }));
 
 				throw error;
 			}
@@ -31,7 +31,7 @@ const verifySignInCRL = () => {
 			const { user } = response.data;
 
 			if (user.newUser) {
-				dispatch(viewModeAction({ viewMode: initialViewMode.newUserProfile }));
+				dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.newUserProfile }));
 			} else {
 				PersistentStorage.removeItem({ key: "verifyToken" });
 
@@ -41,7 +41,7 @@ const verifySignInCRL = () => {
 				PersistentStorage.setItem({ key: "mainToken", value: mainToken });
 
 				dispatch(userAction({ ...user }));
-				dispatch(viewModeAction({ viewMode: initialViewMode.messenger }));
+				dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.messenger }));
 			}
 		} catch (error) {
 			console.log("verifySignInCRL", error);

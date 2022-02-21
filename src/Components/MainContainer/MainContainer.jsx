@@ -17,7 +17,7 @@ import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector"
 import { onlineConnectionChecker } from "~/Functions/EventListeners/onlineConnectionsChecker";
 
 import { backdropAction } from "~/Actions/GlobalActions/globalActions";
-import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const MainContainer = () => {
 	const {
@@ -58,7 +58,7 @@ const MainContainer = () => {
 
 	return (
 		<>
-			{!user.privateID || viewMode !== initialViewMode.messenger ? (
+			{!user.privateID || viewMode !== INITIAL_VIEW_MODE.messenger ? (
 				<Authentication />
 			) : (
 				<>

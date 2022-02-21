@@ -1,7 +1,7 @@
 import { signInAPI } from "~/APIs/Authentication/signInAPI";
 
 import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
-import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 import { loadingAction, userAction } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
@@ -28,7 +28,7 @@ const signInCRL = () => {
 				}),
 			);
 
-			dispatch(viewModeAction({ viewMode: initialViewMode.verifySignIn }));
+			dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.verifySignIn }));
 
 			return response;
 		} catch (error) {

@@ -8,6 +8,13 @@ const {
 	messageInputInitialAction,
 	onlineStatusInitialAction,
 	setMessagesInitialAction,
+	countryCodeInitialAction,
+	countryNameInitialAction,
+	firstNameInitialAction,
+	lastNameInitialAction,
+	loadingInitialAction,
+	phoneNumberInitialAction,
+	verifyCodeInitialAction,
 } = tempInitialActions;
 
 const tempReducer = (state = tempInitialState, action = initialAction) => {
@@ -27,6 +34,26 @@ const tempReducer = (state = tempInitialState, action = initialAction) => {
 				return fn();
 
 			case onlineStatusInitialAction.type:
+				return fn();
+
+			case countryCodeInitialAction.type:
+				return fn();
+
+			case countryNameInitialAction.type:
+				return fn();
+
+			case firstNameInitialAction.type:
+				return fn();
+
+			case lastNameInitialAction.type:
+				return fn();
+
+			case loadingInitialAction.type:
+				return fn();
+
+			case phoneNumberInitialAction.type:
+				return fn();
+			case verifyCodeInitialAction.type:
 				return fn();
 
 			default:

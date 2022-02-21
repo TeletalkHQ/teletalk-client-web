@@ -1,23 +1,21 @@
 import { tokenDecoder } from "~/Functions/Utils/tokenDecoder";
 import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
+//REDESIGN
 const userInitializer = () => {
 	try {
 		const user = {
 			bio: "",
 			blacklist: [],
-			phoneNumber: "",
-			countryCode: "",
-			countryName: "",
 			chats: [],
 			contacts: [],
+			countryCode: "",
+			countryName: "",
 			firstName: "",
 			lastName: "",
-			mainToken: "",
+			phoneNumber: "",
 			privateID: "",
 			username: "",
-			verifyCode: "",
-			verifyToken: "",
 		};
 
 		const mainToken = PersistentStorage.getItem({ key: "mainToken" });

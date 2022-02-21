@@ -22,7 +22,7 @@ import {
 } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
-import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { selectedCountryAction } from "~/Actions/OtherActions/otherActions";
 import { createNewUserCRL } from "~/Controllers/AuthControllers/createNewUserCRL";
 
@@ -85,7 +85,7 @@ const Authentication = () => {
 	};
 
 	const handleBackClick = () => {
-		dispatch(viewModeAction({ viewMode: initialViewMode.signIn }));
+		dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.signIn }));
 	};
 
 	const handleCountryNameOnchange = (newValue) => {
@@ -112,7 +112,7 @@ const Authentication = () => {
 
 	const component = () => {
 		switch (viewMode) {
-			case initialViewMode.signIn:
+			case INITIAL_VIEW_MODE.signIn:
 				return (
 					<SignIn
 						countries={countries}
@@ -130,7 +130,7 @@ const Authentication = () => {
 					/>
 				);
 
-			case initialViewMode.verifySignIn:
+			case INITIAL_VIEW_MODE.verifySignIn:
 				return (
 					<VerifySignIn
 						countryCode={countryCode}
@@ -143,7 +143,7 @@ const Authentication = () => {
 					/>
 				);
 
-			case initialViewMode.newUserProfile:
+			case INITIAL_VIEW_MODE.newUserProfile:
 				return (
 					<NewUserProfile
 						onBackClick={handleBackClick}
