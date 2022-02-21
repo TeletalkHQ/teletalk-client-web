@@ -5,7 +5,7 @@ import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 import { userAction } from "~/Actions/UserActions/userActions";
 
-import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const responseHandler = (response) => {
 	try {
@@ -27,7 +27,7 @@ const responseHandler = (response) => {
 					appDispatch(userAction({ ...userInitializer() }));
 					appDispatch(
 						viewModeAction({
-							viewMode: initialViewMode.signIn,
+							viewMode: INITIAL_VIEW_MODE.signIn,
 						}),
 					);
 					rejection();

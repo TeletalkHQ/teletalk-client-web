@@ -1,7 +1,7 @@
 import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 const {
-	temp: { messageInputText, messages, onlineStatus, selectedContact },
+	tempState: { messageInputText, messages, selectedContact, tempUserState, verifyCode },
 } = INITIAL_STATE;
 
 const contactSelectedInitialAction = {
@@ -14,21 +14,50 @@ const messageInputInitialAction = {
 	payload: { messageInputText },
 };
 
-const onlineStatusInitialAction = {
-	type: "ONLINE_STATUS",
-	payload: { onlineStatus },
-};
-
 const setMessagesInitialAction = {
 	type: "SET_MESSAGES",
 	payload: { messages },
 };
 
+const countryNameInitialAction = {
+	type: "COUNTRY_NAME_ONCHANGE",
+	payload: { countryName: tempUserState.countryName },
+};
+
+const countryCodeInitialAction = {
+	type: "COUNTRY_CODE_ONCHANGE",
+	payload: { countryCode: tempUserState.countryCode },
+};
+
+const firstNameInitialAction = {
+	type: "FIRST_NAME_ONCHANGE",
+	payload: { firstName: tempUserState.firstName },
+};
+const lastNameInitialAction = {
+	type: "LAST_NAME_ONCHANGE",
+	payload: { lastName: tempUserState.lastName },
+};
+
+const phoneNumberInitialAction = {
+	type: "PHONE_NUMBER_ONCHANGE",
+	payload: { phoneNumber: tempUserState.phoneNumber },
+};
+
+const verifyCodeInitialAction = {
+	type: "VERIFY_CODE_ONCHANGE",
+	payload: { verifyCode },
+};
+
 const tempInitialActions = {
 	contactSelectedInitialAction,
+	countryCodeInitialAction,
+	countryNameInitialAction,
+	firstNameInitialAction,
+	lastNameInitialAction,
 	messageInputInitialAction,
-	onlineStatusInitialAction,
+	phoneNumberInitialAction,
 	setMessagesInitialAction,
+	verifyCodeInitialAction,
 };
 
 export { tempInitialActions };

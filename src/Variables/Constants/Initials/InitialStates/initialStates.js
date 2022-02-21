@@ -1,67 +1,17 @@
-import { userInitializer } from "~/Functions/Helpers/userInitializer";
-import {
-	initialContact,
-	initialViewMode,
-} from "~/Variables/Constants/Initials/InitialValues/initialValues";
-
-const otherInitialState = {
-	welcome: { message: "" },
-	onlineStatusCondition: !window.navigator.onLine,
-	status: window.navigator.onLine,
-	countries: [],
-	selectedCountry: null, // { countryName: "", countryShortName: "", countryCode: "" },
-};
-
-const userInitialState = {
-	...userInitializer(),
-	loading: false,
-};
-
-const globalInitialState = {
-	viewMode: initialViewMode.signIn,
-	backdropState: { open: true, progressColor: "inherit", color: "#ff" },
-	appDrawerState: {
-		anchor: { top: false, left: false, bottom: false, right: false },
-		currentAnchor: "left",
-	},
-	dialogState: {
-		contacts: {
-			open: false,
-		},
-		addContact: {
-			open: false,
-		},
-		logout: { open: false },
-	},
-};
-
-const errorInitialState = {
-	error: "",
-};
-
-const tempInitialState = {
-	messages: [],
-	messageInputText: "",
-	selectedContact: initialContact,
-	onlineStatus: { isOnline: true },
-};
+import { errorInitialState } from "./errorInitialState";
+import { globalInitialState } from "./globalInitialState";
+import { otherInitialState } from "./otherInitialState";
+import { tempInitialState } from "./tempInitialState";
+import { userInitialState } from "./userInitialState";
 
 const INITIAL_STATE = {
-	other: otherInitialState,
-	user: userInitialState,
-	global: globalInitialState,
-	error: errorInitialState,
-	temp: tempInitialState,
+	otherState: otherInitialState,
+	userState: userInitialState,
+	globalState: globalInitialState,
+	errorState: errorInitialState,
+	tempState: tempInitialState,
 };
 
 const initialState = () => INITIAL_STATE;
 
-export {
-	errorInitialState,
-	globalInitialState,
-	INITIAL_STATE,
-	initialState,
-	otherInitialState,
-	userInitialState,
-	tempInitialState,
-};
+export { INITIAL_STATE, initialState };

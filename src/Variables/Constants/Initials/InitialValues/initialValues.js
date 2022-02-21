@@ -17,14 +17,14 @@ import {
 
 const fn = (text, target, Icon) => ({ text, target, Icon });
 
-//TODO Uppercase initialViewMode keys values
-const initialViewMode = {
-	signIn: "signIn",
-	verifySignIn: "verifySignIn",
-	newUserProfile: "newUserProfile",
-	messenger: "messenger",
+const INITIAL_VIEW_MODE = {
+	SIGN_IN: "SIGN_IN",
+	VERIFY_SIGN_IN: "VERIFY_SIGN_IN",
+	NEW_USER_PROFILE: "NEW_USER_PROFILE",
+	MESSENGER: "MESSENGER",
 };
 
+//REDESIGN
 const initialValues = {
 	allChats: fn("All Chats", "allChats", ForumOutlined),
 	bot: fn("Bot", "bot", SmartToyOutlined),
@@ -54,4 +54,4 @@ const initialMessage = {
 
 const initialCountry = { countryCode: "", countryName: "", countryShortName: "" };
 
-export { initialContact, initialCountry, initialMessage, initialValues, initialViewMode };
+export { initialContact, initialCountry, initialMessage, initialValues, INITIAL_VIEW_MODE };

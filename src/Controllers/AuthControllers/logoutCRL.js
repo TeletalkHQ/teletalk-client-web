@@ -3,7 +3,7 @@ import { userAction } from "~/Actions/UserActions/userActions";
 import { logoutAPI } from "~/APIs/Authentication/logoutAPI";
 import { userInitializer } from "~/Functions/Helpers/userInitializer";
 import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
-import { initialViewMode } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const logoutCRL = () => {
 	return async (dispatch, getState) => {
@@ -16,7 +16,7 @@ const logoutCRL = () => {
 
 			dispatch(
 				viewModeAction({
-					viewMode: initialViewMode.signIn,
+					viewMode: INITIAL_VIEW_MODE.signIn,
 				}),
 			);
 		} catch (error) {
