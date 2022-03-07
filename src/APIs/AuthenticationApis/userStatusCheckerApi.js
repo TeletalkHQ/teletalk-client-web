@@ -5,12 +5,12 @@ import { userRouteTemplate } from "~/Templates/routeTemplates/userRouteTemplate"
 const { baseRoute, statusCheck } = userRouteTemplate;
 
 const userStatusCheckerAPI = () => {
-	const response = requester({
-		method: statusCheck.properties.method,
-		url: `${baseRoute.properties.route}${statusCheck.properties.route}`,
-	});
+  const response = requester({
+    method: statusCheck.properties.method,
+    url: `${baseRoute.properties.route}${statusCheck.properties.route}`,
+  });
 
-	return response;
+  return response;
 };
 
 export { userStatusCheckerAPI };

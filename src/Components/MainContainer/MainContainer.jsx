@@ -20,69 +20,77 @@ import { backdropAction } from "~/Actions/GlobalActions/globalActions";
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 const MainContainer = () => {
-	const {
-		state: {
-			user,
-			temp: { selectedContact },
-			global: { viewMode },
-		},
-		hooksOutput: { dispatch },
-	} = useMyContext();
-	const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const {
+    state: {
+      user,
+      temp: { selectedContact },
+      global: { viewMode },
+    },
+    hooksOutput: { dispatch },
+  } = useMyContext();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-	useMemo(
-		() => snackbarInjector({ enqueueSnackbar, closeSnackbar }),
-		[enqueueSnackbar, closeSnackbar],
-	);
+  useMemo(
+    () => snackbarInjector({ enqueueSnackbar, closeSnackbar }),
+    [enqueueSnackbar, closeSnackbar]
+  );
 
-	useEffect(() => {
-		onlineConnectionChecker();
-	}, []);
+  useEffect(() => {
+    onlineConnectionChecker();
+    getAllStuffCrl();
+  }, []);
 
-	useEffect(() => {
-		(async () => {
-			try {
-				if (user.privateID) {
-					const { user } = await dispatch(userStatusCheckerCRL());
+  useEffect(() => {
+    (async () => {
+      try {
+        if (user.privateID) {
+          const { user } = await dispatch(userStatusCheckerCRL());
 
-					await dispatch(getUserChatsLastMessageCRL({ user }));
-				}
-			} catch (error) {
-				console.log("MainContainer auth catch", error);
-			} finally {
-				dispatch(backdropAction({ backdropState: { open: false } }));
-			}
-		})();
-		// eslint-disable-next-line
-	}, [user.mainToken]);
+          await dispatch(getUserChatsLastMessageCRL({ user }));
+        }
+      } catch (error) {
+        console.log("MainContainer auth catch", error);
+      } finally {
+        dispatch(backdropAction({ backdropState: { open: false } }));
+      }
+    })();
+    // eslint-disable-next-line
+  }, [user.mainToken]);
 
-	return (
-		<>
-			{!user.privateID || viewMode !== INITIAL_VIEW_MODE.messenger ? (
-				<Authentication />
-			) : (
-				<>
-					<Grid container style={{ height: "100vh" }}>
-						<Grid sx={{ backgroundColor: "lightcyan" }} item container sm={12} md={4} lg={3}>
-							<LeftSideContainer />
-						</Grid>
+  return (
+    <>
+      {!user.privateID || viewMode !== INITIAL_VIEW_MODE.messenger ? (
+        <Authentication />
+      ) : (
+        <>
+          <Grid container style={{ height: "100vh" }}>
+            <Grid
+              sx={{ backgroundColor: "lightcyan" }}
+              item
+              container
+              sm={12}
+              md={4}
+              lg={3}
+            >
+              <LeftSideContainer />
+            </Grid>
 
-						<Grid
-							sx={{ backgroundColor: "tomato", height: "100%" }}
-							item
-							container
-							lg={9}
-							md={8}
-						>
-							{selectedContact.privateID && <RightSideContainer />}
-						</Grid>
-					</Grid>
-				</>
-			)}
+            <Grid
+              sx={{ backgroundColor: "tomato", height: "100%" }}
+              item
+              container
+              lg={9}
+              md={8}
+            >
+              {selectedContact.privateID && <RightSideContainer />}
+            </Grid>
+          </Grid>
+        </>
+      )}
 
-			<PortalContainer />
-		</>
-	);
+      <PortalContainer />
+    </>
+  );
 };
 
 export default MainContainer;

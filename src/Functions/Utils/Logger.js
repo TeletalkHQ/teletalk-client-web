@@ -118,4 +118,6 @@ class Logger {
   }
 }
 
-export { Logger };
+const logger = new Logger();
+
+export { logger };

@@ -5,13 +5,13 @@ import { userRouteTemplate } from "~/Templates/routeTemplates/userRouteTemplate"
 const { baseRoute, signInNormal } = userRouteTemplate;
 
 const signInAPI = (data) => {
-	const response = requester({
-		data,
-		method: signInNormal.properties.method,
-		url: `${baseRoute.properties.route}${signInNormal.properties.route}`,
-	});
+  const response = requester({
+    data,
+    method: signInNormal.properties.method,
+    url: `${baseRoute.properties.route}${signInNormal.properties.route}`,
+  });
 
-	return response;
+  return response;
 };
 
 export { signInAPI };

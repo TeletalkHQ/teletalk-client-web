@@ -1,14 +1,14 @@
 import { userAction } from "~/Actions/UserActions/userActions";
-import { getContactsAPI } from "~/APIs/Cellphone/getContactsAPI";
+import { getContactsAPI } from "~/APIs/CellphoneApis/getContactsAPI";
 
 const getContactsCRL = () => {
-	return async (dispatch, getState) => {
-		try {
-			const result = await getContactsAPI();
+  return async (dispatch, getState) => {
+    try {
+      const result = await getContactsAPI();
 
-			dispatch(userAction({ contacts: result.data.contacts }));
-		} catch (error) {}
-	};
+      dispatch(userAction({ contacts: result.data.contacts }));
+    } catch (error) {}
+  };
 };
 
 export { getContactsCRL };

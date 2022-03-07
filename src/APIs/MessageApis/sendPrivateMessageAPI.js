@@ -4,13 +4,13 @@ import { privateChatRouteTemplate } from "~/Templates/routeTemplates/privateChat
 const { baseRoute, sendMessage } = privateChatRouteTemplate;
 
 const sendPrivateMessageAPI = async (data) => {
-	const response = await requester({
-		data,
-		method: sendMessage.properties.method,
-		url: `${baseRoute.properties.route}${sendMessage.properties.route}`,
-	});
+  const response = await requester({
+    data,
+    method: sendMessage.properties.method,
+    url: `${baseRoute.properties.route}${sendMessage.properties.route}`,
+  });
 
-	return response;
+  return response;
 };
 
 export { sendPrivateMessageAPI };
