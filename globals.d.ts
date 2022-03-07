@@ -1,5 +1,5 @@
-import { Logger as ConsoleLogger } from "~/Functions/Utils/Logger";
+import { logger as consoleLogger } from "~/Functions/Utils/Logger";
 
 declare global {
-	var logger = ConsoleLogger;
+  var logger = consoleLogger;
 }
