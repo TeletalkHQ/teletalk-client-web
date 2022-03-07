@@ -1,3 +1,2 @@
 Use framer/motion for animation ?
-Add versioning system
 Add notification system
