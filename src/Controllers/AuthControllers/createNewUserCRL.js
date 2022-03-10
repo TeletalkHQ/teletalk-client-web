@@ -13,7 +13,7 @@ const createNewUserCRL = () => {
       if (!verifyToken) {
         const error = "verifyToken is not defined";
 
-        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.signIn }));
+        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
 
         throw error;
       }
@@ -30,7 +30,7 @@ const createNewUserCRL = () => {
 
       PersistentStorage.removeItem({ key: "verifyToken" });
 
-      dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.messenger }));
+      dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
 
       dispatch(loadingAction({ loading: true }));
     } catch (error) {

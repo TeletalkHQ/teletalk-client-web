@@ -32,7 +32,7 @@ const signInCRL = () => {
         })
       );
 
-      dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.verifySignIn }));
+      dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.VERIFY_SIGN_IN }));
 
       return response;
     } catch (error) {

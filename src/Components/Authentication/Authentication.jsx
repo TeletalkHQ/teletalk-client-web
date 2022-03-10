@@ -13,12 +13,12 @@ import { verifySignInCRL } from "~/Controllers/AuthControllers/verifySignInCRL";
 import { welcomeCRL } from "~/Controllers/otherControllers/welcomeCRL";
 
 import {
-	phoneNumberAction,
-	verifyCodeAction,
-	countryCodeAction,
-	countryNameAction,
-	firstNameAction,
-	lastNameAction,
+  phoneNumberAction,
+  verifyCodeAction,
+  countryCodeAction,
+  countryNameAction,
+  firstNameAction,
+  lastNameAction,
 } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
@@ -29,144 +29,145 @@ import { createNewUserCRL } from "~/Controllers/AuthControllers/createNewUserCRL
 const numberRegex = new RegExp("^[0-9]+$");
 
 const Authentication = () => {
-	const {
-		state: {
-			user: {
-				phoneNumber,
-				countryCode,
-				countryName,
-				verifyCode,
-				loading,
-				firstName,
-				lastName,
-			},
-			global: { viewMode },
-			other: { countries, countryNameInputValue, selectedCountry },
-		},
-		hooksOutput: { dispatch },
-	} = useMyContext();
+  const {
+    state: {
+      user: {
+        phoneNumber,
+        countryCode,
+        countryName,
+        verifyCode,
+        loading,
+        firstName,
+        lastName,
+      },
+      global: { viewMode },
+      other: { countries, countryNameInputValue, selectedCountry },
+    },
+    hooksOutput: { dispatch },
+  } = useMyContext();
 
-	useEffect(() => {
-		dispatch(welcomeCRL());
-		dispatch(getCountriesCRL());
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+  useEffect(() => {
+    dispatch(welcomeCRL());
+    dispatch(getCountriesCRL());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-	const handleSignInClick = () => {
-		dispatch(signInCRL());
-	};
+  const handleSignInClick = () => {
+    dispatch(signInCRL());
+  };
 
-	const handleVerifyClick = () => {
-		dispatch(verifySignInCRL());
-	};
+  const handleVerifyClick = () => {
+    dispatch(verifySignInCRL());
+  };
 
-	const handlePhoneNumberChange = (event) => {
-		const value = event.target.value;
+  const handlePhoneNumberChange = (event) => {
+    const value = event.target.value;
 
-		(value?.length < 15 || value === "") &&
-			dispatch(phoneNumberAction({ phoneNumber: value }));
-	};
+    (value?.length < 15 || value === "") &&
+      dispatch(phoneNumberAction({ phoneNumber: value }));
+  };
 
-	const handleCountryCodeChange = (event) => {
-		const value = event.target.value;
-		const isNumber = numberRegex.test(value);
+  const handleCountryCodeChange = (event) => {
+    const value = event.target.value;
+    const isNumber = numberRegex.test(value);
 
-		if ((isNumber && value?.length <= 6) || value === "") {
-			dispatch(countryCodeAction({ countryCode: value }));
-			const country = countries.find((c) => c.countryCode === value) || null;
-			dispatch(selectedCountryAction({ selectedCountry: country }));
-		}
-	};
+    if ((isNumber && value?.length <= 6) || value === "") {
+      dispatch(countryCodeAction({ countryCode: value }));
+      const country = countries.find((c) => c.countryCode === value) || null;
+      dispatch(selectedCountryAction({ selectedCountry: country }));
+    }
+  };
 
-	const handleVerifyCodeChange = (e) => {
-		const value = e?.target?.value;
+  const handleVerifyCodeChange = (e) => {
+    const value = e?.target?.value;
 
-		(value?.length <= 6 || value === "") && dispatch(verifyCodeAction({ verifyCode: value }));
-	};
+    (value?.length <= 6 || value === "") &&
+      dispatch(verifyCodeAction({ verifyCode: value }));
+  };
 
-	const handleBackClick = () => {
-		dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.signIn }));
-	};
+  const handleBackClick = () => {
+    dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
+  };
 
-	const handleCountryNameOnchange = (newValue) => {
-		dispatch(selectedCountryAction({ selectedCountry: newValue || null }));
-		dispatch(countryCodeAction({ countryCode: newValue?.countryCode || "" }));
-		dispatch(countryNameAction({ countryName: newValue?.countryName || "" }));
-	};
+  const handleCountryNameOnchange = (newValue) => {
+    dispatch(selectedCountryAction({ selectedCountry: newValue || null }));
+    dispatch(countryCodeAction({ countryCode: newValue?.countryCode || "" }));
+    dispatch(countryNameAction({ countryName: newValue?.countryName || "" }));
+  };
 
-	const handleCountryNameOnInputChange = (newInputValue) => {
-		dispatch(countryNameAction({ countryName: newInputValue }));
-	};
+  const handleCountryNameOnInputChange = (newInputValue) => {
+    dispatch(countryNameAction({ countryName: newInputValue }));
+  };
 
-	const handleFirstNameOnChange = (e) => {
-		dispatch(firstNameAction({ firstName: e.target.value }));
-	};
+  const handleFirstNameOnChange = (e) => {
+    dispatch(firstNameAction({ firstName: e.target.value }));
+  };
 
-	const handleLastNameOnChange = (e) => {
-		dispatch(lastNameAction({ lastName: e.target.value }));
-	};
+  const handleLastNameOnChange = (e) => {
+    dispatch(lastNameAction({ lastName: e.target.value }));
+  };
 
-	const handleConfirmClick = () => {
-		dispatch(createNewUserCRL());
-	};
+  const handleConfirmClick = () => {
+    dispatch(createNewUserCRL());
+  };
 
-	const component = () => {
-		switch (viewMode) {
-			case INITIAL_VIEW_MODE.signIn:
-				return (
-					<SignIn
-						countries={countries}
-						countryCode={countryCode}
-						loading={loading}
-						onCountryCodeChange={handleCountryCodeChange}
-						onPhoneNumberChange={handlePhoneNumberChange}
-						onSignInClick={handleSignInClick}
-						phoneNumber={phoneNumber}
-						countryName={countryName}
-						countryNameInputValue={countryNameInputValue}
-						onCountryNameOnchange={handleCountryNameOnchange}
-						onCountryNameOnInputChange={handleCountryNameOnInputChange}
-						selectedCountry={selectedCountry}
-					/>
-				);
+  const component = () => {
+    switch (viewMode) {
+      case INITIAL_VIEW_MODE.SIGN_IN:
+        return (
+          <SignIn
+            countries={countries}
+            countryCode={countryCode}
+            loading={loading}
+            onCountryCodeChange={handleCountryCodeChange}
+            onPhoneNumberChange={handlePhoneNumberChange}
+            onSignInClick={handleSignInClick}
+            phoneNumber={phoneNumber}
+            countryName={countryName}
+            countryNameInputValue={countryNameInputValue}
+            onCountryNameOnchange={handleCountryNameOnchange}
+            onCountryNameOnInputChange={handleCountryNameOnInputChange}
+            selectedCountry={selectedCountry}
+          />
+        );
 
-			case INITIAL_VIEW_MODE.verifySignIn:
-				return (
-					<VerifySignIn
-						countryCode={countryCode}
-						onBackClick={handleBackClick}
-						onVerifyClick={handleVerifyClick}
-						onVerifyCodeChange={handleVerifyCodeChange}
-						verifyCode={verifyCode}
-						phoneNumber={phoneNumber}
-						loading={loading}
-					/>
-				);
+      case INITIAL_VIEW_MODE.VERIFY_SIGN_IN:
+        return (
+          <VerifySignIn
+            countryCode={countryCode}
+            onBackClick={handleBackClick}
+            onVerifyClick={handleVerifyClick}
+            onVerifyCodeChange={handleVerifyCodeChange}
+            verifyCode={verifyCode}
+            phoneNumber={phoneNumber}
+            loading={loading}
+          />
+        );
 
-			case INITIAL_VIEW_MODE.newUserProfile:
-				return (
-					<NewUserProfile
-						onBackClick={handleBackClick}
-						loading={loading}
-						firstNameInput={firstName}
-						lastNameInput={lastName}
-						onLastNameOnChange={handleLastNameOnChange}
-						onConfirmClick={handleConfirmClick}
-						onFirstNameOnChange={handleFirstNameOnChange}
-					/>
-				);
+      case INITIAL_VIEW_MODE.NEW_USER_PROFILE:
+        return (
+          <NewUserProfile
+            onBackClick={handleBackClick}
+            loading={loading}
+            firstNameInput={firstName}
+            lastNameInput={lastName}
+            onLastNameOnChange={handleLastNameOnChange}
+            onConfirmClick={handleConfirmClick}
+            onFirstNameOnChange={handleFirstNameOnChange}
+          />
+        );
 
-			default:
-				break;
-		}
-	};
+      default:
+        break;
+    }
+  };
 
-	return (
-		<>
-			{component()}
-			<Copyright sx={{ mt: 8, mb: 4 }} />
-		</>
-	);
+  return (
+    <>
+      {component()}
+      <Copyright sx={{ mt: 8, mb: 4 }} />
+    </>
+  );
 };
 
 export default Authentication;

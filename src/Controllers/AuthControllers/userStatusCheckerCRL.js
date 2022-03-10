@@ -27,7 +27,7 @@ const userStatusCheckerCRL = () => {
       //TODO Do this in special cases =>
       if (error.statusCode === 401) {
         PersistentStorage.clear();
-        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.signIn }));
+        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
       }
 
       dispatch(userAction({ ...userInitialState }));

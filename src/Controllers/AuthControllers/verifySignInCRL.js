@@ -21,7 +21,7 @@ const verifySignInCRL = () => {
       if (!verifyToken) {
         const error = "verifyToken is not defined";
 
-        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.signIn }));
+        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
 
         throw error;
       }
@@ -35,7 +35,7 @@ const verifySignInCRL = () => {
 
       if (user.newUser) {
         dispatch(
-          viewModeAction({ viewMode: INITIAL_VIEW_MODE.newUserProfile })
+          viewModeAction({ viewMode: INITIAL_VIEW_MODE.NEW_USER_PROFILE })
         );
       } else {
         PersistentStorage.removeItem({ key: "verifyToken" });
@@ -46,7 +46,7 @@ const verifySignInCRL = () => {
         PersistentStorage.setItem({ key: "mainToken", value: mainToken });
 
         dispatch(userAction({ ...user }));
-        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.messenger }));
+        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
       }
     } catch (error) {
       console.log("verifySignInCRL", error);

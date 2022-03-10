@@ -16,7 +16,7 @@ const logoutCRL = () => {
 
       dispatch(
         viewModeAction({
-          viewMode: INITIAL_VIEW_MODE.signIn,
+          viewMode: INITIAL_VIEW_MODE.SIGN_IN,
         })
       );
     } catch (error) {
