@@ -1,8 +1,8 @@
 import { requester } from "~/Functions/Utils/requester";
+import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-import { cellphoneRouteTemplate } from "~/Templates/routeTemplates/cellphoneRouteTemplate";
-
-const { baseRoute, getContacts } = cellphoneRouteTemplate;
+const { cellphoneRouterTemplate } = StuffStore.templates.routerTemplates;
+const { baseRoute, getContacts } = cellphoneRouterTemplate;
 
 const getContactsAPI = (data) => {
   try {

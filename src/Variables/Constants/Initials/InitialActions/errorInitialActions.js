@@ -1,14 +1,14 @@
-import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 const {
-	error: { error },
-} = INITIAL_STATE;
+  errorInitialState: { error },
+} = initialState;
 
 const errorInitialActions = {
-	econnabortedAction: {
-		type: "ECONNABORTED",
-		payload: { error },
-	},
+  econnabortedAction: {
+    type: "ECONNABORTED",
+    payload: { error },
+  },
 };
 
 export { errorInitialActions };

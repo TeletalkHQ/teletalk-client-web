@@ -1,17 +1,25 @@
-import { errorInitialState } from "./errorInitialState";
-import { globalInitialState } from "./globalInitialState";
-import { otherInitialState } from "./otherInitialState";
-import { tempInitialState } from "./tempInitialState";
-import { userInitialState } from "./userInitialState";
+import { errorInitialState } from "~/Variables/Constants/Initials/InitialStates/errorInitialState";
+import { globalInitialState } from "~/Variables/Constants/Initials/InitialStates/globalInitialState";
+import { otherInitialState } from "~/Variables/Constants/Initials/InitialStates/otherInitialState";
+import { tempInitialState } from "~/Variables/Constants/Initials/InitialStates/tempInitialState";
+import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/userInitialState";
 
-const INITIAL_STATE = {
-	otherState: otherInitialState,
-	userState: userInitialState,
-	globalState: globalInitialState,
-	errorState: errorInitialState,
-	tempState: tempInitialState,
+const initialState = {
+  errorInitialState,
+  globalInitialState,
+  otherInitialState,
+  tempInitialState,
+  userInitialState,
 };
 
-const initialState = () => INITIAL_STATE;
+const initialStateWithoutInitialWord = {
+  errorState: errorInitialState,
+  globalState: globalInitialState,
+  otherState: otherInitialState,
+  tempState: tempInitialState,
+  userState: userInitialState,
+};
 
-export { INITIAL_STATE, initialState };
+const getInitialState = () => initialStateWithoutInitialWord;
+
+export { initialState, initialStateWithoutInitialWord, getInitialState };

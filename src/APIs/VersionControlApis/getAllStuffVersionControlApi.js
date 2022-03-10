@@ -1,6 +1,6 @@
 import { requester } from "~/Functions/Utils/requester";
 
-const getAllStuffVersionControlApi = async (data) => {
+const getAllStuffApi = async (data) => {
   try {
     const response = await requester({
       data,
@@ -11,4 +11,4 @@ const getAllStuffVersionControlApi = async (data) => {
     console.log("getAllStuffVersionControlApi catch", error);
   }
 };
-export { getAllStuffVersionControlApi };
+export { getAllStuffApi };

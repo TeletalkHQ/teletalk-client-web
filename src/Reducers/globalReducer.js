@@ -1,39 +1,53 @@
-import { globalInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
-import { globalInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
-import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
 import { newStateReplacer } from "~/Functions/Utils/stateUtils/stateUtils";
+
+import { globalInitialActions } from "~/Variables/Constants/Initials/InitialActions/initialActions";
+import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/initialOptions";
+
 const {
-	appDrawerInitialAction,
-	backdropInitialAction,
-	viewModeInitialAction,
-	dialogInitialAction,
+  appDrawerInitialAction,
+  backdropInitialAction,
+  viewModeInitialAction,
+  dialogInitialAction,
+  loadingInitialAction,
+  onlineStatusInitialAction,
 } = globalInitialActions;
 
-const globalReducer = (state = globalInitialState, action = initialAction) => {
-	const { payload, type } = action;
+const globalReducer = (
+  state = initialState.globalInitialState,
+  action = initialAction
+) => {
+  const { payload, type } = action;
+  console.log(action);
 
-	const fn = () => newStateReplacer({ state, payload });
+  const fn = () => newStateReplacer({ state, payload });
 
-	try {
-		switch (type) {
-			case viewModeInitialAction.type:
-				return fn();
+  try {
+    switch (type) {
+      case viewModeInitialAction.type:
+        return fn();
 
-			case backdropInitialAction.type:
-				return fn();
+      case backdropInitialAction.type:
+        return fn();
 
-			case appDrawerInitialAction.type:
-				return fn();
+      case appDrawerInitialAction.type:
+        return fn();
 
-			case dialogInitialAction.type:
-				return fn();
+      case dialogInitialAction.type:
+        return fn();
 
-			default:
-				return state;
-		}
-	} catch (error) {
-		console.log("globalReducer catch", error);
-	}
+      case onlineStatusInitialAction.type:
+        return fn();
+
+      case loadingInitialAction.type:
+        return fn();
+
+      default:
+        return state;
+    }
+  } catch (error) {
+    console.log("globalReducer catch", error);
+  }
 };
 
 export { globalReducer };

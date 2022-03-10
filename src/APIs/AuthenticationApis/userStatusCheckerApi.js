@@ -1,8 +1,8 @@
 import { requester } from "~/Functions/Utils/requester";
+import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-import { userRouteTemplate } from "~/Templates/routeTemplates/userRouteTemplate";
-
-const { baseRoute, statusCheck } = userRouteTemplate;
+const { userRouterTemplate } = StuffStore.templates.routerTemplates;
+const { baseRoute, statusCheck } = userRouterTemplate;
 
 const userStatusCheckerAPI = () => {
   const response = requester({

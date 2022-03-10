@@ -3,12 +3,12 @@ import { verifySignInAPI } from "~/APIs/AuthenticationApis/verifySignInApi";
 import { loadingAction, userAction } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
-import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
-const verifySignInCRL = () => {
-  return async (dispatch, getState = initialState) => {
+const verifySignInCrl = () => {
+  return async (dispatch, getState = getInitialState) => {
     try {
       dispatch(loadingAction({ loading: true }));
 
@@ -49,11 +49,11 @@ const verifySignInCRL = () => {
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
       }
     } catch (error) {
-      console.log("verifySignInCRL", error);
+      console.log("verifySignInCrl", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }
   };
 };
 
-export { verifySignInCRL };
+export { verifySignInCrl };

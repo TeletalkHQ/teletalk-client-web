@@ -1,0 +1,3316 @@
+{
+  "templates": {
+    "schemaTemplates": {
+      "chatSchemaTemplate": {
+        "version": "1.0.0",
+        "chatID": {
+          "properties": {
+            "maxlength": {
+              "value": 35,
+              "error": {
+                "errorCode": 4003,
+                "statusCode": 400,
+                "message": "",
+                "reason": "CHAT_ID_MAX_LENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 30,
+              "error": {
+                "errorCode": 4004,
+                "statusCode": 400,
+                "message": "",
+                "reason": "CHAT_ID_MIN_LENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4005,
+                "statusCode": 400,
+                "message": "",
+                "reason": "CHAT_ID_REQUIRED"
+              }
+            },
+            "trim": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4002,
+                "statusCode": 400,
+                "message": "",
+                "reason": "CHAT_ID_INVALID_TYPE"
+              }
+            },
+            "unique": {
+              "value": true,
+              "error": {
+                "errorCode": 4001,
+                "statusCode": 400,
+                "message": "",
+                "reason": "CHAT_ID_EXIST"
+              }
+            },
+            "default": "1.0.0",
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          }
+        },
+        "createdAt": {
+          "properties": {
+            "maxlength": null,
+            "minlength": null,
+            "required": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "trim": null,
+            "type": {
+              "value": "date",
+              "error": {
+                "errorCode": 4043,
+                "statusCode": 400,
+                "message": "",
+                "reason": "CREATED_AT_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": {
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "message": {
+          "properties": {
+            "maxlength": {
+              "value": 10,
+              "error": {
+                "errorCode": 4014,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MESSAGE_TEXT_MAX_LENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 1,
+              "error": {
+                "errorCode": 4015,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MESSAGE_TEXT_MIN_LENGTH_REACH"
+              }
+            },
+            "required": null,
+            "trim": null,
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4013,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MESSAGE_TEXT_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": null,
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "messageID": {
+          "properties": {
+            "maxlength": {
+              "value": 45,
+              "error": {
+                "errorCode": 4010,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MESSAGE_ID_MAX_LENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 40,
+              "error": {
+                "errorCode": 4011,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MESSAGE_ID_MIN_LENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4012,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MESSAGE_ID_REQUIRED"
+              }
+            },
+            "trim": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4009,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MESSAGE_ID_INVALID_TYPE"
+              }
+            },
+            "unique": {
+              "value": true,
+              "error": {
+                "errorCode": 4008,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MESSAGE_ID_EXIST"
+              }
+            },
+            "default": {
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "messageSender": {
+          "properties": {
+            "maxlength": "1.0.0",
+            "minlength": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "required": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "trim": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "type": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "unique": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "default": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          }
+        },
+        "messageStatus": {
+          "properties": {
+            "maxlength": "1.0.0",
+            "minlength": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "required": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "trim": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "type": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "unique": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "default": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          }
+        },
+        "participantID": {
+          "properties": {
+            "maxlength": {
+              "value": 35,
+              "error": {
+                "errorCode": 4018,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PARTICIPANT_ID_MAX_LENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 30,
+              "error": {
+                "errorCode": 4019,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PARTICIPANT_ID_MIN_LENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4020,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PARTICIPANT_ID_REQUIRED"
+              }
+            },
+            "trim": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4017,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PARTICIPANT_ID_INVALID_TYPE"
+              }
+            },
+            "unique": {
+              "value": true,
+              "error": {
+                "errorCode": 4016,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PARTICIPANT_ID_EXIST"
+              }
+            },
+            "default": null,
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "participantStatus": {
+          "properties": {
+            "maxlength": "1.0.0",
+            "minlength": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "required": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "trim": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "type": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "unique": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "default": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          }
+        },
+        "participantVisibility": {
+          "properties": {
+            "maxlength": "1.0.0",
+            "minlength": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "required": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "trim": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "type": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "unique": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "default": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          }
+        }
+      },
+      "commonSchemaTemplate": {
+        "version": "1.0.0",
+        "createdAt": {
+          "properties": {
+            "maxlength": null,
+            "minlength": null,
+            "required": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "trim": null,
+            "type": {
+              "value": "date",
+              "error": {
+                "errorCode": 4043,
+                "statusCode": 400,
+                "message": "",
+                "reason": "CREATED_AT_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": {
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        }
+      },
+      "userSchemaTemplate": {
+        "version": "1.0.0",
+        "bio": {
+          "properties": {
+            "maxlength": {
+              "value": 255,
+              "error": {
+                "errorCode": 4025,
+                "statusCode": 400,
+                "message": "",
+                "reason": "BIO_MAXLENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 1,
+              "error": {
+                "errorCode": 4026,
+                "statusCode": 400,
+                "message": "",
+                "reason": "BIO_MINLENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": false,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "trim": null,
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4024,
+                "statusCode": 400,
+                "message": "",
+                "reason": "BIO_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": {
+              "value": "",
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "blacklist": {
+          "properties": {
+            "maxlength": null,
+            "minlength": null,
+            "required": null,
+            "trim": null,
+            "type": {
+              "value": "array",
+              "error": {
+                "errorCode": 4023,
+                "statusCode": 400,
+                "message": "",
+                "reason": "BLACKLIST_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": {
+              "value": [],
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "contacts": {
+          "properties": {
+            "maxlength": {
+              "value": 14,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "minlength": {
+              "value": 10,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "required": {
+              "value": false,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "trim": null,
+            "type": {
+              "value": "array",
+              "error": {
+                "errorCode": 4034,
+                "statusCode": 400,
+                "message": "",
+                "reason": "CONTACT_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": {
+              "value": [],
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "countryCode": {
+          "properties": {
+            "maxlength": {
+              "value": 8,
+              "error": {
+                "errorCode": 4036,
+                "statusCode": 400,
+                "message": "",
+                "reason": "COUNTRY_CODE_MAXLENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 2,
+              "error": {
+                "errorCode": 4037,
+                "statusCode": 400,
+                "message": "",
+                "reason": "COUNTRY_CODE_MINLENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4038,
+                "statusCode": 400,
+                "message": "",
+                "reason": "COUNTRY_CODE_REQUIRED"
+              }
+            },
+            "trim": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4035,
+                "statusCode": 400,
+                "message": "",
+                "reason": "COUNTRY_CODE_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": null,
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "countryName": {
+          "properties": {
+            "maxlength": {
+              "value": 32,
+              "error": {
+                "errorCode": 4040,
+                "statusCode": 400,
+                "message": "",
+                "reason": "COUNTRY_NAME_MAXLENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 2,
+              "error": {
+                "errorCode": 4041,
+                "statusCode": 400,
+                "message": "",
+                "reason": "COUNTRY_NAME_MINLENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4042,
+                "statusCode": 400,
+                "message": "",
+                "reason": "COUNTRY_NAME_REQUIRED"
+              }
+            },
+            "trim": null,
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4039,
+                "statusCode": 400,
+                "message": "",
+                "reason": "COUNTRY_NAME_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": null,
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "createdAt": {
+          "properties": {
+            "maxlength": null,
+            "minlength": null,
+            "required": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "trim": null,
+            "type": {
+              "value": "date",
+              "error": {
+                "errorCode": 4043,
+                "statusCode": 400,
+                "message": "",
+                "reason": "CREATED_AT_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": {
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "firstName": {
+          "properties": {
+            "maxlength": {
+              "value": 18,
+              "error": {
+                "errorCode": 4045,
+                "statusCode": 400,
+                "message": "",
+                "reason": "FIRST_NAME_MAXLENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 1,
+              "error": {
+                "errorCode": 4046,
+                "statusCode": 400,
+                "message": "",
+                "reason": "FIRST_NAME_MINLENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4047,
+                "statusCode": 400,
+                "message": "",
+                "reason": "FIRST_NAME_REQUIRED"
+              }
+            },
+            "trim": {
+              "value": false,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4044,
+                "statusCode": 400,
+                "message": "",
+                "reason": "FIRST_NAME_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": null,
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "lastName": {
+          "properties": {
+            "maxlength": {
+              "value": 18,
+              "error": {
+                "errorCode": 4049,
+                "statusCode": 400,
+                "message": "",
+                "reason": "LAST_NAME_MAXLENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 1,
+              "error": {
+                "errorCode": 4050,
+                "statusCode": 400,
+                "message": "",
+                "reason": "LAST_NAME_MINLENGTH_REACH"
+              }
+            },
+            "required": [false],
+            "trim": {
+              "value": false,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4048,
+                "statusCode": 400,
+                "message": "",
+                "reason": "LAST_NAME_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": {
+              "value": "",
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "macAddress": {
+          "properties": {
+            "maxlength": {
+              "value": 16,
+              "error": {
+                "errorCode": 4053,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MAC_ADDRESS_MAXLENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 12,
+              "error": {
+                "errorCode": 4054,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MAC_ADDRESS_MINLENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4055,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MAC_ADDRESS_REQUIRED"
+              }
+            },
+            "trim": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4052,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MAC_ADDRESS_INVALID_TYPE"
+              }
+            },
+            "unique": {
+              "value": true,
+              "error": {
+                "errorCode": 4051,
+                "statusCode": 400,
+                "message": "",
+                "reason": "MAC_ADDRESS_EXIST"
+              }
+            },
+            "default": null,
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "phoneNumber": {
+          "properties": {
+            "maxlength": {
+              "value": 14,
+              "error": {
+                "errorCode": 4060,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PHONE_NUMBER_MAXLENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 10,
+              "error": {
+                "errorCode": 4059,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PHONE_NUMBER_MINLENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4058,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PHONE_NUMBER_REQUIRED"
+              }
+            },
+            "trim": null,
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4056,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PHONE_NUMBER_INVALID_TYPE"
+              }
+            },
+            "unique": {
+              "value": true,
+              "error": {
+                "errorCode": 4057,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PHONE_NUMBER_EXIST"
+              }
+            },
+            "default": null,
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "privateID": {
+          "properties": {
+            "maxlength": {
+              "value": 35,
+              "error": {
+                "errorCode": 4063,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PRIVATE_ID_MAX_LENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 30,
+              "error": {
+                "errorCode": 4064,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PRIVATE_ID_MIN_LENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4065,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PRIVATE_ID_REQUIRED"
+              }
+            },
+            "trim": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4062,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PRIVATE_ID_INVALID_TYPE"
+              }
+            },
+            "unique": {
+              "value": true,
+              "error": {
+                "errorCode": 4061,
+                "statusCode": 400,
+                "message": "",
+                "reason": "PRIVATE_ID_EXIST"
+              }
+            },
+            "default": null,
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "token": {
+          "properties": {
+            "maxlength": null,
+            "minlength": null,
+            "required": {
+              "value": true,
+              "error": {
+                "errorCode": 4068,
+                "statusCode": 400,
+                "message": "",
+                "reason": "TOKEN_REQUIRED"
+              }
+            },
+            "trim": null,
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4069,
+                "statusCode": 400,
+                "message": "",
+                "reason": "TOKEN_INVALID_TYPE"
+              }
+            },
+            "unique": {
+              "value": true,
+              "error": {
+                "errorCode": 4067,
+                "statusCode": 400,
+                "message": "",
+                "reason": "TOKEN_EXIST"
+              }
+            },
+            "default": null,
+            "lowercase": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "username": {
+          "properties": {
+            "maxlength": {
+              "value": 12,
+              "error": {
+                "errorCode": 4073,
+                "statusCode": 400,
+                "message": "",
+                "reason": "USERNAME_MAXLENGTH_REACH"
+              }
+            },
+            "minlength": {
+              "value": 4,
+              "error": {
+                "errorCode": 4074,
+                "statusCode": 400,
+                "message": "",
+                "reason": "USERNAME_MINLENGTH_REACH"
+              }
+            },
+            "required": {
+              "value": false,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "trim": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4072,
+                "statusCode": 400,
+                "message": "",
+                "reason": "USERNAME_INVALID_TYPE"
+              }
+            },
+            "unique": {
+              "value": false,
+              "error": {
+                "errorCode": 4071,
+                "statusCode": 400,
+                "message": "",
+                "reason": "USERNAME_EXIST"
+              }
+            },
+            "default": {
+              "value": "",
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "lowercase": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "length": {
+              "value": null,
+              "error": {
+                "code": 0,
+                "message": "",
+                "reason": "",
+                "version": ""
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "verificationCode": {
+          "properties": {
+            "maxlength": null,
+            "minlength": null,
+            "required": null,
+            "trim": {
+              "value": true,
+              "error": {
+                "reason": "Not set!",
+                "message": "Not set!",
+                "code": "Not set!",
+                "version": "Not set!"
+              }
+            },
+            "type": {
+              "value": "string",
+              "error": {
+                "errorCode": 4076,
+                "statusCode": 400,
+                "message": "",
+                "reason": "VERIFICATION_CODE_INVALID_TYPE"
+              }
+            },
+            "unique": null,
+            "default": null,
+            "lowercase": null,
+            "length": {
+              "value": 6,
+              "error": {
+                "errorCode": 4077,
+                "statusCode": 400,
+                "message": "",
+                "reason": "VERIFICATION_CODE_INVALID_LENGTH"
+              }
+            }
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        }
+      }
+    },
+    "routerTemplates": {
+      "cellphoneRouterTemplate": {
+        "addBlock": {
+          "properties": {
+            "method": "post",
+            "route": "/add/block",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for block single contact on user contacts list"
+          }
+        },
+        "addBlocks": {
+          "properties": {
+            "method": "post",
+            "route": "/add/blocks",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for block single contact on user contacts list"
+          }
+        },
+        "addContact": {
+          "properties": {
+            "method": "post",
+            "route": "/add/contact",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for add single contact to current user contacts list"
+          }
+        },
+        "addContacts": {
+          "properties": {
+            "method": "post",
+            "route": "/add/contacts",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for add single contact to current user contacts list"
+          }
+        },
+        "baseUrl": {
+          "properties": {
+            "method": true,
+            "route": "/cellphone",
+            "statusCode": true
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": ""
+          }
+        },
+        "editBlock": {
+          "properties": {
+            "method": "patch",
+            "route": "/edit/block",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "User for edit single contact on user contacts list"
+          }
+        },
+        "editContact": {
+          "properties": {
+            "method": "patch",
+            "route": "/edit/contact",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "User for edit single contact on user contacts list"
+          }
+        },
+        "error": {
+          "properties": {
+            "method": "get",
+            "route": "/error",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for get all contact errors"
+          }
+        },
+        "getContacts": {
+          "properties": {
+            "method": "get",
+            "route": "/get/contacts",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "User for edit single contact on user contacts list"
+          }
+        },
+        "removeBlock": {
+          "properties": {
+            "method": "delete",
+            "route": "/remove/block",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for remove single contact on user contacts list"
+          }
+        },
+        "removeBlocks": {
+          "properties": {
+            "method": "delete",
+            "route": "/remove/blocks",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for remove single contact on user contacts list"
+          }
+        },
+        "removeContact": {
+          "properties": {
+            "method": "delete",
+            "route": "/remove/contact",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for remove single contact on user contacts list"
+          }
+        },
+        "removeContacts": {
+          "properties": {
+            "method": "delete",
+            "route": "/remove/contacts",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for remove single contact on user contacts list"
+          }
+        },
+        "shareContact": {
+          "properties": {
+            "method": "post",
+            "route": "/share/contact",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for share single contact on user contacts list"
+          }
+        },
+        "shareContacts": {
+          "properties": {
+            "method": "post",
+            "route": "/share/contacts",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for share single contact on user contacts list"
+          }
+        },
+        "template": {
+          "properties": {
+            "method": "get",
+            "route": "/template",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for get all contact properties and value structure"
+          }
+        },
+        "version": "1.0.0"
+      },
+      "otherRouterTemplate": {
+        "baseUrl": {
+          "properties": {
+            "method": true,
+            "route": "/other",
+            "statusCode": true
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": ""
+          }
+        },
+        "error": {
+          "properties": {
+            "method": "get",
+            "route": "/error",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for get all errors messages"
+          }
+        },
+        "version": "1.0.0",
+        "welcome": {
+          "properties": {
+            "method": "get",
+            "route": "/welcome",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use to get welcome message for client"
+          }
+        }
+      },
+      "privateChatRouterTemplate": {
+        "baseUrl": {
+          "properties": {
+            "method": true,
+            "route": "/chat/private",
+            "statusCode": true
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": ""
+          }
+        },
+        "chatsLastMessage": {
+          "properties": {
+            "method": "post",
+            "route": "/chats/last/message",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for Get chats last message"
+          }
+        },
+        "error": {
+          "properties": {
+            "method": "get",
+            "route": "/error",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for get all auth errors"
+          }
+        },
+        "getAllChats": {
+          "properties": {
+            "method": "get",
+            "route": "/get/all/chats",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for Start new chat"
+          }
+        },
+        "getMessages": {
+          "properties": {
+            "method": "post",
+            "route": "/get/messages",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for get all messages"
+          }
+        },
+        "sendMessage": {
+          "properties": {
+            "method": "post",
+            "route": "/send/message",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for send private messages"
+          }
+        },
+        "startChat": {
+          "properties": {
+            "method": "post",
+            "route": "/start/chat",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for Start new chat"
+          }
+        },
+        "template": {
+          "properties": {
+            "method": "get",
+            "route": "/template",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for get all user properties and value structure"
+          }
+        },
+        "version": "1.0.0"
+      },
+      "userRouterTemplate": {
+        "baseUrl": {
+          "properties": {
+            "method": true,
+            "route": "/user",
+            "statusCode": true
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": ""
+          }
+        },
+        "countries": {
+          "properties": {
+            "method": "get",
+            "route": "/countries/normal",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for get countries for normal account"
+          }
+        },
+        "createNewUser": {
+          "properties": {
+            "method": "post",
+            "route": "/createNewUser/normal",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for create new user for normal account"
+          }
+        },
+        "error": {
+          "properties": {
+            "method": "get",
+            "route": "/error",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for get all auth errors"
+          }
+        },
+        "logoutNormal": {
+          "properties": {
+            "method": "post",
+            "route": "/logout/normal",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for logout client as a normal account"
+          }
+        },
+        "signInNormal": {
+          "properties": {
+            "method": "post",
+            "route": "/signIn/normal",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for sign in client as a normal account"
+          }
+        },
+        "statusCheck": {
+          "properties": {
+            "method": "get",
+            "route": "/status/check",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for check client availability as a normal account"
+          }
+        },
+        "template": {
+          "properties": {
+            "method": "get",
+            "route": "/template",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for get all user properties and value structure"
+          }
+        },
+        "verifySignInNormal": {
+          "properties": {
+            "method": "post",
+            "route": "/verify/signIn/normal",
+            "statusCode": 200
+          },
+          "info": {
+            "version": "1.0.0",
+            "description": "Use for verify sign in (normal account) as normal account"
+          }
+        },
+        "version": "1.0.0"
+      },
+      "versionControlRouterTemplate": {
+        "properties": {
+          "baseUrl": {
+            "properties": {
+              "method": true,
+              "route": "/versionControl",
+              "statusCode": true
+            },
+            "info": {
+              "version": "1.0.0",
+              "description": ""
+            }
+          },
+          "getAllStuffs": {
+            "properties": {
+              "method": "get",
+              "route": "/getAllStuff",
+              "statusCode": 200
+            },
+            "info": {
+              "version": "1.0.0",
+              "description": "Use for get all templates schemas and validators"
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      }
+    },
+    "errorTemplates": {
+      "chatErrorTemplate": {
+        "version": "1.0.0",
+        "CHAT_EXIST": {
+          "properties": {
+            "errorCode": 4000,
+            "statusCode": 400,
+            "message": "chat is already initialized",
+            "reason": "CHAT_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CHAT_ID_EXIST": {
+          "properties": {
+            "errorCode": 4001,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CHAT_ID_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CHAT_ID_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4002,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CHAT_ID_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CHAT_ID_MAX_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4003,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CHAT_ID_MAX_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CHAT_ID_MIN_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4004,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CHAT_ID_MIN_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CHAT_ID_REQUIRED": {
+          "properties": {
+            "errorCode": 4005,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CHAT_ID_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CHAT_NOT_EXIST": {
+          "properties": {
+            "errorCode": 4006,
+            "statusCode": 400,
+            "message": "chat not exist, maybe deleted or something",
+            "reason": "CHAT_NOT_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CREATED_AT_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4007,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CREATED_AT_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MESSAGE_ID_EXIST": {
+          "properties": {
+            "errorCode": 4008,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MESSAGE_ID_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MESSAGE_ID_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4009,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MESSAGE_ID_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MESSAGE_ID_MAX_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4010,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MESSAGE_ID_MAX_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MESSAGE_ID_MIN_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4011,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MESSAGE_ID_MIN_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MESSAGE_ID_REQUIRED": {
+          "properties": {
+            "errorCode": 4012,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MESSAGE_ID_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MESSAGE_TEXT_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4013,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MESSAGE_TEXT_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MESSAGE_TEXT_MAX_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4014,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MESSAGE_TEXT_MAX_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MESSAGE_TEXT_MIN_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4015,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MESSAGE_TEXT_MIN_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PARTICIPANT_ID_EXIST": {
+          "properties": {
+            "errorCode": 4016,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PARTICIPANT_ID_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PARTICIPANT_ID_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4017,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PARTICIPANT_ID_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PARTICIPANT_ID_MAX_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4018,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PARTICIPANT_ID_MAX_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PARTICIPANT_ID_MIN_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4019,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PARTICIPANT_ID_MIN_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PARTICIPANT_ID_REQUIRED": {
+          "properties": {
+            "errorCode": 4020,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PARTICIPANT_ID_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PARTICIPANT_NOT_EXIST": {
+          "properties": {
+            "errorCode": 4021,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PARTICIPANT_NOT_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "USER_NO_LONGER_PARTICIPANT": {
+          "properties": {
+            "errorCode": 4022,
+            "statusCode": 400,
+            "message": "",
+            "reason": "USER_NO_LONGER_PARTICIPANT"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        }
+      },
+      "userErrorTemplate": {
+        "version": "1.0.0",
+        "BIO_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4024,
+            "statusCode": 400,
+            "message": "",
+            "reason": "BIO_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "BIO_MAXLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4025,
+            "statusCode": 400,
+            "message": "",
+            "reason": "BIO_MAXLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "BIO_MINLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4026,
+            "statusCode": 400,
+            "message": "",
+            "reason": "BIO_MINLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "BLACKLIST_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4023,
+            "statusCode": 400,
+            "message": "",
+            "reason": "BLACKLIST_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CELLPHONE_EXIST_IN_CONTACT": {
+          "properties": {
+            "errorCode": 4033,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CELLPHONE_EXIST_IN_CONTACT"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CELLPHONE_EXIST": {
+          "properties": {
+            "errorCode": 4027,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CELLPHONE_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CELLPHONE_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4028,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CELLPHONE_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CELLPHONE_MAXLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4029,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CELLPHONE_MAXLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CELLPHONE_MINLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4030,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CELLPHONE_MINLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CELLPHONE_NOT_EXIST": {
+          "properties": {
+            "errorCode": 4031,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CELLPHONE_NOT_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CELLPHONE_REQUIRED": {
+          "properties": {
+            "errorCode": 4032,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CELLPHONE_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CONTACT_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4034,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CONTACT_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "COUNTRY_CODE_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4035,
+            "statusCode": 400,
+            "message": "",
+            "reason": "COUNTRY_CODE_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "COUNTRY_CODE_MAXLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4036,
+            "statusCode": 400,
+            "message": "",
+            "reason": "COUNTRY_CODE_MAXLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "COUNTRY_CODE_MINLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4037,
+            "statusCode": 400,
+            "message": "",
+            "reason": "COUNTRY_CODE_MINLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "COUNTRY_CODE_REQUIRED": {
+          "properties": {
+            "errorCode": 4038,
+            "statusCode": 400,
+            "message": "",
+            "reason": "COUNTRY_CODE_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "COUNTRY_NAME_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4039,
+            "statusCode": 400,
+            "message": "",
+            "reason": "COUNTRY_NAME_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "COUNTRY_NAME_MAXLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4040,
+            "statusCode": 400,
+            "message": "",
+            "reason": "COUNTRY_NAME_MAXLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "COUNTRY_NAME_MINLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4041,
+            "statusCode": 400,
+            "message": "",
+            "reason": "COUNTRY_NAME_MINLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "COUNTRY_NAME_REQUIRED": {
+          "properties": {
+            "errorCode": 4042,
+            "statusCode": 400,
+            "message": "",
+            "reason": "COUNTRY_NAME_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "CREATED_AT_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4043,
+            "statusCode": 400,
+            "message": "",
+            "reason": "CREATED_AT_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "FIRST_NAME_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4044,
+            "statusCode": 400,
+            "message": "",
+            "reason": "FIRST_NAME_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "FIRST_NAME_MAXLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4045,
+            "statusCode": 400,
+            "message": "",
+            "reason": "FIRST_NAME_MAXLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "FIRST_NAME_MINLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4046,
+            "statusCode": 400,
+            "message": "",
+            "reason": "FIRST_NAME_MINLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "FIRST_NAME_REQUIRED": {
+          "properties": {
+            "errorCode": 4047,
+            "statusCode": 400,
+            "message": "",
+            "reason": "FIRST_NAME_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "LAST_NAME_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4048,
+            "statusCode": 400,
+            "message": "",
+            "reason": "LAST_NAME_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "LAST_NAME_MAXLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4049,
+            "statusCode": 400,
+            "message": "",
+            "reason": "LAST_NAME_MAXLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "LAST_NAME_MINLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4050,
+            "statusCode": 400,
+            "message": "",
+            "reason": "LAST_NAME_MINLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MAC_ADDRESS_EXIST": {
+          "properties": {
+            "errorCode": 4051,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MAC_ADDRESS_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MAC_ADDRESS_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4052,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MAC_ADDRESS_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MAC_ADDRESS_MAXLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4053,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MAC_ADDRESS_MAXLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MAC_ADDRESS_MINLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4054,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MAC_ADDRESS_MINLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "MAC_ADDRESS_REQUIRED": {
+          "properties": {
+            "errorCode": 4055,
+            "statusCode": 400,
+            "message": "",
+            "reason": "MAC_ADDRESS_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PHONE_NUMBER_EXIST": {
+          "properties": {
+            "errorCode": 4057,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PHONE_NUMBER_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PHONE_NUMBER_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4056,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PHONE_NUMBER_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PHONE_NUMBER_MAXLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4060,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PHONE_NUMBER_MAXLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PHONE_NUMBER_MINLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4059,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PHONE_NUMBER_MINLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PHONE_NUMBER_REQUIRED": {
+          "properties": {
+            "errorCode": 4058,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PHONE_NUMBER_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PRIVATE_ID_EXIST": {
+          "properties": {
+            "errorCode": 4061,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PRIVATE_ID_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PRIVATE_ID_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4062,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PRIVATE_ID_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PRIVATE_ID_MAX_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4063,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PRIVATE_ID_MAX_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PRIVATE_ID_MIN_LENGTH_REACH": {
+          "properties": {
+            "errorCode": 4064,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PRIVATE_ID_MIN_LENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "PRIVATE_ID_REQUIRED": {
+          "properties": {
+            "errorCode": 4065,
+            "statusCode": 400,
+            "message": "",
+            "reason": "PRIVATE_ID_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "SELF_STUFF": {
+          "properties": {
+            "errorCode": 4066,
+            "statusCode": 400,
+            "message": "",
+            "reason": "SELF_STUFF"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "TOKEN_EXIST": {
+          "properties": {
+            "errorCode": 4067,
+            "statusCode": 400,
+            "message": "",
+            "reason": "TOKEN_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "TOKEN_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4069,
+            "statusCode": 400,
+            "message": "",
+            "reason": "TOKEN_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "TOKEN_REQUIRED": {
+          "properties": {
+            "errorCode": 4068,
+            "statusCode": 400,
+            "message": "",
+            "reason": "TOKEN_REQUIRED"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "USER_NOT_EXIST": {
+          "properties": {
+            "errorCode": 4070,
+            "statusCode": 400,
+            "message": "user not exist, maybe privateID is incorrect",
+            "reason": "USER_NOT_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "USERNAME_EXIST": {
+          "properties": {
+            "errorCode": 4071,
+            "statusCode": 400,
+            "message": "",
+            "reason": "USERNAME_EXIST"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "USERNAME_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4072,
+            "statusCode": 400,
+            "message": "",
+            "reason": "USERNAME_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "USERNAME_MAXLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4073,
+            "statusCode": 400,
+            "message": "",
+            "reason": "USERNAME_MAXLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "USERNAME_MINLENGTH_REACH": {
+          "properties": {
+            "errorCode": 4074,
+            "statusCode": 400,
+            "message": "",
+            "reason": "USERNAME_MINLENGTH_REACH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "VERIFICATION_CODE_INVALID_LENGTH": {
+          "properties": {
+            "errorCode": 4077,
+            "statusCode": 400,
+            "message": "",
+            "reason": "VERIFICATION_CODE_INVALID_LENGTH"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "VERIFICATION_CODE_INVALID_TYPE": {
+          "properties": {
+            "errorCode": 4076,
+            "statusCode": 400,
+            "message": "",
+            "reason": "VERIFICATION_CODE_INVALID_TYPE"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        },
+        "VERIFICATION_CODE_INVALID": {
+          "properties": {
+            "errorCode": 4075,
+            "statusCode": 400,
+            "message": "Wrong verification code",
+            "reason": "VERIFICATION_CODE_INVALID"
+          },
+          "info": {
+            "version": "1.0.0"
+          }
+        }
+      }
+    }
+  },
+  "schemas": {
+    "validationSchemas": {
+      "bioValidationsSchema": {
+        "properties": {
+          "bio": {
+            "type": "string",
+            "optional": true,
+            "max": 255,
+            "messages": {
+              "string": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "chatIDValidationSchema": {
+        "properties": {
+          "chatID": {
+            "type": "string",
+            "unique": true,
+            "min": 30,
+            "max": 35,
+            "trim": true,
+            "messages": {
+              "string": "",
+              "required": "",
+              "unique": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "countryCodeValidationSchema": {
+        "properties": {
+          "countryCode": {
+            "type": "string",
+            "min": 2,
+            "max": 8,
+            "trim": true,
+            "messages": {
+              "string": "",
+              "required": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "countryNameValidationSchema": {
+        "properties": {
+          "countryName": {
+            "type": "string",
+            "min": 2,
+            "max": 32,
+            "messages": {
+              "string": "",
+              "required": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "createdAtValidationSchema": {
+        "properties": {
+          "createdAt": {
+            "type": "date",
+            "optimal": false
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "firstNameValidationSchema": {
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "min": 1,
+            "max": 18,
+            "trim": false,
+            "messages": {
+              "string": "",
+              "required": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "lastNameValidationSchema": {
+        "properties": {
+          "lastName": {
+            "type": "string",
+            "optional": true,
+            "max": 18,
+            "trim": false,
+            "messages": {
+              "string": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "macAddressValidationSchema": {
+        "properties": {
+          "macAddress": {
+            "type": "string",
+            "unique": true,
+            "min": 12,
+            "max": 16,
+            "trim": true,
+            "messages": {
+              "string": "",
+              "unique": "",
+              "required": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "messageIDValidationSchema": {
+        "properties": {
+          "messageID": {
+            "type": "string",
+            "unique": true,
+            "min": 40,
+            "max": 45,
+            "trim": true,
+            "messages": {
+              "string": "",
+              "required": "",
+              "unique": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "messageTextValidationSchema": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "min": 1,
+            "max": 10,
+            "messages": {
+              "string": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "participantIDValidationSchema": {
+        "properties": {
+          "participantID": {
+            "type": "string",
+            "unique": true,
+            "min": 30,
+            "max": 35,
+            "trim": true,
+            "messages": {
+              "string": "",
+              "required": "",
+              "unique": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "phoneNumberValidationSchema": {
+        "properties": {
+          "phoneNumber": {
+            "type": "string",
+            "min": 10,
+            "max": 14,
+            "messages": {
+              "string": "",
+              "required": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "privateIDValidationSchema": {
+        "properties": {
+          "privateID": {
+            "type": "string",
+            "unique": true,
+            "min": 30,
+            "max": 35,
+            "trim": true,
+            "messages": {
+              "string": "",
+              "required": "",
+              "unique": "",
+              "stringMin": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "usernameValidationSchema": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "optional": true,
+            "unique": false,
+            "max": 12,
+            "trim": true,
+            "lowercase": true,
+            "messages": {
+              "string": "",
+              "unique": "",
+              "stringMax": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      },
+      "verificationCodeValidationSchema": {
+        "properties": {
+          "verificationCode": {
+            "type": "string",
+            "length": 6,
+            "trim": true,
+            "messages": {
+              "string": "",
+              "length": ""
+            }
+          }
+        },
+        "info": {
+          "version": "1.0.0"
+        }
+      }
+    }
+  }
+}

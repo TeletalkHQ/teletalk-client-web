@@ -1,10 +1,9 @@
-import { setMessagesAction } from "~/Actions/TempActions/tempActions";
 import { userAction } from "~/Actions/UserActions/userActions";
 import { getAllChatMessagesAPI } from "~/APIs/MessageApis/getAllChatMessagesAPI";
-import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
-const getAllChatMessagesCRL = ({ chatID }) => {
-  return async (dispatch, getState = initialState) => {
+const getAllChatMessagesCrl = ({ chatID }) => {
+  return async (dispatch, getState = getInitialState) => {
     try {
       const { user } = getState();
 
@@ -28,9 +27,9 @@ const getAllChatMessagesCRL = ({ chatID }) => {
 
       // dispatch(setMessagesAction({ messages: response.data.messages }));
     } catch (error) {
-      console.log("getAllChatMessagesCRL", error);
+      console.log("getAllChatMessagesCrl", error);
     }
   };
 };
 
-export { getAllChatMessagesCRL };
+export { getAllChatMessagesCrl };

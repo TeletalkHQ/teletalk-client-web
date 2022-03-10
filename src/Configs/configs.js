@@ -1,12 +1,12 @@
 const configs = {
-	useThunkReducer: {
-		actionLogger: false,
-	},
+  useThunkReducer: {
+    actionLogger: true,
+  },
 
-	requester: {
-		successResponseLogger: false,
-		failureResponseLogger: false,
-	},
+  requester: {
+    successResponseLogger: false,
+    failureResponseLogger: false,
+  },
 };
 
 export { configs };

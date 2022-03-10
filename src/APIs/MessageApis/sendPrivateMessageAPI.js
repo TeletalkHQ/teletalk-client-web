@@ -1,7 +1,8 @@
 import { requester } from "~/Functions/Utils/requester";
-import { privateChatRouteTemplate } from "~/Templates/routeTemplates/privateChatRouteTemplate";
+import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const { baseRoute, sendMessage } = privateChatRouteTemplate;
+const { privateChatRouterTemplate } = StuffStore.templates.routerTemplates;
+const { baseRoute, sendMessage } = privateChatRouterTemplate;
 
 const sendPrivateMessageAPI = async (data) => {
   const response = await requester({

@@ -1,10 +1,10 @@
 import { userAction } from "~/Actions/UserActions/userActions";
 import { addNewContactAPI } from "~/APIs/CellphoneApis/addNewContactAPI";
 
-import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
-const addNewContactCRL = (contact) => {
-  return async (dispatch, getState = initialState) => {
+const addNewContactCrl = (contact) => {
+  return async (dispatch, getState = getInitialState) => {
     try {
       const result = await addNewContactAPI(contact);
 
@@ -14,9 +14,9 @@ const addNewContactCRL = (contact) => {
         })
       );
     } catch (error) {
-      console.log("addNewContactCRL", error);
+      console.log("addNewContactCrl", error);
     }
   };
 };
 
-export { addNewContactCRL };
+export { addNewContactCrl };

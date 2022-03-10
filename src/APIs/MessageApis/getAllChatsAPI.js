@@ -1,9 +1,8 @@
 import { requester } from "~/Functions/Utils/requester";
+import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-import {
-  getAllChats,
-  baseRoute,
-} from "~/Templates/routeTemplates/privateChatRouteTemplate";
+const { privateChatRouterTemplate } = StuffStore.templates.routerTemplates;
+const { getAllChats, baseRoute } = privateChatRouterTemplate;
 
 const getAllChatsAPI = async (data) => {
   try {

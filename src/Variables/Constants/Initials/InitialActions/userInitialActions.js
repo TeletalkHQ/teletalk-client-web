@@ -1,12 +1,12 @@
-import { INITIAL_STATE } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
-const { user } = INITIAL_STATE;
+const { userInitialState } = initialState;
 
 const userInitialActions = {
-	userInitialAction: {
-		payload: user,
-		type: "USER_DATA",
-	},
+  userInitialAction: {
+    payload: userInitialState,
+    type: "USER_DATA",
+  },
 };
 
 export { userInitialActions };

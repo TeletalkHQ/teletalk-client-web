@@ -1,14 +1,14 @@
 import { signInAPI } from "~/APIs/AuthenticationApis/signInApi";
 
-import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 import { loadingAction, userAction } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
-const signInCRL = () => {
-  return async (dispatch, getState = initialState) => {
+const signInCrl = () => {
+  return async (dispatch, getState = getInitialState) => {
     try {
       const {
         user: { phoneNumber, countryCode, countryName },
@@ -36,11 +36,11 @@ const signInCRL = () => {
 
       return response;
     } catch (error) {
-      console.log("signInCRL catch", error);
+      console.log("signInCrl catch", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }
   };
 };
 
-export { signInCRL };
+export { signInCrl };

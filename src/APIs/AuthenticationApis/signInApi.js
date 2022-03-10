@@ -1,8 +1,8 @@
 import { requester } from "~/Functions/Utils/requester";
+import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-import { userRouteTemplate } from "~/Templates/routeTemplates/userRouteTemplate";
-
-const { baseRoute, signInNormal } = userRouteTemplate;
+const { userRouterTemplate } = StuffStore.templates.routerTemplates;
+const { baseRoute, signInNormal } = userRouterTemplate;
 
 const signInAPI = (data) => {
   const response = requester({

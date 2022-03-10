@@ -1,8 +1,8 @@
 import { requester } from "~/Functions/Utils/requester";
+import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-import { otherRouteTemplate } from "~/Templates/routeTemplates/otherRouteTemplate";
-
-const { baseRoute, welcome } = otherRouteTemplate;
+const { otherRouterTemplate } = StuffStore.templates.routerTemplates;
+const { baseRoute, welcome } = otherRouterTemplate;
 
 const welcomeAPI = async () => {
   try {
