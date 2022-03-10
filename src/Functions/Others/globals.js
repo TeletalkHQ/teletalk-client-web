@@ -1,3 +1,3 @@
-import { Logger } from "~/Functions/Utils/Logger";
+import { logger } from "~/Functions/Utils/Logger";
 
-global.Logger = Logger;
+global.logger = logger;

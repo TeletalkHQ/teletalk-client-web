@@ -2,11 +2,11 @@ import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 import { loadingAction } from "~/Actions/UserActions/userActions";
 import { createNewUserAPI } from "~/APIs/AuthenticationApis/createNewUserApi";
 import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
-import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
-const createNewUserCRL = () => {
-  return async (dispatch, getState = initialState) => {
+const createNewUserCrl = () => {
+  return async (dispatch, getState = getInitialState) => {
     try {
       const verifyToken = PersistentStorage.getItem({ key: "verifyToken" });
 
@@ -34,11 +34,11 @@ const createNewUserCRL = () => {
 
       dispatch(loadingAction({ loading: true }));
     } catch (error) {
-      console.log("createNewUserCRL", error);
+      console.log("createNewUserCrl", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }
   };
 };
 
-export { createNewUserCRL };
+export { createNewUserCrl };

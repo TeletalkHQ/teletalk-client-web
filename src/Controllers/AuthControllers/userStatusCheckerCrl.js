@@ -1,6 +1,6 @@
 import { userStatusCheckerAPI } from "~/APIs/AuthenticationApis/userStatusCheckerApi";
 
-import { userInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 import { userAction } from "~/Actions/UserActions/userActions";
 import {
@@ -10,7 +10,7 @@ import {
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
-const userStatusCheckerCRL = () => {
+const userStatusCheckerCrl = () => {
   return async (dispatch) => {
     try {
       const response = await userStatusCheckerAPI();
@@ -23,18 +23,18 @@ const userStatusCheckerCRL = () => {
 
       return { user };
     } catch (error) {
-      console.log("userStatusCheckerCRL", error);
-      //TODO Do this in special cases =>
+      console.log("userStatusCheckerCrl", error);
+
       if (error.statusCode === 401) {
         PersistentStorage.clear();
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
       }
 
-      dispatch(userAction({ ...userInitialState }));
+      dispatch(userAction({ ...initialState.userInitialState }));
     } finally {
       dispatch(backdropAction({ backdropState: { open: false } }));
     }
   };
 };
 
-export { userStatusCheckerCRL };
+export { userStatusCheckerCrl };

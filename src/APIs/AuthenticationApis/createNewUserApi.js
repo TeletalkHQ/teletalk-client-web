@@ -1,16 +1,18 @@
 import { requester } from "~/Functions/Utils/requester";
-import { userRouteTemplate } from "~/Templates/routeTemplates/userRouteTemplate";
+import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const {
-  createNewUser: { properties: createNewUser },
-} = userRouteTemplate;
+const { userRouterTemplate } = StuffStore.templates.routerTemplates;
 
 const createNewUserAPI = async ({ token, ...data }) => {
+  const {
+    createNewUser: { properties: createNewUser },
+  } = userRouterTemplate;
+
   try {
     const response = await requester({
       data,
       method: createNewUser.method,
-      url: `${userRouteTemplate.baseRoute.properties.route}${createNewUser.route}`,
+      url: `${userRouterTemplate.baseRoute.properties.route}${createNewUser.route}`,
       token,
     });
     return response;

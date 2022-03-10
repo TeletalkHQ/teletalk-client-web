@@ -7,10 +7,9 @@ import VerifySignIn from "~/Components/Authentication/VerifySignIn";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { getCountriesCRL } from "~/Controllers/AuthControllers/getCountriesCRL";
-import { signInCRL } from "~/Controllers/AuthControllers/signInCRL";
-import { verifySignInCRL } from "~/Controllers/AuthControllers/verifySignInCRL";
-import { welcomeCRL } from "~/Controllers/otherControllers/welcomeCRL";
+import { signInCrl } from "~/Controllers/AuthControllers/signInCrl";
+import { verifySignInCrl } from "~/Controllers/AuthControllers/verifySignInCrl";
+import { welcomeCrl } from "~/Controllers/otherControllers/welcomeCrl";
 
 import {
   phoneNumberAction,
@@ -24,14 +23,14 @@ import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { selectedCountryAction } from "~/Actions/OtherActions/otherActions";
-import { createNewUserCRL } from "~/Controllers/AuthControllers/createNewUserCRL";
+import { createNewUserCrl } from "~/Controllers/AuthControllers/createNewUserCrl";
 
 const numberRegex = new RegExp("^[0-9]+$");
 
 const Authentication = () => {
   const {
     state: {
-      user: {
+      userState: {
         phoneNumber,
         countryCode,
         countryName,
@@ -40,24 +39,24 @@ const Authentication = () => {
         firstName,
         lastName,
       },
-      global: { viewMode },
-      other: { countries, countryNameInputValue, selectedCountry },
+      globalState: { viewMode },
+      otherState: { countries, countryNameInputValue, selectedCountry },
     },
     hooksOutput: { dispatch },
   } = useMyContext();
 
   useEffect(() => {
-    dispatch(welcomeCRL());
-    dispatch(getCountriesCRL());
+    dispatch(welcomeCrl());
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSignInClick = () => {
-    dispatch(signInCRL());
+    dispatch(signInCrl());
   };
 
   const handleVerifyClick = () => {
-    dispatch(verifySignInCRL());
+    dispatch(verifySignInCrl());
   };
 
   const handlePhoneNumberChange = (event) => {
@@ -108,7 +107,7 @@ const Authentication = () => {
   };
 
   const handleConfirmClick = () => {
-    dispatch(createNewUserCRL());
+    dispatch(createNewUserCrl());
   };
 
   const component = () => {

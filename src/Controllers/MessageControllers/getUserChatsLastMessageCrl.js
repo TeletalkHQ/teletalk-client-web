@@ -2,7 +2,7 @@ import { userAction } from "~/Actions/UserActions/userActions";
 
 import { getUserChatsLastMessageAPI } from "~/APIs/MessageApis/getUserChatsLastMessageAPI";
 
-import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   try {
@@ -42,8 +42,8 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   }
 };
 
-const getUserChatsLastMessageCRL = ({ user }) => {
-  return async (dispatch, getState = initialState) => {
+const getUserChatsLastMessageCrl = ({ user }) => {
+  return async (dispatch, getState = getInitialState) => {
     try {
       const response = await getUserChatsLastMessageAPI();
 
@@ -54,9 +54,9 @@ const getUserChatsLastMessageCRL = ({ user }) => {
 
       dispatch(userAction({ chats: chatsWithLastMessage }));
     } catch (error) {
-      console.log("getUserChatsLastMessageCRL", error);
+      console.log("getUserChatsLastMessageCrl", error);
     }
   };
 };
 
-export { getUserChatsLastMessageCRL };
+export { getUserChatsLastMessageCrl };

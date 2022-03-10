@@ -1,7 +1,7 @@
 import { userAction } from "~/Actions/UserActions/userActions";
 import { getContactsAPI } from "~/APIs/CellphoneApis/getContactsAPI";
 
-const getContactsCRL = () => {
+const getContactsCrl = () => {
   return async (dispatch, getState) => {
     try {
       const result = await getContactsAPI();
@@ -11,4 +11,4 @@ const getContactsCRL = () => {
   };
 };
 
-export { getContactsCRL };
+export { getContactsCrl };

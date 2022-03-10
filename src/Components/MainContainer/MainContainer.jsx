@@ -10,8 +10,9 @@ import Authentication from "~/Components/Authentication/Authentication";
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { userStatusCheckerCRL } from "~/Controllers/AuthControllers/userStatusCheckerCRL";
-import { getUserChatsLastMessageCRL } from "~/Controllers/MessageControllers/getUserChatsLastMessageCRL";
+import { userStatusCheckerCrl } from "~/Controllers/AuthControllers/userStatusCheckerCrl";
+import { getCountriesCrl } from "~/Controllers/AuthControllers/getCountriesCrl";
+import { getUserChatsLastMessageCrl } from "~/Controllers/MessageControllers/getUserChatsLastMessageCrl";
 
 import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector";
 import { onlineConnectionChecker } from "~/Functions/EventListeners/onlineConnectionsChecker";
@@ -24,9 +25,9 @@ import { getAllStuffCrl } from "~/Controllers/VersionControlController/getAllStu
 const MainContainer = () => {
   const {
     state: {
-      user,
-      temp: { selectedContact },
-      global: { viewMode },
+      userState,
+      tempState: { selectedContact },
+      globalState: { viewMode },
     },
     hooksOutput: { dispatch },
   } = useMyContext();
@@ -39,16 +40,16 @@ const MainContainer = () => {
 
   useEffect(() => {
     onlineConnectionChecker();
-    getAllStuffCrl();
   }, []);
 
   useEffect(() => {
     (async () => {
       try {
-        if (user.privateID) {
-          const { user } = await dispatch(userStatusCheckerCRL());
-
-          await dispatch(getUserChatsLastMessageCRL({ user }));
+        // await dispatch(getAllStuffCrl());
+        // dispatch(getCountriesCrl());
+        if (userState.privateID) {
+          // const { userState } = await dispatch(userStatusCheckerCrl());
+          // await dispatch(getUserChatsLastMessageCrl({ userState }));
         }
       } catch (error) {
         console.log("MainContainer auth catch", error);
@@ -57,11 +58,11 @@ const MainContainer = () => {
       }
     })();
     // eslint-disable-next-line
-  }, [user.mainToken]);
+  }, [userState.mainToken]);
 
   return (
     <>
-      {!user.privateID || viewMode !== INITIAL_VIEW_MODE.MESSENGER ? (
+      {!userState.privateID || viewMode !== INITIAL_VIEW_MODE.MESSENGER ? (
         <Authentication />
       ) : (
         <>

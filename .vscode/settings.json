@@ -10,6 +10,7 @@
     "immer",
     "lightcyan",
     "maxlength",
+    "minlength",
     "noopener",
     "noreferrer",
     "notistack",
