@@ -1,14 +1,12 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const { userRouterTemplate } = StuffStore.templates.routerTemplates;
-
 const createNewUserAPI = async ({ token, ...data }) => {
-  const {
-    createNewUser: { properties: createNewUser },
-  } = userRouterTemplate;
-
   try {
+    const { userRouterTemplate } = StuffStore.templates.routerTemplates;
+    const {
+      createNewUser: { properties: createNewUser },
+    } = userRouterTemplate;
     const response = await requester({
       data,
       method: createNewUser.method,

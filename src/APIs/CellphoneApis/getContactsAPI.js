@@ -1,11 +1,11 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const { cellphoneRouterTemplate } = StuffStore.templates.routerTemplates;
-const { baseRoute, getContacts } = cellphoneRouterTemplate;
-
 const getContactsAPI = (data) => {
   try {
+    const { cellphoneRouterTemplate } = StuffStore.templates.routerTemplates;
+    const { baseRoute, getContacts } = cellphoneRouterTemplate;
+
     const response = requester({
       data,
       method: getContacts.properties.method,
@@ -13,7 +13,9 @@ const getContactsAPI = (data) => {
     });
 
     return response;
-  } catch (error) {}
+  } catch (error) {
+    logger._log("getContactsApi catch, error:", error);
+  }
 };
 
 export { getContactsAPI };

@@ -45,11 +45,11 @@ const Authentication = () => {
     hooksOutput: { dispatch },
   } = useMyContext();
 
-  useEffect(() => {
-    dispatch(welcomeCrl());
+  // useEffect(() => {
+  //   dispatch(welcomeCrl());
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const handleSignInClick = () => {
     dispatch(signInCrl());

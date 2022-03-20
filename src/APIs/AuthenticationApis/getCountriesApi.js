@@ -1,10 +1,9 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const { userRouterTemplate } = StuffStore.templates.routerTemplates;
-
 const getCountriesAPI = async (data = {}) => {
   try {
+    const { userRouterTemplate } = StuffStore.templates.routerTemplates;
     const { countries, baseRoute } = userRouterTemplate;
 
     const response = await requester({

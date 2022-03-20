@@ -1,17 +1,17 @@
 import { render } from "react-dom";
 import { StrictMode } from "react";
 
+import "~/Functions/Others/globals";
+
 import App from "~/App";
 
 import reportWebVitals from "~/reportWebVitals";
 
-require("~/Functions/Others/globals");
-
 render(
-	<StrictMode>
-		<App />
-	</StrictMode>,
-	document.getElementById("root"),
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
