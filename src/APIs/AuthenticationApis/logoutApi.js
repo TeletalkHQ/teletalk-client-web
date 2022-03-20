@@ -1,10 +1,9 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const { userRouterTemplate } = StuffStore.templates.routerTemplates;
-const { logoutNormal } = userRouterTemplate;
-
 const logoutAPI = async (data) => {
+  const { userRouterTemplate } = StuffStore.templates.routerTemplates;
+  const { logoutNormal } = userRouterTemplate;
   try {
     const response = await requester({
       data,

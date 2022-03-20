@@ -13,14 +13,15 @@ import { useMyContext } from "~/Hooks/useMyContext";
 import { userStatusCheckerCrl } from "~/Controllers/AuthControllers/userStatusCheckerCrl";
 import { getCountriesCrl } from "~/Controllers/AuthControllers/getCountriesCrl";
 import { getUserChatsLastMessageCrl } from "~/Controllers/MessageControllers/getUserChatsLastMessageCrl";
+import { getAllStuffCrl } from "~/Controllers/VersionControlController/getAllStuffCrl";
 
+import { emitters } from "~/Functions/Events/Emitters";
 import { snackbarInjector } from "~/Functions/Others/Injectors/snackbarInjector";
-import { onlineConnectionChecker } from "~/Functions/EventListeners/onlineConnectionsChecker";
+import { onlineConnectionChecker } from "~/Functions/Events/onlineConnectionsChecker";
 
 import { backdropAction } from "~/Actions/GlobalActions/globalActions";
-
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
-import { getAllStuffCrl } from "~/Controllers/VersionControlController/getAllStuffCrl";
+import { EVENT_EMITTER_EVENTS } from "~/Variables/Constants/Others/otherConstants";
 
 const MainContainer = () => {
   const {
@@ -45,12 +46,23 @@ const MainContainer = () => {
   useEffect(() => {
     (async () => {
       try {
-        // await dispatch(getAllStuffCrl());
-        // dispatch(getCountriesCrl());
-        if (userState.privateID) {
-          // const { userState } = await dispatch(userStatusCheckerCrl());
-          // await dispatch(getUserChatsLastMessageCrl({ userState }));
-        }
+        emitters.addListener({
+          event: EVENT_EMITTER_EVENTS,
+          listener: async () => {
+            dispatch(getCountriesCrl());
+          },
+        });
+        emitters.addListener({
+          event: EVENT_EMITTER_EVENTS,
+          listener: async () => {
+            if (userState.privateID) {
+              const { userState } = await dispatch(userStatusCheckerCrl());
+              await dispatch(getUserChatsLastMessageCrl({ userState }));
+            }
+          },
+        });
+
+        await dispatch(getAllStuffCrl());
       } catch (error) {
         console.log("MainContainer auth catch", error);
       } finally {

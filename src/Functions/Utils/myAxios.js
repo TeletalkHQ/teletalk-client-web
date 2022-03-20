@@ -1,12 +1,12 @@
 import axios from "axios";
 
-import { baseURL } from "~/Variables/Constants/Others/otherConstants";
+import { BASE_URL } from "~/Variables/Constants/Others/otherConstants";
 
 const myAxios = axios.create({
-	baseURL,
-	headers: { "Content-Type": "application/json", Authorization: "" },
-	timeout: 10000,
-	validateStatus: false,
+  BASE_URL,
+  headers: { "Content-Type": "application/json", Authorization: "" },
+  timeout: 10000,
+  validateStatus: false,
 });
 
 export { myAxios };
