@@ -27,7 +27,7 @@ const verifySignInCrl = () => {
       }
 
       const response = await verifySignInAPI({
-        verifyCode,
+        verificationCode: verifyCode,
         token: verifyToken,
       });
 
