@@ -1,7 +1,7 @@
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 import { emitters } from "~/Functions/Events/Emitters";
 
-import { getAllStuffApi } from "~/APIs/VersionControlApis/getAllStuffApi";
+import { getAllStuffApi } from "~/Apis/VersionControlApis/getAllStuffApi";
 
 import { EVENT_EMITTER_EVENTS } from "~/Variables/Constants/Others/otherConstants";
 

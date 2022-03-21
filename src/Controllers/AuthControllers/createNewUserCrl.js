@@ -1,6 +1,6 @@
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 import { loadingAction } from "~/Actions/UserActions/userActions";
-import { createNewUserAPI } from "~/APIs/AuthenticationApis/createNewUserApi";
+import { createNewUserApi } from "~/Apis/AuthenticationApis/createNewUserApi";
 import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
@@ -22,7 +22,7 @@ const createNewUserCrl = () => {
         tempState: { firstName, lastName },
       } = getState();
 
-      const response = await createNewUserAPI({
+      const response = await createNewUserApi({
         firstName,
         lastName,
         token: verifyToken,

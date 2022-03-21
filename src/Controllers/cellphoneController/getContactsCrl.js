@@ -1,10 +1,10 @@
 import { userAction } from "~/Actions/UserActions/userActions";
-import { getContactsAPI } from "~/APIs/CellphoneApis/getContactsAPI";
+import { getContactsApi } from "~/Apis/CellphoneApis/getContactsApi";
 
 const getContactsCrl = () => {
   return async (dispatch, getState) => {
     try {
-      const result = await getContactsAPI();
+      const result = await getContactsApi();
 
       dispatch(userAction({ contacts: result.data.contacts }));
     } catch (error) {}

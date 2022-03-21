@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const getContactsAPI = (data) => {
+const getContactsApi = (data) => {
   try {
     const { cellphoneRouterTemplate } = StuffStore.templates.routerTemplates;
     const { baseUrl, getContacts } = cellphoneRouterTemplate;
@@ -18,4 +18,4 @@ const getContactsAPI = (data) => {
   }
 };
 
-export { getContactsAPI };
+export { getContactsApi };

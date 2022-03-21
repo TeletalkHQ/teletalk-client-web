@@ -1,4 +1,4 @@
-import { userStatusCheckerAPI } from "~/APIs/AuthenticationApis/userStatusCheckerApi";
+import { userStatusCheckerApi } from "~/Apis/AuthenticationApis/userStatusCheckerApi";
 
 import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
@@ -13,7 +13,7 @@ import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 const userStatusCheckerCrl = () => {
   return async (dispatch) => {
     try {
-      const response = await userStatusCheckerAPI();
+      const response = await userStatusCheckerApi();
 
       const { user } = response.data;
 

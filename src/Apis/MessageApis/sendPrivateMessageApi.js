@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const sendPrivateMessageAPI = async (data) => {
+const sendPrivateMessageApi = async (data) => {
   try {
     const { privateChatRouterTemplate } = StuffStore.templates.routerTemplates;
     const { baseUrl, sendMessage } = privateChatRouterTemplate;
@@ -14,7 +14,7 @@ const sendPrivateMessageAPI = async (data) => {
 
     return response;
   } catch (error) {
-    console.log("sendPrivateMessageAPI catch", error);
+    console.log("sendPrivateMessageApi catch", error);
   }
 };
-export { sendPrivateMessageAPI };
+export { sendPrivateMessageApi };

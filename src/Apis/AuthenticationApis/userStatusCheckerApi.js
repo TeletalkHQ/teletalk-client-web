@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const userStatusCheckerAPI = async (data) => {
+const userStatusCheckerApi = async (data) => {
   try {
     const { userRouterTemplate } = StuffStore.templates.routerTemplates;
     const { baseUrl, statusCheck } = userRouterTemplate;
@@ -17,4 +17,4 @@ const userStatusCheckerAPI = async (data) => {
   }
 };
 
-export { userStatusCheckerAPI };
+export { userStatusCheckerApi };

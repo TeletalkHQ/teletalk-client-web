@@ -1,4 +1,4 @@
-import { signInAPI } from "~/APIs/AuthenticationApis/signInApi";
+import { signInApi } from "~/Apis/AuthenticationApis/signInApi";
 
 import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
@@ -16,7 +16,7 @@ const signInCrl = () => {
 
       dispatch(loadingAction({ loading: true }));
 
-      const response = await signInAPI({
+      const response = await signInApi({
         phoneNumber,
         countryCode,
         countryName,

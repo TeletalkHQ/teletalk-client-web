@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const addNewContactAPI = async (data) => {
+const addNewContactApi = async (data) => {
   try {
     const { cellphoneRouterTemplate } = StuffStore.templates.routerTemplates;
     const { baseUrl, addContact } = cellphoneRouterTemplate;
@@ -14,7 +14,7 @@ const addNewContactAPI = async (data) => {
 
     return response;
   } catch (error) {
-    console.log("addNewContactAPI catch", error);
+    console.log("addNewContactApi catch", error);
   }
 };
-export { addNewContactAPI };
+export { addNewContactApi };

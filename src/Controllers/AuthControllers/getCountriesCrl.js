@@ -1,11 +1,11 @@
 import { getCountriesAction } from "~/Actions/OtherActions/otherActions";
 
-import { getCountriesAPI } from "~/APIs/AuthenticationApis/getCountriesApi";
+import { getCountriesApi } from "~/Apis/AuthenticationApis/getCountriesApi";
 
 const getCountriesCrl = () => {
   return async (dispatch, getState) => {
     try {
-      const response = await getCountriesAPI();
+      const response = await getCountriesApi();
 
       dispatch(getCountriesAction({ countries: response.data.countries }));
     } catch (error) {

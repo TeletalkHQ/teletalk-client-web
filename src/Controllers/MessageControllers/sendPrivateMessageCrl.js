@@ -1,4 +1,4 @@
-import { sendPrivateMessageAPI } from "~/APIs/MessageApis/sendPrivateMessageAPI";
+import { sendPrivateMessageApi } from "~/Apis/MessageApis/sendPrivateMessageApi";
 
 import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 import { userAction } from "~/Actions/UserActions/userActions";
@@ -15,7 +15,7 @@ const sendNewMessageCrl = () => {
         user,
       } = getState();
 
-      const response = await sendPrivateMessageAPI({
+      const response = await sendPrivateMessageApi({
         participantID: privateID,
         message: messageInputText,
       });
