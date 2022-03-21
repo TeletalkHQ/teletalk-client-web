@@ -12,6 +12,7 @@ const {
   firstNameInitialAction,
   lastNameInitialAction,
   phoneNumberInitialAction,
+  selectedCountryInitialAction,
   verifyCodeInitialAction,
 } = tempInitialActions;
 
@@ -47,6 +48,9 @@ const tempReducer = (
         return fn();
 
       case phoneNumberInitialAction.type:
+        return fn();
+
+      case selectedCountryInitialAction.type:
         return fn();
 
       case verifyCodeInitialAction.type:

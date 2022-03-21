@@ -47,13 +47,13 @@ const MainContainer = () => {
     (async () => {
       try {
         emitters.addListener({
-          event: EVENT_EMITTER_EVENTS,
+          event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
             dispatch(getCountriesCrl());
           },
         });
         emitters.addListener({
-          event: EVENT_EMITTER_EVENTS,
+          event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
             if (userState.privateID) {
               const { userState } = await dispatch(userStatusCheckerCrl());

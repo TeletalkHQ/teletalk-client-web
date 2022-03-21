@@ -1,4 +1,5 @@
 import { initialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { initialCountry } from "../InitialValues/initialValues";
 
 const {
   tempInitialState: {
@@ -54,6 +55,11 @@ const verifyCodeInitialAction = {
   payload: { verifyCode },
 };
 
+const selectedCountryInitialAction = {
+  type: "SELECTED_COUNTRY_ONCHANGE",
+  payload: { selectedCountry: initialCountry },
+};
+
 const tempInitialActions = {
   contactSelectedInitialAction,
   countryCodeInitialAction,
@@ -62,6 +68,7 @@ const tempInitialActions = {
   lastNameInitialAction,
   messageInputInitialAction,
   phoneNumberInitialAction,
+  selectedCountryInitialAction,
   setMessagesInitialAction,
   verifyCodeInitialAction,
 };

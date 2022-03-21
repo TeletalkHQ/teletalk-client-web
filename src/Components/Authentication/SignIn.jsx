@@ -15,7 +15,6 @@ const SignIn = ({
   countries,
   countryCode,
   countryName,
-  countryNameInputValue,
   loading,
   onCountryCodeChange,
   onPhoneNumberChange,
@@ -52,7 +51,6 @@ const SignIn = ({
               <CountrySelector
                 countries={countries}
                 countryName={countryName}
-                countryNameInputValue={countryNameInputValue}
                 onCountryNameOnchange={onCountryNameOnchange}
                 onCountryNameOnInputChange={onCountryNameOnInputChange}
                 selectedCountry={selectedCountry}

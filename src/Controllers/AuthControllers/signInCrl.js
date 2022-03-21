@@ -11,7 +11,7 @@ const signInCrl = () => {
   return async (dispatch, getState = getInitialState) => {
     try {
       const {
-        user: { phoneNumber, countryCode, countryName },
+        tempState: { phoneNumber, countryCode, countryName },
       } = getState();
 
       dispatch(loadingAction({ loading: true }));

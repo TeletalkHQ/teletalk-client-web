@@ -7,7 +7,6 @@ import { otherInitialActions } from "~/Variables/Constants/Initials/InitialActio
 const {
   getCountriesInitialAction,
   selectContactInitialAction,
-  selectedCountryInitialAction,
   welcomeInitialAction,
 } = otherInitialActions;
 
@@ -28,9 +27,6 @@ const otherReducer = (
         return fn();
 
       case selectContactInitialAction.type:
-        return fn();
-
-      case selectedCountryInitialAction.type:
         return fn();
 
       default:
