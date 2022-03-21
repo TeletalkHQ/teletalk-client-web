@@ -1,6 +1,6 @@
 import { requester } from "~/Functions/Utils/requester";
 
-const getUserChatsLastMessageAPI = async (data) => {
+const getUserChatsLastMessageApi = async (data) => {
   try {
     const response = await requester({
       //TODO requester things
@@ -10,7 +10,7 @@ const getUserChatsLastMessageAPI = async (data) => {
     });
     return response;
   } catch (error) {
-    console.log("getUserChatsLastMessageAPI catch", error);
+    console.log("getUserChatsLastMessageApi catch", error);
   }
 };
-export { getUserChatsLastMessageAPI };
+export { getUserChatsLastMessageApi };

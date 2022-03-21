@@ -1,4 +1,4 @@
-import { verifySignInAPI } from "~/APIs/AuthenticationApis/verifySignInApi";
+import { verifySignInApi } from "~/Apis/AuthenticationApis/verifySignInApi";
 
 import { loadingAction, userAction } from "~/Actions/UserActions/userActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
@@ -26,7 +26,7 @@ const verifySignInCrl = () => {
         throw error;
       }
 
-      const response = await verifySignInAPI({
+      const response = await verifySignInApi({
         verificationCode: verifyCode,
         token: verifyToken,
       });

@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const verifySignInAPI = async ({ token, ...data }) => {
+const verifySignInApi = async ({ token, ...data }) => {
   try {
     const { userRouterTemplate } = StuffStore.templates.routerTemplates;
     const { baseUrl, verifySignInNormal } = userRouterTemplate;
@@ -19,4 +19,4 @@ const verifySignInAPI = async ({ token, ...data }) => {
   }
 };
 
-export { verifySignInAPI };
+export { verifySignInApi };

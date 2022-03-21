@@ -1,12 +1,12 @@
 import { userAction } from "~/Actions/UserActions/userActions";
-import { addNewContactAPI } from "~/APIs/CellphoneApis/addNewContactAPI";
+import { addNewContactApi } from "~/Apis/CellphoneApis/addNewContactApi";
 
 import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 const addNewContactCrl = (contact) => {
   return async (dispatch, getState = getInitialState) => {
     try {
-      const result = await addNewContactAPI(contact);
+      const result = await addNewContactApi(contact);
 
       dispatch(
         userAction({

@@ -1,5 +1,5 @@
 import { userAction } from "~/Actions/UserActions/userActions";
-import { getAllChatMessagesAPI } from "~/APIs/MessageApis/getAllChatMessagesAPI";
+import { getAllChatMessagesApi } from "~/Apis/MessageApis/getAllChatMessagesApi";
 import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
 const getAllChatMessagesCrl = ({ chatID }) => {
@@ -7,7 +7,7 @@ const getAllChatMessagesCrl = ({ chatID }) => {
     try {
       const { user } = getState();
 
-      const response = await getAllChatMessagesAPI({ chatID });
+      const response = await getAllChatMessagesApi({ chatID });
 
       const copyUser = { ...user };
 

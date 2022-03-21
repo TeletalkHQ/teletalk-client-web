@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const getCountriesAPI = async (data = {}) => {
+const getCountriesApi = async (data = {}) => {
   try {
     const { userRouterTemplate } = StuffStore.templates.routerTemplates;
     const { countries, baseUrl } = userRouterTemplate;
@@ -15,9 +15,9 @@ const getCountriesAPI = async (data = {}) => {
     });
     return response;
   } catch (error) {
-    console.log("getCountriesAPI catch", error);
+    console.log("getCountriesApi catch", error);
 
     throw error;
   }
 };
-export { getCountriesAPI };
+export { getCountriesApi };

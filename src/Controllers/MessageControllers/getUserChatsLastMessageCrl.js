@@ -1,6 +1,6 @@
 import { userAction } from "~/Actions/UserActions/userActions";
 
-import { getUserChatsLastMessageAPI } from "~/APIs/MessageApis/getUserChatsLastMessageAPI";
+import { getUserChatsLastMessageApi } from "~/Apis/MessageApis/getUserChatsLastMessageApi";
 
 import { getInitialState } from "~/Variables/Constants/Initials/InitialStates/initialStates";
 
@@ -45,7 +45,7 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
 const getUserChatsLastMessageCrl = ({ user }) => {
   return async (dispatch, getState = getInitialState) => {
     try {
-      const response = await getUserChatsLastMessageAPI();
+      const response = await getUserChatsLastMessageApi();
 
       const { chatsWithLastMessage } = handleAddUserLastMessage({
         chats: user.chats,

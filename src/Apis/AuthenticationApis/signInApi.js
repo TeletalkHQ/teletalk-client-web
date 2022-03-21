@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const signInAPI = (data) => {
+const signInApi = (data) => {
   try {
     const { userRouterTemplate } = StuffStore.templates.routerTemplates;
     const { baseUrl, signInNormal } = userRouterTemplate;
@@ -14,8 +14,8 @@ const signInAPI = (data) => {
 
     return response;
   } catch (error) {
-    logger._log("signInAPI catch, error:", error);
+    logger._log("signInApi catch, error:", error);
   }
 };
 
-export { signInAPI };
+export { signInApi };

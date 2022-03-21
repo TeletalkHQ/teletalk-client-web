@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const createNewUserAPI = async ({ token, ...data }) => {
+const createNewUserApi = async ({ token, ...data }) => {
   try {
     const { userRouterTemplate } = StuffStore.templates.routerTemplates;
     const {
@@ -15,7 +15,7 @@ const createNewUserAPI = async ({ token, ...data }) => {
     });
     return response;
   } catch (error) {
-    console.log("createNewUserAPI catch", error);
+    console.log("createNewUserApi catch", error);
   }
 };
-export { createNewUserAPI };
+export { createNewUserApi };

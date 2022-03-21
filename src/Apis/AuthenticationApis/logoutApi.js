@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const logoutAPI = async (data) => {
+const logoutApi = async (data) => {
   const { userRouterTemplate } = StuffStore.templates.routerTemplates;
   const { logoutNormal } = userRouterTemplate;
   try {
@@ -12,7 +12,7 @@ const logoutAPI = async (data) => {
     });
     return response;
   } catch (error) {
-    console.log("logoutAPI catch", error);
+    console.log("logoutApi catch", error);
   }
 };
-export { logoutAPI };
+export { logoutApi };

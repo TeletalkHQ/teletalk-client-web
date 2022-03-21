@@ -1,7 +1,7 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
 
-const getAllChatMessagesAPI = async (data) => {
+const getAllChatMessagesApi = async (data) => {
   try {
     const { getMessages, baseUrl } =
       StuffStore.templates.routerTemplates?.privateChatRouterTemplate;
@@ -13,7 +13,7 @@ const getAllChatMessagesAPI = async (data) => {
     });
     return response;
   } catch (error) {
-    console.log("getAllChatMessagesAPI catch", error);
+    console.log("getAllChatMessagesApi catch", error);
   }
 };
-export { getAllChatMessagesAPI };
+export { getAllChatMessagesApi };
