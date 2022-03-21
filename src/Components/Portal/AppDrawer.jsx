@@ -9,7 +9,7 @@ import {
 
 import { useMyContext } from "~/Hooks/useMyContext";
 
-import { initialValues } from "~/Variables/Constants/Initials/InitialValues/initialValues";
+import { appIcons } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 
 import {
   appDrawerAction,
@@ -17,7 +17,7 @@ import {
 } from "~/Actions/GlobalActions/globalActions";
 
 const { calls, contacts, newChannel, newGroup, nightMode, settings, logout } =
-  initialValues;
+  appIcons;
 
 const drawerList = [
   calls,
