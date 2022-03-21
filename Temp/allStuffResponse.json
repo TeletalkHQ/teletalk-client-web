@@ -1732,7 +1732,7 @@
         "addBlock": {
           "properties": {
             "method": "post",
-            "route": "/add/block",
+            "route": "/addBlock",
             "statusCode": 200
           },
           "info": {
@@ -1743,7 +1743,7 @@
         "addBlocks": {
           "properties": {
             "method": "post",
-            "route": "/add/blocks",
+            "route": "/addBlocks",
             "statusCode": 200
           },
           "info": {
@@ -1754,7 +1754,7 @@
         "addContact": {
           "properties": {
             "method": "post",
-            "route": "/add/contact",
+            "route": "/addContact",
             "statusCode": 200
           },
           "info": {
@@ -1765,7 +1765,7 @@
         "addContacts": {
           "properties": {
             "method": "post",
-            "route": "/add/contacts",
+            "route": "/addContacts",
             "statusCode": 200
           },
           "info": {
@@ -1787,7 +1787,7 @@
         "editBlock": {
           "properties": {
             "method": "patch",
-            "route": "/edit/block",
+            "route": "/editBlock",
             "statusCode": 200
           },
           "info": {
@@ -1798,7 +1798,7 @@
         "editContact": {
           "properties": {
             "method": "patch",
-            "route": "/edit/contact",
+            "route": "/editContact",
             "statusCode": 200
           },
           "info": {
@@ -1806,21 +1806,10 @@
             "description": "User for edit single contact on user contacts list"
           }
         },
-        "error": {
-          "properties": {
-            "method": "get",
-            "route": "/error",
-            "statusCode": 200
-          },
-          "info": {
-            "version": "1.0.0",
-            "description": "Use for get all contact errors"
-          }
-        },
         "getContacts": {
           "properties": {
             "method": "get",
-            "route": "/get/contacts",
+            "route": "/getContacts",
             "statusCode": 200
           },
           "info": {
@@ -1831,7 +1820,7 @@
         "removeBlock": {
           "properties": {
             "method": "delete",
-            "route": "/remove/block",
+            "route": "/removeBlock",
             "statusCode": 200
           },
           "info": {
@@ -1842,7 +1831,7 @@
         "removeBlocks": {
           "properties": {
             "method": "delete",
-            "route": "/remove/blocks",
+            "route": "/removeBlocks",
             "statusCode": 200
           },
           "info": {
@@ -1853,7 +1842,7 @@
         "removeContact": {
           "properties": {
             "method": "delete",
-            "route": "/remove/contact",
+            "route": "/removeContact",
             "statusCode": 200
           },
           "info": {
@@ -1864,7 +1853,7 @@
         "removeContacts": {
           "properties": {
             "method": "delete",
-            "route": "/remove/contacts",
+            "route": "/removeContacts",
             "statusCode": 200
           },
           "info": {
@@ -1875,7 +1864,7 @@
         "shareContact": {
           "properties": {
             "method": "post",
-            "route": "/share/contact",
+            "route": "/shareContact",
             "statusCode": 200
           },
           "info": {
@@ -1886,23 +1875,12 @@
         "shareContacts": {
           "properties": {
             "method": "post",
-            "route": "/share/contacts",
+            "route": "/shareContacts",
             "statusCode": 200
           },
           "info": {
             "version": "1.0.0",
             "description": "Use for share single contact on user contacts list"
-          }
-        },
-        "template": {
-          "properties": {
-            "method": "get",
-            "route": "/template",
-            "statusCode": 200
-          },
-          "info": {
-            "version": "1.0.0",
-            "description": "Use for get all contact properties and value structure"
           }
         },
         "version": "1.0.0"
@@ -1919,22 +1897,11 @@
             "description": ""
           }
         },
-        "error": {
-          "properties": {
-            "method": "get",
-            "route": "/error",
-            "statusCode": 200
-          },
-          "info": {
-            "version": "1.0.0",
-            "description": "Use for get all errors messages"
-          }
-        },
         "version": "1.0.0",
         "welcome": {
           "properties": {
             "method": "get",
-            "route": "/welcome",
+            "route": "/welcomeMessage",
             "statusCode": 200
           },
           "info": {
@@ -1947,7 +1914,7 @@
         "baseUrl": {
           "properties": {
             "method": true,
-            "route": "/chat/private",
+            "route": "/chat/privateChat",
             "statusCode": true
           },
           "info": {
@@ -1958,7 +1925,7 @@
         "chatsLastMessage": {
           "properties": {
             "method": "post",
-            "route": "/chats/last/message",
+            "route": "/privateChatsLastMessages",
             "statusCode": 200
           },
           "info": {
@@ -1966,21 +1933,10 @@
             "description": "Use for Get chats last message"
           }
         },
-        "error": {
-          "properties": {
-            "method": "get",
-            "route": "/error",
-            "statusCode": 200
-          },
-          "info": {
-            "version": "1.0.0",
-            "description": "Use for get all auth errors"
-          }
-        },
         "getAllChats": {
           "properties": {
             "method": "get",
-            "route": "/get/all/chats",
+            "route": "/getAllPrivateChats",
             "statusCode": 200
           },
           "info": {
@@ -1991,7 +1947,7 @@
         "getMessages": {
           "properties": {
             "method": "post",
-            "route": "/get/messages",
+            "route": "/getPrivateMessages",
             "statusCode": 200
           },
           "info": {
@@ -2002,7 +1958,7 @@
         "sendMessage": {
           "properties": {
             "method": "post",
-            "route": "/send/message",
+            "route": "/sendPrivateMessage",
             "statusCode": 200
           },
           "info": {
@@ -2013,23 +1969,12 @@
         "startChat": {
           "properties": {
             "method": "post",
-            "route": "/start/chat",
+            "route": "/startNewPrivateChat",
             "statusCode": 200
           },
           "info": {
             "version": "1.0.0",
             "description": "Use for Start new chat"
-          }
-        },
-        "template": {
-          "properties": {
-            "method": "get",
-            "route": "/template",
-            "statusCode": 200
-          },
-          "info": {
-            "version": "1.0.0",
-            "description": "Use for get all user properties and value structure"
           }
         },
         "version": "1.0.0"
@@ -2049,7 +1994,7 @@
         "countries": {
           "properties": {
             "method": "get",
-            "route": "/countries/normal",
+            "route": "/countries",
             "statusCode": 200
           },
           "info": {
@@ -2060,7 +2005,7 @@
         "createNewUser": {
           "properties": {
             "method": "post",
-            "route": "/createNewUser/normal",
+            "route": "/normalUser/createNewNormalUser",
             "statusCode": 200
           },
           "info": {
@@ -2068,21 +2013,10 @@
             "description": "Use for create new user for normal account"
           }
         },
-        "error": {
-          "properties": {
-            "method": "get",
-            "route": "/error",
-            "statusCode": 200
-          },
-          "info": {
-            "version": "1.0.0",
-            "description": "Use for get all auth errors"
-          }
-        },
         "logoutNormal": {
           "properties": {
             "method": "post",
-            "route": "/logout/normal",
+            "route": "/normalUser/logoutNormalUser",
             "statusCode": 200
           },
           "info": {
@@ -2093,7 +2027,7 @@
         "signInNormal": {
           "properties": {
             "method": "post",
-            "route": "/signIn/normal",
+            "route": "/normalUser/signInNormalUser",
             "statusCode": 200
           },
           "info": {
@@ -2104,7 +2038,7 @@
         "statusCheck": {
           "properties": {
             "method": "get",
-            "route": "/status/check",
+            "route": "/normalUser/statusCheck",
             "statusCode": 200
           },
           "info": {
@@ -2112,21 +2046,10 @@
             "description": "Use for check client availability as a normal account"
           }
         },
-        "template": {
-          "properties": {
-            "method": "get",
-            "route": "/template",
-            "statusCode": 200
-          },
-          "info": {
-            "version": "1.0.0",
-            "description": "Use for get all user properties and value structure"
-          }
-        },
         "verifySignInNormal": {
           "properties": {
             "method": "post",
-            "route": "/verify/signIn/normal",
+            "route": "/normalUser/verifySignInNormalUser",
             "statusCode": 200
           },
           "info": {
