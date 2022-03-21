@@ -8,7 +8,7 @@ const getUserChatsLastMessageApi = async (data) => {
         routerTemplates: {
           privateChatRouterTemplate: {
             baseUrl,
-            chatsLastMessage: { route, method },
+            chatsLastMessage: { properties: chatsLastMessage },
           },
         },
       },
@@ -16,8 +16,8 @@ const getUserChatsLastMessageApi = async (data) => {
 
     const response = await requester({
       data,
-      method,
-      url: `${baseUrl}${route}`,
+      method: chatsLastMessage.method,
+      url: `${baseUrl.properties.route}${chatsLastMessage.route}`,
     });
 
     return response;
@@ -25,4 +25,5 @@ const getUserChatsLastMessageApi = async (data) => {
     console.log("getUserChatsLastMessageApi catch", error);
   }
 };
+
 export { getUserChatsLastMessageApi };
