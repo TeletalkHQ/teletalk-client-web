@@ -25,7 +25,8 @@ const INITIAL_VIEW_MODE = {
 };
 
 //REDESIGN
-const initialValues = {
+
+const appIcons = {
   allChats: fn("All Chats", "allChats", ForumOutlined),
   bot: fn("Bot", "bot", SmartToyOutlined),
   calls: fn("Calls", "calls", PermIdentity),
@@ -63,10 +64,37 @@ const initialCountry = {
   countryShortName: "",
 };
 
+const initialRouteTemplateItem = {
+  properties: {
+    method: "",
+    route: "",
+    statusCode: 0,
+  },
+  info: {
+    version: "",
+    description: "",
+  },
+};
+
+const initialErrorTemplateItem = {
+  properties: {
+    errorCode: 0,
+    statusCode: 0,
+    message: "",
+    reason: "",
+  },
+  info: {
+    version: "",
+    description: "",
+  },
+};
+
 export {
+  appIcons,
   initialContact,
   initialCountry,
+  initialErrorTemplateItem,
   initialMessage,
-  initialValues,
+  initialRouteTemplateItem,
   INITIAL_VIEW_MODE,
 };
