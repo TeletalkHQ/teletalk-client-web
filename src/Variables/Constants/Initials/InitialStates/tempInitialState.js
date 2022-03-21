@@ -7,6 +7,11 @@ const tempInitialState = {
   tempUserState: {},
   verifyCode: "",
   selectedContact: {},
+  countryCode: "",
+  countryName: "",
+  firstName: "",
+  lastName: "",
+  phoneNumber: "",
 };
 
 export { tempInitialState };

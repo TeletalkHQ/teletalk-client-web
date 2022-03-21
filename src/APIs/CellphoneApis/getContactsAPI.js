@@ -4,12 +4,12 @@ import { StuffStore } from "~/Functions/Utils/StuffStore";
 const getContactsAPI = (data) => {
   try {
     const { cellphoneRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { baseRoute, getContacts } = cellphoneRouterTemplate;
+    const { baseUrl, getContacts } = cellphoneRouterTemplate;
 
     const response = requester({
       data,
       method: getContacts.properties.method,
-      url: `${baseRoute.properties.route}${getContacts.properties.route}`,
+      url: `${baseUrl.properties.route}${getContacts.properties.route}`,
     });
 
     return response;

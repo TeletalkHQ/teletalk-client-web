@@ -8,7 +8,7 @@ const logoutAPI = async (data) => {
     const response = await requester({
       data,
       method: logoutNormal.properties.method,
-      url: `${userRouterTemplate.baseRoute.properties.route}${logoutNormal.properties.route}`,
+      url: `${userRouterTemplate.baseUrl.properties.route}${logoutNormal.properties.route}`,
     });
     return response;
   } catch (error) {

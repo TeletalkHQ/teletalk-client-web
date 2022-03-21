@@ -39,6 +39,7 @@
     "index.js": true,
     "node_modules": true
   },
-  "explorerExclude.backup": null
+  "explorerExclude.backup": null,
+  "cSpell.words": ["regexs"]
   // "explorerExclude.backup": null
 }

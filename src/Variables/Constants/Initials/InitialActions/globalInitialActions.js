@@ -49,4 +49,12 @@ const globalInitialActions = {
   loadingInitialAction,
 };
 
-export { globalInitialActions };
+export {
+  globalInitialActions,
+  onlineStatusInitialAction,
+  appDrawerInitialAction,
+  backdropInitialAction,
+  viewModeInitialAction,
+  dialogInitialAction,
+  loadingInitialAction,
+};
