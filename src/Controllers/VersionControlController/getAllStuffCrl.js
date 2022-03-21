@@ -14,7 +14,7 @@ const getAllStuffCrl = () => {
       StuffStore.schemas = response.data.schemas;
       StuffStore.templates = response.data.templates;
 
-      emitters.emitEvent({ event: EVENT_EMITTER_EVENTS });
+      emitters.emitEvent({ event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED });
     } catch (error) {
       logger._log("getAllStuffCrl", error);
     }

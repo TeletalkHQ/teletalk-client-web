@@ -13,7 +13,7 @@ const verifySignInCrl = () => {
       dispatch(loadingAction({ loading: true }));
 
       const {
-        user: { verifyCode },
+        tempState: { verifyCode },
       } = getState();
 
       const verifyToken = PersistentStorage.getItem({ key: "verifyToken" });

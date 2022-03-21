@@ -19,7 +19,7 @@ const createNewUserCrl = () => {
       }
 
       const {
-        user: { firstName, lastName },
+        tempState: { firstName, lastName },
       } = getState();
 
       const response = await createNewUserAPI({

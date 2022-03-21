@@ -1,15 +1,17 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 import Copyright from "~/Components/Utils/Copyright";
 import NewUserProfile from "~/Components/Authentication/NewUserProfile";
 import SignIn from "~/Components/Authentication/SignIn";
 import VerifySignIn from "~/Components/Authentication/VerifySignIn";
 
+import { isNumber } from "~/Functions/Utils/utils";
+
 import { useMyContext } from "~/Hooks/useMyContext";
 
 import { signInCrl } from "~/Controllers/AuthControllers/signInCrl";
 import { verifySignInCrl } from "~/Controllers/AuthControllers/verifySignInCrl";
-// import { welcomeCrl } from "~/Controllers/otherControllers/welcomeCrl";
+import { welcomeCrl } from "~/Controllers/otherControllers/welcomeCrl";
 
 import {
   verifyCodeAction,
@@ -24,10 +26,9 @@ import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/
 import { selectedCountryAction } from "~/Actions/OtherActions/otherActions";
 import { createNewUserCrl } from "~/Controllers/AuthControllers/createNewUserCrl";
 import { phoneNumberAction } from "~/Actions/TempActions/tempActions";
-import { regexs } from "~/Variables/Constants/Others/regexes";
-import { isNumber } from "~/Functions/Utils/utils";
+import { emitters } from "~/Functions/Events/Emitters";
+import { EVENT_EMITTER_EVENTS } from "~/Variables/Constants/Others/otherConstants";
 
-const { enNumberRegex } = regexs;
 const Authentication = () => {
   const {
     state: {
@@ -39,18 +40,23 @@ const Authentication = () => {
         loading,
         firstName,
         lastName,
+        selectedCountry,
       },
       globalState: { viewMode },
-      otherState: { countries, countryNameInputValue, selectedCountry },
+      otherState: { countries },
     },
     hooksOutput: { dispatch },
   } = useMyContext();
 
-  // useEffect(() => {
-  //   dispatch(welcomeCrl());
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  useEffect(() => {
+    emitters.addListener({
+      event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
+      listener: async () => {
+        dispatch(welcomeCrl());
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSignInClick = () => {
     dispatch(signInCrl());
@@ -124,7 +130,6 @@ const Authentication = () => {
             onSignInClick={handleSignInClick}
             phoneNumber={phoneNumber}
             countryName={countryName}
-            countryNameInputValue={countryNameInputValue}
             onCountryNameOnchange={handleCountryNameOnchange}
             onCountryNameOnInputChange={handleCountryNameOnInputChange}
             selectedCountry={selectedCountry}
