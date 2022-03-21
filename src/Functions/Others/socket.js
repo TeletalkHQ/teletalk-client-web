@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 
-import { BASE_URL } from "~/Variables/Constants/Others/otherConstants";
+import { SERVER_BASE_URL } from "~/Variables/Constants/Others/otherConstants";
 
-const socket = io(BASE_URL);
+const socket = io(SERVER_BASE_URL);
 
 export { socket };
