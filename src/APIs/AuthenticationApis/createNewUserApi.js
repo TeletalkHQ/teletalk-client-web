@@ -10,7 +10,7 @@ const createNewUserAPI = async ({ token, ...data }) => {
     const response = await requester({
       data,
       method: createNewUser.method,
-      url: `${userRouterTemplate.baseRoute.properties.route}${createNewUser.route}`,
+      url: `${userRouterTemplate.baseUrl.properties.route}${createNewUser.route}`,
       token,
     });
     return response;

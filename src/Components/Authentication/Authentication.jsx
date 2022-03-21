@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import Copyright from "~/Components/Utils/Copyright";
 import NewUserProfile from "~/Components/Authentication/NewUserProfile";
@@ -9,28 +9,29 @@ import { useMyContext } from "~/Hooks/useMyContext";
 
 import { signInCrl } from "~/Controllers/AuthControllers/signInCrl";
 import { verifySignInCrl } from "~/Controllers/AuthControllers/verifySignInCrl";
-import { welcomeCrl } from "~/Controllers/otherControllers/welcomeCrl";
+// import { welcomeCrl } from "~/Controllers/otherControllers/welcomeCrl";
 
 import {
-  phoneNumberAction,
   verifyCodeAction,
   countryCodeAction,
   countryNameAction,
   firstNameAction,
   lastNameAction,
-} from "~/Actions/UserActions/userActions";
+} from "~/Actions/TempActions/tempActions";
 import { viewModeAction } from "~/Actions/GlobalActions/globalActions";
 
 import { INITIAL_VIEW_MODE } from "~/Variables/Constants/Initials/InitialValues/initialValues";
 import { selectedCountryAction } from "~/Actions/OtherActions/otherActions";
 import { createNewUserCrl } from "~/Controllers/AuthControllers/createNewUserCrl";
+import { phoneNumberAction } from "~/Actions/TempActions/tempActions";
+import { regexs } from "~/Variables/Constants/Others/regexes";
+import { isNumber } from "~/Functions/Utils/utils";
 
-const numberRegex = new RegExp("^[0-9]+$");
-
+const { enNumberRegex } = regexs;
 const Authentication = () => {
   const {
     state: {
-      userState: {
+      tempState: {
         phoneNumber,
         countryCode,
         countryName,
@@ -62,17 +63,17 @@ const Authentication = () => {
   const handlePhoneNumberChange = (event) => {
     const value = event.target.value;
 
-    (value?.length < 15 || value === "") &&
+    if ((isNumber({ value }) && value?.length < 15) || value === "") {
       dispatch(phoneNumberAction({ phoneNumber: value }));
+    }
   };
 
   const handleCountryCodeChange = (event) => {
     const value = event.target.value;
-    const isNumber = numberRegex.test(value);
 
-    if ((isNumber && value?.length <= 6) || value === "") {
+    if ((isNumber({ value }) && value?.length <= 6) || value === "") {
       dispatch(countryCodeAction({ countryCode: value }));
-      const country = countries.find((c) => c.countryCode === value) || null;
+      const country = countries?.find((c) => c.countryCode === value) || null;
       dispatch(selectedCountryAction({ selectedCountry: country }));
     }
   };

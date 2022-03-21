@@ -4,12 +4,12 @@ import { StuffStore } from "~/Functions/Utils/StuffStore";
 const getAllChatsAPI = async (data) => {
   try {
     const { privateChatRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { getAllChats, baseRoute } = privateChatRouterTemplate;
+    const { getAllChats, baseUrl } = privateChatRouterTemplate;
 
     const response = await requester({
       data,
       method: getAllChats.properties.method,
-      URL: `${baseRoute.properties.route}${getAllChats.properties.route}`,
+      URL: `${baseUrl.properties.route}${getAllChats.properties.route}`,
     });
 
     return response;

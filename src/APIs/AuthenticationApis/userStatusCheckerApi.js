@@ -4,11 +4,11 @@ import { StuffStore } from "~/Functions/Utils/StuffStore";
 const userStatusCheckerAPI = async (data) => {
   try {
     const { userRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { baseRoute, statusCheck } = userRouterTemplate;
+    const { baseUrl, statusCheck } = userRouterTemplate;
 
     const response = requester({
       method: statusCheck.properties.method,
-      url: `${baseRoute.properties.route}${statusCheck.properties.route}`,
+      url: `${baseUrl.properties.route}${statusCheck.properties.route}`,
     });
 
     return response;

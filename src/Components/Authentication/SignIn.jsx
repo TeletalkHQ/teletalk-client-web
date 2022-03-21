@@ -98,6 +98,7 @@ const SignIn = ({
 
             <LoadingButton
               fullWidth
+              disabled={phoneNumber?.length < 9 && !selectedCountry}
               loading={loading}
               loadingIndicator={
                 <>

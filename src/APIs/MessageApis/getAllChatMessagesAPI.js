@@ -3,13 +3,13 @@ import { StuffStore } from "~/Functions/Utils/StuffStore";
 
 const getAllChatMessagesAPI = async (data) => {
   try {
-    const { getMessages, baseRoute } =
+    const { getMessages, baseUrl } =
       StuffStore.templates.routerTemplates?.privateChatRouterTemplate;
 
     const response = await requester({
       data,
       method: getMessages.properties.method,
-      url: `${baseRoute.properties.route}${getMessages.properties.route}`,
+      url: `${baseUrl.properties.route}${getMessages.properties.route}`,
     });
     return response;
   } catch (error) {

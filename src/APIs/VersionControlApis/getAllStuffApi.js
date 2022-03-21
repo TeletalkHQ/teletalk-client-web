@@ -4,7 +4,7 @@ const getAllStuffApi = async (data) => {
   try {
     const response = await requester({
       data,
-      url: "localhost:8080/versionControl/getAllStuff",
+      url: "versionControl/getAllStuff",
     });
     return response;
   } catch (error) {

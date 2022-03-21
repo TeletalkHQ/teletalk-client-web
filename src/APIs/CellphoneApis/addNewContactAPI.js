@@ -4,12 +4,12 @@ import { StuffStore } from "~/Functions/Utils/StuffStore";
 const addNewContactAPI = async (data) => {
   try {
     const { cellphoneRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { baseRoute, addContact } = cellphoneRouterTemplate;
+    const { baseUrl, addContact } = cellphoneRouterTemplate;
 
     const response = requester({
       data,
       method: addContact.properties.method,
-      url: `${baseRoute.properties.route}${addContact.properties.route}`,
+      url: `${baseUrl.properties.route}${addContact.properties.route}`,
     });
 
     return response;

@@ -3,7 +3,7 @@ import axios from "axios";
 import { BASE_URL } from "~/Variables/Constants/Others/otherConstants";
 
 const myAxios = axios.create({
-  BASE_URL,
+  baseURL: BASE_URL,
   headers: { "Content-Type": "application/json", Authorization: "" },
   timeout: 10000,
   validateStatus: false,
