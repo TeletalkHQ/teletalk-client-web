@@ -68,28 +68,28 @@ class Logger {
     if (_level === "debug") {
       console.error(new Error().stack);
     }
-    this._log("warn", message, this.colors.warn);
+    this.log("warn", message, this.colors.warn);
   }
 
   /**
    * @param message {string}
    */
   info(message) {
-    this._log("info", message, this.colors.info);
+    this.log("info", message, this.colors.info);
   }
 
   /**
    * @param message {string}
    */
   debug(message) {
-    this._log("debug", message, this.colors.debug);
+    this.log("debug", message, this.colors.debug);
   }
 
   /**
    * @param message {string}
    */
   error(message) {
-    this._log("error", message, this.colors.error);
+    this.log("error", message, this.colors.error);
   }
 
   format(message, level) {
@@ -104,7 +104,7 @@ class Logger {
    * @param message {string}
    * @param color {string}
    */
-  _log(level, message, color) {
+  log(level, message, color) {
     if (!_level) {
       return;
     }
