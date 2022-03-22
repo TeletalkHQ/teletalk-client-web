@@ -1,23 +1,20 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
+import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
 
 const getUserChatsLastMessageApi = async (data) => {
   try {
     const {
       templates: {
         routerTemplates: {
-          privateChatRouterTemplate: {
-            baseUrl,
-            chatsLastMessage: { properties: chatsLastMessage },
-          },
+          privateChatRouterTemplate: { baseUrl, chatsLastMessage },
         },
       },
     } = StuffStore;
 
     const response = await requester({
       data,
-      method: chatsLastMessage.method,
-      url: `${baseUrl.properties.route}${chatsLastMessage.route}`,
+      ...getApiUrlAndMethod(baseUrl, chatsLastMessage),
     });
 
     return response;

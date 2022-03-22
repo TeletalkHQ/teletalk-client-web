@@ -1,20 +1,22 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
+import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
 
-const signInApi = (data) => {
+const signInApi = async (data) => {
   try {
-    const { userRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { baseUrl, signInNormal } = userRouterTemplate;
+    const {
+      userRouterTemplate: { baseUrl, signInNormal },
+    } = StuffStore.templates.routerTemplates;
 
-    const response = requester({
+    const response = await requester({
       data,
-      method: signInNormal.properties.method,
-      url: `${baseUrl.properties.route}${signInNormal.properties.route}`,
+      ...getApiUrlAndMethod(baseUrl, signInNormal),
     });
 
     return response;
   } catch (error) {
     logger._log("signInApi catch, error:", error);
+    throw error;
   }
 };
 

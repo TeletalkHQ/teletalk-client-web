@@ -1,20 +1,22 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
+import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
 
 const getAllChatsApi = async (data) => {
   try {
-    const { privateChatRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { getAllChats, baseUrl } = privateChatRouterTemplate;
+    const {
+      privateChatRouterTemplate: { getAllChats, baseUrl },
+    } = StuffStore.templates.routerTemplates;
 
     const response = await requester({
       data,
-      method: getAllChats.properties.method,
-      URL: `${baseUrl.properties.route}${getAllChats.properties.route}`,
+      ...getApiUrlAndMethod(baseUrl, getAllChats),
     });
 
     return response;
   } catch (error) {
     console.log("getAllChatsApi catch", error);
+    throw error;
   }
 };
 export { getAllChatsApi };

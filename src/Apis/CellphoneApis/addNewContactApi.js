@@ -1,20 +1,23 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
+import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
 
 const addNewContactApi = async (data) => {
   try {
-    const { cellphoneRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { baseUrl, addContact } = cellphoneRouterTemplate;
+    const {
+      cellphoneRouterTemplate: { baseUrl, addContact },
+    } = StuffStore.templates.routerTemplates;
 
     const response = requester({
       data,
-      method: addContact.properties.method,
-      url: `${baseUrl.properties.route}${addContact.properties.route}`,
+      ...getApiUrlAndMethod(baseUrl, addContact),
     });
 
     return response;
   } catch (error) {
     console.log("addNewContactApi catch", error);
+    throw error;
   }
 };
+
 export { addNewContactApi };
