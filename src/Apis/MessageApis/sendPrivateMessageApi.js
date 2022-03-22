@@ -15,7 +15,7 @@ const sendPrivateMessageApi = async (data) => {
 
     return response;
   } catch (error) {
-    console.log("sendPrivateMessageApi catch", error);
+    logger.log("sendPrivateMessageApi catch", error);
     throw error;
   }
 };

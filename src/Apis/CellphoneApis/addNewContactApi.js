@@ -15,7 +15,7 @@ const addNewContactApi = async (data) => {
 
     return response;
   } catch (error) {
-    console.log("addNewContactApi catch", error);
+    logger.log("addNewContactApi catch", error);
     throw error;
   }
 };

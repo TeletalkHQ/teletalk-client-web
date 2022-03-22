@@ -15,7 +15,7 @@ const getCountriesApi = async (data = {}) => {
 
     return response;
   } catch (error) {
-    console.log("getCountriesApi catch", error);
+    logger.log("getCountriesApi catch", error);
     throw error;
   }
 };

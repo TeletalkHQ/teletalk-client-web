@@ -66,7 +66,7 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
 
             return chatList;
           } catch (error) {
-            console.log("ChatList", error);
+            logger.log("ChatList", error);
             return null;
           }
         })()}

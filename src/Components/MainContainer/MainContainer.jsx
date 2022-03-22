@@ -64,7 +64,7 @@ const MainContainer = () => {
 
         await dispatch(getAllStuffCrl());
       } catch (error) {
-        console.log("MainContainer auth catch", error);
+        logger.log("MainContainer auth catch", error);
       } finally {
         dispatch(backdropAction({ backdropState: { open: false } }));
       }

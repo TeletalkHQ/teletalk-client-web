@@ -23,7 +23,7 @@ const userReducer = (
         return state;
     }
   } catch (error) {
-    console.log("userReducer catch", error);
+    logger.log("userReducer catch", error);
   }
 };
 

@@ -9,7 +9,7 @@ const getCountriesCrl = () => {
 
       dispatch(getCountriesAction({ countries: response.data.countries }));
     } catch (error) {
-      console.log("getCountriesCrl", error);
+      logger.log("getCountriesCrl", error);
     }
   };
 };

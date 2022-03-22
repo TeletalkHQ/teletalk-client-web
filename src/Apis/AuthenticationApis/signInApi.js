@@ -15,7 +15,7 @@ const signInApi = async (data) => {
 
     return response;
   } catch (error) {
-    logger._log("signInApi catch, error:", error);
+    logger.log("signInApi catch, error:", error);
     throw error;
   }
 };

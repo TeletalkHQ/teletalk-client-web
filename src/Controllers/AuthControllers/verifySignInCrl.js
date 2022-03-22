@@ -49,7 +49,7 @@ const verifySignInCrl = () => {
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
       }
     } catch (error) {
-      console.log("verifySignInCrl", error);
+      logger.log("verifySignInCrl", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }

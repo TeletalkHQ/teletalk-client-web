@@ -77,7 +77,7 @@ const responseHandler = (response) => {
 
     return response;
   } catch (error) {
-    console.log("responseHandler catch", error);
+    logger.log("responseHandler catch", error);
     throw error;
   }
 };

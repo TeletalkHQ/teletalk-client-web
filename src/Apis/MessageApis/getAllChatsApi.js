@@ -15,7 +15,7 @@ const getAllChatsApi = async (data) => {
 
     return response;
   } catch (error) {
-    console.log("getAllChatsApi catch", error);
+    logger.log("getAllChatsApi catch", error);
     throw error;
   }
 };

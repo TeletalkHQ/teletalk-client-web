@@ -17,7 +17,7 @@ const getAllStuffApi = async (data) => {
 
     return response;
   } catch (error) {
-    console.log("getAllStuffApi catch", error);
+    logger.log("getAllStuffApi catch", error);
     throw error;
   }
 };

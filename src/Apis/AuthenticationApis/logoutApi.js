@@ -15,7 +15,7 @@ const logoutApi = async (data) => {
 
     return response;
   } catch (error) {
-    console.log("logoutApi catch", error);
+    logger.log("logoutApi catch", error);
     throw error;
   }
 };

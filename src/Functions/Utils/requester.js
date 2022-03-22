@@ -11,46 +11,46 @@ import { configs } from "~/Configs/configs";
 const { successResponseLogger, failureResponseLogger } = configs.requester;
 
 const requester = async (options = initialRequestOptions) => {
-	try {
-		const finalOptions = {
-			...initialRequestOptions,
-			...options,
-			data: { ...initialRequestOptions.data, ...options?.data },
-			headers: { ...initialRequestOptions.headers, ...options?.headers },
-			token: options?.token || PersistentStorage.getItem({ key: "mainToken" }),
-		};
+  try {
+    const finalOptions = {
+      ...initialRequestOptions,
+      ...options,
+      data: { ...initialRequestOptions.data, ...options?.data },
+      headers: { ...initialRequestOptions.headers, ...options?.headers },
+      token: options?.token || PersistentStorage.getItem({ key: "mainToken" }),
+    };
 
-		if (!finalOptions.url) {
-			const error = "Yo! you forget send me url!!!";
-			throw error;
-		}
+    if (!finalOptions.url) {
+      const error = "Yo! you forget send me url!!!";
+      throw error;
+    }
 
-		finalOptions.headers.Authorization = `Bearer ${finalOptions.token}`;
+    finalOptions.headers.Authorization = `Bearer ${finalOptions.token}`;
 
-		if (options.data && !Object.keys(options?.data)?.length) {
-			delete finalOptions.data;
-		}
+    if (options.data && !Object.keys(options?.data)?.length) {
+      delete finalOptions.data;
+    }
 
-		const response = await myAxios(finalOptions);
+    const response = await myAxios(finalOptions);
 
-		const checkedResponse = responseHandler(response);
+    const checkedResponse = responseHandler(response);
 
-		successResponseLogger && console.log(checkedResponse);
+    successResponseLogger && logger.log(checkedResponse);
 
-		return checkedResponse;
-	} catch (error) {
-		failureResponseLogger && console.log("requester catch, error:", error);
+    return checkedResponse;
+  } catch (error) {
+    failureResponseLogger && logger.log("requester catch, error:", error);
 
-		if (!window?.navigator?.onLine) {
-			appDispatch({ type: errorInitialActions.econnabortedAction.type });
-			handleMakeSnack("ECONNABORTED", { variant: "error" });
-		} else if (error?.code === "ECONNABORTED") {
-			appDispatch({ type: errorInitialActions.econnabortedAction.type });
-			handleMakeSnack("ECONNABORTED", { variant: "error" });
-		}
+    if (!window?.navigator?.onLine) {
+      appDispatch({ type: errorInitialActions.econnabortedAction.type });
+      handleMakeSnack("ECONNABORTED", { variant: "error" });
+    } else if (error?.code === "ECONNABORTED") {
+      appDispatch({ type: errorInitialActions.econnabortedAction.type });
+      handleMakeSnack("ECONNABORTED", { variant: "error" });
+    }
 
-		throw error;
-	}
+    throw error;
+  }
 };
 
 export { requester };

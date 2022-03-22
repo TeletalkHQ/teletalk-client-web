@@ -4,23 +4,23 @@ import { initialAction } from "~/Variables/Constants/Initials/InitialOptions/ini
 let appDispatch = (action = initialAction) => {};
 
 const dispatchInjector = ({ dispatch }) => {
-	appDispatch = (action) => {
-		try {
-			if (!action) {
-				const error = "Yo! you must provide action!";
-				throw error;
-			}
+  appDispatch = (action) => {
+    try {
+      if (!action) {
+        const error = "Yo! you must provide action!";
+        throw error;
+      }
 
-			if (typeof action === "object" && !action.type) {
-				const error = "Yo! you must provide action type";
-				throw error;
-			}
+      if (typeof action === "object" && !action.type) {
+        const error = "Yo! you must provide action type";
+        throw error;
+      }
 
-			dispatch(action);
-		} catch (error) {
-			console.log("appDispatch catch", error);
-		}
-	};
+      dispatch(action);
+    } catch (error) {
+      logger.log("appDispatch catch", error);
+    }
+  };
 };
 
 export { dispatchInjector, appDispatch };

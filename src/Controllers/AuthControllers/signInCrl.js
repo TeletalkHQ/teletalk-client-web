@@ -36,7 +36,7 @@ const signInCrl = () => {
 
       return response;
     } catch (error) {
-      console.log("signInCrl catch", error);
+      logger.log("signInCrl catch", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }

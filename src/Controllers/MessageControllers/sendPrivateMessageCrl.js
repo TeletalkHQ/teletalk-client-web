@@ -29,7 +29,7 @@ const sendNewMessageCrl = () => {
       );
 
       if (chatIndex !== -1) {
-        console.log(chatIndex);
+        logger.log(chatIndex);
         const chat = copyUser.chats[chatIndex] || {
           chatID,
           messages: [newMessage],
@@ -41,16 +41,16 @@ const sendNewMessageCrl = () => {
 
         const newChat = { ...chat, messages };
 
-        console.log(newChat);
+        logger.log(newChat);
         copyUser.chats.splice(chatIndex, 1, newChat);
 
-        console.log(copyUser);
+        logger.log(copyUser);
       }
 
       dispatch(userAction({ chats: copyUser.chats }));
       dispatch(messageInputOnChangeAction({ messageInputText: "" }));
     } catch (error) {
-      console.log("sendNewMessageCrl", error);
+      logger.log("sendNewMessageCrl", error);
     }
   };
 };

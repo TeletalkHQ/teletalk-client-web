@@ -16,17 +16,17 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
           targetChat = chatWithLastMessage;
         }
 
-        console.log(chat);
-        console.log(chatWithLastMessage.chatID);
+        logger.log(chat);
+        logger.log(chatWithLastMessage.chatID);
       });
 
       if (targetChat) {
         const index = newChats.findIndex(
           (chat) => chat.chatID === targetChat.chatID
         );
-        console.log(index);
+        logger.log(index);
         if (index !== -1) {
-          console.log(chat);
+          logger.log(chat);
           targetChat.messages = [
             ...(chat.messages || []),
             ...targetChat.messages,
@@ -38,7 +38,7 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
 
     return { chatsWithLastMessage: newChats };
   } catch (error) {
-    console.log("handleAddUserLastMessage catch", error);
+    logger.log("handleAddUserLastMessage catch", error);
   }
 };
 
@@ -54,7 +54,7 @@ const getUserChatsLastMessageCrl = ({ user }) => {
 
       dispatch(userAction({ chats: chatsWithLastMessage }));
     } catch (error) {
-      console.log("getUserChatsLastMessageCrl", error);
+      logger.log("getUserChatsLastMessageCrl", error);
     }
   };
 };

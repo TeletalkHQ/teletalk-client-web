@@ -33,7 +33,7 @@ const otherReducer = (
         return state;
     }
   } catch (error) {
-    console.log("otherReducer catch", error);
+    logger.log("otherReducer catch", error);
   }
 };
 

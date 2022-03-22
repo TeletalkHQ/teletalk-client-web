@@ -1,35 +1,35 @@
 //TODO Args controller
 function PersistentStorage() {
-	try {
-		this.storage = localStorage;
+  try {
+    this.storage = localStorage;
 
-		this.clear = () => {
-			this.storage.clear();
+    this.clear = () => {
+      this.storage.clear();
 
-			return this;
-		};
+      return this;
+    };
 
-		this.removeItem = ({ key = "" }) => {
-			this.storage.removeItem(key);
+    this.removeItem = ({ key = "" }) => {
+      this.storage.removeItem(key);
 
-			return this;
-		};
+      return this;
+    };
 
-		this.setItem = ({ key = "", value = "" }) => {
-			this.storage.setItem(key, value);
+    this.setItem = ({ key = "", value = "" }) => {
+      this.storage.setItem(key, value);
 
-			return this;
-		};
+      return this;
+    };
 
-		this.getItem = ({ key = "" }) => {
-			const item = this.storage.getItem(key);
+    this.getItem = ({ key = "" }) => {
+      const item = this.storage.getItem(key);
 
-			return item;
-		};
-	} catch (error) {
-		console.log("PersistentStorage catch", error);
-	}
-	return this;
+      return item;
+    };
+  } catch (error) {
+    logger.log("PersistentStorage catch", error);
+  }
+  return this;
 }
 
 const Storage = new PersistentStorage();

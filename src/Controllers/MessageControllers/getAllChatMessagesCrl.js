@@ -27,7 +27,7 @@ const getAllChatMessagesCrl = ({ chatID }) => {
 
       // dispatch(setMessagesAction({ messages: response.data.messages }));
     } catch (error) {
-      console.log("getAllChatMessagesCrl", error);
+      logger.log("getAllChatMessagesCrl", error);
     }
   };
 };

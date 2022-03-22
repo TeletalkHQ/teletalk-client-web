@@ -60,7 +60,7 @@ const tempReducer = (
         return state;
     }
   } catch (error) {
-    console.log("tempReducer catch", error);
+    logger.log("tempReducer catch", error);
   }
 };
 
