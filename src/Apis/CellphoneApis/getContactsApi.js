@@ -1,20 +1,22 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
+import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
 
 const getContactsApi = (data) => {
   try {
-    const { cellphoneRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { baseUrl, getContacts } = cellphoneRouterTemplate;
+    const {
+      cellphoneRouterTemplate: { baseUrl, getContacts },
+    } = StuffStore.templates.routerTemplates;
 
     const response = requester({
       data,
-      method: getContacts.properties.method,
-      url: `${baseUrl.properties.route}${getContacts.properties.route}`,
+      ...getApiUrlAndMethod(baseUrl, getContacts),
     });
 
     return response;
   } catch (error) {
     logger._log("getContactsApi catch, error:", error);
+    throw error;
   }
 };
 

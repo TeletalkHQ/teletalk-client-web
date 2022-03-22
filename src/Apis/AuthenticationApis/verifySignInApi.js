@@ -1,21 +1,23 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
+import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
 
 const verifySignInApi = async ({ token, ...data }) => {
   try {
-    const { userRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { baseUrl, verifySignInNormal } = userRouterTemplate;
+    const {
+      userRouterTemplate: { baseUrl, verifySignInNormal },
+    } = StuffStore.templates.routerTemplates;
 
-    const response = requester({
+    const response = await requester({
       data,
-      method: verifySignInNormal.properties.method,
-      url: `${baseUrl.properties.route}${verifySignInNormal.properties.route}`,
+      ...getApiUrlAndMethod(baseUrl, verifySignInNormal),
       token,
     });
 
     return response;
   } catch (error) {
     console.log("apiName catch", error);
+    throw error;
   }
 };
 

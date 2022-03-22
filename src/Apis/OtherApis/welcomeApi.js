@@ -1,14 +1,15 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
+import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
 
 const welcomeApi = async () => {
   try {
-    const { otherRouterTemplate } = StuffStore.templates.routerTemplates;
-    const { baseUrl, welcome } = otherRouterTemplate;
+    const {
+      otherRouterTemplate: { baseUrl, welcome },
+    } = StuffStore.templates.routerTemplates;
 
     const response = await requester({
-      method: welcome.properties.method,
-      url: `${baseUrl.properties.route}${welcome.properties.route}`,
+      ...getApiUrlAndMethod(baseUrl, welcome),
     });
 
     return response;

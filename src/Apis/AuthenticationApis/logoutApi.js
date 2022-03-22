@@ -1,18 +1,22 @@
 import { requester } from "~/Functions/Utils/requester";
 import { StuffStore } from "~/Functions/Utils/StuffStore";
+import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
 
 const logoutApi = async (data) => {
-  const { userRouterTemplate } = StuffStore.templates.routerTemplates;
-  const { logoutNormal } = userRouterTemplate;
   try {
+    const {
+      userRouterTemplate: { logoutNormal, baseUrl },
+    } = StuffStore.templates.routerTemplates;
+
     const response = await requester({
       data,
-      method: logoutNormal.properties.method,
-      url: `${userRouterTemplate.baseUrl.properties.route}${logoutNormal.properties.route}`,
+      ...getApiUrlAndMethod(baseUrl, logoutNormal),
     });
+
     return response;
   } catch (error) {
     console.log("logoutApi catch", error);
+    throw error;
   }
 };
 export { logoutApi };
