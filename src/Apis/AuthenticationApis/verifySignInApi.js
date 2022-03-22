@@ -16,7 +16,7 @@ const verifySignInApi = async ({ token, ...data }) => {
 
     return response;
   } catch (error) {
-    console.log("apiName catch", error);
+    logger.log("apiName catch", error);
     throw error;
   }
 };

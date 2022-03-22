@@ -14,7 +14,7 @@ const welcomeApi = async () => {
 
     return response;
   } catch (error) {
-    console.log("welcomeApi catch", error);
+    logger.log("welcomeApi catch", error);
     throw error;
   }
 };

@@ -34,7 +34,7 @@ const createNewUserCrl = () => {
 
       dispatch(loadingAction({ loading: true }));
     } catch (error) {
-      console.log("createNewUserCrl", error);
+      logger.log("createNewUserCrl", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }

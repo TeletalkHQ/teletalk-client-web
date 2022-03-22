@@ -15,7 +15,7 @@ const getContactsApi = (data) => {
 
     return response;
   } catch (error) {
-    logger._log("getContactsApi catch, error:", error);
+    logger.log("getContactsApi catch, error:", error);
     throw error;
   }
 };

@@ -23,7 +23,7 @@ const userStatusCheckerCrl = () => {
 
       return { user };
     } catch (error) {
-      console.log("userStatusCheckerCrl", error);
+      logger.log("userStatusCheckerCrl", error);
 
       if (error.statusCode === 401) {
         PersistentStorage.clear();

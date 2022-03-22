@@ -14,7 +14,7 @@ const addNewContactCrl = (contact) => {
         })
       );
     } catch (error) {
-      console.log("addNewContactCrl", error);
+      logger.log("addNewContactCrl", error);
     }
   };
 };

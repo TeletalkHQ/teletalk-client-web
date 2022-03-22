@@ -3,39 +3,39 @@ import { PersistentStorage } from "~/Functions/Utils/PersistentStorage";
 
 //REDESIGN
 const userInitializer = () => {
-	try {
-		const user = {
-			bio: "",
-			blacklist: [],
-			chats: [],
-			contacts: [],
-			countryCode: "",
-			countryName: "",
-			firstName: "",
-			lastName: "",
-			phoneNumber: "",
-			privateID: "",
-			username: "",
-		};
+  try {
+    const user = {
+      bio: "",
+      blacklist: [],
+      chats: [],
+      contacts: [],
+      countryCode: "",
+      countryName: "",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      privateID: "",
+      username: "",
+    };
 
-		const mainToken = PersistentStorage.getItem({ key: "mainToken" });
+    const mainToken = PersistentStorage.getItem({ key: "mainToken" });
 
-		if (!mainToken) {
-			PersistentStorage.clear();
-			return user;
-		}
+    if (!mainToken) {
+      PersistentStorage.clear();
+      return user;
+    }
 
-		const { decodedToken } = tokenDecoder({ token: mainToken });
+    const { decodedToken } = tokenDecoder({ token: mainToken });
 
-		delete decodedToken.iat;
+    delete decodedToken.iat;
 
-		const { phoneNumber, countryCode, countryName, privateID } = decodedToken;
+    const { phoneNumber, countryCode, countryName, privateID } = decodedToken;
 
-		return { ...user, phoneNumber, countryCode, countryName, privateID };
-	} catch (error) {
-		console.log("userInitializer catch", userInitializer);
-		// throw error;
-	}
+    return { ...user, phoneNumber, countryCode, countryName, privateID };
+  } catch (error) {
+    logger.log("userInitializer catch", userInitializer);
+    // throw error;
+  }
 };
 
 export { userInitializer };

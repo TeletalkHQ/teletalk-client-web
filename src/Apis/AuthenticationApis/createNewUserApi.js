@@ -16,7 +16,7 @@ const createNewUserApi = async ({ token, ...data }) => {
 
     return response;
   } catch (error) {
-    console.log("createNewUserApi catch", error);
+    logger.log("createNewUserApi catch", error);
     throw error;
   }
 };

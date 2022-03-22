@@ -7,7 +7,7 @@ import { initialStateWithoutInitialWord } from "~/Variables/Constants/Initials/I
 let useDispatch = () => appDispatch;
 let useSelector = () => initialStateWithoutInitialWord;
 let actionLogger = (action) => {
-  console.log(`actionLogger:`, action);
+  logger.log(`actionLogger:`, action);
 };
 
 const defaultConfigs = {

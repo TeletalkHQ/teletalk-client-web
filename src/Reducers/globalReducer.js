@@ -18,7 +18,7 @@ const globalReducer = (
   action = initialAction
 ) => {
   const { payload, type } = action;
-  console.log(action);
+  logger.log(action);
 
   const fn = () => newStateReplacer({ state, payload });
 
@@ -46,7 +46,7 @@ const globalReducer = (
         return state;
     }
   } catch (error) {
-    console.log("globalReducer catch", error);
+    logger.log("globalReducer catch", error);
   }
 };
 

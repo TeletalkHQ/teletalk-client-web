@@ -20,7 +20,7 @@ const logoutCrl = () => {
         })
       );
     } catch (error) {
-      console.log("logoutCrl", error);
+      logger.log("logoutCrl", error);
     }
   };
 };

@@ -9,7 +9,7 @@ const getChatsCrl = () => {
 
       dispatch(userAction({ chats: response.data.chats }));
     } catch (error) {
-      console.log("getChatsCrl", error);
+      logger.log("getChatsCrl", error);
     }
   };
 };

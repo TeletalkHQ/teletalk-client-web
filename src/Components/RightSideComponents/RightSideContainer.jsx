@@ -47,7 +47,7 @@ const RightSideContainer = () => {
         };
       }
     } catch (error) {
-      console.log("RightSideContainer useEffect for chat updater", error);
+      logger.log("RightSideContainer useEffect for chat updater", error);
     }
   }, []);
 

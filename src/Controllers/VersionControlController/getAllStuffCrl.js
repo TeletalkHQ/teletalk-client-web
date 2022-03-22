@@ -9,14 +9,14 @@ const getAllStuffCrl = () => {
   return async (dispatch, getState) => {
     try {
       const response = await getAllStuffApi();
-      console.log(response);
+      logger.log(response);
 
       StuffStore.schemas = response.data.schemas;
       StuffStore.templates = response.data.templates;
 
       emitters.emitEvent({ event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED });
     } catch (error) {
-      logger._log("getAllStuffCrl", error);
+      logger.log("getAllStuffCrl", error);
     }
   };
 };

@@ -19,7 +19,7 @@ const getUserChatsLastMessageApi = async (data) => {
 
     return response;
   } catch (error) {
-    console.log("getUserChatsLastMessageApi catch", error);
+    logger.log("getUserChatsLastMessageApi catch", error);
   }
 };
 

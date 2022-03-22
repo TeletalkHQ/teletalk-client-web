@@ -31,7 +31,7 @@ const App = () => {
     dispatchInjector({ dispatch });
   }, [dispatch]);
 
-  console.log(state);
+  logger.log(state);
 
   return (
     <MainContext.Provider

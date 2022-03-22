@@ -21,7 +21,7 @@ const notificationReducer = (
         return state;
     }
   } catch (error) {
-    console.log("notificationReducer", error);
+    logger.log("notificationReducer", error);
   }
 };
 

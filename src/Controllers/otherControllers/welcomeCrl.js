@@ -9,7 +9,7 @@ const welcomeCrl = () => {
 
       dispatch(welcomeAction({ message: response.data.message }));
     } catch (error) {
-      console.log("welcomeCrl catch", error);
+      logger.log("welcomeCrl catch", error);
     }
   };
 };
