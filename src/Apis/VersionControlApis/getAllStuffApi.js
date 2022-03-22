@@ -1,16 +1,18 @@
 import { requester } from "~/Functions/Utils/requester";
-import { StuffStore } from "~/Functions/Utils/StuffStore";
-import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
+// import { StuffStore } from "~/Functions/Utils/StuffStore";
+// import { getApiUrlAndMethod } from "~/Functions/Utils/utils";
 
 const getAllStuffApi = async (data) => {
   try {
-    const {
-      versionControlRouterTemplate: { baseUrl, getAllStuffs },
-    } = StuffStore.templates.routerTemplates;
+    // const {
+    //   versionControlRouterTemplate: { baseUrl, getAllStuffs },
+    // } = StuffStore.templates.routerTemplates;
 
     const response = await requester({
       data,
-      ...getApiUrlAndMethod(baseUrl, getAllStuffs),
+      // ...getApiUrlAndMethod(baseUrl, getAllStuffs),
+      url: "/versionControl/getAllStuff",
+      method: "get",
     });
 
     return response;
