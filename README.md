@@ -1,3 +1,2 @@
-# Teletalk free messenger app (client)
+# Teletalk free messenger client app (web)
 
-Hi, this is my first open source project.
