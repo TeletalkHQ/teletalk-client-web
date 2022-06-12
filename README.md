@@ -1,2 +1,2 @@
-# Teletalk free messenger client app (web)
+# Teletalk messenger client app (web)
 
