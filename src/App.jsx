@@ -4,21 +4,21 @@ import { SnackbarProvider } from "notistack";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
-import MainContainer from "~/Components/MainContainer/MainContainer";
+import MainContainer from "~/components/mainContainer/MainContainer";
 
-import { dispatchInjector } from "~/Functions/Others/Injectors/dispatchInjector";
+import { dispatchInjector } from "~/functions/others/injectors/dispatchInjector";
 
-import { useThunkReducer } from "~/Hooks/useThunkReducer";
+import { useThunkReducer } from "~/hooks/useThunkReducer";
 
-import { MainContext } from "~/Contexts/MainContext";
+import { MainContext } from "~/contexts/MainContext";
 
-import { rootReducer } from "~/Reducers/index";
+import { rootReducer } from "~/reducers/index";
 
-import { initialStateWithoutInitialWord } from "~/Variables/Constants/Initials/InitialStates/initialStates";
+import { initialStateWithoutInitialWord } from "~/variables/constants/initials/initialStates/initialStates";
 
-import { baseTheme } from "~/Theme/baseTheme";
+import { baseTheme } from "~/theme/baseTheme";
 
-import { configs } from "./Configs/configs";
+import { configs } from "./configs/configs";
 
 const App = () => {
   const [state = initialStateWithoutInitialWord, dispatch] = useThunkReducer(
