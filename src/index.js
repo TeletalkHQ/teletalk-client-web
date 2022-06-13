@@ -1,7 +1,7 @@
 import { render } from "react-dom";
 import { StrictMode } from "react";
 
-import "~/Functions/Others/globals";
+import "~/functions/others/globals";
 
 import App from "~/App";
 
