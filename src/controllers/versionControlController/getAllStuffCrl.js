@@ -1,4 +1,4 @@
-import { StuffStore } from "~/functions/utils/StuffStore";
+import { stuffStore } from "~/functions/utils/StuffStore";
 import { emitters } from "~/functions/events/Emitters";
 
 import { getAllStuffApi } from "~/apis/versionControlApis/getAllStuffApi";
@@ -11,8 +11,8 @@ const getAllStuffCrl = () => {
       const response = await getAllStuffApi();
       logger.log(response);
 
-      StuffStore.schemas = response.data.schemas;
-      StuffStore.templates = response.data.templates;
+      stuffStore.schemas = response.data.schemas;
+      stuffStore.templates = response.data.templates;
 
       emitters.emitEvent({ event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED });
     } catch (error) {
