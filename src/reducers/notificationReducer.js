@@ -1,7 +1,7 @@
-import { errorInitialActions } from "~/variables/constants/initials/initialActions/initialActions";
-import { initialAction } from "~/variables/constants/initials/initialOptions/initialOptions";
-import { initialState } from "~/variables/constants/initials/initialStates/initialStates";
-import { newStateReplacer } from "~/functions/utils/stateUtils/stateUtils";
+import { errorInitialActions } from "variables/constants/initials/initialActions/initialActions";
+import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
+import { initialState } from "variables/constants/initials/initialStates/initialStates";
+import { newStateReplacer } from "functions/utils/stateUtils/stateUtils";
 const { econnabortedAction } = errorInitialActions;
 
 const notificationReducer = (
@@ -21,7 +21,7 @@ const notificationReducer = (
         return state;
     }
   } catch (error) {
-    logger.log("notificationReducer", error);
+    console.log("notificationReducer", error);
   }
 };
 

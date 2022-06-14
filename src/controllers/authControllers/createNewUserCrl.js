@@ -1,9 +1,9 @@
-import { viewModeAction } from "~/actions/globalActions/globalActions";
-import { loadingAction } from "~/actions/userActions/userActions";
-import { createNewUserApi } from "~/apis/authenticationApis/createNewUserApi";
-import { PersistentStorage } from "~/classes/PersistentStorage";
-import { getInitialState } from "~/variables/constants/initials/initialStates/initialStates";
-import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/initialValues";
+import { viewModeAction } from "actions/globalActions/globalActions";
+import { loadingAction } from "actions/userActions/userActions";
+import { createNewUserApi } from "apis/authenticationApis";
+import { PersistentStorage } from "classes/PersistentStorage";
+import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
+import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
 
 const createNewUserCrl = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -34,7 +34,7 @@ const createNewUserCrl = () => {
 
       dispatch(loadingAction({ loading: true }));
     } catch (error) {
-      logger.log("createNewUserCrl", error);
+      console.log("createNewUserCrl", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }

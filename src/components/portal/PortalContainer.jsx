@@ -1,10 +1,10 @@
-import Portal from "~/components/portal/Portal";
+import Portal from "components/portal/Portal";
 
-import AppDrawer from "~/components/portal/AppDrawer";
-import MyBackdrop from "~/components/portal/MyBackdrop";
+import AppDrawer from "components/portal/AppDrawer";
+import MyBackdrop from "components/portal/MyBackdrop";
 
-import { useMyContext } from "~/hooks/useMyContext";
-import DialogContainer from "~/components/dialogContainer/DialogContainer";
+import { useMyContext } from "hooks/useMyContext";
+import DialogContainer from "components/dialogContainer/DialogContainer";
 
 const PortalContainer = ({ onBackdropClose }) => {
   const {

@@ -1,6 +1,5 @@
-import { getCountriesAction } from "~/actions/otherActions/otherActions";
-
-import { getCountriesApi } from "~/apis/authenticationApis/getCountriesApi";
+import { getCountriesAction } from "actions/otherActions/otherActions";
+import { getCountriesApi } from "apis/authenticationApis";
 
 const getCountriesCrl = () => {
   return async (dispatch, getState) => {
@@ -9,7 +8,7 @@ const getCountriesCrl = () => {
 
       dispatch(getCountriesAction({ countries: response.data.countries }));
     } catch (error) {
-      logger.log("getCountriesCrl", error);
+      console.log("getCountriesCrl", error);
     }
   };
 };

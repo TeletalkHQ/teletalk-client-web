@@ -16,7 +16,7 @@ const tokenDecoder = ({ token }) => {
 
     return { decodedToken };
   } catch (error) {
-    logger.log("tokenDecoder catch", error);
+    console.log("tokenDecoder catch", error);
     throw error;
   }
 };

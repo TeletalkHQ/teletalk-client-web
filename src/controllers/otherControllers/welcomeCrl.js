@@ -1,6 +1,5 @@
-import { welcomeApi } from "~/apis/otherApis/welcomeApi";
-
-import { welcomeAction } from "~/actions/otherActions/otherActions";
+import { welcomeAction } from "actions/otherActions/otherActions";
+import { welcomeApi } from "apis/otherApis";
 
 const welcomeCrl = () => {
   return async (dispatch, getState) => {
@@ -9,7 +8,7 @@ const welcomeCrl = () => {
 
       dispatch(welcomeAction({ message: response.data.message }));
     } catch (error) {
-      logger.log("welcomeCrl catch", error);
+      console.log("welcomeCrl catch", error);
     }
   };
 };

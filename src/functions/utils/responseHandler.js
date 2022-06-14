@@ -1,11 +1,11 @@
-import { appDispatch } from "~/functions/others/injectors/dispatchInjector";
-import { userInitializer } from "~/functions/helpers/userInitializer";
-import { PersistentStorage } from "~/classes/PersistentStorage";
+import { appDispatch } from "functions/others/injectors/dispatchInjector";
+import { userInitializer } from "functions/helpers/userInitializer";
+import { PersistentStorage } from "classes/PersistentStorage";
 
-import { viewModeAction } from "~/actions/globalActions/globalActions";
-import { userAction } from "~/actions/userActions/userActions";
+import { viewModeAction } from "actions/globalActions/globalActions";
+import { userAction } from "actions/userActions/userActions";
 
-import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
 
 const responseHandler = (response) => {
   try {
@@ -77,7 +77,7 @@ const responseHandler = (response) => {
 
     return response;
   } catch (error) {
-    logger.log("responseHandler catch", error);
+    console.log("responseHandler catch", error);
     throw error;
   }
 };

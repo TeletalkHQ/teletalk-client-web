@@ -1,4 +1,4 @@
-import { initialState } from "~/variables/constants/initials/initialStates/initialStates";
+import { initialState } from "variables/constants/initials/initialStates/initialStates";
 
 const { userInitialState } = initialState;
 

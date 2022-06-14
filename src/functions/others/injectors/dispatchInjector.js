@@ -1,4 +1,4 @@
-import { initialAction } from "~/variables/constants/initials/initialOptions/initialOptions";
+import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
 
 //! Using it in special cases only!
 let appDispatch = (action = initialAction) => {};
@@ -18,7 +18,7 @@ const dispatchInjector = ({ dispatch }) => {
 
       dispatch(action);
     } catch (error) {
-      logger.log("appDispatch catch", error);
+      console.log("appDispatch catch", error);
     }
   };
 };

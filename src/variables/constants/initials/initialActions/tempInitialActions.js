@@ -1,5 +1,5 @@
-import { initialState } from "~/variables/constants/initials/initialStates/initialStates";
-import { initialCountry } from "../initialValues/initialValues";
+import { initialState } from "variables/constants/initials/initialStates/initialStates";
+import { initialCountry } from "variables/constants/initials/initialValues/initialValues";
 
 const {
   tempInitialState: {

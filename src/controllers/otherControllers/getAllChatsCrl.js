@@ -1,6 +1,6 @@
-import { getAllChatsApi } from "~/apis/messageApis/getAllChatsApi";
+import { getAllChatsApi } from "apis/messageApis/getAllChatsApi";
 
-import { userAction } from "~/actions/userActions/userActions";
+import { userAction } from "actions/userActions/userActions";
 
 const getChatsCrl = () => {
   return async (dispatch, getState) => {
@@ -9,7 +9,7 @@ const getChatsCrl = () => {
 
       dispatch(userAction({ chats: response.data.chats }));
     } catch (error) {
-      logger.log("getChatsCrl", error);
+      console.log("getChatsCrl", error);
     }
   };
 };

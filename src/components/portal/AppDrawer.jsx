@@ -7,14 +7,14 @@ import {
   SwipeableDrawer,
 } from "@mui/material";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
-import { appIcons } from "~/variables/constants/initials/initialValues/initialValues";
+import { appIcons } from "variables/constants/initials/initialValues/initialValues";
 
 import {
   appDrawerAction,
   dialogAction,
-} from "~/actions/globalActions/globalActions";
+} from "actions/globalActions/globalActions";
 
 const { calls, contacts, newChannel, newGroup, nightMode, settings, logout } =
   appIcons;

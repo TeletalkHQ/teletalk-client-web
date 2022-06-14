@@ -4,21 +4,21 @@ import { SnackbarProvider } from "notistack";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
-import MainContainer from "~/components/mainContainer/MainContainer";
+import MainContainer from "components/mainContainer/MainContainer";
 
-import { dispatchInjector } from "~/functions/others/injectors/dispatchInjector";
+import { dispatchInjector } from "functions/others/injectors/dispatchInjector";
 
-import { useThunkReducer } from "~/hooks/useThunkReducer";
+import { useThunkReducer } from "hooks/useThunkReducer";
 
-import { MainContext } from "~/contexts/MainContext";
+import { MainContext } from "contexts/MainContext";
 
-import { rootReducer } from "~/reducers/index";
+import { rootReducer } from "reducers/index";
 
-import { initialStateWithoutInitialWord } from "~/variables/constants/initials/initialStates/initialStates";
+import { initialStateWithoutInitialWord } from "variables/constants/initials/initialStates/initialStates";
 
-import { baseTheme } from "~/theme/baseTheme";
+import { baseTheme } from "theme/baseTheme";
 
-import { configs } from "./configs/configs";
+import { configs } from "configs/configs";
 
 const App = () => {
   const [state = initialStateWithoutInitialWord, dispatch] = useThunkReducer(
@@ -31,7 +31,7 @@ const App = () => {
     dispatchInjector({ dispatch });
   }, [dispatch]);
 
-  logger.log(state);
+  console.log(state);
 
   return (
     <MainContext.Provider
@@ -48,5 +48,3 @@ const App = () => {
 };
 
 export default App;
-
-const a = {};

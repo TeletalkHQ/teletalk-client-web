@@ -9,7 +9,7 @@ import {
 import { LockOutlined } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
-import CountrySelector from "~/components/others/CountrySelector";
+import CountrySelector from "components/others/CountrySelector";
 
 const SignIn = ({
   countries,

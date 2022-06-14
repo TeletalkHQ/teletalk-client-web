@@ -2,15 +2,15 @@ import { useEffect } from "react";
 
 import { Box, Button, Typography } from "@mui/material";
 
-import DialogTemplate from "~/components/dialogContainer/DialogTemplate";
-import ContactListItem from "~/components/dialogContainer/ContactListItem";
+import DialogTemplate from "components/dialogContainer/DialogTemplate";
+import ContactListItem from "components/dialogContainer/ContactListItem";
 
-import { getContactsCrl } from "~/controllers/cellphoneController/getContactsCrl";
+import { getContactsCrl } from "controllers/cellphoneController/getContactsCrl";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
-import { dialogAction } from "~/actions/globalActions/globalActions";
-import { contactClickAction } from "~/actions/tempActions/tempActions";
+import { dialogAction } from "actions/globalActions/globalActions";
+import { contactClickAction } from "actions/tempActions/tempActions";
 
 const ContactsDialog = ({ onClose }) => {
   const {

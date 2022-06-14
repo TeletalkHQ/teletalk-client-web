@@ -1,8 +1,8 @@
-import { newStateReplacer } from "~/functions/utils/stateUtils/stateUtils";
+import { newStateReplacer } from "functions/utils/stateUtils/stateUtils";
 
-import { initialAction } from "~/variables/constants/initials/initialOptions/initialOptions";
-import { initialState } from "~/variables/constants/initials/initialStates/initialStates";
-import { otherInitialActions } from "~/variables/constants/initials/initialActions/otherInitialActions";
+import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
+import { initialState } from "variables/constants/initials/initialStates/initialStates";
+import { otherInitialActions } from "variables/constants/initials/initialActions/otherInitialActions";
 
 const {
   getCountriesInitialAction,
@@ -33,7 +33,7 @@ const otherReducer = (
         return state;
     }
   } catch (error) {
-    logger.log("otherReducer catch", error);
+    console.log("otherReducer catch", error);
   }
 };
 

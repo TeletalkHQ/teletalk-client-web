@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 
-import ChatList from "~/components/leftSideComponents/ChatList";
+import ChatList from "components/leftSideComponents/ChatList";
 
-import { appDrawerAction } from "~/actions/globalActions/globalActions";
+import { appDrawerAction } from "actions/globalActions/globalActions";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
-import SearchBar from "~/components/leftSideComponents/SearchBar";
-import SideBarList from "~/components/leftSideComponents/SideBarList";
+import SearchBar from "components/leftSideComponents/SearchBar";
+import SideBarList from "components/leftSideComponents/SideBarList";
 
 const LeftSideContainer = () => {
   const {

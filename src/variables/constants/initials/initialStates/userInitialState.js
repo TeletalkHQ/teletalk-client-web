@@ -1,4 +1,4 @@
-import { userInitializer } from "~/functions/helpers/userInitializer";
+import { userInitializer } from "functions/helpers/userInitializer";
 
 const userInitialState = {
   ...userInitializer(),

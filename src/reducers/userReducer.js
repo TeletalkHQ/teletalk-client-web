@@ -1,8 +1,8 @@
-import { newStateReplacer } from "~/functions/utils/stateUtils/stateUtils";
+import { newStateReplacer } from "functions/utils/stateUtils/stateUtils";
 
-import { userInitialActions } from "~/variables/constants/initials/initialActions/initialActions";
-import { initialAction } from "~/variables/constants/initials/initialOptions/initialOptions";
-import { initialState } from "~/variables/constants/initials/initialStates/initialStates";
+import { userInitialActions } from "variables/constants/initials/initialActions/initialActions";
+import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
+import { initialState } from "variables/constants/initials/initialStates/initialStates";
 
 const { userInitialAction } = userInitialActions;
 
@@ -23,7 +23,7 @@ const userReducer = (
         return state;
     }
   } catch (error) {
-    logger.log("userReducer catch", error);
+    console.log("userReducer catch", error);
   }
 };
 

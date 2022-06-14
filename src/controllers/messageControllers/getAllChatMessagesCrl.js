@@ -1,6 +1,6 @@
-import { userAction } from "~/actions/userActions/userActions";
-import { getAllChatMessagesApi } from "~/apis/messageApis/getAllChatMessagesApi";
-import { getInitialState } from "~/variables/constants/initials/initialStates/initialStates";
+import { userAction } from "actions/userActions/userActions";
+import { getAllChatMessagesApi } from "apis/messageApis";
+import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
 
 const getAllChatMessagesCrl = ({ chatID }) => {
   return async (dispatch, getState = getInitialState) => {
@@ -27,7 +27,7 @@ const getAllChatMessagesCrl = ({ chatID }) => {
 
       // dispatch(setMessagesAction({ messages: response.data.messages }));
     } catch (error) {
-      logger.log("getAllChatMessagesCrl", error);
+      console.log("getAllChatMessagesCrl", error);
     }
   };
 };

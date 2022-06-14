@@ -1,20 +1,20 @@
 import { Box } from "@mui/material";
 
-import MessageInput from "~/components/rightSideComponents/MessageInput";
-import MessageList from "~/components/rightSideComponents/MessageList";
-import ChatBar from "~/components/rightSideComponents/ChatBar";
+import MessageInput from "components/rightSideComponents/MessageInput";
+import MessageList from "components/rightSideComponents/MessageList";
+import ChatBar from "components/rightSideComponents/ChatBar";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
 import {
   contactClickAction,
   messageInputOnChangeAction,
-} from "~/actions/tempActions/tempActions";
+} from "actions/tempActions/tempActions";
 
-import { initialContact } from "~/variables/constants/initials/initialValues/initialValues";
-import { sendNewMessageCrl } from "~/controllers/messageControllers/sendPrivateMessageCrl";
+import { initialContact } from "variables/constants/initials/initialValues/initialValues";
+import { sendNewMessageCrl } from "controllers/messageControllers/sendPrivateMessageCrl";
 import { useEffect } from "react";
-import { getAllChatMessagesCrl } from "~/controllers/messageControllers/getAllChatMessagesCrl";
+import { getAllChatMessagesCrl } from "controllers/messageControllers/getAllChatMessagesCrl";
 
 const RightSideContainer = () => {
   const {
@@ -47,7 +47,7 @@ const RightSideContainer = () => {
         };
       }
     } catch (error) {
-      logger.log("RightSideContainer useEffect for chat updater", error);
+      console.log("RightSideContainer useEffect for chat updater", error);
     }
   }, []);
 

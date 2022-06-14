@@ -1,9 +1,9 @@
 import { Box, Button } from "@mui/material";
 
-import DialogTemplate from "~/components/dialogContainer/DialogTemplate";
-import { logoutCrl } from "~/controllers/authControllers/logoutCrl";
+import DialogTemplate from "components/dialogContainer/DialogTemplate";
+import { logoutCrl } from "controllers/authControllers/logoutCrl";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
 const LogoutDialog = ({ onClose }) => {
   const {

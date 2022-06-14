@@ -1,5 +1,5 @@
-import { initialState } from "~/variables/constants/initials/initialStates/initialStates";
-import { initialContact } from "~/variables/constants/initials/initialValues/initialValues";
+import { initialState } from "variables/constants/initials/initialStates/initialStates";
+import { initialContact } from "variables/constants/initials/initialValues/initialValues";
 
 const {
   otherInitialState: { welcome, countries },

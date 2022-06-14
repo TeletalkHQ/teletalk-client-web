@@ -26,7 +26,7 @@ function PersistentStorage() {
       return item;
     };
   } catch (error) {
-    logger.log("PersistentStorage catch", error);
+    console.log("PersistentStorage catch", error);
   }
   return this;
 }

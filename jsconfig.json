@@ -1,11 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "module": "commonjs",
-    "target": "es5",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "baseUrl": "src"
   },
   "exclude": ["node_modules"],
   "typeAcquisition": {

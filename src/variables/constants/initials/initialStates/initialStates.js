@@ -1,8 +1,8 @@
-import { errorInitialState } from "~/variables/constants/initials/initialStates/errorInitialState";
-import { globalInitialState } from "~/variables/constants/initials/initialStates/globalInitialState";
-import { otherInitialState } from "~/variables/constants/initials/initialStates/otherInitialState";
-import { tempInitialState } from "~/variables/constants/initials/initialStates/tempInitialState";
-import { userInitialState } from "~/variables/constants/initials/initialStates/userInitialState";
+import { errorInitialState } from "variables/constants/initials/initialStates/errorInitialState";
+import { globalInitialState } from "variables/constants/initials/initialStates/globalInitialState";
+import { otherInitialState } from "variables/constants/initials/initialStates/otherInitialState";
+import { tempInitialState } from "variables/constants/initials/initialStates/tempInitialState";
+import { userInitialState } from "variables/constants/initials/initialStates/userInitialState";
 
 const initialState = {
   errorInitialState,
