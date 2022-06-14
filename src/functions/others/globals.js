@@ -1,3 +1,3 @@
-import { logger } from "~/functions/utils/Logger";
+import { logger } from "~/classes/Logger";
 
 global.logger = logger;

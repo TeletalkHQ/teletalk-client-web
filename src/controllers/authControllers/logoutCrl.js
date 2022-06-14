@@ -2,7 +2,7 @@ import { viewModeAction } from "~/actions/globalActions/globalActions";
 import { userAction } from "~/actions/userActions/userActions";
 import { logoutApi } from "~/apis/authenticationApis/logoutApi";
 import { userInitializer } from "~/functions/helpers/userInitializer";
-import { PersistentStorage } from "~/functions/utils/PersistentStorage";
+import { PersistentStorage } from "~/classes/PersistentStorage";
 import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/initialValues";
 
 const logoutCrl = () => {

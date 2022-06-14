@@ -1,5 +1,5 @@
 import { tokenDecoder } from "~/functions/utils/tokenDecoder";
-import { PersistentStorage } from "~/functions/utils/PersistentStorage";
+import { PersistentStorage } from "~/classes/PersistentStorage";
 
 //REDESIGN
 const userInitializer = () => {

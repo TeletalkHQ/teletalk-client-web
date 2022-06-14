@@ -15,7 +15,7 @@ import { getCountriesCrl } from "~/controllers/authControllers/getCountriesCrl";
 import { getUserChatsLastMessageCrl } from "~/controllers/messageControllers/getUserChatsLastMessageCrl";
 import { getAllStuffCrl } from "~/controllers/versionControlController/getAllStuffCrl";
 
-import { emitters } from "~/functions/events/Emitters";
+import { emitters } from "~/classes/Emitters";
 import { snackbarInjector } from "~/functions/others/injectors/snackbarInjector";
 import { onlineConnectionChecker } from "~/functions/events/onlineConnectionsChecker";
 

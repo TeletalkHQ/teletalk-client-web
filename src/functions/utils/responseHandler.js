@@ -1,6 +1,6 @@
 import { appDispatch } from "~/functions/others/injectors/dispatchInjector";
 import { userInitializer } from "~/functions/helpers/userInitializer";
-import { PersistentStorage } from "~/functions/utils/PersistentStorage";
+import { PersistentStorage } from "~/classes/PersistentStorage";
 
 import { viewModeAction } from "~/actions/globalActions/globalActions";
 import { userAction } from "~/actions/userActions/userActions";

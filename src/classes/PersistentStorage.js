@@ -1,4 +1,3 @@
-//TODO Args controller
 function PersistentStorage() {
   try {
     this.storage = localStorage;

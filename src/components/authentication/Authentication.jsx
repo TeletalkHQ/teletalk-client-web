@@ -26,7 +26,7 @@ import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/
 import { selectedCountryAction } from "~/actions/otherActions/otherActions";
 import { createNewUserCrl } from "~/controllers/authControllers/createNewUserCrl";
 import { phoneNumberAction } from "~/actions/tempActions/tempActions";
-import { emitters } from "~/functions/events/Emitters";
+import { emitters } from "~/classes/Emitters";
 import { EVENT_EMITTER_EVENTS } from "~/variables/constants/others/otherConstants";
 
 const Authentication = () => {
