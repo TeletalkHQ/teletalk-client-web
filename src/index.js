@@ -1,16 +1,16 @@
 import { render } from "react-dom";
 import { StrictMode } from "react";
 
-import "~/functions/others/globals";
-
-import App from "~/App";
-
 import reportWebVitals from "~/reportWebVitals";
 
+import "~/functions/others/globals";
+
+console.log(logger);
+
+// import App from "~/App";
+
 render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <StrictMode>{/* <App /> */}</StrictMode>,
   document.getElementById("root")
 );
 
