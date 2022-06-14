@@ -27,7 +27,7 @@ const verifySignInCrl = () => {
         throw error;
       }
 
-      const response = await verifySignInApi({
+      const response = await verifySignInApi.sendRequest({
         verificationCode: verifyCode,
         token: verifyToken,
       });

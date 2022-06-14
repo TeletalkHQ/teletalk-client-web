@@ -7,8 +7,6 @@ import App from "App";
 
 import "functions/others/globals";
 
-console.log(App);
-
 const container = document.getElementById("root");
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(<App />);

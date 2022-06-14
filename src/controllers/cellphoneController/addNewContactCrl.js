@@ -6,7 +6,7 @@ import { getInitialState } from "variables/constants/initials/initialStates/init
 const addNewContactCrl = (contact) => {
   return async (dispatch, getState = getInitialState) => {
     try {
-      const result = await addContactApi(contact);
+      const result = await addContactApi.sendRequest(contact);
 
       dispatch(
         userAction({

@@ -18,7 +18,6 @@ const globalReducer = (
   action = initialAction
 ) => {
   const { payload, type } = action;
-  console.log(action);
 
   const fn = () => newStateReplacer({ state, payload });
 

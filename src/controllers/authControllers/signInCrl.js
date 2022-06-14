@@ -15,7 +15,7 @@ const signInCrl = () => {
 
       dispatch(loadingAction({ loading: true }));
 
-      const response = await signInApi({
+      const response = await signInApi.sendRequest({
         phoneNumber,
         countryCode,
         countryName,

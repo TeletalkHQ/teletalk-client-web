@@ -14,7 +14,7 @@ const sendNewMessageCrl = () => {
         user,
       } = getState();
 
-      const response = await sendPrivateMessageApi({
+      const response = await sendPrivateMessageApi.sendRequest({
         participantID: privateID,
         message: messageInputText,
       });

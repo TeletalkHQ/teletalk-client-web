@@ -7,7 +7,7 @@ import { getAllStuffApi } from "apis/versionControlApis";
 const getAllStuffCrl = () => {
   return async (dispatch, getState) => {
     try {
-      const response = await getAllStuffApi();
+      const response = await getAllStuffApi.sendRequest();
       console.log(response);
 
       stuffStore.schemas = response.data.schemas;

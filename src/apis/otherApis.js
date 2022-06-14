@@ -1,6 +1,7 @@
 import { apiManager } from "classes/ApiManager";
+import { stuffStore } from "classes/StuffStore";
 
-const { otherRouteBaseUrl, welcomeRoute } = {};
+const { otherRouteBaseUrl, welcomeRoute } = stuffStore.routes;
 
 const welcomeApi = apiManager
   .create()
