@@ -1,14 +1,13 @@
-import { userStatusCheckerApi } from "~/apis/authenticationApis/userStatusCheckerApi";
+import { initialState } from "variables/constants/initials/initialStates/initialStates";
 
-import { initialState } from "~/variables/constants/initials/initialStates/initialStates";
-
-import { userAction } from "~/actions/userActions/userActions";
+import { userAction } from "actions/userActions/userActions";
 import {
   backdropAction,
   viewModeAction,
-} from "~/actions/globalActions/globalActions";
-import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/initialValues";
-import { PersistentStorage } from "~/classes/PersistentStorage";
+} from "actions/globalActions/globalActions";
+import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
+import { PersistentStorage } from "classes/PersistentStorage";
+import { userStatusCheckerApi } from "apis/authenticationApis";
 
 const userStatusCheckerCrl = () => {
   return async (dispatch) => {
@@ -23,7 +22,7 @@ const userStatusCheckerCrl = () => {
 
       return { user };
     } catch (error) {
-      logger.log("userStatusCheckerCrl", error);
+      console.log("userStatusCheckerCrl", error);
 
       if (error.statusCode === 401) {
         PersistentStorage.clear();

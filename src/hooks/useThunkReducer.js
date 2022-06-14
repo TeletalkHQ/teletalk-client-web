@@ -1,13 +1,13 @@
 import { useCallback, useReducer } from "react";
 
-import { appDispatch } from "~/functions/others/injectors/dispatchInjector";
+import { appDispatch } from "functions/others/injectors/dispatchInjector";
 
-import { initialStateWithoutInitialWord } from "~/variables/constants/initials/initialStates/initialStates";
+import { initialStateWithoutInitialWord } from "variables/constants/initials/initialStates/initialStates";
 
 let useDispatch = () => appDispatch;
 let useSelector = () => initialStateWithoutInitialWord;
 let actionLogger = (action) => {
-  logger.log(`actionLogger:`, action);
+  console.log(`actionLogger:`, action);
 };
 
 const defaultConfigs = {

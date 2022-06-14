@@ -1,7 +1,7 @@
-import { tempInitialActions } from "~/variables/constants/initials/initialActions/initialActions";
-import { initialAction } from "~/variables/constants/initials/initialOptions/initialOptions";
-import { initialState } from "~/variables/constants/initials/initialStates/initialStates";
-import { newStateReplacer } from "~/functions/utils/stateUtils/stateUtils";
+import { tempInitialActions } from "variables/constants/initials/initialActions/initialActions";
+import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
+import { initialState } from "variables/constants/initials/initialStates/initialStates";
+import { newStateReplacer } from "functions/utils/stateUtils/stateUtils";
 
 const {
   contactSelectedInitialAction,
@@ -60,7 +60,7 @@ const tempReducer = (
         return state;
     }
   } catch (error) {
-    logger.log("tempReducer catch", error);
+    console.log("tempReducer catch", error);
   }
 };
 

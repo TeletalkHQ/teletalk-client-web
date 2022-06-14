@@ -1,11 +1,12 @@
-import { verifySignInApi } from "~/apis/authenticationApis/verifySignInApi";
+import { PersistentStorage } from "classes/PersistentStorage";
 
-import { loadingAction, userAction } from "~/actions/userActions/userActions";
-import { viewModeAction } from "~/actions/globalActions/globalActions";
+import { verifySignInApi } from "apis/authenticationApis";
 
-import { getInitialState } from "~/variables/constants/initials/initialStates/initialStates";
-import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/initialValues";
-import { PersistentStorage } from "~/classes/PersistentStorage";
+import { loadingAction, userAction } from "actions/userActions/userActions";
+import { viewModeAction } from "actions/globalActions/globalActions";
+
+import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
+import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
 
 const verifySignInCrl = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -49,7 +50,7 @@ const verifySignInCrl = () => {
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
       }
     } catch (error) {
-      logger.log("verifySignInCrl", error);
+      console.log("verifySignInCrl", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }

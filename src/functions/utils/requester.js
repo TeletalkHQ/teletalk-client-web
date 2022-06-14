@@ -1,12 +1,12 @@
-import { myAxios } from "~/functions/utils/myAxios";
-import { responseHandler } from "~/functions/utils/responseHandler";
-import { PersistentStorage } from "~/classes/PersistentStorage";
-import { appDispatch } from "~/functions/others/injectors/dispatchInjector";
-import { handleMakeSnack } from "~/functions/others/injectors/snackbarInjector";
+import { myAxios } from "functions/utils/myAxios";
+import { responseHandler } from "functions/utils/responseHandler";
+import { PersistentStorage } from "classes/PersistentStorage";
+import { appDispatch } from "functions/others/injectors/dispatchInjector";
+import { handleMakeSnack } from "functions/others/injectors/snackbarInjector";
 
-import { initialRequestOptions } from "~/variables/constants/initials/initialOptions/initialOptions";
-import { errorInitialActions } from "~/variables/constants/initials/initialActions/initialActions";
-import { configs } from "~/configs/configs";
+import { initialRequestOptions } from "variables/constants/initials/initialOptions/initialOptions";
+import { errorInitialActions } from "variables/constants/initials/initialActions/initialActions";
+import { configs } from "configs/configs";
 
 const { successResponseLogger, failureResponseLogger } = configs.requester;
 
@@ -35,11 +35,11 @@ const requester = async (options = initialRequestOptions) => {
 
     const checkedResponse = responseHandler(response);
 
-    successResponseLogger && logger.log(checkedResponse);
+    successResponseLogger && console.log(checkedResponse);
 
     return checkedResponse;
   } catch (error) {
-    failureResponseLogger && logger.log("requester catch, error:", error);
+    failureResponseLogger && console.log("requester catch, error:", error);
 
     if (!window?.navigator?.onLine) {
       appDispatch({ type: errorInitialActions.econnabortedAction.type });

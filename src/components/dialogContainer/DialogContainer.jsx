@@ -1,10 +1,10 @@
-import AddNewContactDialog from "~/components/dialogContainer/AddNewContactDialog";
-import ContactsDialog from "~/components/dialogContainer/ContactsDialog";
-import LogoutDialog from "~/components/dialogContainer/LogoutDialog";
+import AddNewContactDialog from "components/dialogContainer/AddNewContactDialog";
+import ContactsDialog from "components/dialogContainer/ContactsDialog";
+import LogoutDialog from "components/dialogContainer/LogoutDialog";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
-import { dialogAction } from "~/actions/globalActions/globalActions";
+import { dialogAction } from "actions/globalActions/globalActions";
 
 const DialogContainer = () => {
   const {

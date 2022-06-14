@@ -16,7 +16,7 @@ const copyMan = ({ state, cb }) => {
 
     return { nextState };
   } catch (error) {
-    logger.log("copyMan catch", error);
+    console.log("copyMan catch", error);
   }
 };
 

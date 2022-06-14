@@ -105,6 +105,7 @@ class Logger {
    * @param color {string}
    */
   log(level, message, color) {
+    console.log(level, message, color);
     if (!_level) {
       return;
     }

@@ -1,7 +1,7 @@
-import { userAction } from "~/actions/userActions/userActions";
-import { addContactApi } from "~/apis/cellphoneApis/addContactApi";
+import { userAction } from "actions/userActions/userActions";
+import { addContactApi } from "apis/cellphoneApis";
 
-import { getInitialState } from "~/variables/constants/initials/initialStates/initialStates";
+import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
 
 const addNewContactCrl = (contact) => {
   return async (dispatch, getState = getInitialState) => {
@@ -14,7 +14,7 @@ const addNewContactCrl = (contact) => {
         })
       );
     } catch (error) {
-      logger.log("addNewContactCrl", error);
+      console.log("addNewContactCrl", error);
     }
   };
 };

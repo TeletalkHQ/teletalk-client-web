@@ -1,8 +1,7 @@
-import { sendPrivateMessageApi } from "~/apis/messageApis/sendPrivateMessageApi";
-
-import { getInitialState } from "~/variables/constants/initials/initialStates/initialStates";
-import { userAction } from "~/actions/userActions/userActions";
-import { messageInputOnChangeAction } from "~/actions/tempActions/tempActions";
+import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
+import { userAction } from "actions/userActions/userActions";
+import { messageInputOnChangeAction } from "actions/tempActions/tempActions";
+import { sendPrivateMessageApi } from "apis/messageApis";
 
 const sendNewMessageCrl = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -29,7 +28,7 @@ const sendNewMessageCrl = () => {
       );
 
       if (chatIndex !== -1) {
-        logger.log(chatIndex);
+        console.log(chatIndex);
         const chat = copyUser.chats[chatIndex] || {
           chatID,
           messages: [newMessage],
@@ -41,16 +40,16 @@ const sendNewMessageCrl = () => {
 
         const newChat = { ...chat, messages };
 
-        logger.log(newChat);
+        console.log(newChat);
         copyUser.chats.splice(chatIndex, 1, newChat);
 
-        logger.log(copyUser);
+        console.log(copyUser);
       }
 
       dispatch(userAction({ chats: copyUser.chats }));
       dispatch(messageInputOnChangeAction({ messageInputText: "" }));
     } catch (error) {
-      logger.log("sendNewMessageCrl", error);
+      console.log("sendNewMessageCrl", error);
     }
   };
 };

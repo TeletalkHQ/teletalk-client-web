@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 
-import Copyright from "~/components/utils/Copyright";
-import NewUserProfile from "~/components/authentication/NewUserProfile";
-import SignIn from "~/components/authentication/SignIn";
-import VerifySignIn from "~/components/authentication/VerifySignIn";
+import Copyright from "components/utils/Copyright";
+import NewUserProfile from "components/authentication/NewUserProfile";
+import SignIn from "components/authentication/SignIn";
+import VerifySignIn from "components/authentication/VerifySignIn";
 
-import { isNumber } from "~/functions/utils/utils";
+import { isNumber } from "functions/utils/utils";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
-import { signInCrl } from "~/controllers/authControllers/signInCrl";
-import { verifySignInCrl } from "~/controllers/authControllers/verifySignInCrl";
-import { welcomeCrl } from "~/controllers/otherControllers/welcomeCrl";
+import { signInCrl } from "controllers/authControllers/signInCrl";
+import { verifySignInCrl } from "controllers/authControllers/verifySignInCrl";
+import { welcomeCrl } from "controllers/otherControllers/welcomeCrl";
 
 import {
   verifyCodeAction,
@@ -19,15 +19,15 @@ import {
   countryNameAction,
   firstNameAction,
   lastNameAction,
-} from "~/actions/tempActions/tempActions";
-import { viewModeAction } from "~/actions/globalActions/globalActions";
+} from "actions/tempActions/tempActions";
+import { viewModeAction } from "actions/globalActions/globalActions";
 
-import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/initialValues";
-import { selectedCountryAction } from "~/actions/otherActions/otherActions";
-import { createNewUserCrl } from "~/controllers/authControllers/createNewUserCrl";
-import { phoneNumberAction } from "~/actions/tempActions/tempActions";
-import { emitters } from "~/classes/Emitters";
-import { EVENT_EMITTER_EVENTS } from "~/variables/constants/others/otherConstants";
+import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
+import { selectedCountryAction } from "actions/otherActions/otherActions";
+import { createNewUserCrl } from "controllers/authControllers/createNewUserCrl";
+import { phoneNumberAction } from "actions/tempActions/tempActions";
+import { emitters } from "classes/Emitters";
+import { EVENT_EMITTER_EVENTS } from "variables/constants/others/otherConstants";
 
 const Authentication = () => {
   const {

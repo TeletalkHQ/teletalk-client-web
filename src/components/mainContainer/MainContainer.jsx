@@ -3,25 +3,25 @@ import { useEffect, useMemo } from "react";
 import { Grid } from "@mui/material";
 import { useSnackbar } from "notistack";
 
-import LeftSideContainer from "~/components/leftSideComponents/LeftSideContainer";
-import RightSideContainer from "~/components/rightSideComponents/RightSideContainer";
-import PortalContainer from "~/components/portal/PortalContainer";
-import Authentication from "~/components/authentication/Authentication";
+import LeftSideContainer from "components/leftSideComponents/LeftSideContainer";
+import RightSideContainer from "components/rightSideComponents/RightSideContainer";
+import PortalContainer from "components/portal/PortalContainer";
+import Authentication from "components/authentication/Authentication";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
-import { userStatusCheckerCrl } from "~/controllers/authControllers/userStatusCheckerCrl";
-import { getCountriesCrl } from "~/controllers/authControllers/getCountriesCrl";
-import { getUserChatsLastMessageCrl } from "~/controllers/messageControllers/getUserChatsLastMessageCrl";
-import { getAllStuffCrl } from "~/controllers/versionControlController/getAllStuffCrl";
+import { userStatusCheckerCrl } from "controllers/authControllers/userStatusCheckerCrl";
+import { getCountriesCrl } from "controllers/authControllers/getCountriesCrl";
+import { getUserChatsLastMessageCrl } from "controllers/messageControllers/getUserChatsLastMessageCrl";
+import { getAllStuffCrl } from "controllers/versionControlController/getAllStuffCrl";
 
-import { emitters } from "~/classes/Emitters";
-import { snackbarInjector } from "~/functions/others/injectors/snackbarInjector";
-import { onlineConnectionChecker } from "~/functions/events/onlineConnectionsChecker";
+import { emitters } from "classes/Emitters";
+import { snackbarInjector } from "functions/others/injectors/snackbarInjector";
+import { onlineConnectionChecker } from "functions/events/onlineConnectionsChecker";
 
-import { backdropAction } from "~/actions/globalActions/globalActions";
-import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/initialValues";
-import { EVENT_EMITTER_EVENTS } from "~/variables/constants/others/otherConstants";
+import { backdropAction } from "actions/globalActions/globalActions";
+import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
+import { EVENT_EMITTER_EVENTS } from "variables/constants/others/otherConstants";
 
 const MainContainer = () => {
   const {
@@ -64,7 +64,7 @@ const MainContainer = () => {
 
         await dispatch(getAllStuffCrl());
       } catch (error) {
-        logger.log("MainContainer auth catch", error);
+        console.log("MainContainer auth catch", error);
       } finally {
         dispatch(backdropAction({ backdropState: { open: false } }));
       }

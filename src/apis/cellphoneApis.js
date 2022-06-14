@@ -1,6 +1,6 @@
-import { apiManager } from "~/classes/ApiManager";
+import { apiManager } from "classes/ApiManager";
 
-import { stuffStore } from "~/classes/StuffStore";
+import { stuffStore } from "classes/StuffStore";
 
 const {
   // addBlockRoute,

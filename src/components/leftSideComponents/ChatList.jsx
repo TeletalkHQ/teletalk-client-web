@@ -1,11 +1,11 @@
 import { List } from "@mui/material";
 
-import ChatListItem from "~/components/leftSideComponents/ChatListItem";
+import ChatListItem from "components/leftSideComponents/ChatListItem";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
-import { contactClickAction } from "~/actions/tempActions/tempActions";
-import { getAllChatMessagesCrl } from "~/controllers/messageControllers/getAllChatMessagesCrl";
+import { contactClickAction } from "actions/tempActions/tempActions";
+import { getAllChatMessagesCrl } from "controllers/messageControllers/getAllChatMessagesCrl";
 
 const ChatList = ({ chats = [], contacts, selectedContact }) => {
   const {
@@ -66,7 +66,7 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
 
             return chatList;
           } catch (error) {
-            logger.log("ChatList", error);
+            console.log("ChatList", error);
             return null;
           }
         })()}

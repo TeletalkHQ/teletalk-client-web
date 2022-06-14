@@ -2,13 +2,13 @@ import { useState } from "react";
 
 import { Box, Button, TextField, Typography } from "@mui/material";
 
-import DialogTemplate from "~/components/dialogContainer/DialogTemplate";
+import DialogTemplate from "components/dialogContainer/DialogTemplate";
 
-import { addNewContactCrl } from "~/controllers/cellphoneController/addNewContactCrl";
+import { addNewContactCrl } from "controllers/cellphoneController/addNewContactCrl";
 
-import { useMyContext } from "~/hooks/useMyContext";
+import { useMyContext } from "hooks/useMyContext";
 
-import { initialContact } from "~/variables/constants/initials/initialValues/initialValues";
+import { initialContact } from "variables/constants/initials/initialValues/initialValues";
 
 const AddNewContactDialog = ({ onClose }) => {
   const {

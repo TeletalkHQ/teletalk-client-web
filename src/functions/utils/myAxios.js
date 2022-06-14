@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { SERVER_BASE_URL } from "~/variables/constants/others/otherConstants";
+import { SERVER_BASE_URL } from "variables/constants/others/otherConstants";
 
 const myAxios = axios.create({
   baseURL: SERVER_BASE_URL,

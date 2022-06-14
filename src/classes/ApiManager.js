@@ -1,4 +1,4 @@
-import { requester } from "~/functions/utils/requester";
+import { requester } from "functions/utils/requester";
 
 class ApiManager {
   constructor() {
@@ -7,7 +7,6 @@ class ApiManager {
   }
 
   #reset() {
-    this.data = this.defaultData();
     this.baseUrlObject = this.#defaultUrlObject();
     this.routeObject = this.#defaultModelObject();
   }
@@ -65,7 +64,7 @@ class ApiManager {
 
       return response;
     } catch (error) {
-      logger.log(
+      console.log(
         `Api:${this.getApiUrl(
           this.baseUrlObject,
           this.routeObject

@@ -1,4 +1,4 @@
-import { regexs } from "~/variables/constants/others/regexs";
+import { regexs } from "variables/constants/others/regexs";
 
 const isNumber = ({ value }) => {
   return regexs.enNumberRegex.test(value);

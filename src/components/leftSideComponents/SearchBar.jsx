@@ -1,6 +1,6 @@
 import { Box, IconButton, TextField, InputAdornment } from "@mui/material";
 
-import { appIcons } from "~/variables/constants/initials/initialValues/initialValues";
+import { appIcons } from "variables/constants/initials/initialValues/initialValues";
 
 const { menu, search } = appIcons;
 
