@@ -1,32 +1,12 @@
-function StuffStore() {
-  this.templates = {
-    routerTemplates: {
-      privateChatRouterTemplate: {},
-      cellphoneRouterTemplate: {},
-      messageRouterTemplate: {},
-      otherRouterTemplate: {},
-      userRouterTemplate: {},
-      versionControlRouterTemplate: {},
-    },
-    schemaTemplates: {
-      chatSchemaTemplate: {},
-      commonSchemaTemplate: {},
-      userSchemaTemplate: {},
-    },
-    errorTemplates: {
-      chatErrorTemplate: {},
-      userErrorTemplate: {},
-    },
-  };
-  this.schemas = {
-    validationSchemas: {
-      chatValidationSchemas: {},
-      commonValidationSchemas: {},
-      userValidationSchemas: {},
-    },
-  };
+class StuffStore {
+  constructor() {
+    this.errors = {};
+    this.models = {};
+    this.routes = {};
+    this.validationModels = {};
+  }
 }
 
-const Store = new StuffStore();
+const stuffStore = new StuffStore();
 
-export { Store as StuffStore };
+export { stuffStore };

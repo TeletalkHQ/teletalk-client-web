@@ -1,9 +1,16 @@
 {
-  "extends": "react-app",
+  "extends": [
+    // "eslint:recommended"
+    "react-app"
+    //   "plugin:node/recommended",
+    // "plugin:security/recommended",
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2019
+  },
   "env": {
     "browser": true,
-    "node": true,
-    "jasmine": true
+    "es6": true
   },
   "globals": {
     "logger": true
