@@ -4,13 +4,13 @@ import { stuffStore } from "classes/StuffStore";
 
 const {
   createNewUserRoute,
-  // getUserDataRoute,
   logoutNormalRoute,
   signInNormalRoute,
   statusCheckRoute,
   userRouteBaseUrl,
   verifySignInNormalRoute,
-} = stuffStore;
+  countriesRoute,
+} = stuffStore.routes;
 
 const verifySignInApi = apiManager
   .create()
@@ -34,7 +34,7 @@ const logoutApi = apiManager
 
 const getCountriesApi = apiManager
   .create()
-  .setRequirements(userRouteBaseUrl)
+  .setRequirements(userRouteBaseUrl, countriesRoute)
   .build();
 
 const createNewUserApi = apiManager

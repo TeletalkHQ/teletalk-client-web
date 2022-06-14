@@ -22,7 +22,7 @@ const createNewUserCrl = () => {
         tempState: { firstName, lastName },
       } = getState();
 
-      const response = await createNewUserApi({
+      const response = await createNewUserApi.sendRequest({
         firstName,
         lastName,
         token: verifyToken,

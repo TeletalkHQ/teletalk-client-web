@@ -16,7 +16,7 @@ const {
   // removeContactsRoute,
   // shareContactRoute,
   // shareContactsRoute,
-} = stuffStore;
+} = stuffStore.routes;
 
 const getContactsApi = apiManager
   .create()

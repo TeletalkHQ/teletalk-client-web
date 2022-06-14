@@ -22,7 +22,7 @@ class ApiManager {
     return this;
   }
   build() {
-    return this.sendRequest;
+    return this;
   }
 
   getApiUrlAndMethod(baseUrl, route) {
@@ -35,7 +35,7 @@ class ApiManager {
     return route.method;
   }
   getApiUrl(baseUrl, route) {
-    return `${baseUrl.route}${route.route}`;
+    return `${baseUrl.url}${route.url}`;
   }
 
   setRequirements(baseUrlObject, routeObject) {
@@ -51,8 +51,6 @@ class ApiManager {
     this.routeObject = routeObject;
     return this;
   }
-
-  customFn() {}
 
   async sendRequest({ token, ...data } = {}) {
     try {

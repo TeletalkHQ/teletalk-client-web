@@ -8,7 +8,7 @@ import { logoutApi } from "apis/authenticationApis";
 const logoutCrl = () => {
   return async (dispatch, getState) => {
     try {
-      /*const response = */ await logoutApi();
+      /*const response = */ await logoutApi.sendRequest();
 
       PersistentStorage.clear();
 

@@ -44,7 +44,7 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
 const getUserChatsLastMessageCrl = ({ user }) => {
   return async (dispatch, getState = getInitialState) => {
     try {
-      const response = await getUserChatsLastMessageApi();
+      const response = await getUserChatsLastMessageApi.sendRequest();
 
       const { chatsWithLastMessage } = handleAddUserLastMessage({
         chats: user.chats,

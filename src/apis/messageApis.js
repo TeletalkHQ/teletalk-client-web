@@ -1,4 +1,5 @@
 import { apiManager } from "classes/ApiManager";
+import { stuffStore } from "classes/StuffStore";
 
 const {
   privateChatRouteBaseUrl,
@@ -6,7 +7,7 @@ const {
   getAllChatsRoute,
   getPrivateChatMessagesRoute,
   sendMessageRoute,
-} = {};
+} = stuffStore.routes;
 
 const sendPrivateMessageApi = apiManager
   .create()

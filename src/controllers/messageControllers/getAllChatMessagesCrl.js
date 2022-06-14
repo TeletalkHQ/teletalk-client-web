@@ -7,7 +7,7 @@ const getAllChatMessagesCrl = ({ chatID }) => {
     try {
       const { user } = getState();
 
-      const response = await getAllChatMessagesApi({ chatID });
+      const response = await getAllChatMessagesApi.sendRequest({ chatID });
 
       const copyUser = { ...user };
 

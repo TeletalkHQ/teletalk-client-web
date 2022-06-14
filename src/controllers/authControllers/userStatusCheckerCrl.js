@@ -12,7 +12,7 @@ import { userStatusCheckerApi } from "apis/authenticationApis";
 const userStatusCheckerCrl = () => {
   return async (dispatch) => {
     try {
-      const response = await userStatusCheckerApi();
+      const response = await userStatusCheckerApi.sendRequest();
 
       const { user } = response.data;
 
