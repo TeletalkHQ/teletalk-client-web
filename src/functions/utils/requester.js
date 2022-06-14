@@ -1,6 +1,6 @@
 import { myAxios } from "~/functions/utils/myAxios";
 import { responseHandler } from "~/functions/utils/responseHandler";
-import { PersistentStorage } from "~/functions/utils/PersistentStorage";
+import { PersistentStorage } from "~/classes/PersistentStorage";
 import { appDispatch } from "~/functions/others/injectors/dispatchInjector";
 import { handleMakeSnack } from "~/functions/others/injectors/snackbarInjector";
 

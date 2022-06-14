@@ -1,5 +1,5 @@
-import { stuffStore } from "~/functions/utils/StuffStore";
-import { emitters } from "~/functions/events/Emitters";
+import { stuffStore } from "~/classes/StuffStore";
+import { emitters } from "~/classes/Emitters";
 
 import { getAllStuffApi } from "~/apis/versionControlApis/getAllStuffApi";
 

@@ -1,4 +1,4 @@
-import { logger as consoleLogger } from "~/functions/utils/Logger";
+import { logger as consoleLogger } from "~/classes/Logger";
 
 declare global {
   var logger = consoleLogger;

@@ -1,7 +1,7 @@
 import { viewModeAction } from "~/actions/globalActions/globalActions";
 import { loadingAction } from "~/actions/userActions/userActions";
 import { createNewUserApi } from "~/apis/authenticationApis/createNewUserApi";
-import { PersistentStorage } from "~/functions/utils/PersistentStorage";
+import { PersistentStorage } from "~/classes/PersistentStorage";
 import { getInitialState } from "~/variables/constants/initials/initialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/initialValues";
 

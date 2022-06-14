@@ -8,7 +8,7 @@ import {
   viewModeAction,
 } from "~/actions/globalActions/globalActions";
 import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/initialValues";
-import { PersistentStorage } from "~/functions/utils/PersistentStorage";
+import { PersistentStorage } from "~/classes/PersistentStorage";
 
 const userStatusCheckerCrl = () => {
   return async (dispatch) => {

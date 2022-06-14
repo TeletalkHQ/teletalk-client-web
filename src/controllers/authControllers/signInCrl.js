@@ -5,7 +5,7 @@ import { INITIAL_VIEW_MODE } from "~/variables/constants/initials/initialValues/
 
 import { loadingAction, userAction } from "~/actions/userActions/userActions";
 import { viewModeAction } from "~/actions/globalActions/globalActions";
-import { PersistentStorage } from "~/functions/utils/PersistentStorage";
+import { PersistentStorage } from "~/classes/PersistentStorage";
 
 const signInCrl = () => {
   return async (dispatch, getState = getInitialState) => {

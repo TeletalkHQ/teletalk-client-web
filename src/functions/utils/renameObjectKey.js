@@ -1,4 +1,4 @@
-const RenameObjectKey = ({ obj, oldKey, newKey }) => {
+const renameObjectKey = ({ obj, oldKey, newKey }) => {
   if (oldKey !== newKey) {
     obj[newKey] = obj[oldKey];
     delete obj[oldKey];
@@ -6,4 +6,4 @@ const RenameObjectKey = ({ obj, oldKey, newKey }) => {
   return obj;
 };
 
-export { RenameObjectKey };
+export { renameObjectKey };

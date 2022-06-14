@@ -2,14 +2,28 @@ import { requester } from "~/functions/utils/requester";
 
 class ApiManager {
   constructor() {
-    this.baseUrlObject = this.defaultUrlObject();
-    this.routeObject = this.defaultModelObject();
+    this.baseUrlObject = this.#defaultUrlObject();
+    this.routeObject = this.#defaultModelObject();
   }
 
   #reset() {
     this.data = this.defaultData();
-    this.baseUrlObject = this.defaultUrlObject();
-    this.routeObject = this.defaultModelObject();
+    this.baseUrlObject = this.#defaultUrlObject();
+    this.routeObject = this.#defaultModelObject();
+  }
+  #defaultModelObject() {
+    return {};
+  }
+  #defaultUrlObject() {
+    return {};
+  }
+
+  create() {
+    this.#reset();
+    return this;
+  }
+  build() {
+    return this.sendRequest;
   }
 
   getApiUrlAndMethod(baseUrl, route) {
@@ -23,21 +37,6 @@ class ApiManager {
   }
   getApiUrl(baseUrl, route) {
     return `${baseUrl.route}${route.route}`;
-  }
-
-  defaultModelObject() {
-    return {};
-  }
-  defaultUrlObject() {
-    return {};
-  }
-
-  create() {
-    this.#reset();
-    return this;
-  }
-  build() {
-    return this.sendRequest;
   }
 
   setRequirements(baseUrlObject, routeObject) {
