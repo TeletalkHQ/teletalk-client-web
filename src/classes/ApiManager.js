@@ -17,10 +17,6 @@ class ApiManager {
     return {};
   }
 
-  create() {
-    this.#reset();
-    return this;
-  }
   build() {
     return this;
   }
@@ -74,6 +70,8 @@ class ApiManager {
     }
   }
 }
-const apiManager = new ApiManager();
+const apiManager = {
+  create: () => new ApiManager(),
+};
 
 export { apiManager, ApiManager };

@@ -9,7 +9,6 @@ const {
   statusCheckRoute,
   userRouteBaseUrl,
   verifySignInNormalRoute,
-  countriesRoute,
 } = stuffStore.routes;
 
 const verifySignInApi = apiManager
@@ -32,11 +31,6 @@ const logoutApi = apiManager
   .setRequirements(userRouteBaseUrl, logoutNormalRoute)
   .build();
 
-const getCountriesApi = apiManager
-  .create()
-  .setRequirements(userRouteBaseUrl, countriesRoute)
-  .build();
-
 const createNewUserApi = apiManager
   .create()
   .setRequirements(userRouteBaseUrl, createNewUserRoute)
@@ -44,7 +38,6 @@ const createNewUserApi = apiManager
 
 export {
   createNewUserApi,
-  getCountriesApi,
   logoutApi,
   signInApi,
   userStatusCheckerApi,
