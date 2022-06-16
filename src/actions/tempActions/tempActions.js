@@ -1,4 +1,4 @@
-import { actionCreator } from "functions/utils/actionCreator";
+import { actionCreator } from "functions/utilities/actionCreator";
 import { onlineStatusInitialAction } from "variables/constants/initials/initialActions/globalInitialActions";
 import { tempInitialActions } from "variables/constants/initials/initialActions/tempInitialActions";
 

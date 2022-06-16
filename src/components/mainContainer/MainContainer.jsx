@@ -1,7 +1,6 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 
 import { Grid } from "@mui/material";
-import { useSnackbar } from "notistack";
 
 import LeftSideContainer from "components/leftSideComponents/LeftSideContainer";
 import RightSideContainer from "components/rightSideComponents/RightSideContainer";
@@ -16,7 +15,6 @@ import { getUserChatsLastMessageCrl } from "controllers/messageControllers/getUs
 import { getAllStuffCrl } from "controllers/versionControlController/getAllStuffCrl";
 
 import { emitters } from "classes/Emitters";
-import { snackbarInjector } from "functions/others/injectors/snackbarInjector";
 import { onlineConnectionChecker } from "functions/events/onlineConnectionsChecker";
 
 import { backdropAction } from "actions/globalActions/globalActions";
@@ -32,12 +30,6 @@ const MainContainer = () => {
     },
     hooksOutput: { dispatch },
   } = useMyContext();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-
-  useMemo(
-    () => snackbarInjector({ enqueueSnackbar, closeSnackbar }),
-    [enqueueSnackbar, closeSnackbar]
-  );
 
   useEffect(() => {
     onlineConnectionChecker();
@@ -102,7 +94,6 @@ const MainContainer = () => {
           </Grid>
         </>
       )}
-
       <PortalContainer />
     </>
   );

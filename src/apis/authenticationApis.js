@@ -1,4 +1,4 @@
-import { apiManager } from "classes/ApiManager";
+import { apiBuilder } from "classes/ApiBuilder";
 
 import { stuffStore } from "classes/StuffStore";
 
@@ -11,27 +11,27 @@ const {
   verifySignInNormalRoute,
 } = stuffStore.routes;
 
-const verifySignInApi = apiManager
+const verifySignInApi = apiBuilder
   .create()
   .setRequirements(userRouteBaseUrl, verifySignInNormalRoute)
   .build();
 
-const userStatusCheckerApi = apiManager
+const userStatusCheckerApi = apiBuilder
   .create()
   .setRequirements(userRouteBaseUrl, statusCheckRoute)
   .build();
 
-const signInApi = apiManager
+const signInApi = apiBuilder
   .create()
   .setRequirements(userRouteBaseUrl, signInNormalRoute)
   .build();
 
-const logoutApi = apiManager
+const logoutApi = apiBuilder
   .create()
   .setRequirements(userRouteBaseUrl, logoutNormalRoute)
   .build();
 
-const createNewUserApi = apiManager
+const createNewUserApi = apiBuilder
   .create()
   .setRequirements(userRouteBaseUrl, createNewUserRoute)
   .build();

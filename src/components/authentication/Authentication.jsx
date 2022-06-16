@@ -5,7 +5,7 @@ import NewUserProfile from "components/authentication/NewUserProfile";
 import SignIn from "components/authentication/SignIn";
 import VerifySignIn from "components/authentication/VerifySignIn";
 
-import { isNumber } from "functions/utils/utils";
+import { isNumber } from "functions/utilities/utilities";
 
 import { useMyContext } from "hooks/useMyContext";
 
@@ -28,6 +28,7 @@ import { createNewUserCrl } from "controllers/authControllers/createNewUserCrl";
 import { phoneNumberAction } from "actions/tempActions/tempActions";
 import { emitters } from "classes/Emitters";
 import { EVENT_EMITTER_EVENTS } from "variables/constants/others/otherConstants";
+import { appDispatch } from "functions/others/injectors/dispatchInjector";
 
 const Authentication = () => {
   const {
@@ -82,7 +83,7 @@ const Authentication = () => {
     if ((isNumber({ value }) && value?.length <= 6) || value === "") {
       dispatch(countryCodeAction({ countryCode: value }));
       const country = countries?.find((c) => c.countryCode === value) || null;
-      dispatch(selectedCountryAction({ selectedCountry: country }));
+      appDispatch(selectedCountryAction({ selectedCountry: country }));
     }
   };
 

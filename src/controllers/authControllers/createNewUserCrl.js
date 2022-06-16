@@ -28,6 +28,8 @@ const createNewUserCrl = () => {
         token: verifyToken,
       });
 
+      console.log(response.data);
+
       PersistentStorage.removeItem({ key: "verifyToken" });
 
       dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));

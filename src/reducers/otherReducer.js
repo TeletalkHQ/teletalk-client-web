@@ -1,4 +1,4 @@
-import { newStateReplacer } from "functions/utils/stateUtils/stateUtils";
+import { newStateReplacer } from "functions/utilities/stateUtils/stateUtils";
 
 import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
 import { initialState } from "variables/constants/initials/initialStates/initialStates";

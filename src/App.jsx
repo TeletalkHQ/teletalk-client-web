@@ -1,12 +1,13 @@
-import { useMemo } from "react";
+import { useEffect } from "react";
 
-import { SnackbarProvider } from "notistack";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
+import { useSnackbar } from "notistack";
 
 import MainContainer from "components/mainContainer/MainContainer";
 
 import { dispatchInjector } from "functions/others/injectors/dispatchInjector";
+import { snackbarInjector } from "functions/others/injectors/snackbarInjector";
 
 import { useThunkReducer } from "hooks/useThunkReducer";
 
@@ -26,10 +27,14 @@ const App = () => {
     initialStateWithoutInitialWord,
     configs.useThunkReducer
   );
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  useMemo(() => {
+  useEffect(() => {
     dispatchInjector({ dispatch });
   }, [dispatch]);
+  useEffect(() => {
+    snackbarInjector({ enqueueSnackbar, closeSnackbar });
+  }, [enqueueSnackbar, closeSnackbar]);
 
   console.log(state);
 
@@ -39,9 +44,7 @@ const App = () => {
     >
       <ThemeProvider theme={baseTheme}>
         <CssBaseline enableColorScheme />
-        <SnackbarProvider>
-          <MainContainer />
-        </SnackbarProvider>
+        <MainContainer />
       </ThemeProvider>
     </MainContext.Provider>
   );
