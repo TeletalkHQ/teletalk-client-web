@@ -1,4 +1,4 @@
-import { actionCreator } from "functions/utils/actionCreator";
+import { actionCreator } from "functions/utilities/actionCreator";
 
 import { otherInitialActions } from "variables/constants/initials/initialActions/initialActions";
 import { tempInitialActions } from "variables/constants/initials/initialActions/tempInitialActions";

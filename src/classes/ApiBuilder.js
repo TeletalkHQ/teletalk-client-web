@@ -1,20 +1,9 @@
-import { requester } from "functions/utils/requester";
+import { requester } from "functions/utilities/requester";
 
-class ApiManager {
+class ApiBuilder {
   constructor() {
-    this.baseUrlObject = this.#defaultUrlObject();
-    this.routeObject = this.#defaultModelObject();
-  }
-
-  #reset() {
-    this.baseUrlObject = this.#defaultUrlObject();
-    this.routeObject = this.#defaultModelObject();
-  }
-  #defaultModelObject() {
-    return {};
-  }
-  #defaultUrlObject() {
-    return {};
+    this.baseUrlObject = {};
+    this.routeObject = {};
   }
 
   build() {
@@ -70,8 +59,8 @@ class ApiManager {
     }
   }
 }
-const apiManager = {
-  create: () => new ApiManager(),
+const apiBuilder = {
+  create: () => new ApiBuilder(),
 };
 
-export { apiManager, ApiManager };
+export { apiBuilder, ApiBuilder };

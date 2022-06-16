@@ -2,14 +2,14 @@ import axios from "axios";
 
 import { SERVER_BASE_URL } from "variables/constants/others/otherConstants";
 
-const myAxios = axios.create({
+const customAxios = axios.create({
   baseURL: SERVER_BASE_URL,
   headers: { "Content-Type": "application/json", Authorization: "" },
-  timeout: 10000,
+  timeout: 20000,
   validateStatus: false,
 });
 
-export { myAxios };
+export { customAxios };
 
 // //* Return is interceptor, so if you want to remove interceptor you need that.
 // axios.interceptors.response.use(

@@ -1,4 +1,4 @@
-import { tokenDecoder } from "functions/utils/tokenDecoder";
+import { tokenDecoder } from "functions/utilities/tokenDecoder";
 import { PersistentStorage } from "classes/PersistentStorage";
 
 //REDESIGN

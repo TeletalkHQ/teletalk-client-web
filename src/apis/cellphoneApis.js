@@ -1,4 +1,4 @@
-import { apiManager } from "classes/ApiManager";
+import { apiBuilder } from "classes/ApiBuilder";
 
 import { stuffStore } from "classes/StuffStore";
 
@@ -18,14 +18,14 @@ const {
   // shareContactsRoute,
 } = stuffStore.routes;
 
-const getContactsApi = apiManager
+const getContactsApi = apiBuilder
   .create()
   .setRequirements(cellphoneRouteBaseUrl, getContactsRoute)
   .build();
 
 export { getContactsApi };
 
-const addContactApi = apiManager
+const addContactApi = apiBuilder
   .create()
   .setRequirements(cellphoneRouteBaseUrl, addContactRoute)
   .build();

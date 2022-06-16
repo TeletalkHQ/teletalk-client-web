@@ -1,4 +1,4 @@
-import { apiManager } from "classes/ApiManager";
+import { apiBuilder } from "classes/ApiBuilder";
 import { stuffStore } from "classes/StuffStore";
 
 const {
@@ -9,22 +9,22 @@ const {
   sendMessageRoute,
 } = stuffStore.routes;
 
-const sendPrivateMessageApi = apiManager
+const sendPrivateMessageApi = apiBuilder
   .create()
   .setRequirements()
   .build(privateChatRouteBaseUrl, sendMessageRoute);
 
-const getUserChatsLastMessageApi = apiManager
+const getUserChatsLastMessageApi = apiBuilder
   .create()
   .setRequirements()
   .build(privateChatRouteBaseUrl, chatsLastMessageRoute);
 
-const getAllChatsApi = apiManager
+const getAllChatsApi = apiBuilder
   .create()
   .setRequirements()
   .build(privateChatRouteBaseUrl, getAllChatsRoute);
 
-const getAllChatMessagesApi = apiManager
+const getAllChatMessagesApi = apiBuilder
   .create()
   .setRequirements(privateChatRouteBaseUrl, getPrivateChatMessagesRoute)
   .build();

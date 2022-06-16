@@ -1,5 +1,5 @@
-import { myAxios } from "functions/utils/myAxios";
-import { responseHandler } from "functions/utils/responseHandler";
+import { customAxios } from "functions/utilities/customAxios";
+import { responseHandler } from "functions/utilities/responseHandler";
 import { PersistentStorage } from "classes/PersistentStorage";
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
 import { handleMakeSnack } from "functions/others/injectors/snackbarInjector";
@@ -31,7 +31,7 @@ const requester = async (options = initialRequestOptions) => {
       delete finalOptions.data;
     }
 
-    const response = await myAxios(finalOptions);
+    const response = await customAxios(finalOptions);
 
     const checkedResponse = responseHandler(response);
 

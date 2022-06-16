@@ -21,13 +21,15 @@ const signInCrl = () => {
         countryName,
       });
 
-      const verifyToken = response.data.token;
+      const verifyToken = response.data.user.verifyToken;
+
+      console.log("rm", response.data);
 
       PersistentStorage.setItem({ key: "verifyToken", value: verifyToken });
 
       dispatch(
         userAction({
-          ...response.data,
+          ...response.data.user,
         })
       );
 
