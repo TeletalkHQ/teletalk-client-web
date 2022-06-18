@@ -1,15 +1,15 @@
-import { initialState } from "variables/constants/initials/initialStates/initialStates";
-import { initialCountry } from "variables/constants/initials/initialValues/initialValues";
+import { initialStates } from "variables/initials/initialStates/initialStates";
+import { initialCountry } from "variables/initials/initialValues/initialValues";
 
 const {
-  tempInitialState: {
+  tempState: {
     messageInputText,
     messages,
     selectedContact,
     tempUserState,
     verifyCode,
   },
-} = initialState;
+} = initialStates;
 
 const contactSelectedInitialAction = {
   type: "CONTACT_SELECTED",

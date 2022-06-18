@@ -5,8 +5,8 @@ import { verifySignInApi } from "apis/authenticationApis";
 import { loadingAction, userAction } from "actions/userActions/userActions";
 import { viewModeAction } from "actions/globalActions/globalActions";
 
-import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
-import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
+import { getInitialState } from "variables/initials/initialStates/initialStates";
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
 const verifySignInCrl = () => {
   return async (dispatch, getState = getInitialState) => {

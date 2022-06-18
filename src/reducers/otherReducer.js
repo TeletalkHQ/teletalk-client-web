@@ -1,8 +1,8 @@
-import { newStateReplacer } from "functions/utilities/stateUtils/stateUtils";
+import { newStateReplacer } from "functions/utilities/stateUtils";
 
-import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
-import { initialState } from "variables/constants/initials/initialStates/initialStates";
-import { otherInitialActions } from "variables/constants/initials/initialActions/otherInitialActions";
+import { initialAction } from "variables/initials/initialOptions/initialOptions";
+import { initialStates } from "variables/initials/initialStates/initialStates";
+import { otherInitialActions } from "variables/initials/initialActions/otherInitialActions";
 
 const {
   getCountriesInitialAction,
@@ -11,7 +11,7 @@ const {
 } = otherInitialActions;
 
 const otherReducer = (
-  state = initialState.otherInitialState,
+  state = initialStates.otherState,
   action = initialAction
 ) => {
   try {

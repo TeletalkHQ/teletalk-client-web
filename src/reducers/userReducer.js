@@ -1,13 +1,13 @@
-import { newStateReplacer } from "functions/utilities/stateUtils/stateUtils";
+import { newStateReplacer } from "functions/utilities/stateUtils";
 
-import { userInitialActions } from "variables/constants/initials/initialActions/initialActions";
-import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
-import { initialState } from "variables/constants/initials/initialStates/initialStates";
+import { userInitialActions } from "variables/initials/initialActions/initialActions";
+import { initialAction } from "variables/initials/initialOptions/initialOptions";
+import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const { userInitialAction } = userInitialActions;
 
 const userReducer = (
-  state = initialState.userInitialState,
+  state = initialStates.userState,
   action = initialAction
 ) => {
   try {

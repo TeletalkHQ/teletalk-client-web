@@ -1,12 +1,8 @@
-import { regexs } from "variables/constants/others/regexs";
-
-const isNumber = ({ value }) => {
-  return regexs.enNumberRegex.test(value);
-};
+import { customTypeof } from "classes/CustomTypeof";
 
 const errorThrower = (condition, error) => {
   if (condition) {
-    if (customTypeof(error).type.function) throw error();
+    if (customTypeof.check(error).type.function) throw error();
     throw error;
   }
 };
@@ -54,8 +50,8 @@ const objectClarify = (dirtyObject = {}) => {
   const cleanObject = {};
 
   Object.entries(dirtyObject)?.forEach(([key, value]) => {
-    if (!customTypeof(value).type.undefined) {
-      if (customTypeof(dirtyObject[key]).type.object) {
+    if (!customTypeof.check(value).type.undefined) {
+      if (customTypeof.check(dirtyObject[key]).type.object) {
         cleanObject[key] = objectClarify(dirtyObject[key]);
 
         return;
@@ -66,38 +62,6 @@ const objectClarify = (dirtyObject = {}) => {
   });
 
   return cleanObject;
-};
-
-const isFunction = (...items) => {
-  return items.every((i) => customTypeof(i).type.function);
-};
-const isArray = (value) => Array.isArray(value);
-const isNull = (value) => value === null;
-
-const customTypeof = (value) => {
-  let type = {
-    array: false,
-    nan: false,
-    null: false,
-    function: false,
-    string: false,
-    number: false,
-    object: false,
-    boolean: false,
-    undefined: false,
-  };
-
-  if (isNaN(value)) type.nan = true;
-
-  if (isArray(value)) {
-    type.array = true;
-  } else if (isNull(value)) {
-    type.null = true;
-  } else {
-    type[typeof value] = true;
-  }
-
-  return { type, truthy: isNull(value) ? false : !!value };
 };
 
 const getValidatorErrorTypes = (errorArray) => {
@@ -174,7 +138,8 @@ const findByProp = (items = [], value, prop) =>
 const getHostFromRequest = (request) => request.get("host");
 
 const isUrlMatchWithReqUrl = (url, reqUrl) =>
-  (isArray(url) && url.some((u) => u === reqUrl)) || url === reqUrl;
+  (customTypeof.check(url).type.array && url.some((u) => u === reqUrl)) ||
+  url === reqUrl;
 
 const versionCalculator = (versions = []) => {
   let [parentMajor, parentMinor, parentPatch] = convertStringArrayToNumberArray(
@@ -250,7 +215,7 @@ const filterObject = (object, filterFields) => {
   const filteredObject = {};
 
   for (const key in filterFields) {
-    if (customTypeof(filterFields[key]).type.object) {
+    if (customTypeof.check(filterFields[key]).type.object) {
       filteredObject[key] = filterObject(object[key], filterFields[key]);
       continue;
     }
@@ -275,14 +240,21 @@ const cellphoneFinder = (cellphones, targetCellphone) => {
   }
 };
 
+const renameObjectKey = ({ obj, oldKey, newKey }) => {
+  if (oldKey !== newKey) {
+    obj[newKey] = obj[oldKey];
+    delete obj[oldKey];
+  }
+  return obj;
+};
+
 export {
-  isNumber,
+  renameObjectKey,
   cellphoneFinder,
   concatBaseUrlWithUrl,
   convertStringArrayToNumberArray,
   crashServer,
   crashServerWithCondition,
-  customTypeof,
   errorThrower,
   excludeVersion,
   extractVersions,
@@ -294,10 +266,7 @@ export {
   getObjectLength,
   getTokenFromRequest,
   getValidatorErrorTypes,
-  isArray,
   isEqualWithTargetCellphone,
-  isFunction,
-  isNull,
   isUrlMatchWithReqUrl,
   objectClarify,
   objectInitializer,

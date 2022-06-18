@@ -5,7 +5,7 @@ import { PersistentStorage } from "classes/PersistentStorage";
 import { viewModeAction } from "actions/globalActions/globalActions";
 import { userAction } from "actions/userActions/userActions";
 
-import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
 const responseHandler = (response) => {
   try {

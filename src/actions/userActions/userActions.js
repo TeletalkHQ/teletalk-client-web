@@ -1,9 +1,9 @@
-import { actionCreator } from "functions/utilities/actionCreator";
+import { actionCreator } from "functions/utilities/stateUtils";
 
 import {
   globalInitialActions,
   userInitialActions,
-} from "variables/constants/initials/initialActions/initialActions";
+} from "variables/initials/initialActions/initialActions";
 
 const { userInitialAction } = userInitialActions;
 

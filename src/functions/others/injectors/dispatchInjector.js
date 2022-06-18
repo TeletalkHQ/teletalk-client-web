@@ -1,4 +1,4 @@
-import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
+import { initialAction } from "variables/initials/initialOptions/initialOptions";
 
 //! Using it in special cases only!
 let appDispatch = (action = initialAction) => {};

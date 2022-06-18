@@ -1,4 +1,4 @@
-import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
+import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { userAction } from "actions/userActions/userActions";
 import { messageInputOnChangeAction } from "actions/tempActions/tempActions";
 import { sendPrivateMessageApi } from "apis/messageApis";

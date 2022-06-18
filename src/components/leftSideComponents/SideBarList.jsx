@@ -1,6 +1,6 @@
 import { List, ListItem } from "@mui/material";
 
-import { appIcons } from "variables/constants/initials/initialValues/initialValues";
+import { appIcons } from "variables/initials/initialValues/initialValues";
 
 const { allChats, bot, channels, unread, editChats, groups, personal } =
   appIcons;

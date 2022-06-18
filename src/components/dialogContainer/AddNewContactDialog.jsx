@@ -8,7 +8,7 @@ import { addNewContactCrl } from "controllers/cellphoneController/addNewContactC
 
 import { useMyContext } from "hooks/useMyContext";
 
-import { initialContact } from "variables/constants/initials/initialValues/initialValues";
+import { initialContact } from "variables/initials/initialValues/initialValues";
 
 const AddNewContactDialog = ({ onClose }) => {
   const {

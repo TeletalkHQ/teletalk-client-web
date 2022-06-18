@@ -1,11 +1,11 @@
-import { initialState } from "variables/constants/initials/initialStates/initialStates";
+import { initialStates } from "variables/initials/initialStates/initialStates";
 
 import { userAction } from "actions/userActions/userActions";
 import {
   backdropAction,
   viewModeAction,
 } from "actions/globalActions/globalActions";
-import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 import { PersistentStorage } from "classes/PersistentStorage";
 import { userStatusCheckerApi } from "apis/authenticationApis";
 
@@ -29,7 +29,7 @@ const userStatusCheckerCrl = () => {
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
       }
 
-      dispatch(userAction({ ...initialState.userInitialState }));
+      dispatch(userAction({ ...initialStates.userState }));
     } finally {
       dispatch(backdropAction({ backdropState: { open: false } }));
     }
