@@ -1,8 +1,8 @@
-import { initialState } from "variables/constants/initials/initialStates/initialStates";
+import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const {
-  errorInitialState: { error },
-} = initialState;
+  errorState: { error },
+} = initialStates;
 
 const errorInitialActions = {
   econnabortedAction: {

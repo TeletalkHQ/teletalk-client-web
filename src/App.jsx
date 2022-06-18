@@ -15,16 +15,16 @@ import { MainContext } from "contexts/MainContext";
 
 import { rootReducer } from "reducers/index";
 
-import { initialStateWithoutInitialWord } from "variables/constants/initials/initialStates/initialStates";
+import { initialStates } from "variables/initials/initialStates/initialStates";
 
 import { baseTheme } from "theme/baseTheme";
 
 import { configs } from "configs/configs";
 
 const App = () => {
-  const [state = initialStateWithoutInitialWord, dispatch] = useThunkReducer(
+  const [state = initialStates, dispatch] = useThunkReducer(
     rootReducer,
-    initialStateWithoutInitialWord,
+    initialStates,
     configs.useThunkReducer
   );
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();

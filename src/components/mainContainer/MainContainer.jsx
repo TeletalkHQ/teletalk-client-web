@@ -18,8 +18,8 @@ import { emitters } from "classes/Emitters";
 import { onlineConnectionChecker } from "functions/events/onlineConnectionsChecker";
 
 import { backdropAction } from "actions/globalActions/globalActions";
-import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
-import { EVENT_EMITTER_EVENTS } from "variables/constants/others/otherConstants";
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { EVENT_EMITTER_EVENTS } from "variables/others/otherConstants";
 
 const MainContainer = () => {
   const {

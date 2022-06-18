@@ -1,6 +1,6 @@
-import { actionCreator } from "functions/utilities/actionCreator";
-import { onlineStatusInitialAction } from "variables/constants/initials/initialActions/globalInitialActions";
-import { tempInitialActions } from "variables/constants/initials/initialActions/tempInitialActions";
+import { actionCreator } from "functions/utilities/stateUtils";
+import { onlineStatusInitialAction } from "variables/initials/initialActions/globalInitialActions";
+import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
 
 const {
   contactSelectedInitialAction,

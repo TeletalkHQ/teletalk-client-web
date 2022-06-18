@@ -1,11 +1,11 @@
-import { errorInitialActions } from "variables/constants/initials/initialActions/initialActions";
-import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
-import { initialState } from "variables/constants/initials/initialStates/initialStates";
-import { newStateReplacer } from "functions/utilities/stateUtils/stateUtils";
+import { errorInitialActions } from "variables/initials/initialActions/initialActions";
+import { initialAction } from "variables/initials/initialOptions/initialOptions";
+import { initialStates } from "variables/initials/initialStates/initialStates";
+import { newStateReplacer } from "functions/utilities/stateUtils";
 const { econnabortedAction } = errorInitialActions;
 
 const notificationReducer = (
-  state = initialState.errorInitialState,
+  state = initialStates.errorState,
   action = initialAction
 ) => {
   try {

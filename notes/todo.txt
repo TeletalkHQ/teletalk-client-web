@@ -1,3 +1,3 @@
 Use framer/motion for animation ?
 Add notification system
-folders/files name fix
+Add conditional logging to loggers

@@ -1,0 +1,442 @@
+{
+  "routes": {
+    "version": "1.0.0",
+    "addBlockRoute": {
+      "method": "post",
+      "url": "/addBlock",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for block single contact on user contacts list",
+      "inputFields": [
+        {
+          "countryCode": "countryCode",
+          "countryName": "countryName",
+          "phoneNumber": "phoneNumber"
+        }
+      ],
+      "outputFields": [
+        {
+          "blockedCellphone": {
+            "countryCode": "countryCode",
+            "countryName": "countryName",
+            "phoneNumber": "phoneNumber"
+          }
+        }
+      ]
+    },
+    "addBlocksRoute": {
+      "method": "post",
+      "url": "/addBlocks",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for block single contact on user contacts list",
+      "inputFields": [{}],
+      "outputFields": [{}]
+    },
+    "addContactRoute": {
+      "method": "post",
+      "url": "/addContact",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for add single contact to current user contacts list",
+      "inputFields": [
+        {
+          "countryCode": "countryCode",
+          "countryName": "countryName",
+          "firstName": "firstName",
+          "lastName": "lastName",
+          "phoneNumber": "phoneNumber"
+        }
+      ],
+      "outputFields": [
+        {
+          "addedContact": {
+            "countryCode": "countryCode",
+            "countryName": "countryName",
+            "firstName": "firstName",
+            "lastName": "lastName",
+            "phoneNumber": "phoneNumber",
+            "privateId": "privateId"
+          }
+        }
+      ]
+    },
+    "addContactsRoute": {
+      "method": "post",
+      "url": "/addContacts",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for add single contact to current user contacts list",
+      "inputFields": [{}],
+      "outputFields": [{}]
+    },
+    "cellphoneRouteBaseUrl": {
+      "url": "/cellphone",
+      "version": "1.0.0"
+    },
+    "editContactRoute": {
+      "method": "patch",
+      "url": "/editContact",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "User for edit single contact on user contacts list",
+      "inputFields": [
+        {
+          "countryCode": "countryCode",
+          "countryName": "countryName",
+          "firstName": "firstName",
+          "lastName": "lastName",
+          "phoneNumber": "phoneNumber"
+        }
+      ],
+      "outputFields": [
+        {
+          "editedContact": {
+            "countryCode": "countryCode",
+            "countryName": "countryName",
+            "firstName": "firstName",
+            "lastName": "lastName",
+            "phoneNumber": "phoneNumber"
+          }
+        }
+      ]
+    },
+    "getContactsRoute": {
+      "method": "get",
+      "url": "/getContacts",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "User for edit single contact on user contacts list",
+      "inputFields": [{}],
+      "outputFields": [{}]
+    },
+    "removeBlockRoute": {
+      "method": "delete",
+      "url": "/removeBlock",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for remove single contact on user contacts list",
+      "inputFields": [
+        {
+          "countryCode": "countryCode",
+          "countryName": "countryName",
+          "phoneNumber": "phoneNumber"
+        }
+      ],
+      "outputFields": [
+        {
+          "removedBlockedCellphone": {
+            "countryCode": "countryCode",
+            "countryName": "countryName",
+            "phoneNumber": "phoneNumber"
+          }
+        }
+      ]
+    },
+    "removeBlocksRoute": {
+      "method": "delete",
+      "url": "/removeBlocks",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for remove single contact on user contacts list",
+      "inputFields": [{}],
+      "outputFields": [{}]
+    },
+    "removeContactRoute": {
+      "method": "delete",
+      "url": "/removeContact",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for remove single contact on user contacts list",
+      "inputFields": [
+        {
+          "countryCode": "countryCode",
+          "countryName": "countryName",
+          "phoneNumber": "phoneNumber"
+        }
+      ],
+      "outputFields": [
+        {
+          "removedContact": {
+            "countryCode": "countryCode",
+            "countryName": "countryName",
+            "phoneNumber": "phoneNumber"
+          }
+        }
+      ]
+    },
+    "removeContactsRoute": {
+      "method": "delete",
+      "url": "/removeContacts",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for remove single contact on user contacts list",
+      "inputFields": [{}],
+      "outputFields": [{}]
+    },
+    "shareContactRoute": {
+      "method": "post",
+      "url": "/shareContact",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for share single contact on user contacts list",
+      "inputFields": [{}],
+      "outputFields": [{}]
+    },
+    "shareContactsRoute": {
+      "method": "post",
+      "url": "/shareContacts",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for share single contact on user contacts list",
+      "inputFields": [{}],
+      "outputFields": [{}]
+    },
+    "otherRouteBaseUrl": {
+      "url": "/other",
+      "version": "1.0.0"
+    },
+    "countriesRoute": {
+      "method": "get",
+      "url": "/countries",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for get countries for normal account"
+    },
+    "welcomeRoute": {
+      "method": "get",
+      "url": "/welcomeMessage",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use to get welcome message for client"
+    },
+    "privateChatRouteBaseUrl": {
+      "url": "/chat",
+      "version": "1.0.0",
+      "description": "privateChatRouteBaseUrl description"
+    },
+    "chatsLastMessageRoute": {
+      "method": "post",
+      "url": "/privateChat/privateChatsLastMessages",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for Get chats last message",
+      "inputFields": [],
+      "outputFields": []
+    },
+    "getAllChatsRoute": {
+      "method": "get",
+      "url": "/privateChat/getAllPrivateChats",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for Start new chat",
+      "inputFields": [{}],
+      "outputFields": [
+        {
+          "chats": [
+            {
+              "chatId": "chatId"
+            }
+          ]
+        }
+      ]
+    },
+    "getPrivateChatMessagesRoute": {
+      "method": "post",
+      "url": "/privateChat/getPrivateMessages",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for get all messages",
+      "inputFields": [
+        {
+          "chatId": "chatId"
+        }
+      ],
+      "outputFields": [
+        {
+          "messages": [
+            {
+              "messageSender": {
+                "senderId": "senderId"
+              },
+              "messageId": "messageId",
+              "message": "message"
+            }
+          ]
+        }
+      ]
+    },
+    "sendMessageRoute": {
+      "method": "post",
+      "url": "/privateChat/sendPrivateMessage",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for send private messages",
+      "inputFields": [
+        {
+          "message": "message",
+          "participantId": "participantId"
+        }
+      ],
+      "outputFields": [
+        {
+          "chatId": "chatId",
+          "newMessage": "newMessage"
+        }
+      ]
+    },
+    "startChatRoute": {
+      "method": "post",
+      "url": "/privateChat/startNewPrivateChat",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for Start new chat",
+      "inputFields": [{}],
+      "outputFields": [{}]
+    },
+    "createNewUserRoute": {
+      "method": "post",
+      "url": "/normalUser/createNewNormalUser",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for create new user for normal account",
+      "inputFields": [
+        {
+          "firstName": "firstName",
+          "lastName": "lastName"
+        }
+      ],
+      "outputFields": [
+        {
+          "user": {
+            "countryCode": "countryCode",
+            "countryName": "countryName",
+            "firstName": "firstName",
+            "lastName": "lastName",
+            "mainToken": "mainToken",
+            "phoneNumber": "phoneNumber",
+            "privateId": "privateId"
+          }
+        }
+      ]
+    },
+    "getUserDataRoute": {
+      "method": "get",
+      "url": "/normalUser/getUserData",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for get user data",
+      "inputFields": [{}],
+      "outputFields": [
+        {
+          "user": {
+            "privateId": "privateId",
+            "firstName": "firstName",
+            "lastName": "lastName",
+            "bio": "bio",
+            "contacts": "contacts",
+            "blacklist": "blacklist",
+            "username": "username",
+            "phoneNumber": "phoneNumber",
+            "countryCode": "countryCode",
+            "countryName": "countryName",
+            "chats": "chats",
+            "mainToken": "mainToken",
+            "newUser": "newUser"
+          }
+        }
+      ]
+    },
+    "logoutNormalRoute": {
+      "method": "post",
+      "url": "/normalUser/logoutNormalUser",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for logout client as a normal account"
+    },
+    "signInNormalRoute": {
+      "method": "post",
+      "url": "/normalUser/signInNormalUser",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for sign in client as a normal account",
+      "inputFields": [
+        {
+          "countryCode": "countryCode",
+          "countryName": "countryName",
+          "phoneNumber": "phoneNumber"
+        }
+      ],
+      "outputFields": [
+        {
+          "user": {
+            "countryCode": "countryCode",
+            "countryName": "countryName",
+            "phoneNumber": "phoneNumber",
+            "verifyToken": "verifyToken"
+          }
+        }
+      ]
+    },
+    "statusCheckRoute": {
+      "method": "get",
+      "url": "/normalUser/statusCheck",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for check client availability as a normal account"
+    },
+    "userRouteBaseUrl": {
+      "url": "/user",
+      "version": "1.0.0"
+    },
+    "verifySignInNormalRoute": {
+      "method": "post",
+      "url": "/normalUser/verifySignInNormalUser",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for verify sign in (normal account) as normal account",
+      "inputFields": [
+        {
+          "verificationCode": "verificationCode"
+        }
+      ],
+      "outputFields": [
+        {
+          "user": {
+            "privateId": "privateId",
+            "firstName": "firstName",
+            "lastName": "lastName",
+            "bio": "bio",
+            "contacts": "contacts",
+            "blacklist": "blacklist",
+            "username": "username",
+            "phoneNumber": "phoneNumber",
+            "countryCode": "countryCode",
+            "countryName": "countryName",
+            "chats": "chats",
+            "mainToken": "mainToken",
+            "newUser": "newUser"
+          }
+        },
+        {
+          "user": {
+            "newUser": "newUser"
+          }
+        }
+      ]
+    },
+    "versionControlBaseUrl": {
+      "url": "/versionControl",
+      "version": "1.0.0"
+    },
+    "getAllStuffsRoute": {
+      "method": "get",
+      "url": "/getAllStuff",
+      "statusCode": 200,
+      "version": "1.0.0",
+      "description": "Use for get all routes, models, validation models, errors and more",
+      "inputFields": [{}],
+      "outputFields": [{}]
+    }
+  }
+}

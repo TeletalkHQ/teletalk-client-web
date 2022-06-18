@@ -11,7 +11,7 @@ import {
   messageInputOnChangeAction,
 } from "actions/tempActions/tempActions";
 
-import { initialContact } from "variables/constants/initials/initialValues/initialValues";
+import { initialContact } from "variables/initials/initialValues/initialValues";
 import { sendNewMessageCrl } from "controllers/messageControllers/sendPrivateMessageCrl";
 import { useEffect } from "react";
 import { getAllChatMessagesCrl } from "controllers/messageControllers/getAllChatMessagesCrl";

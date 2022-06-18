@@ -5,8 +5,6 @@ import NewUserProfile from "components/authentication/NewUserProfile";
 import SignIn from "components/authentication/SignIn";
 import VerifySignIn from "components/authentication/VerifySignIn";
 
-import { isNumber } from "functions/utilities/utilities";
-
 import { useMyContext } from "hooks/useMyContext";
 
 import { signInCrl } from "controllers/authControllers/signInCrl";
@@ -22,13 +20,14 @@ import {
 } from "actions/tempActions/tempActions";
 import { viewModeAction } from "actions/globalActions/globalActions";
 
-import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 import { selectedCountryAction } from "actions/otherActions/otherActions";
 import { createNewUserCrl } from "controllers/authControllers/createNewUserCrl";
 import { phoneNumberAction } from "actions/tempActions/tempActions";
 import { emitters } from "classes/Emitters";
-import { EVENT_EMITTER_EVENTS } from "variables/constants/others/otherConstants";
+import { EVENT_EMITTER_EVENTS } from "variables/others/otherConstants";
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
+import { customTypeof } from "classes/CustomTypeof";
 
 const Authentication = () => {
   const {
@@ -72,7 +71,10 @@ const Authentication = () => {
   const handlePhoneNumberChange = (event) => {
     const value = event.target.value;
 
-    if ((isNumber({ value }) && value?.length < 15) || value === "") {
+    if (
+      (customTypeof.check(value).type.stringNumber && value?.length < 15) ||
+      value === ""
+    ) {
       dispatch(phoneNumberAction({ phoneNumber: value }));
     }
   };
@@ -80,7 +82,10 @@ const Authentication = () => {
   const handleCountryCodeChange = (event) => {
     const value = event.target.value;
 
-    if ((isNumber({ value }) && value?.length <= 6) || value === "") {
+    if (
+      (customTypeof.check(value).type.stringNumber && value?.length <= 6) ||
+      value === ""
+    ) {
       dispatch(countryCodeAction({ countryCode: value }));
       const country = countries?.find((c) => c.countryCode === value) || null;
       appDispatch(selectedCountryAction({ selectedCountry: country }));

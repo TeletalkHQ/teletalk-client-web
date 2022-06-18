@@ -1,11 +1,11 @@
 import { customAxios } from "functions/utilities/customAxios";
-import { responseHandler } from "functions/utilities/responseHandler";
+import { responseHandler } from "functions/utilities/ajaxUtils";
 import { PersistentStorage } from "classes/PersistentStorage";
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
 import { handleMakeSnack } from "functions/others/injectors/snackbarInjector";
 
-import { initialRequestOptions } from "variables/constants/initials/initialOptions/initialOptions";
-import { errorInitialActions } from "variables/constants/initials/initialActions/initialActions";
+import { initialRequestOptions } from "variables/initials/initialOptions/initialOptions";
+import { errorInitialActions } from "variables/initials/initialActions/initialActions";
 import { configs } from "configs/configs";
 
 const { successResponseLogger, failureResponseLogger } = configs.requester;
@@ -21,7 +21,7 @@ const requester = async (options = initialRequestOptions) => {
     };
 
     if (!finalOptions.url) {
-      const error = "Yo! you forget send me url!!!";
+      const error = "You forget to set my url!!!";
       throw error;
     }
 

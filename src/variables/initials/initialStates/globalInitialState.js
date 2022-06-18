@@ -1,4 +1,4 @@
-import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
 const globalInitialState = {
   appDrawerState: {

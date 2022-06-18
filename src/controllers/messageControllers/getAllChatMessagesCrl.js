@@ -1,6 +1,6 @@
 import { userAction } from "actions/userActions/userActions";
 import { getAllChatMessagesApi } from "apis/messageApis";
-import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
+import { getInitialState } from "variables/initials/initialStates/initialStates";
 
 const getAllChatMessagesCrl = ({ chatID }) => {
   return async (dispatch, getState = getInitialState) => {

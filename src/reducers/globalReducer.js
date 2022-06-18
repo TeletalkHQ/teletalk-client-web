@@ -1,8 +1,8 @@
-import { newStateReplacer } from "functions/utilities/stateUtils/stateUtils";
+import { newStateReplacer } from "functions/utilities/stateUtils";
 
-import { globalInitialActions } from "variables/constants/initials/initialActions/initialActions";
-import { initialState } from "variables/constants/initials/initialStates/initialStates";
-import { initialAction } from "variables/constants/initials/initialOptions/initialOptions";
+import { globalInitialActions } from "variables/initials/initialActions/initialActions";
+import { initialStates } from "variables/initials/initialStates/initialStates";
+import { initialAction } from "variables/initials/initialOptions/initialOptions";
 
 const {
   appDrawerInitialAction,
@@ -14,7 +14,7 @@ const {
 } = globalInitialActions;
 
 const globalReducer = (
-  state = initialState.globalInitialState,
+  state = initialStates.globalState,
   action = initialAction
 ) => {
   const { payload, type } = action;

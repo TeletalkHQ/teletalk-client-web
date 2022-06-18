@@ -1,9 +1,9 @@
-import { initialState } from "variables/constants/initials/initialStates/initialStates";
-import { initialContact } from "variables/constants/initials/initialValues/initialValues";
+import { initialStates } from "variables/initials/initialStates/initialStates";
+import { initialContact } from "variables/initials/initialValues/initialValues";
 
 const {
-  otherInitialState: { welcome, countries },
-} = initialState;
+  otherState: { welcome, countries },
+} = initialStates;
 
 const otherInitialActions = {
   getCountriesInitialAction: {

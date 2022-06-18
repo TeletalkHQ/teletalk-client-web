@@ -1,7 +1,7 @@
 import { userAction } from "actions/userActions/userActions";
 import { getUserChatsLastMessageApi } from "apis/messageApis";
 
-import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
+import { getInitialState } from "variables/initials/initialStates/initialStates";
 
 const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   try {

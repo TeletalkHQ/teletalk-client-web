@@ -22,10 +22,13 @@ const copyMan = ({ state, cb }) => {
 
 const newStateReplacer = ({ state, payload }) => ({ ...state, ...payload });
 
-//UNUSED
-const actionInitializer = (type, payload) => ({
-  type,
-  payload: { ...payload },
-});
+const actionCreator = (type, payload) => {
+  return {
+    type,
+    payload,
+  };
+};
 
-export { actionInitializer, copyMan, newStateReplacer };
+export { actionCreator };
+
+export { copyMan, newStateReplacer };

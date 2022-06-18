@@ -1,7 +1,7 @@
-import { initialState } from "variables/constants/initials/initialStates/initialStates";
+import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const {
-  globalInitialState: {
+  globalState: {
     appDrawerState,
     backdropState,
     dialogState,
@@ -9,7 +9,7 @@ const {
     onlineStatus,
     loadingState,
   },
-} = initialState;
+} = initialStates;
 
 const loadingInitialAction = {
   type: "LOADING_STATE",

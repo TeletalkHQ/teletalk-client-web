@@ -1,7 +1,7 @@
 import { stuffStore } from "classes/StuffStore";
 import { emitters } from "classes/Emitters";
 
-import { EVENT_EMITTER_EVENTS } from "variables/constants/others/otherConstants";
+import { EVENT_EMITTER_EVENTS } from "variables/others/otherConstants";
 import { getAllStuffApi } from "apis/versionControlApis";
 
 const getAllStuffCrl = () => {

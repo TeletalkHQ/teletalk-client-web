@@ -2,7 +2,7 @@ import { getCountriesAction } from "actions/otherActions/otherActions";
 import { getCountriesApi } from "apis/otherApis";
 
 const getCountriesCrl = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     try {
       const response = await getCountriesApi.sendRequest();
 

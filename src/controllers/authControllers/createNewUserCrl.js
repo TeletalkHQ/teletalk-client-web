@@ -2,8 +2,8 @@ import { viewModeAction } from "actions/globalActions/globalActions";
 import { loadingAction } from "actions/userActions/userActions";
 import { createNewUserApi } from "apis/authenticationApis";
 import { PersistentStorage } from "classes/PersistentStorage";
-import { getInitialState } from "variables/constants/initials/initialStates/initialStates";
-import { INITIAL_VIEW_MODE } from "variables/constants/initials/initialValues/initialValues";
+import { getInitialState } from "variables/initials/initialStates/initialStates";
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
 const createNewUserCrl = () => {
   return async (dispatch, getState = getInitialState) => {
