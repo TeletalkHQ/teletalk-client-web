@@ -7,9 +7,9 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
-import { LoadingButton } from "@mui/lab";
 
 import CountrySelector from "components/others/CountrySelector";
+import CustomButton from "components/generals/inputs/CustomButton";
 
 const SignIn = ({
   countries,
@@ -94,8 +94,8 @@ const SignIn = ({
               />
             </Box>
 
-            <LoadingButton
-              fullWidth
+            <CustomButton
+              lbtn
               disabled={phoneNumber?.length < 9 || !selectedCountry}
               loading={loading}
               loadingIndicator={
@@ -105,12 +105,10 @@ const SignIn = ({
                 </>
               }
               onClick={onSignInClick}
-              size="large"
-              sx={{ mt: 3, mb: 2, borderRadius: "10px" }}
-              variant="contained"
+              sx={{ mt: 2, mb: 1, borderRadius: "10px" }}
             >
               Next
-            </LoadingButton>
+            </CustomButton>
           </Box>
         </Container>
       </Box>

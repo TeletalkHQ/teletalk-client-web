@@ -6,8 +6,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
 import { VerifiedUser, ArrowBack, Fingerprint } from "@mui/icons-material";
+import CustomButton from "components/generals/inputs/CustomButton";
 
 const VerifySignIn = ({
   countryCode,
@@ -64,18 +64,16 @@ const VerifySignIn = ({
               }}
             />
 
-            <LoadingButton
-              fullWidth
+            <CustomButton
+              lbtn
               loading={loading}
               loadingPosition="end"
               onClick={onVerifyClick}
-              size="large"
               endIcon={<Fingerprint />}
-              sx={{ mt: 3, mb: 2, borderRadius: "10px" }}
-              variant="contained"
+              sx={{ mt: 2, mb: 2 }}
             >
               Verify
-            </LoadingButton>
+            </CustomButton>
           </Box>
         </Container>
       </Box>

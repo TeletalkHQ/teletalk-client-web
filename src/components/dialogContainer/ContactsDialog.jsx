@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
 import ContactListItem from "components/dialogContainer/ContactListItem";
@@ -11,6 +11,7 @@ import { useMyContext } from "hooks/useMyContext";
 
 import { dialogAction } from "actions/globalActions/globalActions";
 import { contactClickAction } from "actions/tempActions/tempActions";
+import CustomButton from "components/generals/inputs/CustomButton";
 
 const ContactsDialog = ({ onClose }) => {
   const {
@@ -84,10 +85,12 @@ const ContactsDialog = ({ onClose }) => {
         alignItems="center"
       >
         <Box>
-          <Button onClick={handleAddContactClick}>Add Contact</Button>
+          <CustomButton onClick={handleAddContactClick}>
+            Add Contact
+          </CustomButton>
         </Box>
         <Box>
-          <Button onClick={() => onClose("contacts")}>Close</Button>
+          <CustomButton onClick={() => onClose("contacts")}>Close</CustomButton>
         </Box>
       </Box>
     </>

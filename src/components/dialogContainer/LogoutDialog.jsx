@@ -1,6 +1,7 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
+import CustomButton from "components/generals/inputs/CustomButton";
 import { logoutCrl } from "controllers/authControllers/logoutCrl";
 
 import { useMyContext } from "hooks/useMyContext";
@@ -27,13 +28,13 @@ const LogoutDialog = ({ onClose }) => {
 
   const actionContent = (
     <>
-      <Button onClick={handleClose} variant="text" color="primary">
+      <CustomButton onClick={handleClose} variant="text" color="primary">
         Cancel
-      </Button>
+      </CustomButton>
 
-      <Button onClick={handleLogout} variant="text" color="error">
+      <CustomButton onClick={handleLogout} variant="text" color="error">
         Confirm
-      </Button>
+      </CustomButton>
     </>
   );
 
