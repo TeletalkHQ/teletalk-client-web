@@ -1,5 +1,4 @@
 import { AccountCircleOutlined, ArrowBack, Check } from "@mui/icons-material";
-import { LoadingButton } from "@mui/lab";
 import {
   Box,
   Container,
@@ -7,6 +6,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+
+import CustomButton from "components/generals/inputs/CustomButton";
 
 const NewUserProfile = ({
   firstNameInput,
@@ -67,18 +68,15 @@ const NewUserProfile = ({
             label="Last Name"
           />
 
-          <LoadingButton
-            fullWidth
+          <CustomButton
             loading={loading}
             loadingPosition="end"
             onClick={onConfirmClick}
-            size="large"
             endIcon={<Check />}
-            sx={{ mt: 1, borderRadius: "10px" }}
-            variant="contained"
+            sx={{ mt: 1 }}
           >
             Confirm
-          </LoadingButton>
+          </CustomButton>
         </Container>
       </Box>
     </Container>

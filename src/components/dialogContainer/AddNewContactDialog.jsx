@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
 
@@ -9,6 +9,7 @@ import { addNewContactCrl } from "controllers/cellphoneController/addNewContactC
 import { useMyContext } from "hooks/useMyContext";
 
 import { initialContact } from "variables/initials/initialValues/initialValues";
+import CustomButton from "components/generals/inputs/CustomButton";
 
 const AddNewContactDialog = ({ onClose }) => {
   const {
@@ -92,10 +93,10 @@ const AddNewContactDialog = ({ onClose }) => {
     <>
       <Box display="flex" justifyContent="flex-end" alignItems="center">
         <Box>
-          <Button onClick={handleOnClose}>Cancel</Button>
-        </Box>{" "}
+          <CustomButton onClick={handleOnClose}>Cancel</CustomButton>
+        </Box>
         <Box>
-          <Button onClick={handleAddNewContact}>Create</Button>
+          <CustomButton onClick={handleAddNewContact}>Create</CustomButton>
         </Box>
       </Box>
     </>
