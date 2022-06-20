@@ -1,4 +1,5 @@
-import { Box, IconButton, TextField, InputAdornment } from "@mui/material";
+import { Box, IconButton, InputAdornment } from "@mui/material";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 import { appIcons } from "variables/initials/initialValues/initialValues";
 
@@ -13,7 +14,7 @@ const SearchBar = ({ onDrawerIconClick }) => {
         </IconButton>
       </Box>
       <Box p={1} sx={{ width: "100%" }}>
-        <TextField
+        <CustomTextInput
           fullWidth
           size="small"
           placeholder="Search"

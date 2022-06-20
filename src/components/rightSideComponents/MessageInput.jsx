@@ -4,7 +4,8 @@ import {
   MicNone,
   Telegram,
 } from "@mui/icons-material";
-import { Box, IconButton, Paper, TextField } from "@mui/material";
+import { Box, IconButton, Paper } from "@mui/material";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
   return (
@@ -22,7 +23,7 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
         </Box>
 
         <Box sx={{ width: "100%" }}>
-          <TextField
+          <CustomTextInput
             id="standard-multiline-flexible"
             placeholder={!messageInputText ? "Write a message..." : " "}
             multiline
@@ -30,8 +31,6 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
             autoFocus
             onChange={onInputChange}
             value={messageInputText}
-            fullWidth
-            variant="standard"
           />
         </Box>
 
@@ -48,7 +47,11 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
             </IconButton>
           ) : (
             <>
-              <IconButton onClick={() => {}}>
+              <IconButton
+                onClick={() => {
+                  console.log("Mic clicked");
+                }}
+              >
                 <MicNone />
               </IconButton>
             </>

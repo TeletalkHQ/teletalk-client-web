@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 const CountrySelector = ({
   countries,
@@ -10,11 +10,10 @@ const CountrySelector = ({
   onCountryNameOnInputChange,
   selectedCountry,
 }) => {
-  console.log(selectedCountry);
   return (
     <Autocomplete
       value={selectedCountry}
-      onChange={(event, newValue) => {
+      onChange={(_, newValue) => {
         onCountryNameOnchange(newValue);
       }}
       inputValue={countryName}
@@ -43,13 +42,11 @@ const CountrySelector = ({
         </Box>
       )}
       renderInput={(params) => (
-        <TextField
+        <CustomTextInput
           {...params}
           required
-          margin="normal"
           label="Choose a country"
           InputProps={{
-            sx: { borderRadius: "10px" },
             ...params.InputProps,
             autoComplete: "new-password", // disable autocomplete and autofill
           }}

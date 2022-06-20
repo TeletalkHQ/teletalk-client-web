@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
 
@@ -10,6 +10,7 @@ import { useMyContext } from "hooks/useMyContext";
 
 import { initialContact } from "variables/initials/initialValues/initialValues";
 import CustomButton from "components/generals/inputs/CustomButton";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 const AddNewContactDialog = ({ onClose }) => {
   const {
@@ -59,8 +60,7 @@ const AddNewContactDialog = ({ onClose }) => {
     <>
       <Box>
         <Box mt={2}>
-          <TextField
-            fullWidth
+          <CustomTextInput
             value={contact.firstName}
             label="First name"
             name="firstName"
@@ -68,8 +68,7 @@ const AddNewContactDialog = ({ onClose }) => {
           />
         </Box>
         <Box mt={2}>
-          <TextField
-            fullWidth
+          <CustomTextInput
             value={contact.lastName}
             label="Last name"
             name="lastName"
@@ -77,8 +76,7 @@ const AddNewContactDialog = ({ onClose }) => {
           />
         </Box>
         <Box mt={2}>
-          <TextField
-            fullWidth
+          <CustomTextInput
             value={contact.phoneNumber}
             label="Phone number"
             name="phoneNumber"

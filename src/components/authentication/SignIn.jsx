@@ -1,7 +1,6 @@
 import {
   Box,
   Avatar,
-  TextField,
   Typography,
   Container,
   CircularProgress,
@@ -10,6 +9,7 @@ import { LockOutlined } from "@mui/icons-material";
 
 import CountrySelector from "components/others/CountrySelector";
 import CustomButton from "components/generals/inputs/CustomButton";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 const SignIn = ({
   countries,
@@ -58,16 +58,14 @@ const SignIn = ({
             )}
 
             <Box display="flex" justifyContent={"space-between"}>
-              <TextField
+              <CustomTextInput
                 style={{ width: "90px" }}
-                margin="normal"
                 required
                 id="countryCode"
                 label="Code"
                 name="countryCode"
                 autoComplete="off"
                 InputProps={{
-                  sx: { borderRadius: "10px" },
                   startAdornment: (
                     <>
                       <span>+</span>
@@ -77,18 +75,13 @@ const SignIn = ({
                 value={countryCode}
                 onChange={onCountryCodeChange}
               />
-              <TextField
-                margin="normal"
+              <CustomTextInput
                 required
-                fullWidth
                 id="phoneNumber"
                 label="Phone number"
                 name="phoneNumber"
                 autoComplete="tel-national"
                 style={{ marginLeft: "5px" }}
-                InputProps={{
-                  sx: { borderRadius: "10px" },
-                }}
                 value={phoneNumber}
                 onChange={onPhoneNumberChange}
               />
