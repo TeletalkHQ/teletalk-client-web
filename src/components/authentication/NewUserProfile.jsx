@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 
 import CustomButton from "components/generals/inputs/CustomButton";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 const NewUserProfile = ({
   firstNameInput,
@@ -40,31 +41,21 @@ const NewUserProfile = ({
           <Typography component="p" variant="p" color="GrayText">
             Please enter this information to complete your account creation.
           </Typography>
-          <TextField
-            margin="dense"
+          <CustomTextInput
             required
-            fullWidth
             id="firstNameInput"
             name="firstName"
             autoFocus
             value={firstNameInput}
             onChange={onFirstNameOnChange}
-            InputProps={{
-              sx: { borderRadius: "10px" },
-            }}
             label="First Name"
           />
-          <TextField
-            margin="dense"
+          <CustomTextInput
             required
-            fullWidth
             id="lastNameInput"
             name="lastName"
             value={lastNameInput}
             onChange={onLastNameOnChange}
-            InputProps={{
-              sx: { borderRadius: "10px" },
-            }}
             label="Last Name"
           />
 

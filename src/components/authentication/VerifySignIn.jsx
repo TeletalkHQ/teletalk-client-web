@@ -1,13 +1,7 @@
-import {
-  Avatar,
-  Box,
-  Container,
-  IconButton,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Avatar, Box, Container, IconButton, Typography } from "@mui/material";
 import { VerifiedUser, ArrowBack, Fingerprint } from "@mui/icons-material";
 import CustomButton from "components/generals/inputs/CustomButton";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 const VerifySignIn = ({
   countryCode,
@@ -45,23 +39,20 @@ const VerifySignIn = ({
             >
               +{countryCode} {phoneNumber}
             </Typography>
+
             <Typography component="p" variant="p" color="GrayText">
               We've sent the code to the Teletalk app to your phone number.
             </Typography>
-            <TextField
-              margin="dense"
+
+            <CustomTextInput
               required
-              fullWidth
               id="phoneNumber"
               label="Verification code"
               name="verifyCode"
               autoFocus
               value={verifyCode}
               onChange={onVerifyCodeChange}
-              InputLabelProps={{ shrink: true }}
-              InputProps={{
-                sx: { borderRadius: "10px" },
-              }}
+              // InputLabelProps={{ shrink: true }}
             />
 
             <CustomButton
