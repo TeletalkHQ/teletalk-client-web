@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
 
@@ -11,6 +11,8 @@ import { useMyContext } from "hooks/useMyContext";
 import { initialContact } from "variables/initials/initialValues/initialValues";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomBox from "components/generals/boxes/CustomBox";
 
 const AddNewContactDialog = ({ onClose }) => {
   const {
@@ -47,56 +49,56 @@ const AddNewContactDialog = ({ onClose }) => {
 
   const titleContent = (
     <>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Box>
+      <CustomFlexBox jc="space-between" ai="center">
+        <CustomBox>
           <Typography>New Contact</Typography>
-        </Box>
-        <Box></Box>
-      </Box>
+        </CustomBox>
+        <CustomBox></CustomBox>
+      </CustomFlexBox>
     </>
   );
 
   const dialogContent = (
     <>
-      <Box>
-        <Box mt={2}>
+      <CustomBox>
+        <CustomBox mt={2}>
           <CustomTextInput
             value={contact.firstName}
             label="First name"
             name="firstName"
             onChange={handleInputChange}
           />
-        </Box>
-        <Box mt={2}>
+        </CustomBox>
+        <CustomBox mt={2}>
           <CustomTextInput
             value={contact.lastName}
             label="Last name"
             name="lastName"
             onChange={handleInputChange}
           />
-        </Box>
-        <Box mt={2}>
+        </CustomBox>
+        <CustomBox mt={2}>
           <CustomTextInput
             value={contact.phoneNumber}
             label="Phone number"
             name="phoneNumber"
             onChange={handleInputChange}
           />
-        </Box>
-      </Box>
+        </CustomBox>
+      </CustomBox>
     </>
   );
 
   const actionContent = (
     <>
-      <Box display="flex" justifyContent="flex-end" alignItems="center">
-        <Box>
+      <CustomFlexBox jc="flex-end" ai="center">
+        <CustomBox>
           <CustomButton onClick={handleOnClose}>Cancel</CustomButton>
-        </Box>
-        <Box>
+        </CustomBox>
+        <CustomBox>
           <CustomButton onClick={handleAddNewContact}>Create</CustomButton>
-        </Box>
-      </Box>
+        </CustomBox>
+      </CustomFlexBox>
     </>
   );
 

@@ -1,5 +1,3 @@
-import { Box } from "@mui/material";
-
 import MessageInput from "components/rightSideComponents/MessageInput";
 import MessageList from "components/rightSideComponents/MessageList";
 import ChatBar from "components/rightSideComponents/ChatBar";
@@ -15,6 +13,8 @@ import { initialContact } from "variables/initials/initialValues/initialValues";
 import { sendNewMessageCrl } from "controllers/messageControllers/sendPrivateMessageCrl";
 import { useEffect } from "react";
 import { getAllChatMessagesCrl } from "controllers/messageControllers/getAllChatMessagesCrl";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomBox from "components/generals/boxes/CustomBox";
 
 const RightSideContainer = () => {
   const {
@@ -75,32 +75,31 @@ const RightSideContainer = () => {
   }
 
   return (
-    <Box
-      flexDirection="column"
+    <CustomFlexBox
+      col
       sx={{ width: "100%", height: "100%" }}
-      justifyContent="space-between"
-      alignItems="center"
-      display="flex"
+      jc="space-between"
+      ai="center"
     >
-      <Box sx={{ height: "50px", width: "100%" }}>
+      <CustomBox sx={{ height: "50px", width: "100%" }}>
         <ChatBar
           onMessageContainerCloseClick={handleMessageContainerCloseClick}
           chatName={`${firstName} ${lastName}`}
         />
-      </Box>
+      </CustomBox>
 
-      <Box sx={{ height: "100%", width: "100%" }}>
+      <CustomBox sx={{ height: "100%", width: "100%" }}>
         <MessageList messages={chat?.messages || []} userState={userState} />
-      </Box>
+      </CustomBox>
 
-      <Box sx={{ width: "100%" }}>
+      <CustomBox sx={{ width: "100%" }}>
         <MessageInput
           messageInputText={messageInputText}
           onAddNewMessage={handleAddNewMessage}
           onInputChange={handleInputChange}
         />
-      </Box>
-    </Box>
+      </CustomBox>
+    </CustomFlexBox>
   );
 };
 

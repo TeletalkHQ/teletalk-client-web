@@ -1,5 +1,4 @@
 import {
-  Box,
   List,
   ListItem,
   ListItemIcon,
@@ -15,6 +14,7 @@ import {
   appDrawerAction,
   dialogAction,
 } from "actions/globalActions/globalActions";
+import CustomBox from "components/generals/boxes/CustomBox";
 
 const { calls, contacts, newChannel, newGroup, nightMode, settings, logout } =
   appIcons;
@@ -91,7 +91,7 @@ const AppDrawer = () => {
           toggleDrawer({ event, anchor: currentAnchor, open: true })
         }
       >
-        <Box
+        <CustomBox
           sx={{
             width:
               currentAnchor === "top" || currentAnchor === "bottom"
@@ -124,7 +124,7 @@ const AppDrawer = () => {
               </ListItem>
             ))}
           </List>
-        </Box>
+        </CustomBox>
       </SwipeableDrawer>
     </div>
   );

@@ -1,4 +1,6 @@
-import { Avatar, Box, ListItem } from "@mui/material";
+import { Avatar, ListItem } from "@mui/material";
+import CustomBox from "components/generals/boxes/CustomBox";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 
 const ChatListItem = ({ selected, message, name, onChatListItemClick }) => {
   return (
@@ -11,19 +13,19 @@ const ChatListItem = ({ selected, message, name, onChatListItemClick }) => {
       }}
       onClick={onChatListItemClick}
     >
-      <Box>
+      <CustomBox>
         <Avatar />
-      </Box>
-      <Box display="flex" sx={{ width: "100%" }} flexDirection="column">
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Box>{name}</Box>
-          <Box>clock</Box>
-        </Box>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Box>{message}</Box>
-          <Box>icons</Box>
-        </Box>
-      </Box>
+      </CustomBox>
+      <CustomFlexBox col sx={{ width: "100%" }}>
+        <CustomFlexBox jc="space-between" ai="center">
+          <CustomBox>{name}</CustomBox>
+          <CustomBox>clock</CustomBox>
+        </CustomFlexBox>
+        <CustomFlexBox jc="space-between" ai="center">
+          <CustomBox>{message}</CustomBox>
+          <CustomBox>icons</CustomBox>
+        </CustomFlexBox>
+      </CustomFlexBox>
     </ListItem>
   );
 };

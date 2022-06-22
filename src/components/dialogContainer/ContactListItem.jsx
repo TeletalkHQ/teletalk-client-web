@@ -1,4 +1,6 @@
-import { Avatar, Box, ListItem } from "@mui/material";
+import { Avatar, ListItem } from "@mui/material";
+import CustomBox from "components/generals/boxes/CustomBox";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 
 const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
   return (
@@ -10,19 +12,19 @@ const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
       }}
       onClick={onContactClick}
     >
-      <Box>
+      <CustomBox>
         <Avatar />
-      </Box>
-      <Box ml={1} display="flex" sx={{ width: "100%" }} flexDirection="column">
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Box>{name}</Box>
-          {/* <Box>clock</Box> */}
-        </Box>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Box>{lastSeen}</Box>
-          {/* <Box>icons</Box> */}
-        </Box>
-      </Box>
+      </CustomBox>
+      <CustomBox col sx={{ width: "100%", ml: 1 }}>
+        <CustomFlexBox jc="space-between" ai="center">
+          <CustomBox>{name}</CustomBox>
+          {/* <CustomBox>clock</CustomBox> */}
+        </CustomFlexBox>
+        <CustomFlexBox jc="space-between" ai="center">
+          <CustomBox>{lastSeen}</CustomBox>
+          {/* <CustomBox>icons</CustomBox> */}
+        </CustomFlexBox>
+      </CustomBox>
     </ListItem>
   );
 };
