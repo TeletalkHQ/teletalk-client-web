@@ -1,15 +1,11 @@
-import {
-  Box,
-  Avatar,
-  Typography,
-  Container,
-  CircularProgress,
-} from "@mui/material";
+import { Avatar, Typography, Container, CircularProgress } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
 
 import CountrySelector from "components/others/CountrySelector";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomBox from "components/generals/boxes/CustomBox";
 
 const SignIn = ({
   countries,
@@ -17,23 +13,16 @@ const SignIn = ({
   countryName,
   loading,
   onCountryCodeChange,
-  onPhoneNumberChange,
   onCountryNameOnchange,
   onCountryNameOnInputChange,
+  onPhoneNumberChange,
   onSignInClick,
   phoneNumber,
   selectedCountry,
 }) => {
   return (
     <Container maxWidth="xl">
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <CustomFlexBox mt={8} ai="center" col>
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
           <LockOutlined />
         </Avatar>
@@ -41,7 +30,7 @@ const SignIn = ({
           Sign in
         </Typography>
         <Container maxWidth="xs">
-          <Box sx={{ mt: 1 }}>
+          <CustomBox style={{ marginTop: 1 }}>
             <Typography component="p" variant="p" color="GrayText">
               Please verify your country code and enter your mobile phone
               number.
@@ -57,7 +46,7 @@ const SignIn = ({
               />
             )}
 
-            <Box display="flex" justifyContent={"space-between"}>
+            <CustomFlexBox jc="space-between">
               <CustomTextInput
                 style={{ width: "90px" }}
                 required
@@ -85,7 +74,7 @@ const SignIn = ({
                 value={phoneNumber}
                 onChange={onPhoneNumberChange}
               />
-            </Box>
+            </CustomFlexBox>
 
             <CustomButton
               lbtn
@@ -102,9 +91,9 @@ const SignIn = ({
             >
               Next
             </CustomButton>
-          </Box>
+          </CustomBox>
         </Container>
-      </Box>
+      </CustomFlexBox>
     </Container>
   );
 };

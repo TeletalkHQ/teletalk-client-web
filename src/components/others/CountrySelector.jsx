@@ -1,7 +1,7 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Autocomplete from "@mui/material/Autocomplete";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
+import CustomBox from "components/generals/boxes/CustomBox";
 
 const CountrySelector = ({
   countries,
@@ -26,7 +26,7 @@ const CountrySelector = ({
       fullWidth
       getOptionLabel={(option) => option.countryName}
       renderOption={(props, option) => (
-        <Box
+        <CustomBox
           component="li"
           sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
           {...props}
@@ -39,7 +39,7 @@ const CountrySelector = ({
             alt=""
           />
           {option.countryName} ({option.countryShortName}) +{option.countryCode}
-        </Box>
+        </CustomBox>
       )}
       renderInput={(params) => (
         <CustomTextInput

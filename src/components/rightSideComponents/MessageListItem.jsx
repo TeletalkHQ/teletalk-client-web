@@ -1,18 +1,17 @@
-import { Box, Paper, Slide, Typography } from "@mui/material";
+import { Paper, Slide, Typography } from "@mui/material";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 
 const MessageListItem = ({
   message,
   messageTime,
   chatDate,
   justify,
-  messageItemContainerClassName,
   messageItemClassName,
   direction,
 }) => {
   return (
     <>
-      <Box
-        display="flex"
+      <CustomFlexBox
         sx={{ width: "100%", padding: "3px" }}
         justifyContent={justify}
       >
@@ -31,7 +30,7 @@ const MessageListItem = ({
             </Typography>
           </Paper>
         </Slide>
-      </Box>
+      </CustomFlexBox>
     </>
   );
 };

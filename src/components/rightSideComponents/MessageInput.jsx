@@ -4,25 +4,22 @@ import {
   MicNone,
   Telegram,
 } from "@mui/icons-material";
-import { Box, IconButton, Paper } from "@mui/material";
+import { IconButton, Paper } from "@mui/material";
+import CustomBox from "components/generals/boxes/CustomBox";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
   return (
     <Paper sx={{ width: "100%" }}>
-      <Box
-        sx={{ width: "100%" }}
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Box>
+      <CustomFlexBox sx={{ width: "100%" }} jc="space-between" ai="center">
+        <CustomBox>
           <IconButton onClick={() => {}}>
             <AttachFile />
           </IconButton>
-        </Box>
+        </CustomBox>
 
-        <Box sx={{ width: "100%" }}>
+        <CustomBox sx={{ width: "100%" }}>
           <CustomTextInput
             id="standard-multiline-flexible"
             placeholder={!messageInputText ? "Write a message..." : " "}
@@ -32,15 +29,15 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
             onChange={onInputChange}
             value={messageInputText}
           />
-        </Box>
+        </CustomBox>
 
-        <Box>
+        <CustomBox>
           <IconButton>
             <EmojiEmotions />
           </IconButton>
-        </Box>
+        </CustomBox>
 
-        <Box>
+        <CustomBox>
           {messageInputText ? (
             <IconButton onClick={() => onAddNewMessage()}>
               <Telegram color="primary" />
@@ -56,8 +53,8 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
               </IconButton>
             </>
           )}
-        </Box>
-      </Box>
+        </CustomBox>
+      </CustomFlexBox>
     </Paper>
   );
 };

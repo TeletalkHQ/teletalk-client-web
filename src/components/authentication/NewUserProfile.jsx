@@ -1,14 +1,10 @@
 import { AccountCircleOutlined, ArrowBack, Check } from "@mui/icons-material";
-import {
-  Box,
-  Container,
-  IconButton,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Container, IconButton, Typography } from "@mui/material";
 
 import CustomButton from "components/generals/inputs/CustomButton";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
+import CustomBox from "components/generals/boxes/CustomBox";
 
 const NewUserProfile = ({
   firstNameInput,
@@ -21,22 +17,15 @@ const NewUserProfile = ({
 }) => {
   return (
     <Container maxWidth="xl">
-      <Box sx={{ mt: 1 }}>
+      <CustomBox sx={{ mt: 1 }}>
         <IconButton onClick={onBackClick}>
           <ArrowBack />
         </IconButton>
-      </Box>
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Box>
+      </CustomBox>
+      <CustomFlexBox sx={{ marginTop: 8 }} col ai="center">
+        <CustomBox>
           <AccountCircleOutlined fontSize="large" color="primary" />
-        </Box>
+        </CustomBox>
         <Container maxWidth="xs">
           <Typography component="p" variant="p" color="GrayText">
             Please enter this information to complete your account creation.
@@ -69,7 +58,7 @@ const NewUserProfile = ({
             Confirm
           </CustomButton>
         </Container>
-      </Box>
+      </CustomFlexBox>
     </Container>
   );
 };

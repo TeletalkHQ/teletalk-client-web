@@ -1,6 +1,6 @@
-import { Box } from "@mui/material";
-
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
+import CustomBox from "components/generals/boxes/CustomBox";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import { logoutCrl } from "controllers/authControllers/logoutCrl";
 
@@ -40,15 +40,9 @@ const LogoutDialog = ({ onClose }) => {
 
   const dialogContent = (
     <>
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box>Are you sure to logout?</Box>
-      </Box>
+      <CustomFlexBox jc="center" ai="center">
+        <CustomBox>Are you sure to logout?</CustomBox>
+      </CustomFlexBox>
     </>
   );
 

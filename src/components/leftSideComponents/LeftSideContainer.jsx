@@ -1,5 +1,3 @@
-import { Box } from "@mui/material";
-
 import ChatList from "components/leftSideComponents/ChatList";
 
 import { appDrawerAction } from "actions/globalActions/globalActions";
@@ -8,6 +6,7 @@ import { useMyContext } from "hooks/useMyContext";
 
 import SearchBar from "components/leftSideComponents/SearchBar";
 import SideBarList from "components/leftSideComponents/SideBarList";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 
 const LeftSideContainer = () => {
   const {
@@ -35,27 +34,19 @@ const LeftSideContainer = () => {
 
   return (
     <>
-      <Box
-        display="flex"
-        flexDirection="column"
-        style={{ width: "100%", height: "100%" }}
-      >
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+      <CustomFlexBox col style={{ width: "100%", height: "100%" }}>
+        <CustomFlexBox jc="space-between" ai="center">
           <SearchBar onDrawerIconClick={handleDrawerIconClick} />
-        </Box>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          sx={{ height: "100%" }}
-        >
+        </CustomFlexBox>
+        <CustomFlexBox jc="space-between" sx={{ height: "100%" }}>
           <SideBarList />
           <ChatList
             selectedContact={selectedContact}
             chats={chats}
             contacts={contacts}
           />
-        </Box>
-      </Box>
+        </CustomFlexBox>
+      </CustomFlexBox>
     </>
   );
 };

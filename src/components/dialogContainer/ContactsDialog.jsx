@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
 import ContactListItem from "components/dialogContainer/ContactListItem";
@@ -12,6 +12,8 @@ import { useMyContext } from "hooks/useMyContext";
 import { dialogAction } from "actions/globalActions/globalActions";
 import { contactClickAction } from "actions/tempActions/tempActions";
 import CustomButton from "components/generals/inputs/CustomButton";
+import CustomBox from "components/generals/boxes/CustomBox";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 
 const ContactsDialog = ({ onClose }) => {
   const {
@@ -59,12 +61,12 @@ const ContactsDialog = ({ onClose }) => {
 
   const titleContent = (
     <>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Box>
+      <CustomFlexBox jc="space-between" ai="center">
+        <CustomBox>
           <Typography>Contacts</Typography>
-        </Box>
-        <Box></Box>
-      </Box>
+        </CustomBox>
+        <CustomBox></CustomBox>
+      </CustomFlexBox>
     </>
   );
 
@@ -78,21 +80,16 @@ const ContactsDialog = ({ onClose }) => {
 
   const actionContent = (
     <>
-      <Box
-        sx={{ width: "100%" }}
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Box>
+      <CustomFlexBox sx={{ width: "100%" }} jc="space-between" ai="center">
+        <CustomBox>
           <CustomButton onClick={handleAddContactClick}>
             Add Contact
           </CustomButton>
-        </Box>
-        <Box>
+        </CustomBox>
+        <CustomBox>
           <CustomButton onClick={() => onClose("contacts")}>Close</CustomButton>
-        </Box>
-      </Box>
+        </CustomBox>
+      </CustomFlexBox>
     </>
   );
 

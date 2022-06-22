@@ -1,7 +1,8 @@
-import { Avatar, Box, Container, IconButton, Typography } from "@mui/material";
+import { Avatar, Container, IconButton, Typography } from "@mui/material";
 import { VerifiedUser, ArrowBack, Fingerprint } from "@mui/icons-material";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
+import CustomBox from "components/generals/boxes/CustomBox";
 
 const VerifySignIn = ({
   countryCode,
@@ -14,12 +15,12 @@ const VerifySignIn = ({
 }) => {
   return (
     <Container maxWidth="xl">
-      <Box sx={{ mt: 1 }}>
+      <CustomBox sx={{ mt: 1 }}>
         <IconButton onClick={onBackClick}>
           <ArrowBack />
         </IconButton>
-      </Box>
-      <Box
+      </CustomBox>
+      <CustomBox
         sx={{
           marginTop: 8,
           display: "flex",
@@ -31,7 +32,7 @@ const VerifySignIn = ({
           <VerifiedUser />
         </Avatar>
         <Container maxWidth="xs">
-          <Box sx={{ mt: 1 }}>
+          <CustomBox sx={{ mt: 1 }}>
             <Typography
               component="h5"
               variant="h5"
@@ -65,9 +66,9 @@ const VerifySignIn = ({
             >
               Verify
             </CustomButton>
-          </Box>
+          </CustomBox>
         </Container>
-      </Box>
+      </CustomBox>
     </Container>
   );
 };

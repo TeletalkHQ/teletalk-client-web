@@ -3,8 +3,9 @@ const { Button } = require("@mui/material");
 
 const CustomButton = ({
   btn,
-  lbtn,
   button,
+  color,
+  lbtn,
   loadingButton,
   style,
   ...props
@@ -20,7 +21,10 @@ const CustomButton = ({
       fullWidth
       size="large"
       variant="contained"
-      {...props}
+      {...{
+        color,
+        ...props,
+      }}
     />
   );
 };

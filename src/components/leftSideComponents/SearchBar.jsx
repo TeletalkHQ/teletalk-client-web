@@ -1,4 +1,5 @@
-import { Box, IconButton, InputAdornment } from "@mui/material";
+import { IconButton, InputAdornment } from "@mui/material";
+import CustomBox from "components/generals/boxes/CustomBox";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 import { appIcons } from "variables/initials/initialValues/initialValues";
@@ -8,12 +9,12 @@ const { menu, search } = appIcons;
 const SearchBar = ({ onDrawerIconClick }) => {
   return (
     <>
-      <Box>
+      <CustomBox>
         <IconButton onClick={onDrawerIconClick}>
           <menu.Icon />
         </IconButton>
-      </Box>
-      <Box p={1} sx={{ width: "100%" }}>
+      </CustomBox>
+      <CustomBox p={1} sx={{ width: "100%" }}>
         <CustomTextInput
           fullWidth
           size="small"
@@ -29,7 +30,7 @@ const SearchBar = ({ onDrawerIconClick }) => {
             ),
           }}
         />
-      </Box>
+      </CustomBox>
     </>
   );
 };
