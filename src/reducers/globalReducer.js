@@ -1,8 +1,8 @@
 import { newStateReplacer } from "functions/utilities/stateUtils";
 
-import { globalInitialActions } from "variables/initials/initialActions/initialActions";
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { initialAction } from "variables/initials/initialOptions/initialOptions";
+import { globalInitialActions } from "variables/initials/initialActions/globalInitialActions";
 
 const {
   appDrawerInitialAction,

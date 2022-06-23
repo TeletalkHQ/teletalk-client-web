@@ -13,9 +13,7 @@ const CustomFlexBox = ({
   ...props
 }) => {
   const boxFlexDirection =
-    (row && "row") || (col && "column") || fd || flexDirection;
-
-  console.log(boxFlexDirection);
+    (row && "row") || (col && "column") || fd || flexDirection || "row";
 
   const boxJustifyContent = jc || justifyContent || "flex-start";
 

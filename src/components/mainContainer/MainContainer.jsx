@@ -2,24 +2,27 @@ import { useEffect } from "react";
 
 import { Grid } from "@mui/material";
 
-import LeftSideContainer from "components/leftSideComponents/LeftSideContainer";
-import RightSideContainer from "components/rightSideComponents/RightSideContainer";
-import PortalContainer from "components/portal/PortalContainer";
+import { backdropAction } from "actions/globalActions/globalActions";
+
+import { emitters } from "classes/Emitters";
+
 import Authentication from "components/authentication/Authentication";
+import LeftSideContainer from "components/leftSideComponents/LeftSideContainer";
+import PortalContainer from "components/portal/PortalContainer";
+import RightSideContainer from "components/rightSideComponents/RightSideContainer";
 
-import { useMyContext } from "hooks/useMyContext";
+import { EVENT_EMITTER_EVENTS } from "configs/configs";
 
-import { userStatusCheckerCrl } from "controllers/authControllers/userStatusCheckerCrl";
 import { getCountriesCrl } from "controllers/authControllers/getCountriesCrl";
+import { userStatusCheckerCrl } from "controllers/authControllers/userStatusCheckerCrl";
 import { getUserChatsLastMessageCrl } from "controllers/messageControllers/getUserChatsLastMessageCrl";
 import { getAllStuffCrl } from "controllers/versionControlController/getAllStuffCrl";
 
-import { emitters } from "classes/Emitters";
 import { onlineConnectionChecker } from "functions/events/onlineConnectionsChecker";
 
-import { backdropAction } from "actions/globalActions/globalActions";
+import { useMyContext } from "hooks/useMyContext";
+
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
-import { EVENT_EMITTER_EVENTS } from "variables/others/otherConstants";
 
 const MainContainer = () => {
   const {

@@ -4,9 +4,10 @@ import { PersistentStorage } from "classes/PersistentStorage";
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
 import { handleMakeSnack } from "functions/others/injectors/snackbarInjector";
 
-import { initialRequestOptions } from "variables/initials/initialOptions/initialOptions";
-import { errorInitialActions } from "variables/initials/initialActions/initialActions";
 import { configs } from "configs/configs";
+
+import { initialRequestOptions } from "variables/initials/initialOptions/initialOptions";
+import { errorInitialActions } from "variables/initials/initialActions/errorInitialActions";
 
 const { successResponseLogger, failureResponseLogger } = configs.requester;
 

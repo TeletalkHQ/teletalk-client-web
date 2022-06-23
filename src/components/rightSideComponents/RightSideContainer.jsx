@@ -49,6 +49,7 @@ const RightSideContainer = () => {
     } catch (error) {
       console.log("RightSideContainer useEffect for chat updater", error);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleInputChange = ({ target: { value } }) => {

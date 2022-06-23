@@ -1,7 +1,8 @@
 import { actionCreator } from "functions/utilities/stateUtils";
 
-import { otherInitialActions } from "variables/initials/initialActions/initialActions";
-import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
+import { actions } from "variables/initials/initialActions/initialActions";
+
+const { tempInitialActions, otherInitialActions } = actions;
 
 const { getCountriesInitialAction, welcomeInitialAction } = otherInitialActions;
 

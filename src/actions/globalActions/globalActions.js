@@ -1,6 +1,5 @@
 import { actionCreator } from "functions/utilities/stateUtils";
-
-import { globalInitialActions } from "variables/initials/initialActions/initialActions";
+import { globalInitialActions } from "variables/initials/initialActions/globalInitialActions";
 
 const {
   appDrawerInitialAction,

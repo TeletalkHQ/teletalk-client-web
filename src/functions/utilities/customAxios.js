@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { SERVER_BASE_URL } from "variables/others/otherConstants";
+import { SERVER_BASE_URL } from "configs/configs";
 
 const customAxios = axios.create({
   baseURL: SERVER_BASE_URL,

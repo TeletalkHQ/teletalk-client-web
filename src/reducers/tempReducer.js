@@ -1,7 +1,8 @@
-import { tempInitialActions } from "variables/initials/initialActions/initialActions";
+import { newStateReplacer } from "functions/utilities/stateUtils";
+
 import { initialAction } from "variables/initials/initialOptions/initialOptions";
 import { initialStates } from "variables/initials/initialStates/initialStates";
-import { newStateReplacer } from "functions/utilities/stateUtils";
+import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
 
 const {
   contactSelectedInitialAction,
