@@ -3,12 +3,10 @@ import { stuffStore } from "classes/StuffStore";
 
 const { otherRouteBaseUrl, welcomeRoute, countriesRoute } = stuffStore.routes;
 
-console.log("rm", "otherRouteBaseUrl", otherRouteBaseUrl);
-
 const welcomeApi = apiBuilder
   .create()
-  .setRequirements()
-  .build(otherRouteBaseUrl, welcomeRoute);
+  .setRequirements(otherRouteBaseUrl, welcomeRoute)
+  .build();
 
 const getCountriesApi = apiBuilder
   .create()

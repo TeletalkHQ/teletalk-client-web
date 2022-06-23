@@ -1,6 +1,6 @@
 import { Typography, Link } from "@mui/material";
 
-import { CLIENT_BASE_URL } from "variables/others/otherConstants";
+import { CLIENT_BASE_URL } from "configs/configs";
 
 const Copyright = (props) => {
   return (

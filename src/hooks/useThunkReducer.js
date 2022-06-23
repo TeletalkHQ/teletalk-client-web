@@ -7,7 +7,7 @@ import { initialStates } from "variables/initials/initialStates/initialStates";
 let useDispatch = () => appDispatch;
 let useSelector = () => initialStates;
 let actionLogger = (action) => {
-  // console.log(`actionLogger:`, action);
+  console.log(`actionLogger:`, action);
 };
 
 const defaultConfigs = {
@@ -30,7 +30,7 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
 
     const getState = useCallback(() => state, [state]);
 
-    const myDispatch = useCallback(
+    const customDispatch = useCallback(
       (action) => {
         return typeof action === "function"
           ? action(dispatch, getState)
@@ -43,10 +43,10 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
       [getState, dispatch]
     );
 
-    useDispatch = useCallback(() => myDispatch, [myDispatch]);
+    useDispatch = useCallback(() => customDispatch, [customDispatch]);
     useSelector = useCallback(() => state, [state]);
 
-    return [state, myDispatch];
+    return [state, customDispatch];
   } catch (error) {
     throw error;
   }

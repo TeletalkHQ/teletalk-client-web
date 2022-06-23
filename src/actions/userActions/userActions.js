@@ -1,12 +1,10 @@
 import { actionCreator } from "functions/utilities/stateUtils";
 
-import {
-  globalInitialActions,
-  userInitialActions,
-} from "variables/initials/initialActions/initialActions";
+import { actions } from "variables/initials/initialActions/initialActions";
+
+const { userInitialActions, globalInitialActions } = actions;
 
 const { userInitialAction } = userInitialActions;
-
 const { loadingInitialAction } = globalInitialActions;
 
 const loadingAction = (payload = loadingInitialAction.payload) =>

@@ -1,7 +1,9 @@
-import { errorInitialActions } from "variables/initials/initialActions/initialActions";
+import { newStateReplacer } from "functions/utilities/stateUtils";
+
 import { initialAction } from "variables/initials/initialOptions/initialOptions";
 import { initialStates } from "variables/initials/initialStates/initialStates";
-import { newStateReplacer } from "functions/utilities/stateUtils";
+import { errorInitialActions } from "variables/initials/initialActions/errorInitialActions";
+
 const { econnabortedAction } = errorInitialActions;
 
 const notificationReducer = (

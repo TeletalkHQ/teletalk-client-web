@@ -1,21 +1,19 @@
-import { stuffStore } from "classes/StuffStore";
+// import { stuffStore } from "classes/StuffStore";
 import { emitters } from "classes/Emitters";
 
-import { EVENT_EMITTER_EVENTS } from "variables/others/otherConstants";
 import { getAllStuffApi } from "apis/versionControlApis";
+import { EVENT_EMITTER_EVENTS } from "configs/configs";
 
 const getAllStuffCrl = () => {
   return async (dispatch, getState) => {
     try {
-      const response = await getAllStuffApi.sendRequest();
-      console.log(response);
-
-      stuffStore.schemas = response.data.schemas;
-      stuffStore.templates = response.data.templates;
+      // const response =
+      await getAllStuffApi.sendRequest();
 
       emitters.emitEvent({ event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED });
     } catch (error) {
       console.log("getAllStuffCrl", error);
+      throw error;
     }
   };
 };

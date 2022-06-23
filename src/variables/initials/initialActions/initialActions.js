@@ -12,11 +12,4 @@ const actions = {
   tempInitialActions,
 };
 
-export {
-  actions,
-  errorInitialActions,
-  globalInitialActions,
-  otherInitialActions,
-  userInitialActions,
-  tempInitialActions,
-};
+export { actions };
