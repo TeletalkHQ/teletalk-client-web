@@ -1,6 +1,6 @@
-import { getAllChatsApi } from "apis/messageApis/getAllChatsApi";
+import { userAction } from "actions/userActions";
 
-import { userAction } from "actions/userActions/userActions";
+import { getAllChatsApi } from "apis/messageApis/getAllChatsApi";
 
 const getChatsCrl = () => {
   return async (dispatch, getState) => {

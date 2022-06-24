@@ -1,4 +1,5 @@
-import { userAction } from "actions/userActions/userActions";
+import { userAction } from "actions/userActions";
+
 import { getUserChatsLastMessageApi } from "apis/messageApis";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";

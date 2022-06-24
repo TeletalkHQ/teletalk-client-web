@@ -1,10 +1,12 @@
+import { loadingAction, userAction } from "actions/userActions";
+import { viewModeAction } from "actions/globalActions";
+
+import { signInApi } from "apis/authenticationApis";
+
+import { PersistentStorage } from "classes/PersistentStorage";
+
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
-
-import { loadingAction, userAction } from "actions/userActions/userActions";
-import { viewModeAction } from "actions/globalActions/globalActions";
-import { PersistentStorage } from "classes/PersistentStorage";
-import { signInApi } from "apis/authenticationApis";
 
 const signInCrl = () => {
   return async (dispatch, getState = getInitialState) => {

@@ -15,12 +15,20 @@
     ".babelrc": false,
     "**/globals.d.ts": false,
     "**/.gitignore": false,
-    "README.md": false,
+    "README.md": true,
     "**/yarn-error.log": false,
     "**/package.json": false,
     "index.js": false,
-    "node_modules": false
+    "node_modules": true,
+    "package.json": true,
+    "package-lock.json": true,
+    "globals.d.ts": true,
+    ".prettierrc.json": true,
+    ".prettierignore": true,
+    ".gitignore": true,
+    ".husky": true,
+    ".git": true
   },
-  "explorerExclude.backup": {},
+  "explorerExclude.backup": null,
   "cSpell.words": ["regexs"]
 }

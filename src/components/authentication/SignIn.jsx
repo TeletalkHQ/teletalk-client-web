@@ -1,5 +1,5 @@
-import { Avatar, Typography, Container, CircularProgress } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
+import { Avatar, Typography, Container, CircularProgress } from "@mui/material";
 
 import CountrySelector from "components/others/CountrySelector";
 import CustomButton from "components/generals/inputs/CustomButton";

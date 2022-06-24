@@ -1,4 +1,5 @@
-import { getCountriesAction } from "actions/otherActions/otherActions";
+import { getCountriesAction } from "actions/otherActions";
+
 import { getCountriesApi } from "apis/otherApis";
 
 const getCountriesCrl = () => {

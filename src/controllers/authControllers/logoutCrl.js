@@ -1,9 +1,13 @@
-import { viewModeAction } from "actions/globalActions/globalActions";
-import { userAction } from "actions/userActions/userActions";
-import { userInitializer } from "functions/helpers/userInitializer";
-import { PersistentStorage } from "classes/PersistentStorage";
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { viewModeAction } from "actions/globalActions";
+import { userAction } from "actions/userActions";
+
 import { logoutApi } from "apis/authenticationApis";
+
+import { PersistentStorage } from "classes/PersistentStorage";
+
+import { userInitializer } from "functions/helpers/userInitializer";
+
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
 const logoutCrl = () => {
   return async (dispatch, getState) => {

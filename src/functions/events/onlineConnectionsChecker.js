@@ -1,4 +1,5 @@
-import { onlineStatusOnChange } from "actions/tempActions/tempActions";
+import { onlineStatusOnChange } from "actions/tempActions";
+
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
 
 const onlineConnectionChecker = () => {

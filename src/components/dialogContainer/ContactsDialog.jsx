@@ -2,18 +2,18 @@ import { useEffect } from "react";
 
 import { Typography } from "@mui/material";
 
-import DialogTemplate from "components/dialogContainer/DialogTemplate";
-import ContactListItem from "components/dialogContainer/ContactListItem";
-
-import { getContactsCrl } from "controllers/cellphoneController/getContactsCrl";
+import { dialogAction } from "actions/globalActions";
+import { contactClickAction } from "actions/tempActions";
 
 import { useMyContext } from "hooks/useMyContext";
 
-import { dialogAction } from "actions/globalActions/globalActions";
-import { contactClickAction } from "actions/tempActions/tempActions";
+import DialogTemplate from "components/dialogContainer/DialogTemplate";
+import ContactListItem from "components/dialogContainer/ContactListItem";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+
+import { getContactsCrl } from "controllers/cellphoneController/getContactsCrl";
 
 const ContactsDialog = ({ onClose }) => {
   const {

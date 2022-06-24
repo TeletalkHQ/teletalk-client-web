@@ -1,9 +1,9 @@
-import { PersistentStorage } from "classes/PersistentStorage";
+import { viewModeAction } from "actions/globalActions";
+import { loadingAction, userAction } from "actions/userActions";
 
 import { verifySignInApi } from "apis/authenticationApis";
 
-import { loadingAction, userAction } from "actions/userActions/userActions";
-import { viewModeAction } from "actions/globalActions/globalActions";
+import { PersistentStorage } from "classes/PersistentStorage";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";

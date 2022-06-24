@@ -2,17 +2,17 @@ import { useState } from "react";
 
 import { Typography } from "@mui/material";
 
-import DialogTemplate from "components/dialogContainer/DialogTemplate";
-
-import { addNewContactCrl } from "controllers/cellphoneController/addNewContactCrl";
-
 import { useMyContext } from "hooks/useMyContext";
 
-import { initialContact } from "variables/initials/initialValues/initialValues";
+import DialogTemplate from "components/dialogContainer/DialogTemplate";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
+
+import { addNewContactCrl } from "controllers/cellphoneController/addNewContactCrl";
+
+import { initialContact } from "variables/initials/initialValues/initialValues";
 
 const AddNewContactDialog = ({ onClose }) => {
   const {

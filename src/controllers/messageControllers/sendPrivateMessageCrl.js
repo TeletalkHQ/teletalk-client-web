@@ -1,7 +1,9 @@
-import { getInitialState } from "variables/initials/initialStates/initialStates";
-import { userAction } from "actions/userActions/userActions";
-import { messageInputOnChangeAction } from "actions/tempActions/tempActions";
+import { userAction } from "actions/userActions";
+import { messageInputOnChangeAction } from "actions/tempActions";
+
 import { sendPrivateMessageApi } from "apis/messageApis";
+
+import { getInitialState } from "variables/initials/initialStates/initialStates";
 
 const sendNewMessageCrl = () => {
   return async (dispatch, getState = getInitialState) => {

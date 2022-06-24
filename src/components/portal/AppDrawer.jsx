@@ -10,10 +10,7 @@ import { useMyContext } from "hooks/useMyContext";
 
 import { appIcons } from "variables/initials/initialValues/initialValues";
 
-import {
-  appDrawerAction,
-  dialogAction,
-} from "actions/globalActions/globalActions";
+import { appDrawerAction, dialogAction } from "actions/globalActions";
 import CustomBox from "components/generals/boxes/CustomBox";
 
 const { calls, contacts, newChannel, newGroup, nightMode, settings, logout } =

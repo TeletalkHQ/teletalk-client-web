@@ -3,11 +3,11 @@ import { createRoot } from "react-dom/client";
 
 import { SnackbarProvider } from "notistack";
 
-import reportWebVitals from "reportWebVitals";
+import "functions/others/globals";
 
 import App from "App";
 
-import "functions/others/globals";
+import reportWebVitals from "reportWebVitals";
 
 const container = document.getElementById("root");
 const root = createRoot(container); // createRoot(container!) if you use TypeScript

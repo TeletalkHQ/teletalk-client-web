@@ -1,13 +1,12 @@
-import { initialStates } from "variables/initials/initialStates/initialStates";
+import { userAction } from "actions/userActions";
+import { backdropAction, viewModeAction } from "actions/globalActions";
 
-import { userAction } from "actions/userActions/userActions";
-import {
-  backdropAction,
-  viewModeAction,
-} from "actions/globalActions/globalActions";
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
-import { PersistentStorage } from "classes/PersistentStorage";
 import { userStatusCheckerApi } from "apis/authenticationApis";
+
+import { PersistentStorage } from "classes/PersistentStorage";
+
+import { initialStates } from "variables/initials/initialStates/initialStates";
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
 const userStatusCheckerCrl = () => {
   return async (dispatch) => {

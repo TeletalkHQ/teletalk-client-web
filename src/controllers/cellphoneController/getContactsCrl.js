@@ -1,4 +1,5 @@
-import { userAction } from "actions/userActions/userActions";
+import { userAction } from "actions/userActions";
+
 import { getContactsApi } from "apis/cellphoneApis";
 
 const getContactsCrl = () => {

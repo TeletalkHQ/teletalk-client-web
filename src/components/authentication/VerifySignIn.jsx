@@ -1,5 +1,6 @@
 import { Avatar, Container, IconButton, Typography } from "@mui/material";
 import { VerifiedUser, ArrowBack, Fingerprint } from "@mui/icons-material";
+
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
