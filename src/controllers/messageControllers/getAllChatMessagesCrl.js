@@ -1,5 +1,7 @@
-import { userAction } from "actions/userActions/userActions";
+import { userAction } from "actions/userActions";
+
 import { getAllChatMessagesApi } from "apis/messageApis";
+
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 
 const getAllChatMessagesCrl = ({ chatID }) => {

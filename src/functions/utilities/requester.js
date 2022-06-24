@@ -1,10 +1,11 @@
-import { customAxios } from "functions/utilities/customAxios";
-import { responseHandler } from "functions/utilities/ajaxUtils";
 import { PersistentStorage } from "classes/PersistentStorage";
-import { appDispatch } from "functions/others/injectors/dispatchInjector";
-import { handleMakeSnack } from "functions/others/injectors/snackbarInjector";
 
 import { configs } from "configs/configs";
+
+import { customAxios } from "functions/utilities/customAxios";
+import { responseHandler } from "functions/utilities/ajaxUtils";
+import { handleMakeSnack } from "functions/others/injectors/snackbarInjector";
+import { appDispatch } from "functions/others/injectors/dispatchInjector";
 
 import { initialRequestOptions } from "variables/initials/initialOptions/initialOptions";
 import { errorInitialActions } from "variables/initials/initialActions/errorInitialActions";

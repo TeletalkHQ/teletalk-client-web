@@ -1,36 +1,36 @@
 import { useEffect } from "react";
 
-import Copyright from "components/utils/Copyright";
-import NewUserProfile from "components/authentication/NewUserProfile";
-import SignIn from "components/authentication/SignIn";
-import VerifySignIn from "components/authentication/VerifySignIn";
-
-import { useMyContext } from "hooks/useMyContext";
-
-import { signInCrl } from "controllers/authControllers/signInCrl";
-import { verifySignInCrl } from "controllers/authControllers/verifySignInCrl";
-import { welcomeCrl } from "controllers/otherControllers/welcomeCrl";
-import { createNewUserCrl } from "controllers/authControllers/createNewUserCrl";
-
-import { emitters } from "classes/Emitters";
-import { customTypeof } from "classes/CustomTypeof";
-
-import { appDispatch } from "functions/others/injectors/dispatchInjector";
-
 import {
   verifyCodeAction,
   countryCodeAction,
   countryNameAction,
   firstNameAction,
   lastNameAction,
-} from "actions/tempActions/tempActions";
-import { selectedCountryAction } from "actions/otherActions/otherActions";
-import { phoneNumberAction } from "actions/tempActions/tempActions";
-import { viewModeAction } from "actions/globalActions/globalActions";
+} from "actions/tempActions";
+import { selectedCountryAction } from "actions/otherActions";
+import { phoneNumberAction } from "actions/tempActions";
+import { viewModeAction } from "actions/globalActions";
 
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { emitters } from "classes/Emitters";
+import { customTypeof } from "classes/CustomTypeof";
 
 import { EVENT_EMITTER_EVENTS } from "configs/configs";
+
+import { appDispatch } from "functions/others/injectors/dispatchInjector";
+
+import { useMyContext } from "hooks/useMyContext";
+
+import Copyright from "components/utils/Copyright";
+import NewUserProfile from "components/authentication/NewUserProfile";
+import SignIn from "components/authentication/SignIn";
+import VerifySignIn from "components/authentication/VerifySignIn";
+
+import { signInCrl } from "controllers/authControllers/signInCrl";
+import { verifySignInCrl } from "controllers/authControllers/verifySignInCrl";
+import { welcomeCrl } from "controllers/otherControllers/welcomeCrl";
+import { createNewUserCrl } from "controllers/authControllers/createNewUserCrl";
+
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
 const Authentication = () => {
   const {

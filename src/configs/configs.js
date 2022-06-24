@@ -1,3 +1,4 @@
+//TODO Get process from Env manager class
 const RUNTIME_MODE = process.env.NODE_ENV;
 
 const SERVER_BASE_URL =

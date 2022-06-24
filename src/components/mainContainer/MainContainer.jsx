@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { Grid } from "@mui/material";
 
-import { backdropAction } from "actions/globalActions/globalActions";
+import { backdropAction } from "actions/globalActions";
 
 import { emitters } from "classes/Emitters";
 

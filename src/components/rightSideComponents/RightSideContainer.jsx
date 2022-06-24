@@ -7,7 +7,7 @@ import { useMyContext } from "hooks/useMyContext";
 import {
   contactClickAction,
   messageInputOnChangeAction,
-} from "actions/tempActions/tempActions";
+} from "actions/tempActions";
 
 import { initialContact } from "variables/initials/initialValues/initialValues";
 import { sendNewMessageCrl } from "controllers/messageControllers/sendPrivateMessageCrl";

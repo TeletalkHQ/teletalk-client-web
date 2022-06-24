@@ -4,7 +4,7 @@ import LogoutDialog from "components/dialogContainer/LogoutDialog";
 
 import { useMyContext } from "hooks/useMyContext";
 
-import { dialogAction } from "actions/globalActions/globalActions";
+import { dialogAction } from "actions/globalActions";
 
 const DialogContainer = () => {
   const {

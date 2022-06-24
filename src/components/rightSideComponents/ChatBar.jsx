@@ -1,5 +1,6 @@
-import { IconButton, Paper, Avatar, Typography } from "@mui/material";
 import { Close, MoreVert } from "@mui/icons-material";
+import { IconButton, Paper, Avatar, Typography } from "@mui/material";
+
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 

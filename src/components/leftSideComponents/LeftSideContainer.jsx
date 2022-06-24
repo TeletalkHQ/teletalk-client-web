@@ -1,6 +1,6 @@
-import ChatList from "components/leftSideComponents/ChatList";
+import { appDrawerAction } from "actions/globalActions";
 
-import { appDrawerAction } from "actions/globalActions/globalActions";
+import ChatList from "components/leftSideComponents/ChatList";
 
 import { useMyContext } from "hooks/useMyContext";
 

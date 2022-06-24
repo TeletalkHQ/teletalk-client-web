@@ -1,9 +1,10 @@
-import { appDispatch } from "functions/others/injectors/dispatchInjector";
-import { userInitializer } from "functions/helpers/userInitializer";
+import { viewModeAction } from "actions/globalActions";
+import { userAction } from "actions/userActions";
+
 import { PersistentStorage } from "classes/PersistentStorage";
 
-import { viewModeAction } from "actions/globalActions/globalActions";
-import { userAction } from "actions/userActions/userActions";
+import { appDispatch } from "functions/others/injectors/dispatchInjector";
+import { userInitializer } from "functions/helpers/userInitializer";
 
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 

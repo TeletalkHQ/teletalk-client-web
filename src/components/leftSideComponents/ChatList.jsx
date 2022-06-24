@@ -1,11 +1,12 @@
 import { List } from "@mui/material";
 
+import { contactClickAction } from "actions/tempActions";
+
 import ChatListItem from "components/leftSideComponents/ChatListItem";
 
-import { useMyContext } from "hooks/useMyContext";
-
-import { contactClickAction } from "actions/tempActions/tempActions";
 import { getAllChatMessagesCrl } from "controllers/messageControllers/getAllChatMessagesCrl";
+
+import { useMyContext } from "hooks/useMyContext";
 
 const ChatList = ({ chats = [], contacts, selectedContact }) => {
   const {

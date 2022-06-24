@@ -1,4 +1,5 @@
-import { welcomeAction } from "actions/otherActions/otherActions";
+import { welcomeAction } from "actions/otherActions";
+
 import { welcomeApi } from "apis/otherApis";
 
 const welcomeCrl = () => {
