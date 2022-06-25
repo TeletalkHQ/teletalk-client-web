@@ -22,7 +22,8 @@
             "phoneNumber": "phoneNumber"
           }
         }
-      ]
+      ],
+      "fullUrl": "/cellphone/addBlock"
     },
     "addBlocksRoute": {
       "method": "post",
@@ -31,7 +32,8 @@
       "version": "1.0.0",
       "description": "Use for block single contact on user contacts list",
       "inputFields": [{}],
-      "outputFields": [{}]
+      "outputFields": [{}],
+      "fullUrl": "/cellphone/addBlocks"
     },
     "addContactRoute": {
       "method": "post",
@@ -59,7 +61,8 @@
             "privateId": "privateId"
           }
         }
-      ]
+      ],
+      "fullUrl": "/cellphone/addContact"
     },
     "addContactsRoute": {
       "method": "post",
@@ -68,11 +71,18 @@
       "version": "1.0.0",
       "description": "Use for add single contact to current user contacts list",
       "inputFields": [{}],
-      "outputFields": [{}]
+      "outputFields": [{}],
+      "fullUrl": "/cellphone/addContacts"
     },
     "cellphoneRouteBaseUrl": {
+      "method": "GET",
       "url": "/cellphone",
-      "version": "1.0.0"
+      "statusCode": 404,
+      "version": "1.0.0",
+      "description": "Default route description",
+      "inputFields": [{}],
+      "outputFields": [{}],
+      "fullUrl": "/cellphone/cellphone"
     },
     "editContactRoute": {
       "method": "patch",
@@ -99,7 +109,8 @@
             "phoneNumber": "phoneNumber"
           }
         }
-      ]
+      ],
+      "fullUrl": "/cellphone/editContact"
     },
     "getContactsRoute": {
       "method": "get",
@@ -108,7 +119,8 @@
       "version": "1.0.0",
       "description": "User for edit single contact on user contacts list",
       "inputFields": [{}],
-      "outputFields": [{}]
+      "outputFields": [{}],
+      "fullUrl": "/cellphone/getContacts"
     },
     "removeBlockRoute": {
       "method": "delete",
@@ -131,7 +143,8 @@
             "phoneNumber": "phoneNumber"
           }
         }
-      ]
+      ],
+      "fullUrl": "/cellphone/removeBlock"
     },
     "removeBlocksRoute": {
       "method": "delete",
@@ -140,7 +153,8 @@
       "version": "1.0.0",
       "description": "Use for remove single contact on user contacts list",
       "inputFields": [{}],
-      "outputFields": [{}]
+      "outputFields": [{}],
+      "fullUrl": "/cellphone/removeBlocks"
     },
     "removeContactRoute": {
       "method": "delete",
@@ -163,7 +177,8 @@
             "phoneNumber": "phoneNumber"
           }
         }
-      ]
+      ],
+      "fullUrl": "/cellphone/removeContact"
     },
     "removeContactsRoute": {
       "method": "delete",
@@ -172,7 +187,8 @@
       "version": "1.0.0",
       "description": "Use for remove single contact on user contacts list",
       "inputFields": [{}],
-      "outputFields": [{}]
+      "outputFields": [{}],
+      "fullUrl": "/cellphone/removeContacts"
     },
     "shareContactRoute": {
       "method": "post",
@@ -181,7 +197,8 @@
       "version": "1.0.0",
       "description": "Use for share single contact on user contacts list",
       "inputFields": [{}],
-      "outputFields": [{}]
+      "outputFields": [{}],
+      "fullUrl": "/cellphone/shareContact"
     },
     "shareContactsRoute": {
       "method": "post",
@@ -190,30 +207,62 @@
       "version": "1.0.0",
       "description": "Use for share single contact on user contacts list",
       "inputFields": [{}],
-      "outputFields": [{}]
+      "outputFields": [{}],
+      "fullUrl": "/cellphone/shareContacts"
     },
     "otherRouteBaseUrl": {
+      "method": "GET",
       "url": "/other",
-      "version": "1.0.0"
+      "statusCode": 404,
+      "version": "1.0.0",
+      "description": "Default route description",
+      "inputFields": [{}],
+      "outputFields": [{}],
+      "fullUrl": "/other/other"
     },
     "countriesRoute": {
       "method": "get",
       "url": "/countries",
       "statusCode": 200,
       "version": "1.0.0",
-      "description": "Use for get countries for normal account"
+      "description": "Use for get countries for normal account",
+      "inputFields": [{}],
+      "outputFields": [
+        {
+          "countries": [
+            {
+              "countryShortName": "countryShortName",
+              "countryName": "countryName",
+              "countryCode": "countryCode"
+            }
+          ]
+        }
+      ],
+      "fullUrl": "/other/countries"
     },
     "welcomeRoute": {
       "method": "get",
       "url": "/welcomeMessage",
       "statusCode": 200,
       "version": "1.0.0",
-      "description": "Use to get welcome message for client"
+      "description": "Use to get welcome message for client",
+      "inputFields": [{}],
+      "outputFields": [
+        {
+          "message": "message"
+        }
+      ],
+      "fullUrl": "/other/welcomeMessage"
     },
     "privateChatRouteBaseUrl": {
+      "method": "GET",
       "url": "/chat",
+      "statusCode": 404,
       "version": "1.0.0",
-      "description": "privateChatRouteBaseUrl description"
+      "description": "privateChatRouteBaseUrl description",
+      "inputFields": [{}],
+      "outputFields": [{}],
+      "fullUrl": "/chat/chat"
     },
     "chatsLastMessageRoute": {
       "method": "post",
@@ -222,7 +271,8 @@
       "version": "1.0.0",
       "description": "Use for Get chats last message",
       "inputFields": [],
-      "outputFields": []
+      "outputFields": [],
+      "fullUrl": "/chat/privateChat/privateChatsLastMessages"
     },
     "getAllChatsRoute": {
       "method": "get",
@@ -239,7 +289,8 @@
             }
           ]
         }
-      ]
+      ],
+      "fullUrl": "/chat/privateChat/getAllPrivateChats"
     },
     "getPrivateChatMessagesRoute": {
       "method": "post",
@@ -264,7 +315,8 @@
             }
           ]
         }
-      ]
+      ],
+      "fullUrl": "/chat/privateChat/getPrivateMessages"
     },
     "sendMessageRoute": {
       "method": "post",
@@ -283,7 +335,8 @@
           "chatId": "chatId",
           "newMessage": "newMessage"
         }
-      ]
+      ],
+      "fullUrl": "/chat/privateChat/sendPrivateMessage"
     },
     "startChatRoute": {
       "method": "post",
@@ -292,7 +345,8 @@
       "version": "1.0.0",
       "description": "Use for Start new chat",
       "inputFields": [{}],
-      "outputFields": [{}]
+      "outputFields": [{}],
+      "fullUrl": "/chat/privateChat/startNewPrivateChat"
     },
     "createNewUserRoute": {
       "method": "post",
@@ -318,7 +372,8 @@
             "privateId": "privateId"
           }
         }
-      ]
+      ],
+      "fullUrl": "/user/normalUser/createNewNormalUser"
     },
     "getUserDataRoute": {
       "method": "get",
@@ -333,10 +388,8 @@
             "privateId": "privateId",
             "firstName": "firstName",
             "lastName": "lastName",
-            "bio": "bio",
             "contacts": "contacts",
             "blacklist": "blacklist",
-            "username": "username",
             "phoneNumber": "phoneNumber",
             "countryCode": "countryCode",
             "countryName": "countryName",
@@ -345,14 +398,16 @@
             "newUser": "newUser"
           }
         }
-      ]
+      ],
+      "fullUrl": "/user/normalUser/getUserData"
     },
     "logoutNormalRoute": {
       "method": "post",
       "url": "/normalUser/logoutNormalUser",
       "statusCode": 200,
       "version": "1.0.0",
-      "description": "Use for logout client as a normal account"
+      "description": "Use for logout client as a normal account",
+      "fullUrl": "/user/normalUser/logoutNormalUser"
     },
     "signInNormalRoute": {
       "method": "post",
@@ -376,18 +431,26 @@
             "verifyToken": "verifyToken"
           }
         }
-      ]
+      ],
+      "fullUrl": "/user/normalUser/signInNormalUser"
     },
     "statusCheckRoute": {
       "method": "get",
       "url": "/normalUser/statusCheck",
       "statusCode": 200,
       "version": "1.0.0",
-      "description": "Use for check client availability as a normal account"
+      "description": "Use for check client availability as a normal account",
+      "fullUrl": "/user/normalUser/statusCheck"
     },
     "userRouteBaseUrl": {
+      "method": "GET",
       "url": "/user",
-      "version": "1.0.0"
+      "statusCode": 404,
+      "version": "1.0.0",
+      "description": "Default route description",
+      "inputFields": [{}],
+      "outputFields": [{}],
+      "fullUrl": "/user/user"
     },
     "verifySignInNormalRoute": {
       "method": "post",
@@ -406,10 +469,8 @@
             "privateId": "privateId",
             "firstName": "firstName",
             "lastName": "lastName",
-            "bio": "bio",
             "contacts": "contacts",
             "blacklist": "blacklist",
-            "username": "username",
             "phoneNumber": "phoneNumber",
             "countryCode": "countryCode",
             "countryName": "countryName",
@@ -423,11 +484,18 @@
             "newUser": "newUser"
           }
         }
-      ]
+      ],
+      "fullUrl": "/user/normalUser/verifySignInNormalUser"
     },
     "versionControlBaseUrl": {
+      "method": "GET",
       "url": "/versionControl",
-      "version": "1.0.0"
+      "statusCode": 404,
+      "version": "1.0.0",
+      "description": "Default route description",
+      "inputFields": [{}],
+      "outputFields": [{}],
+      "fullUrl": "/versionControl/versionControl"
     },
     "getAllStuffsRoute": {
       "method": "get",
@@ -436,7 +504,8 @@
       "version": "1.0.0",
       "description": "Use for get all routes, models, validation models, errors and more",
       "inputFields": [{}],
-      "outputFields": [{}]
+      "outputFields": [{}],
+      "fullUrl": "/versionControl/getAllStuff"
     }
   }
 }

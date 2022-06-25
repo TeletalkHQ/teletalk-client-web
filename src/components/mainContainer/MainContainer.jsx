@@ -50,9 +50,9 @@ const MainContainer = () => {
         emitters.addListener({
           event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
-            if (userState.privateID) {
-              const { userState } = await dispatch(userStatusCheckerCrl());
-              await dispatch(getUserChatsLastMessageCrl({ userState }));
+            if (userState.privateId) {
+              const { user } = await dispatch(userStatusCheckerCrl());
+              await dispatch(getUserChatsLastMessageCrl({ user }));
             }
           },
         });
@@ -69,7 +69,7 @@ const MainContainer = () => {
 
   return (
     <>
-      {!userState.privateID || viewMode !== INITIAL_VIEW_MODE.MESSENGER ? (
+      {!userState.privateId || viewMode !== INITIAL_VIEW_MODE.MESSENGER ? (
         <Authentication />
       ) : (
         <>
@@ -92,7 +92,7 @@ const MainContainer = () => {
               lg={9}
               md={8}
             >
-              {selectedContact.privateID && <RightSideContainer />}
+              {selectedContact.privateId && <RightSideContainer />}
             </Grid>
           </Grid>
         </>

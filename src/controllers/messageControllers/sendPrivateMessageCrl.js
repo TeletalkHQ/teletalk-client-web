@@ -11,13 +11,13 @@ const sendNewMessageCrl = () => {
       const {
         temp: {
           messageInputText,
-          selectedContact: { privateID },
+          selectedContact: { privateId },
         },
         user,
       } = getState();
 
       const response = await sendPrivateMessageApi.sendRequest({
-        participantID: privateID,
+        participantID: privateId,
         message: messageInputText,
       });
 

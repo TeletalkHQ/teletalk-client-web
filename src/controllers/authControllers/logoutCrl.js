@@ -3,7 +3,7 @@ import { userAction } from "actions/userActions";
 
 import { logoutApi } from "apis/authenticationApis";
 
-import { PersistentStorage } from "classes/PersistentStorage";
+import { persistentStorage } from "classes/PersistentStorage";
 
 import { userInitializer } from "functions/helpers/userInitializer";
 
@@ -14,7 +14,7 @@ const logoutCrl = () => {
     try {
       /*const response = */ await logoutApi.sendRequest();
 
-      PersistentStorage.clear();
+      persistentStorage.setDefaultStorage();
 
       dispatch(userAction({ ...userInitializer() }));
 
