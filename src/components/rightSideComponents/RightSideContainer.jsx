@@ -20,7 +20,7 @@ const RightSideContainer = () => {
   const {
     state: {
       tempState: {
-        selectedContact: { firstName, lastName, privateID },
+        selectedContact: { firstName, lastName, privateId },
         selectedContact,
         messageInputText,
       },
@@ -33,7 +33,7 @@ const RightSideContainer = () => {
     try {
       const chat = userState.chats.find((chat) => {
         return chat.participants.find(
-          (participant) => participant.participantID === privateID
+          (participant) => participant.participantID === privateId
         );
       });
 
@@ -67,7 +67,7 @@ const RightSideContainer = () => {
   //FIXME
   const chat = userState.chats.find((chat) => {
     return chat.participants.find(
-      (participant) => participant.participantID === privateID
+      (participant) => participant.participantID === privateId
     );
   });
 

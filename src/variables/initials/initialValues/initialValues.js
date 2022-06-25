@@ -49,7 +49,7 @@ const initialContact = {
   firstName: "",
   lastName: "",
   phoneNumber: "",
-  privateID: "",
+  privateId: "",
 };
 
 const initialMessage = {

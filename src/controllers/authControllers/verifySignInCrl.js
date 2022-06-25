@@ -3,7 +3,7 @@ import { loadingAction, userAction } from "actions/userActions";
 
 import { verifySignInApi } from "apis/authenticationApis";
 
-import { PersistentStorage } from "classes/PersistentStorage";
+import { persistentStorage } from "classes/PersistentStorage";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
@@ -17,7 +17,7 @@ const verifySignInCrl = () => {
         tempState: { verifyCode },
       } = getState();
 
-      const verifyToken = PersistentStorage.getItem({ key: "verifyToken" });
+      const verifyToken = persistentStorage.getItem({ key: "verifyToken" });
 
       if (!verifyToken) {
         const error = "verifyToken is not defined";
@@ -39,12 +39,14 @@ const verifySignInCrl = () => {
           viewModeAction({ viewMode: INITIAL_VIEW_MODE.NEW_USER_PROFILE })
         );
       } else {
-        PersistentStorage.removeItem({ key: "verifyToken" });
+        persistentStorage.removeItem({ key: "verifyToken" });
 
         const mainToken = user.token;
         delete user.token;
 
-        PersistentStorage.setItem({ key: "mainToken", value: mainToken });
+        persistentStorage.setItem({ key: "mainToken", value: mainToken });
+
+        console.log("user", user);
 
         dispatch(userAction({ ...user }));
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));

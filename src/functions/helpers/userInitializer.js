@@ -1,11 +1,11 @@
-import { PersistentStorage } from "classes/PersistentStorage";
+import { persistentStorage } from "classes/PersistentStorage";
 
 import { tokenDecoder } from "functions/utilities/tokenDecoder";
 
 //REDESIGN
 const userInitializer = () => {
   try {
-    const user = {
+    const defaultUserState = {
       bio: "",
       blacklist: [],
       chats: [],
@@ -15,26 +15,30 @@ const userInitializer = () => {
       firstName: "",
       lastName: "",
       phoneNumber: "",
-      privateID: "",
+      privateId: "",
       username: "",
     };
 
-    const mainToken = PersistentStorage.getItem({ key: "mainToken" });
+    const mainToken = persistentStorage.getItem({ key: "mainToken" });
 
     if (!mainToken) {
-      PersistentStorage.clear();
-      return user;
+      persistentStorage.setDefaultStorage();
+      return defaultUserState;
     }
 
     const { decodedToken } = tokenDecoder({ token: mainToken });
 
-    delete decodedToken.iat;
+    const { phoneNumber, countryCode, countryName, privateId } = decodedToken;
 
-    const { phoneNumber, countryCode, countryName, privateID } = decodedToken;
-
-    return { ...user, phoneNumber, countryCode, countryName, privateID };
+    return {
+      ...defaultUserState,
+      phoneNumber,
+      countryCode,
+      countryName,
+      privateId,
+    };
   } catch (error) {
-    console.log("userInitializer catch", userInitializer);
+    console.log("userInitializer catch", error);
     // throw error;
   }
 };

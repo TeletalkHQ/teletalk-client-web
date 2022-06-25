@@ -1,36 +1,47 @@
-function PersistentStorage() {
-  try {
+class PersistentStorage {
+  constructor(defaultStorageState = {}) {
     this.storage = localStorage;
-
-    this.clear = () => {
-      this.storage.clear();
-
-      return this;
-    };
-
-    this.removeItem = ({ key = "" }) => {
-      this.storage.removeItem(key);
-
-      return this;
-    };
-
-    this.setItem = ({ key = "", value = "" }) => {
-      this.storage.setItem(key, value);
-
-      return this;
-    };
-
-    this.getItem = ({ key = "" }) => {
-      const item = this.storage.getItem(key);
-
-      return item;
-    };
-  } catch (error) {
-    console.log("PersistentStorage catch", error);
+    this.defaultStorageState = defaultStorageState;
+    this.#initialDefaultStorage();
   }
-  return this;
+
+  #initialDefaultStorage() {
+    Object.entries(this.defaultStorageState).forEach(([key, value]) => {
+      this.storage.setItem(key, JSON.stringify(value));
+    });
+  }
+
+  clear() {
+    this.storage.clear();
+
+    return this;
+  }
+
+  setDefaultStorage() {
+    this.#initialDefaultStorage();
+  }
+
+  removeItem({ key = "" }) {
+    this.storage.removeItem(key);
+
+    return this;
+  }
+
+  setItem({ key = "", value = "" }) {
+    this.storage.setItem(key, value);
+
+    return this;
+  }
+
+  getItem({ key = "" }) {
+    const item = this.storage.getItem(key);
+
+    return item;
+  }
 }
 
-const Storage = new PersistentStorage();
+const defaultPersistentStorage = new PersistentStorage({
+  user: {},
+});
 
-export { Storage as PersistentStorage };
+export { defaultPersistentStorage as persistentStorage, PersistentStorage };

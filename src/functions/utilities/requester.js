@@ -1,4 +1,4 @@
-import { PersistentStorage } from "classes/PersistentStorage";
+import { persistentStorage } from "classes/PersistentStorage";
 
 import { configs } from "configs/configs";
 
@@ -19,7 +19,7 @@ const requester = async (options = initialRequestOptions) => {
       ...options,
       data: { ...initialRequestOptions.data, ...options?.data },
       headers: { ...initialRequestOptions.headers, ...options?.headers },
-      token: options?.token || PersistentStorage.getItem({ key: "mainToken" }),
+      token: options?.token || persistentStorage.getItem({ key: "mainToken" }),
     };
 
     if (!finalOptions.url) {

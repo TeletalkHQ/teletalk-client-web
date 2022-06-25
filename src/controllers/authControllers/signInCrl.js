@@ -3,7 +3,7 @@ import { viewModeAction } from "actions/globalActions";
 
 import { signInApi } from "apis/authenticationApis";
 
-import { PersistentStorage } from "classes/PersistentStorage";
+import { persistentStorage } from "classes/PersistentStorage";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
@@ -27,7 +27,7 @@ const signInCrl = () => {
 
       console.log("rm", response.data);
 
-      PersistentStorage.setItem({ key: "verifyToken", value: verifyToken });
+      persistentStorage.setItem({ key: "verifyToken", value: verifyToken });
 
       dispatch(
         userAction({

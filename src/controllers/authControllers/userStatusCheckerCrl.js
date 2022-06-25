@@ -3,7 +3,7 @@ import { backdropAction, viewModeAction } from "actions/globalActions";
 
 import { userStatusCheckerApi } from "apis/authenticationApis";
 
-import { PersistentStorage } from "classes/PersistentStorage";
+import { persistentStorage } from "classes/PersistentStorage";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
@@ -24,7 +24,7 @@ const userStatusCheckerCrl = () => {
       console.log("userStatusCheckerCrl", error);
 
       if (error.statusCode === 401) {
-        PersistentStorage.clear();
+        persistentStorage.setDefaultStorage();
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
       }
 

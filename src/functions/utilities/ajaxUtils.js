@@ -1,7 +1,7 @@
 import { viewModeAction } from "actions/globalActions";
 import { userAction } from "actions/userActions";
 
-import { PersistentStorage } from "classes/PersistentStorage";
+import { persistentStorage } from "classes/PersistentStorage";
 
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
 import { userInitializer } from "functions/helpers/userInitializer";
@@ -24,7 +24,7 @@ const responseHandler = (response) => {
           break;
 
         case 401:
-          PersistentStorage.clear();
+          persistentStorage.setDefaultStorage();
           appDispatch(userAction({ ...userInitializer() }));
           appDispatch(
             viewModeAction({

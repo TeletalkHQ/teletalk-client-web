@@ -35,12 +35,12 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
                 const senderID = lastMessage.messageSender.senderID;
 
                 const sender =
-                  contacts.find((contact) => contact.privateID === senderID) ||
+                  contacts.find((contact) => contact.privateId === senderID) ||
                   userState;
 
                 const findParticipant = chat.participants.find(
                   (participant) =>
-                    participant?.participantID === selectedContact?.privateID
+                    participant?.participantID === selectedContact?.privateId
                 );
 
                 return (
