@@ -38,7 +38,7 @@ const ContactsDialog = ({ onClose }) => {
       dialogAction({
         dialogState: {
           ...dialogState,
-          addContact: { ...dialogState.addContact, open: true },
+          addContact: { ...dialogState.addNewContact, open: true },
         },
       })
     );
@@ -48,7 +48,6 @@ const ContactsDialog = ({ onClose }) => {
     dispatch(getContactsCrl());
   };
 
-  //TODO ???
   const handleContactClick = (contact) => {
     dispatch(contactClickAction({ selectedContact: contact }));
 
