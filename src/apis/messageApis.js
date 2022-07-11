@@ -2,7 +2,6 @@ import { apiBuilder } from "classes/ApiBuilder";
 import { stuffStore } from "classes/StuffStore";
 
 const {
-  privateChatRouteBaseUrl,
   chatsLastMessageRoute,
   getAllChatsRoute,
   getPrivateChatMessagesRoute,
@@ -11,22 +10,22 @@ const {
 
 const sendPrivateMessageApi = apiBuilder
   .create()
-  .setRequirements()
-  .build(privateChatRouteBaseUrl, sendMessageRoute);
+  .setRequirements(sendMessageRoute)
+  .build();
 
 const getUserChatsLastMessageApi = apiBuilder
   .create()
-  .setRequirements()
-  .build(privateChatRouteBaseUrl, chatsLastMessageRoute);
+  .setRequirements(chatsLastMessageRoute)
+  .build();
 
 const getAllChatsApi = apiBuilder
   .create()
-  .setRequirements()
-  .build(privateChatRouteBaseUrl, getAllChatsRoute);
+  .setRequirements(getAllChatsRoute)
+  .build();
 
 const getAllChatMessagesApi = apiBuilder
   .create()
-  .setRequirements(privateChatRouteBaseUrl, getPrivateChatMessagesRoute)
+  .setRequirements(getPrivateChatMessagesRoute)
   .build();
 
 export {

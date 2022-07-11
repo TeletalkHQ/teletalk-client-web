@@ -7,7 +7,6 @@ import {
 
 class ApiBuilder {
   constructor() {
-    this.baseUrlObject = {};
     this.routeObject = {};
   }
 
@@ -15,26 +14,21 @@ class ApiBuilder {
     return this;
   }
 
-  getApiUrlAndMethod(baseUrl, route) {
+  getApiUrlAndMethod(route) {
     return {
-      url: this.getApiUrl(baseUrl, route),
+      url: this.getApiUrl(route),
       method: this.getApiMethod(route),
     };
   }
   getApiMethod(route) {
     return route.method;
   }
-  getApiUrl(baseUrl, route) {
-    return `${baseUrl.url}${route.url}`;
+  getApiUrl(route) {
+    return route.fullUrl;
   }
 
-  setRequirements(baseUrlObject, routeObject) {
-    this.setBaseUrlObject(baseUrlObject);
+  setRequirements(routeObject) {
     this.setRouteObject(routeObject);
-    return this;
-  }
-  setBaseUrlObject(baseUrlObject) {
-    this.baseUrlObject = baseUrlObject;
     return this;
   }
   setRouteObject(routeObject) {
@@ -49,14 +43,12 @@ class ApiBuilder {
     token = persistentStorage.getItem({ key: "mainToken" }),
     ...data
   } = {}) {
-    console.log(this.routeObject);
-
     checkInputFields(data, this.routeObject.inputFields);
 
     try {
       const response = await requester({
         data: data,
-        ...this.getApiUrlAndMethod(this.baseUrlObject, this.routeObject),
+        ...this.getApiUrlAndMethod(this.routeObject),
         token,
       });
 
@@ -64,13 +56,7 @@ class ApiBuilder {
 
       return response;
     } catch (error) {
-      console.log(
-        `Api:${this.getApiUrl(
-          this.baseUrlObject,
-          this.routeObject
-        )} Api catch, error:`,
-        error
-      );
+      console.log(`Api:${this.routeObject.fullUrl} Api catch, error:`, error);
 
       throw error;
     }

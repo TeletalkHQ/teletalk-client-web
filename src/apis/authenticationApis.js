@@ -6,33 +6,32 @@ const {
   logoutNormalRoute,
   signInNormalRoute,
   statusCheckRoute,
-  userRouteBaseUrl,
   verifySignInNormalRoute,
 } = stuffStore.routes;
 
 const verifySignInApi = apiBuilder
   .create()
-  .setRequirements(userRouteBaseUrl, verifySignInNormalRoute)
+  .setRequirements(verifySignInNormalRoute)
   .build();
 
 const userStatusCheckerApi = apiBuilder
   .create()
-  .setRequirements(userRouteBaseUrl, statusCheckRoute)
+  .setRequirements(statusCheckRoute)
   .build();
 
 const signInApi = apiBuilder
   .create()
-  .setRequirements(userRouteBaseUrl, signInNormalRoute)
+  .setRequirements(signInNormalRoute)
   .build();
 
 const logoutApi = apiBuilder
   .create()
-  .setRequirements(userRouteBaseUrl, logoutNormalRoute)
+  .setRequirements(logoutNormalRoute)
   .build();
 
 const createNewUserApi = apiBuilder
   .create()
-  .setRequirements(userRouteBaseUrl, createNewUserRoute)
+  .setRequirements(createNewUserRoute)
   .build();
 
 export {
