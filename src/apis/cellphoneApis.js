@@ -6,7 +6,6 @@ const {
   // addBlocksRoute,
   addContactRoute,
   // addContactsRoute,
-  cellphoneRouteBaseUrl,
   // editContactRoute,
   getContactsRoute,
   // removeBlockRoute,
@@ -19,14 +18,14 @@ const {
 
 const getContactsApi = apiBuilder
   .create()
-  .setRequirements(cellphoneRouteBaseUrl, getContactsRoute)
+  .setRequirements(getContactsRoute)
   .build();
 
 export { getContactsApi };
 
 const addContactApi = apiBuilder
   .create()
-  .setRequirements(cellphoneRouteBaseUrl, addContactRoute)
+  .setRequirements(addContactRoute)
   .build();
 
 export { addContactApi };

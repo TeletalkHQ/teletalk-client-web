@@ -2,980 +2,1102 @@
   "errors": {
     "version": "1.0.0",
     "CHAT_EXIST": {
-      "errorCode": 4000,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "chat is already initialized",
       "reason": "CHAT_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHAT_VALIDATION"
+      "errorKey": "CHAT_VALIDATION",
+      "errorCode": 4000
     },
     "CHAT_ID_EMPTY": {
-      "errorCode": 4001,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CHAT_ID_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION"
+      "errorKey": "CHAT_ID_VALIDATION",
+      "errorCode": 4001
     },
     "CHAT_ID_EXIST": {
-      "errorCode": 4001,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CHAT_ID_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION"
+      "errorKey": "CHAT_ID_VALIDATION",
+      "errorCode": 4001
     },
     "CHAT_ID_INVALID": {
-      "errorCode": 4002,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CHAT_ID_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION"
+      "errorKey": "CHAT_ID_VALIDATION",
+      "errorCode": 4002
     },
     "CHAT_ID_INVALID_TYPE": {
-      "errorCode": 4002,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CHAT_ID_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION"
+      "errorKey": "CHAT_ID_VALIDATION",
+      "errorCode": 4002
     },
     "CHAT_ID_MAX_LENGTH_REACH": {
-      "errorCode": 4003,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CHAT_ID_MAX_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION"
+      "errorKey": "CHAT_ID_VALIDATION",
+      "errorCode": 4003
     },
     "CHAT_ID_MIN_LENGTH_REACH": {
-      "errorCode": 4004,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CHAT_ID_MIN_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION"
+      "errorKey": "CHAT_ID_VALIDATION",
+      "errorCode": 4004
     },
     "CHAT_ID_REQUIRED": {
-      "errorCode": 4005,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CHAT_ID_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION"
+      "errorKey": "CHAT_ID_VALIDATION",
+      "errorCode": 4005
     },
     "CHAT_NOT_EXIST": {
-      "errorCode": 4006,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "chat not exist, maybe deleted or something",
       "reason": "CHAT_NOT_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHAT_VALIDATION"
+      "errorKey": "CHAT_VALIDATION",
+      "errorCode": 4006
     },
     "CREATED_AT_INVALID_TYPE": {
-      "errorCode": 4043,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CREATED_AT_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CREATED_AT_VALIDATION"
+      "errorKey": "CREATED_AT_VALIDATION",
+      "errorCode": 4043
     },
     "MESSAGE_ID_EXIST": {
-      "errorCode": 4008,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_ID_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION"
+      "errorKey": "MESSAGE_ID_VALIDATION",
+      "errorCode": 4008
     },
     "MESSAGE_ID_INVALID_TYPE": {
-      "errorCode": 4009,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_ID_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION"
+      "errorKey": "MESSAGE_ID_VALIDATION",
+      "errorCode": 4009
     },
     "MESSAGE_ID_MAX_LENGTH_REACH": {
-      "errorCode": 4010,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_ID_MAX_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION"
+      "errorKey": "MESSAGE_ID_VALIDATION",
+      "errorCode": 4010
     },
     "MESSAGE_ID_MIN_LENGTH_REACH": {
-      "errorCode": 4011,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_ID_MIN_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION"
+      "errorKey": "MESSAGE_ID_VALIDATION",
+      "errorCode": 4011
     },
     "MESSAGE_ID_REQUIRED": {
-      "errorCode": 4012,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_ID_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION"
+      "errorKey": "MESSAGE_ID_VALIDATION",
+      "errorCode": 4012
     },
     "MESSAGE_TEXT_EMPTY": {
-      "errorCode": 4013,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_TEXT_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION"
+      "errorKey": "MESSAGE_TEXT_VALIDATION",
+      "errorCode": 4013
     },
     "MESSAGE_TEXT_INVALID": {
-      "errorCode": 4013,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_TEXT_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION"
+      "errorKey": "MESSAGE_TEXT_VALIDATION",
+      "errorCode": 4013
     },
     "MESSAGE_TEXT_INVALID_TYPE": {
-      "errorCode": 4013,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_TEXT_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION"
+      "errorKey": "MESSAGE_TEXT_VALIDATION",
+      "errorCode": 4013
     },
     "MESSAGE_TEXT_MAX_LENGTH_REACH": {
-      "errorCode": 4014,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_TEXT_MAX_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION"
+      "errorKey": "MESSAGE_TEXT_VALIDATION",
+      "errorCode": 4014
     },
     "MESSAGE_TEXT_MIN_LENGTH_REACH": {
-      "errorCode": 4015,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MESSAGE_TEXT_MIN_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION"
+      "errorKey": "MESSAGE_TEXT_VALIDATION",
+      "errorCode": 4015
     },
     "MESSAGE_TEXT_REQUIRED": {
-      "errorCode": 4000,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "message text is required",
       "reason": "MESSAGE_TEXT_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION"
+      "errorKey": "MESSAGE_TEXT_VALIDATION",
+      "errorCode": 4000
     },
     "PARTICIPANT_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PARTICIPANT_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION"
+      "errorKey": "PARTICIPANT_ID_VALIDATION",
+      "errorCode": 4076
     },
     "PARTICIPANT_ID_EXIST": {
-      "errorCode": 4016,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PARTICIPANT_ID_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION"
+      "errorKey": "PARTICIPANT_ID_VALIDATION",
+      "errorCode": 4016
     },
     "PARTICIPANT_ID_INVALID": {
-      "errorCode": 4017,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PARTICIPANT_ID_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION"
+      "errorKey": "PARTICIPANT_ID_VALIDATION",
+      "errorCode": 4017
     },
     "PARTICIPANT_ID_INVALID_TYPE": {
-      "errorCode": 4017,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PARTICIPANT_ID_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION"
+      "errorKey": "PARTICIPANT_ID_VALIDATION",
+      "errorCode": 4017
     },
     "PARTICIPANT_ID_MAX_LENGTH_REACH": {
-      "errorCode": 4018,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PARTICIPANT_ID_MAX_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION"
+      "errorKey": "PARTICIPANT_ID_VALIDATION",
+      "errorCode": 4018
     },
     "PARTICIPANT_ID_MIN_LENGTH_REACH": {
-      "errorCode": 4019,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PARTICIPANT_ID_MIN_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION"
+      "errorKey": "PARTICIPANT_ID_VALIDATION",
+      "errorCode": 4019
     },
     "PARTICIPANT_ID_REQUIRED": {
-      "errorCode": 4020,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PARTICIPANT_ID_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION"
+      "errorKey": "PARTICIPANT_ID_VALIDATION",
+      "errorCode": 4020
     },
     "PARTICIPANT_NOT_EXIST": {
-      "errorCode": 4021,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PARTICIPANT_NOT_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION"
+      "errorKey": "PARTICIPANT_ID_VALIDATION",
+      "errorCode": 4021
     },
     "SENDER_EMPTY": {
-      "errorCode": 4021,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "SENDER_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION"
+      "errorKey": "SENDER_ID_VALIDATION",
+      "errorCode": 4021
     },
     "SENDER_ID_EXIST": {
-      "errorCode": 4021,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "SENDER_ID_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION"
+      "errorKey": "SENDER_ID_VALIDATION",
+      "errorCode": 4021
     },
     "SENDER_ID_INVALID_TYPE": {
-      "errorCode": 4021,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "SENDER_ID_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION"
+      "errorKey": "SENDER_ID_VALIDATION",
+      "errorCode": 4021
     },
     "SENDER_ID_MAX_LENGTH_REACH": {
-      "errorCode": 4021,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "SENDER_ID_MAX_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION"
+      "errorKey": "SENDER_ID_VALIDATION",
+      "errorCode": 4021
     },
     "SENDER_ID_MIN_LENGTH_REACH": {
-      "errorCode": 4021,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "SENDER_ID_MIN_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION"
+      "errorKey": "SENDER_ID_VALIDATION",
+      "errorCode": 4021
     },
     "SENDER_ID_REQUIRED": {
-      "errorCode": 4021,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "SENDER_ID_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION"
+      "errorKey": "SENDER_ID_VALIDATION",
+      "errorCode": 4021
     },
     "USER_NO_LONGER_PARTICIPANT": {
-      "errorCode": 4022,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "USER_NO_LONGER_PARTICIPANT",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "USER_VALIDATION"
+      "errorKey": "USER_VALIDATION",
+      "errorCode": 4022
     },
     "BIO_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "BIO_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "BIO_VALIDATION"
+      "errorKey": "BIO_VALIDATION",
+      "errorCode": 4076
     },
     "BIO_INVALID_TYPE": {
-      "errorCode": 4024,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "BIO_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "BIO_VALIDATION"
+      "errorKey": "BIO_VALIDATION",
+      "errorCode": 4024
     },
     "BIO_MAXLENGTH_REACH": {
-      "errorCode": 4025,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "BIO_MAXLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "BIO_VALIDATION"
+      "errorKey": "BIO_VALIDATION",
+      "errorCode": 4025
     },
     "BIO_MINLENGTH_REACH": {
-      "errorCode": 4026,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "BIO_MINLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "BIO_VALIDATION"
+      "errorKey": "BIO_VALIDATION",
+      "errorCode": 4026
     },
     "BLACKLIST_INVALID_TYPE": {
-      "errorCode": 4023,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "BLACKLIST_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "BLACKLIST_VALIDATION"
+      "errorKey": "BLACKLIST_VALIDATION",
+      "errorCode": 4023
     },
     "BLACKLIST_ITEM_EXIST": {
-      "errorCode": 4000,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "blacklist item is already exist",
       "reason": "BLACKLIST_ITEM_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "BLACKLIST_VALIDATION"
+      "errorKey": "BLACKLIST_VALIDATION",
+      "errorCode": 4000
     },
     "BLACKLIST_ITEM_NOT_EXIST": {
-      "errorCode": 4000,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "blacklist item is not exist",
       "reason": "BLACKLIST_ITEM_NOT_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "BLACKLIST_VALIDATION"
+      "errorKey": "BLACKLIST_VALIDATION",
+      "errorCode": 4000
     },
     "CELLPHONE_EXIST": {
-      "errorCode": 4027,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CELLPHONE_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION"
+      "errorKey": "CELLPHONE_VALIDATION",
+      "errorCode": 4027
     },
     "CELLPHONE_EXIST_IN_CONTACT": {
-      "errorCode": 4033,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CELLPHONE_EXIST_IN_CONTACT",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION"
+      "errorKey": "CELLPHONE_VALIDATION",
+      "errorCode": 4033
     },
     "CELLPHONE_INVALID": {
-      "errorCode": 4028,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CELLPHONE_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION"
+      "errorKey": "CELLPHONE_VALIDATION",
+      "errorCode": 4028
     },
     "CELLPHONE_NOT_EXIST": {
-      "errorCode": 4031,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CELLPHONE_NOT_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION"
+      "errorKey": "CELLPHONE_VALIDATION",
+      "errorCode": 4031
     },
     "CELLPHONE_REQUIRED": {
-      "errorCode": 4032,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CELLPHONE_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION"
+      "errorKey": "CELLPHONE_VALIDATION",
+      "errorCode": 4032
     },
     "CHATS_INVALID_TYPE": {
-      "errorCode": 4000,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CHATS_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CHATS_VALIDATION"
+      "errorKey": "CHATS_VALIDATION",
+      "errorCode": 4000
     },
     "CONTACT_INVALID_TYPE": {
-      "errorCode": 4034,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CONTACT_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CONTACT_VALIDATION"
+      "errorKey": "CONTACT_VALIDATION",
+      "errorCode": 4034
     },
     "CONTACT_ITEM_EXIST": {
-      "errorCode": 4000,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "Contact item is already exist",
       "reason": "CONTACT_ITEM_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CONTACT_VALIDATION"
+      "errorKey": "CONTACT_VALIDATION",
+      "errorCode": 4000
     },
     "CONTACT_ITEM_NOT_EXIST": {
-      "errorCode": 4000,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "Contact item is not exist",
       "reason": "CONTACT_ITEM_NOT_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CONTACT_VALIDATION"
+      "errorKey": "CONTACT_VALIDATION",
+      "errorCode": 4000
     },
     "COUNTRY_CODE_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_CODE_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION"
+      "errorKey": "COUNTRY_CODE_VALIDATION",
+      "errorCode": 4076
     },
     "COUNTRY_CODE_INVALID": {
-      "errorCode": 4035,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_CODE_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION"
+      "errorKey": "COUNTRY_CODE_VALIDATION",
+      "errorCode": 4035
     },
     "COUNTRY_CODE_INVALID_TYPE": {
-      "errorCode": 4035,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_CODE_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION"
+      "errorKey": "COUNTRY_CODE_VALIDATION",
+      "errorCode": 4035
     },
     "COUNTRY_CODE_MAXLENGTH_REACH": {
-      "errorCode": 4036,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_CODE_MAXLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION"
+      "errorKey": "COUNTRY_CODE_VALIDATION",
+      "errorCode": 4036
     },
     "COUNTRY_CODE_MINLENGTH_REACH": {
-      "errorCode": 4037,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_CODE_MINLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION"
+      "errorKey": "COUNTRY_CODE_VALIDATION",
+      "errorCode": 4037
     },
     "COUNTRY_CODE_NOT_SUPPORTED": {
-      "errorCode": 4035,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_CODE_NOT_SUPPORTED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION"
+      "errorKey": "COUNTRY_CODE_VALIDATION",
+      "errorCode": 4035
     },
     "COUNTRY_CODE_NUMERIC": {
-      "errorCode": 4035,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_CODE_NUMERIC",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION"
+      "errorKey": "COUNTRY_CODE_VALIDATION",
+      "errorCode": 4035
     },
     "COUNTRY_CODE_REQUIRED": {
-      "errorCode": 4038,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_CODE_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION"
+      "errorKey": "COUNTRY_CODE_VALIDATION",
+      "errorCode": 4038
     },
     "COUNTRY_NAME_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_NAME_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION"
+      "errorKey": "COUNTRY_NAME_VALIDATION",
+      "errorCode": 4076
     },
     "COUNTRY_NAME_INVALID": {
-      "errorCode": 4039,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_NAME_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION"
+      "errorKey": "COUNTRY_NAME_VALIDATION",
+      "errorCode": 4039
     },
     "COUNTRY_NAME_INVALID_TYPE": {
-      "errorCode": 4039,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_NAME_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION"
+      "errorKey": "COUNTRY_NAME_VALIDATION",
+      "errorCode": 4039
     },
     "COUNTRY_NAME_MAXLENGTH_REACH": {
-      "errorCode": 4040,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_NAME_MAXLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION"
+      "errorKey": "COUNTRY_NAME_VALIDATION",
+      "errorCode": 4040
     },
     "COUNTRY_NAME_MINLENGTH_REACH": {
-      "errorCode": 4041,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_NAME_MINLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION"
+      "errorKey": "COUNTRY_NAME_VALIDATION",
+      "errorCode": 4041
     },
     "COUNTRY_NAME_NOT_SUPPORTED": {
-      "errorCode": 4035,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_NAME_NOT_SUPPORTED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION"
+      "errorKey": "COUNTRY_NAME_VALIDATION",
+      "errorCode": 4035
     },
     "COUNTRY_NAME_REQUIRED": {
-      "errorCode": 4042,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_NAME_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION"
+      "errorKey": "COUNTRY_NAME_VALIDATION",
+      "errorCode": 4042
     },
     "COUNTRY_NOT_SUPPORTED": {
-      "errorCode": 4035,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "COUNTRY_NOT_SUPPORTED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "COUNTRY_NOT_SUPPORTED_VALIDATION"
+      "errorKey": "COUNTRY_NOT_SUPPORTED_VALIDATION",
+      "errorCode": 4035
     },
     "CREATED_AT_REQUIRED": {
-      "errorCode": 4043,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "CREATED_AT_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "CREATED_AT_VALIDATION"
+      "errorKey": "CREATED_AT_VALIDATION",
+      "errorCode": 4043
     },
     "FIRST_NAME_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "FIRST_NAME_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION"
+      "errorKey": "FIRST_NAME_VALIDATION",
+      "errorCode": 4076
     },
     "FIRST_NAME_INVALID_TYPE": {
-      "errorCode": 4044,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "FIRST_NAME_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION"
+      "errorKey": "FIRST_NAME_VALIDATION",
+      "errorCode": 4044
     },
     "FIRST_NAME_MAXLENGTH_REACH": {
-      "errorCode": 4045,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "FIRST_NAME_MAXLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION"
+      "errorKey": "FIRST_NAME_VALIDATION",
+      "errorCode": 4045
     },
     "FIRST_NAME_MINLENGTH_REACH": {
-      "errorCode": 4046,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "FIRST_NAME_MINLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION"
+      "errorKey": "FIRST_NAME_VALIDATION",
+      "errorCode": 4046
     },
     "FIRST_NAME_REQUIRED": {
-      "errorCode": 4047,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "FIRST_NAME_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION"
+      "errorKey": "FIRST_NAME_VALIDATION",
+      "errorCode": 4047
     },
     "FULL_NAME_INVALID": {
-      "errorCode": 4056,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "FULL_NAME_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "FULL_NAME_VALIDATION"
+      "errorKey": "FULL_NAME_VALIDATION",
+      "errorCode": 4056
     },
     "LAST_NAME_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "LAST_NAME_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION"
+      "errorKey": "LAST_NAME_VALIDATION",
+      "errorCode": 4076
     },
     "LAST_NAME_INVALID": {
-      "errorCode": 4048,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "LAST_NAME_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION"
+      "errorKey": "LAST_NAME_VALIDATION",
+      "errorCode": 4048
     },
     "LAST_NAME_INVALID_TYPE": {
-      "errorCode": 4048,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "LAST_NAME_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION"
+      "errorKey": "LAST_NAME_VALIDATION",
+      "errorCode": 4048
     },
     "LAST_NAME_MAXLENGTH_REACH": {
-      "errorCode": 4049,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "LAST_NAME_MAXLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION"
+      "errorKey": "LAST_NAME_VALIDATION",
+      "errorCode": 4049
     },
     "LAST_NAME_MINLENGTH_REACH": {
-      "errorCode": 4050,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "LAST_NAME_MINLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION"
+      "errorKey": "LAST_NAME_VALIDATION",
+      "errorCode": 4050
     },
     "MAC_ADDRESS_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MAC_ADDRESS_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION"
+      "errorKey": "MAC_ADDRESS_VALIDATION",
+      "errorCode": 4076
     },
     "MAC_ADDRESS_EXIST": {
-      "errorCode": 4051,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MAC_ADDRESS_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION"
+      "errorKey": "MAC_ADDRESS_VALIDATION",
+      "errorCode": 4051
     },
     "MAC_ADDRESS_INVALID_TYPE": {
-      "errorCode": 4052,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MAC_ADDRESS_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION"
+      "errorKey": "MAC_ADDRESS_VALIDATION",
+      "errorCode": 4052
     },
     "MAC_ADDRESS_MAXLENGTH_REACH": {
-      "errorCode": 4053,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MAC_ADDRESS_MAXLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION"
+      "errorKey": "MAC_ADDRESS_VALIDATION",
+      "errorCode": 4053
     },
     "MAC_ADDRESS_MINLENGTH_REACH": {
-      "errorCode": 4054,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MAC_ADDRESS_MINLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION"
+      "errorKey": "MAC_ADDRESS_VALIDATION",
+      "errorCode": 4054
     },
     "MAC_ADDRESS_REQUIRED": {
-      "errorCode": 4055,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "MAC_ADDRESS_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION"
+      "errorKey": "MAC_ADDRESS_VALIDATION",
+      "errorCode": 4055
     },
     "PHONE_NUMBER_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PHONE_NUMBER_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION"
+      "errorKey": "PHONE_NUMBER_VALIDATION",
+      "errorCode": 4076
     },
     "PHONE_NUMBER_EXIST": {
-      "errorCode": 4057,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PHONE_NUMBER_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION"
+      "errorKey": "PHONE_NUMBER_VALIDATION",
+      "errorCode": 4057
     },
     "PHONE_NUMBER_INVALID": {
-      "errorCode": 4000,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PHONE_NUMBER_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION"
+      "errorKey": "PHONE_NUMBER_VALIDATION",
+      "errorCode": 4000
     },
     "PHONE_NUMBER_INVALID_TYPE": {
-      "errorCode": 4056,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PHONE_NUMBER_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION"
+      "errorKey": "PHONE_NUMBER_VALIDATION",
+      "errorCode": 4056
     },
     "PHONE_NUMBER_MAXLENGTH_REACH": {
-      "errorCode": 4060,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PHONE_NUMBER_MAXLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION"
+      "errorKey": "PHONE_NUMBER_VALIDATION",
+      "errorCode": 4060
     },
     "PHONE_NUMBER_MINLENGTH_REACH": {
-      "errorCode": 4059,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PHONE_NUMBER_MINLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION"
+      "errorKey": "PHONE_NUMBER_VALIDATION",
+      "errorCode": 4059
     },
     "PHONE_NUMBER_NUMERIC": {
-      "errorCode": 4060,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PHONE_NUMBER_NUMERIC",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION"
+      "errorKey": "PHONE_NUMBER_VALIDATION",
+      "errorCode": 4060
     },
     "PHONE_NUMBER_REQUIRED": {
-      "errorCode": 4058,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PHONE_NUMBER_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION"
+      "errorKey": "PHONE_NUMBER_VALIDATION",
+      "errorCode": 4058
     },
     "PRIVATE_ID_EMPTY": {
-      "errorCode": 4065,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PRIVATE_ID_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION"
+      "errorKey": "PRIVATE_ID_VALIDATION",
+      "errorCode": 4065
     },
     "PRIVATE_ID_EXIST": {
-      "errorCode": 4061,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PRIVATE_ID_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION"
+      "errorKey": "PRIVATE_ID_VALIDATION",
+      "errorCode": 4061
     },
     "PRIVATE_ID_INVALID": {
-      "errorCode": 4065,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PRIVATE_ID_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION"
+      "errorKey": "PRIVATE_ID_VALIDATION",
+      "errorCode": 4065
     },
     "PRIVATE_ID_INVALID_TYPE": {
-      "errorCode": 4062,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PRIVATE_ID_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION"
+      "errorKey": "PRIVATE_ID_VALIDATION",
+      "errorCode": 4062
     },
     "PRIVATE_ID_MAX_LENGTH_REACH": {
-      "errorCode": 4063,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PRIVATE_ID_MAX_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION"
+      "errorKey": "PRIVATE_ID_VALIDATION",
+      "errorCode": 4063
     },
     "PRIVATE_ID_MIN_LENGTH_REACH": {
-      "errorCode": 4064,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PRIVATE_ID_MIN_LENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION"
+      "errorKey": "PRIVATE_ID_VALIDATION",
+      "errorCode": 4064
     },
     "PRIVATE_ID_REQUIRED": {
-      "errorCode": 4065,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "PRIVATE_ID_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION"
+      "errorKey": "PRIVATE_ID_VALIDATION",
+      "errorCode": 4065
     },
     "SELF_STUFF": {
-      "errorCode": 4066,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "SELF_STUFF",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "SELF_STUFF_VALIDATION"
+      "errorKey": "SELF_STUFF_VALIDATION",
+      "errorCode": 4066
     },
     "TARGET_USER_NOT_EXIST": {
-      "errorCode": 4070,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "target user not exist",
       "reason": "TARGET_USER_NOT_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "TARGET_USER_VALIDATION"
+      "errorKey": "TARGET_USER_VALIDATION",
+      "errorCode": 4070
     },
     "TOKEN_CAN_NOT_VERIFIED": {
-      "errorCode": 4069,
-      "statusCode": 401,
+      "description": "Default route description",
       "message": "",
       "reason": "TOKEN_CAN_NOT_VERIFIED",
+      "statusCode": 401,
       "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION"
+      "errorKey": "TOKEN_VALIDATION",
+      "errorCode": 4069
     },
     "TOKEN_EXIST": {
-      "errorCode": 4067,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "TOKEN_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION"
+      "errorKey": "TOKEN_VALIDATION",
+      "errorCode": 4067
     },
     "TOKEN_INVALID": {
-      "errorCode": 4069,
-      "statusCode": 401,
+      "description": "Default route description",
       "message": "",
       "reason": "TOKEN_INVALID",
+      "statusCode": 401,
       "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION"
+      "errorKey": "TOKEN_VALIDATION",
+      "errorCode": 4069
     },
     "TOKEN_INVALID_TYPE": {
-      "errorCode": 4069,
-      "statusCode": 401,
+      "description": "Default route description",
       "message": "",
       "reason": "TOKEN_INVALID_TYPE",
+      "statusCode": 401,
       "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION"
+      "errorKey": "TOKEN_VALIDATION",
+      "errorCode": 4069
     },
     "TOKEN_REQUIRED": {
-      "errorCode": 4068,
-      "statusCode": 401,
+      "description": "Default route description",
       "message": "",
       "reason": "TOKEN_REQUIRED",
+      "statusCode": 401,
       "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION"
+      "errorKey": "TOKEN_VALIDATION",
+      "errorCode": 4068
     },
     "USER_NOT_EXIST": {
-      "errorCode": 4070,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "user not exist",
       "reason": "USER_NOT_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "USER_VALIDATION"
+      "errorKey": "USER_VALIDATION",
+      "errorCode": 4070
     },
     "USERNAME_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "USERNAME_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION"
+      "errorKey": "USERNAME_VALIDATION",
+      "errorCode": 4076
     },
     "USERNAME_EXIST": {
-      "errorCode": 4071,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "USERNAME_EXIST",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION"
+      "errorKey": "USERNAME_VALIDATION",
+      "errorCode": 4071
     },
     "USERNAME_INVALID": {
-      "errorCode": 4072,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "USERNAME_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION"
+      "errorKey": "USERNAME_VALIDATION",
+      "errorCode": 4072
     },
     "USERNAME_INVALID_TYPE": {
-      "errorCode": 4072,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "USERNAME_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION"
+      "errorKey": "USERNAME_VALIDATION",
+      "errorCode": 4072
     },
     "USERNAME_MAXLENGTH_REACH": {
-      "errorCode": 4073,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "USERNAME_MAXLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION"
+      "errorKey": "USERNAME_VALIDATION",
+      "errorCode": 4073
     },
     "USERNAME_MINLENGTH_REACH": {
-      "errorCode": 4074,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "USERNAME_MINLENGTH_REACH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION"
+      "errorKey": "USERNAME_VALIDATION",
+      "errorCode": 4074
     },
     "USERNAME_REQUIRED": {
-      "errorCode": 4072,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "USERNAME_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION"
+      "errorKey": "USERNAME_VALIDATION",
+      "errorCode": 4072
     },
     "VERIFICATION_CODE_EMPTY": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "VERIFICATION_CODE_EMPTY",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION"
+      "errorKey": "VERIFICATION_CODE_VALIDATION",
+      "errorCode": 4076
     },
     "VERIFICATION_CODE_INVALID": {
-      "errorCode": 4075,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "Wrong verification code",
       "reason": "VERIFICATION_CODE_INVALID",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION"
+      "errorKey": "VERIFICATION_CODE_VALIDATION",
+      "errorCode": 4075
     },
     "VERIFICATION_CODE_INVALID_LENGTH": {
-      "errorCode": 4077,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "VERIFICATION_CODE_INVALID_LENGTH",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION"
+      "errorKey": "VERIFICATION_CODE_VALIDATION",
+      "errorCode": 4077
     },
     "VERIFICATION_CODE_INVALID_TYPE": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "VERIFICATION_CODE_INVALID_TYPE",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION"
+      "errorKey": "VERIFICATION_CODE_VALIDATION",
+      "errorCode": 4076
     },
     "VERIFICATION_CODE_NUMERIC": {
-      "errorCode": 4076,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "",
       "reason": "VERIFICATION_CODE_NUMERIC",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION"
+      "errorKey": "VERIFICATION_CODE_VALIDATION",
+      "errorCode": 4076
     },
     "VERIFICATION_CODE_REQUIRED": {
-      "errorCode": 4075,
-      "statusCode": 400,
+      "description": "Default route description",
       "message": "Wrong verification code",
       "reason": "VERIFICATION_CODE_REQUIRED",
+      "statusCode": 400,
       "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION"
+      "errorKey": "VERIFICATION_CODE_VALIDATION",
+      "errorCode": 4075
     }
   }
 }

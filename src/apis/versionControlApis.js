@@ -1,13 +1,11 @@
 import { apiBuilder } from "classes/ApiBuilder";
 import { stuffStore } from "classes/StuffStore";
 
-const { getAllStuffsRoute, versionControlBaseUrl } = stuffStore.routes;
-
-console.log(getAllStuffsRoute, versionControlBaseUrl);
+const { getAllStuffsRoute } = stuffStore.routes;
 
 const getAllStuffApi = apiBuilder
   .create()
-  .setRequirements(versionControlBaseUrl, getAllStuffsRoute)
+  .setRequirements(getAllStuffsRoute)
   .build();
 
 export { getAllStuffApi };
