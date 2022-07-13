@@ -81,10 +81,12 @@ class ApiBuilder {
 
   requestInterceptors(...callbacks) {
     this.requestInterceptorsArray = callbacks;
+    return this;
   }
 
   responseInterceptors(...callbacks) {
     this.responseInterceptorsArray = callbacks;
+    return this;
   }
 }
 const apiBuilder = {

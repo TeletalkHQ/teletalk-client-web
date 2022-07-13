@@ -5,11 +5,13 @@ import { getCountriesApi } from "apis/otherApis";
 const getCountriesCrl = () => {
   return async (dispatch) => {
     try {
-      const response = await getCountriesApi.sendRequest();
+      const {
+        data: { countries },
+      } = await getCountriesApi.sendRequest();
 
-      dispatch(getCountriesAction({ countries: response.data.countries }));
+      dispatch(getCountriesAction({ countries }));
     } catch (error) {
-      console.log("getCountriesCrl", error);
+      console.log("getCountriesCrl catch, error:", error);
     }
   };
 };
