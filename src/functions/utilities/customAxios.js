@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { SERVER_BASE_URL } from "configs/configs";
 
+//TODO Add this defaults to configs
 const customAxios = axios.create({
   baseURL: SERVER_BASE_URL,
   headers: { "Content-Type": "application/json", Authorization: "" },
