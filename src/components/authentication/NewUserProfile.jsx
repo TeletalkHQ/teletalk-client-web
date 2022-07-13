@@ -6,14 +6,16 @@ import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
 
+import { elementNames } from "variables/initials/initialValues/elementNames";
+
 const NewUserProfile = ({
   firstNameInput,
   lastNameInput,
+  loading,
   onBackClick,
-  onLastNameOnChange,
   onConfirmClick,
   onFirstNameOnChange,
-  loading,
+  onLastNameOnChange,
 }) => {
   return (
     <Container maxWidth="xl">
@@ -33,7 +35,7 @@ const NewUserProfile = ({
           <CustomTextInput
             required
             id="firstNameInput"
-            name="firstName"
+            name={elementNames.firstName}
             autoFocus
             value={firstNameInput}
             onChange={onFirstNameOnChange}
@@ -42,7 +44,7 @@ const NewUserProfile = ({
           <CustomTextInput
             required
             id="lastNameInput"
-            name="lastName"
+            name={elementNames.lastName}
             value={lastNameInput}
             onChange={onLastNameOnChange}
             label="Last Name"

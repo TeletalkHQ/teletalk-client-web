@@ -14,21 +14,21 @@ import { viewModeAction } from "actions/globalActions";
 import { emitters } from "classes/Emitters";
 import { customTypeof } from "classes/CustomTypeof";
 
-import { EVENT_EMITTER_EVENTS } from "configs/configs";
-
-import { appDispatch } from "functions/others/injectors/dispatchInjector";
-
-import { useMyContext } from "hooks/useMyContext";
-
 import Copyright from "components/utils/Copyright";
 import NewUserProfile from "components/authentication/NewUserProfile";
 import SignIn from "components/authentication/SignIn";
 import VerifySignIn from "components/authentication/VerifySignIn";
 
+import { EVENT_EMITTER_EVENTS } from "configs/configs";
+
 import { signInCrl } from "controllers/authControllers/signInCrl";
 import { verifySignInCrl } from "controllers/authControllers/verifySignInCrl";
 import { welcomeCrl } from "controllers/otherControllers/welcomeCrl";
 import { createNewUserCrl } from "controllers/authControllers/createNewUserCrl";
+
+import { appDispatch } from "functions/others/injectors/dispatchInjector";
+
+import { useMyContext } from "hooks/useMyContext";
 
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
@@ -106,7 +106,7 @@ const Authentication = () => {
     dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
   };
 
-  const handleCountryNameOnchange = (newValue) => {
+  const handleCountryNameAutocompleteOnchange = (newValue) => {
     dispatch(selectedCountryAction({ selectedCountry: newValue || null }));
     dispatch(countryCodeAction({ countryCode: newValue?.countryCode || "" }));
     dispatch(countryNameAction({ countryName: newValue?.countryName || "" }));
@@ -141,7 +141,9 @@ const Authentication = () => {
             onSignInClick={handleSignInClick}
             phoneNumber={phoneNumber}
             countryName={countryName}
-            onCountryNameOnchange={handleCountryNameOnchange}
+            onCountryNameAutocompleteOnchange={
+              handleCountryNameAutocompleteOnchange
+            }
             onCountryNameOnInputChange={handleCountryNameOnInputChange}
             selectedCountry={selectedCountry}
           />
