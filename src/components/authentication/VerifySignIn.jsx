@@ -5,14 +5,16 @@ import CustomButton from "components/generals/inputs/CustomButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
 
+import { elementNames } from "variables/initials/initialValues/elementNames";
+
 const VerifySignIn = ({
   countryCode,
+  loading,
   onBackClick,
   onVerifyClick,
   onVerifyCodeChange,
   phoneNumber,
   verifyCode,
-  loading,
 }) => {
   return (
     <Container maxWidth="xl">
@@ -48,13 +50,11 @@ const VerifySignIn = ({
 
             <CustomTextInput
               required
-              id="phoneNumber"
               label="Verification code"
-              name="verifyCode"
+              name={elementNames.verifyCode}
               autoFocus
               value={verifyCode}
               onChange={onVerifyCodeChange}
-              // InputLabelProps={{ shrink: true }}
             />
 
             <CustomButton

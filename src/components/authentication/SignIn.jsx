@@ -7,13 +7,15 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
 
+import { elementNames } from "variables/initials/initialValues/elementNames";
+
 const SignIn = ({
   countries,
   countryCode,
   countryName,
   loading,
   onCountryCodeChange,
-  onCountryNameOnchange,
+  onCountryNameAutocompleteOnchange,
   onCountryNameOnInputChange,
   onPhoneNumberChange,
   onSignInClick,
@@ -40,7 +42,9 @@ const SignIn = ({
               <CountrySelector
                 countries={countries}
                 countryName={countryName}
-                onCountryNameOnchange={onCountryNameOnchange}
+                onCountryNameAutocompleteOnchange={
+                  onCountryNameAutocompleteOnchange
+                }
                 onCountryNameOnInputChange={onCountryNameOnInputChange}
                 selectedCountry={selectedCountry}
               />
@@ -50,9 +54,8 @@ const SignIn = ({
               <CustomTextInput
                 style={{ width: "90px" }}
                 required
-                id="countryCode"
                 label="Code"
-                name="countryCode"
+                name={elementNames.countryCode}
                 autoComplete="off"
                 InputProps={{
                   startAdornment: (
@@ -66,9 +69,8 @@ const SignIn = ({
               />
               <CustomTextInput
                 required
-                id="phoneNumber"
                 label="Phone number"
-                name="phoneNumber"
+                name={elementNames.phoneNumber}
                 autoComplete="tel-national"
                 style={{ marginLeft: "5px" }}
                 value={phoneNumber}

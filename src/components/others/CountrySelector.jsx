@@ -5,24 +5,26 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
 
+import { elementNames } from "variables/initials/initialValues/elementNames";
+
 const CountrySelector = ({
   countries,
   countryName,
-  onCountryNameOnchange,
+  onCountryNameAutocompleteOnchange,
   onCountryNameOnInputChange,
   selectedCountry,
 }) => {
+  console.log(selectedCountry);
   return (
     <Autocomplete
       value={selectedCountry}
       onChange={(_, newValue) => {
-        onCountryNameOnchange(newValue);
+        onCountryNameAutocompleteOnchange(newValue);
       }}
       inputValue={countryName}
       onInputChange={(_, newInputValue) => {
         onCountryNameOnInputChange(newInputValue);
       }}
-      id="country-select-demo"
       options={countries}
       autoHighlight
       fullWidth
@@ -47,10 +49,10 @@ const CountrySelector = ({
         <CustomTextInput
           {...params}
           required
+          name={elementNames.countryName}
           label="Choose a country"
           InputProps={{
             ...params.InputProps,
-            autoComplete: "new-password", // disable autocomplete and autofill
           }}
         />
       )}
