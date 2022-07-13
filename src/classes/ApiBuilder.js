@@ -8,6 +8,8 @@ import {
 class ApiBuilder {
   constructor() {
     this.routeObject = {};
+    this.requestInterceptorsArray = [];
+    this.responseInterceptorsArray = [];
   }
 
   build() {
@@ -41,18 +43,22 @@ class ApiBuilder {
   }
   async sendRequest({
     token = persistentStorage.getItem({ key: "mainToken" }),
-    ...data
+    ...requestData
   } = {}) {
-    checkInputFields(data, this.routeObject.inputFields);
+    checkInputFields(requestData, this.routeObject.inputFields);
+
+    this.executeRequestInterceptors(requestData);
 
     try {
       const response = await requester({
-        data: data,
+        data: requestData,
         ...this.getApiUrlAndMethod(this.routeObject),
         token,
       });
 
       checkOutputFields(response.data, this.routeObject.outputFields);
+
+      this.executeResponseInterceptors(response.data);
 
       return response;
     } catch (error) {
@@ -60,6 +66,25 @@ class ApiBuilder {
 
       throw error;
     }
+  }
+
+  executeRequestInterceptors(data) {
+    this.requestInterceptorsArray.forEach((interceptor) => {
+      interceptor(data);
+    });
+  }
+  executeResponseInterceptors(data) {
+    this.responseInterceptorsArray.forEach((interceptor) => {
+      interceptor(data);
+    });
+  }
+
+  requestInterceptors(...callbacks) {
+    this.requestInterceptorsArray = callbacks;
+  }
+
+  responseInterceptors(...callbacks) {
+    this.responseInterceptorsArray = callbacks;
   }
 }
 const apiBuilder = {
