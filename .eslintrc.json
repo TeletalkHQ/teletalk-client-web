@@ -33,6 +33,7 @@
           "nanoid",
           "camelcase",
           "chai",
+          "bgcolor",
           "CLEANME",
           "codestream",
           "redis",
