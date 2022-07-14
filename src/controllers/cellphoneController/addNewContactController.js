@@ -4,7 +4,7 @@ import { addContactApi } from "apis/cellphoneApis";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 
-const addNewContactCrl = (contact) => {
+const addNewContactController = (contact) => {
   return async (dispatch, getState = getInitialState) => {
     try {
       const result = await addContactApi.sendRequest(contact);
@@ -15,9 +15,9 @@ const addNewContactCrl = (contact) => {
         })
       );
     } catch (error) {
-      console.log("addNewContactCrl", error);
+      console.log("addNewContactController", error);
     }
   };
 };
 
-export { addNewContactCrl };
+export { addNewContactController };

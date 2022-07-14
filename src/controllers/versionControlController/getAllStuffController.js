@@ -5,7 +5,7 @@ import { emitters } from "classes/Emitters";
 
 import { EVENT_EMITTER_EVENTS } from "configs/configs";
 
-const getAllStuffCrl = () => {
+const getAllStuffController = () => {
   return async (dispatch, getState) => {
     try {
       // const response =
@@ -13,10 +13,10 @@ const getAllStuffCrl = () => {
 
       emitters.emitEvent({ event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED });
     } catch (error) {
-      console.log("getAllStuffCrl", error);
+      console.log("getAllStuffController", error);
       throw error;
     }
   };
 };
 
-export { getAllStuffCrl };
+export { getAllStuffController };

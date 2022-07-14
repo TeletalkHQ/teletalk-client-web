@@ -10,9 +10,9 @@ import {
 } from "actions/tempActions";
 
 import { initialContact } from "variables/initials/initialValues/initialValues";
-import { sendNewMessageCrl } from "controllers/messageControllers/sendPrivateMessageCrl";
+import { sendPrivateMessageController } from "controllers/messageControllers/sendPrivateMessageController";
 import { useEffect } from "react";
-import { getAllChatMessagesCrl } from "controllers/messageControllers/getAllChatMessagesCrl";
+import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
 
@@ -39,7 +39,7 @@ const RightSideContainer = () => {
 
       if (chat) {
         const intervalID = setInterval(() => {
-          dispatch(getAllChatMessagesCrl({ chatID: chat.chatID }));
+          dispatch(getAllChatMessagesController({ chatID: chat.chatID }));
         }, 1000);
 
         return () => {
@@ -57,7 +57,7 @@ const RightSideContainer = () => {
   };
 
   const handleAddNewMessage = async () => {
-    dispatch(sendNewMessageCrl());
+    dispatch(sendPrivateMessageController());
   };
 
   const handleMessageContainerCloseClick = () => {

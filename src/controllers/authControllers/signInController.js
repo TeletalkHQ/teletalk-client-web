@@ -11,7 +11,7 @@ import {
   PERSISTENT_STORAGE_KEYS,
 } from "variables/initials/initialValues/initialValues";
 
-const signInCrl = () => {
+const signInController = () => {
   return async (dispatch, getState = getInitialState) => {
     try {
       const {
@@ -45,11 +45,11 @@ const signInCrl = () => {
 
       return response;
     } catch (error) {
-      console.log("signInCrl catch", error);
+      console.log("signInController catch", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }
   };
 };
 
-export { signInCrl };
+export { signInController };

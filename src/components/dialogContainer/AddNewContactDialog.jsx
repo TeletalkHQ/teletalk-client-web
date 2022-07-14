@@ -10,7 +10,7 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
 
-import { addNewContactCrl } from "controllers/cellphoneController/addNewContactCrl";
+import { addNewContactController } from "controllers/cellphoneController/addNewContactController";
 
 import { initialContact } from "variables/initials/initialValues/initialValues";
 
@@ -30,7 +30,7 @@ const AddNewContactDialog = ({ onClose }) => {
 
   const handleAddNewContact = () => {
     dispatch(
-      addNewContactCrl({
+      addNewContactController({
         countryCode: "98",
         countryName: "iran",
         phoneNumber: contact.phoneNumber,

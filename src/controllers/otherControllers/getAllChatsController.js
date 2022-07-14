@@ -2,16 +2,16 @@ import { userAction } from "actions/userActions";
 
 import { getAllChatsApi } from "apis/messageApis/getAllChatsApi";
 
-const getChatsCrl = () => {
+const getAllChatsController = () => {
   return async (dispatch, getState) => {
     try {
       const response = await getAllChatsApi.sendRequest();
 
       dispatch(userAction({ chats: response.data.chats }));
     } catch (error) {
-      console.log("getChatsCrl", error);
+      console.log("getAllChatsController", error);
     }
   };
 };
 
-export { getChatsCrl };
+export { getAllChatsController };

@@ -5,7 +5,7 @@ import { sendPrivateMessageApi } from "apis/messageApis";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 
-const sendNewMessageCrl = () => {
+const sendPrivateMessageController = () => {
   return async (dispatch, getState = getInitialState) => {
     try {
       const {
@@ -51,7 +51,7 @@ const sendNewMessageCrl = () => {
       dispatch(userAction({ chats: copyUser.chats }));
       dispatch(messageInputOnChangeAction({ messageInputText: "" }));
     } catch (error) {
-      console.log("sendNewMessageCrl", error);
+      console.log("sendPrivateMessageController", error);
     }
   };
 };
@@ -64,4 +64,4 @@ const handleAddNewMessage = ({ messages, newMessage }) => {
   return copyMessages;
 };
 
-export { sendNewMessageCrl };
+export { sendPrivateMessageController };

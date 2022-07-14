@@ -42,7 +42,7 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   }
 };
 
-const getUserChatsLastMessageCrl = ({ user }) => {
+const getUserChatsLastMessageController = ({ user }) => {
   return async (dispatch, getState = getInitialState) => {
     try {
       const response = await getUserChatsLastMessageApi.sendRequest();
@@ -54,9 +54,9 @@ const getUserChatsLastMessageCrl = ({ user }) => {
 
       dispatch(userAction({ chats: chatsWithLastMessage }));
     } catch (error) {
-      console.log("getUserChatsLastMessageCrl", error);
+      console.log("getUserChatsLastMessageController", error);
     }
   };
 };
 
-export { getUserChatsLastMessageCrl };
+export { getUserChatsLastMessageController };

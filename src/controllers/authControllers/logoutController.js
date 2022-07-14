@@ -9,7 +9,7 @@ import { userInitializer } from "functions/helpers/userInitializer";
 
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
-const logoutCrl = () => {
+const logoutController = () => {
   return async (dispatch, getState) => {
     try {
       /*const response = */ await logoutApi.sendRequest();
@@ -24,9 +24,9 @@ const logoutCrl = () => {
         })
       );
     } catch (error) {
-      console.log("logoutCrl", error);
+      console.log("logoutController", error);
     }
   };
 };
 
-export { logoutCrl };
+export { logoutController };
