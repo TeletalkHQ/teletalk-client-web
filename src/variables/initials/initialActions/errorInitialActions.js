@@ -5,7 +5,7 @@ const {
 } = initialStates;
 
 const errorInitialActions = {
-  econnabortedAction: {
+  eConnAbortedAction: {
     type: "ECONNABORTED",
     payload: { error },
   },

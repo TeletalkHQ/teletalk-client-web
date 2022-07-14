@@ -6,12 +6,17 @@ import { createNewUserApi } from "apis/authenticationApis";
 import { persistentStorage } from "classes/PersistentStorage";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import {
+  INITIAL_VIEW_MODE,
+  PERSISTENT_STORAGE_KEYS,
+} from "variables/initials/initialValues/initialValues";
 
 const createNewUserCrl = () => {
   return async (dispatch, getState = getInitialState) => {
     try {
-      const verifyToken = persistentStorage.getItem({ key: "verifyToken" });
+      const verifyToken = persistentStorage.getItem(
+        PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN
+      );
 
       if (!verifyToken) {
         const error = "verifyToken is not defined";
@@ -33,7 +38,7 @@ const createNewUserCrl = () => {
 
       console.log(response.data);
 
-      persistentStorage.removeItem({ key: "verifyToken" });
+      persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
 
       dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
 

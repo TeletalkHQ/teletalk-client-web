@@ -7,11 +7,11 @@ class PersistentStorage {
 
   #initialDefaultStorage() {
     Object.entries(this.defaultStorageState).forEach(([key, value]) => {
-      this.storage.setItem(key, JSON.stringify(value));
+      this.setItem(key, JSON.stringify(value));
     });
   }
 
-  clear() {
+  clearAllStates() {
     this.storage.clear();
 
     return this;
@@ -21,19 +21,19 @@ class PersistentStorage {
     this.#initialDefaultStorage();
   }
 
-  removeItem({ key = "" }) {
+  removeItem(key = "") {
     this.storage.removeItem(key);
 
     return this;
   }
 
-  setItem({ key = "", value = "" }) {
+  setItem(key = "", value = "") {
     this.storage.setItem(key, value);
 
     return this;
   }
 
-  getItem({ key = "" }) {
+  getItem(key = "") {
     const item = this.storage.getItem(key);
 
     return item;

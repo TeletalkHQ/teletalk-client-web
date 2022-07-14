@@ -89,12 +89,18 @@ const initialErrorTemplateItem = {
   },
 };
 
+const PERSISTENT_STORAGE_KEYS = {
+  VERIFY_TOKEN: "VERIFY_TOKEN",
+  MAIN_TOKEN: "MAIN_TOKEN",
+};
+
 export {
   appIcons,
+  INITIAL_VIEW_MODE,
   initialContact,
   initialCountry,
   initialErrorTemplateItem,
   initialMessage,
   initialRouteTemplateItem,
-  INITIAL_VIEW_MODE,
+  PERSISTENT_STORAGE_KEYS,
 };

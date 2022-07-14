@@ -4,7 +4,7 @@ import { initialAction } from "variables/initials/initialOptions/initialOptions"
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { errorInitialActions } from "variables/initials/initialActions/errorInitialActions";
 
-const { econnabortedAction } = errorInitialActions;
+const { eConnAbortedAction } = errorInitialActions;
 
 const notificationReducer = (
   state = initialStates.errorState,
@@ -16,7 +16,7 @@ const notificationReducer = (
     const fn = () => newStateReplacer({ state, payload });
 
     switch (type) {
-      case econnabortedAction.type:
+      case eConnAbortedAction.type:
         return fn();
 
       default:
