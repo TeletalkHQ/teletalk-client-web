@@ -1,27 +1,26 @@
 import axios from "axios";
 
-import { SERVER_BASE_URL } from "configs/configs";
+import { configs, SERVER_BASE_URL } from "configs/configs";
 
-//TODO Add this defaults to configs
 const customAxios = axios.create({
   baseURL: SERVER_BASE_URL,
-  headers: { "Content-Type": "application/json", Authorization: "" },
-  timeout: 20000,
-  validateStatus: false,
+  headers: configs.requestConfigs.defaultHeaders,
+  timeout: configs.requestConfigs.timeout,
+  validateStatus: configs.requestConfigs.validateStatus,
 });
 
 export { customAxios };
 
-// //* Return is interceptor, so if you want to remove interceptor you need that.
+//* Return is interceptor, so if you want to remove interceptor you need that.
 // axios.interceptors.response.use(
 // 	function (response) {
-// 		// Any status code that lie within the range of 2xx cause this function to trigger
-// 		// Do something with response data
+//* Any status code that lie within the range of 2xx cause this function to trigger
+//* Do something with response data
 // 		return response;
 // 	},
 // 	function (error) {
-// 		// Any status codes that falls outside the range of 2xx cause this function to trigger
-// 		// Do something with response error
+//* Any status codes that falls outside the range of 2xx cause this function to trigger
+//* Do something with response error
 // 		return Promise.reject(error);
 // 	},
 // );
@@ -49,18 +48,18 @@ export { customAxios };
 
 // axios.get("/user/12345").catch(function (error) {
 // 	if (error.response) {
-// 		// The request was made and the server responded with a status code
-// 		// that falls out of the range of 2xx
+//* The request was made and the server responded with a status code
+//* that falls out of the range of 2xx
 // 		console.log(error.response.data);
 // 		console.log(error.response.status);
 // 		console.log(error.response.headers);
 // 	} else if (error.request) {
-// 		// The request was made but no response was received
-// 		// `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-// 		// http.ClientRequest in node.js
+//* The request was made but no response was received
+//* `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+//* http.ClientRequest in node.js
 // 		console.log(error.request);
 // 	} else {
-// 		// Something happened in setting up the request that triggered an Error
+//* Something happened in setting up the request that triggered an Error
 // 		console.log("Error", error.message);
 // 	}
 // 	console.log(error.config);
@@ -79,7 +78,7 @@ export { customAxios };
 //   if (axios.isCancel(thrown)) {
 //     console.log('Request canceled', thrown.message);
 //   } else {
-//     // handle error
+//* handle error
 //   }
 // });
 
@@ -113,7 +112,7 @@ export { customAxios };
 // 		signal: controller.signal,
 // 	})
 // 	.then(function (response) {
-// 		//...
+//*...
 // 	});
 // // cancel the request
 // controller.abort();
@@ -122,15 +121,12 @@ export { customAxios };
 // params.append('param1', 'value1');
 // params.append('param2', 'value2');
 // axios.post('/foo', params);
-// Note that URLSearchParams is not supported by all browsers (see caniuse.com), but there is a polyfill available (make sure to polyfill the global environment).
 
 // Alternatively, you can encode data using the qs library:
 
-// const qs = require('qs');
 // axios.post('/foo', qs.stringify({ 'bar': 123 }));
 // Or in another way (ES6),
 
-// import qs from 'qs';
 // const data = { 'bar': 123 };
 // const options = {
 //   method: 'POST',
@@ -142,9 +138,6 @@ export { customAxios };
 
 // Node.js
 // Query string
-// In node.js, you can use the querystring module as follows:
-
-// const querystring = require('querystring');
 // axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 // or 'URLSearchParams' from 'url module' as follows:
 
