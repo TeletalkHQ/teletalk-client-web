@@ -1,5 +1,6 @@
+import { customTypeof } from "classes/CustomTypeof";
+
 import {
-  customTypeof,
   errorThrower,
   getErrorObject,
   getValidatorErrorTypes,
@@ -105,6 +106,49 @@ class ValidationErrorBuilder {
   }
 }
 
+class ErrorBuilder {
+  constructor() {
+    this.errorObject = {
+      description: "Default route description",
+      message: "",
+      errorReason: "UNKNOWN_ERROR",
+      errorCode: 4000,
+    };
+  }
+
+  #addProperty(key, value) {
+    this.errorObject[key] = value;
+  }
+
+  build() {
+    return this.errorObject;
+  }
+
+  errorCode(errorCode) {
+    this.#addProperty("errorCode", errorCode);
+    return this;
+  }
+  message(message) {
+    this.#addProperty("message", message);
+    return this;
+  }
+  errorReason(errorReason) {
+    this.#addProperty("errorReason", errorReason);
+    return this;
+  }
+  description(description) {
+    this.errorObject.description = description;
+    return this;
+  }
+}
+
+const errorBuilder = { create: () => new ErrorBuilder() };
+
 const validationBuilder = { create: () => new ValidationErrorBuilder() };
 
-export { validationBuilder, ValidationErrorBuilder };
+export {
+  errorBuilder,
+  ErrorBuilder,
+  validationBuilder,
+  ValidationErrorBuilder,
+};
