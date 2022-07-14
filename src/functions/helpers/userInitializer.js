@@ -1,8 +1,9 @@
 import { persistentStorage } from "classes/PersistentStorage";
 
 import { tokenDecoder } from "functions/utilities/tokenDecoder";
+import { PERSISTENT_STORAGE_KEYS } from "variables/initials/initialValues/initialValues";
 
-//REDESIGN
+//REFACTOR
 const userInitializer = () => {
   try {
     const defaultUserState = {
@@ -19,7 +20,9 @@ const userInitializer = () => {
       username: "",
     };
 
-    const mainToken = persistentStorage.getItem({ key: "mainToken" });
+    const mainToken = persistentStorage.getItem(
+      PERSISTENT_STORAGE_KEYS.MAIN_TOKEN
+    );
 
     if (!mainToken) {
       persistentStorage.setDefaultStorage();

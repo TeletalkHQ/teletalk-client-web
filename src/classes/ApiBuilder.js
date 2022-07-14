@@ -4,14 +4,15 @@ import {
   checkInputFields,
   checkOutputFields,
 } from "functions/helpers/inputOutputFieldsChecker";
+import { PERSISTENT_STORAGE_KEYS } from "variables/initials/initialValues/initialValues";
 
 class ApiBuilder {
   constructor() {
     this.routeObject = {};
-    this.requestInterceptorsArray = [];
-    this.responseInterceptorsArray = [];
   }
 
+  #responseInterceptorsArray = [];
+  #requestInterceptorsArray = [];
   build() {
     return this;
   }
@@ -42,7 +43,7 @@ class ApiBuilder {
     return this;
   }
   async sendRequest({
-    token = persistentStorage.getItem({ key: "mainToken" }),
+    token = persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN),
     ...requestData
   } = {}) {
     checkInputFields(requestData, this.routeObject.inputFields);
@@ -69,23 +70,23 @@ class ApiBuilder {
   }
 
   executeRequestInterceptors(data) {
-    this.requestInterceptorsArray.forEach((interceptor) => {
+    this.#requestInterceptorsArray.forEach((interceptor) => {
       interceptor(data);
     });
   }
   executeResponseInterceptors(data) {
-    this.responseInterceptorsArray.forEach((interceptor) => {
+    this.#responseInterceptorsArray.forEach((interceptor) => {
       interceptor(data);
     });
   }
 
   requestInterceptors(...callbacks) {
-    this.requestInterceptorsArray = callbacks;
+    this.#requestInterceptorsArray = callbacks;
     return this;
   }
 
   responseInterceptors(...callbacks) {
-    this.responseInterceptorsArray = callbacks;
+    this.#responseInterceptorsArray = callbacks;
     return this;
   }
 }

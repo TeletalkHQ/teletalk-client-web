@@ -9,8 +9,9 @@ import { appDispatch } from "functions/others/injectors/dispatchInjector";
 
 import { initialRequestOptions } from "variables/initials/initialOptions/initialOptions";
 import { errorInitialActions } from "variables/initials/initialActions/errorInitialActions";
+import { PERSISTENT_STORAGE_KEYS } from "variables/initials/initialValues/initialValues";
 
-const { successResponseLogger, failureResponseLogger } = configs.requester;
+const { logSuccessfulResponse, logFailureResponse } = configs.requester;
 
 const requester = async (options = initialRequestOptions) => {
   try {
@@ -19,7 +20,9 @@ const requester = async (options = initialRequestOptions) => {
       ...options,
       data: { ...initialRequestOptions.data, ...options?.data },
       headers: { ...initialRequestOptions.headers, ...options?.headers },
-      token: options?.token || persistentStorage.getItem({ key: "mainToken" }),
+      token:
+        options?.token ||
+        persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN),
     };
 
     if (!finalOptions.url) {
@@ -37,17 +40,17 @@ const requester = async (options = initialRequestOptions) => {
 
     const checkedResponse = responseHandler(response);
 
-    successResponseLogger && console.log(checkedResponse);
+    logSuccessfulResponse && console.log(checkedResponse);
 
     return checkedResponse;
   } catch (error) {
-    failureResponseLogger && console.log("requester catch, error:", error);
+    logFailureResponse && console.log("requester catch, error:", error);
 
     if (!window?.navigator?.onLine) {
-      appDispatch({ type: errorInitialActions.econnabortedAction.type });
+      appDispatch({ type: errorInitialActions.eConnAbortedAction.type });
       handleMakeSnack("ECONNABORTED", { variant: "error" });
     } else if (error?.code === "ECONNABORTED") {
-      appDispatch({ type: errorInitialActions.econnabortedAction.type });
+      appDispatch({ type: errorInitialActions.eConnAbortedAction.type });
       handleMakeSnack("ECONNABORTED", { variant: "error" });
     }
 

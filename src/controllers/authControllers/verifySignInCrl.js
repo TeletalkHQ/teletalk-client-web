@@ -6,7 +6,10 @@ import { verifySignInApi } from "apis/authenticationApis";
 import { persistentStorage } from "classes/PersistentStorage";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import {
+  INITIAL_VIEW_MODE,
+  PERSISTENT_STORAGE_KEYS,
+} from "variables/initials/initialValues/initialValues";
 
 const verifySignInCrl = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -17,7 +20,9 @@ const verifySignInCrl = () => {
         tempState: { verifyCode },
       } = getState();
 
-      const verifyToken = persistentStorage.getItem({ key: "verifyToken" });
+      const verifyToken = persistentStorage.getItem(
+        PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN
+      );
 
       if (!verifyToken) {
         const error = "verifyToken is not defined";
@@ -39,12 +44,15 @@ const verifySignInCrl = () => {
           viewModeAction({ viewMode: INITIAL_VIEW_MODE.NEW_USER_PROFILE })
         );
       } else {
-        persistentStorage.removeItem({ key: "verifyToken" });
+        persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
 
         const mainToken = user.token;
         delete user.token;
 
-        persistentStorage.setItem({ key: "mainToken", value: mainToken });
+        persistentStorage.setItem(
+          PERSISTENT_STORAGE_KEYS.MAIN_TOKEN,
+          mainToken
+        );
 
         console.log("user", user);
 

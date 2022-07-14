@@ -23,8 +23,8 @@ const configs = {
   },
 
   requester: {
-    successResponseLogger: false,
-    failureResponseLogger: false,
+    logSuccessfulResponse: false,
+    logFailureResponse: false,
   },
 };
 
