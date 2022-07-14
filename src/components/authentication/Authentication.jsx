@@ -21,10 +21,10 @@ import VerifySignIn from "components/authentication/VerifySignIn";
 
 import { EVENT_EMITTER_EVENTS } from "configs/configs";
 
-import { signInCrl } from "controllers/authControllers/signInCrl";
-import { verifySignInCrl } from "controllers/authControllers/verifySignInCrl";
-import { welcomeCrl } from "controllers/otherControllers/welcomeCrl";
-import { createNewUserCrl } from "controllers/authControllers/createNewUserCrl";
+import { signInController } from "controllers/authControllers/signInController";
+import { verifySignInController } from "controllers/authControllers/verifySignInController";
+import { welcomeController } from "controllers/otherControllers/welcomeController";
+import { createNewUserController } from "controllers/authControllers/createNewUserController";
 
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
 
@@ -57,18 +57,18 @@ const Authentication = () => {
     emitters.addListener({
       event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
       listener: async () => {
-        dispatch(welcomeCrl());
+        dispatch(welcomeController());
       },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSignInClick = () => {
-    dispatch(signInCrl());
+    dispatch(signInController());
   };
 
   const handleVerifyClick = () => {
-    dispatch(verifySignInCrl());
+    dispatch(verifySignInController());
   };
 
   const handlePhoneNumberChange = (event) => {
@@ -125,7 +125,7 @@ const Authentication = () => {
   };
 
   const handleConfirmClick = () => {
-    dispatch(createNewUserCrl());
+    dispatch(createNewUserController());
   };
 
   const component = () => {

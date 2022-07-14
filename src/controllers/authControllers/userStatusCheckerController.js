@@ -8,7 +8,7 @@ import { persistentStorage } from "classes/PersistentStorage";
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
-const userStatusCheckerCrl = () => {
+const userStatusCheckerController = () => {
   return async (dispatch) => {
     try {
       const response = await userStatusCheckerApi.sendRequest();
@@ -21,7 +21,7 @@ const userStatusCheckerCrl = () => {
 
       return { user };
     } catch (error) {
-      console.log("userStatusCheckerCrl", error);
+      console.log("userStatusCheckerController", error);
 
       if (error.statusCode === 401) {
         persistentStorage.setDefaultStorage();
@@ -35,4 +35,4 @@ const userStatusCheckerCrl = () => {
   };
 };
 
-export { userStatusCheckerCrl };
+export { userStatusCheckerController };

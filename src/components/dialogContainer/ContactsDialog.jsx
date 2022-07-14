@@ -13,7 +13,7 @@ import CustomButton from "components/generals/inputs/CustomButton";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 
-import { getContactsCrl } from "controllers/cellphoneController/getContactsCrl";
+import { getContactsController } from "controllers/cellphoneController/getContactsController";
 
 const ContactsDialog = ({ onClose }) => {
   const {
@@ -45,7 +45,7 @@ const ContactsDialog = ({ onClose }) => {
   };
 
   const handleGetContacts = () => {
-    dispatch(getContactsCrl());
+    dispatch(getContactsController());
   };
 
   const handleContactClick = (contact) => {

@@ -1,4 +1,5 @@
 import { viewModeAction } from "actions/globalActions";
+import { verifyCodeAction } from "actions/tempActions";
 import { loadingAction, userAction } from "actions/userActions";
 
 import { verifySignInApi } from "apis/authenticationApis";
@@ -11,7 +12,7 @@ import {
   PERSISTENT_STORAGE_KEYS,
 } from "variables/initials/initialValues/initialValues";
 
-const verifySignInCrl = () => {
+const verifySignInController = () => {
   return async (dispatch, getState = getInitialState) => {
     try {
       dispatch(loadingAction({ loading: true }));
@@ -37,6 +38,8 @@ const verifySignInCrl = () => {
         token: verifyToken,
       });
 
+      dispatch(verifyCodeAction({ verifyCode: "" }));
+
       const { user } = response.data;
 
       if (user.newUser) {
@@ -60,11 +63,11 @@ const verifySignInCrl = () => {
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
       }
     } catch (error) {
-      console.log("verifySignInCrl", error);
+      console.log("verifySignInController", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }
   };
 };
 
-export { verifySignInCrl };
+export { verifySignInController };

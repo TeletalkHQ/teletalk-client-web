@@ -11,7 +11,7 @@ import {
   PERSISTENT_STORAGE_KEYS,
 } from "variables/initials/initialValues/initialValues";
 
-const createNewUserCrl = () => {
+const createNewUserController = () => {
   return async (dispatch, getState = getInitialState) => {
     try {
       const verifyToken = persistentStorage.getItem(
@@ -44,11 +44,11 @@ const createNewUserCrl = () => {
 
       dispatch(loadingAction({ loading: true }));
     } catch (error) {
-      console.log("createNewUserCrl", error);
+      console.log("createNewUserController", error);
     } finally {
       dispatch(loadingAction({ loading: false }));
     }
   };
 };
 
-export { createNewUserCrl };
+export { createNewUserController };

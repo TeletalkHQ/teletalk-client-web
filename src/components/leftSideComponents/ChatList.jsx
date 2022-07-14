@@ -4,7 +4,7 @@ import { contactClickAction } from "actions/tempActions";
 
 import ChatListItem from "components/leftSideComponents/ChatListItem";
 
-import { getAllChatMessagesCrl } from "controllers/messageControllers/getAllChatMessagesCrl";
+import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
 
 import { useMyContext } from "hooks/useMyContext";
 
@@ -56,7 +56,9 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
                         })
                       );
 
-                      dispatch(getAllChatMessagesCrl({ chatID: chat.chatID }));
+                      dispatch(
+                        getAllChatMessagesController({ chatID: chat.chatID })
+                      );
                     }}
                   />
                 );

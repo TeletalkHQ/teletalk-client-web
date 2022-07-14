@@ -2,7 +2,7 @@ import { userAction } from "actions/userActions";
 
 import { getContactsApi } from "apis/cellphoneApis";
 
-const getContactsCrl = () => {
+const getContactsController = () => {
   return async (dispatch, getState) => {
     try {
       const result = await getContactsApi.sendRequest();
@@ -12,4 +12,4 @@ const getContactsCrl = () => {
   };
 };
 
-export { getContactsCrl };
+export { getContactsController };

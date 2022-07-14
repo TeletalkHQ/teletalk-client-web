@@ -13,10 +13,10 @@ import RightSideContainer from "components/rightSideComponents/RightSideContaine
 
 import { EVENT_EMITTER_EVENTS } from "configs/configs";
 
-import { getCountriesCrl } from "controllers/authControllers/getCountriesCrl";
-import { userStatusCheckerCrl } from "controllers/authControllers/userStatusCheckerCrl";
-import { getUserChatsLastMessageCrl } from "controllers/messageControllers/getUserChatsLastMessageCrl";
-import { getAllStuffCrl } from "controllers/versionControlController/getAllStuffCrl";
+import { getCountriesController } from "controllers/authControllers/getCountriesController";
+import { userStatusCheckerController } from "controllers/authControllers/userStatusCheckerController";
+import { getUserChatsLastMessageController } from "controllers/messageControllers/getUserChatsLastMessageController";
+import { getAllStuffController } from "controllers/versionControlController/getAllStuffController";
 
 import { onlineConnectionChecker } from "functions/events/onlineConnectionsChecker";
 
@@ -44,20 +44,20 @@ const MainContainer = () => {
         emitters.addListener({
           event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
-            dispatch(getCountriesCrl());
+            dispatch(getCountriesController());
           },
         });
         emitters.addListener({
           event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
             if (userState.privateId) {
-              const { user } = await dispatch(userStatusCheckerCrl());
-              await dispatch(getUserChatsLastMessageCrl({ user }));
+              const { user } = await dispatch(userStatusCheckerController());
+              await dispatch(getUserChatsLastMessageController({ user }));
             }
           },
         });
 
-        await dispatch(getAllStuffCrl());
+        await dispatch(getAllStuffController());
       } catch (error) {
         console.log("MainContainer auth catch", error);
       } finally {

@@ -2,7 +2,7 @@ import { getCountriesAction } from "actions/otherActions";
 
 import { getCountriesApi } from "apis/otherApis";
 
-const getCountriesCrl = () => {
+const getCountriesController = () => {
   return async (dispatch) => {
     try {
       const {
@@ -11,9 +11,9 @@ const getCountriesCrl = () => {
 
       dispatch(getCountriesAction({ countries }));
     } catch (error) {
-      console.log("getCountriesCrl catch, error:", error);
+      console.log("getCountriesController catch, error:", error);
     }
   };
 };
 
-export { getCountriesCrl };
+export { getCountriesController };

@@ -4,7 +4,7 @@ import { getAllChatMessagesApi } from "apis/messageApis";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 
-const getAllChatMessagesCrl = ({ chatID }) => {
+const getAllChatMessagesController = ({ chatID }) => {
   return async (dispatch, getState = getInitialState) => {
     try {
       const { user } = getState();
@@ -29,9 +29,9 @@ const getAllChatMessagesCrl = ({ chatID }) => {
 
       // dispatch(setMessagesAction({ messages: response.data.messages }));
     } catch (error) {
-      console.log("getAllChatMessagesCrl", error);
+      console.log("getAllChatMessagesController", error);
     }
   };
 };
 
-export { getAllChatMessagesCrl };
+export { getAllChatMessagesController };
