@@ -1,4 +1,4 @@
-import { regex } from "variables/others/regex";
+import { regexCollection } from "variables/others/regexCollection";
 
 class CustomTypeof {
   isEveryTypeCheckTrue(items, type) {
@@ -53,7 +53,7 @@ class CustomTypeof {
   }
 
   isNumber(...items) {
-    return items.every((item) => regex.enNumber.test(item));
+    return items.every((item) => regexCollection.enNumber.test(item));
   }
 }
 
