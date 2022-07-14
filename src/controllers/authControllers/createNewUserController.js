@@ -10,6 +10,7 @@ import {
   INITIAL_VIEW_MODE,
   PERSISTENT_STORAGE_KEYS,
 } from "variables/initials/initialValues/initialValues";
+import { errors } from "variables/others/errors";
 
 const createNewUserController = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -19,11 +20,9 @@ const createNewUserController = () => {
       );
 
       if (!verifyToken) {
-        const error = "verifyToken is not defined";
-
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
 
-        throw error;
+        throw errors.VERIFY_TOKEN_NOT_FOUND;
       }
 
       const {
@@ -44,7 +43,8 @@ const createNewUserController = () => {
 
       dispatch(loadingAction({ loading: true }));
     } catch (error) {
-      console.log("createNewUserController", error);
+      console.log("createNewUserController catch, error:", error);
+      dispatch({});
     } finally {
       dispatch(loadingAction({ loading: false }));
     }
