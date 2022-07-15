@@ -4,12 +4,12 @@ import { configs } from "configs/configs";
 
 import { customAxios } from "functions/utilities/customAxios";
 import { responseHandler } from "functions/utilities/ajaxUtils";
-import { handleMakeSnack } from "functions/others/injectors/snackbarInjector";
-import { appDispatch } from "functions/others/injectors/dispatchInjector";
 
 import { initialRequestOptions } from "variables/initials/initialOptions/initialOptions";
-import { errorInitialActions } from "variables/initials/initialActions/errorInitialActions";
+
 import { PERSISTENT_STORAGE_KEYS } from "variables/initials/initialValues/initialValues";
+import { notificationManager } from "classes/NotificationManager";
+import { errors } from "variables/others/errors";
 
 const { logSuccessfulResponse, logFailureResponse } = configs.requester;
 
@@ -46,12 +46,8 @@ const requester = async (options = initialRequestOptions) => {
   } catch (error) {
     logFailureResponse && console.log("requester catch, error:", error);
 
-    if (!window?.navigator?.onLine) {
-      appDispatch({ type: errorInitialActions.eConnAbortedAction.type });
-      handleMakeSnack("ECONNABORTED", { variant: "error" });
-    } else if (error?.code === "ECONNABORTED") {
-      appDispatch({ type: errorInitialActions.eConnAbortedAction.type });
-      handleMakeSnack("ECONNABORTED", { variant: "error" });
+    if (!window?.navigator?.onLine || error?.code === "ECONNABORTED") {
+      notificationManager.submitErrorNotification(errors.ECONNABORTED);
     }
 
     throw error;

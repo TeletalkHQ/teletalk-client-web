@@ -2,12 +2,26 @@ import { newStateReplacer } from "functions/utilities/stateUtils";
 
 import { initialAction } from "variables/initials/initialOptions/initialOptions";
 import { initialStates } from "variables/initials/initialStates/initialStates";
-import { errorInitialActions } from "variables/initials/initialActions/errorInitialActions";
+import { notificationInitialActions } from "variables/initials/initialActions/notificationInitialActions";
 
-const { eConnAbortedAction } = errorInitialActions;
+const { errorNotificationInitialAction } = notificationInitialActions;
+
+// const calculateNotificationType = (notificationCode) => {
+//   const [success, info, warning, error] = [
+//     "success",
+//     "info",
+//     "warning",
+//     "error",
+//   ];
+//   if (notificationCode - 5000 >= 0) return error;
+//   if (notificationCode - 4000 >= 0) return error;
+//   if (notificationCode - 3000 >= 0) return warning;
+//   if (notificationCode - 2000 >= 0) return success;
+//   if (notificationCode - 1000 >= 0) return info;
+// };
 
 const notificationReducer = (
-  state = initialStates.errorState,
+  state = initialStates.notificationState,
   action = initialAction
 ) => {
   try {
@@ -16,7 +30,7 @@ const notificationReducer = (
     const fn = () => newStateReplacer({ state, payload });
 
     switch (type) {
-      case eConnAbortedAction.type:
+      case errorNotificationInitialAction.type:
         return fn();
 
       default:

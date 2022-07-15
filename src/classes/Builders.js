@@ -112,7 +112,8 @@ class ErrorBuilder {
       description: "Default route description",
       message: "",
       errorReason: "UNKNOWN_ERROR",
-      errorCode: 4000,
+      notificationCode: 4000,
+      show: false,
     };
   }
 
@@ -124,8 +125,8 @@ class ErrorBuilder {
     return this.errorObject;
   }
 
-  errorCode(errorCode) {
-    this.#addProperty("errorCode", errorCode);
+  notificationCode(notificationCode) {
+    this.#addProperty("notificationCode", notificationCode);
     return this;
   }
   message(message) {
@@ -137,7 +138,11 @@ class ErrorBuilder {
     return this;
   }
   description(description) {
-    this.errorObject.description = description;
+    this.#addProperty("description", description);
+    return this;
+  }
+  show(show) {
+    this.#addProperty("show", show);
     return this;
   }
 }
