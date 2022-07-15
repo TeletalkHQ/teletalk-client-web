@@ -3,6 +3,7 @@ import { globalInitialState } from "variables/initials/initialStates/globalIniti
 import { otherInitialState } from "variables/initials/initialStates/otherInitialState";
 import { tempInitialState } from "variables/initials/initialStates/tempInitialState";
 import { userInitialState } from "variables/initials/initialStates/userInitialState";
+import { notificationInitialState } from "variables/initials/initialStates/notificationInitialState";
 
 const initialStates = {
   errorState: errorInitialState,
@@ -10,6 +11,7 @@ const initialStates = {
   otherState: otherInitialState,
   tempState: tempInitialState,
   userState: userInitialState,
+  notificationState: notificationInitialState,
 };
 
 const getInitialState = () => initialStates;
