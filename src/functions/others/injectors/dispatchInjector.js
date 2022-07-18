@@ -1,7 +1,7 @@
-import { initialAction } from "variables/initials/initialOptions/initialOptions";
+import { appOptions } from "classes/AppOptions";
 
 //! Use it in special cases only!
-let appDispatch = (action = initialAction) => {};
+let appDispatch = (action = appOptions.options.actionOptions) => {};
 
 const dispatchInjector = (dispatch) => {
   appDispatch = (action) => {

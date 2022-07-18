@@ -1,7 +1,8 @@
+import { appOptions } from "classes/AppOptions";
+
 import { newStateReplacer } from "functions/utilities/stateUtils";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
-import { initialAction } from "variables/initials/initialOptions/initialOptions";
 import { globalInitialActions } from "variables/initials/initialActions/globalInitialActions";
 
 const {
@@ -15,7 +16,7 @@ const {
 
 const globalReducer = (
   state = initialStates.globalState,
-  action = initialAction
+  action = appOptions.options.actionOptions
 ) => {
   const { payload, type } = action;
 
