@@ -1,9 +1,9 @@
 import { initialAction } from "variables/initials/initialOptions/initialOptions";
 
-//! Using it in special cases only!
+//! Use it in special cases only!
 let appDispatch = (action = initialAction) => {};
 
-const dispatchInjector = ({ dispatch }) => {
+const dispatchInjector = (dispatch) => {
   appDispatch = (action) => {
     try {
       if (!action) {

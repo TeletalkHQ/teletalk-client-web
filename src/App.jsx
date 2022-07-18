@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { SnackbarProvider } from "notistack";
+
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -27,7 +29,7 @@ const App = () => {
   );
 
   useEffect(() => {
-    dispatchInjector({ dispatch });
+    dispatchInjector(dispatch);
   }, [dispatch]);
 
   useEffect(() => {
@@ -35,14 +37,16 @@ const App = () => {
   }, [state]);
 
   return (
-    <MainContext.Provider
-      value={{ state, dispatch, hooksOutput: { dispatch } }}
-    >
-      <ThemeProvider theme={baseTheme}>
-        <CssBaseline enableColorScheme />
-        <MainContainer />
-      </ThemeProvider>
-    </MainContext.Provider>
+    <SnackbarProvider>
+      <MainContext.Provider
+        value={{ state, dispatch, hooksOutput: { dispatch } }}
+      >
+        <ThemeProvider theme={baseTheme}>
+          <CssBaseline enableColorScheme />
+          <MainContainer />
+        </ThemeProvider>
+      </MainContext.Provider>
+    </SnackbarProvider>
   );
 };
 

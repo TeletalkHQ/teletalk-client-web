@@ -95,7 +95,6 @@ class ApiBuilder {
       const responseFromInterceptors =
         this.executeResponseInterceptors(response);
 
-      console.log(responseFromInterceptors);
       return responseFromInterceptors;
     } catch (error) {
       console.log(`Api:${this.routeObject.fullUrl} Api catch, error:`, error);
