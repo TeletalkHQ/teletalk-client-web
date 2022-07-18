@@ -5,13 +5,12 @@ import { Grid } from "@mui/material";
 import { backdropAction } from "actions/globalActions";
 
 import { emitters } from "classes/Emitters";
+import { appOptions } from "classes/AppOptions";
 
 import Authentication from "components/authentication/Authentication";
 import LeftSideContainer from "components/leftSideComponents/LeftSideContainer";
 import PortalContainer from "components/portal/PortalContainer";
 import RightSideContainer from "components/rightSideComponents/RightSideContainer";
-
-import { EVENT_EMITTER_EVENTS } from "configs/configs";
 
 import { getCountriesController } from "controllers/authControllers/getCountriesController";
 import { userStatusCheckerController } from "controllers/authControllers/userStatusCheckerController";
@@ -42,13 +41,13 @@ const MainContainer = () => {
     (async () => {
       try {
         emitters.addListener({
-          event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
+          event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
             dispatch(getCountriesController());
           },
         });
         emitters.addListener({
-          event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
+          event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
             if (userState.privateId) {
               const { user } = await dispatch(userStatusCheckerController());

@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
-import MainContainer from "components/mainContainer/MainContainer";
+import { appConfigs } from "classes/AppConfigs";
 
-import { configs } from "configs/configs";
+import MainContainer from "components/mainContainer/MainContainer";
 
 import { MainContext } from "contexts/MainContext";
 
@@ -23,7 +23,7 @@ const App = () => {
   const [state = initialStates, dispatch] = useThunkReducer(
     rootReducer,
     initialStates,
-    configs.useThunkReducer
+    appConfigs.configs.useThunkReducer
   );
 
   useEffect(() => {

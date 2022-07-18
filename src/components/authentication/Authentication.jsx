@@ -13,13 +13,12 @@ import { viewModeAction } from "actions/globalActions";
 
 import { emitters } from "classes/Emitters";
 import { customTypeof } from "classes/CustomTypeof";
+import { appOptions } from "classes/AppOptions";
 
 import Copyright from "components/utils/Copyright";
 import NewUserProfile from "components/authentication/NewUserProfile";
 import SignIn from "components/authentication/SignIn";
 import VerifySignIn from "components/authentication/VerifySignIn";
-
-import { EVENT_EMITTER_EVENTS } from "configs/configs";
 
 import { signInController } from "controllers/authControllers/signInController";
 import { verifySignInController } from "controllers/authControllers/verifySignInController";
@@ -55,7 +54,7 @@ const Authentication = () => {
 
   useEffect(() => {
     emitters.addListener({
-      event: EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
+      event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
       listener: async () => {
         dispatch(welcomeController());
       },

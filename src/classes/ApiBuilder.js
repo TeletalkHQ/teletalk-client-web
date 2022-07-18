@@ -1,10 +1,8 @@
 import { stuffStore } from "classes/StuffStore";
-import { persistentStorage } from "classes/PersistentStorage";
+import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { requester } from "functions/utilities/requester";
 import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
-
-import { PERSISTENT_STORAGE_KEYS } from "variables/initials/initialValues/initialValues";
 
 const {
   INPUT_FIELDS_MISSING,
@@ -51,8 +49,9 @@ class ApiBuilder {
     this.data = data;
     return this;
   }
+
   async sendRequest({
-    token = persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN),
+    token = userPropsUtilities.getMainTokenFromStorage(),
     ...requestData
   } = {}) {
     try {

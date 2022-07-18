@@ -8,7 +8,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-10T19:25:28.375Z",
-    "modified": "2022-04-11T05:50:43.192Z",
+    "modified": "2022-07-18T11:51:01.774Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -22,7 +22,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-10T19:25:47.734Z",
-    "modified": "2022-06-25T17:33:33.313Z",
+    "modified": "2022-07-18T11:27:34.803Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -277,6 +277,20 @@
       "type": "bearer",
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZU51bWJlciI6IjkxMTkxMTkxOTEiLCJjb3VudHJ5Q29kZSI6Ijk4IiwiY291bnRyeU5hbWUiOiJJcmFuLCBJc2xhbWljIFJlcHVibGljIG9mIiwiaWF0IjoxNjUxNTkzMDU5fQ.DvVNhOfz7nG16BKTFhtfVdnmv9BxT1evtRcvPSidWGk"
     },
+    "tests": []
+  },
+  {
+    "_id": "d32f1f5a-05b7-4e97-8b5b-f862263f2419",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://teletalk-server.herokuapp.com/versionControl/getAllStuff",
+    "url": "https://teletalk-server.herokuapp.com/versionControl/getAllStuff",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-07-18T11:49:08.720Z",
+    "modified": "2022-07-18T11:50:59.718Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

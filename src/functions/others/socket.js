@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 
-import { SERVER_BASE_URL } from "configs/configs";
+import { appConfigs } from "classes/AppConfigs";
 
-const socket = io(SERVER_BASE_URL);
+const socket = io(appConfigs.configs.others.SERVER_BASE_URL);
 
 export { socket };

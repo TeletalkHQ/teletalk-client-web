@@ -1,12 +1,18 @@
 import axios from "axios";
 
-import { configs, SERVER_BASE_URL } from "configs/configs";
+import { appConfigs } from "classes/AppConfigs";
 
+const {
+  configs: {
+    customAxios: { defaultHeaders, timeout, validateStatus },
+    others: { SERVER_BASE_URL },
+  },
+} = appConfigs;
 const customAxios = axios.create({
   baseURL: SERVER_BASE_URL,
-  headers: configs.requestConfigs.defaultHeaders,
-  timeout: configs.requestConfigs.timeout,
-  validateStatus: configs.requestConfigs.validateStatus,
+  headers: defaultHeaders,
+  timeout,
+  validateStatus,
 });
 
 export { customAxios };

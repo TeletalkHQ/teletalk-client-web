@@ -36,7 +36,7 @@ const createNewUserController = () => {
 
       console.log(response.data);
 
-      userPropsUtilities.removeVerifyToken();
+      userPropsUtilities.removeVerifyTokenFromStorage();
 
       dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
 
