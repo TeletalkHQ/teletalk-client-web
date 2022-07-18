@@ -1,3 +1,5 @@
+//DEPRECATED snackbarInjector, handleCloseSnack, handleRaiseNotification
+
 let handleRaiseNotification = () => {};
 let handleCloseSnack = () => {};
 

@@ -31,8 +31,6 @@ const signInController = () => {
 
       const verifyToken = response.data.user.verifyToken;
 
-      console.log("rm", response.data);
-
       persistentStorage.setItem(
         PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN,
         verifyToken

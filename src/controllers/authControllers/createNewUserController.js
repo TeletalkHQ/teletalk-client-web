@@ -3,14 +3,12 @@ import { loadingAction } from "actions/userActions";
 
 import { createNewUserApi } from "apis/authenticationApis";
 
-import { persistentStorage } from "classes/PersistentStorage";
+import { notificationManager } from "classes/NotificationManager";
+import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
-import {
-  INITIAL_VIEW_MODE,
-  PERSISTENT_STORAGE_KEYS,
-} from "variables/initials/initialValues/initialValues";
-import { errors } from "variables/others/errors";
+import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { notifications } from "variables/others/notifications";
 
 const createNewUserController = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -20,14 +18,14 @@ const createNewUserController = () => {
     } = getState();
 
     try {
-      const verifyToken = persistentStorage.getItem(
-        PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN
-      );
+      const verifyToken = userPropsUtilities.getVerifyTokenFromStorage();
 
       if (!verifyToken) {
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
 
-        throw errors.VERIFY_TOKEN_NOT_FOUND;
+        notificationManager.submitErrorNotification(
+          notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
+        );
       }
 
       const response = await createNewUserApi.sendRequest({
@@ -38,7 +36,7 @@ const createNewUserController = () => {
 
       console.log(response.data);
 
-      persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
+      userPropsUtilities.removeVerifyToken();
 
       dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
 
@@ -47,7 +45,6 @@ const createNewUserController = () => {
       );
     } catch (error) {
       console.log("createNewUserController catch, error:", error);
-      dispatch({});
     } finally {
       dispatch(
         loadingAction({ loadingState: { ...loadingState, loading: false } })

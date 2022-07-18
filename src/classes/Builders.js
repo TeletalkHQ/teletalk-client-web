@@ -106,23 +106,23 @@ class ValidationErrorBuilder {
   }
 }
 
-class ErrorBuilder {
+class NotificationBuilder {
   constructor() {
-    this.errorObject = {
+    this.notificationObject = {
       description: "Default route description",
       message: "",
-      errorReason: "UNKNOWN_ERROR",
+      notificationReason: "UNKNOWN_ERROR",
       notificationCode: 4000,
       show: false,
     };
   }
 
   #addProperty(key, value) {
-    this.errorObject[key] = value;
+    this.notificationObject[key] = value;
   }
 
   build() {
-    return this.errorObject;
+    return this.notificationObject;
   }
 
   notificationCode(notificationCode) {
@@ -133,7 +133,7 @@ class ErrorBuilder {
     this.#addProperty("message", message);
     return this;
   }
-  errorReason(errorReason) {
+  notificationReason(errorReason) {
     this.#addProperty("errorReason", errorReason);
     return this;
   }
@@ -141,19 +141,15 @@ class ErrorBuilder {
     this.#addProperty("description", description);
     return this;
   }
-  show(show) {
-    this.#addProperty("show", show);
-    return this;
-  }
 }
 
-const errorBuilder = { create: () => new ErrorBuilder() };
+const notificationBuilder = { create: () => new NotificationBuilder() };
 
 const validationBuilder = { create: () => new ValidationErrorBuilder() };
 
 export {
-  errorBuilder,
-  ErrorBuilder,
+  notificationBuilder,
+  NotificationBuilder,
   validationBuilder,
   ValidationErrorBuilder,
 };

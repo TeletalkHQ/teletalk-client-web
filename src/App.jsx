@@ -30,7 +30,9 @@ const App = () => {
     dispatchInjector({ dispatch });
   }, [dispatch]);
 
-  console.log(state);
+  useEffect(() => {
+    window.state = state;
+  }, [state]);
 
   return (
     <MainContext.Provider
