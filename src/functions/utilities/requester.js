@@ -1,17 +1,13 @@
-import { persistentStorage } from "classes/PersistentStorage";
-
-import { configs } from "configs/configs";
+import { appConfigs } from "classes/AppConfigs";
 
 import { customAxios } from "functions/utilities/customAxios";
 import { responseChecker } from "functions/utilities/ajaxUtils";
 
 import { initialRequestOptions } from "variables/initials/initialOptions/initialOptions";
 
-import { PERSISTENT_STORAGE_KEYS } from "variables/initials/initialValues/initialValues";
 import { notificationManager } from "classes/NotificationManager";
 import { notifications } from "variables/others/notifications";
-
-const { logSuccessfulResponse, logFailureResponse } = configs.requester;
+import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 const requester = async (options = initialRequestOptions) => {
   try {
@@ -19,11 +15,9 @@ const requester = async (options = initialRequestOptions) => {
     const finalOptions = {
       ...initialRequestOptions,
       ...options,
-      data: { ...initialRequestOptions.data, ...options?.data },
+      data: { ...initialRequestOptions.data, ...options.data },
       headers: { ...initialRequestOptions.headers, ...options?.headers },
-      token:
-        options?.token ||
-        persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN),
+      token: options.token || userPropsUtilities.getMainTokenFromStorage(),
     };
 
     //TODO Move it to ApiBuilder build method
@@ -43,12 +37,17 @@ const requester = async (options = initialRequestOptions) => {
 
     const checkedResponse = responseChecker(response);
 
-    //TODO Move it to AppConfig
-    logSuccessfulResponse && console.log(checkedResponse);
+    appConfigs.checkAndExecute(
+      appConfigs.configs.requester.logSuccessfulResponse,
+      () => console.log(checkedResponse)
+    );
 
     return checkedResponse;
   } catch (error) {
-    logFailureResponse && console.log("requester catch, error:", error);
+    appConfigs.checkAndExecute(
+      appConfigs.configs.requester.logFailureResponse,
+      () => console.log("requester catch, error:", error)
+    );
 
     if (!window?.navigator?.onLine || error?.code === "ECONNABORTED") {
       notificationManager.submitErrorNotification(

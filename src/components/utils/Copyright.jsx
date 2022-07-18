@@ -1,6 +1,6 @@
 import { Typography, Link } from "@mui/material";
 
-import { CLIENT_BASE_URL } from "configs/configs";
+import { appConfigs } from "classes/AppConfigs";
 
 const Copyright = (props) => {
   return (
@@ -11,7 +11,7 @@ const Copyright = (props) => {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href={CLIENT_BASE_URL}>
+      <Link color="inherit" href={appConfigs.configs.others.CLIENT_BASE_URL}>
         teletalk
       </Link>{" "}
       {new Date().getFullYear()}

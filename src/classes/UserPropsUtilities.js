@@ -150,6 +150,16 @@ class UserPropsUtilities {
   getVerifyTokenFromStorage() {
     return persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
   }
+  removeVerifyTokenFromStorage() {
+    persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
+  }
+
+  getMainTokenFromStorage() {
+    return persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN);
+  }
+  removeMainTokenFromStorage() {
+    persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN);
+  }
 
   cellphoneFinder(cellphones, targetCellphone) {
     let cellphoneIndex = -1;
@@ -164,10 +174,6 @@ class UserPropsUtilities {
       logger.log("cellphoneFinder catch, error:", error);
       throw error;
     }
-  }
-
-  removeVerifyToken() {
-    persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
   }
 }
 
