@@ -8,7 +8,7 @@ import { tempReducer } from "reducers/tempReducer";
 
 const rootReducer = combineReducers({
   userState: userReducer,
-  errorState: notificationReducer,
+  notificationState: notificationReducer,
   globalState: globalReducer,
   otherState: otherReducer,
   tempState: tempReducer,

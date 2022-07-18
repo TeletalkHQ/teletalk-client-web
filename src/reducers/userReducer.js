@@ -1,14 +1,15 @@
+import { appOptions } from "classes/AppOptions";
+
 import { newStateReplacer } from "functions/utilities/stateUtils";
 
 import { userInitialActions } from "variables/initials/initialActions/userInitialActions";
-import { initialAction } from "variables/initials/initialOptions/initialOptions";
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const { userInitialAction } = userInitialActions;
 
 const userReducer = (
   state = initialStates.userState,
-  action = initialAction
+  action = appOptions.options.actionOptions
 ) => {
   try {
     const { payload, type } = action;

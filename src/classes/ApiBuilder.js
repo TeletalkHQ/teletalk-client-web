@@ -1,8 +1,11 @@
 import { stuffStore } from "classes/StuffStore";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
+import { appOptions } from "classes/AppOptions";
 
 import { requester } from "functions/utilities/requester";
 import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
+
+import { notifications } from "variables/others/notifications";
 
 const {
   INPUT_FIELDS_MISSING,
@@ -21,6 +24,11 @@ class ApiBuilder {
   #responseInterceptorsArray = [];
   #requestInterceptorsArray = [];
   build() {
+    if (!this.routeObject.fullUrl) {
+      const error = notifications.localErrors.URL_NOT_FOUND;
+      throw error;
+    }
+
     return this;
   }
 
@@ -50,10 +58,7 @@ class ApiBuilder {
     return this;
   }
 
-  async sendRequest({
-    token = userPropsUtilities.getMainTokenFromStorage(),
-    ...requestData
-  } = {}) {
+  async sendRequest({ token, ...requestData } = {}) {
     try {
       const requestDataTransformed = this.transformRequest(requestData);
 
@@ -72,11 +77,12 @@ class ApiBuilder {
       if (!requestFieldsCheckResult.done)
         throw requestFieldsCheckResult.errorObject;
 
-      const response = await requester({
+      const mergedRequesterOptions = this.mergeRequesterOptions({
         data: requestDataFromInterceptors,
         ...this.getApiUrlAndMethod(this.routeObject),
         token,
       });
+      const response = await requester(mergedRequesterOptions);
 
       // const responseFieldsCheckResult = ioFieldsChecker(
       //   response.data,
@@ -101,6 +107,27 @@ class ApiBuilder {
 
       throw error;
     }
+  }
+
+  mergeRequesterOptions(options) {
+    const defaultOptions = appOptions.options.requesterOptions;
+    const mergedOptions = {
+      ...defaultOptions,
+      ...options,
+      data: { ...defaultOptions.data, ...options.data },
+      headers: { ...defaultOptions.headers, ...options?.headers },
+      token: options.token || userPropsUtilities.getMainTokenFromStorage(),
+    };
+
+    if (mergedOptions.token) {
+      mergedOptions.headers.Authorization = `Bearer ${mergedOptions.token}`;
+    }
+
+    if (!Object.keys(options.data).length) {
+      delete mergedOptions.data;
+    }
+
+    return mergedOptions;
   }
 
   executeRequestInterceptors(request) {
