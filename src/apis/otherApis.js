@@ -9,10 +9,13 @@ const welcomeApi = apiBuilder.create().setRequirements(welcomeRoute).build();
 const getCountriesApi = apiBuilder
   .create()
   .setRequirements(countriesRoute)
-  .responseInterceptors((responseData) => {
-    responseData.countries.forEach((country) => {
-      country.id = randomMaker.randomId();
-    });
+  .responseTransformer((responseData) => {
+    return {
+      countries: responseData.countries.map((country) => ({
+        ...country,
+        id: randomMaker.randomId(),
+      })),
+    };
   })
   .build();
 

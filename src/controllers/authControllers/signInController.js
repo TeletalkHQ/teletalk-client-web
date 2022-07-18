@@ -13,12 +13,15 @@ import {
 
 const signInController = () => {
   return async (dispatch, getState = getInitialState) => {
-    try {
-      const {
-        tempState: { phoneNumber, countryCode, countryName },
-      } = getState();
+    const {
+      tempState: { phoneNumber, countryCode, countryName },
+      globalState: { loadingState },
+    } = getState();
 
-      dispatch(loadingAction({ loading: true }));
+    try {
+      dispatch(
+        loadingAction({ loadingState: { ...loadingState, loading: true } })
+      );
 
       const response = await signInApi.sendRequest({
         phoneNumber,
@@ -47,7 +50,9 @@ const signInController = () => {
     } catch (error) {
       console.log("signInController catch", error);
     } finally {
-      dispatch(loadingAction({ loading: false }));
+      dispatch(
+        loadingAction({ loadingState: { ...loadingState, loading: false } })
+      );
     }
   };
 };

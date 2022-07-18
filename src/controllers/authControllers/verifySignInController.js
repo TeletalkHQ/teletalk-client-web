@@ -14,12 +14,15 @@ import {
 
 const verifySignInController = () => {
   return async (dispatch, getState = getInitialState) => {
-    try {
-      dispatch(loadingAction({ loading: true }));
+    const {
+      tempState: { verifyCode },
+      globalState: { loadingState },
+    } = getState();
 
-      const {
-        tempState: { verifyCode },
-      } = getState();
+    try {
+      dispatch(
+        loadingAction({ loadingState: { ...loadingState, loading: true } })
+      );
 
       const verifyToken = persistentStorage.getItem(
         PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN
@@ -57,15 +60,15 @@ const verifySignInController = () => {
           mainToken
         );
 
-        console.log("user", user);
-
         dispatch(userAction({ ...user }));
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
       }
     } catch (error) {
       console.log("verifySignInController", error);
     } finally {
-      dispatch(loadingAction({ loading: false }));
+      dispatch(
+        loadingAction({ loadingState: { ...loadingState, loading: false } })
+      );
     }
   };
 };
