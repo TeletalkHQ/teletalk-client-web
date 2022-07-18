@@ -14,6 +14,11 @@ import { errors } from "variables/others/errors";
 
 const createNewUserController = () => {
   return async (dispatch, getState = getInitialState) => {
+    const {
+      tempState: { firstName, lastName },
+      globalState: { loadingState },
+    } = getState();
+
     try {
       const verifyToken = persistentStorage.getItem(
         PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN
@@ -24,10 +29,6 @@ const createNewUserController = () => {
 
         throw errors.VERIFY_TOKEN_NOT_FOUND;
       }
-
-      const {
-        tempState: { firstName, lastName },
-      } = getState();
 
       const response = await createNewUserApi.sendRequest({
         firstName,
@@ -41,12 +42,16 @@ const createNewUserController = () => {
 
       dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
 
-      dispatch(loadingAction({ loading: true }));
+      dispatch(
+        loadingAction({ loadingState: { ...loadingState, loading: true } })
+      );
     } catch (error) {
       console.log("createNewUserController catch, error:", error);
       dispatch({});
     } finally {
-      dispatch(loadingAction({ loading: false }));
+      dispatch(
+        loadingAction({ loadingState: { ...loadingState, loading: false } })
+      );
     }
   };
 };

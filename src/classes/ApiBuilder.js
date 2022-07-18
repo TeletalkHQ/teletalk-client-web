@@ -1,14 +1,23 @@
-import { requester } from "functions/utilities/requester";
+import { stuffStore } from "classes/StuffStore";
 import { persistentStorage } from "classes/PersistentStorage";
-import {
-  checkInputFields,
-  checkOutputFields,
-} from "functions/helpers/inputOutputFieldsChecker";
+
+import { requester } from "functions/utilities/requester";
+import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
+
 import { PERSISTENT_STORAGE_KEYS } from "variables/initials/initialValues/initialValues";
+
+const {
+  INPUT_FIELDS_MISSING,
+  INPUT_FIELDS_OVERLOAD,
+  // OUTPUT_FIELDS_MISSING,
+  // OUTPUT_FIELDS_OVERLOAD,
+} = stuffStore.errors;
 
 class ApiBuilder {
   constructor() {
     this.routeObject = {};
+    this.transformRequest = (data) => data;
+    this.transformResponse = (data) => data;
   }
 
   #responseInterceptorsArray = [];
@@ -46,22 +55,49 @@ class ApiBuilder {
     token = persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN),
     ...requestData
   } = {}) {
-    checkInputFields(requestData, this.routeObject.inputFields);
-
-    this.executeRequestInterceptors(requestData);
-
     try {
+      const requestDataTransformed = this.transformRequest(requestData);
+
+      const requestDataFromInterceptors = this.executeRequestInterceptors(
+        requestDataTransformed
+      );
+
+      const requestFieldsCheckResult = ioFieldsChecker(
+        requestDataFromInterceptors,
+        this.routeObject.inputFields,
+        {
+          missingFieldsError: INPUT_FIELDS_MISSING,
+          overloadFieldsError: INPUT_FIELDS_OVERLOAD,
+        }
+      );
+      if (!requestFieldsCheckResult.done)
+        throw requestFieldsCheckResult.errorObject;
+
       const response = await requester({
-        data: requestData,
+        data: requestDataFromInterceptors,
         ...this.getApiUrlAndMethod(this.routeObject),
         token,
       });
 
-      checkOutputFields(response.data, this.routeObject.outputFields);
+      // const responseFieldsCheckResult = ioFieldsChecker(
+      //   response.data,
+      //   this.routeObject.outputFields,
+      //   {
+      //     missingFieldsError: OUTPUT_FIELDS_MISSING,
+      //     overloadFieldsError: OUTPUT_FIELDS_OVERLOAD,
+      //   }
+      // );
+      // if (!responseFieldsCheckResult.done)
+      //   throw responseFieldsCheckResult.errorObject;
 
-      this.executeResponseInterceptors(response.data);
+      const responseTransformed = this.transformResponse(response.data);
+      response.data = responseTransformed;
 
-      return response;
+      const responseFromInterceptors =
+        this.executeResponseInterceptors(response);
+
+      console.log(responseFromInterceptors);
+      return responseFromInterceptors;
     } catch (error) {
       console.log(`Api:${this.routeObject.fullUrl} Api catch, error:`, error);
 
@@ -69,24 +105,38 @@ class ApiBuilder {
     }
   }
 
-  executeRequestInterceptors(data) {
-    this.#requestInterceptorsArray.forEach((interceptor) => {
-      interceptor(data);
-    });
+  executeRequestInterceptors(request) {
+    return this.executeInterceptors(this.#requestInterceptorsArray, request);
   }
-  executeResponseInterceptors(data) {
-    this.#responseInterceptorsArray.forEach((interceptor) => {
-      interceptor(data);
-    });
+  executeResponseInterceptors(response) {
+    return this.executeInterceptors(this.#responseInterceptorsArray, response);
   }
+  executeInterceptors(interceptors, response) {
+    let responseEnhancedWithInterceptors = response;
 
+    interceptors.forEach((interceptor) => {
+      responseEnhancedWithInterceptors = interceptor(
+        responseEnhancedWithInterceptors
+      );
+    });
+
+    return responseEnhancedWithInterceptors;
+  }
   requestInterceptors(...callbacks) {
     this.#requestInterceptorsArray = callbacks;
     return this;
   }
-
   responseInterceptors(...callbacks) {
     this.#responseInterceptorsArray = callbacks;
+    return this;
+  }
+
+  requestTransformer(callback = this.transformRequest) {
+    this.transformRequest = callback;
+    return this;
+  }
+  responseTransformer(callback = this.transformResponse) {
+    this.transformResponse = callback;
     return this;
   }
 }
