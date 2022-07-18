@@ -248,8 +248,19 @@ const renameObjectKey = ({ obj, oldKey, newKey }) => {
   return obj;
 };
 
+const isDataHasEqualityWithTargetCellphone = (data, targetCellphone) => {
+  if (
+    data.phoneNumber === targetCellphone.phoneNumber &&
+    data.countryCode === targetCellphone.countryCode &&
+    data.countryName === targetCellphone.countryName
+  ) {
+    return true;
+  }
+
+  return false;
+};
+
 export {
-  renameObjectKey,
   cellphoneFinder,
   concatBaseUrlWithUrl,
   convertStringArrayToNumberArray,
@@ -266,10 +277,12 @@ export {
   getObjectLength,
   getTokenFromRequest,
   getValidatorErrorTypes,
+  isDataHasEqualityWithTargetCellphone,
   isEqualWithTargetCellphone,
   isUrlMatchWithReqUrl,
   objectClarify,
   objectInitializer,
+  renameObjectKey,
   skipParams,
   versionCalculator,
 };

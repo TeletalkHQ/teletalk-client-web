@@ -6,10 +6,9 @@ class NotificationManager {
     this.notificationEliminator = notificationEliminator;
     this.notifications = [];
     this.initialNotificationObject = {
-      show: false,
       description: "",
-      errorCode: "",
-      errorReason: "",
+      notificationCode: "",
+      notificationReason: "",
       message: "",
     };
   }
@@ -17,6 +16,13 @@ class NotificationManager {
   submitErrorNotification(notificationObject = this.initialNotificationObject) {
     const { message } = notificationObject;
     enqueueSnackbar(message, { variant: "error" });
+  }
+
+  submitSuccessNotification(
+    notificationObject = this.initialNotificationObject
+  ) {
+    const { message } = notificationObject;
+    enqueueSnackbar(message, { variant: "success" });
   }
 }
 
