@@ -1,6 +1,5 @@
 import { actionCreator } from "functions/utilities/stateUtils";
 
-import { onlineStatusInitialAction } from "variables/initials/initialActions/globalInitialActions";
 import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
 
 const {
@@ -34,9 +33,6 @@ const messageInputOnChangeAction = (
   payload = messageInputInitialAction.payload
 ) => actionCreator(messageInputInitialAction.type, payload);
 
-const onlineStatusOnChange = (payload = onlineStatusInitialAction.payload) =>
-  actionCreator(tempInitialActions.onlineStatusInitialAction.type, payload);
-
 const setMessagesAction = (payload = setMessagesInitialAction.payload) =>
   actionCreator(setMessagesInitialAction.type, payload);
 
@@ -53,7 +49,6 @@ const tempActions = {
   firstNameAction,
   lastNameAction,
   messageInputOnChangeAction,
-  onlineStatusOnChange,
   phoneNumberAction,
   setMessagesAction,
   verifyCodeAction,
@@ -66,7 +61,6 @@ export {
   firstNameAction,
   lastNameAction,
   messageInputOnChangeAction,
-  onlineStatusOnChange,
   phoneNumberAction,
   setMessagesAction,
   verifyCodeAction,

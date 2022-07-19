@@ -8,10 +8,10 @@ import { globalInitialActions } from "variables/initials/initialActions/globalIn
 const {
   appDrawerInitialAction,
   backdropInitialAction,
-  viewModeInitialAction,
   dialogInitialAction,
   loadingInitialAction,
   onlineStatusInitialAction,
+  viewModeInitialAction,
 } = globalInitialActions;
 
 const globalReducer = (
