@@ -6,6 +6,7 @@ const {
   appDrawerInitialAction,
   backdropInitialAction,
   dialogInitialAction,
+  onlineStatusInitialAction,
   viewModeInitialAction,
 } = globalInitialActions;
 
@@ -21,4 +22,14 @@ const dialogAction = (payload = dialogInitialAction.payload) =>
 const backdropAction = (payload = backdropInitialAction.payload) =>
   actionCreator(backdropInitialAction.type, payload);
 
-export { viewModeAction, appDrawerAction, dialogAction, backdropAction };
+const onlineStatusChangeAction = (
+  payload = onlineStatusInitialAction.payload
+) => actionCreator(onlineStatusInitialAction.type, payload);
+
+export {
+  appDrawerAction,
+  backdropAction,
+  dialogAction,
+  onlineStatusChangeAction,
+  viewModeAction,
+};

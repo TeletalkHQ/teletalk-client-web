@@ -1,4 +1,4 @@
-import { onlineStatusOnChange } from "actions/tempActions";
+import { onlineStatusChangeAction } from "actions/globalActions";
 
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
 
@@ -6,7 +6,7 @@ const onlineConnectionChecker = () => {
   const eventListener = () => {
     const isOnline = window.navigator.onLine;
 
-    appDispatch(onlineStatusOnChange({ onlineStatus: { isOnline } }));
+    appDispatch(onlineStatusChangeAction({ onlineStatus: { isOnline } }));
   };
 
   const addEventListener = (type) =>

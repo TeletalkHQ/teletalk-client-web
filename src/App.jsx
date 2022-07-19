@@ -34,6 +34,7 @@ const App = () => {
 
   useEffect(() => {
     window.state = state;
+    window.appConfigs = appConfigs;
   }, [state]);
 
   return (
