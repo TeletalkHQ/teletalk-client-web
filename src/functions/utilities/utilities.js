@@ -181,7 +181,7 @@ const getTokenFromRequest = (request) => {
   return (authorization || Authorization)?.split("Bearer ")[1];
 };
 
-const getObjectLength = (object) => Object.keys(object).length;
+const getObjectLength = (object) => evaluateValueLength(object);
 
 const crashServer = (message) => {
   logger.bgRed(message).log();
@@ -285,6 +285,13 @@ const calculateNotificationType = (notificationCode) => {
   if (notificationCode - 1000 >= 0) return info;
 };
 
+const evaluateValueLength = (value) => {
+  const valueTypeof = customTypeof.check(value).type;
+
+  if (valueTypeof.array || valueTypeof.string) return value.length;
+  if (valueTypeof.object) return Object.keys(value).length;
+};
+
 export {
   assignFirstTruthyValue,
   calculateNotificationType,
@@ -295,6 +302,7 @@ export {
   crashServerWithCondition,
   errorThrower,
   excludeVersion,
+  evaluateValueLength,
   extractVersions,
   filterObject,
   findByProp,

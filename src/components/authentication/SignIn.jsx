@@ -7,6 +7,8 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
 
+import { evaluateValueLength } from "functions/utilities/utilities";
+
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const SignIn = ({
@@ -80,7 +82,9 @@ const SignIn = ({
 
             <CustomButton
               lbtn
-              disabled={phoneNumber?.length < 9 || !selectedCountry}
+              disabled={
+                evaluateValueLength(phoneNumber) < 9 || !selectedCountry
+              }
               loading={loading}
               loadingIndicator={
                 <>
