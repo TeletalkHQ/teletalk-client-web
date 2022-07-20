@@ -30,6 +30,7 @@
           "arrayEnum",
           "autofetch",
           "autopep",
+          "Tooltip",
           "axios",
           "bcrypt",
           "bcryptjs",

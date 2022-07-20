@@ -8,6 +8,7 @@ import { appDispatch } from "functions/others/injectors/dispatchInjector";
 import { userInitializer } from "functions/helpers/userInitializer";
 
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { assignFirstTruthyValue, renameObjectKey } from "./utilities";
 
 const responseChecker = (response) => {
   try {
@@ -34,19 +35,26 @@ const responseChecker = (response) => {
       const arrayOfErrors = Object.values(responseErrors);
 
       arrayOfErrors.forEach((errorItem) => {
-        const {
-          description,
-          errorCode: notificationCode,
-          message,
-          reason: notificationReason,
-        } = errorItem;
+        let finalErrorItem = {};
 
-        notificationManager.submitErrorNotification({
-          description,
-          message: message || notificationReason,
-          notificationCode,
-          notificationReason,
-        });
+        finalErrorItem = renameObjectKey(
+          errorItem,
+          "errorCode",
+          "notificationCode"
+        );
+        finalErrorItem = renameObjectKey(
+          finalErrorItem,
+          "reason",
+          "notificationReason"
+        );
+        finalErrorItem = assignFirstTruthyValue(
+          finalErrorItem,
+          "message",
+          finalErrorItem.message,
+          finalErrorItem.notificationReason
+        );
+
+        notificationManager.submitErrorNotification(finalErrorItem);
       });
     }
 
