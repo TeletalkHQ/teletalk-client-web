@@ -6,6 +6,8 @@ import ChatListItem from "components/leftSideComponents/ChatListItem";
 
 import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
 
+import { evaluateValueLength } from "functions/utilities/utilities";
+
 import { useMyContext } from "hooks/useMyContext";
 
 const ChatList = ({ chats = [], contacts, selectedContact }) => {
@@ -29,8 +31,8 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
             const chatList = chats?.map((chat, index) => {
               const messages = chat.messages;
 
-              if (messages?.length) {
-                const lastMessage = messages[messages.length - 1];
+              if (evaluateValueLength(messages)) {
+                const lastMessage = messages[evaluateValueLength(messages) - 1];
 
                 const senderID = lastMessage.messageSender.senderID;
 

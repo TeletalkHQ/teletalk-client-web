@@ -26,6 +26,7 @@ import { welcomeController } from "controllers/otherControllers/welcomeControlle
 import { createNewUserController } from "controllers/authControllers/createNewUserController";
 
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
+import { evaluateValueLength } from "functions/utilities/utilities";
 
 import { useMyContext } from "hooks/useMyContext";
 
@@ -74,7 +75,8 @@ const Authentication = () => {
     const value = event.target.value;
 
     if (
-      (customTypeof.check(value).type.stringNumber && value?.length < 15) ||
+      (customTypeof.check(value).type.stringNumber &&
+        evaluateValueLength(value) < 15) ||
       value === ""
     ) {
       dispatch(phoneNumberAction({ phoneNumber: value }));
@@ -85,7 +87,8 @@ const Authentication = () => {
     const value = event.target.value;
 
     if (
-      (customTypeof.check(value).type.stringNumber && value?.length <= 6) ||
+      (customTypeof.check(value).type.stringNumber &&
+        evaluateValueLength(value) <= 6) ||
       value === ""
     ) {
       dispatch(countryCodeAction({ countryCode: value }));
@@ -97,7 +100,7 @@ const Authentication = () => {
   const handleVerifyCodeChange = (e) => {
     const value = e?.target?.value;
 
-    (value?.length <= 6 || value === "") &&
+    (evaluateValueLength(value) <= 6 || value === "") &&
       dispatch(verifyCodeAction({ verifyCode: value }));
   };
 

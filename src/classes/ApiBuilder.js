@@ -4,6 +4,7 @@ import { appOptions } from "classes/AppOptions";
 
 import { requester } from "functions/utilities/requester";
 import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
+import { evaluateValueLength } from "functions/utilities/utilities";
 
 import { notifications } from "variables/others/notifications";
 
@@ -123,7 +124,7 @@ class ApiBuilder {
       mergedOptions.headers.Authorization = `Bearer ${mergedOptions.token}`;
     }
 
-    if (!Object.keys(options.data).length) {
+    if (!evaluateValueLength(options.data)) {
       delete mergedOptions.data;
     }
 
