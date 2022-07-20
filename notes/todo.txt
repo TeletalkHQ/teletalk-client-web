@@ -1,6 +1,6 @@
 Use framer/motion for animation ?
-Add notification system
 Add conditional logging to loggers
 Wrap external/builtin components to general components
 Add server-side translation
-Rename Crl to Controller
+Check sideEffects
+Add validators to auth components
