@@ -31,6 +31,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.1",
+    "autosuggest-highlight": "^3.3.2",
     "axios": "^0.27.2",
     "cross-env": "^7.0.3",
     "fastest-validator": "^1.12.0",
