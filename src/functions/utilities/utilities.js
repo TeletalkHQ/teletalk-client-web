@@ -240,12 +240,23 @@ const cellphoneFinder = (cellphones, targetCellphone) => {
   }
 };
 
-const renameObjectKey = ({ obj, oldKey, newKey }) => {
+const renameObjectKey = (object, oldKey, newKey) => {
+  const copyOfObject = { ...object };
   if (oldKey !== newKey) {
-    obj[newKey] = obj[oldKey];
-    delete obj[oldKey];
+    copyOfObject[newKey] = copyOfObject[oldKey];
+    delete copyOfObject[oldKey];
   }
-  return obj;
+
+  return copyOfObject;
+};
+
+const assignFirstTruthyValue = (object, key, ...values) => {
+  const truthyValue = values.find((item) => item);
+
+  return {
+    ...object,
+    [key]: truthyValue,
+  };
 };
 
 const isDataHasEqualityWithTargetCellphone = (data, targetCellphone) => {
@@ -275,6 +286,7 @@ const calculateNotificationType = (notificationCode) => {
 };
 
 export {
+  assignFirstTruthyValue,
   calculateNotificationType,
   cellphoneFinder,
   concatBaseUrlWithUrl,
