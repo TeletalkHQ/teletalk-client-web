@@ -36,6 +36,8 @@
           "bcryptjs",
           "bgcolor",
           "camelcase",
+          "100vh",
+          "lightcyan",
           "chai",
           "CLEANME",
           "codestream",
