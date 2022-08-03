@@ -1,29 +1,29 @@
 import { useEffect } from "react";
 
 import {
-  verifyCodeAction,
   countryCodeAction,
   countryNameAction,
   firstNameAction,
   lastNameAction,
+  verificationCodeAction,
 } from "actions/tempActions";
-import { selectedCountryAction } from "actions/otherActions";
 import { phoneNumberAction } from "actions/tempActions";
+import { selectedCountryAction } from "actions/otherActions";
 import { viewModeAction } from "actions/globalActions";
 
-import { emitters } from "classes/Emitters";
-import { customTypeof } from "classes/CustomTypeof";
 import { appOptions } from "classes/AppOptions";
+import { customTypeof } from "classes/CustomTypeof";
+import { emitters } from "classes/Emitters";
 
 import Copyright from "components/utils/Copyright";
 import NewUserProfile from "components/authentication/NewUserProfile";
 import SignIn from "components/authentication/SignIn";
 import VerifySignIn from "components/authentication/VerifySignIn";
 
+import { createNewUserController } from "controllers/authControllers/createNewUserController";
 import { signInController } from "controllers/authControllers/signInController";
 import { verifySignInController } from "controllers/authControllers/verifySignInController";
 import { welcomeController } from "controllers/otherControllers/welcomeController";
-import { createNewUserController } from "controllers/authControllers/createNewUserController";
 
 import { appDispatch } from "functions/others/injectors/dispatchInjector";
 import { evaluateValueLength } from "functions/utilities/utilities";
@@ -34,23 +34,23 @@ import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValue
 
 const Authentication = () => {
   const {
+    hooksOutput: { dispatch },
     state: {
-      tempState: {
-        phoneNumber,
-        countryCode,
-        countryName,
-        verifyCode,
-        firstName,
-        lastName,
-        selectedCountry,
-      },
       globalState: {
-        viewMode,
         loadingState: { loading },
+        viewMode,
       },
       otherState: { countries },
+      tempState: {
+        countryCode,
+        countryName,
+        firstName,
+        lastName,
+        phoneNumber,
+        selectedCountry,
+        verificationCode,
+      },
     },
-    hooksOutput: { dispatch },
   } = useMyContext();
 
   useEffect(() => {
@@ -97,11 +97,11 @@ const Authentication = () => {
     }
   };
 
-  const handleVerifyCodeChange = (e) => {
+  const handleVerificationCodeChange = (e) => {
     const value = e?.target?.value;
 
     (evaluateValueLength(value) <= 6 || value === "") &&
-      dispatch(verifyCodeAction({ verifyCode: value }));
+      dispatch(verificationCodeAction({ verificationCode: value }));
   };
 
   const handleBackClick = () => {
@@ -130,61 +130,45 @@ const Authentication = () => {
     dispatch(createNewUserController());
   };
 
-  const component = () => {
-    switch (viewMode) {
-      case INITIAL_VIEW_MODE.SIGN_IN:
-        return (
-          <SignIn
-            countries={countries}
-            countryCode={countryCode}
-            loading={loading}
-            onCountryCodeChange={handleCountryCodeChange}
-            onPhoneNumberChange={handlePhoneNumberChange}
-            onSignInClick={handleSignInClick}
-            phoneNumber={phoneNumber}
-            countryName={countryName}
-            onCountryNameAutocompleteOnchange={
-              handleCountryNameAutocompleteOnchange
-            }
-            onCountryNameOnInputChange={handleCountryNameOnInputChange}
-            selectedCountry={selectedCountry}
-          />
-        );
-
-      case INITIAL_VIEW_MODE.VERIFY_SIGN_IN:
-        return (
-          <VerifySignIn
-            countryCode={countryCode}
-            onBackClick={handleBackClick}
-            onVerifyClick={handleVerifyClick}
-            onVerifyCodeChange={handleVerifyCodeChange}
-            verifyCode={verifyCode}
-            phoneNumber={phoneNumber}
-            loading={loading}
-          />
-        );
-
-      case INITIAL_VIEW_MODE.NEW_USER_PROFILE:
-        return (
-          <NewUserProfile
-            onBackClick={handleBackClick}
-            loading={loading}
-            firstNameInput={firstName}
-            lastNameInput={lastName}
-            onLastNameOnChange={handleLastNameOnChange}
-            onConfirmClick={handleConfirmClick}
-            onFirstNameOnChange={handleFirstNameOnChange}
-          />
-        );
-
-      default:
-        break;
-    }
-  };
-
   return (
     <>
-      {component()}
+      {((props) => {
+        switch (viewMode) {
+          case INITIAL_VIEW_MODE.SIGN_IN:
+            return <SignIn {...props} />;
+
+          case INITIAL_VIEW_MODE.VERIFY_SIGN_IN:
+            return <VerifySignIn {...props} />;
+
+          case INITIAL_VIEW_MODE.NEW_USER_PROFILE:
+            return <NewUserProfile {...props} />;
+
+          default:
+            break;
+        }
+      })({
+        countries,
+        countryCode,
+        countryName,
+        firstName,
+        lastName,
+        loading,
+        onBackClick: handleBackClick,
+        onConfirmClick: handleConfirmClick,
+        onCountryCodeChange: handleCountryCodeChange,
+        onCountryNameAutocompleteOnchange:
+          handleCountryNameAutocompleteOnchange,
+        onCountryNameOnInputChange: handleCountryNameOnInputChange,
+        onFirstNameOnChange: handleFirstNameOnChange,
+        onLastNameOnChange: handleLastNameOnChange,
+        onPhoneNumberChange: handlePhoneNumberChange,
+        onSignInClick: handleSignInClick,
+        onVerifyClick: handleVerifyClick,
+        onVerificationCodeChange: handleVerificationCodeChange,
+        phoneNumber,
+        selectedCountry,
+        verificationCode,
+      })}
       <Copyright sx={{ mt: 8, mb: 4 }} />
     </>
   );

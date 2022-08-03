@@ -3,18 +3,6 @@ import { envManager } from "classes/EnvironmentManager";
 class AppConfigs {
   constructor() {
     this.configs = {
-      customAxios: {
-        defaultHeaders: {
-          Authorization: "",
-          "Content-Type": "application/json",
-        },
-        timeout: 20000,
-        validateStatus: false,
-      },
-      requester: {
-        logFailureResponse: false,
-        logSuccessfulResponse: false,
-      },
       useThunkReducer: {
         actionLogger: true,
       },
@@ -22,6 +10,19 @@ class AppConfigs {
         RUNTIME_MODE: this.#RUNTIME_MODE,
         SERVER_BASE_URL: this.#SERVER_BASE_URLS[this.#RUNTIME_MODE],
         CLIENT_BASE_URL: this.#CLIENT_BASE_URLS[this.#RUNTIME_MODE],
+      },
+      apiConfigs: {
+        checkResponseStatus: true,
+        defaultHeaders: {
+          Authorization: "",
+          "Content-Type": "application/json",
+        },
+        requestTimeout: 20000,
+        validateStatus: false,
+        inputDataPropertiesCheck: true,
+        outputDataPropertiesCheck: false,
+        logFailureResponse: true,
+        logSuccessfulResponse: false,
       },
     };
   }
@@ -38,7 +39,7 @@ class AppConfigs {
   };
 
   checkAndExecute(condition, callback) {
-    if (condition) callback();
+    if (condition) return callback();
   }
 }
 

@@ -15,7 +15,7 @@ const {
   lastNameInitialAction,
   phoneNumberInitialAction,
   selectedCountryInitialAction,
-  verifyCodeInitialAction,
+  verificationCodeInitialAction,
 } = tempInitialActions;
 
 const tempReducer = (
@@ -55,7 +55,7 @@ const tempReducer = (
       case selectedCountryInitialAction.type:
         return fn();
 
-      case verifyCodeInitialAction.type:
+      case verificationCodeInitialAction.type:
         return fn();
 
       default:

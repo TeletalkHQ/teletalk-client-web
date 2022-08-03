@@ -28,11 +28,13 @@ const createNewUserController = () => {
         );
       }
 
-      const response = await createNewUserApi.sendRequest({
-        firstName,
-        lastName,
-        token: verifyToken,
-      });
+      const response = await createNewUserApi.sendRequest(
+        {
+          firstName,
+          lastName,
+        },
+        { token: verifyToken }
+      );
 
       console.log(response.data);
 

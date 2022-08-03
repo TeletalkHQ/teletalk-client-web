@@ -1,23 +1,25 @@
 import { viewModeAction } from "actions/globalActions";
-import { verifyCodeAction } from "actions/tempActions";
+import { verificationCodeAction } from "actions/tempActions";
 import { loadingAction, userAction } from "actions/userActions";
 
 import { verifySignInApi } from "apis/authenticationApis";
 
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
+import { domUtilities } from "classes/DomUtilities";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import {
   INITIAL_VIEW_MODE,
   PERSISTENT_STORAGE_KEYS,
 } from "variables/initials/initialValues/initialValues";
+import { elementNames } from "variables/initials/initialValues/elementNames";
 import { notifications } from "variables/others/notifications";
 
 const verifySignInController = () => {
   return async (dispatch, getState = getInitialState) => {
     const {
-      tempState: { verifyCode },
+      tempState: { verificationCode },
       globalState: { loadingState },
     } = getState();
 
@@ -35,14 +37,18 @@ const verifySignInController = () => {
         notificationManager.submitErrorNotification(
           notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
         );
+
+        return;
       }
 
-      const response = await verifySignInApi.sendRequest({
-        verificationCode: verifyCode,
-        token: verifyToken,
-      });
+      const response = await verifySignInApi.sendRequest(
+        {
+          verificationCode: verificationCode,
+        },
+        { token: verifyToken }
+      );
 
-      dispatch(verifyCodeAction({ verifyCode: "" }));
+      dispatch(verificationCodeAction({ verificationCode: "" }));
 
       const { user: userData } = response.data;
 
@@ -65,7 +71,11 @@ const verifySignInController = () => {
         dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
       }
     } catch (error) {
-      console.log("verifySignInController", error);
+      console.log("verifySignInController catch, error:", error);
+      domUtilities
+        .setElementByName(elementNames.verificationCode)
+        .focusElement()
+        .selectAllValue();
     } finally {
       dispatch(
         loadingAction({ loadingState: { ...loadingState, loading: false } })

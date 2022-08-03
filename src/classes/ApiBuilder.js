@@ -1,30 +1,62 @@
+import { appConfigs } from "classes/AppConfigs";
+import { appOptions } from "classes/AppOptions";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonNotificationManager } from "classes/CommonNotificationManager";
+import { notificationManager } from "classes/NotificationManager";
 import { stuffStore } from "classes/StuffStore";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
-import { appOptions } from "classes/AppOptions";
 
-import { requester } from "functions/utilities/requester";
-import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
 import { evaluateValueLength } from "functions/utilities/utilities";
+import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
+import { requester } from "functions/utilities/requester";
 
 import { notifications } from "variables/others/notifications";
 
 const {
   INPUT_FIELDS_MISSING,
   INPUT_FIELDS_OVERLOAD,
-  // OUTPUT_FIELDS_MISSING,
-  // OUTPUT_FIELDS_OVERLOAD,
+  OUTPUT_FIELDS_MISSING,
+  OUTPUT_FIELDS_OVERLOAD,
 } = stuffStore.errors;
 
 class ApiBuilder {
   constructor() {
+    this.requestData = {};
+    this.requestInterceptorsArray = [];
+    this.requestTransformer = (data) => data;
+    this.response = {
+      data: undefined,
+    };
+    this.responseInterceptorsArray = [];
+    this.responseTransformer = (data) => data;
     this.routeObject = {};
-    this.transformRequest = (data) => data;
-    this.transformResponse = (data) => data;
   }
 
-  #responseInterceptorsArray = [];
-  #requestInterceptorsArray = [];
+  #responseErrorsSubmitter(errors) {
+    errors.forEach((errorItem) => {
+      notificationManager.submitErrorNotification(errorItem);
+    });
+  }
+
+  #correctResponseErrors(responseErrors) {
+    const arrayOfErrors = Object.values(responseErrors);
+
+    const correctedErrors = arrayOfErrors.map((errorItem) => {
+      const { errorCode, reason, message, ...restOfErrorItemProps } = errorItem;
+
+      const finalErrorItem = restOfErrorItemProps;
+      finalErrorItem.notificationCode = errorCode;
+      finalErrorItem.notificationReason = reason;
+      finalErrorItem.message = message || reason;
+
+      return finalErrorItem;
+    });
+
+    return correctedErrors;
+  }
+
   build() {
+    //TODO Add check requirements method
     if (!this.routeObject.fullUrl) {
       const error = notifications.localErrors.URL_NOT_FOUND;
       throw error;
@@ -54,68 +86,126 @@ class ApiBuilder {
     this.routeObject = routeObject;
     return this;
   }
-  setData(data) {
-    this.data = data;
+  setRequestData(data) {
+    this.requestData = data;
     return this;
   }
 
-  async sendRequest({ token, ...requestData } = {}) {
+  ioDataFieldsCheck(
+    ioData,
+    actualFields,
+    missingFieldsError,
+    overloadFieldsError
+  ) {
+    const ioDataFieldsCheckResult = ioFieldsChecker(ioData, actualFields, {
+      missingFieldsError,
+      overloadFieldsError,
+    });
+    if (!ioDataFieldsCheckResult.done) {
+      const newErrorObject = {
+        ...ioDataFieldsCheckResult.errorObject,
+        actualFields,
+        ioData,
+      };
+      throw newErrorObject;
+    }
+  }
+
+  inputDataFieldsCheck(inputData) {
+    const { inputDataPropertiesCheck } = appConfigs.configs.apiConfigs;
+
+    appConfigs.checkAndExecute(inputDataPropertiesCheck, () => {
+      this.ioDataFieldsCheck(
+        inputData,
+        this.routeObject.inputFields,
+        INPUT_FIELDS_MISSING,
+        INPUT_FIELDS_OVERLOAD
+      );
+    });
+  }
+  outputDataFieldsCheck(outputData) {
+    const { outputDataPropertiesCheck } = appConfigs.configs.apiConfigs;
+
+    appConfigs.checkAndExecute(outputDataPropertiesCheck, () => {
+      this.ioDataFieldsCheck(
+        outputData,
+        this.routeObject.outputFields,
+        OUTPUT_FIELDS_MISSING,
+        OUTPUT_FIELDS_OVERLOAD
+      );
+    });
+  }
+  #responseErrorsHandler(response) {
+    const statusCode = response.statusCode || response.status;
+    if (statusCode === 401) commonFunctionalities.resetEverything();
+    else if (statusCode >= 400) {
+      const correctedErrors = this.#correctResponseErrors(response.data.errors);
+
+      this.#responseErrorsSubmitter(correctedErrors);
+      throw correctedErrors;
+    }
+  }
+
+  async sendRequest(requestData = {}, extraOptions = {}) {
     try {
-      const requestDataTransformed = this.transformRequest(requestData);
+      const transformedRequestData = this.requestTransformer(requestData);
 
       const requestDataFromInterceptors = this.executeRequestInterceptors(
-        requestDataTransformed
+        transformedRequestData
       );
 
-      const requestFieldsCheckResult = ioFieldsChecker(
-        requestDataFromInterceptors,
-        this.routeObject.inputFields,
-        {
-          missingFieldsError: INPUT_FIELDS_MISSING,
-          overloadFieldsError: INPUT_FIELDS_OVERLOAD,
-        }
-      );
-      if (!requestFieldsCheckResult.done)
-        throw requestFieldsCheckResult.errorObject;
+      this.inputDataFieldsCheck(requestDataFromInterceptors);
 
       const mergedRequesterOptions = this.mergeRequesterOptions({
         data: requestDataFromInterceptors,
         ...this.getApiUrlAndMethod(this.routeObject),
-        token,
+        ...extraOptions,
       });
-      const response = await requester(mergedRequesterOptions);
 
-      // const responseFieldsCheckResult = ioFieldsChecker(
-      //   response.data,
-      //   this.routeObject.outputFields,
-      //   {
-      //     missingFieldsError: OUTPUT_FIELDS_MISSING,
-      //     overloadFieldsError: OUTPUT_FIELDS_OVERLOAD,
-      //   }
-      // );
-      // if (!responseFieldsCheckResult.done)
-      //   throw responseFieldsCheckResult.errorObject;
+      this.response = await requester(mergedRequesterOptions);
 
-      const responseTransformed = this.transformResponse(response.data);
-      response.data = responseTransformed;
+      this.#responseErrorsHandler(this.response);
 
-      const responseFromInterceptors =
-        this.executeResponseInterceptors(response);
+      this.outputDataFieldsCheck(this.response.data);
+      const transformedResponse = this.responseTransformer(this.response.data);
+      this.response.data = transformedResponse;
+
+      const responseFromInterceptors = this.executeResponseInterceptors(
+        this.response
+      );
+
+      this.#logSuccessfulResponse(this.response);
 
       return responseFromInterceptors;
     } catch (error) {
-      console.log(`Api:${this.routeObject.fullUrl} Api catch, error:`, error);
+      this.#logFailureResponse(error);
+
+      commonNotificationManager.submitAbortedConnectionNotification(error);
 
       throw error;
     }
   }
 
+  #logSuccessfulResponse(response) {
+    const { logSuccessfulResponse } = appConfigs.configs.apiConfigs;
+
+    appConfigs.checkAndExecute(logSuccessfulResponse, () =>
+      console.log(response)
+    );
+  }
+  #logFailureResponse(error) {
+    const { logFailureResponse } = appConfigs.configs.apiConfigs;
+
+    appConfigs.checkAndExecute(logFailureResponse, () =>
+      console.log(`Api:${this.routeObject.fullUrl} Api catch, error:`, error)
+    );
+  }
+
   mergeRequesterOptions(options) {
-    const defaultOptions = appOptions.options.requesterOptions;
+    const defaultOptions = appOptions.options.apiDefaultOptions;
     const mergedOptions = {
       ...defaultOptions,
       ...options,
-      data: { ...defaultOptions.data, ...options.data },
       headers: { ...defaultOptions.headers, ...options?.headers },
       token: options.token || userPropsUtilities.getMainTokenFromStorage(),
     };
@@ -132,37 +222,35 @@ class ApiBuilder {
   }
 
   executeRequestInterceptors(request) {
-    return this.executeInterceptors(this.#requestInterceptorsArray, request);
+    return this.executeInterceptors(this.requestInterceptorsArray, request);
   }
   executeResponseInterceptors(response) {
-    return this.executeInterceptors(this.#responseInterceptorsArray, response);
+    return this.executeInterceptors(this.responseInterceptorsArray, response);
   }
-  executeInterceptors(interceptors, response) {
-    let responseEnhancedWithInterceptors = response;
+  executeInterceptors(interceptors, data) {
+    let dataEnhancedWithInterceptors = data;
 
     interceptors.forEach((interceptor) => {
-      responseEnhancedWithInterceptors = interceptor(
-        responseEnhancedWithInterceptors
-      );
+      dataEnhancedWithInterceptors = interceptor(dataEnhancedWithInterceptors);
     });
 
-    return responseEnhancedWithInterceptors;
+    return dataEnhancedWithInterceptors;
   }
-  requestInterceptors(...callbacks) {
-    this.#requestInterceptorsArray = callbacks;
+  setRequestInterceptors(...callbacks) {
+    this.requestInterceptorsArray = callbacks;
     return this;
   }
-  responseInterceptors(...callbacks) {
-    this.#responseInterceptorsArray = callbacks;
+  setResponseInterceptors(...callbacks) {
+    this.responseInterceptorsArray = callbacks;
     return this;
   }
 
-  requestTransformer(callback = this.transformRequest) {
-    this.transformRequest = callback;
+  setRequestTransformer(callback = this.requestTransformer) {
+    this.requestTransformer = callback;
     return this;
   }
-  responseTransformer(callback = this.transformResponse) {
-    this.transformResponse = callback;
+  setResponseTransformer(callback = this.responseTransformer) {
+    this.responseTransformer = callback;
     return this;
   }
 }

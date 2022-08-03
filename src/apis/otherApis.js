@@ -9,7 +9,7 @@ const welcomeApi = apiBuilder.create().setRequirements(welcomeRoute).build();
 const getCountriesApi = apiBuilder
   .create()
   .setRequirements(countriesRoute)
-  .responseTransformer((responseData) => {
+  .setResponseTransformer((responseData) => {
     return {
       countries: responseData.countries.map((country) => ({
         ...country,

@@ -2,7 +2,7 @@ const elementNames = {
   phoneNumber: "phoneNumber",
   countryCode: "countryCode",
   countryName: "countryName",
-  verifyCode: "verifyCode",
+  verificationCode: "verificationCode",
   firstName: "firstName",
   lastName: "lastName",
 };

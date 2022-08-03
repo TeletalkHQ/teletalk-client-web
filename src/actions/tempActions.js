@@ -8,7 +8,7 @@ const {
   setMessagesInitialAction,
   countryCodeInitialAction,
   countryNameInitialAction,
-  verifyCodeInitialAction,
+  verificationCodeInitialAction,
   phoneNumberInitialAction,
   firstNameInitialAction,
   lastNameInitialAction,
@@ -39,8 +39,9 @@ const setMessagesAction = (payload = setMessagesInitialAction.payload) =>
 const phoneNumberAction = (payload = phoneNumberInitialAction.payload) =>
   actionCreator(phoneNumberInitialAction.type, payload);
 
-const verifyCodeAction = (payload = verifyCodeInitialAction.payload) =>
-  actionCreator(verifyCodeInitialAction.type, payload);
+const verificationCodeAction = (
+  payload = verificationCodeInitialAction.payload
+) => actionCreator(verificationCodeInitialAction.type, payload);
 
 const tempActions = {
   contactClickAction,
@@ -51,7 +52,7 @@ const tempActions = {
   messageInputOnChangeAction,
   phoneNumberAction,
   setMessagesAction,
-  verifyCodeAction,
+  verificationCodeAction,
 };
 
 export {
@@ -63,6 +64,6 @@ export {
   messageInputOnChangeAction,
   phoneNumberAction,
   setMessagesAction,
-  verifyCodeAction,
+  verificationCodeAction,
   tempActions,
 };

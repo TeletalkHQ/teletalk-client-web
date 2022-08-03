@@ -4,10 +4,9 @@ class AppOptions {
       EVENT_EMITTER_EVENTS: {
         ALL_STUFF_RECEIVED: "ALL_STUFF_RECEIVED",
       },
-      requesterOptions: {
+      apiDefaultOptions: {
         method: "GET",
         url: "",
-        data: {},
         headers: { Authorization: "" },
         token: "",
       },
