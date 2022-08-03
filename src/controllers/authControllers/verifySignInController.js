@@ -6,14 +6,13 @@ import { verifySignInApi } from "apis/authenticationApis";
 
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
-import { domUtilities } from "classes/DomUtilities";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import {
   INITIAL_VIEW_MODE,
   PERSISTENT_STORAGE_KEYS,
 } from "variables/initials/initialValues/initialValues";
-import { elementNames } from "variables/initials/initialValues/elementNames";
+
 import { notifications } from "variables/others/notifications";
 
 const verifySignInController = () => {
@@ -72,10 +71,6 @@ const verifySignInController = () => {
       }
     } catch (error) {
       console.log("verifySignInController catch, error:", error);
-      domUtilities
-        .setElementByName(elementNames.verificationCode)
-        .focusElement()
-        .selectAllValue();
     } finally {
       dispatch(
         loadingAction({ loadingState: { ...loadingState, loading: false } })
