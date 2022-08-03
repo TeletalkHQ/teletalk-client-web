@@ -7,7 +7,7 @@ const {
     messages,
     selectedContact,
     tempUserState,
-    verifyCode,
+    verificationCode,
   },
 } = initialStates;
 
@@ -50,9 +50,9 @@ const phoneNumberInitialAction = {
   payload: { phoneNumber: tempUserState.phoneNumber },
 };
 
-const verifyCodeInitialAction = {
-  type: "VERIFY_CODE_ONCHANGE",
-  payload: { verifyCode },
+const verificationCodeInitialAction = {
+  type: "VERIFICATION_CODE_ONCHANGE",
+  payload: { verificationCode },
 };
 
 const selectedCountryInitialAction = {
@@ -70,7 +70,7 @@ const tempInitialActions = {
   phoneNumberInitialAction,
   selectedCountryInitialAction,
   setMessagesInitialAction,
-  verifyCodeInitialAction,
+  verificationCodeInitialAction,
 };
 
 export { tempInitialActions };

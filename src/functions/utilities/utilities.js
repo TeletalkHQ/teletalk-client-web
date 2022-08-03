@@ -278,6 +278,7 @@ const calculateNotificationType = (notificationCode) => {
     "warning",
     "error",
   ];
+
   if (notificationCode - 5000 >= 0) return error;
   if (notificationCode - 4000 >= 0) return error;
   if (notificationCode - 3000 >= 0) return warning;
@@ -301,8 +302,8 @@ export {
   crashServer,
   crashServerWithCondition,
   errorThrower,
-  excludeVersion,
   evaluateValueLength,
+  excludeVersion,
   extractVersions,
   filterObject,
   findByProp,

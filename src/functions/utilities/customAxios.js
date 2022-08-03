@@ -4,14 +4,14 @@ import { appConfigs } from "classes/AppConfigs";
 
 const {
   configs: {
-    customAxios: { defaultHeaders, timeout, validateStatus },
+    apiConfigs: { defaultHeaders, requestTimeout, validateStatus },
     others: { SERVER_BASE_URL },
   },
 } = appConfigs;
 const customAxios = axios.create({
   baseURL: SERVER_BASE_URL,
   headers: defaultHeaders,
-  timeout,
+  timeout: requestTimeout,
   validateStatus,
 });
 

@@ -12,9 +12,9 @@ const VerifySignIn = ({
   loading,
   onBackClick,
   onVerifyClick,
-  onVerifyCodeChange,
+  onVerificationCodeChange,
   phoneNumber,
-  verifyCode,
+  verificationCode,
 }) => {
   return (
     <Container maxWidth="xl">
@@ -36,6 +36,7 @@ const VerifySignIn = ({
         </Avatar>
         <Container maxWidth="xs">
           <CustomBox sx={{ mt: 1 }}>
+            {/* //TODO Add Typography to general components */}
             <Typography
               component="h5"
               variant="h5"
@@ -44,6 +45,7 @@ const VerifySignIn = ({
               +{countryCode} {phoneNumber}
             </Typography>
 
+            {/* //TODO Add Typography to general components */}
             <Typography component="p" variant="p" color="GrayText">
               We've sent the code to the Teletalk app to your phone number.
             </Typography>
@@ -51,10 +53,10 @@ const VerifySignIn = ({
             <CustomTextInput
               required
               label="Verification code"
-              name={elementNames.verifyCode}
+              name={elementNames.verificationCode}
               autoFocus
-              value={verifyCode}
-              onChange={onVerifyCodeChange}
+              value={verificationCode}
+              onChange={onVerificationCodeChange}
             />
 
             <CustomButton

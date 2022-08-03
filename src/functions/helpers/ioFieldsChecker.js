@@ -35,7 +35,6 @@ const ioFieldsChecker = (
 
     return { done: true };
   } catch (error) {
-    logger.log("ioFieldsChecker catch, error:", error);
     return {
       done: false,
       errorObject: error,

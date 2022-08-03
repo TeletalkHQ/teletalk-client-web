@@ -4,7 +4,7 @@ const tempInitialState = {
     message: "",
   },
   tempUserState: {},
-  verifyCode: "",
+  verificationCode: "",
   selectedContact: {},
   countryCode: "",
   countryName: "",
