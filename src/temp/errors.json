@@ -1056,7 +1056,7 @@
     },
     "VERIFICATION_CODE_INVALID": {
       "description": "Default route description",
-      "message": "Wrong verification code",
+      "message": "Invalid verification code",
       "reason": "VERIFICATION_CODE_INVALID",
       "statusCode": 400,
       "version": "1.0.0",
@@ -1092,7 +1092,7 @@
     },
     "VERIFICATION_CODE_REQUIRED": {
       "description": "Default route description",
-      "message": "Wrong verification code",
+      "message": "Verification code required",
       "reason": "VERIFICATION_CODE_REQUIRED",
       "statusCode": 400,
       "version": "1.0.0",

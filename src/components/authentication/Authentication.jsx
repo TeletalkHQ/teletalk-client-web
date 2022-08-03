@@ -14,6 +14,7 @@ import { viewModeAction } from "actions/globalActions";
 import { appOptions } from "classes/AppOptions";
 import { customTypeof } from "classes/CustomTypeof";
 import { emitters } from "classes/Emitters";
+import { domUtilities } from "classes/DomUtilities";
 
 import Copyright from "components/utils/Copyright";
 import NewUserProfile from "components/authentication/NewUserProfile";
@@ -31,6 +32,7 @@ import { evaluateValueLength } from "functions/utilities/utilities";
 import { useMyContext } from "hooks/useMyContext";
 
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const Authentication = () => {
   const {
@@ -68,6 +70,10 @@ const Authentication = () => {
   };
 
   const handleVerifyClick = () => {
+    domUtilities
+      .setElementByName(elementNames.verificationCode)
+      .focusElement()
+      .selectAllValue();
     dispatch(verifySignInController());
   };
 
