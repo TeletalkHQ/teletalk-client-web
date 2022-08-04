@@ -46,8 +46,8 @@ class EnvironmentManager {
 
 const environmentManager = new EnvironmentManager();
 
-module.exports = {
+export {
   environmentManager,
   EnvironmentManager,
-  envManager: environmentManager,
+  environmentManager as envManager,
 };
