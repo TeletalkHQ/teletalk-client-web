@@ -1,4 +1,4 @@
-import { welcomeAction } from "actions/otherActions";
+import { otherActions } from "actions/otherActions";
 
 import { welcomeApi } from "apis/otherApis";
 
@@ -7,7 +7,7 @@ const welcomeController = () => {
     try {
       const response = await welcomeApi.sendRequest();
 
-      dispatch(welcomeAction({ message: response.data.message }));
+      dispatch(otherActions.welcomeAction({ message: response.data.message }));
     } catch (error) {
       console.log("welcomeController catch", error);
     }

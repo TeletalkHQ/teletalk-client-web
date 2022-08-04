@@ -1,4 +1,4 @@
-import { userAction } from "actions/userActions";
+import { userActions } from "actions/userActions";
 
 import { addContactApi } from "apis/cellphoneApis";
 
@@ -10,7 +10,7 @@ const addNewContactController = (contact) => {
       const result = await addContactApi.sendRequest(contact);
 
       dispatch(
-        userAction({
+        userActions.userAction({
           contacts: [...getState().user.contacts, result.data.contact],
         })
       );

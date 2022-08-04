@@ -1,4 +1,4 @@
-import { userAction } from "actions/userActions";
+import { userActions } from "actions/userActions";
 
 import { getUserChatsLastMessageApi } from "apis/messageApis";
 
@@ -52,7 +52,7 @@ const getUserChatsLastMessageController = ({ user }) => {
         chatsWithLastMessage: response.data.chats,
       });
 
-      dispatch(userAction({ chats: chatsWithLastMessage }));
+      dispatch(userActions.userAction({ chats: chatsWithLastMessage }));
     } catch (error) {
       console.log("getUserChatsLastMessageController", error);
     }

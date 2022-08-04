@@ -11,7 +11,7 @@ import MainContainer from "MainContainer";
 
 import { MainContext } from "contexts/MainContext";
 
-import { dispatchInjector } from "functions/others/injectors/dispatchInjector";
+import { dispatchInjector } from "functions/injectors/dispatchInjector";
 
 import { useThunkReducer } from "hooks/useThunkReducer";
 

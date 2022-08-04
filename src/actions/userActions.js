@@ -13,4 +13,6 @@ const loadingAction = (payload = loadingInitialAction.payload) =>
 const userAction = (payload = userInitialAction.payload) =>
   actionCreator(userInitialAction.type, payload);
 
-export { loadingAction, userAction };
+const userActions = { loadingAction, userAction };
+
+export { userActions };

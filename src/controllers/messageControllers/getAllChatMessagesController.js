@@ -1,4 +1,4 @@
-import { userAction } from "actions/userActions";
+import { userActions } from "actions/userActions";
 
 import { getAllChatMessagesApi } from "apis/messageApis";
 
@@ -24,7 +24,7 @@ const getAllChatMessagesController = ({ chatID }) => {
           ...chat,
           messages: response.data.messages,
         });
-        dispatch(userAction({ chats: copyUser.chats }));
+        dispatch(userActions.userAction({ chats: copyUser.chats }));
       }
 
       // dispatch(setMessagesAction({ messages: response.data.messages }));

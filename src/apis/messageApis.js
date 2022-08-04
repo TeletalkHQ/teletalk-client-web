@@ -30,7 +30,7 @@ const getAllChatMessagesApi = apiBuilder
 
 export {
   getAllChatMessagesApi,
-  sendPrivateMessageApi,
-  getUserChatsLastMessageApi,
   getAllChatsApi,
+  getUserChatsLastMessageApi,
+  sendPrivateMessageApi,
 };

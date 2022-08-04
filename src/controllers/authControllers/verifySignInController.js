@@ -1,6 +1,6 @@
-import { viewModeAction } from "actions/globalActions";
-import { verificationCodeAction } from "actions/tempActions";
-import { loadingAction, userAction } from "actions/userActions";
+import { globalActions } from "actions/globalActions";
+import { tempActions } from "actions/tempActions";
+import { userActions } from "actions/userActions";
 
 import { verifySignInApi } from "apis/authenticationApis";
 
@@ -14,6 +14,9 @@ import {
 } from "variables/initials/initialValues/initialValues";
 
 import { notifications } from "variables/others/notifications";
+
+const { viewModeAction } = globalActions;
+const { loadingAction, userAction } = userActions;
 
 const verifySignInController = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -47,7 +50,7 @@ const verifySignInController = () => {
         { token: verifyToken }
       );
 
-      dispatch(verificationCodeAction({ verificationCode: "" }));
+      dispatch(tempActions.verificationCodeAction({ verificationCode: "" }));
 
       const { user: userData } = response.data;
 

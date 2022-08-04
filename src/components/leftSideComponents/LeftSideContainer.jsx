@@ -1,4 +1,4 @@
-import { appDrawerAction } from "actions/globalActions";
+import { globalActions } from "actions/globalActions";
 
 import ChatList from "components/leftSideComponents/ChatList";
 
@@ -20,7 +20,7 @@ const LeftSideContainer = () => {
 
   const handleDrawerIconClick = () => {
     dispatch(
-      appDrawerAction({
+      globalActions.appDrawerAction({
         appDrawerState: {
           ...appDrawerState,
           anchor: {

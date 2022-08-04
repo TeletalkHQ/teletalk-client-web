@@ -1,15 +1,8 @@
 import { useEffect } from "react";
 
-import {
-  countryCodeAction,
-  countryNameAction,
-  firstNameAction,
-  lastNameAction,
-  verificationCodeAction,
-} from "actions/tempActions";
-import { phoneNumberAction } from "actions/tempActions";
-import { selectedCountryAction } from "actions/otherActions";
-import { viewModeAction } from "actions/globalActions";
+import { tempActions } from "actions/tempActions";
+import { otherActions } from "actions/otherActions";
+import { globalActions } from "actions/globalActions";
 
 import { appOptions } from "classes/AppOptions";
 import { customTypeof } from "classes/CustomTypeof";
@@ -26,13 +19,23 @@ import { signInController } from "controllers/authControllers/signInController";
 import { verifySignInController } from "controllers/authControllers/verifySignInController";
 import { welcomeController } from "controllers/otherControllers/welcomeController";
 
-import { appDispatch } from "functions/others/injectors/dispatchInjector";
+import { appDispatch } from "functions/injectors/dispatchInjector";
 import { evaluateValueLength } from "functions/utilities/utilities";
 
 import { useMyContext } from "hooks/useMyContext";
 
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 import { elementNames } from "variables/initials/initialValues/elementNames";
+
+const { selectedCountryAction } = otherActions;
+const {
+  countryCodeAction,
+  countryNameAction,
+  firstNameAction,
+  lastNameAction,
+  phoneNumberAction,
+  verificationCodeAction,
+} = tempActions;
 
 const Authentication = () => {
   const {
@@ -111,7 +114,9 @@ const Authentication = () => {
   };
 
   const handleBackClick = () => {
-    dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
+    dispatch(
+      globalActions.viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN })
+    );
   };
 
   const handleCountryNameAutocompleteOnchange = (newValue) => {

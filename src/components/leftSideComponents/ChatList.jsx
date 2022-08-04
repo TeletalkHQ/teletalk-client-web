@@ -1,6 +1,6 @@
 import { List } from "@mui/material";
 
-import { contactClickAction } from "actions/tempActions";
+import { tempActions } from "actions/tempActions";
 
 import ChatListItem from "components/leftSideComponents/ChatListItem";
 
@@ -53,7 +53,7 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
                     selected={!!findParticipant}
                     onChatListItemClick={() => {
                       dispatch(
-                        contactClickAction({
+                        tempActions.contactClickAction({
                           selectedContact: sender,
                         })
                       );

@@ -7,6 +7,7 @@ const { tempInitialActions, otherInitialActions } = actions;
 const { getCountriesInitialAction, welcomeInitialAction } = otherInitialActions;
 
 const { selectedCountryInitialAction } = tempInitialActions;
+
 const getCountriesAction = (payload = getCountriesInitialAction.payload) =>
   actionCreator(getCountriesInitialAction.type, payload);
 
@@ -17,4 +18,10 @@ const selectedCountryAction = (
 const welcomeAction = (payload = welcomeInitialAction.payload) =>
   actionCreator(welcomeInitialAction.type, payload);
 
-export { getCountriesAction, selectedCountryAction, welcomeAction };
+const otherActions = {
+  getCountriesAction,
+  selectedCountryAction,
+  welcomeAction,
+};
+
+export { otherActions };

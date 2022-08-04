@@ -2,8 +2,8 @@ import { useEffect } from "react";
 
 import { Typography } from "@mui/material";
 
-import { dialogAction } from "actions/globalActions";
-import { contactClickAction } from "actions/tempActions";
+import { globalActions } from "actions/globalActions";
+import { tempActions } from "actions/tempActions";
 
 import { useMyContext } from "hooks/useMyContext";
 
@@ -35,7 +35,7 @@ const ContactsDialog = ({ onClose }) => {
 
   const handleAddContactClick = () => {
     dispatch(
-      dialogAction({
+      globalActions.dialogAction({
         dialogState: {
           ...dialogState,
           addContact: { ...dialogState.addNewContact, open: true },
@@ -49,7 +49,7 @@ const ContactsDialog = ({ onClose }) => {
   };
 
   const handleContactClick = (contact) => {
-    dispatch(contactClickAction({ selectedContact: contact }));
+    dispatch(tempActions.contactClickAction({ selectedContact: contact }));
 
     handleClose();
   };

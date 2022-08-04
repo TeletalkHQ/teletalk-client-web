@@ -4,10 +4,7 @@ import ChatBar from "components/rightSideComponents/ChatBar";
 
 import { useMyContext } from "hooks/useMyContext";
 
-import {
-  contactClickAction,
-  messageInputOnChangeAction,
-} from "actions/tempActions";
+import { tempActions } from "actions/tempActions";
 
 import { initialContact } from "variables/initials/initialValues/initialValues";
 import { sendPrivateMessageController } from "controllers/messageControllers/sendPrivateMessageController";
@@ -15,6 +12,8 @@ import { useEffect } from "react";
 import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
+
+const { contactClickAction, messageInputOnChangeAction } = tempActions;
 
 const RightSideContainer = () => {
   const {
@@ -64,7 +63,7 @@ const RightSideContainer = () => {
     dispatch(contactClickAction({ selectedContact: { ...initialContact } }));
   };
 
-  //FIXME
+  //FIXME ...
   const chat = userState.chats.find((chat) => {
     return chat.participants.find(
       (participant) => participant.participantID === privateId
