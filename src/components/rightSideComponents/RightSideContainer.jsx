@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
+import { arrayUtilities } from "classes/ArrayUtilities";
 
 const { contactClickAction, messageInputOnChangeAction } = tempActions;
 
@@ -64,11 +65,11 @@ const RightSideContainer = () => {
   };
 
   //FIXME ...
-  const chat = userState.chats.find((chat) => {
-    return chat.participants.find(
-      (participant) => participant.participantID === privateId
-    );
-  });
+  const chat = arrayUtilities.findByPropValueEquality(
+    userState.chats,
+    privateId,
+    "participantID"
+  );
 
   if (!chat && !selectedContact) {
     return null;
