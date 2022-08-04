@@ -3,10 +3,10 @@ import { appOptions } from "classes/AppOptions";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { commonNotificationManager } from "classes/CommonNotificationManager";
 import { notificationManager } from "classes/NotificationManager";
+import { objectUtilities } from "classes/ObjectUtilities";
 import { stuffStore } from "classes/StuffStore";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
-import { evaluateValueLength } from "functions/utilities/utilities";
 import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
 import { requester } from "functions/utilities/requester";
 
@@ -214,7 +214,7 @@ class ApiBuilder {
       mergedOptions.headers.Authorization = `Bearer ${mergedOptions.token}`;
     }
 
-    if (!evaluateValueLength(options.data)) {
+    if (!objectUtilities.objectKeysLength(options.data)) {
       delete mergedOptions.data;
     }
 

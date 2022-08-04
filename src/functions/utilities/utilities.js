@@ -1,40 +1,11 @@
 import { customTypeof } from "classes/CustomTypeof";
+import { objectUtilities } from "classes/ObjectUtilities";
 
 const errorThrower = (condition, error) => {
   if (condition) {
     if (customTypeof.check(error).type.function) throw error();
     throw error;
   }
-};
-
-const objectInitializer = (values, props) => {
-  try {
-    const tempObj = {};
-
-    props.forEach((prop, index) => {
-      tempObj[prop] = values[index];
-    });
-
-    return tempObj;
-  } catch (error) {
-    logger.log("objectInitializer catch, error:", error);
-  }
-};
-
-const getMethodFromRoute = (route) => {
-  try {
-    const method = route?.method;
-
-    errorThrower(!method, "You need to pass correct route object");
-
-    return method;
-  } catch (error) {
-    logger.log("getMethodFromRoute catch, error:", error);
-  }
-};
-
-const skipParams = (count) => {
-  return Array.from({ length: count });
 };
 
 const getErrorObject = (errorObject, extraData = {}, statusCode) => {
@@ -46,121 +17,8 @@ const getErrorObject = (errorObject, extraData = {}, statusCode) => {
   };
 };
 
-const objectClarify = (dirtyObject = {}) => {
-  const cleanObject = {};
-
-  Object.entries(dirtyObject)?.forEach(([key, value]) => {
-    if (!customTypeof.check(value).type.undefined) {
-      if (customTypeof.check(dirtyObject[key]).type.object) {
-        cleanObject[key] = objectClarify(dirtyObject[key]);
-
-        return;
-      }
-
-      cleanObject[key] = value;
-    }
-  });
-
-  return cleanObject;
-};
-
-const getValidatorErrorTypes = (errorArray) => {
-  const validatorErrorTypes = {
-    array: false,
-    arrayContains: false,
-    arrayEmpty: false,
-    arrayEnum: false,
-    arrayLength: false,
-    arrayMax: false,
-    arrayMin: false,
-    arrayUnique: false,
-    boolean: false,
-    date: false,
-    dateMax: false,
-    dateMin: false,
-    email: false,
-    emailEmpty: false,
-    emailMax: false,
-    emailMin: false,
-    enumValue: false,
-    equalField: false,
-    equalValue: false,
-    forbidden: false,
-    function: false,
-    luhn: false,
-    mac: false,
-    number: false,
-    numberEqual: false,
-    numberInteger: false,
-    numberMax: false,
-    numberMin: false,
-    numberNegative: false,
-    numberNotEqual: false,
-    numberPositive: false,
-    object: false,
-    objectMaxProps: false,
-    objectMinProps: false,
-    objectStrict: false,
-    required: false,
-    string: false,
-    stringAlpha: false,
-    stringAlphadash: false,
-    stringAlphanum: false,
-    stringBase64: false,
-    stringContains: false,
-    stringEmpty: false,
-    stringEnum: false,
-    stringHex: false,
-    stringLength: false,
-    stringMax: false,
-    stringMin: false,
-    stringNumeric: false,
-    stringPattern: false,
-    stringSingleLine: false,
-    tuple: false,
-    tupleEmpty: false,
-    tupleLength: false,
-    url: false,
-    uuid: false,
-    uuidVersion: false,
-  };
-
-  errorArray.forEach((error) => {
-    validatorErrorTypes[error.type] = true;
-  });
-
-  return validatorErrorTypes;
-};
-
-const findByProp = (items = [], value, prop) =>
-  items.find((item) => item[prop] === value);
-
-const getHostFromRequest = (request) => request.get("host");
-
-const isUrlMatchWithReqUrl = (url, reqUrl) =>
-  (customTypeof.check(url).type.array && url.some((u) => u === reqUrl)) ||
-  url === reqUrl;
-
-const versionCalculator = (versions = []) => {
-  let [parentMajor, parentMinor, parentPatch] = convertStringArrayToNumberArray(
-    "1.0.0".split(".")
-  );
-
-  versions.forEach((v) => {
-    const [major, minor, patch] = convertStringArrayToNumberArray(v.split("."));
-
-    parentMajor += major - 1;
-    parentMinor += minor;
-    parentPatch += patch;
-  });
-
-  return `${parentMajor}.${parentMinor}.${parentPatch}`;
-};
-
-const convertStringArrayToNumberArray = (items) => items.map((item) => +item);
-
 const extractVersions = (object) => {
-  return Object.keys(object).map((key) => object[key].version);
+  return objectUtilities.objectKeys(object).map((key) => object[key].version);
 };
 
 const isEqualWithTargetCellphone = (cellphone, targetCellphone) => {
@@ -175,27 +33,6 @@ const isEqualWithTargetCellphone = (cellphone, targetCellphone) => {
   return false;
 };
 
-const getTokenFromRequest = (request) => {
-  const { authorization, Authorization } = request.headers;
-
-  return (authorization || Authorization)?.split("Bearer ")[1];
-};
-
-const getObjectLength = (object) => evaluateValueLength(object);
-
-const crashServer = (message) => {
-  logger.bgRed(message).log();
-  process.exit(1);
-};
-
-const crashServerWithCondition = (condition, errorObject) => {
-  if (condition) {
-    crashServer(
-      errorObject.reason || errorObject.errorKey || errorObject.message
-    );
-  }
-};
-
 const excludeVersion = (object) => {
   const tempObject = {};
 
@@ -206,24 +43,6 @@ const excludeVersion = (object) => {
   }
 
   return tempObject;
-};
-
-const concatBaseUrlWithUrl = (baseUrlObject, routeObject) =>
-  `${baseUrlObject.url}${routeObject.url}`;
-
-const filterObject = (object, filterFields) => {
-  const filteredObject = {};
-
-  for (const key in filterFields) {
-    if (customTypeof.check(filterFields[key]).type.object) {
-      filteredObject[key] = filterObject(object[key], filterFields[key]);
-      continue;
-    }
-
-    filteredObject[key] = object[key];
-  }
-
-  return filteredObject;
 };
 
 const cellphoneFinder = (cellphones, targetCellphone) => {
@@ -240,25 +59,6 @@ const cellphoneFinder = (cellphones, targetCellphone) => {
   }
 };
 
-const renameObjectKey = (object, oldKey, newKey) => {
-  const copyOfObject = { ...object };
-  if (oldKey !== newKey) {
-    copyOfObject[newKey] = copyOfObject[oldKey];
-    delete copyOfObject[oldKey];
-  }
-
-  return copyOfObject;
-};
-
-const assignFirstTruthyValue = (object, key, ...values) => {
-  const truthyValue = values.find((item) => item);
-
-  return {
-    ...object,
-    [key]: truthyValue,
-  };
-};
-
 const isDataHasEqualityWithTargetCellphone = (data, targetCellphone) => {
   if (
     data.phoneNumber === targetCellphone.phoneNumber &&
@@ -271,54 +71,24 @@ const isDataHasEqualityWithTargetCellphone = (data, targetCellphone) => {
   return false;
 };
 
-const calculateNotificationType = (notificationCode) => {
-  const [success, info, warning, error] = [
-    "success",
-    "info",
-    "warning",
-    "error",
-  ];
-
-  if (notificationCode - 5000 >= 0) return error;
-  if (notificationCode - 4000 >= 0) return error;
-  if (notificationCode - 3000 >= 0) return warning;
-  if (notificationCode - 2000 >= 0) return success;
-  if (notificationCode - 1000 >= 0) return info;
-};
-
+//UNUSED
 const evaluateValueLength = (value) => {
   const valueTypeof = customTypeof.check(value).type;
 
   if (valueTypeof.array || valueTypeof.string) return value.length;
-  if (valueTypeof.object) return Object.keys(value).length;
+
+  if (valueTypeof.object) return objectUtilities.objectKeysLength(value);
+
+  return undefined;
 };
 
 export {
-  assignFirstTruthyValue,
-  calculateNotificationType,
   cellphoneFinder,
-  concatBaseUrlWithUrl,
-  convertStringArrayToNumberArray,
-  crashServer,
-  crashServerWithCondition,
   errorThrower,
   evaluateValueLength,
   excludeVersion,
   extractVersions,
-  filterObject,
-  findByProp,
   getErrorObject,
-  getHostFromRequest,
-  getMethodFromRoute,
-  getObjectLength,
-  getTokenFromRequest,
-  getValidatorErrorTypes,
   isDataHasEqualityWithTargetCellphone,
   isEqualWithTargetCellphone,
-  isUrlMatchWithReqUrl,
-  objectClarify,
-  objectInitializer,
-  renameObjectKey,
-  skipParams,
-  versionCalculator,
 };

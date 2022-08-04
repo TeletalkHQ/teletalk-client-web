@@ -1,12 +1,11 @@
 import { List } from "@mui/material";
 
 import { tempActions } from "actions/tempActions";
+import { arrayUtilities } from "classes/ArrayUtilities";
 
 import ChatListItem from "components/leftSideComponents/ChatListItem";
 
 import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
-
-import { evaluateValueLength } from "functions/utilities/utilities";
 
 import { useMyContext } from "hooks/useMyContext";
 
@@ -31,8 +30,8 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
             const chatList = chats?.map((chat, index) => {
               const messages = chat.messages;
 
-              if (evaluateValueLength(messages)) {
-                const lastMessage = messages[evaluateValueLength(messages) - 1];
+              if (arrayUtilities.arrayLength(messages)) {
+                const lastMessage = arrayUtilities.arrayLastItem(messages);
 
                 const senderID = lastMessage.messageSender.senderID;
 

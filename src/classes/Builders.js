@@ -1,15 +1,11 @@
 import { customTypeof } from "classes/CustomTypeof";
 
-import {
-  errorThrower,
-  getErrorObject,
-  getValidatorErrorTypes,
-} from "functions/utilities/utilities";
+import { errorThrower, getErrorObject } from "functions/utilities/utilities";
 
 class ValidationErrorBuilder {
   constructor() {
     this.validationResult = [];
-    this.validationResultErrorKeys = getValidatorErrorTypes([]);
+    this.validationResultErrorKeys = this.#getValidatorErrorTypes([]);
     this.options = {
       autoErrorDetection: true,
       extraErrorFields: {},
@@ -36,8 +32,75 @@ class ValidationErrorBuilder {
     return this;
   }
   #setValidationErrorKeys(result) {
-    this.validationResultErrorKeys = getValidatorErrorTypes(result);
+    this.validationResultErrorKeys = this.#getValidatorErrorTypes(result);
     return this;
+  }
+  #getValidatorErrorTypes(errorArray) {
+    const validatorErrorTypes = {
+      array: false,
+      arrayContains: false,
+      arrayEmpty: false,
+      arrayEnum: false,
+      arrayLength: false,
+      arrayMax: false,
+      arrayMin: false,
+      arrayUnique: false,
+      boolean: false,
+      date: false,
+      dateMax: false,
+      dateMin: false,
+      email: false,
+      emailEmpty: false,
+      emailMax: false,
+      emailMin: false,
+      enumValue: false,
+      equalField: false,
+      equalValue: false,
+      forbidden: false,
+      function: false,
+      luhn: false,
+      mac: false,
+      number: false,
+      numberEqual: false,
+      numberInteger: false,
+      numberMax: false,
+      numberMin: false,
+      numberNegative: false,
+      numberNotEqual: false,
+      numberPositive: false,
+      object: false,
+      objectMaxProps: false,
+      objectMinProps: false,
+      objectStrict: false,
+      required: false,
+      string: false,
+      stringAlpha: false,
+      stringAlphadash: false,
+      stringAlphanum: false,
+      stringBase64: false,
+      stringContains: false,
+      stringEmpty: false,
+      stringEnum: false,
+      stringHex: false,
+      stringLength: false,
+      stringMax: false,
+      stringMin: false,
+      stringNumeric: false,
+      stringPattern: false,
+      stringSingleLine: false,
+      tuple: false,
+      tupleEmpty: false,
+      tupleLength: false,
+      url: false,
+      uuid: false,
+      uuidVersion: false,
+    };
+
+    errorArray.forEach((error) => {
+      validatorErrorTypes[error.type] = true;
+    });
+
+    return validatorErrorTypes;
   }
 
   addError(condition, errorObject) {
@@ -145,11 +208,11 @@ class NotificationBuilder {
 
 const notificationBuilder = { create: () => new NotificationBuilder() };
 
-const validationBuilder = { create: () => new ValidationErrorBuilder() };
+const validationErrorBuilder = { create: () => new ValidationErrorBuilder() };
 
 export {
   notificationBuilder,
   NotificationBuilder,
-  validationBuilder,
+  validationErrorBuilder,
   ValidationErrorBuilder,
 };

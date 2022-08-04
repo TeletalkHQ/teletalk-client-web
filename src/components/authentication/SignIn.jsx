@@ -1,13 +1,13 @@
-import { LockOutlined } from "@mui/icons-material";
 import { Avatar, Typography, Container, CircularProgress } from "@mui/material";
+import { LockOutlined } from "@mui/icons-material";
+
+import { stringUtilities } from "classes/StringUtilities";
 
 import CountrySelector from "components/others/CountrySelector";
-import CustomButton from "components/generals/inputs/CustomButton";
-import CustomTextInput from "components/generals/inputs/CustomTextInput";
-import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
-
-import { evaluateValueLength } from "functions/utilities/utilities";
+import CustomButton from "components/generals/inputs/CustomButton";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
@@ -83,7 +83,7 @@ const SignIn = ({
             <CustomButton
               lbtn
               disabled={
-                evaluateValueLength(phoneNumber) < 9 || !selectedCountry
+                stringUtilities.valueLength(phoneNumber) < 9 || !selectedCountry
               }
               loading={loading}
               loadingIndicator={

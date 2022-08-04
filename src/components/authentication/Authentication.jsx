@@ -8,6 +8,7 @@ import { appOptions } from "classes/AppOptions";
 import { customTypeof } from "classes/CustomTypeof";
 import { emitters } from "classes/Emitters";
 import { domUtilities } from "classes/DomUtilities";
+import { stringUtilities } from "classes/StringUtilities";
 
 import Copyright from "components/utils/Copyright";
 import NewUserProfile from "components/authentication/NewUserProfile";
@@ -20,7 +21,6 @@ import { verifySignInController } from "controllers/authControllers/verifySignIn
 import { welcomeController } from "controllers/otherControllers/welcomeController";
 
 import { appDispatch } from "functions/injectors/dispatchInjector";
-import { evaluateValueLength } from "functions/utilities/utilities";
 
 import { useMyContext } from "hooks/useMyContext";
 
@@ -85,7 +85,7 @@ const Authentication = () => {
 
     if (
       (customTypeof.check(value).type.stringNumber &&
-        evaluateValueLength(value) < 15) ||
+        stringUtilities.valueLength(value) < 15) ||
       value === ""
     ) {
       dispatch(phoneNumberAction({ phoneNumber: value }));
@@ -97,7 +97,7 @@ const Authentication = () => {
 
     if (
       (customTypeof.check(value).type.stringNumber &&
-        evaluateValueLength(value) <= 6) ||
+        stringUtilities.valueLength(value) <= 6) ||
       value === ""
     ) {
       dispatch(countryCodeAction({ countryCode: value }));
@@ -109,7 +109,7 @@ const Authentication = () => {
   const handleVerificationCodeChange = (e) => {
     const value = e?.target?.value;
 
-    (evaluateValueLength(value) <= 6 || value === "") &&
+    (stringUtilities.valueLength(value) <= 6 || value === "") &&
       dispatch(verificationCodeAction({ verificationCode: value }));
   };
 

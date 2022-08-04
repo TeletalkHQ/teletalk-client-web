@@ -1,6 +1,5 @@
 import { customTypeof } from "classes/CustomTypeof";
-
-import { getObjectLength } from "functions/utilities/utilities";
+import { objectUtilities } from "classes/ObjectUtilities";
 
 const ioFieldsChecker = (
   input,
@@ -48,8 +47,8 @@ const checkFields = (
   missingFieldsError,
   overloadFieldsError
 ) => {
-  const ioFieldsLength = getObjectLength(ioData);
-  const fieldsLength = getObjectLength(fields);
+  const ioFieldsLength = objectUtilities.objectKeysLength(ioData);
+  const fieldsLength = objectUtilities.objectKeysLength(fields);
 
   if (ioFieldsLength !== fieldsLength) {
     if (ioFieldsLength < fieldsLength) {
