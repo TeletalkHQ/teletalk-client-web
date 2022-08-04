@@ -1,5 +1,5 @@
-import { viewModeAction } from "actions/globalActions";
-import { userAction } from "actions/userActions";
+import { globalActions } from "actions/globalActions";
+import { userActions } from "actions/userActions";
 
 import { logoutApi } from "apis/authenticationApis";
 
@@ -16,10 +16,10 @@ const logoutController = () => {
 
       persistentStorage.setDefaultStorage();
 
-      dispatch(userAction({ ...userInitializer() }));
+      dispatch(userActions.userAction({ ...userInitializer() }));
 
       dispatch(
-        viewModeAction({
+        globalActions.viewModeAction({
           viewMode: INITIAL_VIEW_MODE.SIGN_IN,
         })
       );

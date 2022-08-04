@@ -4,7 +4,7 @@ import LogoutDialog from "components/dialogContainer/LogoutDialog";
 
 import { useMyContext } from "hooks/useMyContext";
 
-import { dialogAction } from "actions/globalActions";
+import { globalActions } from "actions/globalActions";
 
 const DialogContainer = () => {
   const {
@@ -16,7 +16,7 @@ const DialogContainer = () => {
 
   const handleClose = (target) => {
     dispatch(
-      dialogAction({
+      globalActions.dialogAction({
         dialogState: {
           ...dialogState,
           [target]: { ...dialogState[target], open: false },

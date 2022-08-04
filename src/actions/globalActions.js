@@ -26,10 +26,12 @@ const onlineStatusChangeAction = (
   payload = onlineStatusInitialAction.payload
 ) => actionCreator(onlineStatusInitialAction.type, payload);
 
-export {
+const globalActions = {
   appDrawerAction,
   backdropAction,
   dialogAction,
   onlineStatusChangeAction,
   viewModeAction,
 };
+
+export { globalActions };

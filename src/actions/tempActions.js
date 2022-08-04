@@ -4,14 +4,14 @@ import { tempInitialActions } from "variables/initials/initialActions/tempInitia
 
 const {
   contactSelectedInitialAction,
-  messageInputInitialAction,
-  setMessagesInitialAction,
   countryCodeInitialAction,
   countryNameInitialAction,
-  verificationCodeInitialAction,
-  phoneNumberInitialAction,
   firstNameInitialAction,
   lastNameInitialAction,
+  messageInputInitialAction,
+  phoneNumberInitialAction,
+  setMessagesInitialAction,
+  verificationCodeInitialAction,
 } = tempInitialActions;
 
 const contactClickAction = (payload = contactSelectedInitialAction.payload) =>
@@ -55,15 +55,4 @@ const tempActions = {
   verificationCodeAction,
 };
 
-export {
-  contactClickAction,
-  countryCodeAction,
-  countryNameAction,
-  firstNameAction,
-  lastNameAction,
-  messageInputOnChangeAction,
-  phoneNumberAction,
-  setMessagesAction,
-  verificationCodeAction,
-  tempActions,
-};
+export { tempActions };

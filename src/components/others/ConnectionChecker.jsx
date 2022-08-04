@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { appDispatch } from "functions/others/injectors/dispatchInjector";
+import { appDispatch } from "functions/injectors/dispatchInjector";
 
 const ConnectionChecker = () => {
   //TODO Move it to global

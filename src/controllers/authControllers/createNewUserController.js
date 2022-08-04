@@ -1,5 +1,5 @@
-import { viewModeAction } from "actions/globalActions";
-import { loadingAction } from "actions/userActions";
+import { globalActions } from "actions/globalActions";
+import { userActions } from "actions/userActions";
 
 import { createNewUserApi } from "apis/authenticationApis";
 
@@ -9,6 +9,9 @@ import { userPropsUtilities } from "classes/UserPropsUtilities";
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 import { notifications } from "variables/others/notifications";
+
+const { viewModeAction } = globalActions;
+const { loadingAction } = userActions;
 
 const createNewUserController = () => {
   return async (dispatch, getState = getInitialState) => {

@@ -27,8 +27,11 @@
     ".prettierignore": true,
     ".gitignore": true,
     ".husky": true,
-    ".git": true
+    ".git": true,
+    ".env": true,
+    "thunder-tests": true,
+    ".vscode": true
   },
-  "explorerExclude.backup": null,
+  "explorerExclude.backup": {},
   "cSpell.words": ["regexs"]
 }

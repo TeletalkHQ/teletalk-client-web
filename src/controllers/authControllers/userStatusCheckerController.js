@@ -1,5 +1,5 @@
-import { userAction } from "actions/userActions";
-import { backdropAction, viewModeAction } from "actions/globalActions";
+import { userActions } from "actions/userActions";
+import { globalActions } from "actions/globalActions";
 
 import { userStatusCheckerApi } from "apis/authenticationApis";
 
@@ -7,6 +7,8 @@ import { persistentStorage } from "classes/PersistentStorage";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+
+const { userAction } = userActions;
 
 const userStatusCheckerController = () => {
   return async (dispatch) => {
@@ -25,12 +27,16 @@ const userStatusCheckerController = () => {
 
       if (error.statusCode === 401) {
         persistentStorage.setDefaultStorage();
-        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
+        dispatch(
+          globalActions.viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN })
+        );
       }
 
       dispatch(userAction({ ...initialStates.userState }));
     } finally {
-      dispatch(backdropAction({ backdropState: { open: false } }));
+      dispatch(
+        globalActions.backdropAction({ backdropState: { open: false } })
+      );
     }
   };
 };

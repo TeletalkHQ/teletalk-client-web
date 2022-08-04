@@ -10,7 +10,7 @@ import { useMyContext } from "hooks/useMyContext";
 
 import { appIcons } from "variables/initials/initialValues/initialValues";
 
-import { appDrawerAction, dialogAction } from "actions/globalActions";
+import { globalActions } from "actions/globalActions";
 import CustomBox from "components/generals/boxes/CustomBox";
 
 const { calls, contacts, newChannel, newGroup, nightMode, settings, logout } =
@@ -53,7 +53,7 @@ const AppDrawer = () => {
     target && handleDrawerItemClick(target);
 
     dispatch(
-      appDrawerAction({
+      globalActions.appDrawerAction({
         appDrawerState: {
           ...appDrawerState,
           anchor: { ...appDrawerState.anchor, [anchor]: open },
@@ -68,7 +68,7 @@ const AppDrawer = () => {
     }
 
     dispatch(
-      dialogAction({
+      globalActions.dialogAction({
         dialogState: { ...dialogState, [target]: { open: true } },
       })
     );

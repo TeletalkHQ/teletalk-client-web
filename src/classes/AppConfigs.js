@@ -21,7 +21,7 @@ class AppConfigs {
         validateStatus: false,
         inputDataPropertiesCheck: true,
         outputDataPropertiesCheck: false,
-        logFailureResponse: true,
+        logFailureResponse: false,
         logSuccessfulResponse: false,
       },
     };
@@ -44,5 +44,7 @@ class AppConfigs {
 }
 
 const appConfigs = new AppConfigs();
+
+console.log(appConfigs.configs);
 
 export { appConfigs, AppConfigs };

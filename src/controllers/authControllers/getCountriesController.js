@@ -1,4 +1,4 @@
-import { getCountriesAction } from "actions/otherActions";
+import { otherActions } from "actions/otherActions";
 
 import { getCountriesApi } from "apis/otherApis";
 
@@ -9,7 +9,7 @@ const getCountriesController = () => {
         data: { countries },
       } = await getCountriesApi.sendRequest();
 
-      dispatch(getCountriesAction({ countries }));
+      dispatch(otherActions.getCountriesAction({ countries }));
     } catch (error) {
       console.log("getCountriesController catch, error:", error);
     }

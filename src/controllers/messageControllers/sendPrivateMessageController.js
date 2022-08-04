@@ -1,5 +1,5 @@
-import { userAction } from "actions/userActions";
-import { messageInputOnChangeAction } from "actions/tempActions";
+import { userActions } from "actions/userActions";
+import { tempActions } from "actions/tempActions";
 
 import { sendPrivateMessageApi } from "apis/messageApis";
 
@@ -48,8 +48,10 @@ const sendPrivateMessageController = () => {
         console.log(copyUser);
       }
 
-      dispatch(userAction({ chats: copyUser.chats }));
-      dispatch(messageInputOnChangeAction({ messageInputText: "" }));
+      dispatch(userActions.userAction({ chats: copyUser.chats }));
+      dispatch(
+        tempActions.messageInputOnChangeAction({ messageInputText: "" })
+      );
     } catch (error) {
       console.log("sendPrivateMessageController", error);
     }

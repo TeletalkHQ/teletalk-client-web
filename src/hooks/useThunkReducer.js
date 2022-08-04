@@ -1,6 +1,6 @@
 import { useCallback, useReducer } from "react";
 
-import { appDispatch } from "functions/others/injectors/dispatchInjector";
+import { appDispatch } from "functions/injectors/dispatchInjector";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 

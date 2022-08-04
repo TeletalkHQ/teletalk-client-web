@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { Grid } from "@mui/material";
 
-import { backdropAction } from "actions/globalActions";
+import { globalActions } from "actions/globalActions";
 
 import { emitters } from "classes/Emitters";
 import { appOptions } from "classes/AppOptions";
@@ -17,7 +17,7 @@ import { userStatusCheckerController } from "controllers/authControllers/userSta
 import { getUserChatsLastMessageController } from "controllers/messageControllers/getUserChatsLastMessageController";
 import { getAllStuffController } from "controllers/versionControlController/getAllStuffController";
 
-import { onlineConnectionChecker } from "functions/events/onlineConnectionsChecker";
+import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 
 import { useMyContext } from "hooks/useMyContext";
 
@@ -34,7 +34,7 @@ const MainContainer = () => {
   } = useMyContext();
 
   useEffect(() => {
-    onlineConnectionChecker();
+    addOnlineStatusEvents();
   }, []);
 
   useEffect(() => {
@@ -60,7 +60,9 @@ const MainContainer = () => {
       } catch (error) {
         console.log("MainContainer auth catch", error);
       } finally {
-        dispatch(backdropAction({ backdropState: { open: false } }));
+        dispatch(
+          globalActions.backdropAction({ backdropState: { open: false } })
+        );
       }
     })();
     // eslint-disable-next-line
