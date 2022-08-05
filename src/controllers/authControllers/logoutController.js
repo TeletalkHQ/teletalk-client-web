@@ -4,8 +4,7 @@ import { userActions } from "actions/userActions";
 import { logoutApi } from "apis/authenticationApis";
 
 import { persistentStorage } from "classes/PersistentStorage";
-
-import { userInitializer } from "functions/helpers/userInitializer";
+import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
@@ -16,7 +15,9 @@ const logoutController = () => {
 
       persistentStorage.setDefaultStorage();
 
-      dispatch(userActions.userAction({ ...userInitializer() }));
+      dispatch(
+        userActions.userAction({ ...userPropsUtilities.makeDefaultUserState() })
+      );
 
       dispatch(
         globalActions.viewModeAction({

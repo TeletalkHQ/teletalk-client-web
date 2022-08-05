@@ -1,6 +1,6 @@
 import { appOptions } from "classes/AppOptions";
 
-import { newStateReplacer } from "functions/utilities/stateUtils";
+import { mergePrevStateWithPayload } from "functions/utilities/stateUtils";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
@@ -25,7 +25,7 @@ const tempReducer = (
   try {
     const { payload, type } = action;
 
-    const fn = () => newStateReplacer({ state, payload });
+    const fn = () => mergePrevStateWithPayload({ state, payload });
 
     switch (type) {
       case contactSelectedInitialAction.type:

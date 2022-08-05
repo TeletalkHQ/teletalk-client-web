@@ -15,7 +15,7 @@ import { dispatchInjector } from "functions/injectors/dispatchInjector";
 
 import { useThunkReducer } from "hooks/useThunkReducer";
 
-import { rootReducer } from "reducers/index";
+import { rootReducer } from "reducers/rootReducer";
 
 import { baseTheme } from "theme/baseTheme";
 

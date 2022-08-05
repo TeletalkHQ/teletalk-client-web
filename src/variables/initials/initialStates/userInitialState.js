@@ -1,6 +1,6 @@
-import { userInitializer } from "functions/helpers/userInitializer";
+import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 const userInitialState = {
-  ...userInitializer(),
+  ...userPropsUtilities.makeDefaultUserState(),
 };
 export { userInitialState };
