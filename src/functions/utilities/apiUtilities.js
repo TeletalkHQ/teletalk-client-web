@@ -15,7 +15,18 @@ const customAxios = axios.create({
   validateStatus,
 });
 
-export { customAxios };
+const requester = async (options) => {
+  try {
+    const response = await customAxios(options);
+
+    return response;
+  } catch (error) {
+    console.log("requester catch, error:", error);
+    throw error;
+  }
+};
+
+export { requester, customAxios };
 
 //* Return is interceptor, so if you want to remove interceptor you need that.
 // axios.interceptors.response.use(

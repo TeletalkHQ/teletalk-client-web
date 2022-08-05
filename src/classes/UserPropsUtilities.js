@@ -3,8 +3,6 @@ import { dataUsageManager } from "classes/DataUsageManager";
 import { stuffStore } from "classes/StuffStore";
 import { persistentStorage } from "classes/PersistentStorage";
 
-import { isDataHasEqualityWithTargetCellphone } from "functions/utilities/utilities";
-
 import { PERSISTENT_STORAGE_KEYS } from "variables/initials/initialValues/initialValues";
 
 const { firstNameModel, lastNameModel } = stuffStore.models;
@@ -129,24 +127,6 @@ class UserPropsUtilities {
     return userObject.tokens[0]?.mainToken;
   }
 
-  // getTestVerificationCode() {
-  //   const { TEST_VERIFICATION_CODE } = envManager.ENVIRONMENT_KEYS;
-  //   return envManager.getEnvironment(TEST_VERIFICATION_CODE);
-  // }
-  // setTestVerificationCode(verificationCode) {
-  //   const { TEST_VERIFICATION_CODE } = envManager.ENVIRONMENT_KEYS;
-  //   envManager.setEnvironment(TEST_VERIFICATION_CODE, verificationCode);
-  // }
-
-  // async setTestUsers(testUsers) {
-  //   const { testUsers: stateKey } = stateManager.stateKeys;
-  //   return await stateManager.setState(stateKey, testUsers);
-  // }
-  // setTestVerifyToken(token) {
-  //   const { TEST_VERIFY_TOKEN } = envManager.ENVIRONMENT_KEYS;
-  //   envManager.setEnvironment(TEST_VERIFY_TOKEN, token);
-  // }
-
   getVerifyTokenFromStorage() {
     return persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
   }
@@ -167,13 +147,44 @@ class UserPropsUtilities {
     try {
       const cellphone = cellphones.find((cellphone, index) => {
         cellphoneIndex = index;
-        return isDataHasEqualityWithTargetCellphone(cellphone, targetCellphone);
+        return this.isDataHasEqualityWithTargetCellphone(
+          cellphone,
+          targetCellphone
+        );
       });
       return { cellphone, cellphoneIndex };
     } catch (error) {
       logger.log("cellphoneFinder catch, error:", error);
       throw error;
     }
+  }
+
+  isDataHasEqualityWithTargetCellphone(data, targetCellphone) {
+    if (
+      data.phoneNumber === targetCellphone.phoneNumber &&
+      data.countryCode === targetCellphone.countryCode &&
+      data.countryName === targetCellphone.countryName
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  makeDefaultUserState() {
+    return {
+      bio: "",
+      blacklist: [],
+      chats: [],
+      contacts: [],
+      countryCode: "",
+      countryName: "",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      privateId: "",
+      username: "",
+    };
   }
 }
 

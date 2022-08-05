@@ -1,6 +1,6 @@
 import { appOptions } from "classes/AppOptions";
 
-import { newStateReplacer } from "functions/utilities/stateUtils";
+import { mergePrevStateWithPayload } from "functions/utilities/stateUtils";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { otherInitialActions } from "variables/initials/initialActions/otherInitialActions";
@@ -18,7 +18,7 @@ const otherReducer = (
   try {
     const { payload, type } = action;
 
-    const fn = () => newStateReplacer({ state, payload });
+    const fn = () => mergePrevStateWithPayload({ state, payload });
 
     switch (type) {
       case welcomeInitialAction.type:

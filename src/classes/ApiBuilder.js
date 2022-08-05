@@ -8,7 +8,7 @@ import { stuffStore } from "classes/StuffStore";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
-import { requester } from "functions/utilities/requester";
+import { requester } from "functions/utilities/apiUtilities";
 
 import { notifications } from "variables/others/notifications";
 

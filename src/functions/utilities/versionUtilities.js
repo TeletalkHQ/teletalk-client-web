@@ -1,4 +1,5 @@
 import { arrayUtilities } from "classes/ArrayUtilities";
+import { objectUtilities } from "classes/ObjectUtilities";
 
 const versionCalculator = (versions = []) => {
   let [parentMajor, parentMinor, parentPatch] =
@@ -16,4 +17,20 @@ const versionCalculator = (versions = []) => {
   return `${parentMajor}.${parentMinor}.${parentPatch}`;
 };
 
-export { versionCalculator };
+const extractVersions = (object) => {
+  return objectUtilities.objectKeys(object).map((key) => object[key].version);
+};
+
+const excludeVersion = (object) => {
+  const tempObject = {};
+
+  for (const key in object) {
+    const { version, ...childObject } = object[key];
+
+    tempObject[key] = childObject;
+  }
+
+  return tempObject;
+};
+
+export { excludeVersion, extractVersions, versionCalculator };

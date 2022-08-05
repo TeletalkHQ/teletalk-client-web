@@ -1,6 +1,6 @@
 import { appOptions } from "classes/AppOptions";
 
-import { newStateReplacer } from "functions/utilities/stateUtils";
+import { mergePrevStateWithPayload } from "functions/utilities/stateUtils";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { globalInitialActions } from "variables/initials/initialActions/globalInitialActions";
@@ -20,7 +20,7 @@ const globalReducer = (
 ) => {
   const { payload, type } = action;
 
-  const fn = () => newStateReplacer({ state, payload });
+  const fn = () => mergePrevStateWithPayload({ state, payload });
 
   try {
     switch (type) {

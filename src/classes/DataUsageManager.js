@@ -1,4 +1,4 @@
-import { isDataHasEqualityWithTargetCellphone } from "functions/utilities/utilities";
+import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 class DataUsageManager {
   constructor() {
@@ -13,7 +13,7 @@ class DataUsageManager {
 
   isCellphoneUsedBefore(cellphone) {
     return this.usedCellphone.some((c) =>
-      isDataHasEqualityWithTargetCellphone(c, cellphone)
+      userPropsUtilities.isDataHasEqualityWithTargetCellphone(c, cellphone)
     );
   }
 }
