@@ -12,7 +12,7 @@
   "scripts": {
     "start": "cross-env REACT_APP_RUNTIME_MODE=production react-scripts start",
     "dev": "cross-env REACT_APP_RUNTIME_MODE=development react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env REACT_APP_RUNTIME_MODE=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install"
