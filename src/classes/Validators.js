@@ -2,7 +2,7 @@ import Validator from "fastest-validator";
 
 import { customTypeof } from "classes/CustomTypeof";
 
-import { errorThrower } from "functions/utilities/utilities";
+import { errorThrower } from "functions/utilities/otherUtilities";
 
 const v = new Validator();
 
