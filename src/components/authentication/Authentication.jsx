@@ -18,7 +18,7 @@ import VerifySignIn from "components/authentication/VerifySignIn";
 import { createNewUserController } from "controllers/authControllers/createNewUserController";
 import { signInController } from "controllers/authControllers/signInController";
 import { verifySignInController } from "controllers/authControllers/verifySignInController";
-import { welcomeController } from "controllers/otherControllers/welcomeController";
+import { welcomeMessageController } from "controllers/otherControllers/welcomeMessageController";
 
 import { appDispatch } from "functions/injectors/dispatchInjector";
 
@@ -62,7 +62,7 @@ const Authentication = () => {
     emitters.addListener({
       event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
       listener: async () => {
-        dispatch(welcomeController());
+        dispatch(welcomeMessageController());
       },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

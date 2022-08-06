@@ -1,16 +1,16 @@
-const {
-  initialStates,
-} = require("variables/initials/initialStates/initialStates");
+import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const {
   notificationState: { errorNotificationState },
 } = initialStates;
 
+const errorNotificationInitialAction = {
+  payload: errorNotificationState,
+  type: "ERROR_NOTIFICATION",
+};
+
 const notificationInitialActions = {
-  errorNotificationInitialAction: {
-    type: "ERROR_NOTIFICATION",
-    payload: errorNotificationState,
-  },
+  errorNotificationInitialAction,
 };
 
 export { notificationInitialActions };

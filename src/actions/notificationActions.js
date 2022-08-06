@@ -1,6 +1,6 @@
-const { actionCreator } = require("functions/utilities/stateUtils");
+import { actionCreator } from "functions/utilities/stateUtils";
 
-const { actions } = require("variables/initials/initialActions/initialActions");
+import { actions } from "variables/initials/initialActions/initialActions";
 
 const {
   notificationInitialActions: { errorNotificationInitialAction },

@@ -5,6 +5,7 @@ const otherInitialState = {
   messages: [],
   messageInputText: "",
   selectedContact: initialContact,
+  welcomeMessage: "",
 };
 
 export { otherInitialState };
