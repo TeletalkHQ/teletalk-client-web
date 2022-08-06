@@ -1,5 +1,5 @@
-const { LoadingButton } = require("@mui/lab");
-const { Button } = require("@mui/material");
+import { Button } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 
 const CustomButton = ({
   btn,

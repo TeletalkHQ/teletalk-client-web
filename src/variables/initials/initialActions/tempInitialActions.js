@@ -1,5 +1,5 @@
-import { initialStates } from "variables/initials/initialStates/initialStates";
 import { initialCountry } from "variables/initials/initialValues/initialValues";
+import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const {
   tempState: {
@@ -12,52 +12,72 @@ const {
 } = initialStates;
 
 const contactSelectedInitialAction = {
+  payload: {
+    selectedContact,
+  },
   type: "CONTACT_SELECTED",
-  payload: { selectedContact },
 };
 
 const messageInputInitialAction = {
+  payload: {
+    messageInputText,
+  },
   type: "MESSAGE_INPUT_ONCHANGE",
-  payload: { messageInputText },
 };
 
 const setMessagesInitialAction = {
+  payload: {
+    messages,
+  },
   type: "SET_MESSAGES",
-  payload: { messages },
 };
 
 const countryNameInitialAction = {
+  payload: {
+    countryName: tempUserState.countryName,
+  },
   type: "COUNTRY_NAME_ONCHANGE",
-  payload: { countryName: tempUserState.countryName },
 };
 
 const countryCodeInitialAction = {
+  payload: {
+    countryCode: tempUserState.countryCode,
+  },
   type: "COUNTRY_CODE_ONCHANGE",
-  payload: { countryCode: tempUserState.countryCode },
 };
 
 const firstNameInitialAction = {
+  payload: {
+    firstName: tempUserState.firstName,
+  },
   type: "FIRST_NAME_ONCHANGE",
-  payload: { firstName: tempUserState.firstName },
 };
 const lastNameInitialAction = {
+  payload: {
+    lastName: tempUserState.lastName,
+  },
   type: "LAST_NAME_ONCHANGE",
-  payload: { lastName: tempUserState.lastName },
 };
 
 const phoneNumberInitialAction = {
+  payload: {
+    phoneNumber: tempUserState.phoneNumber,
+  },
   type: "PHONE_NUMBER_ONCHANGE",
-  payload: { phoneNumber: tempUserState.phoneNumber },
 };
 
 const verificationCodeInitialAction = {
+  payload: {
+    verificationCode,
+  },
   type: "VERIFICATION_CODE_ONCHANGE",
-  payload: { verificationCode },
 };
 
 const selectedCountryInitialAction = {
+  payload: {
+    selectedCountry: initialCountry,
+  },
   type: "SELECTED_COUNTRY_ONCHANGE",
-  payload: { selectedCountry: initialCountry },
 };
 
 const tempInitialActions = {

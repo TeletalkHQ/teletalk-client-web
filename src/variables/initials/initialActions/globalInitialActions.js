@@ -5,56 +5,58 @@ const {
     appDrawerState,
     backdropState,
     dialogState,
-    viewMode,
-    onlineStatus,
     loadingState,
+    onlineStatus,
+    viewMode,
   },
 } = initialStates;
 
 const loadingInitialAction = {
-  type: "LOADING_STATE",
   payload: {
     loadingState,
   },
+  type: "LOADING_STATE",
 };
 
 const onlineStatusInitialAction = {
+  payload: {
+    onlineStatus,
+  },
   type: "ONLINE_STATUS",
-  payload: { onlineStatus },
 };
 
 const appDrawerInitialAction = {
+  payload: {
+    appDrawerState,
+  },
   type: "APP_DRAWER_STATE_CHANGE",
-  payload: { appDrawerState },
 };
 const backdropInitialAction = {
+  payload: {
+    backdropState,
+  },
   type: "BACKDROP_STATE_CHANGE",
-  payload: { backdropState },
 };
 const viewModeInitialAction = {
+  payload: {
+    viewMode,
+  },
   type: "VIEW_MODE_ONCHANGE",
-  payload: { viewMode },
 };
 const dialogInitialAction = {
+  payload: {
+    dialogState,
+  },
   type: "DIALOG_STATE_CHANGE",
-  payload: { dialogState },
 };
 
 const globalInitialActions = {
-  onlineStatusInitialAction,
   appDrawerInitialAction,
   backdropInitialAction,
-  viewModeInitialAction,
   dialogInitialAction,
   loadingInitialAction,
+  onlineStatusInitialAction,
+  viewModeInitialAction,
 };
 
-export {
-  globalInitialActions,
-  onlineStatusInitialAction,
-  appDrawerInitialAction,
-  backdropInitialAction,
-  viewModeInitialAction,
-  dialogInitialAction,
-  loadingInitialAction,
-};
+export { globalInitialActions };

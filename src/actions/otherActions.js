@@ -15,13 +15,13 @@ const selectedCountryAction = (
   payload = selectedCountryInitialAction.payload
 ) => actionCreator(selectedCountryInitialAction.type, payload);
 
-const welcomeAction = (payload = welcomeInitialAction.payload) =>
+const welcomeMessageAction = (payload = welcomeInitialAction.payload) =>
   actionCreator(welcomeInitialAction.type, payload);
 
 const otherActions = {
   getCountriesAction,
   selectedCountryAction,
-  welcomeAction,
+  welcomeMessageAction,
 };
 
 export { otherActions };

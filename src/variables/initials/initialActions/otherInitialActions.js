@@ -2,26 +2,30 @@ import { initialStates } from "variables/initials/initialStates/initialStates";
 import { initialContact } from "variables/initials/initialValues/initialValues";
 
 const {
-  otherState: { welcome, countries },
+  otherState: { countries, welcomeMessage },
 } = initialStates;
 
+const getCountriesInitialAction = {
+  payload: {
+    countries,
+  },
+  type: "GET_COUNTRIES",
+};
+
+const selectContactInitialAction = {
+  payload: initialContact,
+  type: "SELECT_CONTACT",
+};
+
+const welcomeInitialAction = {
+  payload: { welcomeMessage },
+  type: "WELCOME",
+};
+
 const otherInitialActions = {
-  getCountriesInitialAction: {
-    type: "GET_COUNTRIES",
-    payload: {
-      countries,
-    },
-  },
-
-  selectContactInitialAction: {
-    type: "SELECT_CONTACT",
-    payload: initialContact,
-  },
-
-  welcomeInitialAction: {
-    type: "WELCOME",
-    payload: welcome,
-  },
+  getCountriesInitialAction,
+  selectContactInitialAction,
+  welcomeInitialAction,
 };
 
 export { otherInitialActions };
