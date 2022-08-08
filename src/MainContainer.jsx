@@ -6,6 +6,7 @@ import { globalActions } from "actions/globalActions";
 
 import { emitters } from "classes/Emitters";
 import { appOptions } from "classes/AppOptions";
+import { persistentStorage } from "classes/PersistentStorage";
 
 import Authentication from "components/authentication/Authentication";
 import LeftSideContainer from "components/leftSideComponents/LeftSideContainer";
@@ -21,7 +22,10 @@ import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { VIEW_MODES } from "variables/others/staticValues";
+import {
+  PERSISTENT_STORAGE_KEYS,
+  VIEW_MODES,
+} from "variables/others/staticValues";
 
 const MainContainer = () => {
   const {
@@ -53,6 +57,7 @@ const MainContainer = () => {
               const { user } = await dispatchAsync(
                 userStatusCheckerController()
               );
+
               await dispatchAsync(getUserChatsLastMessageController({ user }));
             }
           },
@@ -68,7 +73,7 @@ const MainContainer = () => {
       }
     })();
     // eslint-disable-next-line
-  }, [userState.mainToken]);
+  }, [persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN)]);
 
   return (
     <>

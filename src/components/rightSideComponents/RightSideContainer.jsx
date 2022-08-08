@@ -6,7 +6,6 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { tempActions } from "actions/tempActions";
 
-import { initialContact } from "variables/initials/initialValues/initialValues";
 import { sendPrivateMessageController } from "controllers/messageControllers/sendPrivateMessageController";
 import { useEffect } from "react";
 import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
@@ -14,7 +13,7 @@ import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
 import { arrayUtilities } from "classes/ArrayUtilities";
 
-const { contactClickAction, messageInputOnChangeAction } = tempActions;
+const { selectedContactId, messageInputOnChangeAction } = tempActions;
 
 const RightSideContainer = () => {
   const {
@@ -61,7 +60,7 @@ const RightSideContainer = () => {
   };
 
   const handleMessageContainerCloseClick = () => {
-    dispatch(contactClickAction({ selectedContact: { ...initialContact } }));
+    dispatch(selectedContactId({ selectedContactId: "" }));
   };
 
   const chat = arrayUtilities.findByPropValueEquality(

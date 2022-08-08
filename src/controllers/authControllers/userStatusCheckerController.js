@@ -17,7 +17,7 @@ const userStatusCheckerController = () => {
 
       const { user } = response.data;
 
-      delete user.token;
+      delete user.mainToken;
 
       dispatch(userAction({ ...user }));
 

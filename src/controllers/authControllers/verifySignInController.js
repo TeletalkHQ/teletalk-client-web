@@ -50,7 +50,9 @@ const verifySignInController = () => {
         { token: verifyToken }
       );
 
-      dispatch(tempActions.verificationCodeAction({ verificationCode: "" }));
+      dispatch(
+        tempActions.verificationCodeOnChangeAction({ verificationCode: "" })
+      );
 
       const { user: userData } = response.data;
 
@@ -61,8 +63,10 @@ const verifySignInController = () => {
       } else {
         persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
 
-        const mainToken = userData.token;
-        delete userData.token;
+        console.log(userData);
+
+        const mainToken = userData.mainToken;
+        delete userData.mainToken;
 
         persistentStorage.setItem(
           PERSISTENT_STORAGE_KEYS.MAIN_TOKEN,
