@@ -1,5 +1,6 @@
 import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
 
+//TODO Move some default values to appConfigs
 const globalInitialState = {
   appDrawerState: {
     anchor: {

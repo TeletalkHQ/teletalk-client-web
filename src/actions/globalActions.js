@@ -3,7 +3,7 @@ import { actionCreator } from "functions/utilities/stateUtils";
 import { globalInitialActions } from "variables/initials/initialActions/globalInitialActions";
 
 const {
-  appDrawerInitialAction,
+  appDrawerOpenChangeInitialAction,
   dialogInitialAction,
   globalLoadingOpenChangeInitialAction,
   onlineStatusInitialAction,
@@ -13,8 +13,9 @@ const {
 const viewModeChangeAction = (payload = viewModeInitialAction.payload) =>
   actionCreator(viewModeInitialAction.type, payload);
 
-const appDrawerAction = (payload = appDrawerInitialAction.payload) =>
-  actionCreator(appDrawerInitialAction.type, payload);
+const appDrawerOpenChangeAction = (
+  payload = appDrawerOpenChangeInitialAction.payload
+) => actionCreator(appDrawerOpenChangeInitialAction.type, payload);
 
 const dialogAction = (payload = dialogInitialAction.payload) =>
   actionCreator(dialogInitialAction.type, payload);
@@ -28,7 +29,7 @@ const onlineStatusChangeAction = (
 ) => actionCreator(onlineStatusInitialAction.type, payload);
 
 const globalActions = {
-  appDrawerAction,
+  appDrawerOpenChangeAction,
   dialogAction,
   globalLoadingStateOpenChangeAction,
   onlineStatusChangeAction,

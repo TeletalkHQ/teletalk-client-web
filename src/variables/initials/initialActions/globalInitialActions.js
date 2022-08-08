@@ -25,9 +25,9 @@ const onlineStatusInitialAction = {
   type: "ONLINE_STATUS",
 };
 
-const appDrawerInitialAction = {
+const appDrawerOpenChangeInitialAction = {
   payload: {
-    appDrawerState,
+    open: appDrawerState.anchor.left,
   },
   type: "APP_DRAWER_STATE_CHANGE",
 };
@@ -54,7 +54,7 @@ const dialogInitialAction = {
 };
 
 const globalInitialActions = {
-  appDrawerInitialAction,
+  appDrawerOpenChangeInitialAction,
   dialogInitialAction,
   globalLoadingOpenChangeInitialAction,
   loadingInitialAction,

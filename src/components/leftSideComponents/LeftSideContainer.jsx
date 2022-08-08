@@ -12,24 +12,13 @@ const LeftSideContainer = () => {
   const {
     hooksOutput: { dispatch },
     state: {
-      globalState: { appDrawerState },
       tempState: { selectedContact },
       userState: { chats, contacts },
     },
   } = useMyContext();
 
   const handleDrawerIconClick = () => {
-    dispatch(
-      globalActions.appDrawerAction({
-        appDrawerState: {
-          ...appDrawerState,
-          anchor: {
-            ...appDrawerState.anchor,
-            [appDrawerState.currentAnchor]: true,
-          },
-        },
-      })
-    );
+    dispatch(globalActions.appDrawerOpenChangeAction({ open: true }));
   };
 
   return (
