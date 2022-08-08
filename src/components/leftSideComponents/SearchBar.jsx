@@ -3,7 +3,7 @@ import { IconButton, InputAdornment } from "@mui/material";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
-import { appIcons } from "variables/initials/initialValues/initialValues";
+import { appIcons } from "variables/initials/initialValues/appIcons";
 
 const { menu, search } = appIcons;
 

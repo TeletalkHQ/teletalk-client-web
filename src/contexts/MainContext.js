@@ -8,6 +8,9 @@ const MainContext = createContext({
   state: initialStates,
   hooksOutput: {
     dispatch: (action = appOptions.options.actionOptions) => {},
+    dispatchAsync: async (action = async () => {}) => {
+      return await action();
+    },
   },
 });
 

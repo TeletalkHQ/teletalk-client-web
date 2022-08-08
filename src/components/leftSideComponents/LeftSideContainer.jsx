@@ -2,7 +2,7 @@ import { globalActions } from "actions/globalActions";
 
 import ChatList from "components/leftSideComponents/ChatList";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
 import SearchBar from "components/leftSideComponents/SearchBar";
 import SideBarList from "components/leftSideComponents/SideBarList";
@@ -15,7 +15,7 @@ const LeftSideContainer = () => {
       tempState: { selectedContact },
       userState: { chats, contacts },
     },
-  } = useMyContext();
+  } = useMainContext();
 
   const handleDrawerIconClick = () => {
     dispatch(globalActions.appDrawerOpenChangeAction({ open: true }));

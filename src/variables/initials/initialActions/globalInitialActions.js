@@ -3,7 +3,6 @@ import { initialStates } from "variables/initials/initialStates/initialStates";
 const {
   globalState: {
     appDrawerState,
-    dialogState,
     globalLoadingState,
     loadingState,
     onlineStatus,
@@ -19,9 +18,7 @@ const loadingInitialAction = {
 };
 
 const onlineStatusInitialAction = {
-  payload: {
-    onlineStatus,
-  },
+  payload: onlineStatus,
   type: "ONLINE_STATUS",
 };
 
@@ -46,16 +43,17 @@ const viewModeInitialAction = {
   type: "VIEW_MODE_ONCHANGE",
 };
 
-const dialogInitialAction = {
+const dialogOpenChangeInitialAction = {
   payload: {
-    dialogState,
+    dialogName: "",
+    open: false,
   },
   type: "DIALOG_STATE_CHANGE",
 };
 
 const globalInitialActions = {
   appDrawerOpenChangeInitialAction,
-  dialogInitialAction,
+  dialogOpenChangeInitialAction,
   globalLoadingOpenChangeInitialAction,
   loadingInitialAction,
   onlineStatusInitialAction,

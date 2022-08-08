@@ -9,9 +9,9 @@ import { persistentStorage } from "classes/PersistentStorage";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import {
-  INITIAL_VIEW_MODE,
+  VIEW_MODES,
   PERSISTENT_STORAGE_KEYS,
-} from "variables/initials/initialValues/initialValues";
+} from "variables/others/staticValues";
 
 import { notifications } from "variables/others/notifications";
 
@@ -35,7 +35,7 @@ const verifySignInController = () => {
       );
 
       if (!verifyToken) {
-        dispatch(viewModeChangeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
+        dispatch(viewModeChangeAction({ viewMode: VIEW_MODES.SIGN_IN }));
         notificationManager.submitErrorNotification(
           notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
         );
@@ -56,7 +56,7 @@ const verifySignInController = () => {
 
       if (userData.newUser) {
         dispatch(
-          viewModeChangeAction({ viewMode: INITIAL_VIEW_MODE.NEW_USER_PROFILE })
+          viewModeChangeAction({ viewMode: VIEW_MODES.NEW_USER_PROFILE })
         );
       } else {
         persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
@@ -70,9 +70,7 @@ const verifySignInController = () => {
         );
 
         dispatch(userAction(userData));
-        dispatch(
-          viewModeChangeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER })
-        );
+        dispatch(viewModeChangeAction({ viewMode: VIEW_MODES.MESSENGER }));
       }
     } catch (error) {
       console.log("verifySignInController catch, error:", error);

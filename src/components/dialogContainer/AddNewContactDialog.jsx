@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Typography } from "@mui/material";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
 import CustomButton from "components/generals/inputs/CustomButton";
@@ -20,7 +20,7 @@ const AddNewContactDialog = ({ onClose }) => {
     state: {
       globalState: { dialogState },
     },
-  } = useMyContext();
+  } = useMainContext();
 
   const [contact, setContact] = useState(initialContact);
 

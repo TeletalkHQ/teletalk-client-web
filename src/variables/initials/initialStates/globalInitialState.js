@@ -1,4 +1,4 @@
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { VIEW_MODES } from "variables/others/staticValues";
 
 //TODO Move some default values to appConfigs
 const globalInitialState = {
@@ -34,7 +34,7 @@ const globalInitialState = {
     isOnline: window?.navigator.onLine,
     ping: 0,
   },
-  viewMode: INITIAL_VIEW_MODE.SIGN_IN,
+  viewMode: VIEW_MODES.SIGN_IN,
 };
 
 export { globalInitialState };

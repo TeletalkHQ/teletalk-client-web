@@ -19,9 +19,9 @@ import { getAllStuffController } from "controllers/versionControlController/getA
 
 import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { VIEW_MODES } from "variables/others/staticValues";
 
 const MainContainer = () => {
   const {
@@ -30,8 +30,8 @@ const MainContainer = () => {
       tempState: { selectedContact },
       globalState: { viewMode },
     },
-    hooksOutput: { dispatch },
-  } = useMyContext();
+    hooksOutput: { dispatch, dispatchAsync },
+  } = useMainContext();
 
   useEffect(() => {
     addOnlineStatusEvents();
@@ -50,13 +50,15 @@ const MainContainer = () => {
           event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
             if (userState.privateId) {
-              const { user } = await dispatch(userStatusCheckerController());
-              await dispatch(getUserChatsLastMessageController({ user }));
+              const { user } = await dispatchAsync(
+                userStatusCheckerController()
+              );
+              await dispatchAsync(getUserChatsLastMessageController({ user }));
             }
           },
         });
 
-        await dispatch(getAllStuffController());
+        await dispatchAsync(getAllStuffController());
       } catch (error) {
         console.log("MainContainer auth catch", error);
       } finally {
@@ -70,7 +72,7 @@ const MainContainer = () => {
 
   return (
     <>
-      {!userState.privateId || viewMode !== INITIAL_VIEW_MODE.MESSENGER ? (
+      {!userState.privateId || viewMode !== VIEW_MODES.MESSENGER ? (
         <Authentication />
       ) : (
         <>

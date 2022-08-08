@@ -40,7 +40,14 @@ const App = () => {
   return (
     <SnackbarProvider>
       <MainContext.Provider
-        value={{ state, dispatch, hooksOutput: { dispatch } }}
+        value={{
+          state,
+          dispatch,
+          hooksOutput: {
+            dispatch,
+            dispatchAsync: async (action) => await dispatch(action),
+          },
+        }}
       >
         <ThemeProvider theme={baseTheme}>
           <CssBaseline enableColorScheme />
