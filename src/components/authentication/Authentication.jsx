@@ -29,12 +29,12 @@ import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const { selectedCountryAction } = otherActions;
 const {
-  countryCodeAction,
-  countryNameAction,
+  countryCodeOnChangeAction: countryCodeAction,
+  countryNameOnChangeAction: countryNameAction,
   firstNameAction,
-  lastNameAction,
-  phoneNumberAction,
-  verificationCodeAction,
+  lastNameOnChangeAction: lastNameAction,
+  phoneNumberOnChangeAction: phoneNumberAction,
+  verificationCodeOnChangeAction: verificationCodeAction,
 } = tempActions;
 
 const Authentication = () => {

@@ -33,10 +33,10 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
               if (arrayUtilities.arrayLength(messages)) {
                 const lastMessage = arrayUtilities.arrayLastItem(messages);
 
-                const senderID = lastMessage.messageSender.senderID;
+                const senderId = lastMessage.messageSender.senderId;
 
                 const sender =
-                  contacts.find((contact) => contact.privateId === senderID) ||
+                  contacts.find((contact) => contact.privateId === senderId) ||
                   userState;
 
                 const findParticipant = chat.participants.find(
@@ -52,8 +52,8 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
                     selected={!!findParticipant}
                     onChatListItemClick={() => {
                       dispatch(
-                        tempActions.contactClickAction({
-                          selectedContact: sender,
+                        tempActions.selectedContactId({
+                          selectedContactId: senderId,
                         })
                       );
 

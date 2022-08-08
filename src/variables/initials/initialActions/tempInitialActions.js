@@ -2,18 +2,12 @@ import { initialCountry } from "variables/initials/initialValues/initialValues";
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const {
-  tempState: {
-    messageInputText,
-    messages,
-    selectedContact,
-    tempUserState,
-    verificationCode,
-  },
+  tempState: { messageInputText, messages, tempUserState, verificationCode },
 } = initialStates;
 
-const contactSelectedInitialAction = {
+const selectedContactIdInitialAction = {
   payload: {
-    selectedContact,
+    selectedContactId: "",
   },
   type: "CONTACT_SELECTED",
 };
@@ -81,7 +75,7 @@ const selectedCountryInitialAction = {
 };
 
 const tempInitialActions = {
-  contactSelectedInitialAction,
+  selectedContactIdInitialAction,
   countryCodeInitialAction,
   countryNameInitialAction,
   firstNameInitialAction,

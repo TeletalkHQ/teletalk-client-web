@@ -1,16 +1,17 @@
 const tempInitialState = {
-  selectedCountry: null, // { countryName: "", countryShortName: "", countryCode: "" },
-  welcome: {
-    message: "",
-  },
-  tempUserState: {},
-  verificationCode: "",
-  selectedContact: {},
   countryCode: "",
   countryName: "",
   firstName: "",
   lastName: "",
+  messages: [],
   phoneNumber: "",
+  selectedContact: {},
+  selectedCountry: null,
+  tempUserState: {},
+  verificationCode: "",
+  welcome: {
+    message: "",
+  },
 };
 
 export { tempInitialState };

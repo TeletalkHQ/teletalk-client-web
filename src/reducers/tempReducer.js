@@ -6,7 +6,7 @@ import { initialStates } from "variables/initials/initialStates/initialStates";
 import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
 
 const {
-  contactSelectedInitialAction,
+  selectedContactIdInitialAction,
   messageInputInitialAction,
   setMessagesInitialAction,
   countryCodeInitialAction,
@@ -28,7 +28,7 @@ const tempReducer = (
     const fn = () => mergePrevStateWithPayload({ state, payload });
 
     switch (type) {
-      case contactSelectedInitialAction.type:
+      case selectedContactIdInitialAction.type:
         return fn();
 
       case setMessagesInitialAction.type:

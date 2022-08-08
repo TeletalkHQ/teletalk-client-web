@@ -18,11 +18,11 @@ import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const ContactsDialog = ({ onClose }) => {
   const {
+    hooksOutput: { dispatch },
     state: {
       globalState: { dialogState },
       userState,
     },
-    hooksOutput: { dispatch },
   } = useMainContext();
 
   useEffect(() => {
@@ -48,7 +48,9 @@ const ContactsDialog = ({ onClose }) => {
   };
 
   const handleContactClick = (contact) => {
-    dispatch(tempActions.contactClickAction({ selectedContact: contact }));
+    dispatch(
+      tempActions.selectedContactId({ selectedContactId: contact.privateId })
+    );
 
     handleClose();
   };
