@@ -45,7 +45,7 @@ const signInController = () => {
       );
 
       dispatch(
-        globalActions.viewModeAction({
+        globalActions.viewModeChangeAction({
           viewMode: INITIAL_VIEW_MODE.VERIFY_SIGN_IN,
         })
       );

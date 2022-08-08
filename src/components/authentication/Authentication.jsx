@@ -115,7 +115,9 @@ const Authentication = () => {
 
   const handleBackClick = () => {
     dispatch(
-      globalActions.viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN })
+      globalActions.viewModeChangeAction({
+        viewMode: INITIAL_VIEW_MODE.SIGN_IN,
+      })
     );
   };
 

@@ -10,7 +10,7 @@ const globalInitialState = {
     },
     currentAnchor: "left",
   },
-  backdropState: {
+  globalLoadingState: {
     color: "#fff",
     open: true,
     progressColor: "inherit",

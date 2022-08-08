@@ -15,7 +15,7 @@ import {
 
 import { notifications } from "variables/others/notifications";
 
-const { viewModeAction } = globalActions;
+const { viewModeChangeAction } = globalActions;
 const { loadingAction, userAction } = userActions;
 
 const verifySignInController = () => {
@@ -35,7 +35,7 @@ const verifySignInController = () => {
       );
 
       if (!verifyToken) {
-        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
+        dispatch(viewModeChangeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
         notificationManager.submitErrorNotification(
           notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
         );
@@ -56,7 +56,7 @@ const verifySignInController = () => {
 
       if (userData.newUser) {
         dispatch(
-          viewModeAction({ viewMode: INITIAL_VIEW_MODE.NEW_USER_PROFILE })
+          viewModeChangeAction({ viewMode: INITIAL_VIEW_MODE.NEW_USER_PROFILE })
         );
       } else {
         persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
@@ -70,7 +70,9 @@ const verifySignInController = () => {
         );
 
         dispatch(userAction(userData));
-        dispatch(viewModeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
+        dispatch(
+          viewModeChangeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER })
+        );
       }
     } catch (error) {
       console.log("verifySignInController catch, error:", error);
