@@ -1,10 +1,11 @@
 import { List, ListItem } from "@mui/material";
 
-import { appIcons } from "variables/initials/initialValues/initialValues";
+import { appIcons } from "variables/initials/initialValues/appIcons";
 
-const { allChats, bot, channels, unread, editChats, groups, personal } =
+const { allChats, bot, channels, editChats, groups, personal, unread } =
   appIcons;
 
+//TODO Add to some functionality and add priority to each
 const sidebarList = [
   allChats,
   unread,
@@ -33,9 +34,7 @@ const SideBarList = () => {
                 alignItems: "center",
               }}
             >
-              <item.Icon
-              // fontSize="small"
-              />
+              <item.Icon />
             </ListItem>
           );
         })}

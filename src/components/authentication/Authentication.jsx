@@ -22,9 +22,9 @@ import { welcomeMessageController } from "controllers/otherControllers/welcomeMe
 
 import { appDispatch } from "functions/injectors/dispatchInjector";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { VIEW_MODES } from "variables/others/staticValues";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const { selectedCountryAction } = otherActions;
@@ -56,7 +56,7 @@ const Authentication = () => {
         verificationCode,
       },
     },
-  } = useMyContext();
+  } = useMainContext();
 
   useEffect(() => {
     emitters.addListener({
@@ -116,7 +116,7 @@ const Authentication = () => {
   const handleBackClick = () => {
     dispatch(
       globalActions.viewModeChangeAction({
-        viewMode: INITIAL_VIEW_MODE.SIGN_IN,
+        viewMode: VIEW_MODES.SIGN_IN,
       })
     );
   };
@@ -147,13 +147,13 @@ const Authentication = () => {
     <>
       {((props) => {
         switch (viewMode) {
-          case INITIAL_VIEW_MODE.SIGN_IN:
+          case VIEW_MODES.SIGN_IN:
             return <SignIn {...props} />;
 
-          case INITIAL_VIEW_MODE.VERIFY_SIGN_IN:
+          case VIEW_MODES.VERIFY_SIGN_IN:
             return <VerifySignIn {...props} />;
 
-          case INITIAL_VIEW_MODE.NEW_USER_PROFILE:
+          case VIEW_MODES.NEW_USER_PROFILE:
             return <NewUserProfile {...props} />;
 
           default:

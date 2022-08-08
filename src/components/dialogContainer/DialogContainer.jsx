@@ -2,36 +2,31 @@ import AddNewContactDialog from "components/dialogContainer/AddNewContactDialog"
 import ContactsDialog from "components/dialogContainer/ContactsDialog";
 import LogoutDialog from "components/dialogContainer/LogoutDialog";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
 import { globalActions } from "actions/globalActions";
 
 const DialogContainer = () => {
   const {
-    state: {
-      globalState: { dialogState },
-    },
     hooksOutput: { dispatch },
-  } = useMyContext();
+  } = useMainContext();
 
-  const handleClose = (target) => {
+  const handleClose = (dialogName) => {
     dispatch(
-      globalActions.dialogAction({
-        dialogState: {
-          ...dialogState,
-          [target]: { ...dialogState[target], open: false },
-        },
+      globalActions.dialogOpenChangeAction({
+        open: false,
+        dialogName,
       })
     );
   };
 
   return (
     <>
-      <AddNewContactDialog onClose={handleClose} />
-
-      <ContactsDialog onClose={handleClose} />
-
-      <LogoutDialog onClose={handleClose} />
+      {[AddNewContactDialog, ContactsDialog, LogoutDialog].map(
+        (Component, i) => (
+          <Component key={i} onClose={handleClose} />
+        )
+      )}
     </>
   );
 };

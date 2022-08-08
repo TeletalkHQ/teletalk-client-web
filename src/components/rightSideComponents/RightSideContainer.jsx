@@ -2,7 +2,7 @@ import MessageInput from "components/rightSideComponents/MessageInput";
 import MessageList from "components/rightSideComponents/MessageList";
 import ChatBar from "components/rightSideComponents/ChatBar";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
 import { tempActions } from "actions/tempActions";
 
@@ -27,7 +27,7 @@ const RightSideContainer = () => {
       userState,
     },
     hooksOutput: { dispatch },
-  } = useMyContext();
+  } = useMainContext();
 
   useEffect(() => {
     try {
@@ -64,7 +64,6 @@ const RightSideContainer = () => {
     dispatch(contactClickAction({ selectedContact: { ...initialContact } }));
   };
 
-  //FIXME ...
   const chat = arrayUtilities.findByPropValueEquality(
     userState.chats,
     privateId,

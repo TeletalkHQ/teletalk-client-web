@@ -6,16 +6,17 @@ import {
   SwipeableDrawer,
 } from "@mui/material";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
-import { appIcons } from "variables/initials/initialValues/initialValues";
+import { appIcons } from "variables/initials/initialValues/appIcons";
 
 import { globalActions } from "actions/globalActions";
 import CustomBox from "components/generals/boxes/CustomBox";
 
-const { calls, contacts, newChannel, newGroup, nightMode, settings, logout } =
+const { calls, contacts, logout, newChannel, newGroup, nightMode, settings } =
   appIcons;
 
+//TODO Add to some functionality and add priority to each
 const drawerList = [
   calls,
   contacts,
@@ -36,11 +37,10 @@ const AppDrawer = () => {
       globalState: {
         appDrawerState,
         appDrawerState: { currentAnchor },
-        dialogState,
       },
     },
     hooksOutput: { dispatch },
-  } = useMyContext();
+  } = useMainContext();
 
   const toggleDrawer = (event, open) => {
     if (
@@ -53,12 +53,11 @@ const AppDrawer = () => {
     dispatch(globalActions.appDrawerOpenChangeAction({ open }));
   };
 
-  const handleDrawerItemClick = (event, target) => {
-    toggleDrawer(event, false);
-
+  const handleDrawerItemClick = (dialogName) => {
     dispatch(
-      globalActions.dialogAction({
-        dialogState: { ...dialogState, [target]: { open: true } },
+      globalActions.dialogOpenChangeAction({
+        dialogName,
+        open: true,
       })
     );
   };
@@ -84,11 +83,14 @@ const AppDrawer = () => {
           onKeyDown={(event) => toggleDrawer(event, false)}
         >
           <List>
-            {drawerList.map(({ text, target, Icon }, index) => (
+            {drawerList.map(({ elementName, Icon, text }, index) => (
               <ListItem
                 button
                 key={index}
-                onClick={(event) => handleDrawerItemClick(event, target)}
+                onClick={(event) => {
+                  toggleDrawer(event, false);
+                  handleDrawerItemClick(elementName);
+                }}
               >
                 <ListItemIcon>
                   <Icon />

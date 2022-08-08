@@ -28,17 +28,18 @@ const VERIFY_TOKEN_NOT_FOUND = notificationBuilder
 //#endregion //* errors
 
 //#region //* successes
-
+const successes = {};
 //#endregion //* successes
 
-const successes = {};
 const localErrors = {
   ECONNABORTED,
   URL_NOT_FOUND,
   VERIFY_TOKEN_NOT_FOUND,
 };
+
 const notifications = {
   localErrors,
   successes,
 };
+
 export { notifications };

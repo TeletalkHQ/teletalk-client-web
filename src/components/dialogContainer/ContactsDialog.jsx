@@ -5,7 +5,7 @@ import { Typography } from "@mui/material";
 import { globalActions } from "actions/globalActions";
 import { tempActions } from "actions/tempActions";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
 import ContactListItem from "components/dialogContainer/ContactListItem";
@@ -14,6 +14,7 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 
 import { getContactsController } from "controllers/cellphoneController/getContactsController";
+import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const ContactsDialog = ({ onClose }) => {
   const {
@@ -22,7 +23,7 @@ const ContactsDialog = ({ onClose }) => {
       userState,
     },
     hooksOutput: { dispatch },
-  } = useMyContext();
+  } = useMainContext();
 
   useEffect(() => {
     if (dialogState.contacts.open) {
@@ -35,11 +36,9 @@ const ContactsDialog = ({ onClose }) => {
 
   const handleAddContactClick = () => {
     dispatch(
-      globalActions.dialogAction({
-        dialogState: {
-          ...dialogState,
-          addContact: { ...dialogState.addNewContact, open: true },
-        },
+      globalActions.dialogOpenChangeAction({
+        dialogName: elementNames.addContacts,
+        open: true,
       })
     );
   };

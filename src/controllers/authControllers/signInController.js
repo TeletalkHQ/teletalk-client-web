@@ -7,9 +7,9 @@ import { persistentStorage } from "classes/PersistentStorage";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import {
-  INITIAL_VIEW_MODE,
+  VIEW_MODES,
   PERSISTENT_STORAGE_KEYS,
-} from "variables/initials/initialValues/initialValues";
+} from "variables/others/staticValues";
 
 const { loadingAction, userAction } = userActions;
 
@@ -46,7 +46,7 @@ const signInController = () => {
 
       dispatch(
         globalActions.viewModeChangeAction({
-          viewMode: INITIAL_VIEW_MODE.VERIFY_SIGN_IN,
+          viewMode: VIEW_MODES.VERIFY_SIGN_IN,
         })
       );
 

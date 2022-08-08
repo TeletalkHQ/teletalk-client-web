@@ -7,7 +7,7 @@ import { notificationManager } from "classes/NotificationManager";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { VIEW_MODES } from "variables/others/staticValues";
 import { notifications } from "variables/others/notifications";
 
 const { viewModeChangeAction } = globalActions;
@@ -24,7 +24,7 @@ const createNewUserController = () => {
       const verifyToken = userPropsUtilities.getVerifyTokenFromStorage();
 
       if (!verifyToken) {
-        dispatch(viewModeChangeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN }));
+        dispatch(viewModeChangeAction({ viewMode: VIEW_MODES.SIGN_IN }));
 
         notificationManager.submitErrorNotification(
           notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
@@ -43,7 +43,7 @@ const createNewUserController = () => {
 
       userPropsUtilities.removeVerifyTokenFromStorage();
 
-      dispatch(viewModeChangeAction({ viewMode: INITIAL_VIEW_MODE.MESSENGER }));
+      dispatch(viewModeChangeAction({ viewMode: VIEW_MODES.MESSENGER }));
 
       dispatch(
         loadingAction({ loadingState: { ...loadingState, loading: true } })

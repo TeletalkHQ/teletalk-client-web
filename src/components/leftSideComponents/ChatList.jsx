@@ -7,13 +7,13 @@ import ChatListItem from "components/leftSideComponents/ChatListItem";
 
 import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
 const ChatList = ({ chats = [], contacts, selectedContact }) => {
   const {
     hooksOutput: { dispatch },
     state: { userState },
-  } = useMyContext();
+  } = useMainContext();
 
   return (
     <>

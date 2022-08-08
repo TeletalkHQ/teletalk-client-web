@@ -6,7 +6,7 @@ import { userStatusCheckerApi } from "apis/authenticationApis";
 import { persistentStorage } from "classes/PersistentStorage";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { VIEW_MODES } from "variables/others/staticValues";
 
 const { userAction } = userActions;
 
@@ -29,7 +29,7 @@ const userStatusCheckerController = () => {
         persistentStorage.setDefaultStorage();
         dispatch(
           globalActions.viewModeChangeAction({
-            viewMode: INITIAL_VIEW_MODE.SIGN_IN,
+            viewMode: VIEW_MODES.SIGN_IN,
           })
         );
       }

@@ -22,7 +22,6 @@
         "templates": true,
         "lang": "en_US",
         "skipWords": [
-          "100vh",
           "abcdefghijklmnopqrstufwxyz",
           "abcdefghijklmnopqrstufwxyzABCDEFGHIJKLMNOPQRSTUFWXYZ1234567890",
           "Alphadash",
@@ -55,6 +54,7 @@
           "instanceof",
           "ioredis",
           "ipynb",
+          "vh",
           "iran",
           "Jalali",
           "jpg",

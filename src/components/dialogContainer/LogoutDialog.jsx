@@ -5,7 +5,7 @@ import CustomButton from "components/generals/inputs/CustomButton";
 
 import { logoutController } from "controllers/authControllers/logoutController";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 
 const LogoutDialog = ({ onClose }) => {
   const {
@@ -13,7 +13,7 @@ const LogoutDialog = ({ onClose }) => {
     state: {
       globalState: { dialogState },
     },
-  } = useMyContext();
+  } = useMainContext();
 
   const handleClose = () => {
     onClose("logout");

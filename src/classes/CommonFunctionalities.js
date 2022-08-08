@@ -6,7 +6,7 @@ import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { appDispatch } from "functions/injectors/dispatchInjector";
 
-import { INITIAL_VIEW_MODE } from "variables/initials/initialValues/initialValues";
+import { VIEW_MODES } from "variables/others/staticValues";
 
 class CommonFunctionalities {
   resetEverything() {
@@ -16,7 +16,7 @@ class CommonFunctionalities {
     );
     appDispatch(
       globalActions.viewModeChangeAction({
-        viewMode: INITIAL_VIEW_MODE.SIGN_IN,
+        viewMode: VIEW_MODES.SIGN_IN,
       })
     );
   }

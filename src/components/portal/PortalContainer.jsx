@@ -3,7 +3,7 @@ import Portal from "components/portal/Portal";
 import AppDrawer from "components/portal/AppDrawer";
 import DefaultGlobalLoading from "components/portal/DefaultGlobalLoading";
 
-import { useMyContext } from "hooks/useMyContext";
+import { useMainContext } from "hooks/useMainContext";
 import DialogContainer from "components/dialogContainer/DialogContainer";
 
 const PortalContainer = ({ onBackdropClose }) => {
@@ -11,7 +11,7 @@ const PortalContainer = ({ onBackdropClose }) => {
     state: {
       globalState: { globalLoadingState },
     },
-  } = useMyContext();
+  } = useMainContext();
 
   return (
     <Portal>

@@ -7,7 +7,7 @@ import { globalInitialActions } from "variables/initials/initialActions/globalIn
 
 const {
   appDrawerOpenChangeInitialAction,
-  dialogInitialAction,
+  dialogOpenChangeInitialAction,
   globalLoadingOpenChangeInitialAction,
   loadingInitialAction,
   onlineStatusInitialAction,
@@ -33,11 +33,11 @@ const globalReducer = (
       case appDrawerOpenChangeInitialAction.type:
         return handleAppDrawerStateOpenChange(state, payload);
 
-      case dialogInitialAction.type:
-        return fn();
+      case dialogOpenChangeInitialAction.type:
+        return handleDialogOpenChange(state, payload);
 
       case onlineStatusInitialAction.type:
-        return fn();
+        return handleOnlineStatusStateChange(state, payload);
 
       case loadingInitialAction.type:
         return fn();
@@ -74,3 +74,19 @@ const handleAppDrawerStateOpenChange = (prevState, payload) => {
     },
   };
 };
+
+const handleDialogOpenChange = (prevState, payload) => ({
+  ...prevState,
+  dialogState: {
+    ...prevState.dialogState,
+    [payload.dialogName]: { open: payload.open },
+  },
+});
+
+const handleOnlineStatusStateChange = (prevState, payload) => ({
+  ...prevState,
+  onlineStatus: {
+    ...prevState.onlineStatus,
+    ...payload,
+  },
+});

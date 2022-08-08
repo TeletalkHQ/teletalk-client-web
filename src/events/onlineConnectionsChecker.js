@@ -5,9 +5,7 @@ import { appDispatch } from "functions/injectors/dispatchInjector";
 const onlineStatusOnChangeEvent = () => {
   const isOnline = window.navigator.onLine;
 
-  appDispatch(
-    globalActions.onlineStatusChangeAction({ onlineStatus: { isOnline } })
-  );
+  appDispatch(globalActions.onlineStatusChangeAction({ isOnline }));
 };
 
 const addOnlineStatusOnChangeListener = (type) =>

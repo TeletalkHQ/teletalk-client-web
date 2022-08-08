@@ -3,7 +3,7 @@ import { dataUsageManager } from "classes/DataUsageManager";
 import { stuffStore } from "classes/StuffStore";
 import { persistentStorage } from "classes/PersistentStorage";
 
-import { PERSISTENT_STORAGE_KEYS } from "variables/initials/initialValues/initialValues";
+import { PERSISTENT_STORAGE_KEYS } from "variables/others/staticValues";
 
 const { firstNameModel, lastNameModel } = stuffStore.models;
 
