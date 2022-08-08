@@ -15,7 +15,7 @@ class CommonFunctionalities {
       userActions.userAction(userPropsUtilities.makeDefaultUserState())
     );
     appDispatch(
-      globalActions.viewModeAction({
+      globalActions.viewModeChangeAction({
         viewMode: INITIAL_VIEW_MODE.SIGN_IN,
       })
     );

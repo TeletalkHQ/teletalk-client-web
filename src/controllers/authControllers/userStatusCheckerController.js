@@ -28,14 +28,16 @@ const userStatusCheckerController = () => {
       if (error.statusCode === 401) {
         persistentStorage.setDefaultStorage();
         dispatch(
-          globalActions.viewModeAction({ viewMode: INITIAL_VIEW_MODE.SIGN_IN })
+          globalActions.viewModeChangeAction({
+            viewMode: INITIAL_VIEW_MODE.SIGN_IN,
+          })
         );
       }
 
       dispatch(userAction({ ...initialStates.userState }));
     } finally {
       dispatch(
-        globalActions.backdropAction({ backdropState: { open: false } })
+        globalActions.globalLoadingStateOpenChangeAction({ open: false })
       );
     }
   };

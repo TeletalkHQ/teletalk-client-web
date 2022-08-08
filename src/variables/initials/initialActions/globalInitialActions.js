@@ -3,8 +3,8 @@ import { initialStates } from "variables/initials/initialStates/initialStates";
 const {
   globalState: {
     appDrawerState,
-    backdropState,
     dialogState,
+    globalLoadingState,
     loadingState,
     onlineStatus,
     viewMode,
@@ -31,18 +31,21 @@ const appDrawerInitialAction = {
   },
   type: "APP_DRAWER_STATE_CHANGE",
 };
-const backdropInitialAction = {
+
+const globalLoadingOpenChangeInitialAction = {
   payload: {
-    backdropState,
+    open: globalLoadingState.open,
   },
   type: "BACKDROP_STATE_CHANGE",
 };
+
 const viewModeInitialAction = {
   payload: {
     viewMode,
   },
   type: "VIEW_MODE_ONCHANGE",
 };
+
 const dialogInitialAction = {
   payload: {
     dialogState,
@@ -52,8 +55,8 @@ const dialogInitialAction = {
 
 const globalInitialActions = {
   appDrawerInitialAction,
-  backdropInitialAction,
   dialogInitialAction,
+  globalLoadingOpenChangeInitialAction,
   loadingInitialAction,
   onlineStatusInitialAction,
   viewModeInitialAction,

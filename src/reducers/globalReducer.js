@@ -7,8 +7,8 @@ import { globalInitialActions } from "variables/initials/initialActions/globalIn
 
 const {
   appDrawerInitialAction,
-  backdropInitialAction,
   dialogInitialAction,
+  globalLoadingOpenChangeInitialAction,
   loadingInitialAction,
   onlineStatusInitialAction,
   viewModeInitialAction,
@@ -27,8 +27,8 @@ const globalReducer = (
       case viewModeInitialAction.type:
         return fn();
 
-      case backdropInitialAction.type:
-        return fn();
+      case globalLoadingOpenChangeInitialAction.type:
+        return handleGlobalLoadingStateOpenChange(state, payload);
 
       case appDrawerInitialAction.type:
         return fn();
@@ -51,3 +51,13 @@ const globalReducer = (
 };
 
 export { globalReducer };
+
+const handleGlobalLoadingStateOpenChange = (prevState, payload) => {
+  return {
+    ...prevState,
+    globalLoadingState: {
+      ...prevState.globalLoadingState,
+      open: payload.open,
+    },
+  };
+};

@@ -61,7 +61,7 @@ const MainContainer = () => {
         console.log("MainContainer auth catch", error);
       } finally {
         dispatch(
-          globalActions.backdropAction({ backdropState: { open: false } })
+          globalActions.globalLoadingStateOpenChangeAction({ open: false })
         );
       }
     })();

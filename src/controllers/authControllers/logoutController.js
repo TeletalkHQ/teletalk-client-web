@@ -20,7 +20,7 @@ const logoutController = () => {
       );
 
       dispatch(
-        globalActions.viewModeAction({
+        globalActions.viewModeChangeAction({
           viewMode: INITIAL_VIEW_MODE.SIGN_IN,
         })
       );
