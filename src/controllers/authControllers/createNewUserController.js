@@ -1,17 +1,16 @@
-import { globalActions } from "actions/globalActions";
-
 import { createNewUserApi } from "apis/authenticationApis";
 
 import { notificationManager } from "classes/NotificationManager";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
-import { authenticationProgressChange } from "functions/utilities/commonActions";
+import {
+  authenticationProgressChange,
+  viewModeChange,
+} from "functions/utilities/commonActions";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { VIEW_MODES } from "variables/others/staticValues";
 import { notifications } from "variables/others/notifications";
-
-const { viewModeChangeAction } = globalActions;
 
 const createNewUserController = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -26,7 +25,7 @@ const createNewUserController = () => {
 
       if (!verifyToken) {
         //TODO Move it to common actions
-        dispatch(viewModeChangeAction({ viewMode: VIEW_MODES.SIGN_IN }));
+        dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
 
         notificationManager.submitErrorNotification(
           notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
@@ -45,7 +44,7 @@ const createNewUserController = () => {
 
       userPropsUtilities.removeVerifyTokenFromStorage();
 
-      dispatch(viewModeChangeAction({ viewMode: VIEW_MODES.MESSENGER }));
+      dispatch(viewModeChange(VIEW_MODES.MESSENGER));
     } catch (error) {
       console.log("createNewUserController catch, error:", error);
     } finally {

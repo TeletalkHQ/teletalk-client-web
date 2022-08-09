@@ -1,11 +1,13 @@
-import { globalActions } from "actions/globalActions";
 import { userActions } from "actions/userActions";
 
 import { signInApi } from "apis/authenticationApis";
 
 import { persistentStorage } from "classes/PersistentStorage";
 
-import { authenticationProgressChange } from "functions/utilities/commonActions";
+import {
+  authenticationProgressChange,
+  viewModeChange,
+} from "functions/utilities/commonActions";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import {
@@ -43,11 +45,7 @@ const signInController = () => {
         })
       );
 
-      dispatch(
-        globalActions.viewModeChangeAction({
-          viewMode: VIEW_MODES.VERIFY_SIGN_IN,
-        })
-      );
+      dispatch(viewModeChange(VIEW_MODES.VERIFY_SIGN_IN));
 
       return response;
     } catch (error) {

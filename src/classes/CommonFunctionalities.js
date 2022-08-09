@@ -1,10 +1,10 @@
 import { userActions } from "actions/userActions";
-import { globalActions } from "actions/globalActions";
 
 import { persistentStorage } from "classes/PersistentStorage";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { appDispatch } from "functions/injectors/dispatchInjector";
+import { viewModeChange } from "functions/utilities/commonActions";
 
 import { VIEW_MODES } from "variables/others/staticValues";
 
@@ -14,11 +14,7 @@ class CommonFunctionalities {
     appDispatch(
       userActions.userAction(userPropsUtilities.makeDefaultUserState())
     );
-    appDispatch(
-      globalActions.viewModeChangeAction({
-        viewMode: VIEW_MODES.SIGN_IN,
-      })
-    );
+    appDispatch(viewModeChange(VIEW_MODES.SIGN_IN));
   }
 }
 

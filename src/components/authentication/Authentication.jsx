@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 import { tempActions } from "actions/tempActions";
-import { globalActions } from "actions/globalActions";
 
 import { appOptions } from "classes/AppOptions";
 import { customTypeof } from "classes/CustomTypeof";
@@ -19,6 +18,7 @@ import { signInController } from "controllers/authControllers/signInController";
 import { verifySignInController } from "controllers/authControllers/verifySignInController";
 import { welcomeMessageController } from "controllers/otherControllers/welcomeMessageController";
 
+import { viewModeChange } from "functions/utilities/commonActions";
 import { appDispatch } from "functions/injectors/dispatchInjector";
 
 import { useMainContext } from "hooks/useMainContext";
@@ -113,11 +113,7 @@ const Authentication = () => {
   };
 
   const handleBackClick = () => {
-    dispatch(
-      globalActions.viewModeChangeAction({
-        viewMode: VIEW_MODES.SIGN_IN,
-      })
-    );
+    dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
   };
 
   const handleCountryNameAutocompleteOnchange = (newValue) => {

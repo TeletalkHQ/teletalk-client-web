@@ -1,6 +1,9 @@
-const { globalActions } = require("actions/globalActions");
+import { globalActions } from "actions/globalActions";
 
 const authenticationProgressChange = (authenticationProgress) =>
   globalActions.appProgressionChange({ authenticationProgress });
 
-export { authenticationProgressChange };
+const viewModeChange = (viewMode) =>
+  globalActions.viewModeChangeAction({ viewMode });
+
+export { authenticationProgressChange, viewModeChange };
