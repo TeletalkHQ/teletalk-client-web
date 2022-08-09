@@ -1,7 +1,5 @@
 import { appOptions } from "classes/AppOptions";
 
-import { mergePrevStateWithPayload } from "functions/utilities/stateUtils";
-
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { globalInitialActions } from "variables/initials/initialActions/globalInitialActions";
 
@@ -19,8 +17,6 @@ const globalReducer = (
   action = appOptions.options.actionOptions
 ) => {
   const { payload, type } = action;
-
-  const fn = () => mergePrevStateWithPayload({ state, payload });
 
   try {
     switch (type) {
@@ -40,7 +36,7 @@ const globalReducer = (
         return handleOnlineStatusStateChange(state, payload);
 
       case viewModeInitialAction.type:
-        return fn();
+        return handleUpdateViewMode(state, payload);
       default:
         return state;
     }
@@ -96,4 +92,9 @@ const handleAppProgressionChange = (prevState, payload) => ({
     ...prevState.appProgressions,
     ...payload,
   },
+});
+
+const handleUpdateViewMode = (prevState, payload) => ({
+  ...prevState,
+  viewMode: payload.viewMode,
 });

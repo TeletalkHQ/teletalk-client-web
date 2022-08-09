@@ -1,4 +1,3 @@
-import { globalActions } from "actions/globalActions";
 import { userActions } from "actions/userActions";
 
 import { logoutApi } from "apis/authenticationApis";
@@ -6,10 +5,12 @@ import { logoutApi } from "apis/authenticationApis";
 import { persistentStorage } from "classes/PersistentStorage";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
+import { viewModeChange } from "functions/utilities/commonActions";
+
 import { VIEW_MODES } from "variables/others/staticValues";
 
 const logoutController = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     try {
       /*const response = */ await logoutApi.sendRequest();
 
@@ -19,11 +20,7 @@ const logoutController = () => {
         userActions.userAction({ ...userPropsUtilities.makeDefaultUserState() })
       );
 
-      dispatch(
-        globalActions.viewModeChangeAction({
-          viewMode: VIEW_MODES.SIGN_IN,
-        })
-      );
+      dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
     } catch (error) {
       console.log("logoutController", error);
     }

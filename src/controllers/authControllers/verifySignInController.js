@@ -1,4 +1,3 @@
-import { globalActions } from "actions/globalActions";
 import { tempActions } from "actions/tempActions";
 import { userActions } from "actions/userActions";
 
@@ -7,7 +6,10 @@ import { verifySignInApi } from "apis/authenticationApis";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 
-import { authenticationProgressChange } from "functions/utilities/commonActions";
+import {
+  authenticationProgressChange,
+  viewModeChange,
+} from "functions/utilities/commonActions";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import {
@@ -16,7 +18,6 @@ import {
 } from "variables/others/staticValues";
 import { notifications } from "variables/others/notifications";
 
-const { viewModeChangeAction } = globalActions;
 const { userAction } = userActions;
 
 const verifySignInController = () => {
@@ -33,7 +34,7 @@ const verifySignInController = () => {
       );
 
       if (!verifyToken) {
-        dispatch(viewModeChangeAction({ viewMode: VIEW_MODES.SIGN_IN }));
+        dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
         notificationManager.submitErrorNotification(
           notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
         );
@@ -55,9 +56,7 @@ const verifySignInController = () => {
       const { user: userData } = response.data;
 
       if (userData.newUser) {
-        dispatch(
-          viewModeChangeAction({ viewMode: VIEW_MODES.NEW_USER_PROFILE })
-        );
+        dispatch(viewModeChange(VIEW_MODES.NEW_USER_PROFILE));
       } else {
         persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
 
@@ -72,7 +71,7 @@ const verifySignInController = () => {
         );
 
         dispatch(userAction(userData));
-        dispatch(viewModeChangeAction({ viewMode: VIEW_MODES.MESSENGER }));
+        dispatch(viewModeChange(VIEW_MODES.MESSENGER));
       }
     } catch (error) {
       console.log("verifySignInController catch, error:", error);
