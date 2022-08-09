@@ -12,17 +12,17 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
       let targetChat = null; // {}
 
       chatsWithLastMessage.forEach((chatWithLastMessage) => {
-        if (chatWithLastMessage.chatID === chat.chatID) {
+        if (chatWithLastMessage.chatId === chat.chatId) {
           targetChat = chatWithLastMessage;
         }
 
         console.log(chat);
-        console.log(chatWithLastMessage.chatID);
+        console.log(chatWithLastMessage.chatId);
       });
 
       if (targetChat) {
         const index = newChats.findIndex(
-          (chat) => chat.chatID === targetChat.chatID
+          (chat) => chat.chatId === targetChat.chatId
         );
         console.log(index);
         if (index !== -1) {

@@ -6,8 +6,8 @@ const initialContact = {
 };
 
 const initialMessage = {
-  messageID: "",
-  senderID: "",
+  messageId: "",
+  senderId: "",
   text: "",
 };
 

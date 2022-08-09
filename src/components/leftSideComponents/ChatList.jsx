@@ -41,7 +41,7 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
 
                 const findParticipant = chat.participants.find(
                   (participant) =>
-                    participant?.participantID === selectedContact?.privateId
+                    participant?.participantId === selectedContact?.privateId
                 );
 
                 return (
@@ -58,7 +58,7 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
                       );
 
                       dispatch(
-                        getAllChatMessagesController({ chatID: chat.chatID })
+                        getAllChatMessagesController({ chatId: chat.chatId })
                       );
                     }}
                   />
