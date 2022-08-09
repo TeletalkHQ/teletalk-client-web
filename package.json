@@ -10,12 +10,13 @@
     "url": "https://github.com/S-STALWART-S/teletalk-client"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_RUNTIME_MODE=production react-scripts start",
-    "dev": "cross-env REACT_APP_RUNTIME_MODE=development react-scripts start",
     "build": "cross-env REACT_APP_RUNTIME_MODE=production react-scripts build",
-    "test": "react-scripts test",
+    "dev": "cross-env REACT_APP_RUNTIME_MODE=development react-scripts start",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+    "prepare": "husky install",
+    "start": "cross-env REACT_APP_RUNTIME_MODE=production react-scripts start",
+    "test": "react-scripts test"
   },
   "keywords": [
     "teletalk",

@@ -40,6 +40,8 @@
           "codestream",
           "cors",
           "describedby",
+          "lightgray",
+          "nowrap",
           "dotenv",
           "endregion",
           "enqueue",
@@ -77,6 +79,7 @@
           "nodemailer",
           "nwjs",
           "onum",
+          "Perf",
           "quatro",
           "redis",
           "renderer",
@@ -117,7 +120,7 @@
           "zrange"
         ],
         "skipIfMatch": ["http://[^s]*", "^[-\\w]+/[-\\w\\.]+$"],
-        "skipWordIfMatch": ["^reportWebVitals.js"],
+        "skipWordIfMatch": ["src/reportWebVitals.js"],
         "minLength": 4
       }
     ]
