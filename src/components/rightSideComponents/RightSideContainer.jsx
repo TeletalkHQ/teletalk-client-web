@@ -32,17 +32,17 @@ const RightSideContainer = () => {
     try {
       const chat = userState.chats.find((chat) => {
         return chat.participants.find(
-          (participant) => participant.participantID === privateId
+          (participant) => participant.participantId === privateId
         );
       });
 
       if (chat) {
-        const intervalID = setInterval(() => {
-          dispatch(getAllChatMessagesController({ chatID: chat.chatID }));
+        const intervalId = setInterval(() => {
+          dispatch(getAllChatMessagesController({ chatId: chat.chatId }));
         }, 1000);
 
         return () => {
-          clearInterval(intervalID);
+          clearInterval(intervalId);
         };
       }
     } catch (error) {
@@ -66,7 +66,7 @@ const RightSideContainer = () => {
   const chat = arrayUtilities.findByPropValueEquality(
     userState.chats,
     privateId,
-    "participantID"
+    "participantId"
   );
 
   if (!chat && !selectedContact) {

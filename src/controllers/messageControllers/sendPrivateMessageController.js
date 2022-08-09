@@ -17,22 +17,22 @@ const sendPrivateMessageController = () => {
       } = getState();
 
       const response = await sendPrivateMessageApi.sendRequest({
-        participantID: privateId,
+        participantId: privateId,
         message: messageInputText,
       });
 
-      const { chatID, newMessage } = response.data;
+      const { chatId, newMessage } = response.data;
 
       const copyUser = { ...user };
 
       const chatIndex = copyUser.chats?.findIndex(
-        (chat) => chat?.chatID === chatID
+        (chat) => chat?.chatId === chatId
       );
 
       if (chatIndex !== -1) {
         console.log(chatIndex);
         const chat = copyUser.chats[chatIndex] || {
-          chatID,
+          chatId,
           messages: [newMessage],
         };
         const messages = handleAddNewMessage({

@@ -10,9 +10,9 @@ const ConnectionChecker = () => {
   });
 
   useEffect(() => {
-    let timeoutID = null;
+    let timeoutId = null;
 
-    const clearLastTimeOut = () => clearTimeout(timeoutID);
+    const clearLastTimeOut = () => clearTimeout(timeoutId);
 
     const eventListener = () => {
       clearLastTimeOut();
@@ -24,7 +24,7 @@ const ConnectionChecker = () => {
 
       !status && appDispatch("لطفا اتصال اینترنت خود را بررسی کنید");
 
-      timeoutID = setTimeout(() => {
+      timeoutId = setTimeout(() => {
         status && setNetwork({ condition: false, status: null });
       }, 4000);
     };

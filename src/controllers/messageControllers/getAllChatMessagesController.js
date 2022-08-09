@@ -4,17 +4,17 @@ import { getAllChatMessagesApi } from "apis/messageApis";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 
-const getAllChatMessagesController = ({ chatID }) => {
+const getAllChatMessagesController = ({ chatId }) => {
   return async (dispatch, getState = getInitialState) => {
     try {
       const { user } = getState();
 
-      const response = await getAllChatMessagesApi.sendRequest({ chatID });
+      const response = await getAllChatMessagesApi.sendRequest({ chatId });
 
       const copyUser = { ...user };
 
       const chatIndex = copyUser.chats?.findIndex(
-        (chat) => chat?.chatID === chatID
+        (chat) => chat?.chatId === chatId
       );
 
       if (chatIndex !== -1) {
