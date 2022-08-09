@@ -19,7 +19,6 @@ import { verifySignInController } from "controllers/authControllers/verifySignIn
 import { welcomeMessageController } from "controllers/otherControllers/welcomeMessageController";
 
 import { viewModeChange } from "functions/utilities/commonActions";
-import { appDispatch } from "functions/injectors/dispatchInjector";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -101,7 +100,7 @@ const Authentication = () => {
     ) {
       dispatch(countryCodeOnChangeAction({ countryCode: value }));
       const country = countries?.find((c) => c.countryCode === value) || null;
-      appDispatch(selectedCountryAction({ selectedCountry: country }));
+      dispatch(selectedCountryAction({ selectedCountry: country }));
     }
   };
 

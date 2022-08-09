@@ -1,10 +1,12 @@
+//DEPRECATED
+
 import { appOptions } from "classes/AppOptions";
 
 //! Use it in special cases only!
-let appDispatch = (action = appOptions.options.actionOptions) => {};
+let extractedDispatch = (action = appOptions.options.actionOptions) => {};
 
 const dispatchInjector = (dispatch) => {
-  appDispatch = (action) => {
+  extractedDispatch = (action) => {
     try {
       if (!action) {
         const error = "Yo! you must provide action!";
@@ -18,9 +20,9 @@ const dispatchInjector = (dispatch) => {
 
       dispatch(action);
     } catch (error) {
-      console.log("appDispatch catch", error);
+      console.log("extractedDispatch catch", error);
     }
   };
 };
 
-export { dispatchInjector, appDispatch };
+export { dispatchInjector, extractedDispatch };
