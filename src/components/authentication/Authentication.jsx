@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 import { tempActions } from "actions/tempActions";
-import { otherActions } from "actions/otherActions";
 import { globalActions } from "actions/globalActions";
 
 import { appOptions } from "classes/AppOptions";
@@ -27,14 +26,14 @@ import { useMainContext } from "hooks/useMainContext";
 import { VIEW_MODES } from "variables/others/staticValues";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
-const { selectedCountryAction } = otherActions;
 const {
-  countryCodeOnChangeAction: countryCodeAction,
-  countryNameOnChangeAction: countryNameAction,
-  firstNameAction,
-  lastNameOnChangeAction: lastNameAction,
-  phoneNumberOnChangeAction: phoneNumberAction,
-  verificationCodeOnChangeAction: verificationCodeAction,
+  countryCodeOnChangeAction,
+  countryNameOnChangeAction,
+  firstNameOnChangeAction,
+  lastNameOnChangeAction,
+  phoneNumberOnChangeAction,
+  selectedCountryAction,
+  verificationCodeOnChangeAction,
 } = tempActions;
 
 const Authentication = () => {
@@ -42,7 +41,7 @@ const Authentication = () => {
     hooksOutput: { dispatch },
     state: {
       globalState: {
-        loadingState: { loading },
+        appProgressions: { authenticationProgress },
         viewMode,
       },
       otherState: { countries },
@@ -88,7 +87,7 @@ const Authentication = () => {
         stringUtilities.valueLength(value) < 15) ||
       value === ""
     ) {
-      dispatch(phoneNumberAction({ phoneNumber: value }));
+      dispatch(phoneNumberOnChangeAction({ phoneNumber: value }));
     }
   };
 
@@ -100,7 +99,7 @@ const Authentication = () => {
         stringUtilities.valueLength(value) <= 6) ||
       value === ""
     ) {
-      dispatch(countryCodeAction({ countryCode: value }));
+      dispatch(countryCodeOnChangeAction({ countryCode: value }));
       const country = countries?.find((c) => c.countryCode === value) || null;
       appDispatch(selectedCountryAction({ selectedCountry: country }));
     }
@@ -110,7 +109,7 @@ const Authentication = () => {
     const value = e?.target?.value;
 
     (stringUtilities.valueLength(value) <= 6 || value === "") &&
-      dispatch(verificationCodeAction({ verificationCode: value }));
+      dispatch(verificationCodeOnChangeAction({ verificationCode: value }));
   };
 
   const handleBackClick = () => {
@@ -123,20 +122,24 @@ const Authentication = () => {
 
   const handleCountryNameAutocompleteOnchange = (newValue) => {
     dispatch(selectedCountryAction({ selectedCountry: newValue || null }));
-    dispatch(countryCodeAction({ countryCode: newValue?.countryCode || "" }));
-    dispatch(countryNameAction({ countryName: newValue?.countryName || "" }));
+    dispatch(
+      countryCodeOnChangeAction({ countryCode: newValue?.countryCode || "" })
+    );
+    dispatch(
+      countryNameOnChangeAction({ countryName: newValue?.countryName || "" })
+    );
   };
 
   const handleCountryNameOnInputChange = (newInputValue) => {
-    dispatch(countryNameAction({ countryName: newInputValue }));
+    dispatch(countryNameOnChangeAction({ countryName: newInputValue }));
   };
 
   const handleFirstNameOnChange = (e) => {
-    dispatch(firstNameAction({ firstName: e.target.value }));
+    dispatch(firstNameOnChangeAction({ firstName: e.target.value }));
   };
 
   const handleLastNameOnChange = (e) => {
-    dispatch(lastNameAction({ lastName: e.target.value }));
+    dispatch(lastNameOnChangeAction({ lastName: e.target.value }));
   };
 
   const handleConfirmClick = () => {
@@ -165,7 +168,7 @@ const Authentication = () => {
         countryName,
         firstName,
         lastName,
-        loading,
+        authenticationProgress,
         onBackClick: handleBackClick,
         onConfirmClick: handleConfirmClick,
         onCountryCodeChange: handleCountryCodeChange,

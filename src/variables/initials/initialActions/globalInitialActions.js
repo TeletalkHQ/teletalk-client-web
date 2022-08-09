@@ -4,23 +4,11 @@ const {
   globalState: {
     appDrawerState,
     globalLoadingState,
-    loadingState,
     onlineStatus,
     viewMode,
+    appProgressions,
   },
 } = initialStates;
-
-const loadingInitialAction = {
-  payload: {
-    loadingState,
-  },
-  type: "LOADING_STATE",
-};
-
-const onlineStatusInitialAction = {
-  payload: onlineStatus,
-  type: "ONLINE_STATUS",
-};
 
 const appDrawerOpenChangeInitialAction = {
   payload: {
@@ -29,18 +17,9 @@ const appDrawerOpenChangeInitialAction = {
   type: "APP_DRAWER_STATE_CHANGE",
 };
 
-const globalLoadingOpenChangeInitialAction = {
-  payload: {
-    open: globalLoadingState.open,
-  },
-  type: "BACKDROP_STATE_CHANGE",
-};
-
-const viewModeInitialAction = {
-  payload: {
-    viewMode,
-  },
-  type: "VIEW_MODE_ONCHANGE",
+const appProgressionChangeInitialAction = {
+  payload: appProgressions,
+  type: "APP_PROGRESSION_CHANGE",
 };
 
 const dialogOpenChangeInitialAction = {
@@ -51,11 +30,30 @@ const dialogOpenChangeInitialAction = {
   type: "DIALOG_STATE_CHANGE",
 };
 
+const globalLoadingOpenChangeInitialAction = {
+  payload: {
+    open: globalLoadingState.open,
+  },
+  type: "BACKDROP_STATE_CHANGE",
+};
+
+const onlineStatusInitialAction = {
+  payload: onlineStatus,
+  type: "ONLINE_STATUS",
+};
+
+const viewModeInitialAction = {
+  payload: {
+    viewMode,
+  },
+  type: "VIEW_MODE_ONCHANGE",
+};
+
 const globalInitialActions = {
   appDrawerOpenChangeInitialAction,
+  appProgressionChangeInitialAction,
   dialogOpenChangeInitialAction,
   globalLoadingOpenChangeInitialAction,
-  loadingInitialAction,
   onlineStatusInitialAction,
   viewModeInitialAction,
 };

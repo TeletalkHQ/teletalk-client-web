@@ -7,28 +7,26 @@ import { verifySignInApi } from "apis/authenticationApis";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 
+import { authenticationProgressChange } from "functions/utilities/commonActions";
+
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import {
   VIEW_MODES,
   PERSISTENT_STORAGE_KEYS,
 } from "variables/others/staticValues";
-
 import { notifications } from "variables/others/notifications";
 
 const { viewModeChangeAction } = globalActions;
-const { loadingAction, userAction } = userActions;
+const { userAction } = userActions;
 
 const verifySignInController = () => {
   return async (dispatch, getState = getInitialState) => {
     const {
       tempState: { verificationCode },
-      globalState: { loadingState },
     } = getState();
 
     try {
-      dispatch(
-        loadingAction({ loadingState: { ...loadingState, loading: true } })
-      );
+      dispatch(authenticationProgressChange(true));
 
       const verifyToken = persistentStorage.getItem(
         PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN
@@ -79,9 +77,7 @@ const verifySignInController = () => {
     } catch (error) {
       console.log("verifySignInController catch, error:", error);
     } finally {
-      dispatch(
-        loadingAction({ loadingState: { ...loadingState, loading: false } })
-      );
+      dispatch(authenticationProgressChange(false));
     }
   };
 };

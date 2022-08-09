@@ -8,11 +8,11 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const VerifySignIn = ({
+  authenticationProgress,
   countryCode,
-  loading,
   onBackClick,
-  onVerifyClick,
   onVerificationCodeChange,
+  onVerifyClick,
   phoneNumber,
   verificationCode,
 }) => {
@@ -61,7 +61,7 @@ const VerifySignIn = ({
 
             <CustomButton
               lbtn
-              loading={loading}
+              loading={authenticationProgress}
               loadingPosition="end"
               onClick={onVerifyClick}
               endIcon={<Fingerprint />}
