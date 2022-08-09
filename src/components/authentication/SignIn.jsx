@@ -12,10 +12,10 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const SignIn = ({
+  authenticationProgress,
   countries,
   countryCode,
   countryName,
-  loading,
   onCountryCodeChange,
   onCountryNameAutocompleteOnchange,
   onCountryNameOnInputChange,
@@ -85,7 +85,7 @@ const SignIn = ({
               disabled={
                 stringUtilities.valueLength(phoneNumber) < 9 || !selectedCountry
               }
-              loading={loading}
+              loading={authenticationProgress}
               loadingIndicator={
                 <>
                   <span>Please wait...</span> &nbsp;&nbsp;

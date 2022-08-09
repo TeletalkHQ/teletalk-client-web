@@ -16,6 +16,9 @@ const globalInitialState = {
     open: true,
     progressColor: "inherit",
   },
+  appProgressions: {
+    authenticationProgress: false,
+  },
   dialogState: {
     addNewContact: {
       open: false,
@@ -26,9 +29,6 @@ const globalInitialState = {
     logout: {
       open: false,
     },
-  },
-  loadingState: {
-    loading: false,
   },
   onlineStatus: {
     isOnline: window?.navigator.onLine,

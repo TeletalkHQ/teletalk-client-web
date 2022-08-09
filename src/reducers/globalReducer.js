@@ -7,9 +7,9 @@ import { globalInitialActions } from "variables/initials/initialActions/globalIn
 
 const {
   appDrawerOpenChangeInitialAction,
+  appProgressionChangeInitialAction,
   dialogOpenChangeInitialAction,
   globalLoadingOpenChangeInitialAction,
-  loadingInitialAction,
   onlineStatusInitialAction,
   viewModeInitialAction,
 } = globalInitialActions;
@@ -24,29 +24,28 @@ const globalReducer = (
 
   try {
     switch (type) {
-      case viewModeInitialAction.type:
-        return fn();
-
-      case globalLoadingOpenChangeInitialAction.type:
-        return handleGlobalLoadingStateOpenChange(state, payload);
-
       case appDrawerOpenChangeInitialAction.type:
         return handleAppDrawerStateOpenChange(state, payload);
+
+      case appProgressionChangeInitialAction.type:
+        return handleAppProgressionChange(state, payload);
 
       case dialogOpenChangeInitialAction.type:
         return handleDialogOpenChange(state, payload);
 
+      case globalLoadingOpenChangeInitialAction.type:
+        return handleGlobalLoadingStateOpenChange(state, payload);
+
       case onlineStatusInitialAction.type:
         return handleOnlineStatusStateChange(state, payload);
 
-      case loadingInitialAction.type:
+      case viewModeInitialAction.type:
         return fn();
-
       default:
         return state;
     }
   } catch (error) {
-    console.log("globalReducer catch", error);
+    console.log("globalReducer catch, error:", error);
   }
 };
 
@@ -87,6 +86,14 @@ const handleOnlineStatusStateChange = (prevState, payload) => ({
   ...prevState,
   onlineStatus: {
     ...prevState.onlineStatus,
+    ...payload,
+  },
+});
+
+const handleAppProgressionChange = (prevState, payload) => ({
+  ...prevState,
+  appProgressions: {
+    ...prevState.appProgressions,
     ...payload,
   },
 });

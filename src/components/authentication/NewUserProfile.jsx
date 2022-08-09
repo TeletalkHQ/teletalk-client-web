@@ -9,9 +9,9 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const NewUserProfile = ({
+  authenticationProgress,
   firstNameInput,
   lastNameInput,
-  loading,
   onBackClick,
   onConfirmClick,
   onFirstNameOnChange,
@@ -51,7 +51,7 @@ const NewUserProfile = ({
           />
 
           <CustomButton
-            loading={loading}
+            loading={authenticationProgress}
             loadingPosition="end"
             onClick={onConfirmClick}
             endIcon={<Check />}

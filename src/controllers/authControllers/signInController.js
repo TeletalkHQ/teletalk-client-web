@@ -1,34 +1,33 @@
-import { userActions } from "actions/userActions";
 import { globalActions } from "actions/globalActions";
+import { userActions } from "actions/userActions";
 
 import { signInApi } from "apis/authenticationApis";
 
 import { persistentStorage } from "classes/PersistentStorage";
 
+import { authenticationProgressChange } from "functions/utilities/commonActions";
+
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import {
-  VIEW_MODES,
   PERSISTENT_STORAGE_KEYS,
+  VIEW_MODES,
 } from "variables/others/staticValues";
 
-const { loadingAction, userAction } = userActions;
+const { userAction } = userActions;
 
 const signInController = () => {
   return async (dispatch, getState = getInitialState) => {
     const {
       tempState: { phoneNumber, countryCode, countryName },
-      globalState: { loadingState },
     } = getState();
 
     try {
-      dispatch(
-        loadingAction({ loadingState: { ...loadingState, loading: true } })
-      );
+      dispatch(authenticationProgressChange(true));
 
       const response = await signInApi.sendRequest({
-        phoneNumber,
         countryCode,
         countryName,
+        phoneNumber,
       });
 
       const verifyToken = response.data.user.verifyToken;
@@ -54,9 +53,7 @@ const signInController = () => {
     } catch (error) {
       console.log("signInController catch", error);
     } finally {
-      dispatch(
-        loadingAction({ loadingState: { ...loadingState, loading: false } })
-      );
+      dispatch(authenticationProgressChange(false));
     }
   };
 };

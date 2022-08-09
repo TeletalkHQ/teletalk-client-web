@@ -4,18 +4,20 @@ import { globalInitialActions } from "variables/initials/initialActions/globalIn
 
 const {
   appDrawerOpenChangeInitialAction,
+  appProgressionChangeInitialAction,
   dialogOpenChangeInitialAction,
   globalLoadingOpenChangeInitialAction,
   onlineStatusInitialAction,
   viewModeInitialAction,
 } = globalInitialActions;
 
-const viewModeChangeAction = (payload = viewModeInitialAction.payload) =>
-  actionCreator(viewModeInitialAction.type, payload);
-
 const appDrawerOpenChangeAction = (
   payload = appDrawerOpenChangeInitialAction.payload
 ) => actionCreator(appDrawerOpenChangeInitialAction.type, payload);
+
+const appProgressionChange = (
+  payload = appProgressionChangeInitialAction.payload
+) => actionCreator(appProgressionChangeInitialAction.type, payload);
 
 const dialogOpenChangeAction = (
   payload = dialogOpenChangeInitialAction.payload
@@ -29,8 +31,12 @@ const onlineStatusChangeAction = (
   payload = onlineStatusInitialAction.payload
 ) => actionCreator(onlineStatusInitialAction.type, payload);
 
+const viewModeChangeAction = (payload = viewModeInitialAction.payload) =>
+  actionCreator(viewModeInitialAction.type, payload);
+
 const globalActions = {
   appDrawerOpenChangeAction,
+  appProgressionChange,
   dialogOpenChangeAction,
   globalLoadingStateOpenChangeAction,
   onlineStatusChangeAction,

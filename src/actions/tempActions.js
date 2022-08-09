@@ -3,19 +3,24 @@ import { actionCreator } from "functions/utilities/stateUtils";
 import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
 
 const {
-  selectedContactIdInitialAction,
   countryCodeInitialAction,
   countryNameInitialAction,
   firstNameInitialAction,
   lastNameInitialAction,
   messageInputInitialAction,
   phoneNumberInitialAction,
+  selectedContactIdInitialAction,
+  selectedCountryInitialAction,
   setMessagesInitialAction,
   verificationCodeInitialAction,
 } = tempInitialActions;
 
 const selectedContactId = (payload = selectedContactIdInitialAction.payload) =>
   actionCreator(selectedContactIdInitialAction.type, payload);
+
+const selectedCountryAction = (
+  payload = selectedCountryInitialAction.payload
+) => actionCreator(selectedCountryInitialAction.type, payload);
 
 const countryCodeOnChangeAction = (
   payload = countryCodeInitialAction.payload
@@ -54,6 +59,7 @@ const tempActions = {
   messageInputOnChangeAction,
   phoneNumberOnChangeAction,
   selectedContactId,
+  selectedCountryAction,
   setMessagesAction,
   verificationCodeOnChangeAction,
 };
