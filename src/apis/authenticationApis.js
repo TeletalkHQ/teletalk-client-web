@@ -1,4 +1,4 @@
-import { apiBuilder } from "classes/ApiBuilder";
+import { apiBuilder } from "classes/Builders/ApiBuilder";
 import { stuffStore } from "classes/StuffStore";
 
 const {
