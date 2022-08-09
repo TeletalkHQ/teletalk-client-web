@@ -1,10 +1,10 @@
 import { useCallback, useReducer } from "react";
 
-import { appDispatch } from "functions/injectors/dispatchInjector";
-
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
-let useDispatch = () => appDispatch;
+//! Use it in special cases only!
+let extractedDispatch = (action = { type: "", payload: {} }) => {};
+let useDispatch = () => extractedDispatch;
 let useSelector = () => initialStates;
 let actionLogger = (action) => {
   console.log(`actionLogger:`, action);
@@ -43,6 +43,7 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
       [getState, dispatch]
     );
 
+    extractedDispatch = customDispatch;
     useDispatch = useCallback(() => customDispatch, [customDispatch]);
     useSelector = useCallback(() => state, [state]);
 
@@ -57,6 +58,7 @@ export default useThunkReducer;
 export {
   actionLogger,
   combineReducers,
+  extractedDispatch,
   useDispatch,
   useSelector,
   useThunkReducer,

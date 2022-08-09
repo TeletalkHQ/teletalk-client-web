@@ -11,8 +11,6 @@ import MainContainer from "MainContainer";
 
 import { MainContext } from "contexts/MainContext";
 
-import { dispatchInjector } from "functions/injectors/dispatchInjector";
-
 import { useThunkReducer } from "hooks/useThunkReducer";
 
 import { rootReducer } from "reducers/rootReducer";
@@ -27,10 +25,6 @@ const App = () => {
     initialStates,
     appConfigs.configs.useThunkReducer
   );
-
-  useEffect(() => {
-    dispatchInjector(dispatch);
-  }, [dispatch]);
 
   useEffect(() => {
     window.state = state;

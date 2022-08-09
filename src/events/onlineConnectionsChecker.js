@@ -1,11 +1,11 @@
 import { globalActions } from "actions/globalActions";
 
-import { appDispatch } from "functions/injectors/dispatchInjector";
+import { extractedDispatch } from "hooks/useThunkReducer";
 
 const onlineStatusOnChangeEvent = () => {
   const isOnline = window.navigator.onLine;
 
-  appDispatch(globalActions.onlineStatusChangeAction({ isOnline }));
+  extractedDispatch(globalActions.onlineStatusChangeAction({ isOnline }));
 };
 
 const addOnlineStatusOnChangeListener = (type) =>
