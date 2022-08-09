@@ -39,6 +39,7 @@
           "CLEANME",
           "codestream",
           "cors",
+          "describedby",
           "dotenv",
           "endregion",
           "enqueue",
@@ -46,6 +47,7 @@
           "enumValue",
           "esbenp",
           "favicon",
+          "ffff",
           "fileupload",
           "Fira",
           "flowtype",
@@ -59,6 +61,7 @@
           "jpg",
           "jsonwebtoken",
           "keydown",
+          "labelledby",
           "lbtn",
           "lightcyan",
           "luhn",
@@ -69,11 +72,14 @@
           "monospace",
           "morgan",
           "multer",
+          "multiline",
           "nanoid",
           "nodemailer",
+          "nwjs",
           "onum",
           "quatro",
           "redis",
+          "renderer",
           "Replacer",
           "responser",
           "restclient",
@@ -111,7 +117,7 @@
           "zrange"
         ],
         "skipIfMatch": ["http://[^s]*", "^[-\\w]+/[-\\w\\.]+$"],
-        // "skipWordIfMatch": ["^foobar.*$"],
+        "skipWordIfMatch": ["^reportWebVitals.js"],
         "minLength": 4
       }
     ]
