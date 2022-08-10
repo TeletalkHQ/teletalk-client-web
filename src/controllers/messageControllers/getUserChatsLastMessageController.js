@@ -2,8 +2,6 @@ import { userActions } from "actions/userActions";
 
 import { getUserChatsLastMessageApi } from "apis/messageApis";
 
-import { getInitialState } from "variables/initials/initialStates/initialStates";
-
 const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   try {
     const newChats = [...chats];
@@ -43,7 +41,7 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
 };
 
 const getUserChatsLastMessageController = ({ user }) => {
-  return async (dispatch, getState = getInitialState) => {
+  return async (dispatch) => {
     try {
       const response = await getUserChatsLastMessageApi.sendRequest();
 
@@ -52,7 +50,9 @@ const getUserChatsLastMessageController = ({ user }) => {
         chatsWithLastMessage: response.data.chats,
       });
 
-      dispatch(userActions.userAction({ chats: chatsWithLastMessage }));
+      dispatch(
+        userActions.updateAllUserDataAction({ chats: chatsWithLastMessage })
+      );
     } catch (error) {
       console.log("getUserChatsLastMessageController", error);
     }

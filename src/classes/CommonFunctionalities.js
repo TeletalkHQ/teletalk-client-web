@@ -1,3 +1,4 @@
+import { tempActions } from "actions/tempActions";
 import { userActions } from "actions/userActions";
 
 import { persistentStorage } from "classes/PersistentStorage";
@@ -13,9 +14,17 @@ class CommonFunctionalities {
   resetEverything() {
     persistentStorage.setDefaultStorage();
     extractedDispatch(
-      userActions.userAction(userPropsUtilities.makeDefaultUserState())
+      userActions.updateAllUserDataAction(
+        userPropsUtilities.makeDefaultUserState()
+      )
     );
     extractedDispatch(viewModeChange(VIEW_MODES.SIGN_IN));
+  }
+
+  resetMessageInputText() {
+    extractedDispatch(
+      tempActions.messageInputOnChangeAction({ messageInputText: "" })
+    );
   }
 }
 

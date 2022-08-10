@@ -15,7 +15,7 @@ import {
   VIEW_MODES,
 } from "variables/others/staticValues";
 
-const { userAction } = userActions;
+const { updateAllUserDataAction } = userActions;
 
 const signInController = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -39,11 +39,7 @@ const signInController = () => {
         verifyToken
       );
 
-      dispatch(
-        userAction({
-          ...response.data.user,
-        })
-      );
+      dispatch(updateAllUserDataAction(response.data.user));
 
       dispatch(viewModeChange(VIEW_MODES.VERIFY_SIGN_IN));
 
