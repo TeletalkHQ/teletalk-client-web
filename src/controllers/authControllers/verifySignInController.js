@@ -18,7 +18,7 @@ import {
 } from "variables/others/staticValues";
 import { notifications } from "variables/others/notifications";
 
-const { userAction } = userActions;
+const { updateAllUserDataAction } = userActions;
 
 const verifySignInController = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -70,7 +70,7 @@ const verifySignInController = () => {
           mainToken
         );
 
-        dispatch(userAction(userData));
+        dispatch(updateAllUserDataAction(userData));
         dispatch(viewModeChange(VIEW_MODES.MESSENGER));
       }
     } catch (error) {

@@ -2,16 +2,14 @@ import { userActions } from "actions/userActions";
 
 import { addContactApi } from "apis/cellphoneApis";
 
-import { getInitialState } from "variables/initials/initialStates/initialStates";
-
 const addNewContactController = (contact) => {
-  return async (dispatch, getState = getInitialState) => {
+  return async (dispatch) => {
     try {
       const result = await addContactApi.sendRequest(contact);
 
       dispatch(
-        userActions.userAction({
-          contacts: [...getState().user.contacts, result.data.contact],
+        userActions.addNewContactAction({
+          newContact: result.data.addedContact,
         })
       );
     } catch (error) {

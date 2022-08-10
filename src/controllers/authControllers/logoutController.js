@@ -1,28 +1,15 @@
-import { userActions } from "actions/userActions";
-
 import { logoutApi } from "apis/authenticationApis";
 
-import { persistentStorage } from "classes/PersistentStorage";
-import { userPropsUtilities } from "classes/UserPropsUtilities";
-
-import { viewModeChange } from "functions/utilities/commonActions";
-
-import { VIEW_MODES } from "variables/others/staticValues";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 const logoutController = () => {
-  return async (dispatch) => {
+  return async () => {
     try {
-      /*const response = */ await logoutApi.sendRequest();
+      await logoutApi.sendRequest();
 
-      persistentStorage.setDefaultStorage();
-
-      dispatch(
-        userActions.userAction({ ...userPropsUtilities.makeDefaultUserState() })
-      );
-
-      dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
+      commonFunctionalities.resetEverything();
     } catch (error) {
-      console.log("logoutController", error);
+      console.log("logoutController catch, error:", error);
     }
   };
 };

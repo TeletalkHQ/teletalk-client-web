@@ -3,14 +3,10 @@ import { globalActions } from "actions/globalActions";
 
 import { userStatusCheckerApi } from "apis/authenticationApis";
 
-import { persistentStorage } from "classes/PersistentStorage";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { userPropsUtilities } from "classes/UserPropsUtilities";
 
-import { viewModeChange } from "functions/utilities/commonActions";
-
-import { initialStates } from "variables/initials/initialStates/initialStates";
-import { VIEW_MODES } from "variables/others/staticValues";
-
-const { userAction } = userActions;
+const { updateAllUserDataAction } = userActions;
 
 const userStatusCheckerController = () => {
   return async (dispatch) => {
@@ -21,18 +17,20 @@ const userStatusCheckerController = () => {
 
       delete user.mainToken;
 
-      dispatch(userAction({ ...user }));
+      dispatch(updateAllUserDataAction(user));
 
       return { user };
     } catch (error) {
-      console.log("userStatusCheckerController", error);
+      //TODO Add default catch error message to some fn
+      console.log("userStatusCheckerController catch, error:", error);
 
       if (error.statusCode === 401) {
-        persistentStorage.setDefaultStorage();
-        dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
+        commonFunctionalities.resetEverything();
       }
 
-      dispatch(userAction({ ...initialStates.userState }));
+      dispatch(
+        updateAllUserDataAction(userPropsUtilities.makeDefaultUserState())
+      );
     } finally {
       dispatch(
         globalActions.globalLoadingStateOpenChangeAction({ open: false })
