@@ -112,6 +112,7 @@ const Authentication = () => {
   };
 
   const handleBackClick = () => {
+    dispatch(verificationCodeOnChangeAction({ verificationCode: "" }));
     dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
   };
 
