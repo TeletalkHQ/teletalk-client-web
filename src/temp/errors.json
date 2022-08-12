@@ -1,1202 +1,1200 @@
 {
-  "errors": {
-    "version": "1.0.0",
-    "CHAT_EXIST": {
-      "description": "Default route description",
-      "message": "chat is already initialized",
-      "reason": "CHAT_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHAT_VALIDATION",
-      "errorCode": 4000
-    },
-    "CHAT_ID_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CHAT_ID_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION",
-      "errorCode": 4001
-    },
-    "CHAT_ID_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CHAT_ID_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION",
-      "errorCode": 4001
-    },
-    "CHAT_ID_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CHAT_ID_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION",
-      "errorCode": 4002
-    },
-    "CHAT_ID_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CHAT_ID_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION",
-      "errorCode": 4002
-    },
-    "CHAT_ID_MAX_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CHAT_ID_MAX_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION",
-      "errorCode": 4003
-    },
-    "CHAT_ID_MIN_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CHAT_ID_MIN_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION",
-      "errorCode": 4004
-    },
-    "CHAT_ID_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CHAT_ID_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHAT_ID_VALIDATION",
-      "errorCode": 4005
-    },
-    "CHAT_NOT_EXIST": {
-      "description": "Default route description",
-      "message": "chat not exist, maybe deleted or something",
-      "reason": "CHAT_NOT_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHAT_VALIDATION",
-      "errorCode": 4006
-    },
-    "CREATED_AT_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CREATED_AT_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CREATED_AT_VALIDATION",
-      "errorCode": 4043
-    },
-    "MESSAGE_ID_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_ID_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION",
-      "errorCode": 4008
-    },
-    "MESSAGE_ID_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_ID_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION",
-      "errorCode": 4009
-    },
-    "MESSAGE_ID_MAX_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_ID_MAX_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION",
-      "errorCode": 4010
-    },
-    "MESSAGE_ID_MIN_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_ID_MIN_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION",
-      "errorCode": 4011
-    },
-    "MESSAGE_ID_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_ID_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_ID_VALIDATION",
-      "errorCode": 4012
-    },
-    "MESSAGE_TEXT_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_TEXT_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION",
-      "errorCode": 4013
-    },
-    "MESSAGE_TEXT_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_TEXT_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION",
-      "errorCode": 4013
-    },
-    "MESSAGE_TEXT_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_TEXT_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION",
-      "errorCode": 4013
-    },
-    "MESSAGE_TEXT_MAX_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_TEXT_MAX_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION",
-      "errorCode": 4014
-    },
-    "MESSAGE_TEXT_MIN_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MESSAGE_TEXT_MIN_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION",
-      "errorCode": 4015
-    },
-    "MESSAGE_TEXT_REQUIRED": {
-      "description": "Default route description",
-      "message": "message text is required",
-      "reason": "MESSAGE_TEXT_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MESSAGE_TEXT_VALIDATION",
-      "errorCode": 4000
-    },
-    "PARTICIPANT_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PARTICIPANT_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION",
-      "errorCode": 4076
-    },
-    "PARTICIPANT_ID_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PARTICIPANT_ID_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION",
-      "errorCode": 4016
-    },
-    "PARTICIPANT_ID_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PARTICIPANT_ID_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION",
-      "errorCode": 4017
-    },
-    "PARTICIPANT_ID_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PARTICIPANT_ID_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION",
-      "errorCode": 4017
-    },
-    "PARTICIPANT_ID_MAX_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PARTICIPANT_ID_MAX_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION",
-      "errorCode": 4018
-    },
-    "PARTICIPANT_ID_MIN_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PARTICIPANT_ID_MIN_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION",
-      "errorCode": 4019
-    },
-    "PARTICIPANT_ID_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PARTICIPANT_ID_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION",
-      "errorCode": 4020
-    },
-    "PARTICIPANT_NOT_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PARTICIPANT_NOT_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PARTICIPANT_ID_VALIDATION",
-      "errorCode": 4021
-    },
-    "SENDER_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "SENDER_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION",
-      "errorCode": 4021
-    },
-    "SENDER_ID_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "SENDER_ID_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION",
-      "errorCode": 4021
-    },
-    "SENDER_ID_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "SENDER_ID_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION",
-      "errorCode": 4021
-    },
-    "SENDER_ID_MAX_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "SENDER_ID_MAX_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION",
-      "errorCode": 4021
-    },
-    "SENDER_ID_MIN_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "SENDER_ID_MIN_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION",
-      "errorCode": 4021
-    },
-    "SENDER_ID_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "SENDER_ID_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "SENDER_ID_VALIDATION",
-      "errorCode": 4021
-    },
-    "USER_NO_LONGER_PARTICIPANT": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "USER_NO_LONGER_PARTICIPANT",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "USER_VALIDATION",
-      "errorCode": 4022
-    },
-    "BIO_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "BIO_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "BIO_VALIDATION",
-      "errorCode": 4076
-    },
-    "BIO_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "BIO_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "BIO_VALIDATION",
-      "errorCode": 4024
-    },
-    "BIO_MAXLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "BIO_MAXLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "BIO_VALIDATION",
-      "errorCode": 4025
-    },
-    "BIO_MINLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "BIO_MINLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "BIO_VALIDATION",
-      "errorCode": 4026
-    },
-    "BLACKLIST_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "BLACKLIST_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "BLACKLIST_VALIDATION",
-      "errorCode": 4023
-    },
-    "BLACKLIST_ITEM_EXIST": {
-      "description": "Default route description",
-      "message": "blacklist item is already exist",
-      "reason": "BLACKLIST_ITEM_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "BLACKLIST_VALIDATION",
-      "errorCode": 4000
-    },
-    "BLACKLIST_ITEM_NOT_EXIST": {
-      "description": "Default route description",
-      "message": "blacklist item is not exist",
-      "reason": "BLACKLIST_ITEM_NOT_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "BLACKLIST_VALIDATION",
-      "errorCode": 4000
-    },
-    "CELLPHONE_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CELLPHONE_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION",
-      "errorCode": 4027
-    },
-    "CELLPHONE_EXIST_IN_CONTACT": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CELLPHONE_EXIST_IN_CONTACT",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION",
-      "errorCode": 4033
-    },
-    "CELLPHONE_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CELLPHONE_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION",
-      "errorCode": 4028
-    },
-    "CELLPHONE_NOT_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CELLPHONE_NOT_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION",
-      "errorCode": 4031
-    },
-    "CELLPHONE_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CELLPHONE_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CELLPHONE_VALIDATION",
-      "errorCode": 4032
-    },
-    "CHATS_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CHATS_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CHATS_VALIDATION",
-      "errorCode": 4000
-    },
-    "CONTACT_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CONTACT_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CONTACT_VALIDATION",
-      "errorCode": 4034
-    },
-    "CONTACT_ITEM_EXIST": {
-      "description": "Default route description",
-      "message": "Contact item is already exist",
-      "reason": "CONTACT_ITEM_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CONTACT_VALIDATION",
-      "errorCode": 4000
-    },
-    "CONTACT_ITEM_NOT_EXIST": {
-      "description": "Default route description",
-      "message": "Contact item is not exist",
-      "reason": "CONTACT_ITEM_NOT_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CONTACT_VALIDATION",
-      "errorCode": 4000
-    },
-    "COUNTRY_CODE_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_CODE_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION",
-      "errorCode": 4076
-    },
-    "COUNTRY_CODE_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_CODE_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION",
-      "errorCode": 4035
-    },
-    "COUNTRY_CODE_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_CODE_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION",
-      "errorCode": 4035
-    },
-    "COUNTRY_CODE_MAXLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_CODE_MAXLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION",
-      "errorCode": 4036
-    },
-    "COUNTRY_CODE_MINLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_CODE_MINLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION",
-      "errorCode": 4037
-    },
-    "COUNTRY_CODE_NOT_SUPPORTED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_CODE_NOT_SUPPORTED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION",
-      "errorCode": 4035
-    },
-    "COUNTRY_CODE_NUMERIC": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_CODE_NUMERIC",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION",
-      "errorCode": 4035
-    },
-    "COUNTRY_CODE_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_CODE_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_CODE_VALIDATION",
-      "errorCode": 4038
-    },
-    "COUNTRY_NAME_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_NAME_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION",
-      "errorCode": 4076
-    },
-    "COUNTRY_NAME_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_NAME_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION",
-      "errorCode": 4039
-    },
-    "COUNTRY_NAME_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_NAME_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION",
-      "errorCode": 4039
-    },
-    "COUNTRY_NAME_MAXLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_NAME_MAXLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION",
-      "errorCode": 4040
-    },
-    "COUNTRY_NAME_MINLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_NAME_MINLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION",
-      "errorCode": 4041
-    },
-    "COUNTRY_NAME_NOT_SUPPORTED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_NAME_NOT_SUPPORTED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION",
-      "errorCode": 4035
-    },
-    "COUNTRY_NAME_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_NAME_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_NAME_VALIDATION",
-      "errorCode": 4042
-    },
-    "COUNTRY_NOT_SUPPORTED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "COUNTRY_NOT_SUPPORTED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "COUNTRY_NOT_SUPPORTED_VALIDATION",
-      "errorCode": 4035
-    },
-    "CREATED_AT_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "CREATED_AT_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "CREATED_AT_VALIDATION",
-      "errorCode": 4043
-    },
-    "FIRST_NAME_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "FIRST_NAME_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION",
-      "errorCode": 4076
-    },
-    "FIRST_NAME_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "FIRST_NAME_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION",
-      "errorCode": 4044
-    },
-    "FIRST_NAME_MAXLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "FIRST_NAME_MAXLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION",
-      "errorCode": 4045
-    },
-    "FIRST_NAME_MINLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "FIRST_NAME_MINLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION",
-      "errorCode": 4046
-    },
-    "FIRST_NAME_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "FIRST_NAME_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "FIRST_NAME_VALIDATION",
-      "errorCode": 4047
-    },
-    "FULL_NAME_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "FULL_NAME_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "FULL_NAME_VALIDATION",
-      "errorCode": 4056
-    },
-    "LAST_NAME_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "LAST_NAME_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION",
-      "errorCode": 4076
-    },
-    "LAST_NAME_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "LAST_NAME_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION",
-      "errorCode": 4048
-    },
-    "LAST_NAME_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "LAST_NAME_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION",
-      "errorCode": 4048
-    },
-    "LAST_NAME_MAXLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "LAST_NAME_MAXLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION",
-      "errorCode": 4049
-    },
-    "LAST_NAME_MINLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "LAST_NAME_MINLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "LAST_NAME_VALIDATION",
-      "errorCode": 4050
-    },
-    "MAC_ADDRESS_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MAC_ADDRESS_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION",
-      "errorCode": 4076
-    },
-    "MAC_ADDRESS_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MAC_ADDRESS_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION",
-      "errorCode": 4051
-    },
-    "MAC_ADDRESS_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MAC_ADDRESS_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION",
-      "errorCode": 4052
-    },
-    "MAC_ADDRESS_MAXLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MAC_ADDRESS_MAXLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION",
-      "errorCode": 4053
-    },
-    "MAC_ADDRESS_MINLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MAC_ADDRESS_MINLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION",
-      "errorCode": 4054
-    },
-    "MAC_ADDRESS_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "MAC_ADDRESS_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "MAC_ADDRESS_VALIDATION",
-      "errorCode": 4055
-    },
-    "PHONE_NUMBER_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PHONE_NUMBER_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION",
-      "errorCode": 4076
-    },
-    "PHONE_NUMBER_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PHONE_NUMBER_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION",
-      "errorCode": 4057
-    },
-    "PHONE_NUMBER_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PHONE_NUMBER_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION",
-      "errorCode": 4000
-    },
-    "PHONE_NUMBER_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PHONE_NUMBER_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION",
-      "errorCode": 4056
-    },
-    "PHONE_NUMBER_MAXLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PHONE_NUMBER_MAXLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION",
-      "errorCode": 4060
-    },
-    "PHONE_NUMBER_MINLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PHONE_NUMBER_MINLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION",
-      "errorCode": 4059
-    },
-    "PHONE_NUMBER_NUMERIC": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PHONE_NUMBER_NUMERIC",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION",
-      "errorCode": 4060
-    },
-    "PHONE_NUMBER_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PHONE_NUMBER_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PHONE_NUMBER_VALIDATION",
-      "errorCode": 4058
-    },
-    "PRIVATE_ID_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PRIVATE_ID_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION",
-      "errorCode": 4065
-    },
-    "PRIVATE_ID_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PRIVATE_ID_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION",
-      "errorCode": 4061
-    },
-    "PRIVATE_ID_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PRIVATE_ID_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION",
-      "errorCode": 4065
-    },
-    "PRIVATE_ID_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PRIVATE_ID_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION",
-      "errorCode": 4062
-    },
-    "PRIVATE_ID_MAX_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PRIVATE_ID_MAX_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION",
-      "errorCode": 4063
-    },
-    "PRIVATE_ID_MIN_LENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PRIVATE_ID_MIN_LENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION",
-      "errorCode": 4064
-    },
-    "PRIVATE_ID_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "PRIVATE_ID_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "PRIVATE_ID_VALIDATION",
-      "errorCode": 4065
-    },
-    "SELF_STUFF": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "SELF_STUFF",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "SELF_STUFF_VALIDATION",
-      "errorCode": 4066
-    },
-    "TARGET_USER_NOT_EXIST": {
-      "description": "Default route description",
-      "message": "target user not exist",
-      "reason": "TARGET_USER_NOT_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "TARGET_USER_VALIDATION",
-      "errorCode": 4070
-    },
-    "TOKEN_CAN_NOT_VERIFIED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "TOKEN_CAN_NOT_VERIFIED",
-      "statusCode": 401,
-      "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION",
-      "errorCode": 4069
-    },
-    "TOKEN_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "TOKEN_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION",
-      "errorCode": 4067
-    },
-    "TOKEN_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "TOKEN_INVALID",
-      "statusCode": 401,
-      "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION",
-      "errorCode": 4069
-    },
-    "TOKEN_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "TOKEN_INVALID_TYPE",
-      "statusCode": 401,
-      "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION",
-      "errorCode": 4069
-    },
-    "TOKEN_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "TOKEN_REQUIRED",
-      "statusCode": 401,
-      "version": "1.0.0",
-      "errorKey": "TOKEN_VALIDATION",
-      "errorCode": 4068
-    },
-    "USER_NOT_EXIST": {
-      "description": "Default route description",
-      "message": "user not exist",
-      "reason": "USER_NOT_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "USER_VALIDATION",
-      "errorCode": 4070
-    },
-    "USERNAME_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "USERNAME_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION",
-      "errorCode": 4076
-    },
-    "USERNAME_EXIST": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "USERNAME_EXIST",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION",
-      "errorCode": 4071
-    },
-    "USERNAME_INVALID": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "USERNAME_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION",
-      "errorCode": 4072
-    },
-    "USERNAME_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "USERNAME_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION",
-      "errorCode": 4072
-    },
-    "USERNAME_MAXLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "USERNAME_MAXLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION",
-      "errorCode": 4073
-    },
-    "USERNAME_MINLENGTH_REACH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "USERNAME_MINLENGTH_REACH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION",
-      "errorCode": 4074
-    },
-    "USERNAME_REQUIRED": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "USERNAME_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "USERNAME_VALIDATION",
-      "errorCode": 4072
-    },
-    "VERIFICATION_CODE_EMPTY": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "VERIFICATION_CODE_EMPTY",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION",
-      "errorCode": 4076
-    },
-    "VERIFICATION_CODE_INVALID": {
-      "description": "Default route description",
-      "message": "Invalid verification code",
-      "reason": "VERIFICATION_CODE_INVALID",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION",
-      "errorCode": 4075
-    },
-    "VERIFICATION_CODE_INVALID_LENGTH": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "VERIFICATION_CODE_INVALID_LENGTH",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION",
-      "errorCode": 4077
-    },
-    "VERIFICATION_CODE_INVALID_TYPE": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "VERIFICATION_CODE_INVALID_TYPE",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION",
-      "errorCode": 4076
-    },
-    "VERIFICATION_CODE_NUMERIC": {
-      "description": "Default route description",
-      "message": "",
-      "reason": "VERIFICATION_CODE_NUMERIC",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION",
-      "errorCode": 4076
-    },
-    "VERIFICATION_CODE_REQUIRED": {
-      "description": "Default route description",
-      "message": "Verification code required",
-      "reason": "VERIFICATION_CODE_REQUIRED",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "VERIFICATION_CODE_VALIDATION",
-      "errorCode": 4075
-    },
-    "INPUT_FIELDS_MISSING": {
-      "description": "Default route description",
-      "message": "Internal server error",
-      "reason": "INPUT_FIELDS_MISSING",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "INPUT_OUTPUT_FIELDS",
-      "errorCode": 5000
-    },
-    "INPUT_FIELDS_OVERLOAD": {
-      "description": "Default route description",
-      "message": "Internal server error",
-      "reason": "INPUT_FIELDS_OVERLOAD",
-      "statusCode": 400,
-      "version": "1.0.0",
-      "errorKey": "INPUT_OUTPUT_FIELDS",
-      "errorCode": 5000
-    },
-    "METHOD_NOT_ALLOWED": {
-      "description": "Default route description",
-      "message": "External app error",
-      "reason": "METHOD_NOT_ALLOWED",
-      "statusCode": 405,
-      "version": "1.0.0",
-      "errorKey": "EXTERNAL_APP_ERROR",
-      "errorCode": 5000
-    },
-    "NO_ROUTE_OBJECT": {
-      "description": "Default route description",
-      "message": "Internal server error",
-      "reason": "NO_ROUTE_OBJECT",
-      "statusCode": 500,
-      "version": "1.0.0",
-      "errorKey": "INTERNAL_SERVER_ERROR",
-      "errorCode": 5000
-    },
-    "OUTPUT_FIELDS_MISSING": {
-      "description": "Default route description",
-      "message": "Internal server error",
-      "reason": "OUTPUT_FIELDS_MISSING",
-      "statusCode": 500,
-      "version": "1.0.0",
-      "errorKey": "INPUT_OUTPUT_FIELDS",
-      "errorCode": 5000
-    },
-    "OUTPUT_FIELDS_OVERLOAD": {
-      "description": "Default route description",
-      "message": "Internal server error",
-      "reason": "OUTPUT_FIELDS_OVERLOAD",
-      "statusCode": 500,
-      "version": "1.0.0",
-      "errorKey": "INPUT_OUTPUT_FIELDS",
-      "errorCode": 5000
-    },
-    "REQUEST_BODY_IS_UNDEFINED": {
-      "description": "Default route description",
-      "message": "sendJsonResponse is not a function",
-      "reason": "REQUEST_BODY_IS_UNDEFINED",
-      "statusCode": 500,
-      "version": "1.0.0",
-      "errorKey": "INTERNAL_SERVER_ERROR",
-      "errorCode": 5000
-    },
-    "ROUTE_NOT_FOUND": {
-      "description": "Default route description",
-      "message": "Route not found",
-      "reason": "ROUTE_NOT_FOUND",
-      "statusCode": 404,
-      "version": "1.0.0",
-      "errorKey": "UNKNOWN_ROUTE",
-      "errorCode": 5000
-    },
-    "SEND_JSON_RESPONSE_IS_NOT_FUNCTION": {
-      "description": "Default route description",
-      "message": "sendJsonResponse is not a function",
-      "reason": "SEND_JSON_RESPONSE_IS_NOT_FUNCTION",
-      "statusCode": 500,
-      "version": "1.0.0",
-      "errorKey": "INTERNAL_SERVER_ERROR",
-      "errorCode": 5000
-    },
-    "SEND_SMS_FAILED": {
-      "description": "Default route description",
-      "message": "send sms failed",
-      "reason": "SEND_SMS_FAILED",
-      "statusCode": 500,
-      "version": "1.0.0",
-      "errorKey": "INTERNAL_SERVER_ERROR",
-      "errorCode": 5000
-    },
-    "UNKNOWN_ERROR": {
-      "description": "Default route description",
-      "message": "Unknown error occurred, Call your service",
-      "reason": "UNKNOWN_ERROR",
-      "statusCode": 500,
-      "version": "1.0.0",
-      "errorKey": "INTERNAL_SERVER_ERROR",
-      "errorCode": 5000
-    }
-  }
+  "BIO_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "BIO_VALIDATION",
+    "message": "",
+    "reason": "BIO_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "BIO_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4024,
+    "errorKey": "BIO_VALIDATION",
+    "message": "",
+    "reason": "BIO_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "BIO_MAXLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4025,
+    "errorKey": "BIO_VALIDATION",
+    "message": "",
+    "reason": "BIO_MAXLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "BIO_MINLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4026,
+    "errorKey": "BIO_VALIDATION",
+    "message": "",
+    "reason": "BIO_MINLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "BLACKLIST_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4023,
+    "errorKey": "BLACKLIST_VALIDATION",
+    "message": "",
+    "reason": "BLACKLIST_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "BLACKLIST_ITEM_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4000,
+    "errorKey": "BLACKLIST_VALIDATION",
+    "message": "blacklist item is already exist",
+    "reason": "BLACKLIST_ITEM_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "BLACKLIST_ITEM_NOT_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4000,
+    "errorKey": "BLACKLIST_VALIDATION",
+    "message": "blacklist item is not exist",
+    "reason": "BLACKLIST_ITEM_NOT_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CELLPHONE_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4027,
+    "errorKey": "CELLPHONE_VALIDATION",
+    "message": "",
+    "reason": "CELLPHONE_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CELLPHONE_EXIST_IN_CONTACT": {
+    "description": "Default route description",
+    "errorCode": 4033,
+    "errorKey": "CELLPHONE_VALIDATION",
+    "message": "",
+    "reason": "CELLPHONE_EXIST_IN_CONTACT",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CELLPHONE_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4028,
+    "errorKey": "CELLPHONE_VALIDATION",
+    "message": "",
+    "reason": "CELLPHONE_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CELLPHONE_NOT_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4031,
+    "errorKey": "CELLPHONE_VALIDATION",
+    "message": "",
+    "reason": "CELLPHONE_NOT_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CELLPHONE_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4032,
+    "errorKey": "CELLPHONE_VALIDATION",
+    "message": "",
+    "reason": "CELLPHONE_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHAT_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4000,
+    "errorKey": "CHAT_VALIDATION",
+    "message": "chat is already initialized",
+    "reason": "CHAT_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHAT_ID_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4001,
+    "errorKey": "CHAT_ID_VALIDATION",
+    "message": "",
+    "reason": "CHAT_ID_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHAT_ID_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4001,
+    "errorKey": "CHAT_ID_VALIDATION",
+    "message": "",
+    "reason": "CHAT_ID_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHAT_ID_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4002,
+    "errorKey": "CHAT_ID_VALIDATION",
+    "message": "",
+    "reason": "CHAT_ID_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHAT_ID_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4002,
+    "errorKey": "CHAT_ID_VALIDATION",
+    "message": "",
+    "reason": "CHAT_ID_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHAT_ID_MAX_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4003,
+    "errorKey": "CHAT_ID_VALIDATION",
+    "message": "",
+    "reason": "CHAT_ID_MAX_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHAT_ID_MIN_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4004,
+    "errorKey": "CHAT_ID_VALIDATION",
+    "message": "",
+    "reason": "CHAT_ID_MIN_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHAT_ID_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4005,
+    "errorKey": "CHAT_ID_VALIDATION",
+    "message": "",
+    "reason": "CHAT_ID_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHAT_NOT_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4006,
+    "errorKey": "CHAT_VALIDATION",
+    "message": "chat not exist, maybe deleted or something",
+    "reason": "CHAT_NOT_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CHATS_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4000,
+    "errorKey": "CHATS_VALIDATION",
+    "message": "",
+    "reason": "CHATS_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CONTACT_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4034,
+    "errorKey": "CONTACT_VALIDATION",
+    "message": "",
+    "reason": "CONTACT_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CONTACT_ITEM_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4000,
+    "errorKey": "CONTACT_VALIDATION",
+    "message": "Contact item is already exist",
+    "reason": "CONTACT_ITEM_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CONTACT_ITEM_NOT_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4000,
+    "errorKey": "CONTACT_VALIDATION",
+    "message": "Contact item is not exist",
+    "reason": "CONTACT_ITEM_NOT_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_CODE_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "COUNTRY_CODE_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_CODE_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_CODE_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4035,
+    "errorKey": "COUNTRY_CODE_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_CODE_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_CODE_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4035,
+    "errorKey": "COUNTRY_CODE_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_CODE_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_CODE_MAXLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4036,
+    "errorKey": "COUNTRY_CODE_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_CODE_MAXLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_CODE_MINLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4037,
+    "errorKey": "COUNTRY_CODE_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_CODE_MINLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_CODE_NOT_SUPPORTED": {
+    "description": "Default route description",
+    "errorCode": 4035,
+    "errorKey": "COUNTRY_CODE_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_CODE_NOT_SUPPORTED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_CODE_NUMERIC": {
+    "description": "Default route description",
+    "errorCode": 4035,
+    "errorKey": "COUNTRY_CODE_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_CODE_NUMERIC",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_CODE_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4038,
+    "errorKey": "COUNTRY_CODE_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_CODE_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_NAME_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "COUNTRY_NAME_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_NAME_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_NAME_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4039,
+    "errorKey": "COUNTRY_NAME_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_NAME_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_NAME_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4039,
+    "errorKey": "COUNTRY_NAME_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_NAME_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_NAME_MAXLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4040,
+    "errorKey": "COUNTRY_NAME_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_NAME_MAXLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_NAME_MINLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4041,
+    "errorKey": "COUNTRY_NAME_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_NAME_MINLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_NAME_NOT_SUPPORTED": {
+    "description": "Default route description",
+    "errorCode": 4035,
+    "errorKey": "COUNTRY_NAME_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_NAME_NOT_SUPPORTED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_NAME_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4042,
+    "errorKey": "COUNTRY_NAME_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_NAME_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "COUNTRY_NOT_SUPPORTED": {
+    "description": "Default route description",
+    "errorCode": 4035,
+    "errorKey": "COUNTRY_NOT_SUPPORTED_VALIDATION",
+    "message": "",
+    "reason": "COUNTRY_NOT_SUPPORTED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CREATED_AT_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4043,
+    "errorKey": "CREATED_AT_VALIDATION",
+    "message": "",
+    "reason": "CREATED_AT_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "CREATED_AT_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4043,
+    "errorKey": "CREATED_AT_VALIDATION",
+    "message": "",
+    "reason": "CREATED_AT_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "FIRST_NAME_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "FIRST_NAME_VALIDATION",
+    "message": "",
+    "reason": "FIRST_NAME_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "FIRST_NAME_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4044,
+    "errorKey": "FIRST_NAME_VALIDATION",
+    "message": "",
+    "reason": "FIRST_NAME_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "FIRST_NAME_MAXLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4045,
+    "errorKey": "FIRST_NAME_VALIDATION",
+    "message": "",
+    "reason": "FIRST_NAME_MAXLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "FIRST_NAME_MINLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4046,
+    "errorKey": "FIRST_NAME_VALIDATION",
+    "message": "",
+    "reason": "FIRST_NAME_MINLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "FIRST_NAME_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4047,
+    "errorKey": "FIRST_NAME_VALIDATION",
+    "message": "",
+    "reason": "FIRST_NAME_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "FULL_NAME_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4056,
+    "errorKey": "FULL_NAME_VALIDATION",
+    "message": "",
+    "reason": "FULL_NAME_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "INPUT_FIELDS_MISSING": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "INPUT_OUTPUT_FIELDS",
+    "message": "Internal server error",
+    "reason": "INPUT_FIELDS_MISSING",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "INPUT_FIELDS_OVERLOAD": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "INPUT_OUTPUT_FIELDS",
+    "message": "Internal server error",
+    "reason": "INPUT_FIELDS_OVERLOAD",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "LAST_NAME_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "LAST_NAME_VALIDATION",
+    "message": "",
+    "reason": "LAST_NAME_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "LAST_NAME_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4048,
+    "errorKey": "LAST_NAME_VALIDATION",
+    "message": "",
+    "reason": "LAST_NAME_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "LAST_NAME_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4048,
+    "errorKey": "LAST_NAME_VALIDATION",
+    "message": "",
+    "reason": "LAST_NAME_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "LAST_NAME_MAXLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4049,
+    "errorKey": "LAST_NAME_VALIDATION",
+    "message": "",
+    "reason": "LAST_NAME_MAXLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "LAST_NAME_MINLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4050,
+    "errorKey": "LAST_NAME_VALIDATION",
+    "message": "",
+    "reason": "LAST_NAME_MINLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MAC_ADDRESS_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "MAC_ADDRESS_VALIDATION",
+    "message": "",
+    "reason": "MAC_ADDRESS_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MAC_ADDRESS_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4051,
+    "errorKey": "MAC_ADDRESS_VALIDATION",
+    "message": "",
+    "reason": "MAC_ADDRESS_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MAC_ADDRESS_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4052,
+    "errorKey": "MAC_ADDRESS_VALIDATION",
+    "message": "",
+    "reason": "MAC_ADDRESS_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MAC_ADDRESS_MAXLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4053,
+    "errorKey": "MAC_ADDRESS_VALIDATION",
+    "message": "",
+    "reason": "MAC_ADDRESS_MAXLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MAC_ADDRESS_MINLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4054,
+    "errorKey": "MAC_ADDRESS_VALIDATION",
+    "message": "",
+    "reason": "MAC_ADDRESS_MINLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MAC_ADDRESS_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4055,
+    "errorKey": "MAC_ADDRESS_VALIDATION",
+    "message": "",
+    "reason": "MAC_ADDRESS_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_ID_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4008,
+    "errorKey": "MESSAGE_ID_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_ID_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_ID_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4009,
+    "errorKey": "MESSAGE_ID_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_ID_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_ID_MAX_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4010,
+    "errorKey": "MESSAGE_ID_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_ID_MAX_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_ID_MIN_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4011,
+    "errorKey": "MESSAGE_ID_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_ID_MIN_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_ID_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4012,
+    "errorKey": "MESSAGE_ID_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_ID_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_TEXT_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4013,
+    "errorKey": "MESSAGE_TEXT_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_TEXT_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_TEXT_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4013,
+    "errorKey": "MESSAGE_TEXT_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_TEXT_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_TEXT_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4013,
+    "errorKey": "MESSAGE_TEXT_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_TEXT_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_TEXT_MAX_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4014,
+    "errorKey": "MESSAGE_TEXT_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_TEXT_MAX_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_TEXT_MIN_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4015,
+    "errorKey": "MESSAGE_TEXT_VALIDATION",
+    "message": "",
+    "reason": "MESSAGE_TEXT_MIN_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "MESSAGE_TEXT_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4000,
+    "errorKey": "MESSAGE_TEXT_VALIDATION",
+    "message": "message text is required",
+    "reason": "MESSAGE_TEXT_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "METHOD_NOT_ALLOWED": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "EXTERNAL_APP_ERROR",
+    "message": "External app error",
+    "reason": "METHOD_NOT_ALLOWED",
+    "statusCode": 405,
+    "version": "1.0.0"
+  },
+  "NO_ROUTE_OBJECT": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "INTERNAL_SERVER_ERROR",
+    "message": "Internal server error",
+    "reason": "NO_ROUTE_OBJECT",
+    "statusCode": 500,
+    "version": "1.0.0"
+  },
+  "OUTPUT_FIELDS_MISSING": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "INPUT_OUTPUT_FIELDS",
+    "message": "Internal server error",
+    "reason": "OUTPUT_FIELDS_MISSING",
+    "statusCode": 500,
+    "version": "1.0.0"
+  },
+  "OUTPUT_FIELDS_OVERLOAD": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "INPUT_OUTPUT_FIELDS",
+    "message": "Internal server error",
+    "reason": "OUTPUT_FIELDS_OVERLOAD",
+    "statusCode": 500,
+    "version": "1.0.0"
+  },
+  "PARTICIPANT_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "PARTICIPANT_ID_VALIDATION",
+    "message": "",
+    "reason": "PARTICIPANT_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PARTICIPANT_ID_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4016,
+    "errorKey": "PARTICIPANT_ID_VALIDATION",
+    "message": "",
+    "reason": "PARTICIPANT_ID_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PARTICIPANT_ID_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4017,
+    "errorKey": "PARTICIPANT_ID_VALIDATION",
+    "message": "",
+    "reason": "PARTICIPANT_ID_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PARTICIPANT_ID_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4017,
+    "errorKey": "PARTICIPANT_ID_VALIDATION",
+    "message": "",
+    "reason": "PARTICIPANT_ID_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PARTICIPANT_ID_MAX_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4018,
+    "errorKey": "PARTICIPANT_ID_VALIDATION",
+    "message": "",
+    "reason": "PARTICIPANT_ID_MAX_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PARTICIPANT_ID_MIN_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4019,
+    "errorKey": "PARTICIPANT_ID_VALIDATION",
+    "message": "",
+    "reason": "PARTICIPANT_ID_MIN_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PARTICIPANT_ID_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4020,
+    "errorKey": "PARTICIPANT_ID_VALIDATION",
+    "message": "",
+    "reason": "PARTICIPANT_ID_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PARTICIPANT_NOT_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4021,
+    "errorKey": "PARTICIPANT_ID_VALIDATION",
+    "message": "",
+    "reason": "PARTICIPANT_NOT_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PHONE_NUMBER_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "PHONE_NUMBER_VALIDATION",
+    "message": "",
+    "reason": "PHONE_NUMBER_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PHONE_NUMBER_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4057,
+    "errorKey": "PHONE_NUMBER_VALIDATION",
+    "message": "",
+    "reason": "PHONE_NUMBER_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PHONE_NUMBER_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4000,
+    "errorKey": "PHONE_NUMBER_VALIDATION",
+    "message": "",
+    "reason": "PHONE_NUMBER_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PHONE_NUMBER_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4056,
+    "errorKey": "PHONE_NUMBER_VALIDATION",
+    "message": "",
+    "reason": "PHONE_NUMBER_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PHONE_NUMBER_MAXLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4060,
+    "errorKey": "PHONE_NUMBER_VALIDATION",
+    "message": "",
+    "reason": "PHONE_NUMBER_MAXLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PHONE_NUMBER_MINLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4059,
+    "errorKey": "PHONE_NUMBER_VALIDATION",
+    "message": "",
+    "reason": "PHONE_NUMBER_MINLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PHONE_NUMBER_NUMERIC": {
+    "description": "Default route description",
+    "errorCode": 4060,
+    "errorKey": "PHONE_NUMBER_VALIDATION",
+    "message": "",
+    "reason": "PHONE_NUMBER_NUMERIC",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PHONE_NUMBER_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4058,
+    "errorKey": "PHONE_NUMBER_VALIDATION",
+    "message": "",
+    "reason": "PHONE_NUMBER_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PRIVATE_ID_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4065,
+    "errorKey": "PRIVATE_ID_VALIDATION",
+    "message": "",
+    "reason": "PRIVATE_ID_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PRIVATE_ID_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4061,
+    "errorKey": "PRIVATE_ID_VALIDATION",
+    "message": "",
+    "reason": "PRIVATE_ID_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PRIVATE_ID_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4065,
+    "errorKey": "PRIVATE_ID_VALIDATION",
+    "message": "",
+    "reason": "PRIVATE_ID_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PRIVATE_ID_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4062,
+    "errorKey": "PRIVATE_ID_VALIDATION",
+    "message": "",
+    "reason": "PRIVATE_ID_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PRIVATE_ID_MAX_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4063,
+    "errorKey": "PRIVATE_ID_VALIDATION",
+    "message": "",
+    "reason": "PRIVATE_ID_MAX_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PRIVATE_ID_MIN_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4064,
+    "errorKey": "PRIVATE_ID_VALIDATION",
+    "message": "",
+    "reason": "PRIVATE_ID_MIN_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "PRIVATE_ID_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4065,
+    "errorKey": "PRIVATE_ID_VALIDATION",
+    "message": "",
+    "reason": "PRIVATE_ID_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "REQUEST_BODY_IS_UNDEFINED": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "INTERNAL_SERVER_ERROR",
+    "message": "sendJsonResponse is not a function",
+    "reason": "REQUEST_BODY_IS_UNDEFINED",
+    "statusCode": 500,
+    "version": "1.0.0"
+  },
+  "ROUTE_NOT_FOUND": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "UNKNOWN_ROUTE",
+    "message": "Route not found",
+    "reason": "ROUTE_NOT_FOUND",
+    "statusCode": 404,
+    "version": "1.0.0"
+  },
+  "SELF_STUFF": {
+    "description": "Default route description",
+    "errorCode": 4066,
+    "errorKey": "SELF_STUFF_VALIDATION",
+    "message": "",
+    "reason": "SELF_STUFF",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "SEND_JSON_RESPONSE_IS_NOT_FUNCTION": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "INTERNAL_SERVER_ERROR",
+    "message": "sendJsonResponse is not a function",
+    "reason": "SEND_JSON_RESPONSE_IS_NOT_FUNCTION",
+    "statusCode": 500,
+    "version": "1.0.0"
+  },
+  "SEND_SMS_FAILED": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "INTERNAL_SERVER_ERROR",
+    "message": "send sms failed",
+    "reason": "SEND_SMS_FAILED",
+    "statusCode": 500,
+    "version": "1.0.0"
+  },
+  "SENDER_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4021,
+    "errorKey": "SENDER_ID_VALIDATION",
+    "message": "",
+    "reason": "SENDER_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "SENDER_ID_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4021,
+    "errorKey": "SENDER_ID_VALIDATION",
+    "message": "",
+    "reason": "SENDER_ID_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "SENDER_ID_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4021,
+    "errorKey": "SENDER_ID_VALIDATION",
+    "message": "",
+    "reason": "SENDER_ID_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "SENDER_ID_MAX_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4021,
+    "errorKey": "SENDER_ID_VALIDATION",
+    "message": "",
+    "reason": "SENDER_ID_MAX_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "SENDER_ID_MIN_LENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4021,
+    "errorKey": "SENDER_ID_VALIDATION",
+    "message": "",
+    "reason": "SENDER_ID_MIN_LENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "SENDER_ID_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4021,
+    "errorKey": "SENDER_ID_VALIDATION",
+    "message": "",
+    "reason": "SENDER_ID_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "TARGET_USER_NOT_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4070,
+    "errorKey": "TARGET_USER_VALIDATION",
+    "message": "target user not exist",
+    "reason": "TARGET_USER_NOT_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "TOKEN_CAN_NOT_VERIFIED": {
+    "description": "Default route description",
+    "errorCode": 4069,
+    "errorKey": "TOKEN_VALIDATION",
+    "message": "",
+    "reason": "TOKEN_CAN_NOT_VERIFIED",
+    "statusCode": 401,
+    "version": "1.0.0"
+  },
+  "TOKEN_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4067,
+    "errorKey": "TOKEN_VALIDATION",
+    "message": "",
+    "reason": "TOKEN_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "TOKEN_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4069,
+    "errorKey": "TOKEN_VALIDATION",
+    "message": "",
+    "reason": "TOKEN_INVALID",
+    "statusCode": 401,
+    "version": "1.0.0"
+  },
+  "TOKEN_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4069,
+    "errorKey": "TOKEN_VALIDATION",
+    "message": "",
+    "reason": "TOKEN_INVALID_TYPE",
+    "statusCode": 401,
+    "version": "1.0.0"
+  },
+  "TOKEN_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4068,
+    "errorKey": "TOKEN_VALIDATION",
+    "message": "",
+    "reason": "TOKEN_REQUIRED",
+    "statusCode": 401,
+    "version": "1.0.0"
+  },
+  "UNKNOWN_ERROR": {
+    "description": "Default route description",
+    "errorCode": 5000,
+    "errorKey": "INTERNAL_SERVER_ERROR",
+    "message": "Unknown error occurred, Call your service",
+    "reason": "UNKNOWN_ERROR",
+    "statusCode": 500,
+    "version": "1.0.0"
+  },
+  "USER_NO_LONGER_PARTICIPANT": {
+    "description": "Default route description",
+    "errorCode": 4022,
+    "errorKey": "USER_VALIDATION",
+    "message": "",
+    "reason": "USER_NO_LONGER_PARTICIPANT",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "USER_NOT_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4070,
+    "errorKey": "USER_VALIDATION",
+    "message": "user not exist",
+    "reason": "USER_NOT_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "USERNAME_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "USERNAME_VALIDATION",
+    "message": "",
+    "reason": "USERNAME_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "USERNAME_EXIST": {
+    "description": "Default route description",
+    "errorCode": 4071,
+    "errorKey": "USERNAME_VALIDATION",
+    "message": "",
+    "reason": "USERNAME_EXIST",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "USERNAME_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4072,
+    "errorKey": "USERNAME_VALIDATION",
+    "message": "",
+    "reason": "USERNAME_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "USERNAME_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4072,
+    "errorKey": "USERNAME_VALIDATION",
+    "message": "",
+    "reason": "USERNAME_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "USERNAME_MAXLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4073,
+    "errorKey": "USERNAME_VALIDATION",
+    "message": "",
+    "reason": "USERNAME_MAXLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "USERNAME_MINLENGTH_REACH": {
+    "description": "Default route description",
+    "errorCode": 4074,
+    "errorKey": "USERNAME_VALIDATION",
+    "message": "",
+    "reason": "USERNAME_MINLENGTH_REACH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "USERNAME_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4072,
+    "errorKey": "USERNAME_VALIDATION",
+    "message": "",
+    "reason": "USERNAME_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "VERIFICATION_CODE_EMPTY": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "VERIFICATION_CODE_VALIDATION",
+    "message": "",
+    "reason": "VERIFICATION_CODE_EMPTY",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "VERIFICATION_CODE_INVALID": {
+    "description": "Default route description",
+    "errorCode": 4075,
+    "errorKey": "VERIFICATION_CODE_VALIDATION",
+    "message": "Invalid verification code",
+    "reason": "VERIFICATION_CODE_INVALID",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "VERIFICATION_CODE_INVALID_LENGTH": {
+    "description": "Default route description",
+    "errorCode": 4077,
+    "errorKey": "VERIFICATION_CODE_VALIDATION",
+    "message": "",
+    "reason": "VERIFICATION_CODE_INVALID_LENGTH",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "VERIFICATION_CODE_INVALID_TYPE": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "VERIFICATION_CODE_VALIDATION",
+    "message": "",
+    "reason": "VERIFICATION_CODE_INVALID_TYPE",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "VERIFICATION_CODE_NUMERIC": {
+    "description": "Default route description",
+    "errorCode": 4076,
+    "errorKey": "VERIFICATION_CODE_VALIDATION",
+    "message": "",
+    "reason": "VERIFICATION_CODE_NUMERIC",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "VERIFICATION_CODE_REQUIRED": {
+    "description": "Default route description",
+    "errorCode": 4075,
+    "errorKey": "VERIFICATION_CODE_VALIDATION",
+    "message": "Verification code required",
+    "reason": "VERIFICATION_CODE_REQUIRED",
+    "statusCode": 400,
+    "version": "1.0.0"
+  },
+  "version": "1.0.0"
 }

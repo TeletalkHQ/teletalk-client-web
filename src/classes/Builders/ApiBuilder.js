@@ -4,7 +4,6 @@ import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { commonNotificationManager } from "classes/CommonNotificationManager";
 import { notificationManager } from "classes/NotificationManager";
 import { objectUtilities } from "classes/ObjectUtilities";
-import { stuffStore } from "classes/StuffStore";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
@@ -13,11 +12,13 @@ import { requester } from "functions/utilities/apiUtilities";
 import { notifications } from "variables/others/notifications";
 
 const {
-  INPUT_FIELDS_MISSING,
-  INPUT_FIELDS_OVERLOAD,
-  OUTPUT_FIELDS_MISSING,
-  OUTPUT_FIELDS_OVERLOAD,
-} = stuffStore.errors;
+  localErrors: {
+    INPUT_FIELDS_MISSING,
+    INPUT_FIELDS_OVERLOAD,
+    OUTPUT_FIELDS_MISSING,
+    OUTPUT_FIELDS_OVERLOAD,
+  },
+} = notifications;
 
 class ApiBuilder {
   constructor() {
@@ -39,15 +40,14 @@ class ApiBuilder {
   }
 
   #correctResponseErrors(responseErrors) {
-    const arrayOfErrors = Object.values(responseErrors);
+    const arrayOfErrors = objectUtilities.objectValues(responseErrors);
 
     const correctedErrors = arrayOfErrors.map((errorItem) => {
-      const { errorCode, reason, message, ...restOfErrorItemProps } = errorItem;
+      const { errorCode, reason, ...restOfErrorItemProps } = errorItem;
 
       const finalErrorItem = restOfErrorItemProps;
       finalErrorItem.notificationCode = errorCode;
       finalErrorItem.notificationReason = reason;
-      finalErrorItem.message = message || reason;
 
       return finalErrorItem;
     });

@@ -5,8 +5,6 @@ import { persistentStorage } from "classes/PersistentStorage";
 
 import { PERSISTENT_STORAGE_KEYS } from "variables/others/staticValues";
 
-const { firstNameModel, lastNameModel } = stuffStore.models;
-
 class UserPropsUtilities {
   constructor(id) {
     this.id = id;
@@ -52,8 +50,12 @@ class UserPropsUtilities {
   makeTestContact() {
     return {
       ...this.makeTestCellphone(),
-      firstName: randomMaker.randomString(firstNameModel.maxlength.value),
-      lastName: randomMaker.randomString(lastNameModel.maxlength.value),
+      firstName: randomMaker.randomString(
+        stuffStore.models.firstNameModel.maxlength.value
+      ),
+      lastName: randomMaker.randomString(
+        stuffStore.models.lastNameModel.maxlength.value
+      ),
     };
   }
 
@@ -70,8 +72,10 @@ class UserPropsUtilities {
   }
   makeTestFullName() {
     return this.makeFullNameByParam(
-      randomMaker.randomString(firstNameModel.maxlength.value),
-      randomMaker.randomString(lastNameModel.maxlength.value)
+      randomMaker.randomString(
+        stuffStore.models.firstNameModel.maxlength.value
+      ),
+      randomMaker.randomString(stuffStore.models.lastNameModel.maxlength.value)
     );
   }
 
