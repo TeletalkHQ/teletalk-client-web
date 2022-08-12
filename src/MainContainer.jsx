@@ -4,8 +4,9 @@ import { Grid } from "@mui/material";
 
 import { globalActions } from "actions/globalActions";
 
-import { emitters } from "classes/Emitters";
+import { apiManager } from "classes/ApiManager";
 import { appOptions } from "classes/AppOptions";
+import { emitters } from "classes/Emitters";
 import { persistentStorage } from "classes/PersistentStorage";
 
 import Authentication from "components/authentication/Authentication";
@@ -47,12 +48,6 @@ const MainContainer = () => {
         emitters.addListener({
           event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
-            dispatch(getCountriesController());
-          },
-        });
-        emitters.addListener({
-          event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
-          listener: async () => {
             if (userState.privateId) {
               const { user } = await dispatchAsync(
                 userStatusCheckerController()
@@ -74,6 +69,18 @@ const MainContainer = () => {
     })();
     // eslint-disable-next-line
   }, [persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN)]);
+
+  useEffect(() => {
+    emitters.addListener({
+      event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
+      listener: async () => {
+        apiManager.rebuildAllApis();
+
+        await dispatchAsync(getCountriesController());
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

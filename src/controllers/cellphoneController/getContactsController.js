@@ -1,11 +1,12 @@
 import { userActions } from "actions/userActions";
 
-import { getContactsApi } from "apis/cellphoneApis";
+import { apiManager } from "classes/ApiManager";
 
 const getContactsController = () => {
   return async (dispatch) => {
     try {
-      const result = await getContactsApi.sendRequest();
+      const result =
+        await apiManager.apis.cellphoneApis.getContactsApi.sendRequest();
 
       dispatch(
         userActions.updateAllUserContactsAction({

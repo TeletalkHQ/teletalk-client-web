@@ -1,7 +1,6 @@
-import { createNewUserApi } from "apis/authenticationApis";
-
 import { notificationManager } from "classes/NotificationManager";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
+import { apiManager } from "classes/ApiManager";
 
 import {
   authenticationProgressChange,
@@ -32,13 +31,14 @@ const createNewUserController = () => {
         );
       }
 
-      const response = await createNewUserApi.sendRequest(
-        {
-          firstName,
-          lastName,
-        },
-        { token: verifyToken }
-      );
+      const response =
+        await apiManager.apis.authApis.createNewUserApi.sendRequest(
+          {
+            firstName,
+            lastName,
+          },
+          { token: verifyToken }
+        );
 
       console.log(response.data);
 

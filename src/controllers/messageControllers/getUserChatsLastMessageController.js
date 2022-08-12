@@ -1,6 +1,6 @@
 import { userActions } from "actions/userActions";
 
-import { getUserChatsLastMessageApi } from "apis/messageApis";
+import { apiManager } from "classes/ApiManager";
 
 const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   try {
@@ -13,9 +13,6 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
         if (chatWithLastMessage.chatId === chat.chatId) {
           targetChat = chatWithLastMessage;
         }
-
-        console.log(chat);
-        console.log(chatWithLastMessage.chatId);
       });
 
       if (targetChat) {
@@ -24,7 +21,6 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
         );
         console.log(index);
         if (index !== -1) {
-          console.log(chat);
           targetChat.messages = [
             ...(chat.messages || []),
             ...targetChat.messages,
@@ -43,7 +39,8 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
 const getUserChatsLastMessageController = ({ user }) => {
   return async (dispatch) => {
     try {
-      const response = await getUserChatsLastMessageApi.sendRequest();
+      const response =
+        await apiManager.apis.messageApis.getUserChatsLastMessageApi.sendRequest();
 
       const { chatsWithLastMessage } = handleAddUserLastMessage({
         chats: user.chats,

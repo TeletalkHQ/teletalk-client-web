@@ -1,8 +1,7 @@
 import { tempActions } from "actions/tempActions";
 import { userActions } from "actions/userActions";
 
-import { verifySignInApi } from "apis/authenticationApis";
-
+import { apiManager } from "classes/ApiManager";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 
@@ -42,12 +41,13 @@ const verifySignInController = () => {
         return;
       }
 
-      const response = await verifySignInApi.sendRequest(
-        {
-          verificationCode: verificationCode,
-        },
-        { token: verifyToken }
-      );
+      const response =
+        await apiManager.apis.authApis.verifySignInApi.sendRequest(
+          {
+            verificationCode: verificationCode,
+          },
+          { token: verifyToken }
+        );
 
       dispatch(
         tempActions.verificationCodeOnChangeAction({ verificationCode: "" })

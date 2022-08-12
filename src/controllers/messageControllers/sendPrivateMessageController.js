@@ -1,7 +1,6 @@
 import { userActions } from "actions/userActions";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
-
-import { sendPrivateMessageApi } from "apis/messageApis";
+import { apiManager } from "classes/ApiManager";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 
@@ -15,10 +14,11 @@ const sendPrivateMessageController = () => {
         },
       } = getState();
 
-      const response = await sendPrivateMessageApi.sendRequest({
-        message: messageInputText,
-        participantId: privateId,
-      });
+      const response =
+        await apiManager.apis.messageApis.sendPrivateMessageApi.sendRequest({
+          message: messageInputText,
+          participantId: privateId,
+        });
 
       const { chatId, newMessage } = response.data;
       dispatch(userActions.addNewMessageToChatAction({ chatId, newMessage }));

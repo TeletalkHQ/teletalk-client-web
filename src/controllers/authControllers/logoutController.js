@@ -1,11 +1,11 @@
-import { logoutApi } from "apis/authenticationApis";
+import { apiManager } from "classes/ApiManager";
 
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 const logoutController = () => {
   return async () => {
     try {
-      await logoutApi.sendRequest();
+      await apiManager.apis.authApis.logoutApi.sendRequest();
 
       commonFunctionalities.resetEverything();
     } catch (error) {
