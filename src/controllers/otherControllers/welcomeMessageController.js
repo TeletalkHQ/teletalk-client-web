@@ -1,11 +1,12 @@
 import { otherActions } from "actions/otherActions";
 
-import { welcomeApi } from "apis/otherApis";
+import { apiManager } from "classes/ApiManager";
 
 const welcomeMessageController = () => {
   return async (dispatch) => {
     try {
-      const response = await welcomeApi.sendRequest();
+      const response =
+        await apiManager.apis.otherApis.welcomeMessageApi.sendRequest();
 
       dispatch(
         otherActions.welcomeMessageAction({

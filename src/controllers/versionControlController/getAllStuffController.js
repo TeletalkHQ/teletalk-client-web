@@ -1,14 +1,17 @@
-import { getAllStuffApi } from "apis/versionControlApis";
+import { getAllStuffApi } from "staticApis/versionControlApis";
 
 import { appOptions } from "classes/AppOptions";
 import { emitters } from "classes/Emitters";
-// import { stuffStore } from "classes/StuffStore";
+import { stuffStore } from "classes/StuffStore";
 
 const getAllStuffController = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     try {
-      // const response =
-      await getAllStuffApi.sendRequest();
+      const {
+        data: { errors, models, routes },
+      } = await getAllStuffApi.sendRequest();
+
+      stuffStore.updateErrors(errors).updateModels(models).updateRoutes(routes);
 
       emitters.emitEvent({
         event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,

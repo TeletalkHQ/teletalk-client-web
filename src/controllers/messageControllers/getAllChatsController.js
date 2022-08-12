@@ -1,11 +1,12 @@
 import { userActions } from "actions/userActions";
 
-import { getAllChatsApi } from "apis/messageApis/getAllChatsApi";
+import { apiManager } from "classes/ApiManager";
 
 const getAllChatsController = () => {
   return async (dispatch) => {
     try {
-      const response = await getAllChatsApi.sendRequest();
+      const response =
+        await apiManager.apis.messageApis.getAllChatsApi.sendRequest();
 
       dispatch(
         userActions.updateAllUserDataAction({ chats: response.data.chats })

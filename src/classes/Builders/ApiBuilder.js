@@ -57,7 +57,7 @@ class ApiBuilder {
 
   build() {
     //TODO Add check requirements method
-    if (!this.routeObject.fullUrl) {
+    if (!this.routeObject?.fullUrl) {
       const error = notifications.localErrors.URL_NOT_FOUND;
       throw error;
     }

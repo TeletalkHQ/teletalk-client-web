@@ -35,12 +35,11 @@ const App = () => {
     <SnackbarProvider>
       <MainContext.Provider
         value={{
-          state,
-          dispatch,
           hooksOutput: {
             dispatch,
             dispatchAsync: async (action) => await dispatch(action),
           },
+          state,
         }}
       >
         <ThemeProvider theme={baseTheme}>

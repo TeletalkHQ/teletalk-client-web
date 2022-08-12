@@ -1,7 +1,6 @@
 import { userActions } from "actions/userActions";
 
-import { signInApi } from "apis/authenticationApis";
-
+import { apiManager } from "classes/ApiManager";
 import { persistentStorage } from "classes/PersistentStorage";
 
 import {
@@ -26,7 +25,7 @@ const signInController = () => {
     try {
       dispatch(authenticationProgressChange(true));
 
-      const response = await signInApi.sendRequest({
+      const response = await apiManager.apis.authApis.signInApi.sendRequest({
         countryCode,
         countryName,
         phoneNumber,

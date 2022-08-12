@@ -1,11 +1,12 @@
 import { userActions } from "actions/userActions";
 
-import { addContactApi } from "apis/cellphoneApis";
+import { apiManager } from "classes/ApiManager";
 
 const addNewContactController = (contact) => {
   return async (dispatch) => {
     try {
-      const result = await addContactApi.sendRequest(contact);
+      const result =
+        await apiManager.apis.cellphoneApis.addContactApi.sendRequest(contact);
 
       dispatch(
         userActions.addNewContactAction({

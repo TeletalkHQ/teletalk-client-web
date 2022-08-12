@@ -1,8 +1,7 @@
 import { userActions } from "actions/userActions";
 import { globalActions } from "actions/globalActions";
 
-import { userStatusCheckerApi } from "apis/authenticationApis";
-
+import { apiManager } from "classes/ApiManager";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
@@ -11,7 +10,8 @@ const { updateAllUserDataAction } = userActions;
 const userStatusCheckerController = () => {
   return async (dispatch) => {
     try {
-      const response = await userStatusCheckerApi.sendRequest();
+      const response =
+        await apiManager.apis.authApis.userStatusCheckerApi.sendRequest();
 
       const { user } = response.data;
 
