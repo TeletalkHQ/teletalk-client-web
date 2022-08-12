@@ -13,7 +13,6 @@ class PersistentStorage {
 
   clearAllStates() {
     this.storage.clear();
-
     return this;
   }
 
@@ -23,20 +22,24 @@ class PersistentStorage {
 
   removeItem(key = "") {
     this.storage.removeItem(key);
-
     return this;
   }
 
   setItem(key = "", value = "") {
     this.storage.setItem(key, value);
-
     return this;
   }
-
   getItem(key = "") {
     const item = this.storage.getItem(key);
-
     return item;
+  }
+
+  convertAndSetItem(key = "", value = {}) {
+    this.setItem(key, JSON.stringify(value));
+    return this;
+  }
+  getAndConvertItem(key) {
+    return JSON.parse(this.getItem(key) || "{}");
   }
 }
 

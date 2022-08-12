@@ -29,15 +29,15 @@ class NotificationManager {
   };
 
   submitErrorNotification(notificationObject = this.initialNotificationObject) {
-    const { message } = notificationObject;
-    enqueueSnackbar(message, { variant: "error" });
+    const { message, notificationReason } = notificationObject;
+    enqueueSnackbar(message || notificationReason, { variant: "error" });
   }
 
   submitSuccessNotification(
     notificationObject = this.initialNotificationObject
   ) {
-    const { message } = notificationObject;
-    enqueueSnackbar(message, { variant: "success" });
+    const { message, notificationReason } = notificationObject;
+    enqueueSnackbar(message || notificationReason, { variant: "success" });
   }
 }
 
