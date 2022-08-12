@@ -14,7 +14,7 @@ const welcomeMessageController = () => {
         })
       );
     } catch (error) {
-      console.log("welcomeMessageController catch", error);
+      console.log("welcomeMessageController catch, error:", error);
     }
   };
 };
