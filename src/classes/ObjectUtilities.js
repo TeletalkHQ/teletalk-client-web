@@ -68,6 +68,10 @@ class ObjectUtilities {
     };
   }
 
+  objectValues(object) {
+    return Object.values(object);
+  }
+
   objectInitializer(arrayOfValues, props) {
     try {
       const tempObj = {};
