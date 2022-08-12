@@ -2,7 +2,7 @@ const EventEmitter = require("events");
 
 const emitter = new EventEmitter();
 
-class Emitters {
+class EventManager {
   constructor() {
     this.events = {};
   }
@@ -16,9 +16,6 @@ class Emitters {
     //   ...this.events[event],
     //   listeners: [...this.events[event]?.listeners, listener],
     // };
-
-    this.events[event] = { eventName: event, listener };
-
     emitter.on(event, listener);
   }
 
@@ -31,6 +28,6 @@ class Emitters {
   }
 }
 
-const emitters = new Emitters();
+const eventManager = new EventManager();
 
-export { emitters };
+export { eventManager };

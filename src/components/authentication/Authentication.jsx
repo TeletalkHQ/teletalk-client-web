@@ -4,7 +4,7 @@ import { tempActions } from "actions/tempActions";
 
 import { appOptions } from "classes/AppOptions";
 import { customTypeof } from "classes/CustomTypeof";
-import { emitters } from "classes/Emitters";
+import { eventManager } from "classes/EventManager";
 import { domUtilities } from "classes/DomUtilities";
 import { stringUtilities } from "classes/StringUtilities";
 
@@ -57,7 +57,7 @@ const Authentication = () => {
   } = useMainContext();
 
   useEffect(() => {
-    emitters.addListener({
+    eventManager.addListener({
       event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
       listener: async () => {
         dispatch(welcomeMessageController());
