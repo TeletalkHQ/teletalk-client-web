@@ -6,7 +6,7 @@ import { globalActions } from "actions/globalActions";
 
 import { apiManager } from "classes/ApiManager";
 import { appOptions } from "classes/AppOptions";
-import { emitters } from "classes/Emitters";
+import { eventManager } from "classes/EventManager";
 import { persistentStorage } from "classes/PersistentStorage";
 
 import Authentication from "components/authentication/Authentication";
@@ -45,7 +45,7 @@ const MainContainer = () => {
   useEffect(() => {
     (async () => {
       try {
-        emitters.addListener({
+        eventManager.addListener({
           event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
           listener: async () => {
             if (userState.privateId) {
@@ -71,7 +71,7 @@ const MainContainer = () => {
   }, [persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN)]);
 
   useEffect(() => {
-    emitters.addListener({
+    eventManager.addListener({
       event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
       listener: async () => {
         apiManager.rebuildAllApis();

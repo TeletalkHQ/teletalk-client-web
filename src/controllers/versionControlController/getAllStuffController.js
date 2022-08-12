@@ -1,7 +1,7 @@
 import { getAllStuffApi } from "staticApis/versionControlApis";
 
 import { appOptions } from "classes/AppOptions";
-import { emitters } from "classes/Emitters";
+import { eventManager } from "classes/EventManager";
 import { stuffStore } from "classes/StuffStore";
 import { persistentStorage } from "classes/PersistentStorage";
 
@@ -23,7 +23,7 @@ const getAllStuffController = () => {
 
       stuffStore.updateAllStuff(errors, models, routes, validationModels);
 
-      emitters.emitEvent({
+      eventManager.emitEvent({
         event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
       });
     } catch (error) {
