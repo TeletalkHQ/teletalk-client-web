@@ -31,10 +31,39 @@ const VERIFY_TOKEN_NOT_FOUND = notificationBuilder
 const successes = {};
 //#endregion //* successes
 
+const INPUT_FIELDS_MISSING = notificationBuilder
+  .create()
+  .description("Default error description")
+  .message("Internal server error")
+  .notificationCode(5000)
+  .notificationReason("INPUT_FIELDS_MISSING");
+const INPUT_FIELDS_OVERLOAD = notificationBuilder
+  .create()
+  .description("Default error description")
+  .message("Internal server error")
+  .notificationCode(5000)
+  .notificationReason("INPUT_FIELDS_OVERLOAD");
+const OUTPUT_FIELDS_MISSING = notificationBuilder
+  .create()
+  .description("Default error description")
+  .message("Internal server error")
+  .notificationCode(5000)
+  .notificationReason("OUTPUT_FIELDS_MISSING");
+const OUTPUT_FIELDS_OVERLOAD = notificationBuilder
+  .create()
+  .description("Default error description")
+  .message("Internal server error")
+  .notificationCode(5000)
+  .notificationReason("OUTPUT_FIELDS_OVERLOAD");
+
 const localErrors = {
   ECONNABORTED,
   URL_NOT_FOUND,
   VERIFY_TOKEN_NOT_FOUND,
+  INPUT_FIELDS_MISSING,
+  INPUT_FIELDS_OVERLOAD,
+  OUTPUT_FIELDS_MISSING,
+  OUTPUT_FIELDS_OVERLOAD,
 };
 
 const notifications = {
