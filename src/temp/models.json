@@ -1,1986 +1,1697 @@
 {
-  "models": {
-    "version": "1.0.0",
-    "chatIdModel": {
-      "empty": {
-        "value": false,
+  "bioModel": {
+    "defaultValue": {
+      "error": {
         "error": {
-          "description": "Default route description",
+          "code": 0,
+          "errorKey": "",
           "message": "",
-          "reason": "CHAT_ID_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4001
-        }
+          "reason": "",
+          "version": ""
+        },
+        "value": null
       },
-      "maxlength": {
-        "value": 35,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_MAX_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4003
-        }
-      },
-      "minlength": {
-        "value": 30,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_MIN_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4004
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4005
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4002
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4001
-        }
-      },
-      "version": "1.0.0"
+      "value": ""
     },
-    "createdAtModel": {
-      "defaultValue": {
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "BIO_VALIDATION",
+        "message": "",
+        "reason": "BIO_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CREATED_AT_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CREATED_AT_VALIDATION",
-          "errorCode": 4043
-        }
-      },
-      "type": {
-        "value": "date",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CREATED_AT_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CREATED_AT_VALIDATION",
-          "errorCode": 4043
-        }
-      },
-      "version": "1.0.0"
+      "value": false
     },
-    "messageIdModel": {
-      "defaultValue": {
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4025,
+        "errorKey": "BIO_VALIDATION",
+        "message": "",
+        "reason": "BIO_MAXLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 45,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_MAX_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4010
-        }
-      },
-      "minlength": {
-        "value": 40,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_MIN_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4011
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4012
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4009
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4008
-        }
-      },
-      "version": "1.0.0"
+      "value": 255
     },
-    "messageModel": {
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_TEXT_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_TEXT_VALIDATION",
-          "errorCode": 4013
-        }
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4026,
+        "errorKey": "BIO_VALIDATION",
+        "message": "",
+        "reason": "BIO_MINLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 20,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_TEXT_MAX_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_TEXT_VALIDATION",
-          "errorCode": 4014
-        }
-      },
-      "minlength": {
-        "value": 1,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_TEXT_MIN_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_TEXT_VALIDATION",
-          "errorCode": 4015
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_TEXT_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_TEXT_VALIDATION",
-          "errorCode": 4013
-        }
-      },
-      "version": "1.0.0"
+      "value": 2
     },
-    "participantIdModel": {
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PARTICIPANT_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PARTICIPANT_ID_VALIDATION",
-          "errorCode": 4076
-        }
-      },
-      "maxlength": {
-        "value": 35,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PARTICIPANT_ID_MAX_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PARTICIPANT_ID_VALIDATION",
-          "errorCode": 4018
-        }
-      },
-      "minlength": {
-        "value": 30,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PARTICIPANT_ID_MIN_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PARTICIPANT_ID_VALIDATION",
-          "errorCode": 4019
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PARTICIPANT_ID_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PARTICIPANT_ID_VALIDATION",
-          "errorCode": 4020
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PARTICIPANT_ID_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PARTICIPANT_ID_VALIDATION",
-          "errorCode": 4017
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PARTICIPANT_ID_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PARTICIPANT_ID_VALIDATION",
-          "errorCode": 4016
-        }
-      },
-      "version": "1.0.0"
+    "required": {
+      "error": {},
+      "value": false
     },
-    "senderIdModel": {
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "SENDER_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "SENDER_ID_VALIDATION",
-          "errorCode": 4021
-        }
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4024,
+        "errorKey": "BIO_VALIDATION",
+        "message": "",
+        "reason": "BIO_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 35,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "SENDER_ID_MAX_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "SENDER_ID_VALIDATION",
-          "errorCode": 4021
-        }
-      },
-      "minlength": {
-        "value": 30,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "SENDER_ID_MIN_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "SENDER_ID_VALIDATION",
-          "errorCode": 4021
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "SENDER_ID_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "SENDER_ID_VALIDATION",
-          "errorCode": 4021
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "SENDER_ID_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "SENDER_ID_VALIDATION",
-          "errorCode": 4021
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "SENDER_ID_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "SENDER_ID_VALIDATION",
-          "errorCode": 4021
-        }
-      },
-      "version": "1.0.0"
+      "value": "string"
     },
-    "chatIdCommonModel": {
-      "empty": {
-        "value": false,
+    "version": "1.0.0"
+  },
+  "blacklistModel": {
+    "defaultValue": {
+      "error": {
         "error": {
-          "description": "Default route description",
+          "code": 0,
+          "errorKey": "",
           "message": "",
-          "reason": "CHAT_ID_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4001
-        }
+          "reason": "",
+          "version": ""
+        },
+        "value": null
       },
-      "maxlength": {
-        "value": 35,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_MAX_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4003
-        }
-      },
-      "minlength": {
-        "value": 30,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_MIN_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4004
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4005
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4002
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CHAT_ID_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHAT_ID_VALIDATION",
-          "errorCode": 4001
-        }
-      },
-      "version": "1.0.0"
+      "value": []
     },
-    "createdAtCommonModel": {
-      "defaultValue": {
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4023,
+        "errorKey": "BLACKLIST_VALIDATION",
+        "message": "",
+        "reason": "BLACKLIST_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CREATED_AT_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CREATED_AT_VALIDATION",
-          "errorCode": 4043
-        }
-      },
-      "type": {
-        "value": "date",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CREATED_AT_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CREATED_AT_VALIDATION",
-          "errorCode": 4043
-        }
-      },
-      "version": "1.0.0"
+      "value": "array"
     },
-    "messageIdCommonModel": {
-      "defaultValue": {
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+    "version": "1.0.0"
+  },
+  "chatIdCommonModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4001,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 45,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_MAX_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4010
-        }
-      },
-      "minlength": {
-        "value": 40,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_MIN_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4011
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4012
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4009
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MESSAGE_ID_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MESSAGE_ID_VALIDATION",
-          "errorCode": 4008
-        }
-      },
-      "version": "1.0.0"
+      "value": false
     },
-    "privateIdCommonModel": {
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4065
-        }
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4003,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_MAX_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 35,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_MAX_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4063
-        }
-      },
-      "minlength": {
-        "value": 30,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_MIN_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4064
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4065
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4062
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4061
-        }
-      },
-      "version": "1.0.0"
+      "value": 35
     },
-    "bioModel": {
-      "defaultValue": {
-        "value": "",
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4004,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_MIN_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "BIO_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "BIO_VALIDATION",
-          "errorCode": 4076
-        }
-      },
-      "maxlength": {
-        "value": 255,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "BIO_MAXLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "BIO_VALIDATION",
-          "errorCode": 4025
-        }
-      },
-      "minlength": {
-        "value": 2,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "BIO_MINLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "BIO_VALIDATION",
-          "errorCode": 4026
-        }
-      },
-      "required": {
-        "value": false,
-        "error": {}
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "BIO_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "BIO_VALIDATION",
-          "errorCode": 4024
-        }
-      },
-      "version": "1.0.0"
+      "value": 30
     },
-    "blacklistModel": {
-      "defaultValue": {
-        "value": [],
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4005,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "type": {
-        "value": "array",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "BLACKLIST_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "BLACKLIST_VALIDATION",
-          "errorCode": 4023
-        }
-      },
-      "version": "1.0.0"
+      "value": true
     },
-    "chatsModel": {
-      "type": {
-        "value": "array",
+    "trim": {
+      "error": {
         "error": {
-          "description": "Default route description",
+          "code": 0,
+          "errorKey": "",
           "message": "",
-          "reason": "CHATS_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CHATS_VALIDATION",
-          "errorCode": 4000
-        }
+          "reason": "",
+          "version": ""
+        },
+        "value": null
       },
-      "version": "1.0.0"
+      "value": true
     },
-    "contactsModel": {
-      "defaultValue": {
-        "value": [],
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4002,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 14,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "minlength": {
-        "value": 10,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "required": {
-        "value": false,
-        "error": {}
-      },
-      "type": {
-        "value": "array",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "CONTACT_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "CONTACT_VALIDATION",
-          "errorCode": 4034
-        }
-      },
-      "version": "1.0.0"
+      "value": "string"
     },
-    "countryCodeModel": {
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_CODE_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_CODE_VALIDATION",
-          "errorCode": 4076
-        }
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4001,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 8,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_CODE_MAXLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_CODE_VALIDATION",
-          "errorCode": 4036
-        }
-      },
-      "minlength": {
-        "value": 2,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_CODE_MINLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_CODE_VALIDATION",
-          "errorCode": 4037
-        }
-      },
-      "numeric": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_CODE_NUMERIC",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_CODE_VALIDATION",
-          "errorCode": 4035
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_CODE_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_CODE_VALIDATION",
-          "errorCode": 4038
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_CODE_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_CODE_VALIDATION",
-          "errorCode": 4035
-        }
-      },
-      "version": "1.0.0"
+      "value": true
     },
-    "countryNameModel": {
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_NAME_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_NAME_VALIDATION",
-          "errorCode": 4076
-        }
+    "version": "1.0.0"
+  },
+  "chatIdModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4001,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 40,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_NAME_MAXLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_NAME_VALIDATION",
-          "errorCode": 4040
-        }
-      },
-      "minlength": {
-        "value": 2,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_NAME_MINLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_NAME_VALIDATION",
-          "errorCode": 4041
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_NAME_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_NAME_VALIDATION",
-          "errorCode": 4042
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "COUNTRY_NAME_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "COUNTRY_NAME_VALIDATION",
-          "errorCode": 4039
-        }
-      },
-      "version": "1.0.0"
+      "value": false
     },
-    "firstNameModel": {
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "FIRST_NAME_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "FIRST_NAME_VALIDATION",
-          "errorCode": 4076
-        }
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4003,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_MAX_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 18,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "FIRST_NAME_MAXLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "FIRST_NAME_VALIDATION",
-          "errorCode": 4045
-        }
-      },
-      "minlength": {
-        "value": 2,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "FIRST_NAME_MINLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "FIRST_NAME_VALIDATION",
-          "errorCode": 4046
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "FIRST_NAME_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "FIRST_NAME_VALIDATION",
-          "errorCode": 4047
-        }
-      },
-      "trim": {
-        "value": false,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "FIRST_NAME_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "FIRST_NAME_VALIDATION",
-          "errorCode": 4044
-        }
-      },
-      "version": "1.0.0"
+      "value": 35
     },
-    "lastNameModel": {
-      "defaultValue": {
-        "value": "",
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4004,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_MIN_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "LAST_NAME_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "LAST_NAME_VALIDATION",
-          "errorCode": 4076
-        }
-      },
-      "maxlength": {
-        "value": 18,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "LAST_NAME_MAXLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "LAST_NAME_VALIDATION",
-          "errorCode": 4049
-        }
-      },
-      "minlength": {
-        "value": 2,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "LAST_NAME_MINLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "LAST_NAME_VALIDATION",
-          "errorCode": 4050
-        }
-      },
-      "required": {
-        "value": false,
-        "error": {}
-      },
-      "trim": {
-        "value": false,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "LAST_NAME_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "LAST_NAME_VALIDATION",
-          "errorCode": 4048
-        }
-      },
-      "version": "1.0.0"
+      "value": 30
     },
-    "macAddressModel": {
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MAC_ADDRESS_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MAC_ADDRESS_VALIDATION",
-          "errorCode": 4076
-        }
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4005,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 16,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MAC_ADDRESS_MAXLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MAC_ADDRESS_VALIDATION",
-          "errorCode": 4053
-        }
-      },
-      "minlength": {
-        "value": 12,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MAC_ADDRESS_MINLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MAC_ADDRESS_VALIDATION",
-          "errorCode": 4054
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MAC_ADDRESS_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MAC_ADDRESS_VALIDATION",
-          "errorCode": 4055
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MAC_ADDRESS_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MAC_ADDRESS_VALIDATION",
-          "errorCode": 4052
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "MAC_ADDRESS_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "MAC_ADDRESS_VALIDATION",
-          "errorCode": 4051
-        }
-      },
-      "version": "1.0.0"
+      "value": true
     },
-    "phoneNumberModel": {
-      "empty": {
-        "value": false,
+    "trim": {
+      "error": {
         "error": {
-          "description": "Default route description",
+          "code": 0,
+          "errorKey": "",
           "message": "",
-          "reason": "PHONE_NUMBER_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PHONE_NUMBER_VALIDATION",
-          "errorCode": 4076
-        }
+          "reason": "",
+          "version": ""
+        },
+        "value": null
       },
-      "maxlength": {
-        "value": 14,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PHONE_NUMBER_MAXLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PHONE_NUMBER_VALIDATION",
-          "errorCode": 4060
-        }
-      },
-      "minlength": {
-        "value": 10,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PHONE_NUMBER_MINLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PHONE_NUMBER_VALIDATION",
-          "errorCode": 4059
-        }
-      },
-      "numeric": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PHONE_NUMBER_NUMERIC",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PHONE_NUMBER_VALIDATION",
-          "errorCode": 4060
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PHONE_NUMBER_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PHONE_NUMBER_VALIDATION",
-          "errorCode": 4058
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PHONE_NUMBER_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PHONE_NUMBER_VALIDATION",
-          "errorCode": 4056
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PHONE_NUMBER_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PHONE_NUMBER_VALIDATION",
-          "errorCode": 4057
-        }
-      },
-      "version": "1.0.0"
+      "value": true
     },
-    "privateIdModel": {
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4065
-        }
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4002,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "maxlength": {
-        "value": 35,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_MAX_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4063
-        }
-      },
-      "minlength": {
-        "value": 30,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_MIN_LENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4064
-        }
-      },
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_REQUIRED",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4065
-        }
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4062
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "PRIVATE_ID_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "PRIVATE_ID_VALIDATION",
-          "errorCode": 4061
-        }
-      },
-      "version": "1.0.0"
+      "value": "string"
     },
-    "tokenModel": {
-      "required": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "TOKEN_REQUIRED",
-          "statusCode": 401,
-          "version": "1.0.0",
-          "errorKey": "TOKEN_VALIDATION",
-          "errorCode": 4068
-        }
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4001,
+        "errorKey": "CHAT_ID_VALIDATION",
+        "message": "",
+        "reason": "CHAT_ID_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "TOKEN_INVALID_TYPE",
-          "statusCode": 401,
-          "version": "1.0.0",
-          "errorKey": "TOKEN_VALIDATION",
-          "errorCode": 4069
-        }
-      },
-      "unique": {
-        "value": true,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "TOKEN_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "TOKEN_VALIDATION",
-          "errorCode": 4067
-        }
-      },
-      "version": "1.0.0"
+      "value": true
     },
-    "usernameModel": {
-      "defaultValue": {
-        "value": "",
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+    "version": "1.0.0"
+  },
+  "chatsModel": {
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4000,
+        "errorKey": "CHATS_VALIDATION",
+        "message": "",
+        "reason": "CHATS_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "empty": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "USERNAME_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "USERNAME_VALIDATION",
-          "errorCode": 4076
-        }
-      },
-      "lowercase": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "maxlength": {
-        "value": 12,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "USERNAME_MAXLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "USERNAME_VALIDATION",
-          "errorCode": 4073
-        }
-      },
-      "minlength": {
-        "value": 4,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "USERNAME_MINLENGTH_REACH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "USERNAME_VALIDATION",
-          "errorCode": 4074
-        }
-      },
-      "required": {
-        "value": false,
-        "error": {}
-      },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
-      },
-      "type": {
-        "value": "string",
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "USERNAME_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "USERNAME_VALIDATION",
-          "errorCode": 4072
-        }
-      },
-      "unique": {
-        "value": false,
-        "error": {
-          "description": "Default route description",
-          "message": "",
-          "reason": "USERNAME_EXIST",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "USERNAME_VALIDATION",
-          "errorCode": 4071
-        }
-      },
-      "version": "1.0.0"
+      "value": "array"
     },
-    "verificationCodeModel": {
-      "empty": {
-        "value": false,
+    "version": "1.0.0"
+  },
+  "contactsModel": {
+    "defaultValue": {
+      "error": {
         "error": {
-          "description": "Default route description",
+          "code": 0,
+          "errorKey": "",
           "message": "",
-          "reason": "VERIFICATION_CODE_EMPTY",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "VERIFICATION_CODE_VALIDATION",
-          "errorCode": 4076
-        }
+          "reason": "",
+          "version": ""
+        },
+        "value": null
       },
-      "length": {
-        "value": 6,
+      "value": []
+    },
+    "maxlength": {
+      "error": {
         "error": {
-          "description": "Default route description",
+          "code": 0,
+          "errorKey": "",
           "message": "",
-          "reason": "VERIFICATION_CODE_INVALID_LENGTH",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "VERIFICATION_CODE_VALIDATION",
-          "errorCode": 4077
-        }
+          "reason": "",
+          "version": ""
+        },
+        "value": null
       },
-      "numeric": {
-        "value": true,
+      "value": 14
+    },
+    "minlength": {
+      "error": {
         "error": {
-          "description": "Default route description",
+          "code": 0,
+          "errorKey": "",
           "message": "",
-          "reason": "VERIFICATION_CODE_NUMERIC",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "VERIFICATION_CODE_VALIDATION",
-          "errorCode": 4076
-        }
+          "reason": "",
+          "version": ""
+        },
+        "value": null
       },
-      "trim": {
-        "value": true,
-        "error": {
-          "value": null,
-          "error": {
-            "code": 0,
-            "errorKey": "",
-            "message": "",
-            "reason": "",
-            "version": ""
-          }
-        }
+      "value": 10
+    },
+    "required": {
+      "error": {},
+      "value": false
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4034,
+        "errorKey": "CONTACT_VALIDATION",
+        "message": "",
+        "reason": "CONTACT_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "type": {
-        "value": "string",
+      "value": "array"
+    },
+    "version": "1.0.0"
+  },
+  "countryCodeModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "COUNTRY_CODE_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_CODE_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4036,
+        "errorKey": "COUNTRY_CODE_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_CODE_MAXLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 8
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4037,
+        "errorKey": "COUNTRY_CODE_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_CODE_MINLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 2
+    },
+    "numeric": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4035,
+        "errorKey": "COUNTRY_CODE_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_CODE_NUMERIC",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4038,
+        "errorKey": "COUNTRY_CODE_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_CODE_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
         "error": {
-          "description": "Default route description",
+          "code": 0,
+          "errorKey": "",
           "message": "",
-          "reason": "VERIFICATION_CODE_INVALID_TYPE",
-          "statusCode": 400,
-          "version": "1.0.0",
-          "errorKey": "VERIFICATION_CODE_VALIDATION",
-          "errorCode": 4076
-        }
+          "reason": "",
+          "version": ""
+        },
+        "value": null
       },
-      "version": "1.0.0"
+      "value": true
     },
-    "messageIdValidationModel": {
-      "messageId": {
-        "max": 45,
-        "min": 40,
-        "trim": true,
-        "type": "string",
-        "unique": true,
-        "messages": {
-          "string": "",
-          "stringMax": "",
-          "stringMin": "",
-          "unique": ""
-        }
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4035,
+        "errorKey": "COUNTRY_CODE_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_CODE_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "version": "1.0.0"
+      "value": "string"
     },
-    "participantIdValidationModel": {
-      "participantId": {
-        "empty": false,
-        "max": 35,
-        "min": 30,
-        "trim": true,
-        "type": "string",
-        "unique": true,
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": "",
-          "unique": ""
-        }
+    "version": "1.0.0"
+  },
+  "countryNameModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "COUNTRY_NAME_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_NAME_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "version": "1.0.0"
+      "value": false
     },
-    "messageTextValidationModel": {
-      "message": {
-        "empty": false,
-        "max": 20,
-        "min": 1,
-        "type": "string",
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": ""
-        }
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4040,
+        "errorKey": "COUNTRY_NAME_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_NAME_MAXLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "version": "1.0.0"
+      "value": 40
     },
-    "chatIdValidationModel": {
-      "chatId": {
-        "empty": false,
-        "max": 35,
-        "min": 30,
-        "trim": true,
-        "type": "string",
-        "unique": true,
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": "",
-          "unique": ""
-        }
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4041,
+        "errorKey": "COUNTRY_NAME_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_NAME_MINLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "version": "1.0.0"
+      "value": 2
     },
-    "bioValidationModel": {
-      "bio": {
-        "empty": false,
-        "max": 255,
-        "optional": true,
-        "type": "string",
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": ""
-        }
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4042,
+        "errorKey": "COUNTRY_NAME_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_NAME_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "version": "1.0.0"
+      "value": true
     },
-    "cellphoneValidationModel": {
-      "countryCode": {
-        "empty": false,
-        "max": 8,
-        "min": 2,
-        "trim": true,
-        "type": "string",
-        "numeric": true,
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": "",
-          "stringNumeric": ""
-        }
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4039,
+        "errorKey": "COUNTRY_NAME_VALIDATION",
+        "message": "",
+        "reason": "COUNTRY_NAME_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "version": "1.0.0",
-      "countryName": {
-        "empty": false,
-        "max": 40,
-        "min": 2,
-        "type": "string",
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": ""
-        }
-      },
-      "phoneNumber": {
-        "empty": false,
-        "max": 14,
-        "min": 10,
-        "type": "string",
-        "numeric": true,
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": "",
-          "stringNumeric": ""
-        }
+      "value": "string"
+    },
+    "version": "1.0.0"
+  },
+  "createdAtCommonModel": {
+    "defaultValue": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
       }
     },
-    "countryCodeValidationModel": {
-      "countryCode": {
-        "empty": false,
-        "max": 8,
-        "min": 2,
-        "trim": true,
-        "type": "string",
-        "numeric": true,
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": "",
-          "stringNumeric": ""
-        }
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4043,
+        "errorKey": "CREATED_AT_VALIDATION",
+        "message": "",
+        "reason": "CREATED_AT_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "version": "1.0.0"
+      "value": true
     },
-    "countryNameValidationModel": {
-      "countryName": {
-        "empty": false,
-        "max": 40,
-        "min": 2,
-        "type": "string",
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": ""
-        }
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4043,
+        "errorKey": "CREATED_AT_VALIDATION",
+        "message": "",
+        "reason": "CREATED_AT_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "version": "1.0.0"
+      "value": "date"
     },
-    "firstNameValidationModel": {
-      "firstName": {
-        "empty": false,
-        "max": 18,
-        "min": 2,
-        "trim": false,
-        "type": "string",
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": ""
-        }
-      },
-      "version": "1.0.0"
-    },
-    "lastNameValidationModel": {
-      "lastName": {
-        "empty": false,
-        "max": 18,
-        "min": 2,
-        "optional": true,
-        "trim": false,
-        "type": "string",
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": ""
-        }
-      },
-      "version": "1.0.0"
-    },
-    "macAddressValidationModel": {
-      "macAddress": {
-        "empty": false,
-        "max": 16,
-        "min": 12,
-        "trim": true,
-        "type": "string",
-        "unique": true,
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": "",
-          "unique": ""
-        }
-      },
-      "version": "1.0.0"
-    },
-    "phoneNumberValidationModel": {
-      "phoneNumber": {
-        "empty": false,
-        "max": 14,
-        "min": 10,
-        "type": "string",
-        "numeric": true,
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "stringMin": "",
-          "stringNumeric": ""
-        }
-      },
-      "version": "1.0.0"
-    },
-    "privateIdValidationModel": {
-      "privateId": {
-        "max": 35,
-        "min": 30,
-        "trim": true,
-        "type": "string",
-        "unique": true,
-        "messages": {
-          "string": "",
-          "stringMax": "",
-          "stringMin": "",
-          "unique": ""
-        }
-      },
-      "version": "1.0.0"
-    },
-    "tokenValidationModel": {
-      "token": {
-        "type": "string",
-        "required": true,
-        "messages": {
-          "required": "",
-          "string": ""
-        }
-      },
-      "version": "1.0.0"
-    },
-    "usernameValidationModel": {
-      "username": {
-        "empty": false,
-        "max": 12,
-        "optional": true,
-        "trim": true,
-        "type": "string",
-        "unique": false,
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringMax": "",
-          "unique": ""
+    "version": "1.0.0"
+  },
+  "createdAtModel": {
+    "defaultValue": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
         },
-        "lowercase": false
-      },
-      "version": "1.0.0"
+        "value": null
+      }
     },
-    "verificationCodeValidationModel": {
-      "verificationCode": {
-        "empty": false,
-        "trim": true,
-        "type": "string",
-        "numeric": true,
-        "messages": {
-          "string": "",
-          "stringEmpty": "",
-          "stringNumeric": "",
-          "length": ""
-        },
-        "length": 6
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4043,
+        "errorKey": "CREATED_AT_VALIDATION",
+        "message": "",
+        "reason": "CREATED_AT_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
       },
-      "version": "1.0.0"
-    }
-  }
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4043,
+        "errorKey": "CREATED_AT_VALIDATION",
+        "message": "",
+        "reason": "CREATED_AT_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "date"
+    },
+    "version": "1.0.0"
+  },
+  "firstNameModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "FIRST_NAME_VALIDATION",
+        "message": "",
+        "reason": "FIRST_NAME_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4045,
+        "errorKey": "FIRST_NAME_VALIDATION",
+        "message": "",
+        "reason": "FIRST_NAME_MAXLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 18
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4046,
+        "errorKey": "FIRST_NAME_VALIDATION",
+        "message": "",
+        "reason": "FIRST_NAME_MINLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 2
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4047,
+        "errorKey": "FIRST_NAME_VALIDATION",
+        "message": "",
+        "reason": "FIRST_NAME_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": false
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4044,
+        "errorKey": "FIRST_NAME_VALIDATION",
+        "message": "",
+        "reason": "FIRST_NAME_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "version": "1.0.0"
+  },
+  "lastNameModel": {
+    "defaultValue": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": ""
+    },
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "LAST_NAME_VALIDATION",
+        "message": "",
+        "reason": "LAST_NAME_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4049,
+        "errorKey": "LAST_NAME_VALIDATION",
+        "message": "",
+        "reason": "LAST_NAME_MAXLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 18
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4050,
+        "errorKey": "LAST_NAME_VALIDATION",
+        "message": "",
+        "reason": "LAST_NAME_MINLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 2
+    },
+    "required": {
+      "error": {},
+      "value": false
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": false
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4048,
+        "errorKey": "LAST_NAME_VALIDATION",
+        "message": "",
+        "reason": "LAST_NAME_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "version": "1.0.0"
+  },
+  "macAddressModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "MAC_ADDRESS_VALIDATION",
+        "message": "",
+        "reason": "MAC_ADDRESS_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4053,
+        "errorKey": "MAC_ADDRESS_VALIDATION",
+        "message": "",
+        "reason": "MAC_ADDRESS_MAXLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 16
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4054,
+        "errorKey": "MAC_ADDRESS_VALIDATION",
+        "message": "",
+        "reason": "MAC_ADDRESS_MINLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 12
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4055,
+        "errorKey": "MAC_ADDRESS_VALIDATION",
+        "message": "",
+        "reason": "MAC_ADDRESS_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4052,
+        "errorKey": "MAC_ADDRESS_VALIDATION",
+        "message": "",
+        "reason": "MAC_ADDRESS_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4051,
+        "errorKey": "MAC_ADDRESS_VALIDATION",
+        "message": "",
+        "reason": "MAC_ADDRESS_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "version": "1.0.0"
+  },
+  "messageIdCommonModel": {
+    "defaultValue": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      }
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4010,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_MAX_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 45
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4011,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_MIN_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 40
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4012,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4009,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4008,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "version": "1.0.0"
+  },
+  "messageIdModel": {
+    "defaultValue": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      }
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4010,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_MAX_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 45
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4011,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_MIN_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 40
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4012,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4009,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4008,
+        "errorKey": "MESSAGE_ID_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_ID_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "version": "1.0.0"
+  },
+  "messageModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4013,
+        "errorKey": "MESSAGE_TEXT_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_TEXT_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4014,
+        "errorKey": "MESSAGE_TEXT_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_TEXT_MAX_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 20
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4015,
+        "errorKey": "MESSAGE_TEXT_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_TEXT_MIN_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 1
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4013,
+        "errorKey": "MESSAGE_TEXT_VALIDATION",
+        "message": "",
+        "reason": "MESSAGE_TEXT_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "version": "1.0.0"
+  },
+  "participantIdModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "PARTICIPANT_ID_VALIDATION",
+        "message": "",
+        "reason": "PARTICIPANT_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4018,
+        "errorKey": "PARTICIPANT_ID_VALIDATION",
+        "message": "",
+        "reason": "PARTICIPANT_ID_MAX_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 35
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4019,
+        "errorKey": "PARTICIPANT_ID_VALIDATION",
+        "message": "",
+        "reason": "PARTICIPANT_ID_MIN_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 30
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4020,
+        "errorKey": "PARTICIPANT_ID_VALIDATION",
+        "message": "",
+        "reason": "PARTICIPANT_ID_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4017,
+        "errorKey": "PARTICIPANT_ID_VALIDATION",
+        "message": "",
+        "reason": "PARTICIPANT_ID_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4016,
+        "errorKey": "PARTICIPANT_ID_VALIDATION",
+        "message": "",
+        "reason": "PARTICIPANT_ID_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "version": "1.0.0"
+  },
+  "phoneNumberModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "PHONE_NUMBER_VALIDATION",
+        "message": "",
+        "reason": "PHONE_NUMBER_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4060,
+        "errorKey": "PHONE_NUMBER_VALIDATION",
+        "message": "",
+        "reason": "PHONE_NUMBER_MAXLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 14
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4059,
+        "errorKey": "PHONE_NUMBER_VALIDATION",
+        "message": "",
+        "reason": "PHONE_NUMBER_MINLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 10
+    },
+    "numeric": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4060,
+        "errorKey": "PHONE_NUMBER_VALIDATION",
+        "message": "",
+        "reason": "PHONE_NUMBER_NUMERIC",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4058,
+        "errorKey": "PHONE_NUMBER_VALIDATION",
+        "message": "",
+        "reason": "PHONE_NUMBER_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4056,
+        "errorKey": "PHONE_NUMBER_VALIDATION",
+        "message": "",
+        "reason": "PHONE_NUMBER_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4057,
+        "errorKey": "PHONE_NUMBER_VALIDATION",
+        "message": "",
+        "reason": "PHONE_NUMBER_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "version": "1.0.0"
+  },
+  "privateIdCommonModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4065,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4063,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_MAX_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 35
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4064,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_MIN_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 30
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4065,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4062,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4061,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "version": "1.0.0"
+  },
+  "privateIdModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4065,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4063,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_MAX_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 35
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4064,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_MIN_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 30
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4065,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4062,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4061,
+        "errorKey": "PRIVATE_ID_VALIDATION",
+        "message": "",
+        "reason": "PRIVATE_ID_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "version": "1.0.0"
+  },
+  "senderIdModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4021,
+        "errorKey": "SENDER_ID_VALIDATION",
+        "message": "",
+        "reason": "SENDER_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4021,
+        "errorKey": "SENDER_ID_VALIDATION",
+        "message": "",
+        "reason": "SENDER_ID_MAX_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 35
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4021,
+        "errorKey": "SENDER_ID_VALIDATION",
+        "message": "",
+        "reason": "SENDER_ID_MIN_LENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 30
+    },
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4021,
+        "errorKey": "SENDER_ID_VALIDATION",
+        "message": "",
+        "reason": "SENDER_ID_REQUIRED",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4021,
+        "errorKey": "SENDER_ID_VALIDATION",
+        "message": "",
+        "reason": "SENDER_ID_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4021,
+        "errorKey": "SENDER_ID_VALIDATION",
+        "message": "",
+        "reason": "SENDER_ID_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "version": "1.0.0"
+  },
+  "tokenModel": {
+    "required": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4068,
+        "errorKey": "TOKEN_VALIDATION",
+        "message": "",
+        "reason": "TOKEN_REQUIRED",
+        "statusCode": 401,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4069,
+        "errorKey": "TOKEN_VALIDATION",
+        "message": "",
+        "reason": "TOKEN_INVALID_TYPE",
+        "statusCode": 401,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4067,
+        "errorKey": "TOKEN_VALIDATION",
+        "message": "",
+        "reason": "TOKEN_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "version": "1.0.0"
+  },
+  "usernameModel": {
+    "defaultValue": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": ""
+    },
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "USERNAME_VALIDATION",
+        "message": "",
+        "reason": "USERNAME_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "lowercase": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "maxlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4073,
+        "errorKey": "USERNAME_VALIDATION",
+        "message": "",
+        "reason": "USERNAME_MAXLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 12
+    },
+    "minlength": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4074,
+        "errorKey": "USERNAME_VALIDATION",
+        "message": "",
+        "reason": "USERNAME_MINLENGTH_REACH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 4
+    },
+    "required": {
+      "error": {},
+      "value": false
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4072,
+        "errorKey": "USERNAME_VALIDATION",
+        "message": "",
+        "reason": "USERNAME_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "unique": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4071,
+        "errorKey": "USERNAME_VALIDATION",
+        "message": "",
+        "reason": "USERNAME_EXIST",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "version": "1.0.0"
+  },
+  "verificationCodeModel": {
+    "empty": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "VERIFICATION_CODE_VALIDATION",
+        "message": "",
+        "reason": "VERIFICATION_CODE_EMPTY",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": false
+    },
+    "length": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4077,
+        "errorKey": "VERIFICATION_CODE_VALIDATION",
+        "message": "",
+        "reason": "VERIFICATION_CODE_INVALID_LENGTH",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": 6
+    },
+    "numeric": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "VERIFICATION_CODE_VALIDATION",
+        "message": "",
+        "reason": "VERIFICATION_CODE_NUMERIC",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": true
+    },
+    "trim": {
+      "error": {
+        "error": {
+          "code": 0,
+          "errorKey": "",
+          "message": "",
+          "reason": "",
+          "version": ""
+        },
+        "value": null
+      },
+      "value": true
+    },
+    "type": {
+      "error": {
+        "description": "Default route description",
+        "errorCode": 4076,
+        "errorKey": "VERIFICATION_CODE_VALIDATION",
+        "message": "",
+        "reason": "VERIFICATION_CODE_INVALID_TYPE",
+        "statusCode": 400,
+        "version": "1.0.0"
+      },
+      "value": "string"
+    },
+    "version": "1.0.0"
+  },
+  "version": "1.0.0"
 }

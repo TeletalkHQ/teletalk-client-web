@@ -1,12 +1,14 @@
-// import models from "temp/models.json";
-// import routes from "temp/routes.json";
-// import errors from "temp/errors.json";
+import { PERSISTENT_STORAGE_KEYS } from "variables/others/staticValues";
+import { persistentStorage } from "classes/PersistentStorage";
 
 class StuffStore {
   constructor() {
-    this.errors = {};
-    this.models = {};
-    this.routes = {};
+    this.stuffs = persistentStorage.getAndConvertItem(
+      PERSISTENT_STORAGE_KEYS.STUFFS
+    );
+    this.errors = this.stuffs.errors;
+    this.models = this.stuffs.models;
+    this.routes = this.stuffs.routes;
     this.validationModels = {};
   }
 
@@ -21,6 +23,16 @@ class StuffStore {
   updateErrors(errors) {
     this.errors = errors;
     return this;
+  }
+  updateValidationModels(validationModels) {
+    this.validationModels = validationModels;
+    return this;
+  }
+  updateAllStuff(errors, models, routes, validationModels) {
+    this.updateErrors(errors)
+      .updateModels(models)
+      .updateRoutes(routes)
+      .updateValidationModels(validationModels);
   }
 }
 
