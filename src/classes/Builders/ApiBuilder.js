@@ -101,7 +101,9 @@ class ApiBuilder {
       missingFieldsError,
       overloadFieldsError,
     });
+
     if (!ioDataFieldsCheckResult.done) {
+      console.log(ioData, actualFields);
       const newErrorObject = {
         ...ioDataFieldsCheckResult.errorObject,
         actualFields,

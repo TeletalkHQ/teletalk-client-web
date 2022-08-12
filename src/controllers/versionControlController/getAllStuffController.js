@@ -1,4 +1,4 @@
-import { getAllStuffApi } from "staticApis/versionControlApis";
+import { getAllStuffApi } from "apis/versionControlApis";
 
 import { appOptions } from "classes/AppOptions";
 import { eventManager } from "classes/EventManager";
