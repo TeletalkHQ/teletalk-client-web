@@ -1,6 +1,6 @@
 import { userActions } from "actions/userActions";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { apiManager } from "classes/ApiManager";
+import { apiManager } from "classes/apiClasses/ApiManager";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 

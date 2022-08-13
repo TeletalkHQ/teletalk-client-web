@@ -1,6 +1,6 @@
 import { otherActions } from "actions/otherActions";
 
-import { apiManager } from "classes/ApiManager";
+import { apiManager } from "classes/apiClasses/ApiManager";
 
 const getCountriesController = () => {
   return async (dispatch) => {

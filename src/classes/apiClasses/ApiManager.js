@@ -1,10 +1,11 @@
-import { apiBuilder } from "classes/Builders/ApiBuilder";
+import { apiBuilder } from "classes/apiClasses/ApiBuilder";
 import { stuffStore } from "classes/StuffStore";
 import { randomMaker } from "classes/RandomMaker";
+import { apiHandler } from "classes/apiClasses/ApiHandler";
 
 class ApiManager {
   constructor() {
-    this.apiTemplate = apiBuilder.create();
+    this.apiTemplate = apiHandler.create({});
 
     this.apis = {
       authApis: {

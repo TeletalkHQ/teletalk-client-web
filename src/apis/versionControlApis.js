@@ -1,4 +1,4 @@
-import { apiBuilder } from "classes/Builders/ApiBuilder";
+import { apiBuilder } from "classes/apiClasses/ApiBuilder";
 
 const { getAllStuffsRoute } = {
   getAllStuffsRoute: {

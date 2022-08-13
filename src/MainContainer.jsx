@@ -4,7 +4,7 @@ import { Grid } from "@mui/material";
 
 import { globalActions } from "actions/globalActions";
 
-import { apiManager } from "classes/ApiManager";
+import { apiManager } from "classes/apiClasses/ApiManager";
 import { appOptions } from "classes/AppOptions";
 import { eventManager } from "classes/EventManager";
 import { persistentStorage } from "classes/PersistentStorage";
@@ -16,9 +16,10 @@ import PortalContainer from "components/portal/PortalContainer";
 import RightSideContainer from "components/rightSideComponents/RightSideContainer";
 
 import { getCountriesController } from "controllers/authControllers/getCountriesController";
-import { userStatusCheckerController } from "controllers/authControllers/userStatusCheckerController";
 import { getUserChatsLastMessageController } from "controllers/messageControllers/getUserChatsLastMessageController";
 import { getAllStuffController } from "controllers/versionControlController/getAllStuffController";
+import { userStatusCheckerController } from "controllers/authControllers/userStatusCheckerController";
+import { welcomeMessageController } from "controllers/otherControllers/welcomeMessageController";
 
 import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 
@@ -80,6 +81,7 @@ const MainContainer = () => {
         validatorManager.compileValidators();
 
         await dispatchAsync(getCountriesController());
+        dispatch(welcomeMessageController());
       },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
