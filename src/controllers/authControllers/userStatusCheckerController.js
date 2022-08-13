@@ -1,7 +1,7 @@
 import { userActions } from "actions/userActions";
 import { globalActions } from "actions/globalActions";
 
-import { apiManager } from "classes/ApiManager";
+import { apiManager } from "classes/apiClasses/ApiManager";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 

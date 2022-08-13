@@ -1,10 +1,6 @@
-import { useEffect } from "react";
-
 import { tempActions } from "actions/tempActions";
 
-import { appOptions } from "classes/AppOptions";
 import { customTypeof } from "classes/CustomTypeof";
-import { eventManager } from "classes/EventManager";
 import { domUtilities } from "classes/DomUtilities";
 import { stringUtilities } from "classes/StringUtilities";
 
@@ -16,7 +12,6 @@ import VerifySignIn from "components/authentication/VerifySignIn";
 import { createNewUserController } from "controllers/authControllers/createNewUserController";
 import { signInController } from "controllers/authControllers/signInController";
 import { verifySignInController } from "controllers/authControllers/verifySignInController";
-import { welcomeMessageController } from "controllers/otherControllers/welcomeMessageController";
 
 import { viewModeChange } from "functions/utilities/commonActions";
 
@@ -55,16 +50,6 @@ const Authentication = () => {
       },
     },
   } = useMainContext();
-
-  useEffect(() => {
-    eventManager.addListener({
-      event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
-      listener: async () => {
-        dispatch(welcomeMessageController());
-      },
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleSignInClick = () => {
     dispatch(signInController());

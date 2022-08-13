@@ -1,6 +1,6 @@
 import { userActions } from "actions/userActions";
 
-import { apiManager } from "classes/ApiManager";
+import { apiManager } from "classes/apiClasses/ApiManager";
 
 const getAllChatMessagesController = ({ chatId }) => {
   return async (dispatch) => {

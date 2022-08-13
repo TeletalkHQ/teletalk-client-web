@@ -1,4 +1,4 @@
-import { apiManager } from "classes/ApiManager";
+import { apiManager } from "classes/apiClasses/ApiManager";
 
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 

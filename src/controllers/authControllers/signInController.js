@@ -1,6 +1,6 @@
 import { userActions } from "actions/userActions";
 
-import { apiManager } from "classes/ApiManager";
+import { apiManager } from "classes/apiClasses/ApiManager";
 import { persistentStorage } from "classes/PersistentStorage";
 
 import {

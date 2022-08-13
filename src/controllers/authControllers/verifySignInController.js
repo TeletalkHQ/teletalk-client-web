@@ -1,7 +1,7 @@
 import { tempActions } from "actions/tempActions";
 import { userActions } from "actions/userActions";
 
-import { apiManager } from "classes/ApiManager";
+import { apiManager } from "classes/apiClasses/ApiManager";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 
