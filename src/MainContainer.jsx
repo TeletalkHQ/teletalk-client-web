@@ -8,6 +8,7 @@ import { apiManager } from "classes/ApiManager";
 import { appOptions } from "classes/AppOptions";
 import { eventManager } from "classes/EventManager";
 import { persistentStorage } from "classes/PersistentStorage";
+import { validatorManager } from "classes/ValidatorManager";
 
 import Authentication from "components/authentication/Authentication";
 import LeftSideContainer from "components/leftSideComponents/LeftSideContainer";
@@ -75,6 +76,8 @@ const MainContainer = () => {
       event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
       listener: async () => {
         apiManager.rebuildAllApis();
+
+        validatorManager.compileValidators();
 
         await dispatchAsync(getCountriesController());
       },

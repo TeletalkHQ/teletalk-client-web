@@ -19,7 +19,6 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
         const index = newChats.findIndex(
           (chat) => chat.chatId === targetChat.chatId
         );
-        console.log(index);
         if (index !== -1) {
           targetChat.messages = [
             ...(chat.messages || []),
