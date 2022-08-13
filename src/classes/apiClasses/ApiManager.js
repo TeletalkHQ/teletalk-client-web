@@ -32,6 +32,21 @@ class ApiManager {
     };
   }
 
+  buildApiWithJustRouteObject(routeObject) {
+    return apiBuilder.create().setRequirements(routeObject).build();
+  }
+  buildMultipleApiWithJustRouteObject(
+    parentKey,
+    arrayOfRouteObjectValueAndKey
+  ) {
+    arrayOfRouteObjectValueAndKey.forEach(
+      ([routeObjectKey, routeObjectValue]) => {
+        this.apis[parentKey][routeObjectKey] =
+          this.buildApiWithJustRouteObject(routeObjectValue);
+      }
+    );
+  }
+
   rebuildAllApis() {
     this.buildAuthApis();
     this.buildCellphoneApis();
@@ -48,26 +63,13 @@ class ApiManager {
       verifySignInNormalRoute,
     } = stuffStore.routes;
 
-    this.apis.authApis.verifySignInApi = apiBuilder
-      .create()
-      .setRequirements(verifySignInNormalRoute)
-      .build();
-    this.apis.authApis.userStatusCheckerApi = apiBuilder
-      .create()
-      .setRequirements(statusCheckRoute)
-      .build();
-    this.apis.authApis.signInApi = apiBuilder
-      .create()
-      .setRequirements(signInNormalRoute)
-      .build();
-    this.apis.authApis.logoutApi = apiBuilder
-      .create()
-      .setRequirements(logoutNormalRoute)
-      .build();
-    this.apis.authApis.createNewUserApi = apiBuilder
-      .create()
-      .setRequirements(createNewUserRoute)
-      .build();
+    this.buildMultipleApiWithJustRouteObject("authApis", [
+      ["verifySignInApi", verifySignInNormalRoute],
+      ["userStatusCheckerApi", statusCheckRoute],
+      ["signInApi", signInNormalRoute],
+      ["logoutApi", logoutNormalRoute],
+      ["createNewUserApi", createNewUserRoute],
+    ]);
   }
 
   buildCellphoneApis() {
@@ -86,14 +88,10 @@ class ApiManager {
       // shareContactsRoute,
     } = stuffStore.routes;
 
-    this.apis.cellphoneApis.getContactsApi = apiBuilder
-      .create()
-      .setRequirements(getContactsRoute)
-      .build();
-    this.apis.cellphoneApis.addContactApi = apiBuilder
-      .create()
-      .setRequirements(addContactRoute)
-      .build();
+    this.buildMultipleApiWithJustRouteObject("cellphoneApis", [
+      ["getContactsApi", getContactsRoute],
+      ["addContactApi", addContactRoute],
+    ]);
   }
 
   buildMessageApis() {
@@ -104,40 +102,26 @@ class ApiManager {
       sendMessageRoute,
     } = stuffStore.routes;
 
-    this.apis.messageApis.sendPrivateMessageApi = apiBuilder
-      .create()
-      .setRequirements(sendMessageRoute)
-      .build();
-
-    this.apis.messageApis.getUserChatsLastMessageApi = apiBuilder
-      .create()
-      .setRequirements(chatsLastMessageRoute)
-      .build();
-
-    this.apis.messageApis.getAllChatsApi = apiBuilder
-      .create()
-      .setRequirements(getAllChatsRoute)
-      .build();
-
-    this.apis.messageApis.getAllChatMessagesApi = apiBuilder
-      .create()
-      .setRequirements(getPrivateChatMessagesRoute)
-      .build();
+    this.buildMultipleApiWithJustRouteObject("messageApis", [
+      ["sendPrivateMessageApi", sendMessageRoute],
+      ["getUserChatsLastMessageApi", chatsLastMessageRoute],
+      ["getAllChatsApi", getAllChatsRoute],
+      ["getAllChatMessagesApi", getPrivateChatMessagesRoute],
+    ]);
   }
 
   buildOtherApis() {
     const { countriesRoute, welcomeRoute } = stuffStore.routes;
-
-    this.apis.otherApis.welcomeMessageApi = apiBuilder
-      .create()
-      .setRequirements(welcomeRoute)
-      .build();
 
     this.apis.otherApis.getCountriesApi = apiBuilder
       .create()
       .setRequirements(countriesRoute)
       .setResponseTransformer(addUniqueIdToEachCountry)
       .build();
+
+    this.buildMultipleApiWithJustRouteObject("otherApis", [
+      ["welcomeMessageApi", welcomeRoute],
+    ]);
   }
 }
 
