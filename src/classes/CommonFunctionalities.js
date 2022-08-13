@@ -8,7 +8,7 @@ import { viewModeChange } from "functions/utilities/commonActions";
 
 import { extractedDispatch } from "hooks/useThunkReducer";
 
-import { VIEW_MODES } from "variables/others/staticValues";
+import { VIEW_MODES } from "variables/others/constants";
 
 class CommonFunctionalities {
   resetEverything() {

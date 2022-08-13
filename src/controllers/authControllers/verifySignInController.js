@@ -14,7 +14,7 @@ import { getInitialState } from "variables/initials/initialStates/initialStates"
 import {
   VIEW_MODES,
   PERSISTENT_STORAGE_KEYS,
-} from "variables/others/staticValues";
+} from "variables/others/constants";
 import { notifications } from "variables/others/notifications";
 
 const { updateAllUserDataAction } = userActions;

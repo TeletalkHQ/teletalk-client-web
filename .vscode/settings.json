@@ -33,5 +33,6 @@
     ".vscode": true
   },
   "explorerExclude.backup": {},
-  "cSpell.words": ["regexs"]
+  "cSpell.words": ["regexs"],
+  "marquee.widgets.npm-stats.packageNames": ["teletalk-client"]
 }
