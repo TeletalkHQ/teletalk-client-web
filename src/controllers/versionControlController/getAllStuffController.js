@@ -5,7 +5,7 @@ import { eventManager } from "classes/EventManager";
 import { stuffStore } from "classes/StuffStore";
 import { persistentStorage } from "classes/PersistentStorage";
 
-import { PERSISTENT_STORAGE_KEYS } from "variables/others/staticValues";
+import { PERSISTENT_STORAGE_KEYS } from "variables/others/constants";
 
 const getAllStuffController = () => {
   return async (dispatch) => {

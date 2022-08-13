@@ -1,4 +1,4 @@
-import { VIEW_MODES } from "variables/others/staticValues";
+import { VIEW_MODES } from "variables/others/constants";
 
 //TODO Move some default values to appConfigs
 const globalInitialState = {

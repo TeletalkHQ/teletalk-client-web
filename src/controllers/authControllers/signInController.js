@@ -12,7 +12,7 @@ import { getInitialState } from "variables/initials/initialStates/initialStates"
 import {
   PERSISTENT_STORAGE_KEYS,
   VIEW_MODES,
-} from "variables/others/staticValues";
+} from "variables/others/constants";
 
 const { updateAllUserDataAction } = userActions;
 

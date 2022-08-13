@@ -22,7 +22,7 @@ import { viewModeChange } from "functions/utilities/commonActions";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { VIEW_MODES } from "variables/others/staticValues";
+import { VIEW_MODES } from "variables/others/constants";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const {
