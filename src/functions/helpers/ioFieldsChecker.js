@@ -1,5 +1,6 @@
 import { customTypeof } from "classes/CustomTypeof";
 import { objectUtilities } from "classes/ObjectUtilities";
+
 import { errorThrower } from "functions/utilities/otherUtilities";
 
 import { notifications } from "variables/others/notifications";
@@ -92,6 +93,8 @@ const checkFields = (
     throwErrorIfIoFieldIsUndefined(ioField, missingFieldsError);
 
     if (customTypeof.check(requiredField).type.object) {
+      throwErrorIfIoFieldIsNotObject(ioField);
+
       checkObjectFields(
         ioField,
         requiredField,
@@ -99,6 +102,8 @@ const checkFields = (
         overloadFieldsError
       );
     } else if (customTypeof.check(requiredField).type.array) {
+      throwErrorIfIoFieldIsNotArray(ioField);
+
       checkArrayFields(
         ioField,
         requiredField,
@@ -117,8 +122,6 @@ const checkObjectFields = (
   missingFieldsError,
   overloadFieldsError
 ) => {
-  throwErrorIfIoFieldIsNotObject(ioField);
-
   checkFields(ioField, requiredField, missingFieldsError, overloadFieldsError);
 };
 
@@ -128,8 +131,6 @@ const checkArrayFields = (
   missingFieldsError,
   overloadFieldsError
 ) => {
-  throwErrorIfIoFieldIsNotArray(ioField);
-
   ioField.forEach((item) => {
     checkFields(
       item,
