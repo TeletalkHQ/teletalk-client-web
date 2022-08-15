@@ -72,6 +72,15 @@ class ObjectUtilities {
     return Object.values(object);
   }
 
+  freezeObject(object) {
+    const copyOfObject = this.objectShallowCopy(object);
+    return Object.freeze(copyOfObject);
+  }
+
+  objectShallowCopy(object) {
+    return { ...object };
+  }
+
   objectInitializer(arrayOfValues, props) {
     try {
       const tempObj = {};

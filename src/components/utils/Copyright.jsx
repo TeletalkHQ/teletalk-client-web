@@ -3,6 +3,10 @@ import { Typography, Link } from "@mui/material";
 import { appConfigs } from "classes/AppConfigs";
 
 const Copyright = (props) => {
+  const {
+    others: { CLIENT_BASE_URL: APPLICATION_URL },
+  } = appConfigs.getConfigs();
+
   return (
     <Typography
       variant="body2"
@@ -11,7 +15,7 @@ const Copyright = (props) => {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href={appConfigs.configs.others.CLIENT_BASE_URL}>
+      <Link color="inherit" href={APPLICATION_URL}>
         teletalk
       </Link>{" "}
       {new Date().getFullYear()}
