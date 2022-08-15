@@ -1,18 +1,14 @@
 import jwtDecode from "jwt-decode";
 
+import { errorThrower } from "functions/utilities/otherUtilities";
+
 const tokenDecoder = (token) => {
   try {
-    if (!token) {
-      const error = "Yo, you forgot to send me token!";
-      throw error;
-    }
+    errorThrower(!token, "Yo, you forgot to send me token!");
 
     const decodedToken = jwtDecode(token);
 
-    if (!decodedToken) {
-      const error = "Token malformed!";
-      throw error;
-    }
+    errorThrower(!decodedToken, "Token malformed!");
 
     return decodedToken;
   } catch (error) {

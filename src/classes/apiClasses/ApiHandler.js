@@ -8,6 +8,7 @@ import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
 import { requester } from "functions/utilities/apiUtilities";
+import { errorThrower } from "functions/utilities/otherUtilities";
 
 import { notifications } from "variables/others/notifications";
 
@@ -70,14 +71,11 @@ class ApiHandler {
       overloadFieldsError,
     });
 
-    if (!ioDataFieldsCheckResult.done) {
-      const newErrorObject = {
-        ...ioDataFieldsCheckResult.errorObject,
-        requiredFields,
-        ioData,
-      };
-      throw newErrorObject;
-    }
+    errorThrower(!ioDataFieldsCheckResult.done, {
+      ...ioDataFieldsCheckResult.errorObject,
+      requiredFields,
+      ioData,
+    });
   }
   #inputDataFieldsCheck(inputData) {
     const {
