@@ -1,11 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
+import reportWebVitals from "reportWebVitals";
+
+//! Import before Root component
 import "functions/others/customGlobals";
 
-import App from "App";
+import "temp/playground";
 
-import reportWebVitals from "reportWebVitals";
+import App from "App";
 
 const container = document.getElementById("root");
 const root = createRoot(container); // createRoot(container!) if you use TypeScript

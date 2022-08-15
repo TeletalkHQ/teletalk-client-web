@@ -23,7 +23,7 @@ const App = () => {
   const [state = initialStates, dispatch] = useThunkReducer(
     rootReducer,
     initialStates,
-    appConfigs.configs.useThunkReducer
+    appConfigs.getConfigs().useThunkReducer
   );
 
   useEffect(() => {

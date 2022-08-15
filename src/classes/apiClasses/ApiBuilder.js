@@ -16,21 +16,20 @@ class ApiBuilder {
     };
   }
 
-  setRequirements(
+  setRequirements({
     routeObject = this.requirements.routeObject,
     requestDefaultData = this.requirements.requestDefaultData,
     requestTransformer = this.requirements.requestTransformer,
     responseTransformer = this.requirements.responseTransformer,
     requestInterceptorsArray = this.requirements.requestInterceptorsArray,
-    responseInterceptorsArray = this.requirements.responseInterceptorsArray
-  ) {
+    responseInterceptorsArray = this.requirements.responseInterceptorsArray,
+  }) {
     this.setRouteObject(routeObject);
     this.setRequestDefaultData(requestDefaultData);
     this.setRequestTransformer(requestTransformer);
     this.setResponseTransformer(responseTransformer);
     this.setRequestInterceptors(...requestInterceptorsArray);
     this.setResponseInterceptors(...responseInterceptorsArray);
-
     return this;
   }
   setRouteObject(routeObject) {
@@ -58,14 +57,14 @@ class ApiBuilder {
     return this;
   }
 
-  #checkRequirements() {
-    errorThrower(
-      !this.requirements.routeObject?.fullUrl,
-      notifications.localErrors.URL_NOT_FOUND
-    );
+  #checkMinimumRequirements() {
+    errorThrower(!this.requirements.routeObject.fullUrl, {
+      ...notifications.localErrors.URL_NOT_FOUND,
+      requirements: this.requirements,
+    });
   }
   build() {
-    this.#checkRequirements();
+    this.#checkMinimumRequirements();
 
     const api = apiHandler.create(this.requirements);
     return api;

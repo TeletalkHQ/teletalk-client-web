@@ -6,6 +6,7 @@ class CustomTypeof {
   }
 
   check(value) {
+    //TODO Change to isSomething
     const type = {
       array: false,
       nan: false,

@@ -33,7 +33,7 @@ class ApiManager {
   }
 
   buildApiWithJustRouteObject(routeObject) {
-    return apiBuilder.create().setRequirements(routeObject).build();
+    return apiBuilder.create().setRequirements({ routeObject }).build();
   }
   buildMultipleApiWithJustRouteObject(
     parentKey,
@@ -115,7 +115,7 @@ class ApiManager {
 
     this.apis.otherApis.getCountriesApi = apiBuilder
       .create()
-      .setRequirements(countriesRoute)
+      .setRequirements({ routeObject: countriesRoute })
       .setResponseTransformer(addUniqueIdToEachCountry)
       .build();
 

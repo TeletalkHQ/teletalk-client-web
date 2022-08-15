@@ -1,0 +1,27 @@
+//* classes=>
+        //* apiClasses =>
+        [x] ApiBuilder
+        [ ] ApiHandler
+        [ ] ApiManager
+        //* builders =>
+        [ ] NotificationBuilder
+        [ ] ValidationErrorBuilder
+    [ ] AppConfigs
+    [ ] AppOptions
+    [ ] ArrayUtilities
+    [ ] CommonFunctionalities
+    [ ] CommonNotificationManger
+    [ ] CustomTypeof
+    [ ] DataUsageManager
+    [ ] DomUtilities
+    [ ] EnvironmentManager
+    [ ] EventManager
+    [ ] Logger
+    [ ] NotificationManager
+    [ ] ObjectUtilities
+    [ ] PersistentStorage
+    [ ] RandomMaker
+    [ ] StringUtilities
+    [ ] StuffStore
+    [ ] UserPropsUtilities
+    [ ] ValidatorManager

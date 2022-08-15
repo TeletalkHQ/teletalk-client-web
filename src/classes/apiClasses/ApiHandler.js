@@ -21,61 +21,68 @@ const {
 } = notifications;
 
 class ApiHandler {
-  constructor(requirements) {
-    this.requestDefaultData = requirements.requestDefaultData;
+  constructor({
+    requestDefaultData,
+    requestInterceptorsArray,
+    requestTransformer,
+    responseInterceptorsArray,
+    responseTransformer,
+    routeObject,
+  }) {
+    this.requestDefaultData = requestDefaultData;
+    this.#requestTransformer = requestTransformer;
+    this.#requestInterceptorsArray = requestInterceptorsArray;
+    this.#responseTransformer = responseTransformer;
+    this.#responseInterceptorsArray = responseInterceptorsArray;
     this.response = {
       data: undefined,
     };
-    this.#routeObject = requirements.routeObject;
-
-    this.#responseTransformer = requirements.responseTransformer;
-    this.#requestTransformer = requirements.requestTransformer;
-
-    this.#requestInterceptorsArray = requirements.requestInterceptorsArray;
-    this.#responseInterceptorsArray = requirements.responseInterceptorsArray;
+    this.#routeObject = objectUtilities.freezeObject(routeObject);
   }
-  #routeObject = {};
 
   #requestTransformer = (data) => data;
-  #responseTransformer = (data) => data;
   #requestInterceptorsArray = [];
+  #responseTransformer = (data) => data;
   #responseInterceptorsArray = [];
+  #routeObject = {};
 
-  #getApiUrlAndMethod(route) {
+  #getApiUrlAndMethod() {
     return {
-      url: this.#getApiUrlFromRouteObject(route),
-      method: this.#getApiMethodFromRouteObject(route),
+      url: this.#getApiUrlFromRouteObject(),
+      method: this.#getApiMethodFromRouteObject(),
     };
   }
-  #getApiMethodFromRouteObject(route) {
-    return route.method;
+  #getApiMethodFromRouteObject() {
+    return this.#routeObject.method;
   }
-  #getApiUrlFromRouteObject(route) {
-    return route.fullUrl;
+  #getApiUrlFromRouteObject() {
+    return this.#routeObject.fullUrl;
   }
+
   #ioDataFieldsCheck(
     ioData,
-    actualFields,
+    requiredFields,
     missingFieldsError,
     overloadFieldsError
   ) {
-    const ioDataFieldsCheckResult = ioFieldsChecker(ioData, actualFields, {
+    const ioDataFieldsCheckResult = ioFieldsChecker(ioData, requiredFields, {
       missingFieldsError,
       overloadFieldsError,
     });
 
     if (!ioDataFieldsCheckResult.done) {
-      console.log(ioData, actualFields);
       const newErrorObject = {
         ...ioDataFieldsCheckResult.errorObject,
-        actualFields,
+        requiredFields,
         ioData,
       };
       throw newErrorObject;
     }
   }
   #inputDataFieldsCheck(inputData) {
-    const { inputDataPropertiesCheck } = appConfigs.configs.apiConfigs;
+    const {
+      apiConfigs: { inputDataPropertiesCheck },
+    } = appConfigs.getConfigs();
 
     appConfigs.checkAndExecute(inputDataPropertiesCheck, () => {
       this.#ioDataFieldsCheck(
@@ -87,7 +94,9 @@ class ApiHandler {
     });
   }
   #outputDataFieldsCheck(outputData) {
-    const { outputDataPropertiesCheck } = appConfigs.configs.apiConfigs;
+    const {
+      apiConfigs: { outputDataPropertiesCheck },
+    } = appConfigs.getConfigs();
 
     appConfigs.checkAndExecute(outputDataPropertiesCheck, () => {
       this.#ioDataFieldsCheck(
@@ -110,6 +119,42 @@ class ApiHandler {
     }
   }
 
+  #mergeRequesterOptions(options) {
+    const defaultOptions = appOptions.options.apiDefaultOptions;
+    const mergedOptions = {
+      ...defaultOptions,
+      ...options,
+      headers: { ...defaultOptions.headers, ...options?.headers },
+      token: options.token || userPropsUtilities.getMainTokenFromStorage(),
+    };
+
+    if (mergedOptions.token) {
+      mergedOptions.headers.Authorization = `Bearer ${mergedOptions.token}`;
+    }
+
+    if (!objectUtilities.objectKeysLength(options.data)) {
+      delete mergedOptions.data;
+    }
+
+    return mergedOptions;
+  }
+
+  #executeInterceptors(interceptors, data) {
+    let dataEnhancedWithInterceptors = data;
+
+    interceptors.forEach((interceptor) => {
+      dataEnhancedWithInterceptors = interceptor(dataEnhancedWithInterceptors);
+    });
+
+    return dataEnhancedWithInterceptors;
+  }
+  #executeRequestInterceptors(request) {
+    return this.#executeInterceptors(this.#requestInterceptorsArray, request);
+  }
+  #executeResponseInterceptors(response) {
+    return this.#executeInterceptors(this.#responseInterceptorsArray, response);
+  }
+
   async sendRequest(requestData = {}, extraOptions = {}) {
     try {
       const transformedRequestData = this.#requestTransformer(requestData);
@@ -122,7 +167,7 @@ class ApiHandler {
 
       const mergedRequesterOptions = this.#mergeRequesterOptions({
         data: requestDataFromInterceptors,
-        ...this.#getApiUrlAndMethod(this.#routeObject),
+        ...this.#getApiUrlAndMethod(),
         ...extraOptions,
       });
 
@@ -151,54 +196,22 @@ class ApiHandler {
   }
 
   #logSuccessfulResponse(response) {
-    const { logSuccessfulResponse } = appConfigs.configs.apiConfigs;
+    const {
+      apiConfigs: { logSuccessfulResponse },
+    } = appConfigs.getConfigs();
 
     appConfigs.checkAndExecute(logSuccessfulResponse, () =>
       console.log(response)
     );
   }
   #logFailureResponse(error) {
-    const { logFailureResponse } = appConfigs.configs.apiConfigs;
+    const {
+      apiConfigs: { logFailureResponse },
+    } = appConfigs.getConfigs();
 
     appConfigs.checkAndExecute(logFailureResponse, () =>
       console.log(`Api:${this.#routeObject.fullUrl} Api catch, error:`, error)
     );
-  }
-
-  #mergeRequesterOptions(options) {
-    const defaultOptions = appOptions.options.apiDefaultOptions;
-    const mergedOptions = {
-      ...defaultOptions,
-      ...options,
-      headers: { ...defaultOptions.headers, ...options?.headers },
-      token: options.token || userPropsUtilities.getMainTokenFromStorage(),
-    };
-
-    if (mergedOptions.token) {
-      mergedOptions.headers.Authorization = `Bearer ${mergedOptions.token}`;
-    }
-
-    if (!objectUtilities.objectKeysLength(options.data)) {
-      delete mergedOptions.data;
-    }
-
-    return mergedOptions;
-  }
-
-  #executeRequestInterceptors(request) {
-    return this.#executeInterceptors(this.#requestInterceptorsArray, request);
-  }
-  #executeResponseInterceptors(response) {
-    return this.#executeInterceptors(this.#responseInterceptorsArray, response);
-  }
-  #executeInterceptors(interceptors, data) {
-    let dataEnhancedWithInterceptors = data;
-
-    interceptors.forEach((interceptor) => {
-      dataEnhancedWithInterceptors = interceptor(dataEnhancedWithInterceptors);
-    });
-
-    return dataEnhancedWithInterceptors;
   }
 
   #responseErrorsSubmitter(errors) {

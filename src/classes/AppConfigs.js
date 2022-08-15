@@ -41,10 +41,12 @@ class AppConfigs {
   checkAndExecute(condition, callback) {
     if (condition) return callback();
   }
+
+  getConfigs() {
+    return this.configs;
+  }
 }
 
 const appConfigs = new AppConfigs();
-
-console.log(appConfigs.configs);
 
 export { appConfigs, AppConfigs };
