@@ -13,7 +13,7 @@ const {
 
 const userReducer = (
   state = initialStates.userState,
-  action = appOptions.options.actionOptions
+  action = appOptions.getOptions().actionOptions
 ) => {
   try {
     const { payload, type } = action;

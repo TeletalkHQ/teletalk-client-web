@@ -9,7 +9,7 @@ const { errorNotificationInitialAction } = notificationInitialActions;
 
 const notificationReducer = (
   state = initialStates.notificationState,
-  action = appOptions.options.actionOptions
+  action = appOptions.getOptions().actionOptions
 ) => {
   try {
     const { payload, type } = action;

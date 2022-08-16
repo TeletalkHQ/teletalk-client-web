@@ -20,7 +20,7 @@ const {
 
 const tempReducer = (
   state = initialStates.tempState,
-  action = appOptions.options.actionOptions
+  action = appOptions.getOptions().actionOptions
 ) => {
   try {
     const { payload, type } = action;

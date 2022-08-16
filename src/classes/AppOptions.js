@@ -13,6 +13,10 @@ class AppOptions {
       actionOptions: { type: "", payload: {} },
     };
   }
+
+  getOptions() {
+    return this.options;
+  }
 }
 
 const appOptions = new AppOptions();

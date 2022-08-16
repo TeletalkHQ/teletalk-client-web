@@ -150,7 +150,7 @@ class ApiManager {
   buildOtherApis() {
     const { countriesRoute, welcomeRoute } = stuffStore.routes;
 
-    this.apis.otherApis.getCountriesApi = apiBuilder
+    this.apis.otherApis[getCountriesApi] = apiBuilder
       .create()
       .setRequirements({ routeObject: countriesRoute })
       .setResponseTransformer(addUniqueIdToEachCountry)

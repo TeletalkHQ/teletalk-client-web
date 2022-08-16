@@ -23,8 +23,12 @@ const getAllStuffController = () => {
 
       stuffStore.updateAllStuff(errors, models, routes, validationModels);
 
+      const {
+        EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
+      } = appOptions.getOptions();
+
       eventManager.emitEvent({
-        event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
+        event: ALL_STUFF_RECEIVED,
       });
     } catch (error) {
       console.log("getAllStuffController", error);
