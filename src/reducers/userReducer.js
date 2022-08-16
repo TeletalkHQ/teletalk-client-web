@@ -1,4 +1,5 @@
 import { appOptions } from "classes/AppOptions";
+import { arrayUtilities } from "classes/ArrayUtilities";
 
 import { userInitialActions } from "variables/initials/initialActions/userInitialActions";
 import { initialStates } from "variables/initials/initialStates/initialStates";
@@ -106,9 +107,5 @@ const handleUpdateChatMessages = (prevState, payload) => {
 };
 
 const handleAddNewMessage = (messages, newMessage) => {
-  const copyMessages = [...messages];
-
-  copyMessages.push(newMessage);
-
-  return copyMessages;
+  return arrayUtilities.pushNewItems(messages, newMessage);
 };

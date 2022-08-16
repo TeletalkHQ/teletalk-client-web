@@ -1,5 +1,6 @@
 import { tempActions } from "actions/tempActions";
 
+import { arrayUtilities } from "classes/ArrayUtilities";
 import { customTypeof } from "classes/CustomTypeof";
 import { domUtilities } from "classes/DomUtilities";
 import { stringUtilities } from "classes/StringUtilities";
@@ -84,7 +85,14 @@ const Authentication = () => {
       value === ""
     ) {
       dispatch(countryCodeOnChangeAction({ countryCode: value }));
-      const country = countries?.find((c) => c.countryCode === value) || null;
+
+      const country =
+        arrayUtilities.findByPropValueEquality(
+          countries,
+          value,
+          "countryCode"
+        ) || null;
+
       dispatch(selectedCountryAction({ selectedCountry: country }));
     }
   };

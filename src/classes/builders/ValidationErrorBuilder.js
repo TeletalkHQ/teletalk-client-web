@@ -1,3 +1,4 @@
+import { arrayUtilities } from "classes/ArrayUtilities";
 import { customTypeof } from "classes/CustomTypeof";
 
 import {
@@ -112,7 +113,11 @@ class ValidationErrorBuilder {
   }
 
   addError(condition, errorObject) {
-    this.errors.push({ condition, errorObject });
+    this.errors = arrayUtilities.pushNewItems(this.errors, {
+      condition,
+      errorObject,
+    });
+
     return this;
   }
   setRequirements(result, options = this.options) {
