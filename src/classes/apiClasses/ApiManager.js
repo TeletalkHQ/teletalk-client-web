@@ -1,7 +1,44 @@
 import { apiBuilder } from "classes/apiClasses/ApiBuilder";
 import { stuffStore } from "classes/StuffStore";
-import { randomMaker } from "classes/RandomMaker";
 import { apiHandler } from "classes/apiClasses/ApiHandler";
+
+import { addUniqueIdToEachCountry } from "functions/others/apiTransformers";
+
+const { authApis, cellphoneApis, messageApis, otherApis } = {
+  authApis: "authApis",
+  cellphoneApis: "cellphoneApis",
+  messageApis: "messageApis",
+  otherApis: "otherApis",
+};
+const {
+  addContactApi,
+  createNewUserApi,
+  getAllChatMessagesApi,
+  getAllChatsApi,
+  getContactsApi,
+  getCountriesApi,
+  getUserChatsLastMessageApi,
+  logoutApi,
+  sendPrivateMessageApi,
+  signInApi,
+  userStatusCheckerApi,
+  verifySignInApi,
+  welcomeMessageApi,
+} = {
+  addContactApi: "addContactApi",
+  createNewUserApi: "createNewUserApi",
+  getAllChatMessagesApi: "getAllChatMessagesApi",
+  getAllChatsApi: "getAllChatsApi",
+  getContactsApi: "getContactsApi",
+  getCountriesApi: "getCountriesApi",
+  getUserChatsLastMessageApi: "getUserChatsLastMessageApi",
+  logoutApi: "logoutApi",
+  sendPrivateMessageApi: "sendPrivateMessageApi",
+  signInApi: "signInApi",
+  userStatusCheckerApi: "userStatusCheckerApi",
+  verifySignInApi: "verifySignInApi",
+  welcomeMessageApi: "welcomeMessageApi",
+};
 
 class ApiManager {
   constructor() {
@@ -9,25 +46,25 @@ class ApiManager {
 
     this.apis = {
       authApis: {
-        createNewUserApi: this.apiTemplate,
-        logoutApi: this.apiTemplate,
-        signInApi: this.apiTemplate,
-        userStatusCheckerApi: this.apiTemplate,
-        verifySignInApi: this.apiTemplate,
+        [createNewUserApi]: this.apiTemplate,
+        [logoutApi]: this.apiTemplate,
+        [signInApi]: this.apiTemplate,
+        [userStatusCheckerApi]: this.apiTemplate,
+        [verifySignInApi]: this.apiTemplate,
       },
       cellphoneApis: {
-        addContactApi: this.apiTemplate,
-        getContactsApi: this.apiTemplate,
+        [addContactApi]: this.apiTemplate,
+        [getContactsApi]: this.apiTemplate,
       },
       messageApis: {
-        getAllChatMessagesApi: this.apiTemplate,
-        getAllChatsApi: this.apiTemplate,
-        getUserChatsLastMessageApi: this.apiTemplate,
-        sendPrivateMessageApi: this.apiTemplate,
+        [getAllChatMessagesApi]: this.apiTemplate,
+        [getAllChatsApi]: this.apiTemplate,
+        [getUserChatsLastMessageApi]: this.apiTemplate,
+        [sendPrivateMessageApi]: this.apiTemplate,
       },
       otherApis: {
-        getCountriesApi: this.apiTemplate,
-        welcomeMessageApi: this.apiTemplate,
+        [getCountriesApi]: this.apiTemplate,
+        [welcomeMessageApi]: this.apiTemplate,
       },
     };
   }
@@ -63,12 +100,12 @@ class ApiManager {
       verifySignInNormalRoute,
     } = stuffStore.routes;
 
-    this.buildMultipleApiWithJustRouteObject("authApis", [
-      ["verifySignInApi", verifySignInNormalRoute],
-      ["userStatusCheckerApi", statusCheckRoute],
-      ["signInApi", signInNormalRoute],
-      ["logoutApi", logoutNormalRoute],
-      ["createNewUserApi", createNewUserRoute],
+    this.buildMultipleApiWithJustRouteObject(authApis, [
+      [verifySignInApi, verifySignInNormalRoute],
+      [userStatusCheckerApi, statusCheckRoute],
+      [signInApi, signInNormalRoute],
+      [logoutApi, logoutNormalRoute],
+      [createNewUserApi, createNewUserRoute],
     ]);
   }
 
@@ -88,9 +125,9 @@ class ApiManager {
       // shareContactsRoute,
     } = stuffStore.routes;
 
-    this.buildMultipleApiWithJustRouteObject("cellphoneApis", [
-      ["getContactsApi", getContactsRoute],
-      ["addContactApi", addContactRoute],
+    this.buildMultipleApiWithJustRouteObject(cellphoneApis, [
+      [getContactsApi, getContactsRoute],
+      [addContactApi, addContactRoute],
     ]);
   }
 
@@ -102,11 +139,11 @@ class ApiManager {
       sendMessageRoute,
     } = stuffStore.routes;
 
-    this.buildMultipleApiWithJustRouteObject("messageApis", [
-      ["sendPrivateMessageApi", sendMessageRoute],
-      ["getUserChatsLastMessageApi", chatsLastMessageRoute],
-      ["getAllChatsApi", getAllChatsRoute],
-      ["getAllChatMessagesApi", getPrivateChatMessagesRoute],
+    this.buildMultipleApiWithJustRouteObject(messageApis, [
+      [sendPrivateMessageApi, sendMessageRoute],
+      [getUserChatsLastMessageApi, chatsLastMessageRoute],
+      [getAllChatsApi, getAllChatsRoute],
+      [getAllChatMessagesApi, getPrivateChatMessagesRoute],
     ]);
   }
 
@@ -119,8 +156,8 @@ class ApiManager {
       .setResponseTransformer(addUniqueIdToEachCountry)
       .build();
 
-    this.buildMultipleApiWithJustRouteObject("otherApis", [
-      ["welcomeMessageApi", welcomeRoute],
+    this.buildMultipleApiWithJustRouteObject(otherApis, [
+      [welcomeMessageApi, welcomeRoute],
     ]);
   }
 }
@@ -128,13 +165,3 @@ class ApiManager {
 const apiManager = new ApiManager();
 
 export { apiManager, ApiManager };
-
-//TODO Move to utilities
-const addUniqueIdToEachCountry = (responseData) => {
-  return {
-    countries: responseData.countries.map((country) => ({
-      ...country,
-      id: randomMaker.randomId(),
-    })),
-  };
-};

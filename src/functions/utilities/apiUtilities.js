@@ -3,11 +3,10 @@ import axios from "axios";
 import { appConfigs } from "classes/AppConfigs";
 
 const {
-  configs: {
-    apiConfigs: { defaultHeaders, requestTimeout, validateStatus },
-    others: { SERVER_BASE_URL },
-  },
-} = appConfigs;
+  apiConfigs: { defaultHeaders, requestTimeout, validateStatus },
+  others: { SERVER_BASE_URL },
+} = appConfigs.getConfigs();
+
 const customAxios = axios.create({
   baseURL: SERVER_BASE_URL,
   headers: defaultHeaders,
@@ -16,14 +15,8 @@ const customAxios = axios.create({
 });
 
 const requester = async (options) => {
-  try {
-    const response = await customAxios(options);
-
-    return response;
-  } catch (error) {
-    console.log("requester catch, error:", error);
-    throw error;
-  }
+  const response = await customAxios(options);
+  return response;
 };
 
 export { requester, customAxios };
