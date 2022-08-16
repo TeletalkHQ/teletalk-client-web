@@ -18,8 +18,8 @@
     [x] EventManager
     [x] Logger
     [x] NotificationManager
-    [ ] ObjectUtilities
-    [ ] PersistentStorage
+    [x] ObjectUtilities
+    [x] PersistentStorage
     [ ] RandomMaker
     [ ] StringUtilities
     [ ] StuffStore

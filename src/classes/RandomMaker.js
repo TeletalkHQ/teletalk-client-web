@@ -2,25 +2,35 @@ import lodash from "lodash";
 import { nanoid } from "nanoid";
 
 class RandomMaker {
-  // constructor() {}
+  constructor() {
+    this.stringChars =
+      "abcdefghijklmnopqrstufwxyzABCDEFGHIJKLMNOPQRSTUFWXYZ1234567890";
+    this.stringNumberChars =
+      "12345678901234567890123456789012345678901234567890";
+  }
 
   randomString(length) {
-    var chars =
-      "abcdefghijklmnopqrstufwxyzABCDEFGHIJKLMNOPQRSTUFWXYZ1234567890";
-    var pwd = lodash.sampleSize(chars, length ?? 12);
-    return pwd.join("");
+    const arrayOfStrings = lodash.sampleSize(this.stringChars, length ?? 10);
+    const string = arrayOfStrings.join("");
+    return string;
   }
 
   randomStringNumber(length) {
-    var chars = "12345678901234567890123456789012345678901234567890";
-    var pwd = lodash.sampleSize(chars, length ?? 10);
-    return pwd.join("");
+    const arrayOfStringNumbers = lodash.sampleSize(
+      this.stringNumberChars,
+      length ?? 10
+    );
+    const stringNumber = arrayOfStringNumbers.join("");
+    return stringNumber;
   }
 
   randomNumber(length) {
-    var chars = "12345678901234567890123456789012345678901234567890";
-    var pwd = lodash.sampleSize(chars, length ?? 10);
-    return pwd.join("");
+    const arrayOfStringNumbers = lodash.sampleSize(
+      this.stringNumberChars,
+      length ?? 10
+    );
+    const intNumber = +arrayOfStringNumbers.join("");
+    return intNumber;
   }
 
   randomCountryCode() {
