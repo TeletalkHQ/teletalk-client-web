@@ -1,24 +1,23 @@
 import { globalActions } from "actions/globalActions";
+import { windowUtilities } from "classes/WindowUtilities";
 
 import { extractedDispatch } from "hooks/useThunkReducer";
 
 const onlineStatusOnChangeEvent = () => {
-  const isOnline = window.navigator.onLine;
+  const isOnline = windowUtilities.isOnline();
 
   extractedDispatch(globalActions.onlineStatusChangeAction({ isOnline }));
 };
 
 const addOnlineStatusOnChangeListener = (type) =>
-  window.addEventListener(type, () => {
-    onlineStatusOnChangeEvent();
-  });
+  windowUtilities.addEventListener(type, onlineStatusOnChangeEvent);
 
-const removeEventListener = (type) =>
-  window.removeEventListener(type, onlineStatusOnChangeEvent);
+const removeOnlineStatusOnChangeListener = (type) =>
+  windowUtilities.removeEventListener(type, onlineStatusOnChangeEvent);
 
 const addOnlineStatusEvents = () => {
-  removeEventListener("offline");
-  removeEventListener("online");
+  removeOnlineStatusOnChangeListener("offline");
+  removeOnlineStatusOnChangeListener("online");
 
   addOnlineStatusOnChangeListener("offline");
   addOnlineStatusOnChangeListener("online");

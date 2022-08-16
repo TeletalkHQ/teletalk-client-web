@@ -1,3 +1,5 @@
+import { windowUtilities } from "classes/WindowUtilities";
+
 import { VIEW_MODES } from "variables/others/constants";
 
 //TODO Move some default values to appConfigs
@@ -31,7 +33,7 @@ const globalInitialState = {
     },
   },
   onlineStatus: {
-    isOnline: window?.navigator.onLine,
+    isOnline: windowUtilities.isOnline(),
     ping: 0,
   },
   viewMode: VIEW_MODES.SIGN_IN,

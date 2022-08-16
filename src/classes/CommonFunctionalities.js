@@ -1,10 +1,13 @@
 import { tempActions } from "actions/tempActions";
 import { userActions } from "actions/userActions";
 
+import { commonNotificationManager } from "classes/CommonNotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
+import { windowUtilities } from "classes/WindowUtilities";
 
 import { viewModeChange } from "functions/utilities/commonActions";
+import { checkErrorCodeIsConnAborted } from "functions/utilities/otherUtilities";
 
 import { extractedDispatch } from "hooks/useThunkReducer";
 
@@ -25,6 +28,19 @@ class CommonFunctionalities {
     extractedDispatch(
       tempActions.messageInputOnChangeAction({ messageInputText: "" })
     );
+  }
+
+  checkAndExecute(condition, callback) {
+    if (condition) return callback();
+  }
+
+  throwConnAbortNotification(error) {
+    const isConnectionInterrupted =
+      !windowUtilities.isOnline() || checkErrorCodeIsConnAborted(error?.code);
+
+    this.checkAndExecute(isConnectionInterrupted, () => {
+      commonNotificationManager.submitAbortedConnectionNotification(error);
+    });
   }
 }
 
