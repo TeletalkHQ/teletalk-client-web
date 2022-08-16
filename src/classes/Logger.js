@@ -1,36 +1,33 @@
-let _level;
-
 class Logger {
-  static levels = ["error", "warn", "info", "debug"];
-
   constructor(level) {
-    if (!_level) {
+    if (!this.#level) {
       this.setLevel(level || "debug");
     }
 
-    this.isBrowser = this.browserDetector();
-
-    if (!this.isBrowser) {
+    if (this.browserDetector()) {
       this.colors = {
+        debug: "\x1b[36m",
+        end: "\x1b[0m",
+        error: "\x1b[31m",
+        info: "\x1b[33m",
         start: "\x1b[2m",
         warn: "\x1b[35m",
-        info: "\x1b[33m",
-        debug: "\x1b[36m",
-        error: "\x1b[31m",
-        end: "\x1b[0m",
       };
     } else {
       this.colors = {
+        debug: "color : #00ffff",
+        end: "",
+        error: "color : #ff0000",
+        info: "color : #ffff00",
         start: "%c",
         warn: "color : #ff00ff",
-        info: "color : #ffff00",
-        debug: "color : #00ffff",
-        error: "color : #ff0000",
-        end: "",
       };
     }
     this.messageFormat = "[%t] [%l] - [%m]";
   }
+
+  #level = undefined;
+  #levels = ["error", "warn", "info", "debug"];
 
   browserDetector() {
     return (
@@ -42,14 +39,11 @@ class Logger {
   }
 
   setLevel(level) {
-    _level = level;
-    if (this.isBrowser || this.browserDetector()) {
-      localStorage?.setItem("logLevel", level);
-    }
+    this.#level = level;
   }
 
   removeLevel() {
-    this.setLevel(undefined);
+    this.setLevel();
   }
 
   /**
@@ -57,17 +51,13 @@ class Logger {
    * @returns {boolean}
    */
   canSend(level) {
-    return Logger.levels.indexOf(_level) >= Logger.levels.indexOf(level);
+    return this.#levels.indexOf(this.#level) >= this.#levels.indexOf(level);
   }
 
   /**
    * @param message {string}
    */
   warn(message) {
-    // todo remove later
-    if (_level === "debug") {
-      console.error(new Error().stack);
-    }
     this.log("warn", message, this.colors.warn);
   }
 
@@ -104,13 +94,12 @@ class Logger {
    * @param message {string}
    * @param color {string}
    */
-  log(level, message, color) {
-    console.log(level, message, color);
-    if (!_level) {
+  log(level, message, color = this.colors.debug) {
+    if (!this.#level || message || level) {
       return;
     }
     if (this.canSend(level)) {
-      if (this.isBrowser) {
+      if (this.browserDetector()) {
         console.log(this.colors.start + this.format(message, level), color);
       } else {
         console.log(color + this.format(message, level) + this.colors.end);
