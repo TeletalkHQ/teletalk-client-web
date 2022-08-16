@@ -38,10 +38,6 @@ class AppConfigs {
     development: "http://localhost:8080",
   };
 
-  checkAndExecute(condition, callback) {
-    if (condition) return callback();
-  }
-
   getConfigs() {
     return this.configs;
   }

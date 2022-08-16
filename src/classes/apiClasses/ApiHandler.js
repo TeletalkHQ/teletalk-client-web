@@ -1,7 +1,6 @@
 import { appConfigs } from "classes/AppConfigs";
 import { appOptions } from "classes/AppOptions";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { commonNotificationManager } from "classes/CommonNotificationManager";
 import { notificationManager } from "classes/NotificationManager";
 import { objectUtilities } from "classes/ObjectUtilities";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
@@ -82,7 +81,7 @@ class ApiHandler {
       apiConfigs: { inputDataPropertiesCheck },
     } = appConfigs.getConfigs();
 
-    appConfigs.checkAndExecute(inputDataPropertiesCheck, () => {
+    commonFunctionalities.checkAndExecute(inputDataPropertiesCheck, () => {
       this.#ioDataFieldsCheck(
         inputData,
         this.#routeObject.inputFields,
@@ -96,7 +95,7 @@ class ApiHandler {
       apiConfigs: { outputDataPropertiesCheck },
     } = appConfigs.getConfigs();
 
-    appConfigs.checkAndExecute(outputDataPropertiesCheck, () => {
+    commonFunctionalities.checkAndExecute(outputDataPropertiesCheck, () => {
       this.#ioDataFieldsCheck(
         outputData,
         this.#routeObject.outputFields,
@@ -189,7 +188,7 @@ class ApiHandler {
     } catch (error) {
       this.#logFailureResponse(error);
 
-      commonNotificationManager.submitAbortedConnectionNotification(error);
+      commonFunctionalities.throwConnAbortNotification();
 
       throw error;
     }
@@ -200,7 +199,7 @@ class ApiHandler {
       apiConfigs: { logSuccessfulResponse },
     } = appConfigs.getConfigs();
 
-    appConfigs.checkAndExecute(logSuccessfulResponse, () =>
+    commonFunctionalities.checkAndExecute(logSuccessfulResponse, () =>
       console.log(response)
     );
   }
@@ -209,7 +208,7 @@ class ApiHandler {
       apiConfigs: { logFailureResponse },
     } = appConfigs.getConfigs();
 
-    appConfigs.checkAndExecute(logFailureResponse, () =>
+    commonFunctionalities.checkAndExecute(logFailureResponse, () =>
       console.log(`Api:${this.#routeObject.fullUrl} Api catch, error:`, error)
     );
   }

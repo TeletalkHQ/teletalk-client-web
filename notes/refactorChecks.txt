@@ -1,10 +1,10 @@
 //* classes=>
         //* apiClasses =>
         [x] ApiBuilder
-        [ ] ApiHandler
-        [ ] ApiManager
+        [x] ApiHandler
+        [x] ApiManager
         //* builders =>
-        [ ] NotificationBuilder
+        [x] NotificationBuilder
         [ ] ValidationErrorBuilder
     [ ] AppConfigs
     [ ] AppOptions
@@ -25,3 +25,4 @@
     [ ] StuffStore
     [ ] UserPropsUtilities
     [ ] ValidatorManager
+    [x] WindowUtilities
