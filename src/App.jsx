@@ -6,6 +6,7 @@ import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
 import { appConfigs } from "classes/AppConfigs";
+import { windowUtilities } from "classes/WindowUtilities";
 
 import MainContainer from "MainContainer";
 
@@ -27,8 +28,9 @@ const App = () => {
   );
 
   useEffect(() => {
-    window.state = state;
-    window.appConfigs = appConfigs;
+    windowUtilities
+      .addProperty("state", state)
+      .addProperty("appConfigs", appConfigs);
   }, [state]);
 
   return (

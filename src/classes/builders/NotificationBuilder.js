@@ -1,36 +1,33 @@
 class NotificationBuilder {
-  constructor() {
-    this.notificationObject = {
-      description: "Default route description",
-      message: "",
-      notificationReason: "UNKNOWN_ERROR",
-      notificationCode: 4000,
-      show: false,
-    };
-  }
+  #notificationObject = {
+    description: "Default notification description",
+    message: "Unknown notification message",
+    notificationReason: "UNKNOWN_ERROR_REASON",
+    notificationCode: 4000,
+  };
 
   #addProperty(key, value) {
-    this.notificationObject[key] = value;
+    this.#notificationObject[key] = value;
   }
 
   build() {
-    return this.notificationObject;
+    return this.#notificationObject;
   }
 
-  notificationCode(notificationCode) {
-    this.#addProperty("notificationCode", notificationCode);
+  description(description) {
+    this.#addProperty("description", description);
     return this;
   }
   message(message) {
     this.#addProperty("message", message);
     return this;
   }
-  notificationReason(errorReason) {
-    this.#addProperty("errorReason", errorReason);
+  notificationCode(notificationCode) {
+    this.#addProperty("notificationCode", notificationCode);
     return this;
   }
-  description(description) {
-    this.#addProperty("description", description);
+  notificationReason(notificationReason) {
+    this.#addProperty("notificationReason", notificationReason);
     return this;
   }
 }

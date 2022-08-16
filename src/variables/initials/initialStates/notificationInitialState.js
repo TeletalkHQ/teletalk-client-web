@@ -1,6 +1,5 @@
 const notificationInitialState = {
   errorNotificationState: {
-    show: false,
     description: "",
     errorCode: "",
     errorReason: "",
