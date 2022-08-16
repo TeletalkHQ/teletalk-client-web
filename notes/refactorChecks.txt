@@ -7,12 +7,12 @@
         [x] NotificationBuilder
         [ ] ValidationErrorBuilder
     [x] AppConfigs
-    [ ] AppOptions
-    [ ] ArrayUtilities
-    [ ] CommonFunctionalities
-    [ ] CommonNotificationManger
-    [ ] CustomTypeof
-    [ ] DataUsageManager
+    [x] AppOptions
+    [x] ArrayUtilities
+    [x] CommonFunctionalities
+    [x] CommonNotificationManger
+    [x] CustomTypeof
+    [x] DataUsageManager
     [ ] DomUtilities
     [ ] EnvironmentManager
     [ ] EventManager

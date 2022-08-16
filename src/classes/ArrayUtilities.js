@@ -18,6 +18,10 @@ class ArrayUtilities {
   arrayLastItem(array) {
     return array.at(-1);
   }
+
+  pushNewItems(items, ...newItems) {
+    return [...items, ...newItems];
+  }
 }
 
 const arrayUtilities = new ArrayUtilities();
