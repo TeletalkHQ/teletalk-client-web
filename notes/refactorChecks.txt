@@ -13,9 +13,9 @@
     [x] CommonNotificationManger
     [x] CustomTypeof
     [x] DataUsageManager
-    [ ] DomUtilities
-    [ ] EnvironmentManager
-    [ ] EventManager
+    [x] DomUtilities
+    [x] EnvironmentManager
+    [x] EventManager
     [ ] Logger
     [ ] NotificationManager
     [ ] ObjectUtilities

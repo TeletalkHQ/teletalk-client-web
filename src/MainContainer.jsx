@@ -60,10 +60,7 @@ const MainContainer = () => {
           }
         };
 
-        eventManager.addListener({
-          event: ALL_STUFF_RECEIVED,
-          listener: allStuffReceivedListener,
-        });
+        eventManager.addListener(ALL_STUFF_RECEIVED, allStuffReceivedListener);
 
         await dispatchAsync(getAllStuffController());
       } catch (error) {
@@ -92,10 +89,7 @@ const MainContainer = () => {
       dispatch(welcomeMessageController());
     };
 
-    eventManager.addListener({
-      event: ALL_STUFF_RECEIVED,
-      listener: allStuffReceivedListener,
-    });
+    eventManager.addListener(ALL_STUFF_RECEIVED, allStuffReceivedListener);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

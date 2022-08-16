@@ -7,23 +7,34 @@ class EventManager {
     this.events = {};
   }
 
+  getEvent(eventName) {
+    return this.events[eventName];
+  }
+
   emitEvent({ event, ...args }) {
     emitter.emit(event, args);
   }
 
-  addListener({ event, listener }) {
-    // this.events[event] = {
-    //   ...this.events[event],
-    //   listeners: [...this.events[event]?.listeners, listener],
-    // };
-    emitter.on(event, listener);
+  getDefaultEventItem() {
+    return {
+      listeners: [],
+    };
   }
 
-  removeListener({ event }) {
-    const e = this.events[event];
+  addListener(eventName, listener) {
+    const event = this.getEvent(eventName) || this.getDefaultEventItem();
 
-    if (e) {
-      delete this.events[event];
+    event.listeners.push(listener);
+    this.events[eventName] = event;
+    emitter.on(eventName, listener);
+  }
+
+  removeListener(eventName) {
+    const event = this.getEvent(eventName);
+
+    if (event) {
+      emitter.removeAllListeners(eventName);
+      delete this.events[eventName];
     }
   }
 }
