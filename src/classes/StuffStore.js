@@ -3,7 +3,7 @@ import { persistentStorage } from "classes/PersistentStorage";
 
 class StuffStore {
   constructor() {
-    this.stuffs = persistentStorage.getAndConvertItem(
+    this.stuffs = persistentStorage.getAndParseItem(
       PERSISTENT_STORAGE_KEYS.STUFFS
     );
     this.errors = this.stuffs.errors;
