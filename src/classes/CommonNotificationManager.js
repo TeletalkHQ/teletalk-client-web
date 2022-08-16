@@ -7,6 +7,7 @@ import {
 
 class CommonNotificationManager extends NotificationManager {
   submitAbortedConnectionNotification(error) {
+    //TODO Move this if out
     if (!window?.navigator?.onLine || error?.code === "ECONNABORTED") {
       notificationManager.submitErrorNotification(
         notifications.localErrors.ECONNABORTED

@@ -146,8 +146,11 @@ class ApiHandler {
 
     return dataEnhancedWithInterceptors;
   }
-  #executeRequestInterceptors(request) {
-    return this.#executeInterceptors(this.#requestInterceptorsArray, request);
+  #executeRequestInterceptors(requestData) {
+    return this.#executeInterceptors(
+      this.#requestInterceptorsArray,
+      requestData
+    );
   }
   #executeResponseInterceptors(response) {
     return this.#executeInterceptors(this.#responseInterceptorsArray, response);
@@ -172,7 +175,6 @@ class ApiHandler {
       this.response = await requester(mergedRequesterOptions);
 
       this.#responseErrorsHandler(this.response);
-
       this.#outputDataFieldsCheck(this.response.data);
       const transformedResponse = this.#responseTransformer(this.response.data);
       this.response.data = transformedResponse;
@@ -222,9 +224,8 @@ class ApiHandler {
     const arrayOfErrors = objectUtilities.objectValues(responseErrors);
 
     const correctedErrors = arrayOfErrors.map((errorItem) => {
-      const { errorCode, reason, ...restOfErrorItemProps } = errorItem;
+      const { errorCode, reason, ...finalErrorItem } = errorItem;
 
-      const finalErrorItem = restOfErrorItemProps;
       finalErrorItem.notificationCode = errorCode;
       finalErrorItem.notificationReason = reason;
 
