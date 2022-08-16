@@ -14,7 +14,7 @@ const {
 
 const globalReducer = (
   state = initialStates.globalState,
-  action = appOptions.options.actionOptions
+  action = appOptions.getOptions().actionOptions
 ) => {
   const { payload, type } = action;
 

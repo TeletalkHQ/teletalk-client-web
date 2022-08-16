@@ -47,17 +47,22 @@ const MainContainer = () => {
   useEffect(() => {
     (async () => {
       try {
-        eventManager.addListener({
-          event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
-          listener: async () => {
-            if (userState.privateId) {
-              const { user } = await dispatchAsync(
-                userStatusCheckerController()
-              );
+        const {
+          EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
+        } = appOptions.getOptions();
 
-              await dispatchAsync(getUserChatsLastMessageController({ user }));
-            }
-          },
+        //TODO Extract it to somewhere
+        const allStuffReceivedListener = async () => {
+          if (userState.privateId) {
+            const { user } = await dispatchAsync(userStatusCheckerController());
+
+            await dispatchAsync(getUserChatsLastMessageController({ user }));
+          }
+        };
+
+        eventManager.addListener({
+          event: ALL_STUFF_RECEIVED,
+          listener: allStuffReceivedListener,
         });
 
         await dispatchAsync(getAllStuffController());
@@ -73,16 +78,23 @@ const MainContainer = () => {
   }, [persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN)]);
 
   useEffect(() => {
+    const {
+      EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
+    } = appOptions.getOptions();
+
+    //TODO Extract it to somewhere
+    const allStuffReceivedListener = async () => {
+      apiManager.rebuildAllApis();
+
+      validatorManager.compileValidators();
+
+      await dispatchAsync(getCountriesController());
+      dispatch(welcomeMessageController());
+    };
+
     eventManager.addListener({
-      event: appOptions.options.EVENT_EMITTER_EVENTS.ALL_STUFF_RECEIVED,
-      listener: async () => {
-        apiManager.rebuildAllApis();
-
-        validatorManager.compileValidators();
-
-        await dispatchAsync(getCountriesController());
-        dispatch(welcomeMessageController());
-      },
+      event: ALL_STUFF_RECEIVED,
+      listener: allStuffReceivedListener,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

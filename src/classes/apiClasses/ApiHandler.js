@@ -117,11 +117,11 @@ class ApiHandler {
   }
 
   #mergeRequesterOptions(options) {
-    const defaultOptions = appOptions.options.apiDefaultOptions;
+    const { apiDefaultOptions } = appOptions.getOptions();
     const mergedOptions = {
-      ...defaultOptions,
+      ...apiDefaultOptions,
       ...options,
-      headers: { ...defaultOptions.headers, ...options?.headers },
+      headers: { ...apiDefaultOptions.headers, ...options?.headers },
       token: options.token || userPropsUtilities.getMainTokenFromStorage(),
     };
 

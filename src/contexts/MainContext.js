@@ -7,7 +7,7 @@ import { initialStates } from "variables/initials/initialStates/initialStates";
 const MainContext = createContext({
   state: initialStates,
   hooksOutput: {
-    dispatch: (action = appOptions.options.actionOptions) => {},
+    dispatch: (action = appOptions.getOptions().actionOptions) => {},
     dispatchAsync: async (action = async () => {}) => {
       return await action();
     },
