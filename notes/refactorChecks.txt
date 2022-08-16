@@ -16,8 +16,8 @@
     [x] DomUtilities
     [x] EnvironmentManager
     [x] EventManager
-    [ ] Logger
-    [ ] NotificationManager
+    [x] Logger
+    [x] NotificationManager
     [ ] ObjectUtilities
     [ ] PersistentStorage
     [ ] RandomMaker

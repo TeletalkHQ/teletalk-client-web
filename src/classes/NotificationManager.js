@@ -5,7 +5,7 @@ class NotificationManager {
     this.notificationCreator = notificationCreator;
     this.notificationEliminator = notificationEliminator;
     this.notifications = [];
-    this.initialNotificationObject = {
+    this.defaultNotificationObject = {
       description: "",
       notificationCode: "",
       notificationReason: "",
@@ -28,13 +28,13 @@ class NotificationManager {
     if (notificationCode - 1000 >= 0) return info;
   };
 
-  submitErrorNotification(notificationObject = this.initialNotificationObject) {
+  submitErrorNotification(notificationObject = this.defaultNotificationObject) {
     const { message, notificationReason } = notificationObject;
     enqueueSnackbar(message || notificationReason, { variant: "error" });
   }
 
   submitSuccessNotification(
-    notificationObject = this.initialNotificationObject
+    notificationObject = this.defaultNotificationObject
   ) {
     const { message, notificationReason } = notificationObject;
     enqueueSnackbar(message || notificationReason, { variant: "success" });

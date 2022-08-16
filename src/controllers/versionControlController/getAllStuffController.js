@@ -14,7 +14,7 @@ const getAllStuffController = () => {
         data: { errors, models, routes, validationModels },
       } = await getAllStuffApi.sendRequest();
 
-      persistentStorage.convertAndSetItem(PERSISTENT_STORAGE_KEYS.STUFFS, {
+      persistentStorage.stringifyAndSetItem(PERSISTENT_STORAGE_KEYS.STUFFS, {
         errors,
         models,
         routes,
