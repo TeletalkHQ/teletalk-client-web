@@ -1,5 +1,7 @@
 import { customTypeof } from "classes/CustomTypeof";
 
+const checkErrorCodeIsConnAborted = (errorCode) => errorCode === "ECONNABORTED";
+
 const errorThrower = (condition, error) => {
   if (condition) {
     if (customTypeof.check(error).type.function) throw error();
@@ -16,4 +18,4 @@ const getErrorObject = (errorObject, extraData = {}, statusCode) => {
   };
 };
 
-export { errorThrower, getErrorObject };
+export { checkErrorCodeIsConnAborted, errorThrower, getErrorObject };
