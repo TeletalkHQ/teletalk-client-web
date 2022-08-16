@@ -32,15 +32,15 @@ class EnvironmentManager {
 
     return environments;
   }
-  setEnvironment(envName, value) {
-    process.env[envName] = value;
-  }
-
   getNodeEnv() {
     return this.getEnvironment(this.ENVIRONMENT_KEYS.NODE_ENV);
   }
   getNodeEnvValues() {
     return this.ENVIRONMENT_VALUES.NODE_ENV;
+  }
+
+  setEnvironment(envName, value) {
+    process.env[envName] = value;
   }
 }
 
