@@ -23,31 +23,40 @@ class ValidatorManager {
     return v.compile(validationModel);
   }
 
+  convertValidationModelKeyToValidatorKey(validationModelKey) {
+    return validationModelKey.replace("ValidationModel", "Validator");
+  }
+
   compileValidators = () => {
     try {
       const { version, ...validationModels } = stuffStore.validationModels;
 
       objectUtilities
         .objectEntries(validationModels)
-        .forEach(([validationModelKey, validationModelValue]) => {
-          const keyWithoutValidationModelWord =
-            validationModelKey.split("ValidationModel")[0];
-          const validatorKey = `${keyWithoutValidationModelWord}Validator`;
-
-          const { version, ...validationModelWithoutVersion } =
-            validationModelValue;
-
-          const compiledValidator = this.validatorCompiler(
-            validationModelWithoutVersion
-          );
-
-          this.validators[validatorKey] = compiledValidator;
-        });
+        .forEach(this.processValidationModel.bind(this));
     } catch (error) {
       logger.log("validatorCompiler catch, error:", error);
       errorThrower(error, error);
     }
   };
+
+  setValidator(validatorKey, compiledValidator) {
+    this.validators[validatorKey] = compiledValidator;
+    return this;
+  }
+
+  processValidationModel([validationModelKey, validationModelValue]) {
+    const validatorKey =
+      this.convertValidationModelKeyToValidatorKey(validationModelKey);
+
+    const { version, ...restOfValidationModelProps } = validationModelValue;
+
+    const compiledValidator = this.validatorCompiler(
+      restOfValidationModelProps
+    );
+
+    this.setValidator(validatorKey, compiledValidator);
+  }
 }
 
 const validatorManager = new ValidatorManager();
