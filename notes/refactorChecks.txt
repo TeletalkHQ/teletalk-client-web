@@ -5,7 +5,7 @@
         [x] ApiManager
         //* builders =>
         [x] NotificationBuilder
-        [ ] ValidationErrorBuilder
+        [x] ValidationErrorBuilder
     [x] AppConfigs
     [x] AppOptions
     [x] ArrayUtilities

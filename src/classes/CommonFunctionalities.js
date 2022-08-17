@@ -1,3 +1,4 @@
+import { globalActions } from "actions/globalActions";
 import { tempActions } from "actions/tempActions";
 import { userActions } from "actions/userActions";
 
@@ -6,7 +7,6 @@ import { persistentStorage } from "classes/PersistentStorage";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 import { windowUtilities } from "classes/WindowUtilities";
 
-import { viewModeChange } from "functions/utilities/commonActions";
 import { checkErrorCodeIsConnAborted } from "functions/utilities/otherUtilities";
 
 import { extractedDispatch } from "hooks/useThunkReducer";
@@ -21,7 +21,7 @@ class CommonFunctionalities {
         userPropsUtilities.makeDefaultUserState()
       )
     );
-    extractedDispatch(viewModeChange(VIEW_MODES.SIGN_IN));
+    this.changeViewMode().signIn();
   }
 
   resetMessageInputText() {
@@ -45,6 +45,19 @@ class CommonFunctionalities {
     this.checkAndExecute(isConnectionInterrupted, () => {
       commonNotificationManager.submitAbortedConnectionNotification(error);
     });
+  }
+
+  changeViewMode() {
+    const { MESSENGER, NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN } = VIEW_MODES;
+    const viewModeChanger = (viewMode) => () =>
+      extractedDispatch(globalActions.viewModeChangeAction({ viewMode }));
+
+    return {
+      messenger: viewModeChanger(MESSENGER),
+      newUserProfile: viewModeChanger(NEW_USER_PROFILE),
+      signIn: viewModeChanger(SIGN_IN),
+      verifySignIn: viewModeChanger(VERIFY_SIGN_IN),
+    };
   }
 }
 

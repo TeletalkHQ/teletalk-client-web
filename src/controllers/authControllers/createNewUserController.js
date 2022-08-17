@@ -1,14 +1,11 @@
 import { notificationManager } from "classes/NotificationManager";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { apiManager } from "classes/apiClasses/ApiManager";
 
-import {
-  authenticationProgressChange,
-  viewModeChange,
-} from "functions/utilities/commonActions";
+import { authenticationProgressChange } from "functions/utilities/commonActions";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
-import { VIEW_MODES } from "variables/otherVariables/constants";
 import { notifications } from "variables/otherVariables/notifications";
 
 const createNewUserController = () => {
@@ -23,28 +20,24 @@ const createNewUserController = () => {
       const verifyToken = userPropsUtilities.getVerifyTokenFromStorage();
 
       if (!verifyToken) {
-        //TODO Move it to common functionality
-        dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
+        commonFunctionalities.changeViewMode().signIn();
 
         notificationManager.submitErrorNotification(
           notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
         );
       }
 
-      const response =
-        await apiManager.apis.authApis.createNewUserApi.sendRequest(
-          {
-            firstName,
-            lastName,
-          },
-          { token: verifyToken }
-        );
-
-      console.log(response.data);
+      await apiManager.apis.authApis.createNewUserApi.sendRequest(
+        {
+          firstName,
+          lastName,
+        },
+        { token: verifyToken }
+      );
 
       userPropsUtilities.removeVerifyTokenFromStorage();
 
-      dispatch(viewModeChange(VIEW_MODES.MESSENGER));
+      dispatch(commonFunctionalities.changeViewMode().messenger());
     } catch (error) {
       console.log("createNewUserController catch, error:", error);
     } finally {

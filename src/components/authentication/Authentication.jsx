@@ -14,12 +14,11 @@ import { createNewUserController } from "controllers/authControllers/createNewUs
 import { signInController } from "controllers/authControllers/signInController";
 import { verifySignInController } from "controllers/authControllers/verifySignInController";
 
-import { viewModeChange } from "functions/utilities/commonActions";
-
 import { useMainContext } from "hooks/useMainContext";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
 import { elementNames } from "variables/initials/initialValues/elementNames";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 const {
   countryCodeOnChangeAction,
@@ -106,7 +105,7 @@ const Authentication = () => {
 
   const handleBackClick = () => {
     dispatch(verificationCodeOnChangeAction({ verificationCode: "" }));
-    dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
+    commonFunctionalities.changeViewMode().signIn();
   };
 
   const handleCountryNameAutocompleteOnchange = (newValue) => {
