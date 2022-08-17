@@ -28,7 +28,7 @@ import { useMainContext } from "hooks/useMainContext";
 import {
   PERSISTENT_STORAGE_KEYS,
   VIEW_MODES,
-} from "variables/others/constants";
+} from "variables/otherVariables/constants";
 
 const MainContainer = () => {
   const {

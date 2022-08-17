@@ -2,7 +2,7 @@ import { apiBuilder } from "classes/apiClasses/ApiBuilder";
 import { stuffStore } from "classes/StuffStore";
 import { apiHandler } from "classes/apiClasses/ApiHandler";
 
-import { addUniqueIdToEachCountry } from "functions/others/apiTransformers";
+import { addUniqueIdToEachCountry } from "functions/otherFunctions/apiTransformers";
 
 const { authApis, cellphoneApis, messageApis, otherApis } = {
   authApis: "authApis",

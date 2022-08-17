@@ -18,7 +18,7 @@ import { viewModeChange } from "functions/utilities/commonActions";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { VIEW_MODES } from "variables/others/constants";
+import { VIEW_MODES } from "variables/otherVariables/constants";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const {

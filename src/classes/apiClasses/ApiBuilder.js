@@ -2,7 +2,7 @@ import { apiHandler } from "classes/apiClasses/ApiHandler";
 
 import { errorThrower } from "functions/utilities/otherUtilities";
 
-import { notifications } from "variables/others/notifications";
+import { notifications } from "variables/otherVariables/notifications";
 
 class ApiBuilder {
   constructor() {

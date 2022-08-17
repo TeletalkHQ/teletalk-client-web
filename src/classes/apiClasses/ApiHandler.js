@@ -9,7 +9,7 @@ import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
 import { requester } from "functions/utilities/apiUtilities";
 import { errorThrower } from "functions/utilities/otherUtilities";
 
-import { notifications } from "variables/others/notifications";
+import { notifications } from "variables/otherVariables/notifications";
 
 const {
   localErrors: {

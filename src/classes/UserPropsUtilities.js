@@ -3,7 +3,7 @@ import { persistentStorage } from "classes/PersistentStorage";
 import { randomMaker } from "classes/RandomMaker";
 import { stuffStore } from "classes/StuffStore";
 
-import { PERSISTENT_STORAGE_KEYS } from "variables/others/constants";
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 
 class UserPropsUtilities {
   constructor(id) {
