@@ -23,7 +23,7 @@ const createNewUserController = () => {
       const verifyToken = userPropsUtilities.getVerifyTokenFromStorage();
 
       if (!verifyToken) {
-        //TODO Move it to common actions
+        //TODO Move it to common functionality
         dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
 
         notificationManager.submitErrorNotification(

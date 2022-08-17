@@ -1,7 +1,7 @@
-import { randomMaker } from "classes/RandomMaker";
 import { dataUsageManager } from "classes/DataUsageManager";
-import { stuffStore } from "classes/StuffStore";
 import { persistentStorage } from "classes/PersistentStorage";
+import { randomMaker } from "classes/RandomMaker";
+import { stuffStore } from "classes/StuffStore";
 
 import { PERSISTENT_STORAGE_KEYS } from "variables/others/constants";
 
@@ -10,29 +10,30 @@ class UserPropsUtilities {
     this.id = id;
   }
 
-  makeTestCellphone() {
-    // const country = countries[randomMaker.randomCountryCode()];
-    // const cellphone = this.makeCellphoneByParams(
-    //   country.countryCode,
-    //   country.countryName,
-    //   randomMaker.randomStringNumber(10)
-    // );
-    // return cellphone;
+  makeTestCellphone(countries) {
+    const country = countries[randomMaker.randomCountryCode()];
+    const cellphone = this.makeCellphoneByParams(
+      country.countryCode,
+      country.countryName,
+      randomMaker.randomStringNumber(10)
+    );
+
+    return cellphone;
   }
 
-  makeUnusedTestCellphone() {
-    const cellphone = this.makeTestCellphone();
+  makeUnusedTestCellphone(countries) {
+    const cellphone = this.makeTestCellphone(countries);
 
     const isCellphoneUsedBefore =
       dataUsageManager.isCellphoneUsedBefore(cellphone);
 
     if (isCellphoneUsedBefore) {
-      this.makeUnusedTestCellphone();
+      this.makeUnusedTestCellphone(countries);
     } else return cellphone;
   }
 
-  makeUnusedTestCellphoneAndUpdateUsage() {
-    const unusedCellphone = this.makeUnusedTestCellphone();
+  makeUnusedTestCellphoneAndUpdateUsage(countries) {
+    const unusedCellphone = this.makeUnusedTestCellphone(countries);
 
     dataUsageManager.addUsedCellphone(unusedCellphone);
 
@@ -47,9 +48,9 @@ class UserPropsUtilities {
     };
   }
 
-  makeTestContact() {
+  makeTestContact(countries) {
     return {
-      ...this.makeTestCellphone(),
+      ...this.makeTestCellphone(countries),
       firstName: randomMaker.randomString(
         stuffStore.models.firstNameModel.maxlength.value
       ),
@@ -79,23 +80,23 @@ class UserPropsUtilities {
     );
   }
 
-  makeCellphoneByObjectParam(object = {}) {
+  extractCellphone(object = {}) {
     return {
       countryCode: object.countryCode,
       countryName: object.countryName,
       phoneNumber: object.phoneNumber,
     };
   }
-  makeContactObjectByParam(object = {}) {
+  extractContact(object = {}) {
     return {
-      ...this.makeCellphoneByObjectParam(object),
+      ...this.extractCellphone(object),
       firstName: object.firstName,
       lastName: object.lastName,
       privateId: object.privateId,
     };
   }
 
-  makeDefaultUserObjectByParam(userObject) {
+  extractDefaultUserProperties(userObject) {
     const {
       bio,
       blacklist,

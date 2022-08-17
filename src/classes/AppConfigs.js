@@ -25,6 +25,8 @@ class AppConfigs {
         logSuccessfulResponse: false,
       },
     };
+
+    this.runConfigs();
   }
   #RUNTIME_MODE = envManager.getEnvironment(
     envManager.ENVIRONMENT_KEYS.REACT_APP_RUNTIME_MODE
@@ -40,6 +42,10 @@ class AppConfigs {
 
   getConfigs() {
     return this.configs;
+  }
+
+  runConfigs() {
+    logger.setLevel("debug");
   }
 }
 
