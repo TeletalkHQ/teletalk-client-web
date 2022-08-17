@@ -30,6 +30,10 @@ class CommonFunctionalities {
     );
   }
 
+  printCatchError(functionName, error) {
+    logger.error(`${functionName} catch, error: ${error}`);
+  }
+
   checkAndExecute(condition, callback) {
     if (condition) return callback();
   }

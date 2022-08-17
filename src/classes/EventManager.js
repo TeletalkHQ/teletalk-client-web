@@ -11,7 +11,7 @@ class EventManager {
     return this.events[eventName];
   }
 
-  emitEvent({ event, ...args }) {
+  emitEvent(event, ...args) {
     emitter.emit(event, args);
   }
 
@@ -29,7 +29,7 @@ class EventManager {
     emitter.on(eventName, listener);
   }
 
-  removeListener(eventName) {
+  removeAllListener(eventName) {
     const event = this.getEvent(eventName);
 
     if (event) {

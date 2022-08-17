@@ -1,6 +1,6 @@
 class StringUtilities {
-  valueLength(value) {
-    return value.length;
+  valueLength(stringValue) {
+    return stringValue.length;
   }
 }
 

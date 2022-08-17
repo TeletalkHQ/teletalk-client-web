@@ -90,6 +90,10 @@ const MainContainer = () => {
     };
 
     eventManager.addListener(ALL_STUFF_RECEIVED, allStuffReceivedListener);
+
+    return () => {
+      eventManager.removeAllListener(ALL_STUFF_RECEIVED);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

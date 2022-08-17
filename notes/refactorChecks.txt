@@ -20,9 +20,9 @@
     [x] NotificationManager
     [x] ObjectUtilities
     [x] PersistentStorage
-    [ ] RandomMaker
-    [ ] StringUtilities
-    [ ] StuffStore
-    [ ] UserPropsUtilities
-    [ ] ValidatorManager
+    [x] RandomMaker
+    [x] StringUtilities
+    [x] StuffStore
+    [x] UserPropsUtilities
+    [x] ValidatorManager
     [x] WindowUtilities
