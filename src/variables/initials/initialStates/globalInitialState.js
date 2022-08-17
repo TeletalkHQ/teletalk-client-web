@@ -1,6 +1,6 @@
 import { windowUtilities } from "classes/WindowUtilities";
 
-import { VIEW_MODES } from "variables/others/constants";
+import { VIEW_MODES } from "variables/otherVariables/constants";
 
 //TODO Move some default values to appConfigs
 const globalInitialState = {

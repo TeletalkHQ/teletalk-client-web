@@ -8,8 +8,8 @@ import {
 } from "functions/utilities/commonActions";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
-import { VIEW_MODES } from "variables/others/constants";
-import { notifications } from "variables/others/notifications";
+import { VIEW_MODES } from "variables/otherVariables/constants";
+import { notifications } from "variables/otherVariables/notifications";
 
 const createNewUserController = () => {
   return async (dispatch, getState = getInitialState) => {

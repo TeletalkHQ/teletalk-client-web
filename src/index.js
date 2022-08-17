@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import reportWebVitals from "reportWebVitals";
 
 //! Import before Root component
-import "functions/others/customGlobals";
+import "functions/otherFunctions/customGlobals";
 
 import "temp/playground";
 

@@ -1,4 +1,4 @@
-import { regexCollection } from "variables/others/regexCollection";
+import { regexCollection } from "variables/otherVariables/regexCollection";
 
 class CustomTypeof {
   isEveryTypeCheckTrue(items, type) {

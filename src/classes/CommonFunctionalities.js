@@ -11,7 +11,7 @@ import { checkErrorCodeIsConnAborted } from "functions/utilities/otherUtilities"
 
 import { extractedDispatch } from "hooks/useThunkReducer";
 
-import { VIEW_MODES } from "variables/others/constants";
+import { VIEW_MODES } from "variables/otherVariables/constants";
 
 class CommonFunctionalities {
   resetEverything() {

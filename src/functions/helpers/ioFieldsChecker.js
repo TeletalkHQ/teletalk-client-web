@@ -3,7 +3,7 @@ import { objectUtilities } from "classes/ObjectUtilities";
 
 import { errorThrower } from "functions/utilities/otherUtilities";
 
-import { notifications } from "variables/others/notifications";
+import { notifications } from "variables/otherVariables/notifications";
 
 const {
   localErrors: {

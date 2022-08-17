@@ -1,4 +1,4 @@
-import { PERSISTENT_STORAGE_KEYS } from "variables/others/constants";
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 import { persistentStorage } from "classes/PersistentStorage";
 
 class StuffStore {
