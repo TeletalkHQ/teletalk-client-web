@@ -1,10 +1,15 @@
 class Logger {
-  constructor(level) {
-    if (!this.#level) {
-      this.setLevel(level || "debug");
-    }
-
+  constructor() {
     if (this.browserDetector()) {
+      this.colors = {
+        debug: "color : #00ffff",
+        end: "",
+        error: "color : #ff0000",
+        info: "color : #ff00ff",
+        start: "%c",
+        warn: "color : #ffff00",
+      };
+    } else {
       this.colors = {
         debug: "\x1b[36m",
         end: "\x1b[0m",
@@ -13,17 +18,14 @@ class Logger {
         start: "\x1b[2m",
         warn: "\x1b[35m",
       };
-    } else {
-      this.colors = {
-        debug: "color : #00ffff",
-        end: "",
-        error: "color : #ff0000",
-        info: "color : #ffff00",
-        start: "%c",
-        warn: "color : #ff00ff",
-      };
     }
     this.messageFormat = "[%t] [%l] - [%m]";
+    this.levels = {
+      error: "error",
+      warn: "warn",
+      info: "info",
+      debug: "debug",
+    };
   }
 
   #level = undefined;
@@ -58,35 +60,44 @@ class Logger {
    * @param message {string}
    */
   warn(message) {
-    this.log("warn", message, this.colors.warn);
+    this.log(this.levels.warn, message, this.colors.warn);
+    this.log(this.levels.warn, new Error().stack, this.colors.warn);
   }
 
   /**
    * @param message {string}
    */
   info(message) {
-    this.log("info", message, this.colors.info);
+    this.log(this.levels.info, message, this.colors.info);
   }
 
   /**
    * @param message {string}
    */
   debug(message) {
-    this.log("debug", message, this.colors.debug);
+    this.log(this.levels.debug, message, this.colors.debug);
   }
 
   /**
    * @param message {string}
    */
   error(message) {
-    this.log("error", message, this.colors.error);
+    this.log(this.levels.error, message, this.colors.error);
+    this.log(this.levels.error, new Error().stack, this.colors.error);
   }
 
   format(message, level) {
+    const LEVEL = level.toUpperCase();
+    const stringMessage = this.stringifyMessage(message);
+    const date = new Date().toISOString();
+
     return this.messageFormat
-      .replace("%t", new Date().toISOString())
-      .replace("%l", level.toUpperCase())
-      .replace("%m", message);
+      .replace("%t", date)
+      .replace("%l", LEVEL)
+      .replace("%m", stringMessage);
+  }
+  stringifyMessage(message) {
+    return typeof message === "string" ? message : JSON.stringify(message);
   }
 
   /**
@@ -95,7 +106,7 @@ class Logger {
    * @param color {string}
    */
   log(level, message, color = this.colors.debug) {
-    if (!this.#level || message || level) {
+    if (!this.#level || !message || !level) {
       return;
     }
     if (this.canSend(level)) {
