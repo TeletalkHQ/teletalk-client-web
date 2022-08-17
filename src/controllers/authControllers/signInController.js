@@ -1,18 +1,13 @@
 import { userActions } from "actions/userActions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { persistentStorage } from "classes/PersistentStorage";
 
-import {
-  authenticationProgressChange,
-  viewModeChange,
-} from "functions/utilities/commonActions";
+import { authenticationProgressChange } from "functions/utilities/commonActions";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
-import {
-  PERSISTENT_STORAGE_KEYS,
-  VIEW_MODES,
-} from "variables/otherVariables/constants";
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 
 const { updateAllUserDataAction } = userActions;
 
@@ -40,7 +35,7 @@ const signInController = () => {
 
       dispatch(updateAllUserDataAction(response.data.user));
 
-      dispatch(viewModeChange(VIEW_MODES.VERIFY_SIGN_IN));
+      commonFunctionalities.changeViewMode().verifySignIn();
 
       return response;
     } catch (error) {

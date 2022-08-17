@@ -2,19 +2,14 @@ import { tempActions } from "actions/tempActions";
 import { userActions } from "actions/userActions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 
-import {
-  authenticationProgressChange,
-  viewModeChange,
-} from "functions/utilities/commonActions";
+import { authenticationProgressChange } from "functions/utilities/commonActions";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
-import {
-  VIEW_MODES,
-  PERSISTENT_STORAGE_KEYS,
-} from "variables/otherVariables/constants";
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 import { notifications } from "variables/otherVariables/notifications";
 
 const { updateAllUserDataAction } = userActions;
@@ -33,7 +28,7 @@ const verifySignInController = () => {
       );
 
       if (!verifyToken) {
-        dispatch(viewModeChange(VIEW_MODES.SIGN_IN));
+        commonFunctionalities.changeViewMode().signIn();
         notificationManager.submitErrorNotification(
           notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
         );
@@ -56,7 +51,7 @@ const verifySignInController = () => {
       const { user: userData } = response.data;
 
       if (userData.newUser) {
-        dispatch(viewModeChange(VIEW_MODES.NEW_USER_PROFILE));
+        commonFunctionalities.changeViewMode().newUserProfile();
       } else {
         persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
 
@@ -71,7 +66,7 @@ const verifySignInController = () => {
         );
 
         dispatch(updateAllUserDataAction(userData));
-        dispatch(viewModeChange(VIEW_MODES.MESSENGER));
+        commonFunctionalities.changeViewMode().messenger();
       }
     } catch (error) {
       console.log("verifySignInController catch, error:", error);
