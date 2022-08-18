@@ -1,4 +1,4 @@
-import { Grow, Zoom } from "@mui/material";
+import { transitionComponents } from "variables/otherVariables/transitionComponents";
 
 class AppOptions {
   constructor() {
@@ -14,10 +14,7 @@ class AppOptions {
       },
       actionOptions: { type: "", payload: {} },
       ui: {
-        transitions: {
-          Grow,
-          Zoom,
-        },
+        transitions: transitionComponents,
       },
     };
   }
