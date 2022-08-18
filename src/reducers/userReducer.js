@@ -1,6 +1,8 @@
 import { appOptions } from "classes/AppOptions";
 import { arrayUtilities } from "classes/ArrayUtilities";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 import { userInitialActions } from "variables/initials/initialActions/userInitialActions";
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
@@ -39,7 +41,7 @@ const userReducer = (
         return state;
     }
   } catch (error) {
-    console.log("userReducer catch", error);
+    printCatchError(userReducer.name, error);
   }
 };
 

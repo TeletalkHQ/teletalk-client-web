@@ -1,6 +1,7 @@
 import { appOptions } from "classes/AppOptions";
 
 import { mergePrevStateWithPayload } from "functions/utilities/stateUtils";
+import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { notificationInitialActions } from "variables/initials/initialActions/notificationInitialActions";
@@ -24,7 +25,7 @@ const notificationReducer = (
         return state;
     }
   } catch (error) {
-    console.log("notificationReducer", error);
+    printCatchError(notificationReducer.name, error);
   }
 };
 

@@ -2,6 +2,8 @@ import { otherActions } from "actions/otherActions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 const welcomeMessageController = () => {
   return async (dispatch) => {
     try {
@@ -14,7 +16,7 @@ const welcomeMessageController = () => {
         })
       );
     } catch (error) {
-      console.log("welcomeMessageController catch, error:", error);
+      printCatchError(welcomeMessageController.name, error);
     }
   };
 };

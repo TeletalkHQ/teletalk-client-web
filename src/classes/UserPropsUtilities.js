@@ -3,6 +3,8 @@ import { persistentStorage } from "classes/PersistentStorage";
 import { randomMaker } from "classes/RandomMaker";
 import { stuffStore } from "classes/StuffStore";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 
 class UserPropsUtilities {
@@ -159,7 +161,7 @@ class UserPropsUtilities {
       });
       return { cellphone, cellphoneIndex };
     } catch (error) {
-      logger.log("cellphoneFinder catch, error:", error);
+      printCatchError(this.cellphoneFinder.name, error);
       throw error;
     }
   }

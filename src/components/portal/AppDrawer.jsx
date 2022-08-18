@@ -12,6 +12,7 @@ import { appIcons } from "variables/initials/initialValues/appIcons";
 
 import { globalActions } from "actions/globalActions";
 import CustomBox from "components/generals/boxes/CustomBox";
+import { customTypeof } from "classes/CustomTypeof";
 
 const { calls, contacts, logout, newChannel, newGroup, nightMode, settings } =
   appIcons;
@@ -28,7 +29,7 @@ const drawerList = [
 ];
 
 const iOS =
-  typeof navigator !== "undefined" &&
+  !customTypeof.check(navigator).type.undefined &&
   /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const AppDrawer = () => {

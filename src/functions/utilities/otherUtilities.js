@@ -9,6 +9,10 @@ const errorThrower = (condition, error) => {
   }
 };
 
+const printCatchError = (functionName, error) => {
+  logger.error(`${functionName} catch, error: ${error}`);
+};
+
 const getErrorObject = (errorObject, extraData = {}, statusCode) => {
   const { errorKey, ...error } = errorObject;
 
@@ -18,4 +22,9 @@ const getErrorObject = (errorObject, extraData = {}, statusCode) => {
   };
 };
 
-export { checkErrorCodeIsConnAborted, errorThrower, getErrorObject };
+export {
+  checkErrorCodeIsConnAborted,
+  errorThrower,
+  getErrorObject,
+  printCatchError,
+};

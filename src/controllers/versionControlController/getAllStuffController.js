@@ -2,8 +2,10 @@ import { getAllStuffApi } from "apis/versionControlApis";
 
 import { appOptions } from "classes/AppOptions";
 import { eventManager } from "classes/EventManager";
-import { stuffStore } from "classes/StuffStore";
 import { persistentStorage } from "classes/PersistentStorage";
+import { stuffStore } from "classes/StuffStore";
+
+import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 
@@ -29,7 +31,7 @@ const getAllStuffController = () => {
 
       eventManager.emitEvent(ALL_STUFF_RECEIVED);
     } catch (error) {
-      console.log("getAllStuffController", error);
+      printCatchError(getAllStuffController.name, error);
       throw error;
     }
   };

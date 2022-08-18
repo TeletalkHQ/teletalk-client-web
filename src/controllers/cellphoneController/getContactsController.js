@@ -2,6 +2,8 @@ import { userActions } from "actions/userActions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 const getContactsController = () => {
   return async (dispatch) => {
     try {
@@ -14,7 +16,7 @@ const getContactsController = () => {
         })
       );
     } catch (error) {
-      console.log("getContactsController catch, error:", error);
+      printCatchError(getContactsController.name, error);
     }
   };
 };

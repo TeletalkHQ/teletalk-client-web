@@ -23,6 +23,8 @@ import { welcomeMessageController } from "controllers/otherControllers/welcomeMe
 
 import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 import { useMainContext } from "hooks/useMainContext";
 
 import {
@@ -45,7 +47,7 @@ const MainContainer = () => {
   }, []);
 
   useEffect(() => {
-    (async () => {
+    const fn = async () => {
       try {
         const {
           EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
@@ -64,13 +66,15 @@ const MainContainer = () => {
 
         await dispatchAsync(getAllStuffController());
       } catch (error) {
-        console.log("MainContainer auth catch", error);
+        printCatchError(fn.name, error);
       } finally {
         dispatch(
           globalActions.globalLoadingStateOpenChangeAction({ open: false })
         );
       }
-    })();
+    };
+
+    fn();
     // eslint-disable-next-line
   }, [persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN)]);
 

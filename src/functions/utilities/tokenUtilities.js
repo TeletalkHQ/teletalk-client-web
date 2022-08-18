@@ -1,6 +1,9 @@
 import jwtDecode from "jwt-decode";
 
-import { errorThrower } from "functions/utilities/otherUtilities";
+import {
+  errorThrower,
+  printCatchError,
+} from "functions/utilities/otherUtilities";
 
 const tokenDecoder = (token) => {
   try {
@@ -12,7 +15,7 @@ const tokenDecoder = (token) => {
 
     return decodedToken;
   } catch (error) {
-    console.log("tokenDecoder catch", error);
+    printCatchError(tokenDecoder.name, error);
     throw error;
   }
 };

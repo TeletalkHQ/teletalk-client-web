@@ -4,6 +4,7 @@ import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { apiManager } from "classes/apiClasses/ApiManager";
 
 import { authenticationProgressChange } from "functions/utilities/commonActions";
+import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { notifications } from "variables/otherVariables/notifications";
@@ -39,7 +40,7 @@ const createNewUserController = () => {
 
       dispatch(commonFunctionalities.changeViewMode().messenger());
     } catch (error) {
-      console.log("createNewUserController catch, error:", error);
+      printCatchError(createNewUserController.name, error);
     } finally {
       dispatch(authenticationProgressChange(false));
     }

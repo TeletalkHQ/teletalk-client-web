@@ -5,6 +5,7 @@ import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { persistentStorage } from "classes/PersistentStorage";
 
 import { authenticationProgressChange } from "functions/utilities/commonActions";
+import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
@@ -39,7 +40,7 @@ const signInController = () => {
 
       return response;
     } catch (error) {
-      console.log("signInController catch", error);
+      printCatchError(signInController.name, error);
     } finally {
       dispatch(authenticationProgressChange(false));
     }

@@ -1,11 +1,14 @@
 import { List } from "@mui/material";
 
 import { tempActions } from "actions/tempActions";
+
 import { arrayUtilities } from "classes/ArrayUtilities";
 
 import ChatListItem from "components/leftSideComponents/ChatListItem";
 
 import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
+
+import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -19,10 +22,10 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
     <>
       <List
         sx={{
-          width: "80%",
-          overflowY: "scroll",
           height: "100%",
+          overflowY: "scroll",
           scrollBehavior: "smooth",
+          width: "80%",
         }}
       >
         {(() => {
@@ -70,7 +73,7 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
 
             return chatList;
           } catch (error) {
-            console.log("ChatList", error);
+            printCatchError(ChatList.name, error);
             return null;
           }
         })()}

@@ -1,5 +1,7 @@
 import { appOptions } from "classes/AppOptions";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { globalInitialActions } from "variables/initials/initialActions/globalInitialActions";
 
@@ -41,7 +43,7 @@ const globalReducer = (
         return state;
     }
   } catch (error) {
-    console.log("globalReducer catch, error:", error);
+    printCatchError(globalReducer.name, error);
   }
 };
 

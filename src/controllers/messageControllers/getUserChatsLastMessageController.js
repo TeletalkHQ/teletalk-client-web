@@ -2,6 +2,8 @@ import { userActions } from "actions/userActions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   try {
     const newChats = [...chats];
@@ -31,7 +33,7 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
 
     return { chatsWithLastMessage: newChats };
   } catch (error) {
-    console.log("handleAddUserLastMessage catch", error);
+    printCatchError(handleAddUserLastMessage.name, error);
   }
 };
 
@@ -50,7 +52,7 @@ const getUserChatsLastMessageController = ({ user }) => {
         userActions.updateAllUserDataAction({ chats: chatsWithLastMessage })
       );
     } catch (error) {
-      console.log("getUserChatsLastMessageController", error);
+      printCatchError(getUserChatsLastMessageController.name, error);
     }
   };
 };

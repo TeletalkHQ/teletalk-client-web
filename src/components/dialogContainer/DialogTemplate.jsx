@@ -7,6 +7,7 @@ import {
   Grow,
   useMediaQuery,
 } from "@mui/material";
+import { customTypeof } from "classes/CustomTypeof";
 
 const transitions = { Grow };
 
@@ -20,7 +21,7 @@ const DialogTemplate = ({
   open,
   paperStyle,
   titleContent,
-  TransitionComponent = "Grow", //TODO Read from initial value
+  TransitionComponent = "Grow", //TODO Read from appConfigs
   transitionDuration,
 }) => {
   const theme = useTheme();
@@ -32,8 +33,9 @@ const DialogTemplate = ({
     <Dialog
       fullScreen={fullScreen}
       keepMounted
-      {...(onClose &&
-        typeof onClose === "function" && { onClose: () => onClose() })}
+      {...(customTypeof.check(onClose).type.function && {
+        onClose: () => onClose(),
+      })}
       // onEscapeKeyDown={onEscapeKeyDown}
       onKeyDown={onKeyDown}
       open={open}

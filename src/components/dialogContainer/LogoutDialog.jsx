@@ -5,6 +5,8 @@ import CustomButton from "components/generals/inputs/CustomButton";
 
 import { logoutController } from "controllers/authControllers/logoutController";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 import { useMainContext } from "hooks/useMainContext";
 
 const LogoutDialog = ({ onClose }) => {
@@ -24,7 +26,9 @@ const LogoutDialog = ({ onClose }) => {
       dispatch(logoutController());
 
       handleClose();
-    } catch (error) {}
+    } catch (error) {
+      printCatchError(handleLogout.name, error);
+    }
   };
 
   const actionContent = (

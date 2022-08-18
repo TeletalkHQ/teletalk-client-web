@@ -1,8 +1,12 @@
 import Validator from "fastest-validator";
 
-import { errorThrower } from "functions/utilities/otherUtilities";
-import { objectUtilities } from "./ObjectUtilities";
-import { stuffStore } from "./StuffStore";
+import { objectUtilities } from "classes/ObjectUtilities";
+import { stuffStore } from "classes/StuffStore";
+
+import {
+  errorThrower,
+  printCatchError,
+} from "functions/utilities/otherUtilities";
 
 const v = new Validator();
 
@@ -35,7 +39,7 @@ class ValidatorManager {
         .objectEntries(validationModels)
         .forEach(this.processValidationModel.bind(this));
     } catch (error) {
-      logger.log("validatorCompiler catch, error:", error);
+      printCatchError(this.compileValidators.name, error);
       errorThrower(error, error);
     }
   };

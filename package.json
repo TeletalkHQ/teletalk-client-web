@@ -52,6 +52,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "circular-dependency-plugin": "^5.2.2",
     "eslint-plugin-spellcheck": "^0.0.19",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",

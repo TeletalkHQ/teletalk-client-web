@@ -2,6 +2,8 @@ import { userActions } from "actions/userActions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 const getAllChatMessagesController = ({ chatId }) => {
   return async (dispatch) => {
     try {
@@ -19,7 +21,7 @@ const getAllChatMessagesController = ({ chatId }) => {
 
       // dispatch(setMessagesAction({ messages: response.data.messages }));
     } catch (error) {
-      console.log("getAllChatMessagesController", error);
+      printCatchError(getAllChatMessagesController.name, error);
     }
   };
 };
