@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import Autocomplete from "@mui/material/Autocomplete";
 
 import CustomTextInput from "components/generals/inputs/CustomTextInput";

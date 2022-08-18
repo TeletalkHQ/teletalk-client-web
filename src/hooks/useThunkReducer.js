@@ -8,6 +8,7 @@ import { initialStates } from "variables/initials/initialStates/initialStates";
 
 //! Use it in special cases only!
 let extractedDispatch = (action = { type: "", payload: {} }) => {};
+let extractedDispatchAsync = async (action = { type: "", payload: {} }) => {};
 let useDispatch = () => extractedDispatch;
 let useSelector = () => initialStates;
 let actionLogger = (action) => {
@@ -48,6 +49,7 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
     );
 
     extractedDispatch = customDispatch;
+    extractedDispatchAsync = async (action) => customDispatch(action);
     useDispatch = useCallback(() => customDispatch, [customDispatch]);
     useSelector = useCallback(() => state, [state]);
 
@@ -64,6 +66,7 @@ export {
   actionLogger,
   combineReducers,
   extractedDispatch,
+  extractedDispatchAsync,
   useDispatch,
   useSelector,
   useThunkReducer,
