@@ -1,14 +1,15 @@
-import { Paper, Slide, Typography } from "@mui/material";
+import { Paper, Slide } from "@mui/material";
 
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomTypography from "components/generals/typographies/CustomTypography";
 
 const MessageListItem = ({
-  message,
-  messageTime,
   chatDate,
-  justify,
-  messageItemClassName,
   direction,
+  justify,
+  message,
+  messageItemClassName,
+  messageTime,
 }) => {
   return (
     <>
@@ -23,12 +24,12 @@ const MessageListItem = ({
             elevation={1}
             // onContextMenu={(e) => onOtherStateChange(e)}
           >
-            <Typography style={{ wordBreak: "break-word" }}>
+            <CustomTypography style={{ wordBreak: "break-word" }}>
               {message}
-            </Typography>
-            <Typography style={{ fontSize: "13px", float: "right" }}>
+            </CustomTypography>
+            <CustomTypography style={{ fontSize: "13px", float: "right" }}>
               {messageTime} {chatDate}
-            </Typography>
+            </CustomTypography>
           </Paper>
         </Slide>
       </CustomFlexBox>

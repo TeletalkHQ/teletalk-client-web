@@ -1,9 +1,11 @@
-import { Avatar, Container, IconButton, Typography } from "@mui/material";
+import { Avatar, Container, IconButton } from "@mui/material";
 import { VerifiedUser, ArrowBack, Fingerprint } from "@mui/icons-material";
 
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
+import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
+import H5 from "components/generals/typographies/H5";
 
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
@@ -36,19 +38,13 @@ const VerifySignIn = ({
         </Avatar>
         <Container maxWidth="xs">
           <CustomBox sx={{ mt: 1 }}>
-            {/* //TODO Add Typography to general components */}
-            <Typography
-              component="h5"
-              variant="h5"
-              sx={{ textAlign: "center", fontWeight: "900" }}
-            >
+            <H5>
               +{countryCode} {phoneNumber}
-            </Typography>
+            </H5>
 
-            {/* //TODO Add Typography to general components */}
-            <Typography component="p" variant="p" color="GrayText">
+            <GreyTextParagraph>
               We've sent the code to the Teletalk app to your phone number.
-            </Typography>
+            </GreyTextParagraph>
 
             <CustomTextInput
               required

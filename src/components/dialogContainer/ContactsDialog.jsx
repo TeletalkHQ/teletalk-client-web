@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 
-import { Typography } from "@mui/material";
-
 import { globalActions } from "actions/globalActions";
 import { tempActions } from "actions/tempActions";
 
@@ -12,6 +10,7 @@ import ContactListItem from "components/dialogContainer/ContactListItem";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomTypography from "components/generals/typographies/CustomTypography";
 
 import { getContactsController } from "controllers/cellphoneController/getContactsController";
 import { elementNames } from "variables/initials/initialValues/elementNames";
@@ -63,7 +62,7 @@ const ContactsDialog = ({ onClose }) => {
     <>
       <CustomFlexBox jc="space-between" ai="center">
         <CustomBox>
-          <Typography>Contacts</Typography>
+          <CustomTypography>Contacts</CustomTypography>
         </CustomBox>
         <CustomBox></CustomBox>
       </CustomFlexBox>

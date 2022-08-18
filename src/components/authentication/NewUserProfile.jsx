@@ -1,10 +1,11 @@
 import { AccountCircleOutlined, ArrowBack, Check } from "@mui/icons-material";
-import { Container, IconButton, Typography } from "@mui/material";
+import { Container, IconButton } from "@mui/material";
 
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
+import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
@@ -29,9 +30,9 @@ const NewUserProfile = ({
           <AccountCircleOutlined fontSize="large" color="primary" />
         </CustomBox>
         <Container maxWidth="xs">
-          <Typography component="p" variant="p" color="GrayText">
+          <GreyTextParagraph>
             Please enter this information to complete your account creation.
-          </Typography>
+          </GreyTextParagraph>
           <CustomTextInput
             required
             id="firstNameInput"
