@@ -2,6 +2,8 @@ import { userActions } from "actions/userActions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 const getAllChatsController = () => {
   return async (dispatch) => {
     try {
@@ -12,7 +14,7 @@ const getAllChatsController = () => {
         userActions.updateAllUserDataAction({ chats: response.data.chats })
       );
     } catch (error) {
-      console.log("getAllChatsController", error);
+      printCatchError(getAllChatsController.name, error);
     }
   };
 };

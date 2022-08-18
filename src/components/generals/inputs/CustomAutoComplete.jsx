@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
   activityItem: { fontSize: 14, padding: "3px", direction: "ltr" },
 }));
 
-export default function CustomAutoComplete({
+const CustomAutoComplete = ({
   activityInputValue,
   finalActivities,
   onInputChange,
-}) {
+}) => {
   const classes = useStyles();
 
   return (
@@ -71,4 +71,6 @@ export default function CustomAutoComplete({
       />
     </>
   );
-}
+};
+
+export default CustomAutoComplete;

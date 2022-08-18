@@ -1,6 +1,7 @@
 import { appOptions } from "classes/AppOptions";
 
 import { mergePrevStateWithPayload } from "functions/utilities/stateUtils";
+import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { otherInitialActions } from "variables/initials/initialActions/otherInitialActions";
@@ -34,7 +35,7 @@ const otherReducer = (
         return state;
     }
   } catch (error) {
-    console.log("otherReducer catch", error);
+    printCatchError(otherReducer.name, error);
   }
 };
 

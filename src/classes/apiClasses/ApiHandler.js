@@ -107,6 +107,7 @@ class ApiHandler {
 
   #responseErrorsHandler(response) {
     const statusCode = response.statusCode || response.status;
+
     if (statusCode === 401) commonFunctionalities.resetEverything();
     else if (statusCode >= 400) {
       const correctedErrors = this.#correctResponseErrors(response.data.errors);

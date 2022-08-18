@@ -7,6 +7,7 @@ import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 
 import { authenticationProgressChange } from "functions/utilities/commonActions";
+import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
@@ -69,7 +70,7 @@ const verifySignInController = () => {
         commonFunctionalities.changeViewMode().messenger();
       }
     } catch (error) {
-      console.log("verifySignInController catch, error:", error);
+      printCatchError(verifySignInController.name, error);
     } finally {
       dispatch(authenticationProgressChange(false));
     }

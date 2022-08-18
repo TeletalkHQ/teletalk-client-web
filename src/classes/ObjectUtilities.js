@@ -1,5 +1,7 @@
 import { customTypeof } from "classes/CustomTypeof";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 class ObjectUtilities {
   objectKeys(object) {
     return Object.keys(object);
@@ -91,7 +93,7 @@ class ObjectUtilities {
 
       return tempObj;
     } catch (error) {
-      logger.log("objectInitializer catch, error:", error);
+      printCatchError(this.objectInitializer.name, error);
     }
   }
 }

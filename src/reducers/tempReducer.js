@@ -1,20 +1,21 @@
 import { appOptions } from "classes/AppOptions";
 
 import { mergePrevStateWithPayload } from "functions/utilities/stateUtils";
+import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
 
 const {
-  selectedContactIdInitialAction,
-  messageInputInitialAction,
-  setMessagesInitialAction,
   countryCodeInitialAction,
   countryNameInitialAction,
   firstNameInitialAction,
   lastNameInitialAction,
+  messageInputInitialAction,
   phoneNumberInitialAction,
+  selectedContactIdInitialAction,
   selectedCountryInitialAction,
+  setMessagesInitialAction,
   verificationCodeInitialAction,
 } = tempInitialActions;
 
@@ -62,7 +63,7 @@ const tempReducer = (
         return state;
     }
   } catch (error) {
-    console.log("tempReducer catch", error);
+    printCatchError(tempReducer.name, error);
   }
 };
 

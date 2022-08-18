@@ -2,6 +2,8 @@ import { userActions } from "actions/userActions";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { apiManager } from "classes/apiClasses/ApiManager";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 
 const sendPrivateMessageController = () => {
@@ -25,7 +27,7 @@ const sendPrivateMessageController = () => {
 
       commonFunctionalities.resetMessageInputText();
     } catch (error) {
-      console.log("sendPrivateMessageController", error);
+      printCatchError(sendPrivateMessageController.name, error);
     }
   };
 };

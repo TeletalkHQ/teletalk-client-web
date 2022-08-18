@@ -1,17 +1,21 @@
-import MessageInput from "components/rightSideComponents/MessageInput";
-import MessageList from "components/rightSideComponents/MessageList";
-import ChatBar from "components/rightSideComponents/ChatBar";
-
-import { useMainContext } from "hooks/useMainContext";
+import { useEffect } from "react";
 
 import { tempActions } from "actions/tempActions";
 
-import { sendPrivateMessageController } from "controllers/messageControllers/sendPrivateMessageController";
-import { useEffect } from "react";
-import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
-import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomBox from "components/generals/boxes/CustomBox";
 import { arrayUtilities } from "classes/ArrayUtilities";
+
+import ChatBar from "components/rightSideComponents/ChatBar";
+import CustomBox from "components/generals/boxes/CustomBox";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import MessageInput from "components/rightSideComponents/MessageInput";
+import MessageList from "components/rightSideComponents/MessageList";
+
+import { sendPrivateMessageController } from "controllers/messageControllers/sendPrivateMessageController";
+import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
+
+import { printCatchError } from "functions/utilities/otherUtilities";
+
+import { useMainContext } from "hooks/useMainContext";
 
 const { selectedContactId, messageInputOnChangeAction } = tempActions;
 
@@ -46,7 +50,7 @@ const RightSideContainer = () => {
         };
       }
     } catch (error) {
-      console.log("RightSideContainer useEffect for chat updater", error);
+      printCatchError(RightSideContainer.name, error);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

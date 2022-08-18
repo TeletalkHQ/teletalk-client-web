@@ -2,6 +2,8 @@ import { apiManager } from "classes/apiClasses/ApiManager";
 
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 const logoutController = () => {
   return async () => {
     try {
@@ -9,7 +11,7 @@ const logoutController = () => {
 
       commonFunctionalities.resetEverything();
     } catch (error) {
-      console.log("logoutController catch, error:", error);
+      printCatchError(logoutController.name, error);
     }
   };
 };

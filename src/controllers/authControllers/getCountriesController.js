@@ -2,6 +2,8 @@ import { otherActions } from "actions/otherActions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 const getCountriesController = () => {
   return async (dispatch) => {
     try {
@@ -11,7 +13,7 @@ const getCountriesController = () => {
 
       dispatch(otherActions.getCountriesAction({ countries }));
     } catch (error) {
-      console.log("getCountriesController catch, error:", error);
+      printCatchError(getCountriesController.name, error);
     }
   };
 };

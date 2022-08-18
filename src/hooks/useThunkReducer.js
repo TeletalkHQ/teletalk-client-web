@@ -1,5 +1,9 @@
 import { useCallback, useReducer } from "react";
 
+import { customTypeof } from "classes/CustomTypeof";
+
+import { printCatchError } from "functions/utilities/otherUtilities";
+
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
 //! Use it in special cases only!
@@ -32,7 +36,7 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
 
     const customDispatch = useCallback(
       (action) => {
-        return typeof action === "function"
+        return customTypeof.check(action).type.function
           ? action(dispatch, getState)
           : (() => {
               configs.actionLogger && actionLogger(action);
@@ -49,6 +53,7 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
 
     return [state, customDispatch];
   } catch (error) {
+    printCatchError(useThunkReducer.name, error);
     throw error;
   }
 };
