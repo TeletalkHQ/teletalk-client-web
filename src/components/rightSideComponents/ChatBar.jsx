@@ -1,8 +1,9 @@
 import { Close, MoreVert } from "@mui/icons-material";
-import { IconButton, Paper, Avatar, Typography } from "@mui/material";
+import { IconButton, Paper, Avatar } from "@mui/material";
 
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomTypography from "components/generals/typographies/CustomTypography";
 
 const ChatBar = ({ chatName, onMessageContainerCloseClick }) => {
   return (
@@ -20,7 +21,7 @@ const ChatBar = ({ chatName, onMessageContainerCloseClick }) => {
           </CustomBox>
           <CustomFlexBox ai="center">
             <Avatar alt={chatName} />
-            <Typography>{chatName}</Typography>
+            <CustomTypography>{chatName}</CustomTypography>
           </CustomFlexBox>
           <CustomBox>
             <IconButton>

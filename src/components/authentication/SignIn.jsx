@@ -1,4 +1,4 @@
-import { Avatar, Typography, Container, CircularProgress } from "@mui/material";
+import { Avatar, Container, CircularProgress } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
 
 import { stringUtilities } from "classes/StringUtilities";
@@ -8,6 +8,8 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
+import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
+import H5 from "components/generals/typographies/H5";
 
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
@@ -30,15 +32,13 @@ const SignIn = ({
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
           <LockOutlined />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
+        <H5>Sign in</H5>
         <Container maxWidth="xs">
           <CustomBox style={{ marginTop: 1 }}>
-            <Typography component="p" variant="p" color="GrayText">
+            <GreyTextParagraph>
               Please verify your country code and enter your mobile phone
               number.
-            </Typography>
+            </GreyTextParagraph>
 
             {countries && (
               <CountrySelector

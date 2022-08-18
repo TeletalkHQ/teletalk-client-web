@@ -1,6 +1,7 @@
-import { Typography, Link } from "@mui/material";
+import { Link } from "@mui/material";
 
 import { appConfigs } from "classes/AppConfigs";
+import CustomTypography from "components/generals/typographies/CustomTypography";
 
 const Copyright = (props) => {
   const {
@@ -8,7 +9,7 @@ const Copyright = (props) => {
   } = appConfigs.getConfigs();
 
   return (
-    <Typography
+    <CustomTypography
       variant="body2"
       color="text.secondary"
       align="center"
@@ -17,9 +18,9 @@ const Copyright = (props) => {
       {"Copyright © "}
       <Link color="inherit" href={APPLICATION_URL}>
         teletalk
-      </Link>{" "}
+      </Link>
       {new Date().getFullYear()}
-    </Typography>
+    </CustomTypography>
   );
 };
 

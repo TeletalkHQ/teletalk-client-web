@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import { Typography } from "@mui/material";
-
 import { useMainContext } from "hooks/useMainContext";
 
 import DialogTemplate from "components/dialogContainer/DialogTemplate";
@@ -13,6 +11,7 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import { addNewContactController } from "controllers/cellphoneController/addNewContactController";
 
 import { initialContact } from "variables/initials/initialValues/initialValues";
+import CustomTypography from "components/generals/typographies/CustomTypography";
 
 const AddNewContactDialog = ({ onClose }) => {
   const {
@@ -51,7 +50,7 @@ const AddNewContactDialog = ({ onClose }) => {
     <>
       <CustomFlexBox jc="space-between" ai="center">
         <CustomBox>
-          <Typography>New Contact</Typography>
+          <CustomTypography>New Contact</CustomTypography>
         </CustomBox>
         <CustomBox></CustomBox>
       </CustomFlexBox>
