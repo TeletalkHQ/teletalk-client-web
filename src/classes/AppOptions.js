@@ -1,3 +1,5 @@
+import { Grow, Zoom } from "@mui/material";
+
 class AppOptions {
   constructor() {
     this.options = {
@@ -11,6 +13,12 @@ class AppOptions {
         token: "",
       },
       actionOptions: { type: "", payload: {} },
+      ui: {
+        transitions: {
+          Grow,
+          Zoom,
+        },
+      },
     };
   }
 
