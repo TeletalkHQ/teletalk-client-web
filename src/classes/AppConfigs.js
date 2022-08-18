@@ -1,5 +1,10 @@
 import { envManager } from "classes/EnvironmentManager";
 
+import {
+  VIEW_MODES,
+  APP_DRAWER_ANCHORS,
+} from "variables/otherVariables/constants";
+
 class AppConfigs {
   constructor() {
     this.configs = {
@@ -7,22 +12,24 @@ class AppConfigs {
         actionLogger: true,
       },
       others: {
-        RUNTIME_MODE: this.#RUNTIME_MODE,
-        SERVER_BASE_URL: this.#SERVER_BASE_URLS[this.#RUNTIME_MODE],
-        CLIENT_BASE_URL: this.#CLIENT_BASE_URLS[this.#RUNTIME_MODE],
+        appDrawerCurrentAnchor: APP_DRAWER_ANCHORS.left,
+        startupViewMode: VIEW_MODES.SIGN_IN,
       },
       apiConfigs: {
         checkResponseStatus: true,
+        CLIENT_BASE_URL: this.#CLIENT_BASE_URLS[this.#RUNTIME_MODE],
         defaultHeaders: {
           Authorization: "",
           "Content-Type": "application/json",
         },
-        requestTimeout: 20000,
-        validateStatus: false,
         inputDataPropertiesCheck: true,
-        outputDataPropertiesCheck: false,
         logFailureResponse: false,
         logSuccessfulResponse: false,
+        outputDataPropertiesCheck: false,
+        requestTimeout: 20000,
+        RUNTIME_MODE: this.#RUNTIME_MODE,
+        SERVER_BASE_URL: this.#SERVER_BASE_URLS[this.#RUNTIME_MODE],
+        validateStatus: false,
       },
     };
 
@@ -32,12 +39,12 @@ class AppConfigs {
     envManager.ENVIRONMENT_KEYS.REACT_APP_RUNTIME_MODE
   );
   #CLIENT_BASE_URLS = {
-    production: "https://teletalk-client-web.vercel.app",
     development: "http://localhost:3000",
+    production: "https://teletalk-client-web.vercel.app",
   };
   #SERVER_BASE_URLS = {
-    production: "https://teletalk-server.herokuapp.com",
     development: "http://localhost:8080",
+    production: "https://teletalk-server.herokuapp.com",
   };
 
   getConfigs() {

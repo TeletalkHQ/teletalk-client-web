@@ -1,8 +1,10 @@
+import { appConfigs } from "classes/AppConfigs";
 import { windowUtilities } from "classes/WindowUtilities";
 
-import { VIEW_MODES } from "variables/otherVariables/constants";
+const {
+  others: { appDrawerCurrentAnchor, startupViewMode },
+} = appConfigs.getConfigs();
 
-//TODO Move some default values to appConfigs
 const globalInitialState = {
   appDrawerState: {
     anchor: {
@@ -11,7 +13,7 @@ const globalInitialState = {
       right: false,
       top: false,
     },
-    currentAnchor: "left",
+    currentAnchor: appDrawerCurrentAnchor,
   },
   globalLoadingState: {
     color: "#fff",
@@ -36,7 +38,7 @@ const globalInitialState = {
     isOnline: windowUtilities.isOnline(),
     ping: 0,
   },
-  viewMode: VIEW_MODES.SIGN_IN,
+  viewMode: startupViewMode,
 };
 
 export { globalInitialState };

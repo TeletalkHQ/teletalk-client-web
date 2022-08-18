@@ -3,8 +3,12 @@ import axios from "axios";
 import { appConfigs } from "classes/AppConfigs";
 
 const {
-  apiConfigs: { defaultHeaders, requestTimeout, validateStatus },
-  others: { SERVER_BASE_URL },
+  apiConfigs: {
+    defaultHeaders,
+    requestTimeout,
+    validateStatus,
+    SERVER_BASE_URL,
+  },
 } = appConfigs.getConfigs();
 
 const customAxios = axios.create({

@@ -4,7 +4,7 @@ import { appConfigs } from "classes/AppConfigs";
 
 const Copyright = (props) => {
   const {
-    others: { CLIENT_BASE_URL: APPLICATION_URL },
+    apiConfigs: { CLIENT_BASE_URL: APPLICATION_URL },
   } = appConfigs.getConfigs();
 
   return (
@@ -19,7 +19,6 @@ const Copyright = (props) => {
         teletalk
       </Link>{" "}
       {new Date().getFullYear()}
-      {"."}
     </Typography>
   );
 };
