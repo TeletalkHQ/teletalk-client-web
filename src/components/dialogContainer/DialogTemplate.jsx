@@ -4,30 +4,30 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Grow,
   useMediaQuery,
 } from "@mui/material";
 import { customTypeof } from "classes/CustomTypeof";
-
-const transitions = { Grow };
+import { appConfigs } from "classes/AppConfigs";
+import { appOptions } from "classes/AppOptions";
 
 const DialogTemplate = ({
   actionContent,
   dialogContent,
   dialogStyle,
   onClose,
-  // onEscapeKeyDown,
   onKeyDown,
   open,
   paperStyle,
   titleContent,
-  TransitionComponent = "Grow", //TODO Read from appConfigs
+  TransitionComponent = appConfigs.getConfigs().ui
+    .dialogTransitionalComponentType,
   transitionDuration,
 }) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const { [TransitionComponent]: Transition } = transitions;
+  const { [TransitionComponent]: Transition } =
+    appOptions.getOptions().ui.transitions;
 
   return (
     <Dialog

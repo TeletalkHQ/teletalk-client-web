@@ -8,6 +8,9 @@ import {
 class AppConfigs {
   constructor() {
     this.configs = {
+      ui: {
+        dialogTransitionalComponentType: "Grow",
+      },
       useThunkReducer: {
         actionLogger: true,
       },
