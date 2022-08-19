@@ -1,14 +1,14 @@
 import { useTheme } from "@mui/material/styles";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  useMediaQuery,
-} from "@mui/material";
+import { useMediaQuery } from "@mui/material";
+
 import { customTypeof } from "classes/CustomTypeof";
 import { appConfigs } from "classes/AppConfigs";
 import { appOptions } from "classes/AppOptions";
+
+import CustomDialog from "components/generals/boxes/CustomDialog";
+import CustomDialogActions from "components/generals/boxes/CustomDialogActions";
+import CustomDialogContent from "components/generals/boxes/CustomDialogContent";
+import CustomDialogTitle from "components/generals/boxes/CustomDialogTitle";
 
 const DialogTemplate = ({
   actionContent,
@@ -19,18 +19,23 @@ const DialogTemplate = ({
   open,
   paperStyle,
   titleContent,
-  TransitionComponent = appConfigs.getConfigs().ui
-    .dialogTransitionalComponentType,
+  TransitionComponent,
   transitionDuration,
 }) => {
   const theme = useTheme();
+  const { transitions } = appOptions.getOptions().ui;
+
+  const defaultTransitionComponentType =
+    appConfigs.getConfigs().ui.defaultDialogTransitionalComponentType;
+
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const { [TransitionComponent]: Transition } =
-    appOptions.getOptions().ui.transitions;
+  const Transition =
+    transitions[TransitionComponent] ||
+    transitions[defaultTransitionComponentType];
 
   return (
-    <Dialog
+    <CustomDialog
       fullScreen={fullScreen}
       keepMounted
       {...(customTypeof.check(onClose).type.function && {
@@ -50,17 +55,11 @@ const DialogTemplate = ({
       sx={{ ...dialogStyle }}
       TransitionComponent={Transition}
       transitionDuration={transitionDuration || 500}
-      // aria-labelledby="alert-dialog-slide-title"
-      // aria-describedby="alert-dialog-slide-description"
     >
-      {/* <Box sx={{}}> */}
-      <DialogTitle>{titleContent}</DialogTitle>
-
-      <DialogContent>{dialogContent}</DialogContent>
-
-      <DialogActions>{actionContent}</DialogActions>
-      {/* </Box> */}
-    </Dialog>
+      <CustomDialogTitle>{titleContent}</CustomDialogTitle>
+      <CustomDialogContent>{dialogContent}</CustomDialogContent>
+      <CustomDialogActions>{actionContent}</CustomDialogActions>
+    </CustomDialog>
   );
 };
 

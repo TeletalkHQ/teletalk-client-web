@@ -1,13 +1,13 @@
-import { AccountCircleOutlined, ArrowBack, Check } from "@mui/icons-material";
-import { Container, IconButton } from "@mui/material";
-
-import CustomButton from "components/generals/inputs/CustomButton";
-import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
+import CustomButton from "components/generals/inputs/CustomButton";
+import CustomContainer from "components/generals/boxes/CustomContainer";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 
 import { elementNames } from "variables/initials/initialValues/elementNames";
+import { appIcons } from "variables/initials/initialValues/appIcons";
 
 const NewUserProfile = ({
   authenticationProgress,
@@ -19,22 +19,23 @@ const NewUserProfile = ({
   onLastNameOnChange,
 }) => {
   return (
-    <Container maxWidth="xl">
+    <CustomContainer mw="xl">
       <CustomBox sx={{ mt: 1 }}>
-        <IconButton onClick={onBackClick}>
-          <ArrowBack />
-        </IconButton>
+        <CustomIconButton onClick={onBackClick}>
+          <appIcons.arrowBack.Icon />
+        </CustomIconButton>
       </CustomBox>
       <CustomFlexBox sx={{ marginTop: 8 }} col ai="center">
         <CustomBox>
-          <AccountCircleOutlined fontSize="large" color="primary" />
+          <appIcons.accountCircle.Icon fontSize="large" color="primary" />
         </CustomBox>
-        <Container maxWidth="xs">
+        <CustomContainer mw="xs">
           <GreyTextParagraph>
             Please enter this information to complete your account creation.
           </GreyTextParagraph>
           <CustomTextInput
             required
+            //TODO Add to elementIds
             id="firstNameInput"
             name={elementNames.firstName}
             autoFocus
@@ -55,14 +56,14 @@ const NewUserProfile = ({
             loading={authenticationProgress}
             loadingPosition="end"
             onClick={onConfirmClick}
-            endIcon={<Check />}
+            endIcon={<appIcons.check.Icon />}
             sx={{ mt: 1 }}
           >
             Confirm
           </CustomButton>
-        </Container>
+        </CustomContainer>
       </CustomFlexBox>
-    </Container>
+    </CustomContainer>
   );
 };
 
