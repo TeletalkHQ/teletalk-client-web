@@ -1,5 +1,5 @@
-import { Grow, Zoom } from "@mui/material";
+import { Grow, Zoom, Slide } from "@mui/material";
 
-const transitionComponents = { Grow, Zoom };
+const transitionComponents = { Grow, Zoom, Slide };
 
 export { transitionComponents };

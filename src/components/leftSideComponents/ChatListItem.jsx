@@ -1,11 +1,11 @@
-import { Avatar, ListItem } from "@mui/material";
-
+import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomListItem from "components/generals/boxes/CustomListItem";
 
-const ChatListItem = ({ selected, message, name, onChatListItemClick }) => {
+const ChatListItem = ({ message, name, onChatListItemClick, selected }) => {
   return (
-    <ListItem
+    <CustomListItem
       button
       selected={selected}
       sx={{
@@ -15,7 +15,7 @@ const ChatListItem = ({ selected, message, name, onChatListItemClick }) => {
       onClick={onChatListItemClick}
     >
       <CustomBox>
-        <Avatar />
+        <CustomAvatar />
       </CustomBox>
       <CustomFlexBox col sx={{ width: "100%" }}>
         <CustomFlexBox jc="space-between" ai="center">
@@ -27,7 +27,7 @@ const ChatListItem = ({ selected, message, name, onChatListItemClick }) => {
           <CustomBox>icons</CustomBox>
         </CustomFlexBox>
       </CustomFlexBox>
-    </ListItem>
+    </CustomListItem>
   );
 };
 

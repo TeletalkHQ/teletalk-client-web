@@ -1,9 +1,10 @@
-import { Backdrop, CircularProgress } from "@mui/material";
+import CustomBackdrop from "components/generals/otherGeneralComponents/CustomBackdrop";
+import CustomCircularProgress from "components/generals/progresses/CustomCircularProgress";
 
 const DefaultGlobalLoading = ({ globalLoadingState, onBackdropClose }) => {
   return (
     <>
-      <Backdrop
+      <CustomBackdrop
         sx={{
           color: globalLoadingState.color,
           zIndex: (theme) => theme.zIndex.drawer + 1,
@@ -11,8 +12,8 @@ const DefaultGlobalLoading = ({ globalLoadingState, onBackdropClose }) => {
         open={globalLoadingState.open}
         onClick={onBackdropClose}
       >
-        <CircularProgress color={globalLoadingState.progressColor} />
-      </Backdrop>
+        <CustomCircularProgress color={globalLoadingState.progressColor} />
+      </CustomBackdrop>
     </>
   );
 };

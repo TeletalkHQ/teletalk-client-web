@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 
-import { Grid } from "@mui/material";
-
 import { globalActions } from "actions/globalActions";
 
 import { appOptions } from "classes/AppOptions";
@@ -12,6 +10,7 @@ import Authentication from "components/authentication/Authentication";
 import LeftSideContainer from "components/leftSideComponents/LeftSideContainer";
 import PortalContainer from "components/portal/PortalContainer";
 import RightSideContainer from "components/rightSideComponents/RightSideContainer";
+import GridContainer from "components/generals/boxes/GridContainer";
 
 import { getAllStuffController } from "controllers/versionControlController/getAllStuffController";
 
@@ -34,7 +33,6 @@ const MainContainer = () => {
   const {
     state: {
       userState,
-      tempState: { selectedContact },
       globalState: { viewMode },
     },
     hooksOutput: { dispatch, dispatchAsync },
@@ -46,10 +44,20 @@ const MainContainer = () => {
 
   useEffect(() => {
     addOnlineStatusEvents();
+
+    const {
+      EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
+    } = appOptions.getOptions();
+
+    eventManager.addListener(ALL_STUFF_RECEIVED, allStuffReceivedListener);
+
+    return () => {
+      eventManager.removeAllListener(ALL_STUFF_RECEIVED);
+    };
   }, []);
 
   useEffect(() => {
-    const fn = async () => {
+    const updateUserThingsOnTokenChange = async () => {
       try {
         if (!mainToken) return;
 
@@ -63,7 +71,7 @@ const MainContainer = () => {
 
         await dispatchAsync(getAllStuffController());
       } catch (error) {
-        printCatchError(fn.name, error);
+        printCatchError(updateUserThingsOnTokenChange.name, error);
       } finally {
         dispatch(
           globalActions.globalLoadingStateOpenChangeAction({ open: false })
@@ -71,51 +79,23 @@ const MainContainer = () => {
       }
     };
 
-    fn();
+    updateUserThingsOnTokenChange();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mainToken]);
 
-  useEffect(() => {
-    const {
-      EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
-    } = appOptions.getOptions();
-
-    eventManager.addListener(ALL_STUFF_RECEIVED, allStuffReceivedListener);
-
-    return () => {
-      eventManager.removeAllListener(ALL_STUFF_RECEIVED);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN } = VIEW_MODES;
+  const authenticationViewModes = [NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN];
 
   return (
     <>
-      {!userState.privateId || viewMode !== VIEW_MODES.MESSENGER ? (
+      {authenticationViewModes.includes(viewMode) ? (
         <Authentication />
       ) : (
         <>
-          <Grid container style={{ height: "100vh" }}>
-            <Grid
-              sx={{ backgroundColor: "lightcyan" }}
-              item
-              container
-              sm={12}
-              md={4}
-              lg={3}
-            >
-              <LeftSideContainer />
-            </Grid>
-
-            <Grid
-              sx={{ backgroundColor: "tomato", height: "100%" }}
-              item
-              container
-              lg={9}
-              md={8}
-            >
-              {selectedContact.privateId && <RightSideContainer />}
-            </Grid>
-          </Grid>
+          <GridContainer style={{ height: "100vh" }}>
+            <LeftSideContainer />
+            <RightSideContainer />
+          </GridContainer>
         </>
       )}
       <PortalContainer />

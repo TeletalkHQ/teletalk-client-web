@@ -1,12 +1,13 @@
-import { Avatar, Container, IconButton } from "@mui/material";
-import { VerifiedUser, ArrowBack, Fingerprint } from "@mui/icons-material";
-
-import CustomButton from "components/generals/inputs/CustomButton";
-import CustomTextInput from "components/generals/inputs/CustomTextInput";
+import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
+import CustomButton from "components/generals/inputs/CustomButton";
+import CustomContainer from "components/generals/boxes/CustomContainer";
+import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import H5 from "components/generals/typographies/H5";
 
+import { appIcons } from "variables/initials/initialValues/appIcons";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const VerifySignIn = ({
@@ -19,11 +20,11 @@ const VerifySignIn = ({
   verificationCode,
 }) => {
   return (
-    <Container maxWidth="xl">
+    <CustomContainer maxWidth="xl">
       <CustomBox sx={{ mt: 1 }}>
-        <IconButton onClick={onBackClick}>
-          <ArrowBack />
-        </IconButton>
+        <CustomIconButton onClick={onBackClick}>
+          <appIcons.arrowBack.Icon />
+        </CustomIconButton>
       </CustomBox>
       <CustomBox
         sx={{
@@ -33,10 +34,10 @@ const VerifySignIn = ({
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.secondary" }}>
-          <VerifiedUser />
-        </Avatar>
-        <Container maxWidth="xs">
+        <CustomAvatar sx={{ m: 1, bgcolor: "secondary.secondary" }}>
+          <appIcons.verifiedUser.Icon />
+        </CustomAvatar>
+        <CustomContainer maxWidth="xs">
           <CustomBox sx={{ mt: 1 }}>
             <H5>
               +{countryCode} {phoneNumber}
@@ -60,15 +61,15 @@ const VerifySignIn = ({
               loading={authenticationProgress}
               loadingPosition="end"
               onClick={onVerifyClick}
-              endIcon={<Fingerprint />}
+              endIcon={<appIcons.fingerprint.Icon />}
               sx={{ mt: 2, mb: 2 }}
             >
               Verify
             </CustomButton>
           </CustomBox>
-        </Container>
+        </CustomContainer>
       </CustomBox>
-    </Container>
+    </CustomContainer>
   );
 };
 

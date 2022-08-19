@@ -10,6 +10,7 @@ const CustomButton = ({
   style,
   ...props
 }) => {
+  //TODO WHAT!?! Separate into two components
   const SelectedComponent = btn || button ? Button : LoadingButton;
 
   return (

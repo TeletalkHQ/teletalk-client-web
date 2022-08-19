@@ -1,35 +1,37 @@
-import { Close, MoreVert } from "@mui/icons-material";
-import { IconButton, Paper, Avatar } from "@mui/material";
-
+import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
+import CustomPaper from "components/generals/boxes/CustomPaper";
 import CustomTypography from "components/generals/typographies/CustomTypography";
+
+import { appIcons } from "variables/initials/initialValues/appIcons";
 
 const ChatBar = ({ chatName, onMessageContainerCloseClick }) => {
   return (
     <>
-      <Paper sx={{ width: "100%", height: "100%" }}>
+      <CustomPaper sx={{ width: "100%", height: "100%" }}>
         <CustomFlexBox
           sx={{ width: "100%", height: "100%" }}
           jc="space-between"
           ai="center"
         >
           <CustomBox>
-            <IconButton onClick={onMessageContainerCloseClick}>
-              <Close />
-            </IconButton>
+            <CustomIconButton onClick={onMessageContainerCloseClick}>
+              <appIcons.close.Icon />
+            </CustomIconButton>
           </CustomBox>
           <CustomFlexBox ai="center">
-            <Avatar alt={chatName} />
+            <CustomAvatar alt={chatName} />
             <CustomTypography>{chatName}</CustomTypography>
           </CustomFlexBox>
           <CustomBox>
-            <IconButton>
-              <MoreVert />
-            </IconButton>
+            <CustomIconButton>
+              <appIcons.moreVertical.Icon />
+            </CustomIconButton>
           </CustomBox>
         </CustomFlexBox>
-      </Paper>
+      </CustomPaper>
     </>
   );
 };

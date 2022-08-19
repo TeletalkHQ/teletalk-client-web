@@ -4,6 +4,7 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
 
 import { elementNames } from "variables/initials/initialValues/elementNames";
+import Img from "components/generals/otherGeneralComponents/Img";
 
 //CLEANME CountrySelector Autocomplete
 const CountrySelector = ({
@@ -33,7 +34,7 @@ const CountrySelector = ({
           sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
           {...props}
         >
-          <img
+          <Img
             loading="lazy"
             width="20"
             src={`https://flagcdn.com/w20/${option.countryShortName.toLowerCase()}.png`}

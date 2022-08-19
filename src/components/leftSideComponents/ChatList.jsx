@@ -1,9 +1,8 @@
-import { List } from "@mui/material";
-
 import { tempActions } from "actions/tempActions";
 
 import { arrayUtilities } from "classes/ArrayUtilities";
 
+import CustomList from "components/generals/boxes/CustomList";
 import ChatListItem from "components/leftSideComponents/ChatListItem";
 
 import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
@@ -20,7 +19,7 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
 
   return (
     <>
-      <List
+      <CustomList
         sx={{
           height: "100%",
           overflowY: "scroll",
@@ -77,7 +76,7 @@ const ChatList = ({ chats = [], contacts, selectedContact }) => {
             return null;
           }
         })()}
-      </List>
+      </CustomList>
     </>
   );
 };

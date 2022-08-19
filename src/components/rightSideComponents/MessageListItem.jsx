@@ -1,7 +1,8 @@
-import { Paper, Slide } from "@mui/material";
-
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomPaper from "components/generals/boxes/CustomPaper";
 import CustomTypography from "components/generals/typographies/CustomTypography";
+
+import { transitionComponents } from "variables/otherVariables/transitionComponents";
 
 const MessageListItem = ({
   chatDate,
@@ -17,8 +18,13 @@ const MessageListItem = ({
         sx={{ width: "100%", padding: "3px" }}
         justifyContent={justify}
       >
-        <Slide direction={direction} in={true} mountOnEnter unmountOnExit>
-          <Paper
+        <transitionComponents.Slide
+          direction={direction}
+          in={true}
+          mountOnEnter
+          unmountOnExit
+        >
+          <CustomPaper
             sx={{ padding: "3px" }}
             className={`${messageItemClassName}`}
             elevation={1}
@@ -30,8 +36,8 @@ const MessageListItem = ({
             <CustomTypography style={{ fontSize: "13px", float: "right" }}>
               {messageTime} {chatDate}
             </CustomTypography>
-          </Paper>
-        </Slide>
+          </CustomPaper>
+        </transitionComponents.Slide>
       </CustomFlexBox>
     </>
   );

@@ -1,4 +1,5 @@
-import { List, ListItem } from "@mui/material";
+import CustomList from "components/generals/boxes/CustomList";
+import CustomListItem from "components/generals/boxes/CustomListItem";
 
 import { appIcons } from "variables/initials/initialValues/appIcons";
 
@@ -19,10 +20,11 @@ const sidebarList = [
 const SideBarList = () => {
   return (
     <>
-      <List sx={{ width: "20%" }}>
+      <CustomList sx={{ width: "20%" }}>
         {sidebarList.map((item, index) => {
           return (
-            <ListItem
+            //TODO Flex list item
+            <CustomListItem
               button
               key={index}
               selected={index === 4}
@@ -35,10 +37,10 @@ const SideBarList = () => {
               }}
             >
               <item.Icon />
-            </ListItem>
+            </CustomListItem>
           );
         })}
-      </List>
+      </CustomList>
     </>
   );
 };

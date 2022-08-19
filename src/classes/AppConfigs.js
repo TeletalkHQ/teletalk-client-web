@@ -10,6 +10,7 @@ class AppConfigs {
     this.configs = {
       ui: {
         dialogTransitionalComponentType: "Grow",
+        defaultDialogTransitionalComponentType: "Grow",
       },
       useThunkReducer: {
         actionLogger: true,

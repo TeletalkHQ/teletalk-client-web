@@ -1,16 +1,17 @@
-import { Avatar, Container, CircularProgress } from "@mui/material";
-import { LockOutlined } from "@mui/icons-material";
-
 import { stringUtilities } from "classes/StringUtilities";
 
-import CountrySelector from "components/others/CountrySelector";
+import CountrySelector from "components/otherComponents/CountrySelector";
+import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
+import CustomCircularProgress from "components/generals/progresses/CustomCircularProgress";
+import CustomContainer from "components/generals/boxes/CustomContainer";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import H5 from "components/generals/typographies/H5";
 
+import { appIcons } from "variables/initials/initialValues/appIcons";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const SignIn = ({
@@ -27,13 +28,13 @@ const SignIn = ({
   selectedCountry,
 }) => {
   return (
-    <Container maxWidth="xl">
+    <CustomContainer mw="xl">
       <CustomFlexBox mt={8} ai="center" col>
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlined />
-        </Avatar>
+        <CustomAvatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <appIcons.lockOutlined.Icon />
+        </CustomAvatar>
         <H5>Sign in</H5>
-        <Container maxWidth="xs">
+        <CustomContainer mw="xs">
           <CustomBox style={{ marginTop: 1 }}>
             <GreyTextParagraph>
               Please verify your country code and enter your mobile phone
@@ -89,7 +90,7 @@ const SignIn = ({
               loadingIndicator={
                 <>
                   <span>Please wait...</span> &nbsp;&nbsp;
-                  <CircularProgress size={25} color="info" />
+                  <CustomCircularProgress size={25} color="info" />
                 </>
               }
               onClick={onSignInClick}
@@ -98,9 +99,9 @@ const SignIn = ({
               Next
             </CustomButton>
           </CustomBox>
-        </Container>
+        </CustomContainer>
       </CustomFlexBox>
-    </Container>
+    </CustomContainer>
   );
 };
 

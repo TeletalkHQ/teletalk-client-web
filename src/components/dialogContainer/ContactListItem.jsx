@@ -1,11 +1,11 @@
-import { Avatar, ListItem } from "@mui/material";
-
+import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomListItem from "components/generals/boxes/CustomListItem";
 
 const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
   return (
-    <ListItem
+    <CustomListItem
       button
       sx={{
         display: "flex",
@@ -14,7 +14,7 @@ const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
       onClick={onContactClick}
     >
       <CustomBox>
-        <Avatar />
+        <CustomAvatar />
       </CustomBox>
       <CustomBox col sx={{ width: "100%", ml: 1 }}>
         <CustomFlexBox jc="space-between" ai="center">
@@ -26,7 +26,7 @@ const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
           {/* <CustomBox>icons</CustomBox> */}
         </CustomFlexBox>
       </CustomBox>
-    </ListItem>
+    </CustomListItem>
   );
 };
 
