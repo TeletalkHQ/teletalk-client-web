@@ -8,7 +8,7 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
 
-import { addNewContactController } from "controllers/cellphoneController/addNewContactController";
+import { addNewContactController } from "controllers/cellphoneControllers/addNewContactController";
 
 import { initialContact } from "variables/initials/initialValues/initialValues";
 import CustomTypography from "components/generals/typographies/CustomTypography";
