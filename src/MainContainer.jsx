@@ -12,7 +12,7 @@ import PortalContainer from "components/portal/PortalContainer";
 import RightSideContainer from "components/rightSideComponents/RightSideContainer";
 import GridContainer from "components/generals/boxes/GridContainer";
 
-import { getAllStuffController } from "controllers/versionControlController/getAllStuffController";
+import { getAllStuffController } from "controllers/versionControlControllers/getAllStuffController";
 
 import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 import {

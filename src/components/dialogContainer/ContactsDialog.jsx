@@ -12,7 +12,7 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomTypography from "components/generals/typographies/CustomTypography";
 
-import { getContactsController } from "controllers/cellphoneController/getContactsController";
+import { getContactsController } from "controllers/cellphoneControllers/getContactsController";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const ContactsDialog = ({ onClose }) => {
