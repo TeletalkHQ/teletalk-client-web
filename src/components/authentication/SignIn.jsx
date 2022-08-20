@@ -19,10 +19,10 @@ const SignIn = ({
   countries,
   countryCode,
   countryName,
-  onCountryCodeChange,
-  onCountryNameAutocompleteOnchange,
-  onCountryNameOnInputChange,
-  onPhoneNumberChange,
+  onCountryCodeInputChange,
+  onCountryNameAutocompleteInputChange,
+  onCountryNameInputChange,
+  onPhoneNumberInputChange,
   onSignInClick,
   phoneNumber,
   selectedCountry,
@@ -45,10 +45,10 @@ const SignIn = ({
               <CountrySelector
                 countries={countries}
                 countryName={countryName}
-                onCountryNameAutocompleteOnchange={
-                  onCountryNameAutocompleteOnchange
+                onCountryNameAutocompleteInputChange={
+                  onCountryNameAutocompleteInputChange
                 }
-                onCountryNameOnInputChange={onCountryNameOnInputChange}
+                onCountryNameInputChange={onCountryNameInputChange}
                 selectedCountry={selectedCountry}
               />
             )}
@@ -68,7 +68,7 @@ const SignIn = ({
                   ),
                 }}
                 value={countryCode}
-                onChange={onCountryCodeChange}
+                onChange={onCountryCodeInputChange}
               />
               <CustomTextInput
                 required
@@ -77,7 +77,7 @@ const SignIn = ({
                 autoComplete="tel-national"
                 style={{ marginLeft: "5px" }}
                 value={phoneNumber}
-                onChange={onPhoneNumberChange}
+                onChange={onPhoneNumberInputChange}
               />
             </CustomFlexBox>
 

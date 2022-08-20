@@ -14,7 +14,7 @@ const VerifySignIn = ({
   authenticationProgress,
   countryCode,
   onBackClick,
-  onVerificationCodeChange,
+  onVerificationCodeInputChange,
   onVerifyClick,
   phoneNumber,
   verificationCode,
@@ -53,7 +53,7 @@ const VerifySignIn = ({
               name={elementNames.verificationCode}
               autoFocus
               value={verificationCode}
-              onChange={onVerificationCodeChange}
+              onChange={onVerificationCodeInputChange}
             />
 
             <CustomButton

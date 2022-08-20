@@ -1,6 +1,7 @@
 import { tempActions } from "actions/tempActions";
 
 import { arrayUtilities } from "classes/ArrayUtilities";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { customTypeof } from "classes/CustomTypeof";
 import { domUtilities } from "classes/DomUtilities";
 import { stringUtilities } from "classes/StringUtilities";
@@ -18,7 +19,6 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
 import { elementNames } from "variables/initials/initialValues/elementNames";
-import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 const {
   countryCodeOnChangeAction,
@@ -63,7 +63,7 @@ const Authentication = () => {
     dispatch(verifySignInController());
   };
 
-  const handlePhoneNumberChange = (event) => {
+  const handlePhoneNumberInputChange = (event) => {
     const value = event.target.value;
 
     if (
@@ -75,7 +75,7 @@ const Authentication = () => {
     }
   };
 
-  const handleCountryCodeChange = (event) => {
+  const handleCountryCodeInputChange = (event) => {
     const value = event.target.value;
 
     if (
@@ -96,7 +96,7 @@ const Authentication = () => {
     }
   };
 
-  const handleVerificationCodeChange = (e) => {
+  const handleVerificationCodeInputChange = (e) => {
     const value = e?.target?.value;
 
     (stringUtilities.valueLength(value) <= 6 || value === "") &&
@@ -108,7 +108,7 @@ const Authentication = () => {
     commonFunctionalities.changeViewMode().signIn();
   };
 
-  const handleCountryNameAutocompleteOnchange = (newValue) => {
+  const handleCountryNameAutocompleteInputChange = (newValue) => {
     dispatch(selectedCountryAction({ selectedCountry: newValue || null }));
     dispatch(
       countryCodeOnChangeAction({ countryCode: newValue?.countryCode || "" })
@@ -118,15 +118,15 @@ const Authentication = () => {
     );
   };
 
-  const handleCountryNameOnInputChange = (newInputValue) => {
+  const handleCountryNameInputChange = (newInputValue) => {
     dispatch(countryNameOnChangeAction({ countryName: newInputValue }));
   };
 
-  const handleFirstNameOnChange = (e) => {
+  const handleFirstNameInputChange = (e) => {
     dispatch(firstNameOnChangeAction({ firstName: e.target.value }));
   };
 
-  const handleLastNameOnChange = (e) => {
+  const handleLastNameInputChange = (e) => {
     dispatch(lastNameOnChangeAction({ lastName: e.target.value }));
   };
 
@@ -134,45 +134,47 @@ const Authentication = () => {
     dispatch(createNewUserController());
   };
 
+  const authComponent = ((props) => {
+    switch (viewMode) {
+      case VIEW_MODES.SIGN_IN:
+        return <SignIn {...props} />;
+
+      case VIEW_MODES.VERIFY_SIGN_IN:
+        return <VerifySignIn {...props} />;
+
+      case VIEW_MODES.NEW_USER_PROFILE:
+        return <NewUserProfile {...props} />;
+
+      default:
+        break;
+    }
+  })({
+    authenticationProgress,
+    countries,
+    countryCode,
+    countryName,
+    firstName,
+    lastName,
+    onBackClick: handleBackClick,
+    onConfirmClick: handleConfirmClick,
+    onCountryCodeInputChange: handleCountryCodeInputChange,
+    onCountryNameAutocompleteInputChange:
+      handleCountryNameAutocompleteInputChange,
+    onCountryNameInputChange: handleCountryNameInputChange,
+    onFirstNameChangeInputChange: handleFirstNameInputChange,
+    onLastNameInputChange: handleLastNameInputChange,
+    onPhoneNumberInputChange: handlePhoneNumberInputChange,
+    onSignInClick: handleSignInClick,
+    onVerificationCodeInputChange: handleVerificationCodeInputChange,
+    onVerifyClick: handleVerifyClick,
+    phoneNumber,
+    selectedCountry,
+    verificationCode,
+  });
+
   return (
     <>
-      {((props) => {
-        switch (viewMode) {
-          case VIEW_MODES.SIGN_IN:
-            return <SignIn {...props} />;
-
-          case VIEW_MODES.VERIFY_SIGN_IN:
-            return <VerifySignIn {...props} />;
-
-          case VIEW_MODES.NEW_USER_PROFILE:
-            return <NewUserProfile {...props} />;
-
-          default:
-            break;
-        }
-      })({
-        countries,
-        countryCode,
-        countryName,
-        firstName,
-        lastName,
-        authenticationProgress,
-        onBackClick: handleBackClick,
-        onConfirmClick: handleConfirmClick,
-        onCountryCodeChange: handleCountryCodeChange,
-        onCountryNameAutocompleteOnchange:
-          handleCountryNameAutocompleteOnchange,
-        onCountryNameOnInputChange: handleCountryNameOnInputChange,
-        onFirstNameOnChange: handleFirstNameOnChange,
-        onLastNameOnChange: handleLastNameOnChange,
-        onPhoneNumberChange: handlePhoneNumberChange,
-        onSignInClick: handleSignInClick,
-        onVerifyClick: handleVerifyClick,
-        onVerificationCodeChange: handleVerificationCodeChange,
-        phoneNumber,
-        selectedCountry,
-        verificationCode,
-      })}
+      {authComponent}
       <Copyright sx={{ mt: 8, mb: 4 }} />
     </>
   );
