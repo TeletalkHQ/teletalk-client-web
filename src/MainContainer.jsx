@@ -28,6 +28,8 @@ import {
   PERSISTENT_STORAGE_KEYS,
   VIEW_MODES,
 } from "variables/otherVariables/constants";
+import { apiManager } from "classes/apiClasses/ApiManager";
+import { windowUtilities } from "classes/WindowUtilities";
 
 const MainContainer = () => {
   const {
@@ -65,9 +67,11 @@ const MainContainer = () => {
           EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
         } = appOptions.getOptions();
 
-        eventManager.addListener(ALL_STUFF_RECEIVED, () =>
-          updateUserStatusAndChatsListener(userState.privateId)
-        );
+        eventManager.addListener(ALL_STUFF_RECEIVED, () => {
+          updateUserStatusAndChatsListener(userState.privateId);
+
+          windowUtilities.addProperty("apiManager", apiManager);
+        });
 
         await dispatchAsync(getAllStuffController());
       } catch (error) {
