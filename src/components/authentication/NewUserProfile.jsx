@@ -15,8 +15,8 @@ const NewUserProfile = ({
   lastNameInput,
   onBackClick,
   onConfirmClick,
-  onFirstNameOnChange,
-  onLastNameOnChange,
+  onFirstNameChangeInputChange,
+  onLastNameInputChange,
 }) => {
   return (
     <CustomContainer mw="xl">
@@ -40,7 +40,7 @@ const NewUserProfile = ({
             name={elementNames.firstName}
             autoFocus
             value={firstNameInput}
-            onChange={onFirstNameOnChange}
+            onChange={onFirstNameChangeInputChange}
             label="First Name"
           />
           <CustomTextInput
@@ -48,7 +48,7 @@ const NewUserProfile = ({
             id="lastNameInput"
             name={elementNames.lastName}
             value={lastNameInput}
-            onChange={onLastNameOnChange}
+            onChange={onLastNameInputChange}
             label="Last Name"
           />
 

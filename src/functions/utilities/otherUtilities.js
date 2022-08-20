@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import { customTypeof } from "classes/CustomTypeof";
 
 const checkErrorCodeIsConnAborted = (errorCode) => errorCode === "ECONNABORTED";
@@ -22,9 +24,13 @@ const getErrorObject = (errorObject, extraData = {}, statusCode) => {
   };
 };
 
+const makeNonBreakSpace = (length) =>
+  Array.from({ length }).map((_, i) => <Fragment key={i}>&nbsp;</Fragment>);
+
 export {
   checkErrorCodeIsConnAborted,
   errorThrower,
   getErrorObject,
+  makeNonBreakSpace,
   printCatchError,
 };

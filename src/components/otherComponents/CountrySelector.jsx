@@ -10,19 +10,19 @@ import Img from "components/generals/otherGeneralComponents/Img";
 const CountrySelector = ({
   countries,
   countryName,
-  onCountryNameAutocompleteOnchange,
-  onCountryNameOnInputChange,
+  onCountryNameAutocompleteInputChange,
+  onCountryNameInputChange,
   selectedCountry,
 }) => {
   return (
     <Autocomplete
       value={selectedCountry}
       onChange={(_, newValue) => {
-        onCountryNameAutocompleteOnchange(newValue);
+        onCountryNameAutocompleteInputChange(newValue);
       }}
       inputValue={countryName}
       onInputChange={(_, newInputValue) => {
-        onCountryNameOnInputChange(newInputValue);
+        onCountryNameInputChange(newInputValue);
       }}
       options={countries}
       autoHighlight
