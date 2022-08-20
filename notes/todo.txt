@@ -2,3 +2,4 @@ Use framer/motion for animation ?
 Wrap external/builtin components to general components
 Add server-side translation
 Add validators to auth components
+Add Class for completed tasks logs
