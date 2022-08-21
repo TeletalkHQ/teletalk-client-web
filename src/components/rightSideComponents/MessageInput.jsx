@@ -43,7 +43,7 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
             <>
               <CustomIconButton
                 onClick={() => {
-                  console.log("Mic clicked");
+                  logger.debug("Mic clicked");
                 }}
               >
                 <appIcons.micNone.Icon />

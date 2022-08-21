@@ -214,7 +214,7 @@ class ApiHandler {
     } = appConfigs.getConfigs();
 
     commonFunctionalities.checkAndExecute(logFailureResponse, () =>
-      console.log(`Api:${this.#routeObject.fullUrl} Api catch, error:`, error)
+      logger.error(`Api:${this.#routeObject.fullUrl} Api catch, error:`, error)
     );
   }
 
