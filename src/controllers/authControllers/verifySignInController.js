@@ -40,7 +40,7 @@ const verifySignInController = () => {
       const response =
         await apiManager.apis.authApis.verifySignInApi.sendRequest(
           {
-            verificationCode: verificationCode,
+            verificationCode,
           },
           { token: verifyToken }
         );
@@ -48,7 +48,6 @@ const verifySignInController = () => {
       dispatch(
         tempActions.verificationCodeOnChangeAction({ verificationCode: "" })
       );
-
       const { user: userData } = response.data;
 
       if (userData.newUser) {

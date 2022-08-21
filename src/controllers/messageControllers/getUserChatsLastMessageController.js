@@ -37,14 +37,14 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   }
 };
 
-const getUserChatsLastMessageController = ({ user }) => {
+const getUserChatsLastMessageController = ({ chats }) => {
   return async (dispatch) => {
     try {
       const response =
         await apiManager.apis.messageApis.getUserChatsLastMessageApi.sendRequest();
 
       const { chatsWithLastMessage } = handleAddUserLastMessage({
-        chats: user.chats,
+        chats,
         chatsWithLastMessage: response.data.chats,
       });
 
