@@ -1,5 +1,6 @@
 import { appConfigs } from "classes/AppConfigs";
 import { windowUtilities } from "classes/WindowUtilities";
+import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/constants";
 
 const {
   others: { appDrawerCurrentAnchor, startupViewMode },
@@ -16,9 +17,13 @@ const globalInitialState = {
     currentAnchor: appDrawerCurrentAnchor,
   },
   globalLoadingState: {
-    color: "#fff",
+    color: "blue",
+    //TODO Move it to configs
     open: true,
     progressColor: "inherit",
+    type: GLOBAL_LOADING_TYPES.FULL_PAGE,
+    size: 80,
+    speedMultiplier: 1,
   },
   appProgressions: {
     authenticationProgress: false,

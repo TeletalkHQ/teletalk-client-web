@@ -1,12 +1,11 @@
+import AppDrawer from "components/portal/AppDrawer";
+import OverlayLoading from "components/portal/OverlayLoading";
+import DialogContainer from "components/dialogContainer/DialogContainer";
 import Portal from "components/portal/Portal";
 
-import AppDrawer from "components/portal/AppDrawer";
-import DefaultGlobalLoading from "components/portal/DefaultGlobalLoading";
-
 import { useMainContext } from "hooks/useMainContext";
-import DialogContainer from "components/dialogContainer/DialogContainer";
 
-const PortalContainer = ({ onBackdropClose }) => {
+const PortalContainer = ({ onGlobalLoadingClose }) => {
   const {
     state: {
       globalState: { globalLoadingState },
@@ -15,11 +14,12 @@ const PortalContainer = ({ onBackdropClose }) => {
 
   return (
     <Portal>
-      <DefaultGlobalLoading
-        onBackdropClose={onBackdropClose}
+      <AppDrawer />
+      <OverlayLoading
+        onGlobalLoadingClose={onGlobalLoadingClose}
         globalLoadingState={globalLoadingState}
       />
-      <AppDrawer />
+
       <DialogContainer />
     </Portal>
   );

@@ -34,7 +34,7 @@ const globalLoadingOpenChangeInitialAction = {
   payload: {
     open: globalLoadingState.open,
   },
-  type: "BACKDROP_STATE_CHANGE",
+  type: "GLOBAL_LOADING_STATE_CHANGE",
 };
 
 const onlineStatusInitialAction = {

@@ -1,14 +1,11 @@
-import { useEffect } from "react";
-
 import { SnackbarProvider } from "notistack";
 
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
 import { appConfigs } from "classes/AppConfigs";
-import { windowUtilities } from "classes/WindowUtilities";
 
-import MainContainer from "MainContainer";
+import MainContainer from "components/Containers/MainContainer";
 
 import { MainContext } from "contexts/MainContext";
 
@@ -26,12 +23,6 @@ const App = () => {
     initialStates,
     appConfigs.getConfigs().useThunkReducer
   );
-
-  useEffect(() => {
-    windowUtilities
-      .addProperty("state", state)
-      .addProperty("appConfigs", appConfigs);
-  }, [state]);
 
   return (
     <SnackbarProvider>

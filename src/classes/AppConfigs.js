@@ -1,8 +1,8 @@
 import { envManager } from "classes/EnvironmentManager";
 
 import {
-  VIEW_MODES,
   APP_DRAWER_ANCHORS,
+  VIEW_MODES,
 } from "variables/otherVariables/constants";
 
 class AppConfigs {
@@ -17,7 +17,7 @@ class AppConfigs {
       },
       others: {
         appDrawerCurrentAnchor: APP_DRAWER_ANCHORS.left,
-        startupViewMode: VIEW_MODES.SIGN_IN,
+        startupViewMode: VIEW_MODES.LOADING,
       },
       apiConfigs: {
         checkResponseStatus: true,
