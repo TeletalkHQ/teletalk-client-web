@@ -7,18 +7,24 @@ import {
 
 class AppConfigs {
   constructor() {
-    this.configs = {
-      ui: {
-        dialogTransitionalComponentType: "Grow",
-        defaultDialogTransitionalComponentType: "Grow",
-      },
-      useThunkReducer: {
-        actionLogger: true,
-      },
-      others: {
-        appDrawerCurrentAnchor: APP_DRAWER_ANCHORS.left,
-        startupViewMode: VIEW_MODES.LOADING,
-      },
+    this.configs = this.getDefaultConfigs();
+
+    this.runConfigs();
+  }
+  #RUNTIME_MODE = envManager.getEnvironment(
+    envManager.ENVIRONMENT_KEYS.REACT_APP_RUNTIME_MODE
+  );
+  #CLIENT_BASE_URLS = {
+    development: "http://localhost:3000",
+    production: "https://teletalk-client-web.vercel.app",
+  };
+  #SERVER_BASE_URLS = {
+    development: "http://localhost:8080",
+    production: "https://teletalk-server.herokuapp.com",
+  };
+
+  getDefaultConfigs() {
+    return {
       apiConfigs: {
         checkResponseStatus: true,
         CLIENT_BASE_URL: this.#CLIENT_BASE_URLS[this.#RUNTIME_MODE],
@@ -35,22 +41,20 @@ class AppConfigs {
         SERVER_BASE_URL: this.#SERVER_BASE_URLS[this.#RUNTIME_MODE],
         validateStatus: false,
       },
+      others: {
+        appDrawerCurrentAnchor: APP_DRAWER_ANCHORS.left,
+        logPerformanceMeasuring: false,
+        startupViewMode: VIEW_MODES.LOADING,
+      },
+      ui: {
+        defaultDialogTransitionalComponentType: "Grow",
+        dialogTransitionalComponentType: "Grow",
+      },
+      useThunkReducer: {
+        actionLogger: true,
+      },
     };
-
-    this.runConfigs();
   }
-  #RUNTIME_MODE = envManager.getEnvironment(
-    envManager.ENVIRONMENT_KEYS.REACT_APP_RUNTIME_MODE
-  );
-  #CLIENT_BASE_URLS = {
-    development: "http://localhost:3000",
-    production: "https://teletalk-client-web.vercel.app",
-  };
-  #SERVER_BASE_URLS = {
-    development: "http://localhost:8080",
-    production: "https://teletalk-server.herokuapp.com",
-  };
-
   getConfigs() {
     return this.configs;
   }
