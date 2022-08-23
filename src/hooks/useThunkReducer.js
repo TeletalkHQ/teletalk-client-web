@@ -12,7 +12,7 @@ let extractedDispatchAsync = async (action = { type: "", payload: {} }) => {};
 let useDispatch = () => extractedDispatch;
 let useSelector = () => initialStates;
 let actionLogger = (action) => {
-  logger.debug(`actionLogger:`, action);
+  console.log(`actionLogger:`, action);
 };
 
 const defaultConfigs = {
