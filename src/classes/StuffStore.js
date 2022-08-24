@@ -10,6 +10,9 @@ class StuffStore {
     this.models = this.stuffs.models;
     this.routes = this.stuffs.routes;
     this.validationModels = {};
+    this.languageData = {
+      errorMessages: {},
+    };
   }
 
   updateRoutes(routes) {
@@ -28,10 +31,15 @@ class StuffStore {
     this.validationModels = validationModels;
     return this;
   }
-  updateAllStuff(errors, models, routes, validationModels) {
+  updateLanguageData(languageData) {
+    this.languageData = languageData;
+    return this;
+  }
+  updateAllStuff(errors, models, routes, validationModels, languageData) {
     this.updateErrors(errors)
       .updateModels(models)
       .updateRoutes(routes)
+      .updateLanguageData(languageData)
       .updateValidationModels(validationModels);
   }
 }

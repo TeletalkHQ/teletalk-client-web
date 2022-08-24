@@ -13,17 +13,26 @@ const getAllStuffController = () => {
   return async () => {
     try {
       const {
-        data: { errors, models, routes, validationModels },
-      } = await getAllStuffApi.sendRequest();
+        data: { errors, models, routes, validationModels, languageData },
+      } = await getAllStuffApi.sendRequest({
+        language: "en",
+      });
 
       persistentStorage.stringifyAndSetItem(PERSISTENT_STORAGE_KEYS.STUFFS, {
         errors,
         models,
         routes,
         validationModels,
+        languageData,
       });
 
-      stuffStore.updateAllStuff(errors, models, routes, validationModels);
+      stuffStore.updateAllStuff(
+        errors,
+        models,
+        routes,
+        validationModels,
+        languageData
+      );
 
       const {
         EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
