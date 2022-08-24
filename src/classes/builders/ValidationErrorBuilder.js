@@ -120,9 +120,10 @@ class ValidationErrorBuilder {
 
     return this;
   }
-  setRequirements(result, options = this.options) {
-    this.#setValidationResult(result);
-    if (customTypeof(result).type.array) this.#setValidationErrorKeys(result);
+  setRequirements(validationResult, options = this.options) {
+    this.#setValidationResult(validationResult);
+    if (customTypeof.check(validationResult).type.array)
+      this.#setValidationErrorKeys(validationResult);
     this.#setOptions(options);
 
     return this;
