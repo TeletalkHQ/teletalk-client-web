@@ -146,6 +146,11 @@ class ValidationErrorBuilder {
     return this;
   }
 
+  customCheck(condition, cb) {
+    if (condition) cb();
+    return this;
+  }
+
   stringEmpty(errorObject) {
     this.addError(this.validationResultErrorTypes.stringEmpty, errorObject);
     return this;

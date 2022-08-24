@@ -4,7 +4,6 @@ import { tempActions } from "actions/tempActions";
 
 import { arrayUtilities } from "classes/ArrayUtilities";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { customTypeof } from "classes/CustomTypeof";
 import { domUtilities } from "classes/DomUtilities";
 import { stringUtilities } from "classes/StringUtilities";
 
@@ -23,6 +22,7 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
 import { elementNames } from "variables/initials/initialValues/elementNames";
+import { validatorManager } from "classes/ValidatorManager";
 
 const {
   countryCodeOnChangeAction,
@@ -74,43 +74,60 @@ const Authentication = () => {
   };
 
   const handlePhoneNumberInputChange = (event) => {
-    const value = event.target.value;
+    const { value } = event.target;
 
-    if (
-      (customTypeof.check(value).type.stringNumber &&
-        stringUtilities.valueLength(value) < 15) ||
-      value === ""
-    ) {
-      dispatch(phoneNumberOnChangeAction({ phoneNumber: value }));
-    }
+    validatorManager.validators.phoneNumberValidator
+      .inputValidator(
+        {
+          phoneNumber: value,
+        },
+        value
+      )
+      .printError()
+      .execute(() =>
+        dispatch(phoneNumberOnChangeAction({ phoneNumber: value }))
+      );
   };
 
   const handleCountryCodeInputChange = (event) => {
-    const value = event.target.value;
+    const { value } = event.target;
 
-    if (
-      (customTypeof.check(value).type.stringNumber &&
-        stringUtilities.valueLength(value) <= 6) ||
-      value === ""
-    ) {
-      dispatch(countryCodeOnChangeAction({ countryCode: value }));
+    validatorManager.validators.countryCodeValidator
+      .inputValidator(
+        {
+          countryCode: value,
+        },
+        value
+      )
+      .printError()
+      .execute(() => {
+        dispatch(countryCodeOnChangeAction({ countryCode: value }));
 
-      const country =
-        arrayUtilities.findByPropValueEquality(
-          countries,
-          value,
-          "countryCode"
-        ) || null;
+        const country =
+          arrayUtilities.findByPropValueEquality(
+            countries,
+            value,
+            "countryCode"
+          ) || null;
 
-      dispatch(selectedCountryAction({ selectedCountry: country }));
-    }
+        dispatch(selectedCountryAction({ selectedCountry: country }));
+      });
   };
 
-  const handleVerificationCodeInputChange = (e) => {
-    const value = e?.target?.value;
+  const handleVerificationCodeInputChange = (event) => {
+    const { value } = event.target;
 
-    (stringUtilities.valueLength(value) <= 6 || value === "") &&
-      dispatch(verificationCodeOnChangeAction({ verificationCode: value }));
+    validatorManager.validators.verificationCodeValidator
+      .inputValidator(
+        {
+          verificationCode: value,
+        },
+        value
+      )
+      .printError()
+      .execute(() =>
+        dispatch(verificationCodeOnChangeAction({ verificationCode: value }))
+      );
   };
 
   const handleBackClick = () => {

@@ -12,15 +12,15 @@ const errorThrower = (condition, error) => {
 };
 
 const printCatchError = (functionName, error) => {
-  logger.error(`${functionName} catch, error: ${error}`);
+  logger.error(`${functionName} catch, error: `);
+  console.error(error);
 };
 
-const getErrorObject = (errorObject, extraData = {}, statusCode) => {
+const getErrorObject = (errorObject, extraData = {}) => {
   const { errorKey, ...error } = errorObject;
 
   return {
     [errorKey]: { ...error, ...extraData },
-    statusCode: statusCode || errorObject.statusCode,
   };
 };
 

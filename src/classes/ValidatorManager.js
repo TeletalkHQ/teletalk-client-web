@@ -1,33 +1,32 @@
-import Validator from "fastest-validator";
+import FastestValidator from "fastest-validator";
 
-import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { customTypeof } from "classes/CustomTypeof";
 import { objectUtilities } from "classes/ObjectUtilities";
 import { stuffStore } from "classes/StuffStore";
+import { validator } from "classes/Validator";
 
 import {
   errorThrower,
   printCatchError,
 } from "functions/utilities/otherUtilities";
-import { errorBuilders } from "functions/helpers/errorBuilders";
 
-const v = new Validator();
+const fastestValidatorCompiler = new FastestValidator();
 
 class ValidatorManager {
   constructor() {
     this.validators = {
-      countryCodeValidator: () => {},
-      countryNameValidator: () => {},
-      firstNameValidator: () => {},
-      lastNameValidator: () => {},
-      phoneNumberValidator: () => {},
-      usernameValidator: () => {},
-      verificationCodeValidator: () => {},
+      countryCodeValidator: this.#defaultValidator,
+      countryNameValidator: this.#defaultValidator,
+      firstNameValidator: this.#defaultValidator,
+      lastNameValidator: this.#defaultValidator,
+      phoneNumberValidator: this.#defaultValidator,
+      usernameValidator: this.#defaultValidator,
+      verificationCodeValidator: this.#defaultValidator,
     };
   }
+  #defaultValidator = validator.create(() => {}, "");
 
   validatorCompiler(validationModel) {
-    return v.compile(validationModel);
+    return fastestValidatorCompiler.compile(validationModel);
   }
 
   convertValidationModelKeyToValidatorKey(validationModelKey) {
@@ -47,93 +46,11 @@ class ValidatorManager {
     }
   };
 
-  findValidatorErrorBuilder(validatorKey) {
-    return errorBuilders[`${validatorKey}ErrorBuilder`];
-  }
-
-  makeInputValidator(compiledValidator) {
-    const inputValidator = (...args) => {
-      const validationResult = compiledValidator(...args);
-
-      if (customTypeof.check(validationResult).type.array) {
-        const filteredValidationResult = validationResult.filter(
-          (errorItem) =>
-            !["stringMin", "required", "stringEmpty"].includes(errorItem.type)
-        );
-
-        return filteredValidationResult;
-      }
-
-      return [];
-    };
-
-    return inputValidator;
-  }
-
-  makeSubmitValidator(compiledValidator) {
-    const submitValidator = (...args) => {
-      const validationResult = compiledValidator(...args);
-
-      if (customTypeof.check(validationResult).type.boolean) return [];
-
-      return validationResult;
-    };
-
-    return submitValidator;
-  }
-
-  makeValidateInputAndThrowError(inputValidator, validatorKey) {
-    const validatorErrorBuilder = this.findValidatorErrorBuilder(validatorKey);
-
-    const validateInputAndThrowError = (...args) => {
-      const validationResult = inputValidator(...args);
-
-      if (validationResult.length === 0) return;
-
-      validatorErrorBuilder(validationResult, ...args);
-    };
-
-    return validateInputAndThrowError;
-  }
-
-  makeValidateInputAndPrintError(inputValidator, validatorKey) {
-    const validatorErrorBuilder = this.findValidatorErrorBuilder(validatorKey);
-
-    const validateInputAndPrintError = (...args) => {
-      try {
-        const validationResult = inputValidator(...args);
-
-        if (validationResult.length === 0) return;
-
-        validatorErrorBuilder(validationResult, ...args);
-      } catch (errors) {
-        console.log(errors);
-        commonFunctionalities.correctErrorsAndPrint(errors);
-      }
-    };
-
-    return validateInputAndPrintError;
-  }
-
-  setValidator(validatorKey, compiledValidator) {
-    const inputValidator = this.makeInputValidator(compiledValidator);
-    const submitValidator = this.makeSubmitValidator(compiledValidator);
-    const validateInputAndThrowError = this.makeValidateInputAndThrowError(
-      inputValidator,
+  createAndSetValidator(validatorKey, compiledValidator) {
+    this.validators[validatorKey] = validator.create(
+      compiledValidator,
       validatorKey
     );
-    const validateInputAndPrintError = this.makeValidateInputAndPrintError(
-      inputValidator,
-      validatorKey
-    );
-
-    this.validators[validatorKey] = {
-      inputValidator,
-      submitValidator,
-      validateInputAndPrintError,
-      validateInputAndThrowError,
-      validatorUniqueKey: validatorKey,
-    };
 
     return this;
   }
@@ -148,7 +65,7 @@ class ValidatorManager {
       restOfValidationModelProps
     );
 
-    this.setValidator(validatorKey, compiledValidator);
+    this.createAndSetValidator(validatorKey, compiledValidator);
   }
 }
 
