@@ -1,17 +1,12 @@
 import { validationErrorBuilder } from "classes/builders/ValidationErrorBuilder";
 import { stuffStore } from "classes/StuffStore";
 
-const countryCodeValidatorErrorBuilder = (
-  validationResult,
-  countryCode,
-  countries
-) => {
+const countryCodeValidatorErrorBuilder = (validationResult, countryCode) => {
   const {
     COUNTRY_CODE_INVALID,
     COUNTRY_CODE_INVALID_TYPE,
     COUNTRY_CODE_MAXLENGTH_REACH,
     COUNTRY_CODE_MINLENGTH_REACH,
-    COUNTRY_CODE_NOT_SUPPORTED,
     COUNTRY_CODE_NUMERIC,
     COUNTRY_CODE_REQUIRED,
   } = stuffStore.errors;
@@ -22,11 +17,6 @@ const countryCodeValidatorErrorBuilder = (
       extraErrorFields: {
         validatedCountryCode: countryCode,
       },
-    })
-    .customCheck(validationResult === true, () => {
-      const country = countries.find((c) => c.countryCode === countryCode);
-
-      errorBuilder.addError(country === undefined, COUNTRY_CODE_NOT_SUPPORTED);
     })
     .stringEmpty(COUNTRY_CODE_REQUIRED)
     .required(COUNTRY_CODE_REQUIRED)
@@ -197,6 +187,7 @@ const verificationCodeValidatorErrorBuilder = (
     VERIFICATION_CODE_INVALID,
     VERIFICATION_CODE_INVALID_LENGTH,
     VERIFICATION_CODE_INVALID_TYPE,
+    VERIFICATION_CODE_MAXLENGTH_REACH,
     VERIFICATION_CODE_NUMERIC,
     VERIFICATION_CODE_REQUIRED,
   } = stuffStore.errors;
@@ -212,6 +203,7 @@ const verificationCodeValidatorErrorBuilder = (
     .string(VERIFICATION_CODE_INVALID_TYPE)
     .stringNumeric(VERIFICATION_CODE_NUMERIC)
     .stringLength(VERIFICATION_CODE_INVALID_LENGTH)
+    .stringMax(VERIFICATION_CODE_MAXLENGTH_REACH)
     .throwAnyway(VERIFICATION_CODE_INVALID)
     .execute();
 };
