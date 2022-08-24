@@ -5,7 +5,11 @@ const { getAllStuffsRoute } = {
     description:
       "Use for get all routes, models, validation models, errors and more",
     fullUrl: "/versionControl/getAllStuff",
-    inputFields: [{}],
+    inputFields: [
+      {
+        language: "",
+      },
+    ],
     method: "get",
     optionalFields: [{}],
     outputFields: [{}],
