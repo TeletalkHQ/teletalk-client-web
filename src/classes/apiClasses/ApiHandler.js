@@ -1,7 +1,6 @@
 import { appConfigs } from "classes/AppConfigs";
 import { appOptions } from "classes/AppOptions";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { notificationManager } from "classes/NotificationManager";
 import { objectUtilities } from "classes/ObjectUtilities";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
@@ -106,18 +105,20 @@ class ApiHandler {
   }
 
   #responseErrorsHandler(response) {
-    const statusCode = response.statusCode || response.status;
+    const {
+      data: { errors },
+      status,
+      statusCode,
+    } = response;
 
-    if (statusCode >= 400) {
-      const correctedErrors = this.#correctResponseErrors(response.data.errors);
+    const responseCode = statusCode || status;
 
-      if (statusCode === 401) {
-        commonFunctionalities.resetEverything();
-        throw correctedErrors;
-      }
+    if (responseCode >= 400) {
+      if (responseCode === 401) commonFunctionalities.resetEverything();
 
-      this.#responseErrorsSubmitter(correctedErrors);
-      throw correctedErrors;
+      commonFunctionalities.correctErrorsAndPrint(errors);
+
+      throw errors;
     }
   }
 
@@ -216,27 +217,6 @@ class ApiHandler {
     commonFunctionalities.checkAndExecute(logFailureResponse, () =>
       logger.error(`Api:${this.#routeObject.fullUrl} Api catch, error:`, error)
     );
-  }
-
-  #responseErrorsSubmitter(errors) {
-    errors.forEach((errorItem) => {
-      notificationManager.submitErrorNotification(errorItem);
-    });
-  }
-
-  #correctResponseErrors(responseErrors) {
-    const arrayOfErrors = objectUtilities.objectValues(responseErrors);
-
-    const correctedErrors = arrayOfErrors.map((errorItem) => {
-      const { errorCode, reason, ...finalErrorItem } = errorItem;
-
-      finalErrorItem.notificationCode = errorCode;
-      finalErrorItem.notificationReason = reason;
-
-      return finalErrorItem;
-    });
-
-    return correctedErrors;
   }
 }
 
