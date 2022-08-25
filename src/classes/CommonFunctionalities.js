@@ -1,4 +1,5 @@
 import { globalActions } from "actions/globalActions";
+import { otherActions } from "actions/otherActions";
 import { tempActions } from "actions/tempActions";
 import { userActions } from "actions/userActions";
 
@@ -6,7 +7,6 @@ import { commonNotificationManager } from "classes/CommonNotificationManager";
 import { notificationManager } from "classes/NotificationManager";
 import { objectUtilities } from "classes/ObjectUtilities";
 import { persistentStorage } from "classes/PersistentStorage";
-import { userPropsUtilities } from "classes/UserPropsUtilities";
 import { windowUtilities } from "classes/WindowUtilities";
 
 import { checkErrorCodeIsConnAborted } from "functions/utilities/otherUtilities";
@@ -19,11 +19,16 @@ import { stuffStore } from "./StuffStore";
 class CommonFunctionalities {
   resetEverything() {
     persistentStorage.setDefaultStorage();
-    extractedDispatch(
-      userActions.updateAllUserDataAction(
-        userPropsUtilities.makeDefaultUserState()
-      )
-    );
+
+    [
+      userActions.resetUserState,
+      otherActions.resetOtherState,
+      globalActions.resetGlobalState,
+      tempActions.resetTempState,
+    ].forEach((action) => {
+      extractedDispatch(action());
+    });
+
     this.changeViewMode().signIn();
   }
 

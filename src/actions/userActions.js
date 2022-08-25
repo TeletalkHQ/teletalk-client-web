@@ -1,6 +1,6 @@
 import { actionCreator } from "functions/utilities/stateUtils";
 
-import { actions } from "variables/initials/initialActions/initialActions";
+import { initialActions } from "variables/initials/initialActions/initialActions";
 
 const {
   userInitialActions: {
@@ -9,8 +9,9 @@ const {
     updateAllChatMessagesInitialAction,
     updateAllUserDataInitialAction,
     updateUserContactsInitialAction,
+    resetUserStateInitialAction,
   },
-} = actions;
+} = initialActions;
 
 const addNewContactAction = (payload = addNewContactInitialAction.payload) =>
   actionCreator(addNewContactInitialAction.type, payload);
@@ -31,9 +32,12 @@ const updateAllUserContactsAction = (
   payload = updateUserContactsInitialAction.payload
 ) => actionCreator(updateUserContactsInitialAction.type, payload);
 
+const resetUserState = () => actionCreator(resetUserStateInitialAction.type);
+
 const userActions = {
   addNewContactAction,
   addNewMessageToChatAction,
+  resetUserState,
   updateAllChatMessagesAction,
   updateAllUserContactsAction,
   updateAllUserDataAction,

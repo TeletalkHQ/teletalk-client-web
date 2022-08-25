@@ -1,6 +1,17 @@
-import { userPropsUtilities } from "classes/UserPropsUtilities";
+const defaultUserState = () => ({
+  bio: "",
+  blacklist: [],
+  chats: [],
+  contacts: [],
+  countryCode: "",
+  countryName: "",
+  firstName: "",
+  lastName: "",
+  phoneNumber: "",
+  privateId: "",
+  username: "",
+});
 
-const userInitialState = {
-  ...userPropsUtilities.makeDefaultUserState(),
-};
-export { userInitialState };
+const userInitialState = defaultUserState();
+
+export { defaultUserState, userInitialState };

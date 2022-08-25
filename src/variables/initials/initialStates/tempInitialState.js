@@ -1,4 +1,4 @@
-const tempInitialState = {
+const defaultTempState = () => ({
   countryCode: "",
   countryName: "",
   firstName: "",
@@ -12,6 +12,8 @@ const tempInitialState = {
   welcome: {
     message: "",
   },
-};
+});
 
-export { tempInitialState };
+const tempInitialState = defaultTempState();
+
+export { defaultTempState, tempInitialState };

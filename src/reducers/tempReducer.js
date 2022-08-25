@@ -5,6 +5,7 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
+import { defaultTempState } from "variables/initials/initialStates/tempInitialState";
 
 const {
   countryCodeInitialAction,
@@ -13,6 +14,7 @@ const {
   lastNameInitialAction,
   messageInputInitialAction,
   phoneNumberInitialAction,
+  resetTempStateInitialAction,
   selectedContactIdInitialAction,
   selectedCountryInitialAction,
   setMessagesInitialAction,
@@ -58,6 +60,9 @@ const tempReducer = (
 
       case verificationCodeInitialAction.type:
         return fn();
+
+      case resetTempStateInitialAction.type:
+        return defaultTempState();
 
       default:
         return state;

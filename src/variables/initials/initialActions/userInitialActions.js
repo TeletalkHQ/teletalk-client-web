@@ -35,9 +35,14 @@ const updateUserContactsInitialAction = {
   type: "UPDATE_USER_CONTACTS",
 };
 
+const resetUserStateInitialAction = {
+  type: "RESET_USER_STATE",
+};
+
 const userInitialActions = {
   addNewContactInitialAction,
   addNewMessageToChatInitialAction,
+  resetUserStateInitialAction,
   updateAllChatMessagesInitialAction,
   updateAllUserDataInitialAction,
   updateUserContactsInitialAction,

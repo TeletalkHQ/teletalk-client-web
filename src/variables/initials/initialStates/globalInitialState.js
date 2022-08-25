@@ -6,7 +6,7 @@ const {
   others: { appDrawerCurrentAnchor, startupViewMode },
 } = appConfigs.getConfigs();
 
-const globalInitialState = {
+const defaultGlobalState = () => ({
   appDrawerState: {
     anchor: {
       bottom: false,
@@ -44,6 +44,8 @@ const globalInitialState = {
     ping: 0,
   },
   viewMode: startupViewMode,
-};
+});
 
-export { globalInitialState };
+const globalInitialState = defaultGlobalState();
+
+export { defaultGlobalState, globalInitialState };
