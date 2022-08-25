@@ -4,6 +4,7 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { globalInitialActions } from "variables/initials/initialActions/globalInitialActions";
+import { defaultGlobalState } from "variables/initials/initialStates/globalInitialState";
 
 const {
   appDrawerOpenChangeInitialAction,
@@ -12,6 +13,7 @@ const {
   globalLoadingOpenChangeInitialAction,
   onlineStatusInitialAction,
   viewModeInitialAction,
+  resetGlobalStateInitialAction,
 } = globalInitialActions;
 
 const globalReducer = (
@@ -39,6 +41,10 @@ const globalReducer = (
 
       case viewModeInitialAction.type:
         return handleUpdateViewMode(state, payload);
+
+      case resetGlobalStateInitialAction.type:
+        return defaultGlobalState();
+
       default:
         return state;
     }

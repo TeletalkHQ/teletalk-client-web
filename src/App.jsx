@@ -25,7 +25,8 @@ const App = () => {
   );
 
   return (
-    <SnackbarProvider>
+    //TODO Move this configs to appConfigs
+    <SnackbarProvider maxSnack={10}>
       <MainContext.Provider
         value={{
           hooksOutput: {

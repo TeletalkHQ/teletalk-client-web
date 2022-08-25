@@ -4,7 +4,7 @@ import { otherInitialActions } from "variables/initials/initialActions/otherInit
 import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
 import { userInitialActions } from "variables/initials/initialActions/userInitialActions";
 
-const actions = {
+export const initialActions = {
   globalInitialActions,
   notificationInitialActions,
   otherInitialActions,
@@ -12,4 +12,4 @@ const actions = {
   userInitialActions,
 };
 
-export { actions };
+// export { actions };

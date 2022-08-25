@@ -9,6 +9,7 @@ const {
   globalLoadingOpenChangeInitialAction,
   onlineStatusInitialAction,
   viewModeInitialAction,
+  resetGlobalStateInitialAction,
 } = globalInitialActions;
 
 const appDrawerOpenChangeAction = (
@@ -34,6 +35,9 @@ const onlineStatusChangeAction = (
 const viewModeChangeAction = (payload = viewModeInitialAction.payload) =>
   actionCreator(viewModeInitialAction.type, payload);
 
+const resetGlobalState = () =>
+  actionCreator(resetGlobalStateInitialAction.type);
+
 const globalActions = {
   appDrawerOpenChangeAction,
   appProgressionChange,
@@ -41,6 +45,7 @@ const globalActions = {
   globalLoadingStateOpenChangeAction,
   onlineStatusChangeAction,
   viewModeChangeAction,
+  resetGlobalState,
 };
 
 export { globalActions };

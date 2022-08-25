@@ -74,14 +74,19 @@ const selectedCountryInitialAction = {
   type: "SELECTED_COUNTRY_ONCHANGE",
 };
 
+const resetTempStateInitialAction = {
+  type: "RESET_TEMP_STATE",
+};
+
 const tempInitialActions = {
-  selectedContactIdInitialAction,
   countryCodeInitialAction,
   countryNameInitialAction,
   firstNameInitialAction,
   lastNameInitialAction,
   messageInputInitialAction,
   phoneNumberInitialAction,
+  resetTempStateInitialAction,
+  selectedContactIdInitialAction,
   selectedCountryInitialAction,
   setMessagesInitialAction,
   verificationCodeInitialAction,

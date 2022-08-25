@@ -9,6 +9,7 @@ const {
   lastNameInitialAction,
   messageInputInitialAction,
   phoneNumberInitialAction,
+  resetTempStateInitialAction,
   selectedContactIdInitialAction,
   selectedCountryInitialAction,
   setMessagesInitialAction,
@@ -51,6 +52,8 @@ const verificationCodeOnChangeAction = (
   payload = verificationCodeInitialAction.payload
 ) => actionCreator(verificationCodeInitialAction.type, payload);
 
+const resetTempState = () => actionCreator(resetTempStateInitialAction.type);
+
 const tempActions = {
   countryCodeOnChangeAction,
   countryNameOnChangeAction,
@@ -58,6 +61,7 @@ const tempActions = {
   lastNameOnChangeAction,
   messageInputOnChangeAction,
   phoneNumberOnChangeAction,
+  resetTempState,
   selectedContactId,
   selectedCountryAction,
   setMessagesAction,

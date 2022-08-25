@@ -49,6 +49,10 @@ const viewModeInitialAction = {
   type: "VIEW_MODE_ONCHANGE",
 };
 
+const resetGlobalStateInitialAction = {
+  type: "RESET_GLOBAL_STATE",
+};
+
 const globalInitialActions = {
   appDrawerOpenChangeInitialAction,
   appProgressionChangeInitialAction,
@@ -56,6 +60,7 @@ const globalInitialActions = {
   globalLoadingOpenChangeInitialAction,
   onlineStatusInitialAction,
   viewModeInitialAction,
+  resetGlobalStateInitialAction,
 };
 
 export { globalInitialActions };

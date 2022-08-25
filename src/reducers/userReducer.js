@@ -5,10 +5,12 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { userInitialActions } from "variables/initials/initialActions/userInitialActions";
 import { initialStates } from "variables/initials/initialStates/initialStates";
+import { defaultUserState } from "variables/initials/initialStates/userInitialState";
 
 const {
   addNewContactInitialAction,
   addNewMessageToChatInitialAction,
+  resetUserStateInitialAction,
   updateAllChatMessagesInitialAction,
   updateAllUserDataInitialAction,
   updateUserContactsInitialAction,
@@ -36,6 +38,9 @@ const userReducer = (
 
       case updateAllUserDataInitialAction.type:
         return payload;
+
+      case resetUserStateInitialAction.type:
+        return defaultUserState();
 
       default:
         return state;

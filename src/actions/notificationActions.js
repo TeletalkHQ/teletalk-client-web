@@ -1,10 +1,10 @@
 import { actionCreator } from "functions/utilities/stateUtils";
 
-import { actions } from "variables/initials/initialActions/initialActions";
+import { initialActions } from "variables/initials/initialActions/initialActions";
 
 const {
   notificationInitialActions: { errorNotificationInitialAction },
-} = actions;
+} = initialActions;
 
 const errorNotificationAction = (
   payload = errorNotificationInitialAction.payload

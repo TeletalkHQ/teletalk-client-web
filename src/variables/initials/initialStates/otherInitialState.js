@@ -1,11 +1,12 @@
 import { initialContact } from "variables/initials/initialValues/initialValues";
 
-const otherInitialState = {
+const defaultOtherState = () => ({
   countries: [],
   messages: [],
   messageInputText: "",
   selectedContact: initialContact,
   welcomeMessage: "",
-};
+});
+const otherInitialState = defaultOtherState();
 
-export { otherInitialState };
+export { defaultOtherState, otherInitialState };

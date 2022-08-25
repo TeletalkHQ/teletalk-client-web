@@ -1,10 +1,14 @@
 import { actionCreator } from "functions/utilities/stateUtils";
 
-import { actions } from "variables/initials/initialActions/initialActions";
+import { initialActions } from "variables/initials/initialActions/initialActions";
 
 const {
-  otherInitialActions: { getCountriesInitialAction, welcomeInitialAction },
-} = actions;
+  otherInitialActions: {
+    getCountriesInitialAction,
+    welcomeInitialAction,
+    resetOtherStateInitialAction,
+  },
+} = initialActions;
 
 const getCountriesAction = (payload = getCountriesInitialAction.payload) =>
   actionCreator(getCountriesInitialAction.type, payload);
@@ -12,8 +16,11 @@ const getCountriesAction = (payload = getCountriesInitialAction.payload) =>
 const welcomeMessageAction = (payload = welcomeInitialAction.payload) =>
   actionCreator(welcomeInitialAction.type, payload);
 
+const resetOtherState = () => actionCreator(resetOtherStateInitialAction.type);
+
 const otherActions = {
   getCountriesAction,
+  resetOtherState,
   welcomeMessageAction,
 };
 

@@ -22,8 +22,13 @@ const welcomeInitialAction = {
   type: "WELCOME",
 };
 
+const resetOtherStateInitialAction = {
+  type: "RESET_OTHER_STATE",
+};
+
 const otherInitialActions = {
   getCountriesInitialAction,
+  resetOtherStateInitialAction,
   selectContactInitialAction,
   welcomeInitialAction,
 };
