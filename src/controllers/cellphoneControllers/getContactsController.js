@@ -8,7 +8,7 @@ const getContactsController = () => {
   return async (dispatch) => {
     try {
       const result =
-        await apiManager.apis.cellphoneApis.getContactsApi.sendRequest();
+        await apiManager.apis.cellphoneApis.getContactsApi.sendFullFeaturedRequest();
 
       dispatch(
         userActions.updateAllUserContactsAction({

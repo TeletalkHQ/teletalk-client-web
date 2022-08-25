@@ -41,7 +41,7 @@ const getUserChatsLastMessageController = ({ chats }) => {
   return async (dispatch) => {
     try {
       const response =
-        await apiManager.apis.messageApis.getUserChatsLastMessageApi.sendRequest();
+        await apiManager.apis.messageApis.getUserChatsLastMessageApi.sendFullFeaturedRequest();
 
       const { chatsWithLastMessage } = handleAddUserLastMessage({
         chats,

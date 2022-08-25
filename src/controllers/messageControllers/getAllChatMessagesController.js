@@ -8,9 +8,11 @@ const getAllChatMessagesController = ({ chatId }) => {
   return async (dispatch) => {
     try {
       const response =
-        await apiManager.apis.messageApis.getAllChatMessagesApi.sendRequest({
-          chatId,
-        });
+        await apiManager.apis.messageApis.getAllChatMessagesApi.sendFullFeaturedRequest(
+          {
+            chatId,
+          }
+        );
 
       dispatch(
         userActions.updateAllChatMessagesAction({

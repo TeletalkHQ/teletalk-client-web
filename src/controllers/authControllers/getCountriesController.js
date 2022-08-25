@@ -9,7 +9,7 @@ const getCountriesController = () => {
     try {
       const {
         data: { countries },
-      } = await apiManager.apis.otherApis.getCountriesApi.sendRequest();
+      } = await apiManager.apis.otherApis.getCountriesApi.sendFullFeaturedRequest();
 
       dispatch(otherActions.getCountriesAction({ countries }));
     } catch (error) {

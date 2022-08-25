@@ -21,27 +21,40 @@ const {
 
 class ApiHandler {
   constructor({
-    requestDefaultData,
+    // requestDefaultData,
     requestInterceptorsArray,
     requestTransformer,
     responseInterceptorsArray,
     responseTransformer,
     routeObject,
   }) {
-    this.requestDefaultData = requestDefaultData;
-    this.#requestTransformer = requestTransformer;
+    this.requestTransformer = requestTransformer;
     this.#requestInterceptorsArray = requestInterceptorsArray;
-    this.#responseTransformer = responseTransformer;
+    this.responseTransformer = responseTransformer;
     this.#responseInterceptorsArray = responseInterceptorsArray;
+    this.data = {};
     this.response = {
-      data: undefined,
+      data: this.getData(),
     };
     this.#routeObject = objectUtilities.freezeObject(routeObject);
+    this.requesterOptions = {
+      ...this.#getApiUrlAndMethod(),
+      data: this.getData(),
+      headers: {},
+      token: "",
+    };
   }
 
-  #requestTransformer = (data) => data;
+  requestTransformerExecutor() {
+    this.requestTransformer(this.getData());
+    return this;
+  }
+  responseTransformerExecutor() {
+    const transformedData = this.responseTransformer(this.getData());
+    this.setData(transformedData);
+    return this;
+  }
   #requestInterceptorsArray = [];
-  #responseTransformer = (data) => data;
   #responseInterceptorsArray = [];
   #routeObject = {};
 
@@ -75,7 +88,7 @@ class ApiHandler {
       ioData,
     });
   }
-  #inputDataFieldsCheck(inputData) {
+  inputDataFieldsCheck(inputData = this.getData()) {
     const {
       apiConfigs: { inputDataPropertiesCheck },
     } = appConfigs.getConfigs();
@@ -88,8 +101,10 @@ class ApiHandler {
         INPUT_FIELDS_OVERLOAD
       );
     });
+
+    return this;
   }
-  #outputDataFieldsCheck(outputData) {
+  outputDataFieldsCheck(outputData = this.getData()) {
     const {
       apiConfigs: { outputDataPropertiesCheck },
     } = appConfigs.getConfigs();
@@ -102,9 +117,11 @@ class ApiHandler {
         OUTPUT_FIELDS_OVERLOAD
       );
     });
+
+    return this;
   }
 
-  #responseErrorsHandler(response) {
+  responseErrorsHandler(response = this.getResponse()) {
     const {
       data: { errors },
       status,
@@ -120,26 +137,35 @@ class ApiHandler {
 
       throw errors;
     }
+
+    return this;
   }
 
-  #mergeRequesterOptions(options) {
+  #mergeRequesterOptions(extraOptions = {}) {
     const { apiDefaultOptions } = appOptions.getOptions();
     const mergedOptions = {
       ...apiDefaultOptions,
-      ...options,
-      headers: { ...apiDefaultOptions.headers, ...options?.headers },
-      token: options.token || userPropsUtilities.getMainTokenFromStorage(),
+      ...this.requesterOptions,
+      ...extraOptions,
+      data: undefined,
+      headers: {
+        ...apiDefaultOptions.headers,
+        ...(extraOptions.headers || {}),
+      },
+      token: extraOptions.token || userPropsUtilities.getMainTokenFromStorage(),
     };
 
     if (mergedOptions.token) {
       mergedOptions.headers.Authorization = `Bearer ${mergedOptions.token}`;
     }
 
-    if (!objectUtilities.objectKeysLength(options.data)) {
-      delete mergedOptions.data;
+    const data = this.getData();
+    if (objectUtilities.objectKeysLength(data)) {
+      mergedOptions.data = data;
     }
 
-    return mergedOptions;
+    this.requesterOptions = mergedOptions;
+    return this;
   }
 
   #executeInterceptors(interceptors, data) {
@@ -151,56 +177,72 @@ class ApiHandler {
 
     return dataEnhancedWithInterceptors;
   }
-  #executeRequestInterceptors(requestData) {
-    return this.#executeInterceptors(
+  executeRequestInterceptors(requestData = this.getData()) {
+    const newData = this.#executeInterceptors(
       this.#requestInterceptorsArray,
       requestData
     );
+    this.setData(newData);
+    return this;
   }
-  #executeResponseInterceptors(response) {
-    return this.#executeInterceptors(this.#responseInterceptorsArray, response);
+  executeResponseInterceptors(response = this.getResponse()) {
+    const mutatedResponse = this.#executeInterceptors(
+      this.#responseInterceptorsArray,
+      response
+    );
+    this.setResponse(mutatedResponse);
+    return this;
   }
 
-  async sendRequest(requestData = {}, extraOptions = {}) {
+  getData() {
+    return this.data;
+  }
+  setData(data) {
+    this.data = data;
+    return this;
+  }
+  setResponse(response) {
+    this.response = response;
+    return this;
+  }
+  getResponse() {
+    return this.response;
+  }
+
+  async sendRequest(options = this.requesterOptions) {
+    const response = await requester(options);
+    this.setResponse(response).setData(response.data);
+    return this;
+  }
+
+  async sendFullFeaturedRequest(
+    requestData = {},
+    extraOptions = this.requesterOptions
+  ) {
     try {
-      const transformedRequestData = this.#requestTransformer(requestData);
+      (
+        await this.setData(requestData)
+          .requestTransformerExecutor()
+          .executeRequestInterceptors()
+          .inputDataFieldsCheck()
+          .#mergeRequesterOptions(extraOptions)
+          .sendRequest()
+      )
+        .responseErrorsHandler()
+        .outputDataFieldsCheck()
+        .responseTransformerExecutor()
+        .executeResponseInterceptors()
+        .#logSuccessfulResponse();
 
-      const requestDataFromInterceptors = this.#executeRequestInterceptors(
-        transformedRequestData
-      );
-
-      this.#inputDataFieldsCheck(requestDataFromInterceptors);
-
-      const mergedRequesterOptions = this.#mergeRequesterOptions({
-        data: requestDataFromInterceptors,
-        ...this.#getApiUrlAndMethod(),
-        ...extraOptions,
-      });
-
-      this.response = await requester(mergedRequesterOptions);
-
-      this.#responseErrorsHandler(this.response);
-      this.#outputDataFieldsCheck(this.response.data);
-      const transformedResponse = this.#responseTransformer(this.response.data);
-      this.response.data = transformedResponse;
-
-      const responseFromInterceptors = this.#executeResponseInterceptors(
-        this.response
-      );
-
-      this.#logSuccessfulResponse(this.response);
-
-      return responseFromInterceptors;
+      return this.getResponse();
     } catch (error) {
       this.#logFailureResponse(error);
-
       commonFunctionalities.throwConnAbortNotification();
-
       throw error;
     }
   }
 
-  #logSuccessfulResponse(response) {
+  #logSuccessfulResponse(response = this.getResponse()) {
     const {
       apiConfigs: { logSuccessfulResponse },
     } = appConfigs.getConfigs();
