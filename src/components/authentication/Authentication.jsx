@@ -5,7 +5,6 @@ import { tempActions } from "actions/tempActions";
 import { arrayUtilities } from "classes/ArrayUtilities";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { domUtilities } from "classes/DomUtilities";
-import { stringUtilities } from "classes/StringUtilities";
 
 import Copyright from "components/utils/Copyright";
 import NewUserProfile from "components/authentication/NewUserProfile";

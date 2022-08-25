@@ -1,13 +1,9 @@
 import FastestValidator from "fastest-validator";
 
 import { objectUtilities } from "classes/ObjectUtilities";
-import { stuffStore } from "classes/StuffStore";
 import { validator } from "classes/Validator";
 
-import {
-  errorThrower,
-  printCatchError,
-} from "functions/utilities/otherUtilities";
+import { printCatchError } from "functions/utilities/otherUtilities";
 
 const fastestValidatorCompiler = new FastestValidator();
 
@@ -25,47 +21,44 @@ class ValidatorManager {
   }
   #defaultValidator = validator.create(() => {}, "");
 
-  validatorCompiler(validationModel) {
-    return fastestValidatorCompiler.compile(validationModel);
-  }
-
-  convertValidationModelKeyToValidatorKey(validationModelKey) {
-    return validationModelKey.replace("ValidationModel", "Validator");
-  }
-
-  compileValidators = () => {
+  compileValidators = (validationModels) => {
     try {
-      const { version, ...validationModels } = stuffStore.validationModels;
-
       objectUtilities
         .objectEntries(validationModels)
-        .forEach(this.processValidationModel.bind(this));
+        .forEach(this.#processValidationModel.bind(this));
     } catch (error) {
       printCatchError(this.compileValidators.name, error);
-      errorThrower(error, error);
+      throw error;
     }
   };
+  #processValidationModel([validationModelKey, validationModelValue]) {
+    const validatorKey =
+      this.#convertValidationModelKeyToValidatorKey(validationModelKey);
 
-  createAndSetValidator(validatorKey, compiledValidator) {
+    const filteredValidationModel =
+      this.#filterValidationModel(validationModelValue);
+    const compiledValidator = this.#validationModelCompiler(
+      filteredValidationModel
+    );
+
+    this.#createAndSetValidator(validatorKey, compiledValidator);
+  }
+  #convertValidationModelKeyToValidatorKey(validationModelKey) {
+    return validationModelKey.replace("ValidationModel", "Validator");
+  }
+  #filterValidationModel(validationModel) {
+    const { version, ...restOfValidationModelProps } = validationModel;
+    return restOfValidationModelProps;
+  }
+  #validationModelCompiler(validationModel) {
+    return fastestValidatorCompiler.compile(validationModel);
+  }
+  #createAndSetValidator(validatorKey, compiledValidator) {
     this.validators[validatorKey] = validator.create(
       compiledValidator,
       validatorKey
     );
-
     return this;
-  }
-
-  processValidationModel([validationModelKey, validationModelValue]) {
-    const validatorKey =
-      this.convertValidationModelKeyToValidatorKey(validationModelKey);
-
-    const { version, ...restOfValidationModelProps } = validationModelValue;
-
-    const compiledValidator = this.validatorCompiler(
-      restOfValidationModelProps
-    );
-
-    this.createAndSetValidator(validatorKey, compiledValidator);
   }
 }
 
