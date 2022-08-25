@@ -8,7 +8,9 @@ const addNewContactController = (contact) => {
   return async (dispatch) => {
     try {
       const result =
-        await apiManager.apis.cellphoneApis.addContactApi.sendRequest(contact);
+        await apiManager.apis.cellphoneApis.addContactApi.sendFullFeaturedRequest(
+          contact
+        );
 
       dispatch(
         userActions.addNewContactAction({

@@ -24,7 +24,6 @@ class Validator {
   inputValidator(validatorParam, validationValue) {
     const validationResult = this.compiledValidator(validatorParam);
 
-    console.log(validationResult);
     if (customTypeof.check(validationResult).type.array) {
       const extraIgnoreTypes = [];
       if (validationValue === "") extraIgnoreTypes.push("stringNumeric");

@@ -13,7 +13,7 @@ const userStatusCheckerController = () => {
     try {
       const {
         data: { user },
-      } = await apiManager.apis.authApis.userStatusCheckerApi.sendRequest();
+      } = await apiManager.apis.authApis.userStatusCheckerApi.sendFullFeaturedRequest();
 
       dispatch(updateAllUserDataAction(user));
       dispatch(

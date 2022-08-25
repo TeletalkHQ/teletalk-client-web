@@ -14,7 +14,7 @@ const getAllStuffController = () => {
     try {
       const {
         data: { errors, models, routes, validationModels, languageData },
-      } = await getAllStuffApi.sendRequest({
+      } = await getAllStuffApi.sendFullFeaturedRequest({
         language: "en",
       });
 

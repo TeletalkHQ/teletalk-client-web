@@ -17,10 +17,12 @@ const sendPrivateMessageController = () => {
       } = getState();
 
       const response =
-        await apiManager.apis.messageApis.sendPrivateMessageApi.sendRequest({
-          message: messageInputText,
-          participantId: privateId,
-        });
+        await apiManager.apis.messageApis.sendPrivateMessageApi.sendFullFeaturedRequest(
+          {
+            message: messageInputText,
+            participantId: privateId,
+          }
+        );
 
       const { chatId, newMessage } = response.data;
       dispatch(userActions.addNewMessageToChatAction({ chatId, newMessage }));

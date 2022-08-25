@@ -38,7 +38,7 @@ const verifySignInController = () => {
       }
 
       const response =
-        await apiManager.apis.authApis.verifySignInApi.sendRequest(
+        await apiManager.apis.authApis.verifySignInApi.sendFullFeaturedRequest(
           {
             verificationCode,
           },

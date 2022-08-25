@@ -8,7 +8,7 @@ const welcomeMessageController = () => {
   return async (dispatch) => {
     try {
       const { welcomeMessageApi } = apiManager.apis.otherApis;
-      const response = await welcomeMessageApi.sendRequest();
+      const response = await welcomeMessageApi.sendFullFeaturedRequest();
 
       dispatch(
         otherActions.welcomeMessageAction({

@@ -8,7 +8,7 @@ const getAllChatsController = () => {
   return async (dispatch) => {
     try {
       const response =
-        await apiManager.apis.messageApis.getAllChatsApi.sendRequest();
+        await apiManager.apis.messageApis.getAllChatsApi.sendFullFeaturedRequest();
 
       dispatch(
         userActions.updateAllUserDataAction({ chats: response.data.chats })

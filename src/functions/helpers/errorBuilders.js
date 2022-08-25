@@ -201,9 +201,9 @@ const verificationCodeValidatorErrorBuilder = (
     .required(VERIFICATION_CODE_REQUIRED)
     .stringEmpty(VERIFICATION_CODE_REQUIRED)
     .string(VERIFICATION_CODE_INVALID_TYPE)
-    .stringNumeric(VERIFICATION_CODE_NUMERIC)
-    .stringLength(VERIFICATION_CODE_INVALID_LENGTH)
     .stringMax(VERIFICATION_CODE_MAXLENGTH_REACH)
+    .stringLength(VERIFICATION_CODE_INVALID_LENGTH)
+    .stringNumeric(VERIFICATION_CODE_NUMERIC)
     .throwAnyway(VERIFICATION_CODE_INVALID)
     .execute();
 };
