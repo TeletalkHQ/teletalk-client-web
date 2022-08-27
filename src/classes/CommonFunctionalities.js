@@ -87,14 +87,12 @@ class CommonFunctionalities {
       const message = errorMessages[errorUniqueId];
 
       const notificationObject = { ...errorItem, message };
-      console.log(notificationObject);
       notificationManager.submitErrorNotification(notificationObject);
     });
   }
 
   correctErrorsAndPrint(errors) {
     const correctedErrors = this.correctServerLikeErrors(errors);
-
     this.errorsPrinter(correctedErrors);
   }
 }

@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { tempActions } from "actions/tempActions";
 
 import { arrayUtilities } from "classes/ArrayUtilities";
+import { eventManager } from "classes/EventManager";
+import { appOptions } from "classes/AppOptions";
 
 import ChatBar from "components/rightSideComponents/ChatBar";
 import CustomBox from "components/generals/boxes/CustomBox";
@@ -35,21 +37,26 @@ const RightSideContainer = () => {
 
   useEffect(() => {
     try {
-      const chat = userState.chats.find((chat) => {
-        return chat.participants.find(
-          (participant) => participant.participantId === privateId
-        );
+      const {
+        EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
+      } = appOptions.getOptions();
+
+      eventManager.addListener(ALL_STUFF_RECEIVED, () => {
+        const chat = userState.chats.find((chat) => {
+          return chat.participants.find(
+            (participant) => participant.participantId === privateId
+          );
+        });
+
+        if (chat) {
+          const intervalId = setInterval(() => {
+            dispatch(getAllChatMessagesController({ chatId: chat.chatId }));
+          }, 1000);
+          return () => {
+            clearInterval(intervalId);
+          };
+        }
       });
-
-      if (chat) {
-        const intervalId = setInterval(() => {
-          dispatch(getAllChatMessagesController({ chatId: chat.chatId }));
-        }, 1000);
-
-        return () => {
-          clearInterval(intervalId);
-        };
-      }
     } catch (error) {
       printCatchError(RightSideContainer.name, error);
     }
