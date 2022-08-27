@@ -1,3 +1,5 @@
+import { userActions } from "actions/userActions";
+
 import { notificationManager } from "classes/NotificationManager";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
@@ -20,15 +22,16 @@ const createNewUserController = () => {
 
       const verifyToken = userPropsUtilities.getVerifyTokenFromStorage();
 
-      if (!verifyToken) {
+      commonFunctionalities.checkAndExecute(!verifyToken, () => {
         commonFunctionalities.changeViewMode().signIn();
-
         notificationManager.submitErrorNotification(
           notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
         );
-      }
+      });
 
-      await apiManager.apis.authApis.createNewUserApi.sendFullFeaturedRequest(
+      const {
+        data: { user },
+      } = await apiManager.apis.authApis.createNewUserApi.sendFullFeaturedRequest(
         {
           firstName,
           lastName,
@@ -37,8 +40,8 @@ const createNewUserController = () => {
       );
 
       userPropsUtilities.removeVerifyTokenFromStorage();
-
-      dispatch(commonFunctionalities.changeViewMode().messenger());
+      dispatch(userActions.updateAllUserDataAction(user));
+      commonFunctionalities.changeViewMode().messenger();
     } catch (error) {
       printCatchError(createNewUserController.name, error);
     } finally {
