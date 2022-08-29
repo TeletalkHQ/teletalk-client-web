@@ -1,4 +1,5 @@
-import { dataUsageManager } from "classes/DataUsageManager";
+import { dataUsageManager } from "utility-store/src/classes/DataUsageManager";
+
 import { persistentStorage } from "classes/PersistentStorage";
 import { randomMaker } from "classes/RandomMaker";
 import { stuffStore } from "classes/StuffStore";

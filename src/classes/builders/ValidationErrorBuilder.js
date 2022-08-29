@@ -1,6 +1,6 @@
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
-import { arrayUtilities } from "classes/ArrayUtilities";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import {
   errorThrower,

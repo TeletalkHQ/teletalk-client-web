@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 
+import { domUtilities } from "utility-store/src/classes/DomUtilities";
+
 import { tempActions } from "actions/tempActions";
 
-import { arrayUtilities } from "classes/ArrayUtilities";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { domUtilities } from "classes/DomUtilities";
 
 import Copyright from "components/utils/Copyright";
 import NewUserProfile from "components/authentication/NewUserProfile";

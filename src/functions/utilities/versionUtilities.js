@@ -1,4 +1,4 @@
-import { arrayUtilities } from "classes/ArrayUtilities";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 import { objectUtilities } from "classes/ObjectUtilities";
 
 const versionCalculator = (versions = []) => {

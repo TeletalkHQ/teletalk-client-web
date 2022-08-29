@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { tempActions } from "actions/tempActions";
 
-import { arrayUtilities } from "classes/ArrayUtilities";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 import { eventManager } from "classes/EventManager";
 import { appOptions } from "classes/AppOptions";
 

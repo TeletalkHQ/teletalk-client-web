@@ -1,6 +1,6 @@
 import { tempActions } from "actions/tempActions";
 
-import { arrayUtilities } from "classes/ArrayUtilities";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import CustomList from "components/generals/boxes/CustomList";
 import ChatListItem from "components/leftSideComponents/ChatListItem";
