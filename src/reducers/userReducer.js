@@ -1,5 +1,5 @@
 import { appOptions } from "classes/AppOptions";
-import { arrayUtilities } from "classes/ArrayUtilities";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 

@@ -1,13 +1,18 @@
+import { checkFields } from "utility-store/src/classes/CheckFields";
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
-
-import { checkFields } from "classes/CheckFields";
 
 import { errorThrower } from "functions/utilities/otherUtilities";
 
 import { notifications } from "variables/otherVariables/notifications";
 
+//TODO Move to utility-store
+
 const {
-  localErrors: { REQUIRED_FIELDS_NOT_DEFINED },
+  localErrors: {
+    REQUIRED_FIELDS_NOT_DEFINED,
+    REQUIRED_IO_FIELD_IS_NOT_ARRAY,
+    REQUIRED_IO_FIELD_IS_NOT_OBJECT,
+  },
 } = notifications;
 
 const ioFieldsCheckerDefaultOptions = {
@@ -42,7 +47,9 @@ const ioFieldsChecker = (
       ioData,
       selectedRequiredFields,
       missingFieldsError,
-      overloadFieldsError
+      overloadFieldsError,
+      REQUIRED_IO_FIELD_IS_NOT_ARRAY,
+      REQUIRED_IO_FIELD_IS_NOT_OBJECT
     ).check();
 
     return { done: true };
