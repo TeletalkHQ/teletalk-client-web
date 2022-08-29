@@ -1,6 +1,6 @@
 import { errorThrower } from "functions/utilities/otherUtilities";
+import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 import { notifications } from "variables/otherVariables/notifications";
-import { customTypeof } from "./CustomTypeof";
 import { objectUtilities } from "./ObjectUtilities";
 
 const { REQUIRED_IO_FIELD_IS_NOT_ARRAY, REQUIRED_IO_FIELD_IS_NOT_OBJECT } =
@@ -15,10 +15,10 @@ class CheckFields {
     this.overloadFieldsError = overloadFieldsError;
   }
 
-  check() {
-    this.throwErrorIfIoDataAndRequiredFieldsLengthNotMatch().checkRequiredFields();
+  isRequiredFieldOptional(requiredField) {
+    if (customTypeof.isBoolean(requiredField) && requiredField) return true;
 
-    return { done: true };
+    return false;
   }
 
   filterIoDataOptionalFields(ioData, requiredFields) {
@@ -46,6 +46,12 @@ class CheckFields {
     return tempRequiredFields;
   }
 
+  check() {
+    this.throwErrorIfIoDataAndRequiredFieldsLengthNotMatch();
+    this.checkRequiredFields();
+    return { done: true };
+  }
+
   throwErrorIfIoDataAndRequiredFieldsLengthNotMatch() {
     const ioFieldsLength = objectUtilities.objectKeysLength(this.ioData);
     const requiredFieldsLength = objectUtilities.objectKeysLength(
@@ -60,8 +66,6 @@ class CheckFields {
 
       throw this.overloadFieldsError;
     }
-
-    return this;
   }
 
   checkRequiredFields() {
@@ -71,17 +75,17 @@ class CheckFields {
 
       this.throwErrorIfIoFieldIsUndefined(ioField);
 
-      if (customTypeof.check(requiredField).type.object) {
-        this.throwErrorIfIoFieldIsNotObject(ioField);
+      if (customTypeof.check(requiredField).type.isObject) {
         this.checkObjectFields(ioField, requiredField);
-      } else if (customTypeof.check(requiredField).type.array) {
-        this.throwErrorIfIoFieldIsNotArray(ioField);
+      } else if (customTypeof.check(requiredField).type.isArray) {
         this.checkArrayFields(ioField, requiredField[0]);
       }
     }
   }
 
   checkObjectFields(ioField, requiredField) {
+    this.throwErrorIfIoFieldIsNotObject(ioField);
+
     checkFields(
       ioField,
       requiredField,
@@ -89,8 +93,23 @@ class CheckFields {
       this.overloadFieldsError
     ).check();
   }
+  throwErrorIfIoFieldIsNotObject(ioField) {
+    errorThrower(
+      !customTypeof.check(ioField).type.isObject,
+      REQUIRED_IO_FIELD_IS_NOT_OBJECT
+    );
+  }
+
+  throwErrorIfIoFieldIsUndefined(ioField) {
+    errorThrower(
+      customTypeof.check(ioField).type.isUndefined,
+      this.missingFieldsError
+    );
+  }
 
   checkArrayFields(ioField, requiredField) {
+    this.throwErrorIfIoFieldIsNotArray(ioField);
+
     ioField.forEach((item) => {
       checkFields(
         item,
@@ -100,30 +119,9 @@ class CheckFields {
       ).check();
     });
   }
-
-  isRequiredFieldOptional(requiredField) {
-    if (customTypeof.isBoolean(requiredField) && requiredField) return true;
-
-    return false;
-  }
-
-  throwErrorIfIoFieldIsUndefined(ioField) {
-    errorThrower(
-      customTypeof.check(ioField).type.undefined,
-      this.missingFieldsError
-    );
-  }
-
-  throwErrorIfIoFieldIsNotObject(ioField) {
-    errorThrower(
-      !customTypeof.check(ioField).type.object,
-      REQUIRED_IO_FIELD_IS_NOT_OBJECT
-    );
-  }
-
   throwErrorIfIoFieldIsNotArray(ioField) {
     errorThrower(
-      !customTypeof.check(ioField).type.array,
+      !customTypeof.check(ioField).type.isArray,
       REQUIRED_IO_FIELD_IS_NOT_ARRAY
     );
   }

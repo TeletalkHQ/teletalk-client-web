@@ -1,3 +1,5 @@
+import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+
 import { SwipeableDrawer } from "@mui/material";
 
 import { useMainContext } from "hooks/useMainContext";
@@ -5,8 +7,6 @@ import { useMainContext } from "hooks/useMainContext";
 import { appIcons } from "variables/initials/initialValues/appIcons";
 
 import { globalActions } from "actions/globalActions";
-
-import { customTypeof } from "classes/CustomTypeof";
 
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomList from "components/generals/boxes/CustomList";
@@ -30,7 +30,7 @@ const drawerList = [
 ];
 
 const iOS =
-  !customTypeof.check(navigator).type.undefined &&
+  !customTypeof.check(navigator).type.isUndefined &&
   /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const AppDrawer = () => {

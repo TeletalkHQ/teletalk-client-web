@@ -1,6 +1,6 @@
 import { useCallback, useReducer } from "react";
 
-import { customTypeof } from "classes/CustomTypeof";
+import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
@@ -37,7 +37,7 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
 
     const customDispatch = useCallback(
       (action) => {
-        return customTypeof.check(action).type.function
+        return customTypeof.check(action).type.isFunction
           ? action(dispatch, getState)
           : (() => {
               configs.actionLogger && actionLogger(action);
