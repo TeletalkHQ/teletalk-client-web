@@ -1,6 +1,5 @@
 import { globalActions } from "actions/globalActions";
-import { windowUtilities } from "classes/WindowUtilities";
-
+import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 import { extractedDispatch } from "hooks/useThunkReducer";
 
 const onlineStatusOnChangeEvent = () => {

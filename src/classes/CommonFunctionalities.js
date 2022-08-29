@@ -1,4 +1,5 @@
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
+import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 import { globalActions } from "actions/globalActions";
 import { otherActions } from "actions/otherActions";
@@ -8,14 +9,13 @@ import { userActions } from "actions/userActions";
 import { commonNotificationManager } from "classes/CommonNotificationManager";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
-import { windowUtilities } from "classes/WindowUtilities";
 
 import { checkErrorCodeIsConnAborted } from "functions/utilities/otherUtilities";
 
 import { extractedDispatch } from "hooks/useThunkReducer";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
-import { stuffStore } from "./StuffStore";
+import { stuffStore } from "classes/StuffStore";
 
 class CommonFunctionalities {
   resetEverything() {

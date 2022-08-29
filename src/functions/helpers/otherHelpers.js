@@ -1,6 +1,5 @@
 import { appConfigs } from "classes/AppConfigs";
-import { windowUtilities } from "classes/WindowUtilities";
-
+import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 const updateWindowStateAndConfigs = (state) => {
   windowUtilities
     .addProperty("state", state)

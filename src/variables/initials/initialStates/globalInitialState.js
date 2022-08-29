@@ -1,5 +1,5 @@
 import { appConfigs } from "classes/AppConfigs";
-import { windowUtilities } from "classes/WindowUtilities";
+import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/constants";
 
 const {
