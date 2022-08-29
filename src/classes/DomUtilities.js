@@ -1,8 +1,8 @@
 class DomUtilities {
   constructor() {
     const { element, elementId, elementName } = this.#getDefaultState();
-    this.element = element;
     this.arrayOfElements = [element];
+    this.element = element;
     this.elementId = elementId;
     this.elementName = elementName;
   }

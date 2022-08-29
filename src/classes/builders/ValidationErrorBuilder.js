@@ -1,5 +1,6 @@
+import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+
 import { arrayUtilities } from "classes/ArrayUtilities";
-import { customTypeof } from "classes/CustomTypeof";
 
 import {
   errorThrower,
@@ -122,7 +123,7 @@ class ValidationErrorBuilder {
   }
   setRequirements(validationResult, options = this.options) {
     this.#setValidationResult(validationResult);
-    if (customTypeof.check(validationResult).type.array)
+    if (customTypeof.check(validationResult).type.isArray)
       this.#setValidationErrorKeys(validationResult);
     this.#setOptions(options);
 

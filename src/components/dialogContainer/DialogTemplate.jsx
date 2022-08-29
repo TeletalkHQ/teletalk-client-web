@@ -1,7 +1,8 @@
+import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 
-import { customTypeof } from "classes/CustomTypeof";
 import { appConfigs } from "classes/AppConfigs";
 import { appOptions } from "classes/AppOptions";
 
@@ -38,7 +39,7 @@ const DialogTemplate = ({
     <CustomDialog
       fullScreen={fullScreen}
       keepMounted
-      {...(customTypeof.check(onClose).type.function && {
+      {...(customTypeof.check(onClose).type.isFunction && {
         onClose: () => onClose(),
       })}
       // onEscapeKeyDown={onEscapeKeyDown}

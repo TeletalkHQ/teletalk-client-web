@@ -1,5 +1,6 @@
+import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+
 import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { customTypeof } from "classes/CustomTypeof";
 
 import { errorBuilders } from "functions/helpers/errorBuilders";
 
@@ -24,7 +25,7 @@ class Validator {
   inputValidator(validatorParam, validationValue) {
     const validationResult = this.compiledValidator(validatorParam);
 
-    if (customTypeof.check(validationResult).type.array) {
+    if (customTypeof.check(validationResult).type.isArray) {
       const extraIgnoreTypes = [];
       if (validationValue === "") extraIgnoreTypes.push("stringNumeric");
 

@@ -1,4 +1,4 @@
-import { customTypeof } from "classes/CustomTypeof";
+import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
@@ -19,8 +19,8 @@ class ObjectUtilities {
     const cleanObject = {};
 
     this.objectEntries(dirtyObject)?.forEach(([key, value]) => {
-      if (!customTypeof.check(value).type.undefined) {
-        if (customTypeof.check(dirtyObject[key]).type.object) {
+      if (!customTypeof.check(value).type.isUndefined) {
+        if (customTypeof.check(dirtyObject[key]).type.isObject) {
           cleanObject[key] = this.objectClarify(dirtyObject[key]);
 
           return;
@@ -37,7 +37,7 @@ class ObjectUtilities {
     const filteredObject = {};
 
     for (const key in filterFields) {
-      if (customTypeof.check(filterFields[key]).type.object) {
+      if (customTypeof.check(filterFields[key]).type.isObject) {
         filteredObject[key] = this.filterObjectByFilterFields(
           object[key],
           filterFields[key]

@@ -1,12 +1,12 @@
 import { Fragment } from "react";
 
-import { customTypeof } from "classes/CustomTypeof";
+import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
 const checkErrorCodeIsConnAborted = (errorCode) => errorCode === "ECONNABORTED";
 
 const errorThrower = (condition, error) => {
   if (condition) {
-    if (customTypeof.check(error).type.function) throw error();
+    if (customTypeof.check(error).type.isFunction) throw error();
     throw error;
   }
 };

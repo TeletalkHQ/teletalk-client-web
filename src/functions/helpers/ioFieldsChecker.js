@@ -1,5 +1,6 @@
+import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+
 import { checkFields } from "classes/CheckFields";
-import { customTypeof } from "classes/CustomTypeof";
 
 import { errorThrower } from "functions/utilities/otherUtilities";
 
@@ -60,7 +61,7 @@ const throwErrorIfSelectedRequiredFieldsIsNotDefined = (
   selectedRequiredFields
 ) => {
   errorThrower(
-    customTypeof.check(selectedRequiredFields).type.undefined,
+    customTypeof.check(selectedRequiredFields).type.isUndefined,
     REQUIRED_FIELDS_NOT_DEFINED
   );
 };
