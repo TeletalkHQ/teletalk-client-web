@@ -1,3 +1,5 @@
+import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
+
 import { globalActions } from "actions/globalActions";
 import { otherActions } from "actions/otherActions";
 import { tempActions } from "actions/tempActions";
@@ -5,7 +7,6 @@ import { userActions } from "actions/userActions";
 
 import { commonNotificationManager } from "classes/CommonNotificationManager";
 import { notificationManager } from "classes/NotificationManager";
-import { objectUtilities } from "classes/ObjectUtilities";
 import { persistentStorage } from "classes/PersistentStorage";
 import { windowUtilities } from "classes/WindowUtilities";
 

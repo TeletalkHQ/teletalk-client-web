@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 
+import { eventManager } from "utility-store/src/classes/EventManager";
+
 import { appOptions } from "classes/AppOptions";
-import { eventManager } from "classes/EventManager";
 
 import Authentication from "components/authentication/Authentication";
 import PortalContainer from "components/portal/PortalContainer";

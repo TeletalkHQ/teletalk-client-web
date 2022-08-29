@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 
+import { eventManager } from "utility-store/src/classes/EventManager";
+
 import { tempActions } from "actions/tempActions";
 
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
-import { eventManager } from "classes/EventManager";
 import { appOptions } from "classes/AppOptions";
 
 import ChatBar from "components/rightSideComponents/ChatBar";

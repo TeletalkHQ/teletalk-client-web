@@ -1,7 +1,8 @@
 import { appConfigs } from "classes/AppConfigs";
 import { appOptions } from "classes/AppOptions";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { objectUtilities } from "classes/ObjectUtilities";
+import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
+
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
 import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
