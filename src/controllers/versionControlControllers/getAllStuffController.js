@@ -1,7 +1,8 @@
+import { eventManager } from "utility-store/src/classes/EventManager";
+
 import { getAllStuffApi } from "apis/versionControlApis";
 
 import { appOptions } from "classes/AppOptions";
-import { eventManager } from "classes/EventManager";
 import { persistentStorage } from "classes/PersistentStorage";
 import { stuffStore } from "classes/StuffStore";
 

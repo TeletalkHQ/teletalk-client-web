@@ -1,5 +1,5 @@
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
-import { objectUtilities } from "classes/ObjectUtilities";
+import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 
 const versionCalculator = (versions = []) => {
   let [parentMajor, parentMinor, parentPatch] =

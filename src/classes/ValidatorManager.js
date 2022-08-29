@@ -1,6 +1,7 @@
 import FastestValidator from "fastest-validator";
 
-import { objectUtilities } from "classes/ObjectUtilities";
+import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
+
 import { validator } from "classes/Validator";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
