@@ -1,4 +1,4 @@
-import { stringUtilities } from "classes/StringUtilities";
+import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 
 import CountrySelector from "components/otherComponents/CountrySelector";
 import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
