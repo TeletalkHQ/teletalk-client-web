@@ -46,25 +46,25 @@ class ApiManager {
 
     this.apis = {
       authApis: {
-        [createNewUserApi]: this.apiTemplate,
-        [logoutApi]: this.apiTemplate,
-        [signInApi]: this.apiTemplate,
-        [userStatusCheckerApi]: this.apiTemplate,
-        [verifySignInApi]: this.apiTemplate,
+        createNewUserApi: this.apiTemplate,
+        logoutApi: this.apiTemplate,
+        signInApi: this.apiTemplate,
+        userStatusCheckerApi: this.apiTemplate,
+        verifySignInApi: this.apiTemplate,
       },
       cellphoneApis: {
-        [addContactApi]: this.apiTemplate,
-        [getContactsApi]: this.apiTemplate,
+        addContactApi: this.apiTemplate,
+        getContactsApi: this.apiTemplate,
       },
       messageApis: {
-        [getAllChatMessagesApi]: this.apiTemplate,
-        [getAllChatsApi]: this.apiTemplate,
-        [getUserChatsLastMessageApi]: this.apiTemplate,
-        [sendPrivateMessageApi]: this.apiTemplate,
+        getAllChatMessagesApi: this.apiTemplate,
+        getAllChatsApi: this.apiTemplate,
+        getUserChatsLastMessageApi: this.apiTemplate,
+        sendPrivateMessageApi: this.apiTemplate,
       },
       otherApis: {
-        [getCountriesApi]: this.apiTemplate,
-        [welcomeMessageApi]: this.apiTemplate,
+        getCountriesApi: this.apiTemplate,
+        welcomeMessageApi: this.apiTemplate,
       },
     };
   }
