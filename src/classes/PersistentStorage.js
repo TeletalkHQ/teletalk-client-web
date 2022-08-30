@@ -1,3 +1,5 @@
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
+
 class PersistentStorage {
   constructor(defaultStorageState = {}) {
     this.storage = localStorage;
@@ -45,7 +47,10 @@ class PersistentStorage {
 }
 
 const defaultPersistentStorage = new PersistentStorage({
-  user: {},
+  [PERSISTENT_STORAGE_KEYS.MAIN_TOKEN]: "",
+  [PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN]: "",
+  [PERSISTENT_STORAGE_KEYS.STUFFS]: {},
+  [PERSISTENT_STORAGE_KEYS.STUFFS]: {},
 });
 
 export { defaultPersistentStorage as persistentStorage, PersistentStorage };
