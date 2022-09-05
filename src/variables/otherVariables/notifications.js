@@ -1,4 +1,4 @@
-import { notificationBuilder } from "classes/builders/NotificationBuilder";
+import { notificationBuilder } from "classes/NotificationBuilder";
 
 //#region //* errors
 const ECONNABORTED = notificationBuilder
