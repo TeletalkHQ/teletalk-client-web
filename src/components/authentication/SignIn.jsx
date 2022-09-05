@@ -33,7 +33,7 @@ const SignIn = ({
         <CustomAvatar sx={{ m: 1, bgcolor: "secondary.main" }}>
           <appIcons.lockOutlined.Icon />
         </CustomAvatar>
-        <H5>Sign in</H5>
+        <H5>Teletalk</H5>
         <CustomContainer mw="xs">
           <CustomBox style={{ marginTop: 1 }}>
             <GreyTextParagraph>

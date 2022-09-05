@@ -14,6 +14,8 @@
     "dev": "cross-env REACT_APP_RUNTIME_MODE=development react-scripts start",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js src/**/*.jsx",
+    "pre-deploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "prepare": "husky install",
     "start": "cross-env REACT_APP_RUNTIME_MODE=production react-scripts start",
     "test": "react-scripts test"
@@ -56,6 +58,7 @@
   "devDependencies": {
     "circular-dependency-plugin": "^5.2.2",
     "eslint-plugin-spellcheck": "^0.0.19",
+    "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "supertest": "^6.2.4"
