@@ -7,7 +7,7 @@ import { appOptions } from "classes/AppOptions";
 import Authentication from "components/authentication/Authentication";
 import PortalContainer from "components/portal/PortalContainer";
 import FullPageLoading from "components/portal/FullPageLoading";
-import MessengerContainer from "components/Containers/MessengerContainer";
+import MessengerContainer from "components/containers/MessengerContainer";
 
 import { getAllStuffController } from "controllers/versionControlControllers/getAllStuffController";
 

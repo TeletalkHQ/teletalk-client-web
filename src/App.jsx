@@ -5,7 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import { appConfigs } from "classes/AppConfigs";
 
-import MainContainer from "components/Containers/MainContainer";
+import MainContainer from "components/containers/MainContainer";
 
 import { MainContext } from "contexts/MainContext";
 

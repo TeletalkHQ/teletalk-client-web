@@ -5,8 +5,8 @@ import { tempActions } from "actions/tempActions";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import DialogTemplate from "components/dialogContainer/DialogTemplate";
-import ContactListItem from "components/dialogContainer/ContactListItem";
+import DialogTemplate from "components/dialogs/DialogTemplate";
+import ContactListItem from "components/dialogs/ContactListItem";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
