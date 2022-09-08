@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 import { domUtilities } from "utility-store/src/classes/DomUtilities";
 
 import { tempActions } from "actions/tempActions";
 
-import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
+import { validatorManager } from "classes/ValidatorManager";
+import { stuffStore } from "classes/StuffStore";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 import Copyright from "components/utils/Copyright";
@@ -22,7 +24,7 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
 import { elementNames } from "variables/initials/initialValues/elementNames";
-import { validatorManager } from "classes/ValidatorManager";
+import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 
 const {
   countryCodeOnChangeAction,
@@ -60,6 +62,23 @@ const Authentication = () => {
     dispatch(welcomeMessageController());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const {
+    phoneNumberModel: {
+      maxlength: { value: phoneNumberMaxlength },
+      minlength: { value: phoneNumberMinlength },
+    },
+    verificationCodeModel: {
+      length: { value: verificationCodeLength },
+    },
+  } = stuffStore.models;
+  const isVerificationSubmitButtonDisabled =
+    stringUtilities.valueLength(verificationCode) !== verificationCodeLength;
+  const phoneNumberLength = stringUtilities.valueLength(phoneNumber);
+  const isSignInSubmitButtonDisabled =
+    phoneNumberLength < phoneNumberMinlength ||
+    phoneNumberLength > phoneNumberMaxlength ||
+    !selectedCountry;
 
   const handleSignInClick = () => {
     dispatch(signInController());
@@ -197,6 +216,8 @@ const Authentication = () => {
     phoneNumber,
     selectedCountry,
     verificationCode,
+    isVerificationSubmitButtonDisabled,
+    isSignInSubmitButtonDisabled,
   });
 
   return (

@@ -1,5 +1,3 @@
-import { stringUtilities } from "utility-store/src/classes/StringUtilities";
-
 import CountrySelector from "components/otherComponents/CountrySelector";
 import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
@@ -19,6 +17,7 @@ const SignIn = ({
   countries,
   countryCode,
   countryName,
+  isSignInSubmitButtonDisabled,
   onCountryCodeInputChange,
   onCountryNameAutocompleteInputChange,
   onCountryNameInputChange,
@@ -83,9 +82,7 @@ const SignIn = ({
 
             <CustomButton
               lbtn
-              disabled={
-                stringUtilities.valueLength(phoneNumber) < 9 || !selectedCountry
-              }
+              disabled={isSignInSubmitButtonDisabled}
               loading={authenticationProgress}
               loadingIndicator={
                 <>
