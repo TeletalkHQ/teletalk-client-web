@@ -15,7 +15,7 @@ import CustomTypography from "components/generals/typographies/CustomTypography"
 import { getContactsController } from "controllers/cellphoneControllers/getContactsController";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
-const ContactsDialog = ({ onClose }) => {
+const ContactsDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
     state: {
@@ -55,7 +55,7 @@ const ContactsDialog = ({ onClose }) => {
   };
 
   const handleClose = () => {
-    onClose("contacts");
+    onDialogClose("contacts");
   };
 
   const titleContent = (
@@ -86,7 +86,7 @@ const ContactsDialog = ({ onClose }) => {
           </CustomButton>
         </CustomBox>
         <CustomBox>
-          <CustomButton onClick={() => onClose("contacts")}>Close</CustomButton>
+          <CustomButton onClick={handleClose}>Close</CustomButton>
         </CustomBox>
       </CustomFlexBox>
     </>
