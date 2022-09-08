@@ -13,6 +13,7 @@ import { elementNames } from "variables/initials/initialValues/elementNames";
 const VerifySignIn = ({
   authenticationProgress,
   countryCode,
+  isVerificationSubmitButtonDisabled,
   onBackClick,
   onVerificationCodeInputChange,
   onVerifyClick,
@@ -58,6 +59,7 @@ const VerifySignIn = ({
 
             <CustomButton
               lbtn
+              disabled={isVerificationSubmitButtonDisabled}
               loading={authenticationProgress}
               loadingPosition="end"
               onClick={onVerifyClick}
