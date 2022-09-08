@@ -1,15 +1,15 @@
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 
 class PersistentStorage {
-  constructor(defaultStorageState = {}) {
+  constructor(storageKeys) {
     this.storage = localStorage;
-    this.defaultStorageState = defaultStorageState;
-    this.#initialDefaultStorage();
+    this.#initialDefaultStorage(storageKeys);
   }
 
-  #initialDefaultStorage() {
-    Object.entries(this.defaultStorageState).forEach(([key, value]) => {
-      this.setItem(key, JSON.stringify(value));
+  #initialDefaultStorage(storageKeys) {
+    storageKeys.forEach((key) => {
+      const latestKeyValue = this.getItem(key);
+      this.setItem(key, latestKeyValue || "");
     });
   }
 
@@ -46,11 +46,11 @@ class PersistentStorage {
   }
 }
 
-const defaultPersistentStorage = new PersistentStorage({
-  [PERSISTENT_STORAGE_KEYS.MAIN_TOKEN]: "",
-  [PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN]: "",
-  [PERSISTENT_STORAGE_KEYS.STUFFS]: {},
-  [PERSISTENT_STORAGE_KEYS.STUFFS]: {},
-});
+const defaultPersistentStorage = new PersistentStorage([
+  PERSISTENT_STORAGE_KEYS.MAIN_TOKEN,
+  PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN,
+  PERSISTENT_STORAGE_KEYS.STUFFS,
+  PERSISTENT_STORAGE_KEYS.STUFFS,
+]);
 
 export { defaultPersistentStorage as persistentStorage, PersistentStorage };
