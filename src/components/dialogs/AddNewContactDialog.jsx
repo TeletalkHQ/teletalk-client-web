@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import DialogTemplate from "components/dialogContainer/DialogTemplate";
+import DialogTemplate from "components/dialogs/DialogTemplate";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";

@@ -1,6 +1,6 @@
-import AddNewContactDialog from "components/dialogContainer/AddNewContactDialog";
-import ContactsDialog from "components/dialogContainer/ContactsDialog";
-import LogoutDialog from "components/dialogContainer/LogoutDialog";
+import AddNewContactDialog from "components/dialogs/AddNewContactDialog";
+import ContactsDialog from "components/dialogs/ContactsDialog";
+import LogoutDialog from "components/dialogs/LogoutDialog";
 
 import { useMainContext } from "hooks/useMainContext";
 

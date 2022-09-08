@@ -2,8 +2,8 @@ import { useEffect } from "react";
 
 import GridContainer from "components/generals/boxes/GridContainer";
 
-import LeftSideContainer from "components/Containers/LeftSideContainer";
-import RightSideContainer from "components/Containers/RightSideContainer";
+import LeftSideContainer from "components/containers/LeftSideContainer";
+import RightSideContainer from "components/containers/RightSideContainer";
 
 import { useMainContext } from "hooks/useMainContext";
 
