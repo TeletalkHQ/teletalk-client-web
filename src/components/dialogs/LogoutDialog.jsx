@@ -9,7 +9,7 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { useMainContext } from "hooks/useMainContext";
 
-const LogoutDialog = ({ onClose }) => {
+const LogoutDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
     state: {
@@ -18,7 +18,7 @@ const LogoutDialog = ({ onClose }) => {
   } = useMainContext();
 
   const handleClose = () => {
-    onClose("logout");
+    onDialogClose("logout");
   };
 
   const handleLogout = () => {

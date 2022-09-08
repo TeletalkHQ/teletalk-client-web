@@ -2,18 +2,83 @@ import { useState } from "react";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import DialogTemplate from "components/dialogs/DialogTemplate";
-import CustomButton from "components/generals/inputs/CustomButton";
-import CustomTextInput from "components/generals/inputs/CustomTextInput";
-import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomBox from "components/generals/boxes/CustomBox";
+import CustomButton from "components/generals/inputs/CustomButton";
+import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
+import CustomTextInput from "components/generals/inputs/CustomTextInput";
+import CustomTypography from "components/generals/typographies/CustomTypography";
+import DialogTemplate from "components/dialogs/DialogTemplate";
 
 import { addNewContactController } from "controllers/cellphoneControllers/addNewContactController";
 
+import { elementNames } from "variables/initials/initialValues/elementNames";
 import { initialContact } from "variables/initials/initialValues/initialValues";
-import CustomTypography from "components/generals/typographies/CustomTypography";
 
-const AddNewContactDialog = ({ onClose }) => {
+const AddContactDialogTitle = () => {
+  return (
+    <>
+      <CustomFlexBox jc="space-between" ai="center">
+        <CustomBox>
+          <CustomTypography>New Contact</CustomTypography>
+        </CustomBox>
+        <CustomBox></CustomBox>
+      </CustomFlexBox>
+    </>
+  );
+};
+
+const AddContactDialogActions = ({
+  onAddNewContactClick,
+  onContactDialogClose,
+}) => {
+  return (
+    <>
+      <CustomFlexBox jc="flex-end" ai="center">
+        <CustomBox>
+          <CustomButton onClick={onContactDialogClose}>Cancel</CustomButton>
+        </CustomBox>
+        <CustomBox>
+          <CustomButton onClick={onAddNewContactClick}>Create</CustomButton>
+        </CustomBox>
+      </CustomFlexBox>
+    </>
+  );
+};
+
+const AddContactDialogContent = ({ contact, onInputChange }) => {
+  return (
+    <>
+      <CustomBox>
+        <CustomBox mt={2}>
+          <CustomTextInput
+            value={contact.firstName}
+            label="First name"
+            name={elementNames.firstName}
+            onChange={onInputChange}
+          />
+        </CustomBox>
+        <CustomBox mt={2}>
+          <CustomTextInput
+            value={contact.lastName}
+            label="Last name"
+            name={elementNames.lastName}
+            onChange={onInputChange}
+          />
+        </CustomBox>
+        <CustomBox mt={2}>
+          <CustomTextInput
+            value={contact.phoneNumber}
+            label="Phone number"
+            name={elementNames.phoneNumber}
+            onChange={onInputChange}
+          />
+        </CustomBox>
+      </CustomBox>
+    </>
+  );
+};
+
+const AddNewContactDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
     state: {
@@ -27,89 +92,46 @@ const AddNewContactDialog = ({ onClose }) => {
     setContact({ ...contact, [event.target.name]: event.target.value });
   };
 
-  const handleAddNewContact = () => {
+  const handleAddNewContactClick = () => {
     dispatch(
       addNewContactController({
         countryCode: "98",
         countryName: "iran",
-        phoneNumber: contact.phoneNumber,
         firstName: contact.firstName,
         lastName: contact.lastName,
+        phoneNumber: contact.phoneNumber,
       })
     );
 
-    handleOnClose();
     setContact(initialContact);
   };
 
-  const handleOnClose = () => {
-    onClose("addContact");
+  const handleContactDialogClose = () => {
+    onDialogClose("addContact");
   };
-
-  const titleContent = (
-    <>
-      <CustomFlexBox jc="space-between" ai="center">
-        <CustomBox>
-          <CustomTypography>New Contact</CustomTypography>
-        </CustomBox>
-        <CustomBox></CustomBox>
-      </CustomFlexBox>
-    </>
-  );
-
-  const dialogContent = (
-    <>
-      <CustomBox>
-        <CustomBox mt={2}>
-          <CustomTextInput
-            value={contact.firstName}
-            label="First name"
-            name="firstName"
-            onChange={handleInputChange}
-          />
-        </CustomBox>
-        <CustomBox mt={2}>
-          <CustomTextInput
-            value={contact.lastName}
-            label="Last name"
-            name="lastName"
-            onChange={handleInputChange}
-          />
-        </CustomBox>
-        <CustomBox mt={2}>
-          <CustomTextInput
-            value={contact.phoneNumber}
-            label="Phone number"
-            name="phoneNumber"
-            onChange={handleInputChange}
-          />
-        </CustomBox>
-      </CustomBox>
-    </>
-  );
-
-  const actionContent = (
-    <>
-      <CustomFlexBox jc="flex-end" ai="center">
-        <CustomBox>
-          <CustomButton onClick={handleOnClose}>Cancel</CustomButton>
-        </CustomBox>
-        <CustomBox>
-          <CustomButton onClick={handleAddNewContact}>Create</CustomButton>
-        </CustomBox>
-      </CustomFlexBox>
-    </>
-  );
 
   return (
     <>
       <DialogTemplate
-        titleContent={titleContent}
-        actionContent={actionContent}
-        dialogContent={dialogContent}
+        titleContent={<AddContactDialogTitle />}
+        dialogContent={
+          <AddContactDialogContent
+            contact={contact}
+            onInputChange={handleInputChange}
+          />
+        }
+        actionContent={
+          <AddContactDialogActions
+            onAddNewContactClick={(...args) => {
+              handleAddNewContactClick(...args);
+              handleContactDialogClose();
+            }}
+            onContactDialogClose={handleContactDialogClose}
+          />
+        }
         open={dialogState.addNewContact.open}
         paperStyle={{ height: "50vh" }}
-        onClose={handleOnClose}
+        onClose={handleContactDialogClose}
       />
     </>
   );

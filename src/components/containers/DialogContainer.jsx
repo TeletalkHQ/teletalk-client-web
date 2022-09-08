@@ -11,11 +11,11 @@ const DialogContainer = () => {
     hooksOutput: { dispatch },
   } = useMainContext();
 
-  const handleClose = (dialogName) => {
+  const handleDialogClose = (dialogName) => {
     dispatch(
       globalActions.dialogOpenChangeAction({
-        open: false,
         dialogName,
+        open: false,
       })
     );
   };
@@ -24,7 +24,7 @@ const DialogContainer = () => {
     <>
       {[AddNewContactDialog, ContactsDialog, LogoutDialog].map(
         (Component, i) => (
-          <Component key={i} onClose={handleClose} />
+          <Component key={i} onDialogClose={handleDialogClose} />
         )
       )}
     </>
