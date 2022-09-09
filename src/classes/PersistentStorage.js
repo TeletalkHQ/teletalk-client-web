@@ -3,11 +3,12 @@ import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 class PersistentStorage {
   constructor(storageKeys) {
     this.storage = localStorage;
-    this.#initialDefaultStorage(storageKeys);
+    this.storageKeys = storageKeys;
+    this.#initialDefaultStorage();
   }
 
-  #initialDefaultStorage(storageKeys) {
-    storageKeys.forEach((key) => {
+  #initialDefaultStorage() {
+    this.storageKeys.forEach((key) => {
       const latestKeyValue = this.getItem(key);
       this.setItem(key, latestKeyValue || "");
     });
