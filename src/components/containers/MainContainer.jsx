@@ -14,12 +14,13 @@ import { getAllStuffController } from "controllers/versionControlControllers/get
 import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 import { thingsToDoAfterAllStuffReceived } from "events/eventListeners";
 
-import { updateWindowStateAndConfigs } from "functions/helpers/otherHelpers";
+import { updateWindowCustomProperties } from "functions/otherFunctions/otherFunctions";
 
 import { useMainContext } from "hooks/useMainContext";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
 import { userStatusCheckerController } from "controllers/authControllers/userStatusCheckerController";
+import { getCountriesController } from "controllers/authControllers/getCountriesController";
 
 const visibleComponent = (viewMode, globalLoadingState) => {
   const { MESSENGER, NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN, LOADING } =
@@ -38,7 +39,7 @@ const visibleComponent = (viewMode, globalLoadingState) => {
 
 const MainContainer = () => {
   const {
-    hooksOutput: { dispatch },
+    hooksOutput: { dispatch, dispatchAsync },
     state,
   } = useMainContext();
 
@@ -46,21 +47,21 @@ const MainContainer = () => {
     globalState: { viewMode, globalLoadingState },
   } = state;
 
-  useEffect(() => updateWindowStateAndConfigs(state), [state]);
+  useEffect(() => updateWindowCustomProperties(state), [state]);
   useEffect(() => {
     const {
       EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
     } = appOptions.getOptions();
 
-    addOnlineStatusEvents();
-
-    dispatch(getAllStuffController());
-
-    eventManager.addListener(ALL_STUFF_RECEIVED, () => {
+    eventManager.addListener(ALL_STUFF_RECEIVED, async () => {
       thingsToDoAfterAllStuffReceived();
-
-      dispatch(userStatusCheckerController());
+      await dispatchAsync(userStatusCheckerController());
+      //FIXME: Its unsafe to do it after userStatusCheckerController;
+      dispatch(getCountriesController());
     });
+
+    addOnlineStatusEvents();
+    dispatch(getAllStuffController());
 
     return () => {
       eventManager.removeAllListener(ALL_STUFF_RECEIVED);

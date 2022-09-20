@@ -2,6 +2,7 @@ import { produce } from "immer";
 
 const copyMan = ({ state, cb }) => produce(state, cb);
 
+//TODO: Should get removed
 const mergePrevStateWithPayload = ({ state, payload }) => ({
   ...state,
   ...payload,

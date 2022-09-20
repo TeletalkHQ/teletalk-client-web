@@ -23,7 +23,7 @@ const {
   signInApi,
   userStatusCheckerApi,
   verifySignInApi,
-  welcomeMessageApi,
+  getWelcomeMessageApi,
 } = {
   addContactApi: "addContactApi",
   createNewUserApi: "createNewUserApi",
@@ -37,7 +37,7 @@ const {
   signInApi: "signInApi",
   userStatusCheckerApi: "userStatusCheckerApi",
   verifySignInApi: "verifySignInApi",
-  welcomeMessageApi: "welcomeMessageApi",
+  getWelcomeMessageApi: "getWelcomeMessageApi",
 };
 
 class ApiManager {
@@ -64,7 +64,7 @@ class ApiManager {
       },
       otherApis: {
         getCountriesApi: this.apiTemplate,
-        welcomeMessageApi: this.apiTemplate,
+        getWelcomeMessageApi: this.apiTemplate,
       },
     };
   }
@@ -72,16 +72,11 @@ class ApiManager {
   buildApiWithJustRouteObject(routeObject) {
     return apiBuilder.create().setRequirements({ routeObject }).build();
   }
-  buildMultipleApiWithJustRouteObject(
-    parentKey,
-    arrayOfRouteObjectValueAndKey
-  ) {
-    arrayOfRouteObjectValueAndKey.forEach(
-      ([routeObjectKey, routeObjectValue]) => {
-        this.apis[parentKey][routeObjectKey] =
-          this.buildApiWithJustRouteObject(routeObjectValue);
-      }
-    );
+  buildMultipleApiWithJustRouteObject(parentKey, arrayOfApiNameAndRouteObject) {
+    arrayOfApiNameAndRouteObject.forEach(([apiName, routeObject]) => {
+      this.apis[parentKey][apiName] =
+        this.buildApiWithJustRouteObject(routeObject);
+    });
   }
 
   rebuildAllApis() {
@@ -93,16 +88,16 @@ class ApiManager {
 
   buildAuthApis() {
     const {
+      checkUserStatusRoute,
       createNewUserRoute,
       logoutNormalRoute,
       signInNormalRoute,
-      statusCheckRoute,
       verifySignInNormalRoute,
     } = stuffStore.routes;
 
     this.buildMultipleApiWithJustRouteObject(authApis, [
       [verifySignInApi, verifySignInNormalRoute],
-      [userStatusCheckerApi, statusCheckRoute],
+      [userStatusCheckerApi, checkUserStatusRoute],
       [signInApi, signInNormalRoute],
       [logoutApi, logoutNormalRoute],
       [createNewUserApi, createNewUserRoute],
@@ -148,16 +143,18 @@ class ApiManager {
   }
 
   buildOtherApis() {
-    const { countriesRoute, welcomeRoute } = stuffStore.routes;
+    const { getCountriesRoute, getWelcomeMessageRoute } = stuffStore.routes;
 
     this.apis.otherApis[getCountriesApi] = apiBuilder
       .create()
-      .setRequirements({ routeObject: countriesRoute })
-      .setResponseTransformer(addUniqueIdToEachCountry)
+      .setRequirements({
+        routeObject: getCountriesRoute,
+        responseTransformer: addUniqueIdToEachCountry,
+      })
       .build();
 
     this.buildMultipleApiWithJustRouteObject(otherApis, [
-      [welcomeMessageApi, welcomeRoute],
+      [getWelcomeMessageApi, getWelcomeMessageRoute],
     ]);
   }
 }

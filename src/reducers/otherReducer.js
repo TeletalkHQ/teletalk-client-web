@@ -21,7 +21,13 @@ const otherReducer = (
   try {
     const { payload, type } = action;
 
-    const fn = () => mergePrevStateWithPayload({ state, payload });
+    const fn = () =>
+      mergePrevStateWithPayload({
+        payload,
+        state,
+      });
+
+    console.log(fn());
 
     switch (type) {
       case welcomeInitialAction.type:

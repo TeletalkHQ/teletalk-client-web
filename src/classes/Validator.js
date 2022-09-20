@@ -3,6 +3,7 @@ import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 import { errorBuilders } from "functions/helpers/errorBuilders";
+import { fixErrorBuilderErrors } from "functions/utilities/otherUtilities";
 
 class Validator {
   constructor(compiledValidator, validatorName) {
@@ -25,7 +26,7 @@ class Validator {
   inputValidator(validatorParam, validationValue) {
     const validationResult = this.compiledValidator(validatorParam);
 
-    if (customTypeof.check(validationResult).type.isArray) {
+    if (customTypeof.isArray(validationResult)) {
       const extraIgnoreTypes = [];
       if (validationValue === "") extraIgnoreTypes.push("stringNumeric");
 
@@ -55,23 +56,23 @@ class Validator {
     return this;
   }
 
-  throwError() {
+  checkAndExecuteValidatorErrorBuilder() {
     if (this.validationResult.length)
       this.validatorErrorBuilder(this.validationResult);
   }
 
-  printError() {
+  printInputValidatorError() {
     try {
-      this.throwError();
+      this.checkAndExecuteValidatorErrorBuilder();
+      return this;
     } catch (errors) {
-      console.log(errors);
-      commonFunctionalities.correctErrorsAndPrint(errors);
-    } finally {
+      const fixedErrors = fixErrorBuilderErrors(errors);
+      commonFunctionalities.correctErrorsAndPrint(fixedErrors);
       return this;
     }
   }
 
-  execute(cb) {
+  executeIfNoError(cb) {
     if (this.validationResult.length === 0) {
       cb();
     }

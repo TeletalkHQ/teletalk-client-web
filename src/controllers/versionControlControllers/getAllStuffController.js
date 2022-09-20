@@ -5,6 +5,7 @@ import { getAllStuffApi } from "apis/versionControlApis";
 import { appOptions } from "classes/AppOptions";
 import { persistentStorage } from "classes/PersistentStorage";
 import { stuffStore } from "classes/StuffStore";
+import { systemController } from "classes/SystemController";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
@@ -40,6 +41,7 @@ const getAllStuffController = () => {
       } = appOptions.getOptions();
 
       eventManager.emitEvent(ALL_STUFF_RECEIVED);
+      systemController.changeEventStatusToDone(ALL_STUFF_RECEIVED);
     } catch (error) {
       printCatchError(getAllStuffController.name, error);
       throw error;

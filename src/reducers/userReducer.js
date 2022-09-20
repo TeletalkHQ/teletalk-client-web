@@ -24,17 +24,17 @@ const userReducer = (
     const { payload, type } = action;
 
     switch (type) {
-      case addNewContactInitialAction.type:
-        return handleAddNewContact(state, payload);
+      // case addNewContactInitialAction.type:
+      //   return handleAddNewContact(state, payload);
 
-      case addNewMessageToChatInitialAction.type:
-        return handleAddNewToChatMessage(state, payload);
+      // case addNewMessageToChatInitialAction.type:
+      //   return handleAddNewToChatMessage(state, payload);
 
-      case updateUserContactsInitialAction.type:
-        return handleUpdateAllContacts(state, payload);
+      // case updateUserContactsInitialAction.type:
+      //   return handleUpdateAllContacts(state, payload);
 
-      case updateAllChatMessagesInitialAction.type:
-        return handleUpdateChatMessages(state, payload);
+      // case updateAllChatMessagesInitialAction.type:
+      //   return handleUpdateChatMessages(state, payload);
 
       case updateAllUserDataInitialAction.type:
         return payload;
@@ -82,6 +82,7 @@ const handleAddNewToChatMessage = (prevState, payload) => {
     copyUser.chats.splice(chatIndex, 1, newChat);
   }
 
+  console.log(copyUser);
   return {
     ...prevState,
     chats: copyUser.chats,

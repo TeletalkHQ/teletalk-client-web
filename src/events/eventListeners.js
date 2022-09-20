@@ -8,6 +8,7 @@ const thingsToDoAfterAllStuffReceived = () => {
   apiManager.rebuildAllApis();
   windowUtilities.addProperty("apiManager", apiManager);
   validatorManager.compileValidators(validationModels);
+  windowUtilities.addProperty("validatorManager", validatorManager);
 };
 
 export { thingsToDoAfterAllStuffReceived };
