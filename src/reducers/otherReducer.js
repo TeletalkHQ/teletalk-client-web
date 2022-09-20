@@ -27,8 +27,6 @@ const otherReducer = (
         state,
       });
 
-    console.log(fn());
-
     switch (type) {
       case welcomeInitialAction.type:
         return fn();

@@ -1,9 +1,3 @@
-// import { trier } from "utility-store/src/classes/Trier";
-
-const drawerItemHyperController = () => {
-  return async (dispatch, getState) => {};
-};
+const drawerItemHyperController = () => {};
 
 export { drawerItemHyperController };
-
-// trier(drawerItemHyperController.name).try().printAndThrow();

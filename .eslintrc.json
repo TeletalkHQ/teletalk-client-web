@@ -49,10 +49,10 @@
     "no-use-before-define": [
       "warn",
       {
-        "allowNamedExports": false,
-        "classes": false,
+        "allowNamedExports": true,
+        "classes": true,
         "functions": false,
-        "variables": true
+        "variables": false
       }
     ],
     "quotes": ["error", "double"],

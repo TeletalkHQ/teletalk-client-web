@@ -55,8 +55,6 @@ const verifySignInController = () => {
       } else {
         persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
 
-        console.log(userData);
-
         const mainToken = userData.mainToken;
         delete userData.mainToken;
 

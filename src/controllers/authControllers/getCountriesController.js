@@ -11,7 +11,6 @@ const getCountriesController = () => {
       const {
         data: { countries },
       } = await getCountriesApi.sendFullFeaturedRequest();
-      console.log(countries);
       dispatch(otherActions.getCountriesAction({ countries }));
     } catch (error) {
       printCatchError(getCountriesController.name, error);

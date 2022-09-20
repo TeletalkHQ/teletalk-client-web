@@ -1,10 +1,8 @@
 import { globalActions } from "actions/globalActions";
-import { tempActions } from "actions/tempActions";
 
 import { useMainContext } from "hooks/useMainContext";
 
 import DialogTemplate from "components/dialogs/DialogTemplate";
-import ContactListItem from "components/dialogs/ContactListItem";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
@@ -17,7 +15,6 @@ const ContactsDialog = ({ onDialogClose }) => {
     hooksOutput: { dispatch },
     state: {
       globalState: { dialogState },
-      userState,
     },
   } = useMainContext();
 
@@ -28,14 +25,6 @@ const ContactsDialog = ({ onDialogClose }) => {
         open: true,
       })
     );
-  };
-
-  const handleContactClick = (contact) => {
-    dispatch(
-      tempActions.selectedContactId({ selectedContactId: contact.privateId })
-    );
-
-    handleClose();
   };
 
   const handleClose = () => {
