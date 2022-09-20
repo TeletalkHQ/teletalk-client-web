@@ -7,12 +7,14 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
 //! Use it in special cases only!
-let extractedDispatch = (action = { type: "", payload: {} }) => {};
-let extractedDispatchAsync = async (action = { type: "", payload: {} }) => {};
+let extractedDispatch = (action = { type: "", payload: {} }) => action;
+let extractedDispatchAsync = async (action = { type: "", payload: {} }) =>
+  action;
+
 let useDispatch = () => extractedDispatch;
 let useSelector = () => initialStates;
 let actionLogger = (action) => {
-  console.log(`actionLogger:`, action);
+  console.log("actionLogger:", action);
 };
 
 const defaultConfigs = {
@@ -40,7 +42,7 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
         return customTypeof.check(action).type.isFunction
           ? action(dispatch, getState)
           : (() => {
-              configs.actionLogger && actionLogger(action);
+              if (configs.actionLogger) actionLogger(action);
               dispatch(action);
             })();
       },

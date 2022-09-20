@@ -1,12 +1,9 @@
-import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
-
 import { tempActions } from "actions/tempActions";
 
 import ChatBar from "components/rightSideComponents/ChatBar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import MessageInput from "components/rightSideComponents/MessageInput";
-import MessageList from "components/rightSideComponents/MessageList";
 import GridContainer from "components/generals/boxes/GridContainer";
 
 import { sendPrivateMessageController } from "controllers/messageControllers/sendPrivateMessageController";
@@ -19,11 +16,10 @@ const RightSideContainer = () => {
   const {
     state: {
       tempState: {
-        selectedContact: { firstName, lastName, privateId },
+        selectedContact: { firstName, lastName },
         selectedContact,
         messageInputText,
       },
-      userState,
     },
     hooksOutput: { dispatch },
   } = useMainContext();

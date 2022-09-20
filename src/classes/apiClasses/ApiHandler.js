@@ -249,7 +249,7 @@ class ApiHandler {
     } = appConfigs.getConfigs();
 
     commonFunctionalities.checkAndExecute(logSuccessfulResponse, () =>
-      console.log(response)
+      console.log("response:", response)
     );
   }
   #logFailureResponse(error) {

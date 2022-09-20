@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const CircularDependencyPlugin = require("circular-dependency-plugin");
 
 module.exports = {
