@@ -1,11 +1,6 @@
-import { useEffect } from "react";
-
-import { eventManager } from "utility-store/src/classes/EventManager";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import { tempActions } from "actions/tempActions";
-
-import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
-import { appOptions } from "classes/AppOptions";
 
 import ChatBar from "components/rightSideComponents/ChatBar";
 import CustomBox from "components/generals/boxes/CustomBox";
@@ -15,9 +10,6 @@ import MessageList from "components/rightSideComponents/MessageList";
 import GridContainer from "components/generals/boxes/GridContainer";
 
 import { sendPrivateMessageController } from "controllers/messageControllers/sendPrivateMessageController";
-import { getAllChatMessagesController } from "controllers/messageControllers/getAllChatMessagesController";
-
-import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -36,34 +28,6 @@ const RightSideContainer = () => {
     hooksOutput: { dispatch },
   } = useMainContext();
 
-  useEffect(() => {
-    try {
-      const {
-        EVENT_EMITTER_EVENTS: { ALL_STUFF_RECEIVED },
-      } = appOptions.getOptions();
-
-      eventManager.addListener(ALL_STUFF_RECEIVED, () => {
-        const chat = userState.chats.find((chat) => {
-          return chat.participants.find(
-            (participant) => participant.participantId === privateId
-          );
-        });
-
-        if (chat) {
-          const intervalId = setInterval(() => {
-            dispatch(getAllChatMessagesController({ chatId: chat.chatId }));
-          }, 1000);
-          return () => {
-            clearInterval(intervalId);
-          };
-        }
-      });
-    } catch (error) {
-      printCatchError(RightSideContainer.name, error);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const handleInputChange = ({ target: { value } }) => {
     dispatch(messageInputOnChangeAction({ messageInputText: value }));
   };
@@ -76,15 +40,15 @@ const RightSideContainer = () => {
     dispatch(selectedContactId({ selectedContactId: "" }));
   };
 
-  const chat = arrayUtilities.findByPropValueEquality(
-    userState.chats,
-    privateId,
-    "participantId"
-  );
+  // const chat = arrayUtilities.findByPropValueEquality(
+  //   userState.chats,
+  //   privateId,
+  //   "participantId"
+  // );
 
-  if (!chat && !selectedContact) {
-    return null;
-  }
+  // if (!chat && !selectedContact) {
+  //   return null;
+  // }
 
   return (
     <GridContainer
@@ -108,10 +72,10 @@ const RightSideContainer = () => {
           </CustomBox>
 
           <CustomBox sx={{ height: "100%", width: "100%" }}>
-            <MessageList
+            {/* <MessageList
               messages={chat?.messages || []}
               userState={userState}
-            />
+            /> */}
           </CustomBox>
 
           <CustomBox sx={{ width: "100%" }}>

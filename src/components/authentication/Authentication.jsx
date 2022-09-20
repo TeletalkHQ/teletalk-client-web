@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 import { domUtilities } from "utility-store/src/classes/DomUtilities";
 
@@ -15,10 +13,8 @@ import SignIn from "components/authentication/SignIn";
 import VerifySignIn from "components/authentication/VerifySignIn";
 
 import { createNewUserController } from "controllers/authControllers/createNewUserController";
-import { getCountriesController } from "controllers/authControllers/getCountriesController";
 import { signInController } from "controllers/authControllers/signInController";
 import { verifySignInController } from "controllers/authControllers/verifySignInController";
-import { welcomeMessageController } from "controllers/otherControllers/welcomeMessageController";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -56,12 +52,6 @@ const Authentication = () => {
       },
     },
   } = useMainContext();
-
-  useEffect(() => {
-    dispatch(getCountriesController());
-    dispatch(welcomeMessageController());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const {
     phoneNumberModel: {
@@ -102,8 +92,8 @@ const Authentication = () => {
         },
         value
       )
-      .printError()
-      .execute(() =>
+      .printInputValidatorError()
+      .executeIfNoError(() =>
         dispatch(phoneNumberOnChangeAction({ phoneNumber: value }))
       );
   };
@@ -118,8 +108,8 @@ const Authentication = () => {
         },
         value
       )
-      .printError()
-      .execute(() => {
+      .printInputValidatorError()
+      .executeIfNoError(() => {
         dispatch(countryCodeOnChangeAction({ countryCode: value }));
 
         const country =
@@ -143,8 +133,8 @@ const Authentication = () => {
         },
         value
       )
-      .printError()
-      .execute(() =>
+      .printInputValidatorError()
+      .executeIfNoError(() =>
         dispatch(verificationCodeOnChangeAction({ verificationCode: value }))
       );
   };

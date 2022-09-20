@@ -106,3 +106,7 @@ const handleUpdateViewMode = (prevState, payload) => ({
   ...prevState,
   viewMode: payload.viewMode,
 });
+
+// const handleGetContacts = () => {
+//   dispatch(getContactsController());
+// };

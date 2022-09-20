@@ -28,7 +28,7 @@ const signInController = () => {
           phoneNumber,
         });
 
-      const verifyToken = response.data.user.verifyToken;
+      const { verifyToken } = response.data.user;
 
       persistentStorage.setItem(
         PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN,

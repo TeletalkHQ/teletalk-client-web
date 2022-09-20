@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import { globalActions } from "actions/globalActions";
 import { tempActions } from "actions/tempActions";
 
@@ -12,7 +10,6 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomTypography from "components/generals/typographies/CustomTypography";
 
-import { getContactsController } from "controllers/cellphoneControllers/getContactsController";
 import { elementNames } from "variables/initials/initialValues/elementNames";
 
 const ContactsDialog = ({ onDialogClose }) => {
@@ -24,15 +21,6 @@ const ContactsDialog = ({ onDialogClose }) => {
     },
   } = useMainContext();
 
-  useEffect(() => {
-    if (dialogState.contacts.open) {
-      handleGetContacts();
-    }
-
-    return () => {};
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dialogState.contacts.open]);
-
   const handleAddContactClick = () => {
     dispatch(
       globalActions.dialogOpenChangeAction({
@@ -40,10 +28,6 @@ const ContactsDialog = ({ onDialogClose }) => {
         open: true,
       })
     );
-  };
-
-  const handleGetContacts = () => {
-    dispatch(getContactsController());
   };
 
   const handleContactClick = (contact) => {
@@ -69,13 +53,13 @@ const ContactsDialog = ({ onDialogClose }) => {
     </>
   );
 
-  const dialogContent = userState.contacts?.map((contact, index) => (
-    <ContactListItem
-      key={index}
-      name={`${contact.firstName} ${contact.lastName}`}
-      onContactClick={() => handleContactClick(contact)}
-    />
-  ));
+  // const dialogContent = userState.contacts?.map((contact, index) => (
+  //   <ContactListItem
+  //     key={index}
+  //     name={`${contact.firstName} ${contact.lastName}`}
+  //     onContactClick={() => handleContactClick(contact)}
+  //   />
+  // ));
 
   const actionContent = (
     <>
@@ -96,7 +80,7 @@ const ContactsDialog = ({ onDialogClose }) => {
     <DialogTemplate
       titleContent={titleContent}
       actionContent={actionContent}
-      dialogContent={dialogContent}
+      // dialogContent={dialogContent}
       open={dialogState.contacts.open}
       paperStyle={{ height: "90vh" }}
       onClose={handleClose}

@@ -40,17 +40,15 @@ const SignIn = ({
               number.
             </GreyTextParagraph>
 
-            {countries && (
-              <CountrySelector
-                countries={countries}
-                countryName={countryName}
-                onCountryNameAutocompleteInputChange={
-                  onCountryNameAutocompleteInputChange
-                }
-                onCountryNameInputChange={onCountryNameInputChange}
-                selectedCountry={selectedCountry}
-              />
-            )}
+            <CountrySelector
+              countries={countries}
+              countryName={countryName}
+              onCountryNameAutocompleteInputChange={
+                onCountryNameAutocompleteInputChange
+              }
+              onCountryNameInputChange={onCountryNameInputChange}
+              selectedCountry={selectedCountry}
+            />
 
             <CustomFlexBox jc="space-between">
               <CustomTextInput

@@ -20,7 +20,7 @@ const MessengerContainer = () => {
   } = useMainContext();
 
   useEffect(
-    () => updateUserChats,
+    () => {}, // updateUserChats()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
@@ -42,3 +42,18 @@ const MessengerContainer = () => {
 };
 
 export default MessengerContainer;
+
+//  const chat = userState.chats.find((chat) => {
+//    return chat.participants.find(
+//      (participant) => participant.participantId === privateId
+//    );
+//  });
+
+//  if (chat) {
+//    const intervalId = setInterval(() => {
+//      dispatch(getAllChatMessagesController({ chatId: chat.chatId }));
+//    }, 1000);
+//    return () => {
+//      clearInterval(intervalId);
+//    };
+//  }

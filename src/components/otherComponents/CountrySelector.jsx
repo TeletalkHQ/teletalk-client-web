@@ -2,9 +2,9 @@ import Autocomplete from "@mui/material/Autocomplete";
 
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
+import Img from "components/generals/otherGeneralComponents/Img";
 
 import { elementNames } from "variables/initials/initialValues/elementNames";
-import Img from "components/generals/otherGeneralComponents/Img";
 
 //CLEANME CountrySelector Autocomplete
 const CountrySelector = ({
@@ -14,6 +14,8 @@ const CountrySelector = ({
   onCountryNameInputChange,
   selectedCountry,
 }) => {
+  console.log(countries);
+
   return (
     <Autocomplete
       value={selectedCountry}

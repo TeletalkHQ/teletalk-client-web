@@ -4,3 +4,4 @@ Add server-side translation
 Add validators to auth components
 Add Class for completed tasks logs
 Read state from useSelector instead of useMyContext
+Fix peer dependencies

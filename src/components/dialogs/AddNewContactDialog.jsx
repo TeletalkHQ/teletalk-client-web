@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { useMainContext } from "hooks/useMainContext";
 
+import CountrySelector from "components/otherComponents/CountrySelector";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
@@ -45,10 +46,30 @@ const AddContactDialogActions = ({
   );
 };
 
-const AddContactDialogContent = ({ contact, onInputChange }) => {
+const AddContactDialogContent = ({
+  contact,
+  countries,
+  countryName,
+  onCountryNameAutocompleteInputChange,
+  onCountryNameInputChange,
+  onInputChange,
+  selectedCountry,
+}) => {
   return (
     <>
       <CustomBox>
+        <CustomBox>
+          <CountrySelector
+            countries={countries}
+            countryName={countryName}
+            onCountryNameAutocompleteInputChange={
+              onCountryNameAutocompleteInputChange
+            }
+            onCountryNameInputChange={onCountryNameInputChange}
+            selectedCountry={selectedCountry}
+          />
+        </CustomBox>
+
         <CustomBox mt={2}>
           <CustomTextInput
             value={contact.firstName}
@@ -83,6 +104,7 @@ const AddNewContactDialog = ({ onDialogClose }) => {
     hooksOutput: { dispatch },
     state: {
       globalState: { dialogState },
+      otherState: { countries },
     },
   } = useMainContext();
 
@@ -117,6 +139,7 @@ const AddNewContactDialog = ({ onDialogClose }) => {
         dialogContent={
           <AddContactDialogContent
             contact={contact}
+            countries={countries}
             onInputChange={handleInputChange}
           />
         }

@@ -33,8 +33,8 @@ class ValidatorManager {
     }
   };
   #processValidationModel([validationModelKey, validationModelValue]) {
-    const validatorKey =
-      this.#convertValidationModelKeyToValidatorKey(validationModelKey);
+    const validatorName =
+      this.#convertValidationModelKeyToValidatorName(validationModelKey);
 
     const filteredValidationModel =
       this.#filterValidationModel(validationModelValue);
@@ -42,9 +42,9 @@ class ValidatorManager {
       filteredValidationModel
     );
 
-    this.#createAndSetValidator(validatorKey, compiledValidator);
+    this.#createAndSetValidator(validatorName, compiledValidator);
   }
-  #convertValidationModelKeyToValidatorKey(validationModelKey) {
+  #convertValidationModelKeyToValidatorName(validationModelKey) {
     return validationModelKey.replace("ValidationModel", "Validator");
   }
   #filterValidationModel(validationModel) {
@@ -54,12 +54,15 @@ class ValidatorManager {
   #validationModelCompiler(validationModel) {
     return fastestValidatorCompiler.compile(validationModel);
   }
-  #createAndSetValidator(validatorKey, compiledValidator) {
-    this.validators[validatorKey] = validator.create(
+  #createAndSetValidator(validatorName, compiledValidator) {
+    this.validators[validatorName] = this.#createValidator(
       compiledValidator,
-      validatorKey
+      validatorName
     );
     return this;
+  }
+  #createValidator(compiledValidator, validatorName) {
+    return validator.create(compiledValidator, validatorName);
   }
 }
 

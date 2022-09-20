@@ -16,7 +16,7 @@ const printCatchError = (functionName, error) => {
   console.error(error);
 };
 
-const getErrorObject = (errorObject, extraData = {}) => {
+const fixErrorBuilderErrors = (errorObject, extraData = {}) => {
   const { errorKey, ...error } = errorObject;
 
   return {
@@ -30,7 +30,7 @@ const makeNonBreakSpace = (length) =>
 export {
   checkErrorCodeIsConnAborted,
   errorThrower,
-  getErrorObject,
+  fixErrorBuilderErrors,
   makeNonBreakSpace,
   printCatchError,
 };

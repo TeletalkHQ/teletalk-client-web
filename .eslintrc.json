@@ -1,131 +1,71 @@
 {
-  "extends": ["react-app", "react-app/jest"],
-  "parserOptions": {
-    "ecmaVersion": 2019
-  },
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "es2021": true,
+    "mocha": true
   },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@cspell/recommended",
+    "react-app",
+    "react-app/jest"
+  ],
   "globals": {
+    "expressRequest": true,
+    "expressResponse": true,
     "logger": true
   },
-  "plugins": ["spellcheck"],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest" // "ecmaVersion": 2019
+  },
+  "plugins": [
+    "chai-friendly",
+    "@cspell" //  "security"
+  ],
   "rules": {
-    "spellcheck/spell-checker": [
-      1,
+    "@cspell/spellchecker": [
+      "warn",
       {
-        "comments": true,
-        "strings": true,
-        "identifiers": true,
-        "ignoreRequire": false,
-        "templates": true,
-        "lang": "en_US",
-        "skipWords": [
-          "abcdefghijklmnopqrstufwxyz",
-          "abcdefghijklmnopqrstufwxyzABCDEFGHIJKLMNOPQRSTUFWXYZ1234567890",
-          "Alphadash",
-          "Alphanum",
-          "Apis",
-          "arrayEnum",
-          "autofetch",
-          "autopep",
-          "axios",
-          "bcrypt",
-          "bcryptjs",
-          "bgcolor",
-          "camelcase",
-          "chai",
-          "CLEANME",
-          "codestream",
-          "cors",
-          "describedby",
-          "dotenv",
-          "endregion",
-          "enqueue",
-          "enum",
-          "enumValue",
-          "esbenp",
-          "favicon",
-          "ffff",
-          "fileupload",
-          "Fira",
-          "flowtype",
-          "func",
-          "href",
-          "indenticator",
-          "instanceof",
-          "ioredis",
-          "ipynb",
-          "iran",
-          "Jalali",
-          "jpg",
-          "jsonwebtoken",
-          "keydown",
-          "labelledby",
-          "lbtn",
-          "lightcyan",
-          "lightgray",
-          "luhn",
-          "maxlength",
-          "Melipayamak",
-          "middlewares",
-          "MINLENGTH",
-          "monospace",
-          "morgan",
-          "multer",
-          "multiline",
-          "nanoid",
-          "nbsp",
-          "nodemailer",
-          "nowrap",
-          "nwjs",
-          "onum",
-          "Perf",
-          "quatro",
-          "redis",
-          "renderer",
-          "Replacer",
-          "responser",
-          "restclient",
-          "Restify",
-          "scrollbar",
-          "sendable",
-          "sindresorhus",
-          "snackbar",
-          "snyk",
-          "soheil",
-          "strikethrough",
-          "stringAlphadash",
-          "stringAlphanum",
-          "stringEnum",
-          "supertest",
-          "Swipeable",
-          "tabnine",
-          "tabpanel",
-          "teletalk",
-          "Teletalk",
-          "Tooltip",
-          "Trez",
-          "typeof",
-          "uncategorizedErrors",
-          "upsert",
-          "urlencoded",
-          "validators",
-          "verifier",
-          "Vert",
-          "vh",
-          "vsintellicode",
-          "webpack",
-          "WITHSCORES",
-          "zadd",
-          "zoot",
-          "zrange"
-        ],
-        "skipIfMatch": ["http://[^s]*", "^[-\\w]+/[-\\w\\.]+$"],
-        "skipWordIfMatch": ["src/reportWebVitals.js"],
-        "minLength": 4
+        "ignoreImportProperties": false,
+        "ignoreImports": false
       }
-    ]
+    ],
+    "arrow-parens": "warn",
+    "chai-friendly/no-unused-expressions": 2,
+    // "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "no-unused-expressions": 0,
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+        "vars": "all"
+      }
+    ],
+    "no-use-before-define": [
+      "warn",
+      {
+        "allowNamedExports": false,
+        "classes": false,
+        "functions": false,
+        "variables": true
+      }
+    ],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"]
   }
 }
+
+//   "node/exports-style": ["error", "module.exports"],
+//   "node/file-extension-in-import": ["error", "always"],
+//   "node/prefer-global/buffer": ["error", "always"],
+//   "node/prefer-global/console": ["error", "always"],
+//   "node/prefer-global/process": ["error", "always"],
+//   "node/prefer-global/url-search-params": ["error", "always"],
+//   "node/prefer-global/url": ["error", "always"],
+//   "node/prefer-promises/dns": "error",
+//   "node/prefer-promises/fs": "error"
