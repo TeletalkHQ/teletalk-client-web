@@ -37,7 +37,7 @@ const userReducer = (
         return handleUpdateChatMessages(state, payload);
 
       case updateAllUserDataInitialAction.type:
-        return payload;
+        return initialStates;
 
       case resetUserStateInitialAction.type:
         return defaultUserState();

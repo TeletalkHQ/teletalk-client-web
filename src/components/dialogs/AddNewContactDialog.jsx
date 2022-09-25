@@ -7,20 +7,20 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
-import CustomTypography from "components/generals/typographies/CustomTypography";
 import DialogTemplate from "components/dialogs/DialogTemplate";
 
 import { addNewContactController } from "controllers/cellphoneControllers/addNewContactController";
 
 import { elementNames } from "variables/initials/initialValues/elementNames";
 import { initialContact } from "variables/initials/initialValues/initialValues";
+import H5 from "components/generals/typographies/H5";
 
 const AddContactDialogTitle = () => {
   return (
     <>
       <CustomFlexBox jc="space-between" ai="center">
         <CustomBox>
-          <CustomTypography>New Contact</CustomTypography>
+          <H5>New Contact</H5>
         </CustomBox>
         <CustomBox></CustomBox>
       </CustomFlexBox>
@@ -34,6 +34,7 @@ const AddContactDialogActions = ({
 }) => {
   return (
     <>
+      {/* //TODO: Extract to static vars */}
       <CustomFlexBox jc="flex-end" ai="center">
         <CustomBox>
           <CustomButton onClick={onContactDialogClose}>Cancel</CustomButton>
@@ -73,6 +74,7 @@ const AddContactDialogContent = ({
         <CustomBox mt={2}>
           <CustomTextInput
             value={contact.firstName}
+            //TODO: Extract to static vars
             label="First name"
             name={elementNames.firstName}
             onChange={onInputChange}

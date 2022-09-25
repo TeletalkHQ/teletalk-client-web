@@ -12,7 +12,10 @@ let extractedDispatchAsync = async (action = { type: "", payload: {} }) =>
   action;
 
 let useDispatch = () => extractedDispatch;
-let useSelector = () => initialStates;
+// eslint-disable-next-line no-unused-vars
+let useSelector = (callback = () => {}) => {
+  return initialStates;
+};
 let actionLogger = (action) => {
   console.log("actionLogger:", action);
 };
@@ -53,7 +56,14 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
     extractedDispatch = customDispatch;
     extractedDispatchAsync = async (action) => customDispatch(action);
     useDispatch = useCallback(() => customDispatch, [customDispatch]);
-    useSelector = useCallback(() => state, [state]);
+    useSelector = useCallback(
+      (callback) => {
+        if (callback) return callback(state);
+        return state;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      },
+      [state]
+    );
 
     return [state, customDispatch];
   } catch (error) {
