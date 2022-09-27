@@ -43,7 +43,7 @@ const LogoutDialog = ({ onDialogClose }) => {
     </>
   );
 
-  const dialogContent = (
+  const mainContent = (
     <>
       <CustomFlexBox jc="center" ai="center">
         <CustomBox>Are you sure to logout?</CustomBox>
@@ -56,7 +56,7 @@ const LogoutDialog = ({ onDialogClose }) => {
       <DialogTemplate
         open={dialogState.logout.open}
         actionContent={actionContent}
-        dialogContent={dialogContent}
+        mainContent={mainContent}
         onClose={handleClose}
       />
     </>

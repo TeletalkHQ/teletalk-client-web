@@ -1,6 +1,6 @@
 import { appOptions } from "classes/AppOptions";
 
-import { mergePrevStateWithPayload } from "functions/utilities/stateUtils";
+import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";

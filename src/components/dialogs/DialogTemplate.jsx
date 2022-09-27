@@ -13,7 +13,7 @@ import CustomDialogTitle from "components/generals/boxes/CustomDialogTitle";
 
 const DialogTemplate = ({
   actionContent,
-  dialogContent,
+  mainContent,
   dialogStyle,
   onClose,
   onKeyDown,
@@ -22,6 +22,7 @@ const DialogTemplate = ({
   titleContent,
   TransitionComponent,
   transitionDuration,
+  zIndex,
 }) => {
   const theme = useTheme();
   const { transitions } = appOptions.getOptions().ui;
@@ -37,6 +38,7 @@ const DialogTemplate = ({
 
   return (
     <CustomDialog
+      zIndex={zIndex}
       fullScreen={fullScreen}
       keepMounted
       {...(customTypeof.check(onClose).type.isFunction && {
@@ -58,7 +60,7 @@ const DialogTemplate = ({
       transitionDuration={transitionDuration || 500}
     >
       <CustomDialogTitle>{titleContent}</CustomDialogTitle>
-      <CustomDialogContent>{dialogContent}</CustomDialogContent>
+      <CustomDialogContent>{mainContent}</CustomDialogContent>
       <CustomDialogActions>{actionContent}</CustomDialogActions>
     </CustomDialog>
   );

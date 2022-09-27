@@ -1,5 +1,9 @@
-import { appConfigs } from "classes/AppConfigs";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
+
+import { appConfigs } from "classes/AppConfigs";
+
+import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
+
 import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/constants";
 
 const {
@@ -16,28 +20,22 @@ const defaultGlobalState = () => ({
     },
     currentAnchor: appDrawerCurrentAnchor,
   },
+  appProgressions: {
+    authenticationProgress: false,
+  },
+  dialogState: {
+    addNewContact: defaultDialogStateItemProps(),
+    contacts: defaultDialogStateItemProps(),
+    logout: defaultDialogStateItemProps(),
+  },
   globalLoadingState: {
     color: "blue",
     //TODO Move it to configs
     open: true,
     progressColor: "inherit",
-    type: GLOBAL_LOADING_TYPES.FULL_PAGE,
     size: 80,
     speedMultiplier: 1,
-  },
-  appProgressions: {
-    authenticationProgress: false,
-  },
-  dialogState: {
-    addNewContact: {
-      open: false,
-    },
-    contacts: {
-      open: false,
-    },
-    logout: {
-      open: false,
-    },
+    type: GLOBAL_LOADING_TYPES.FULL_PAGE,
   },
   onlineStatus: {
     isOnline: windowUtilities.isOnline(),

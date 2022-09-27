@@ -23,8 +23,10 @@ class Validator {
     return errorBuilders[`${this.validatorName}ErrorBuilder`];
   }
 
-  inputValidator(validatorParam, validationValue) {
-    const validationResult = this.compiledValidator(validatorParam);
+  inputValidator(validationKey, validationValue) {
+    const validationResult = this.compiledValidator({
+      [validationKey]: validationValue,
+    });
 
     if (customTypeof.isArray(validationResult)) {
       const extraIgnoreTypes = [];

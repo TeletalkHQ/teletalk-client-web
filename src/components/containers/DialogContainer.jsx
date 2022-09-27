@@ -2,6 +2,8 @@ import AddNewContactDialog from "components/dialogs/AddNewContactDialog";
 import ContactsDialog from "components/dialogs/ContactsDialog";
 import LogoutDialog from "components/dialogs/LogoutDialog";
 
+import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
+
 import { useMainContext } from "hooks/useMainContext";
 
 import { globalActions } from "actions/globalActions";
@@ -14,8 +16,8 @@ const DialogContainer = () => {
   const handleDialogClose = (dialogName) => {
     dispatch(
       globalActions.dialogOpenChangeAction({
+        ...defaultDialogStateItemProps(),
         dialogName,
-        open: false,
       })
     );
   };

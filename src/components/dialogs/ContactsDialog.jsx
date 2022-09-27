@@ -1,15 +1,14 @@
-import { globalActions } from "actions/globalActions";
-
 import { useMainContext } from "hooks/useMainContext";
 
-import DialogTemplate from "components/dialogs/DialogTemplate";
-import CustomButton from "components/generals/inputs/CustomButton";
+import ContactListItem from "components/otherComponents/ContactListItem";
 import CustomBox from "components/generals/boxes/CustomBox";
+import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-
-import { elementNames } from "variables/initials/initialValues/elementNames";
-import ContactListItem from "components/dialogs/ContactListItem";
+import DialogTemplate from "components/dialogs/DialogTemplate";
 import H5 from "components/generals/typographies/H5";
+
+import { DIALOG_NAMES } from "variables/otherVariables/constants";
+import { commonActions } from "functions/utilities/commonActions";
 
 const ContactsTitle = () => (
   <>
@@ -56,20 +55,18 @@ const ContactsDialog = ({ onDialogClose }) => {
       userState,
     },
   } = useMainContext();
+
   const handleAddContactClick = () => {
-    dispatch(
-      globalActions.dialogOpenChangeAction({
-        dialogName: elementNames.addContacts,
-        open: true,
-      })
-    );
+    dispatch(commonActions.closeDialog(DIALOG_NAMES.CONTACTS));
+    dispatch(commonActions.openDialog(DIALOG_NAMES.ADD_NEW_CONTACT));
   };
 
   const handleClose = () => {
     onDialogClose("contacts");
   };
 
-  const dialogContent = userState.contacts?.map((contact, index) => (
+  console.log(userState.contacts);
+  const mainContent = userState.contacts?.map((contact, index) => (
     <ContactListItem
       key={index}
       name={`${contact.firstName} ${contact.lastName}`}
@@ -79,13 +76,13 @@ const ContactsDialog = ({ onDialogClose }) => {
   return (
     <DialogTemplate
       titleContent={<ContactsTitle />}
+      mainContent={mainContent}
       actionContent={
         <ContactsActions
           onClose={handleClose}
           onAddContactClick={handleAddContactClick}
         />
       }
-      dialogContent={dialogContent}
       open={dialogState.contacts.open}
       paperStyle={{ height: "90vh" }}
       onClose={handleClose}

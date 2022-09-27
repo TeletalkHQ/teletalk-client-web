@@ -29,6 +29,7 @@ const drawerList = [
   settings,
 ];
 
+//TODO: Move to appConfigs
 const iOS =
   !customTypeof.check(navigator).type.isUndefined &&
   /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -55,10 +56,10 @@ const AppDrawer = () => {
     dispatch(globalActions.appDrawerOpenChangeAction({ open }));
   };
 
-  const handleDrawerItemClick = (dialogName) => {
+  const handleDrawerItemClick = (elementName) => {
     dispatch(
       globalActions.dialogOpenChangeAction({
-        dialogName,
+        dialogName: elementName,
         open: true,
       })
     );

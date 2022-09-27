@@ -1,19 +1,26 @@
 import { useState } from "react";
 
-import { useMainContext } from "hooks/useMainContext";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
-import CountrySelector from "components/otherComponents/CountrySelector";
+import CountryCode from "components/commonInputs/CountryCode";
+import CountrySelector from "components/commonInputs/CountrySelector";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import DialogTemplate from "components/dialogs/DialogTemplate";
+import FirstName from "components/commonInputs/FirstNameInput";
+import H5 from "components/generals/typographies/H5";
+import LastName from "components/commonInputs/LastNameInput";
+import PhoneNumber from "components/commonInputs/PhoneNumberInput";
+
+import { commonActions } from "functions/utilities/commonActions";
 
 import { addNewContactController } from "controllers/cellphoneControllers/addNewContactController";
 
-import { elementNames } from "variables/initials/initialValues/elementNames";
+import { useMainContext } from "hooks/useMainContext";
+
+import { DIALOG_NAMES } from "variables/otherVariables/constants";
 import { initialContact } from "variables/initials/initialValues/initialValues";
-import H5 from "components/generals/typographies/H5";
 
 const AddContactDialogTitle = () => {
   return (
@@ -30,17 +37,21 @@ const AddContactDialogTitle = () => {
 
 const AddContactDialogActions = ({
   onAddNewContactClick,
-  onContactDialogClose,
+  onContactDialogCancelClick,
 }) => {
   return (
     <>
       {/* //TODO: Extract to static vars */}
-      <CustomFlexBox jc="flex-end" ai="center">
+      <CustomFlexBox gap={1} jc="flex-end" ai="center">
         <CustomBox>
-          <CustomButton onClick={onContactDialogClose}>Cancel</CustomButton>
+          <CustomButton variant="text" onClick={onContactDialogCancelClick}>
+            Cancel
+          </CustomButton>
         </CustomBox>
         <CustomBox>
-          <CustomButton onClick={onAddNewContactClick}>Create</CustomButton>
+          <CustomButton variant="text" onClick={onAddNewContactClick}>
+            Create
+          </CustomButton>
         </CustomBox>
       </CustomFlexBox>
     </>
@@ -51,51 +62,47 @@ const AddContactDialogContent = ({
   contact,
   countries,
   countryName,
-  onCountryNameAutocompleteInputChange,
+  onCountryCodeInputChange,
   onCountryNameInputChange,
   onInputChange,
+  onSelectedCountryChange,
   selectedCountry,
 }) => {
   return (
     <>
       <CustomBox>
-        <CustomBox>
-          <CountrySelector
-            countries={countries}
-            countryName={countryName}
-            onCountryNameAutocompleteInputChange={
-              onCountryNameAutocompleteInputChange
-            }
-            onCountryNameInputChange={onCountryNameInputChange}
-            selectedCountry={selectedCountry}
+        <CountrySelector
+          countries={countries}
+          countryName={countryName}
+          onSelectedCountryChange={onSelectedCountryChange}
+          onCountryNameInputChange={onCountryNameInputChange}
+          selectedCountry={selectedCountry}
+        />
+
+        <CustomBox mt={2}>
+          <FirstName.WithValidator
+            inputValue={contact.firstName}
+            onInputChange={onInputChange}
           />
         </CustomBox>
 
         <CustomBox mt={2}>
-          <CustomTextInput
-            value={contact.firstName}
-            //TODO: Extract to static vars
-            label="First name"
-            name={elementNames.firstName}
-            onChange={onInputChange}
+          <LastName.WithValidator
+            inputValue={contact.lastName}
+            onInputChange={onInputChange}
           />
         </CustomBox>
-        <CustomBox mt={2}>
-          <CustomTextInput
-            value={contact.lastName}
-            label="Last name"
-            name={elementNames.lastName}
-            onChange={onInputChange}
+        <CustomFlexBox gap={1} jc="space-between" mt={2}>
+          <CountryCode.WithValidator
+            inputValue={contact.countryCode}
+            onInputChange={onCountryCodeInputChange}
           />
-        </CustomBox>
-        <CustomBox mt={2}>
-          <CustomTextInput
-            value={contact.phoneNumber}
-            label="Phone number"
-            name={elementNames.phoneNumber}
-            onChange={onInputChange}
+
+          <PhoneNumber.WithValidator
+            inputValue={contact.phoneNumber}
+            onInputChange={onInputChange}
           />
-        </CustomBox>
+        </CustomFlexBox>
       </CustomBox>
     </>
   );
@@ -111,51 +118,88 @@ const AddNewContactDialog = ({ onDialogClose }) => {
   } = useMainContext();
 
   const [contact, setContact] = useState(initialContact);
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
   const handleInputChange = (event) => {
     setContact({ ...contact, [event.target.name]: event.target.value });
   };
 
   const handleAddNewContactClick = () => {
-    dispatch(
-      addNewContactController({
-        countryCode: "98",
-        countryName: "iran",
-        firstName: contact.firstName,
-        lastName: contact.lastName,
-        phoneNumber: contact.phoneNumber,
-      })
-    );
+    const { privateId, ...rest } = contact;
+    dispatch(addNewContactController(rest));
 
     setContact(initialContact);
   };
 
   const handleContactDialogClose = () => {
-    onDialogClose("addContact");
+    onDialogClose(DIALOG_NAMES.ADD_NEW_CONTACT);
+  };
+
+  const handleContactDialogCancelClick = () => {
+    dispatch(commonActions.openDialog(DIALOG_NAMES.CONTACTS));
+    dispatch(commonActions.closeDialog(DIALOG_NAMES.ADD_NEW_CONTACT));
+  };
+
+  const handleCountryNameInputChange = (countryName) => {
+    setContact({ ...contact, countryName });
+  };
+
+  const handleSelectedCountryChange = (newValue) => {
+    selectedCountryDispatcher(newValue);
+
+    setContact({
+      ...contact,
+      countryName: newValue?.countryName || "",
+      countryCode: newValue?.countryCode || "",
+    });
+  };
+
+  const selectedCountryDispatcher = (country) => {
+    setSelectedCountry(country || null);
+  };
+
+  const selectCountryByCountryCodeInputChange = (value) => {
+    const country = arrayUtilities.findByPropValueEquality(
+      countries,
+      value,
+      "countryCode"
+    );
+
+    selectedCountryDispatcher(country);
   };
 
   return (
     <>
       <DialogTemplate
         titleContent={<AddContactDialogTitle />}
-        dialogContent={
+        mainContent={
           <AddContactDialogContent
             contact={contact}
             countries={countries}
+            countryCode={contact.countryCode}
+            countryName={contact.countryName}
+            onCountryNameInputChange={handleCountryNameInputChange}
+            onSelectedCountryChange={handleSelectedCountryChange}
+            onCountryCodeInputChange={(event) => {
+              handleInputChange(event);
+              selectCountryByCountryCodeInputChange(event.target.value);
+            }}
             onInputChange={handleInputChange}
+            selectedCountry={selectedCountry}
           />
         }
         actionContent={
           <AddContactDialogActions
             onAddNewContactClick={(...args) => {
               handleAddNewContactClick(...args);
-              handleContactDialogClose();
             }}
-            onContactDialogClose={handleContactDialogClose}
+            onContactDialogCancelClick={handleContactDialogCancelClick}
           />
         }
         open={dialogState.addNewContact.open}
-        paperStyle={{ height: "50vh" }}
+        paperStyle={{
+          height: "50vh",
+        }}
         onClose={handleContactDialogClose}
       />
     </>

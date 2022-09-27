@@ -1,6 +1,29 @@
 import { globalActions } from "actions/globalActions";
 
-const authenticationProgressChange = (authenticationProgress) =>
-  globalActions.appProgressionChange({ authenticationProgress });
+import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
 
-export { authenticationProgressChange };
+const { dialogOpenChangeAction, appProgressionChange } = globalActions;
+
+const authenticationProgressChange = (authenticationProgress) =>
+  appProgressionChange({ authenticationProgress });
+
+const dialogOpenCloseChangeHelper = (dialogName, open, props) =>
+  dialogOpenChangeAction({
+    dialogName,
+    open,
+    props,
+  });
+
+const openDialog = (dialogName, props = defaultDialogStateItemProps()) =>
+  dialogOpenCloseChangeHelper(dialogName, true, props);
+
+const closeDialog = (dialogName, props = defaultDialogStateItemProps()) =>
+  dialogOpenCloseChangeHelper(dialogName, false, props);
+
+const commonActions = {
+  authenticationProgressChange,
+  closeDialog,
+  openDialog,
+};
+
+export { authenticationProgressChange, commonActions };

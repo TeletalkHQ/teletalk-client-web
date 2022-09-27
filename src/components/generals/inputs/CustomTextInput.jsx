@@ -8,11 +8,11 @@ const CustomTextInput = ({ InputProps, margin, m, ...props }) => {
     <TextField
       margin={textFieldMargin}
       fullWidth
+      {...props}
       InputProps={{
         ...InputProps,
         sx: { borderRadius: "10px", ...inputPropsSx },
       }}
-      {...props}
     />
   );
 };

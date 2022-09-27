@@ -8,6 +8,8 @@ const CustomButton = ({
   lbtn,
   loadingButton,
   style,
+  size = "large",
+  variant = "contained",
   ...props
 }) => {
   //TODO WHAT!?! Separate into two components
@@ -20,8 +22,8 @@ const CustomButton = ({
         ...style,
       }}
       fullWidth
-      size="large"
-      variant="contained"
+      size={size}
+      variant={variant}
       {...{
         color,
         ...props,

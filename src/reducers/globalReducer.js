@@ -82,7 +82,11 @@ const handleDialogOpenChange = (prevState, payload) => ({
   ...prevState,
   dialogState: {
     ...prevState.dialogState,
-    [payload.dialogName]: { open: payload.open },
+    [payload.dialogName]: {
+      ...prevState.dialogState[payload.dialogName],
+      open: payload.open,
+      props: payload.props,
+    },
   },
 });
 
