@@ -21,12 +21,11 @@ const signInController = () => {
     try {
       dispatch(authenticationProgressChange(true));
 
-      const response =
-        await apiManager.apis.authApis.signInApi.sendFullFeaturedRequest({
-          countryCode,
-          countryName,
-          phoneNumber,
-        });
+      const response = await apiManager.apis.signIn.sendFullFeaturedRequest({
+        countryCode,
+        countryName,
+        phoneNumber,
+      });
 
       const { verifyToken } = response.data.user;
 

@@ -7,8 +7,8 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 const welcomeMessageController = () => {
   return async (dispatch) => {
     try {
-      const { welcomeMessageApi } = apiManager.apis.otherApis;
-      const response = await welcomeMessageApi.sendFullFeaturedRequest();
+      const { getWelcomeMessage: getWelcomeMessageApi } = apiManager.apis;
+      const response = await getWelcomeMessageApi.sendFullFeaturedRequest();
 
       dispatch(
         otherActions.welcomeMessageAction({

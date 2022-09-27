@@ -7,7 +7,7 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 const logoutController = () => {
   return async () => {
     try {
-      await apiManager.apis.authApis.logoutApi.sendFullFeaturedRequest();
+      await apiManager.apis.logout.sendFullFeaturedRequest();
 
       commonFunctionalities.resetEverything();
     } catch (error) {

@@ -16,7 +16,7 @@ const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
       <CustomBox>
         <CustomAvatar />
       </CustomBox>
-      <CustomBox col sx={{ width: "100%", ml: 1 }}>
+      <CustomBox sx={{ width: "100%", ml: 1 }}>
         <CustomFlexBox jc="space-between" ai="center">
           <CustomBox>{name}</CustomBox>
           {/* <CustomBox>clock</CustomBox> */}
