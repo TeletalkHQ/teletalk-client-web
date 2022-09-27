@@ -31,7 +31,7 @@ const createNewUserController = () => {
 
       const {
         data: { user },
-      } = await apiManager.apis.authApis.createNewUserApi.sendFullFeaturedRequest(
+      } = await apiManager.apis.createNewUser.sendFullFeaturedRequest(
         {
           firstName,
           lastName,
