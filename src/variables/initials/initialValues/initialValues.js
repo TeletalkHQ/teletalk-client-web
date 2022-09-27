@@ -1,4 +1,6 @@
 const initialContact = {
+  countryCode: "",
+  countryName: "",
   firstName: "",
   lastName: "",
   phoneNumber: "",

@@ -1,3 +1,11 @@
+import { domUtilities } from "utility-store/src/classes/DomUtilities";
+import { stringUtilities } from "utility-store/src/classes/StringUtilities";
+
+import { tempActions } from "actions/tempActions";
+
+import { stuffStore } from "classes/StuffStore";
+import { validatorManager } from "classes/ValidatorManager";
+
 import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
@@ -7,23 +15,67 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import H5 from "components/generals/typographies/H5";
 
-import { appIcons } from "variables/initials/initialValues/appIcons";
-import { elementNames } from "variables/initials/initialValues/elementNames";
+import { verifySignInController } from "controllers/authControllers/verifySignInController";
 
-const VerifySignIn = ({
-  authenticationProgress,
-  countryCode,
-  isVerificationSubmitButtonDisabled,
-  onBackClick,
-  onVerificationCodeInputChange,
-  onVerifyClick,
-  phoneNumber,
-  verificationCode,
-}) => {
+import { useMainContext } from "hooks/useMainContext";
+
+import { appIcons } from "variables/initials/initialValues/appIcons";
+import {
+  ELEMENT_NAMES,
+  VALIDATION_KEYS,
+} from "variables/otherVariables/constants";
+
+const { verificationCodeOnChangeAction } = tempActions;
+
+const VerifySignIn = ({ onBackToSignInClick }) => {
+  const {
+    hooksOutput: { dispatch },
+    state: {
+      globalState: {
+        appProgressions: { authenticationProgress },
+      },
+      tempState: { countryCode, phoneNumber, verificationCode },
+    },
+  } = useMainContext();
+
+  const isVerificationSubmitButtonDisabled = () => {
+    const {
+      verificationCodeModel: {
+        length: { value: verificationCodeLength },
+      },
+    } = stuffStore.models;
+
+    return (
+      stringUtilities.valueLength(verificationCode) !== verificationCodeLength
+    );
+  };
+
+  const handleVerifySignInClick = () => {
+    domUtilities
+      .setElementByName(ELEMENT_NAMES.VERIFICATION_CODE)
+      .focusElement()
+      .selectAllValue();
+    dispatch(verifySignInController());
+  };
+
+  const handleVerificationCodeInputChange = (event) => {
+    const { value } = event.target;
+    const trimmedValue = value.trim();
+
+    validatorManager.validators.verificationCodeValidator
+      .inputValidator(VALIDATION_KEYS.verificationCode, trimmedValue)
+      .printInputValidatorError()
+      .executeIfNoError(() =>
+        dispatch(
+          verificationCodeOnChangeAction({ verificationCode: trimmedValue })
+        )
+      );
+  };
+
   return (
     <CustomContainer maxWidth="xl">
       <CustomBox sx={{ mt: 1 }}>
-        <CustomIconButton onClick={onBackClick}>
+        <CustomIconButton onClick={onBackToSignInClick}>
           <appIcons.arrowBack.Icon />
         </CustomIconButton>
       </CustomBox>
@@ -51,18 +103,18 @@ const VerifySignIn = ({
             <CustomTextInput
               required
               label="Verification code"
-              name={elementNames.verificationCode}
+              name={ELEMENT_NAMES.VERIFICATION_CODE}
               autoFocus
               value={verificationCode}
-              onChange={onVerificationCodeInputChange}
+              onChange={handleVerificationCodeInputChange}
             />
 
             <CustomButton
               lbtn
-              disabled={isVerificationSubmitButtonDisabled}
+              disabled={isVerificationSubmitButtonDisabled()}
               loading={authenticationProgress}
               loadingPosition="end"
-              onClick={onVerifyClick}
+              onClick={handleVerifySignInClick}
               endIcon={<appIcons.fingerprint.Icon />}
               sx={{ mt: 2, mb: 2 }}
             >

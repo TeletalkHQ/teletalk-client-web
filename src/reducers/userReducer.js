@@ -20,6 +20,7 @@ const userReducer = (
   state = initialStates.userState,
   action = appOptions.getOptions().actionOptions
 ) => {
+  console.log(action);
   try {
     const { payload, type } = action;
 
@@ -37,7 +38,7 @@ const userReducer = (
         return handleUpdateChatMessages(state, payload);
 
       case updateAllUserDataInitialAction.type:
-        return initialStates;
+        return payload;
 
       case resetUserStateInitialAction.type:
         return defaultUserState();

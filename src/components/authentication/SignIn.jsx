@@ -1,31 +1,107 @@
-import CountrySelector from "components/otherComponents/CountrySelector";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
+import { stringUtilities } from "utility-store/src/classes/StringUtilities";
+
+import { tempActions } from "actions/tempActions";
+
+import { stuffStore } from "classes/StuffStore";
+
+import CountryCode from "components/commonInputs/CountryCode";
+import CountrySelector from "components/commonInputs/CountrySelector";
 import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomCircularProgress from "components/generals/progresses/CustomCircularProgress";
 import CustomContainer from "components/generals/boxes/CustomContainer";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import H5 from "components/generals/typographies/H5";
+import PhoneNumber from "components/commonInputs/PhoneNumberInput";
+
+import { signInController } from "controllers/authControllers/signInController";
+
+import { useMainContext } from "hooks/useMainContext";
 
 import { appIcons } from "variables/initials/initialValues/appIcons";
-import { elementNames } from "variables/initials/initialValues/elementNames";
 
-const SignIn = ({
-  authenticationProgress,
-  countries,
-  countryCode,
-  countryName,
-  isSignInSubmitButtonDisabled,
-  onCountryCodeInputChange,
-  onCountryNameAutocompleteInputChange,
-  onCountryNameInputChange,
-  onPhoneNumberInputChange,
-  onSignInClick,
-  phoneNumber,
-  selectedCountry,
-}) => {
+const {
+  countryCodeOnChangeAction,
+  countryNameOnChangeAction,
+  phoneNumberOnChangeAction,
+  selectedCountryAction,
+} = tempActions;
+
+const SignIn = () => {
+  const {
+    hooksOutput: { dispatch },
+    state: {
+      globalState: {
+        appProgressions: { authenticationProgress },
+      },
+      otherState: { countries },
+      tempState: { countryCode, countryName, phoneNumber, selectedCountry },
+    },
+  } = useMainContext();
+
+  const handleSignInClick = () => {
+    dispatch(signInController());
+  };
+
+  const handlePhoneNumberInputChange = (event) => {
+    const { value } = event.target;
+    dispatch(phoneNumberOnChangeAction({ phoneNumber: value }));
+  };
+
+  const handleCountryCodeInputChange = (value) => {
+    dispatch(countryCodeOnChangeAction({ countryCode: value }));
+  };
+
+  const selectCountryByCountryCodeInputChange = (value) => {
+    const country = arrayUtilities.findByPropValueEquality(
+      countries,
+      value,
+      "countryCode"
+    );
+
+    selectedCountryDispatcher(country);
+  };
+
+  const handleSelectedCountryChange = (newValue) => {
+    selectedCountryDispatcher(newValue);
+
+    dispatch(
+      countryCodeOnChangeAction({ countryCode: newValue?.countryCode || "" })
+    );
+
+    dispatch(
+      countryNameOnChangeAction({ countryName: newValue?.countryName || "" })
+    );
+  };
+
+  const handleCountryNameInputChange = (newInputValue) => {
+    dispatch(countryNameOnChangeAction({ countryName: newInputValue }));
+  };
+
+  const selectedCountryDispatcher = (country) => {
+    dispatch(selectedCountryAction({ selectedCountry: country || null }));
+  };
+
+  const isSignInSubmitButtonDisabled = () => {
+    const {
+      phoneNumberModel: {
+        maxlength: { value: phoneNumberMaxlength },
+        minlength: { value: phoneNumberMinlength },
+      },
+    } = stuffStore.models;
+
+    const phoneNumberLength = stringUtilities.valueLength(phoneNumber);
+
+    return (
+      phoneNumberLength < phoneNumberMinlength ||
+      phoneNumberLength > phoneNumberMaxlength ||
+      !selectedCountry
+    );
+  };
+
   return (
     <CustomContainer mw="xl">
       <CustomFlexBox mt={8} ai="center" col>
@@ -43,44 +119,29 @@ const SignIn = ({
             <CountrySelector
               countries={countries}
               countryName={countryName}
-              onCountryNameAutocompleteInputChange={
-                onCountryNameAutocompleteInputChange
-              }
-              onCountryNameInputChange={onCountryNameInputChange}
+              onSelectedCountryChange={handleSelectedCountryChange}
+              onCountryNameInputChange={handleCountryNameInputChange}
               selectedCountry={selectedCountry}
             />
 
             <CustomFlexBox jc="space-between">
-              <CustomTextInput
-                style={{ width: "90px" }}
-                required
-                label="Code"
-                name={elementNames.countryCode}
-                autoComplete="off"
-                InputProps={{
-                  startAdornment: (
-                    <>
-                      <span>+</span>
-                    </>
-                  ),
+              <CountryCode.WithValidator
+                inputValue={countryCode}
+                onInputChange={(event) => {
+                  const { value } = event.target;
+                  handleCountryCodeInputChange(value);
+                  selectCountryByCountryCodeInputChange(value);
                 }}
-                value={countryCode}
-                onChange={onCountryCodeInputChange}
               />
-              <CustomTextInput
-                required
-                label="Phone number"
-                name={elementNames.phoneNumber}
-                autoComplete="tel-national"
-                style={{ marginLeft: "5px" }}
-                value={phoneNumber}
-                onChange={onPhoneNumberInputChange}
+              <PhoneNumber.WithValidator
+                onInputChange={handlePhoneNumberInputChange}
+                inputValue={phoneNumber}
               />
             </CustomFlexBox>
 
             <CustomButton
               lbtn
-              disabled={isSignInSubmitButtonDisabled}
+              disabled={isSignInSubmitButtonDisabled()}
               loading={authenticationProgress}
               loadingIndicator={
                 <>
@@ -88,8 +149,12 @@ const SignIn = ({
                   <CustomCircularProgress size={25} color="info" />
                 </>
               }
-              onClick={onSignInClick}
-              sx={{ mt: 2, mb: 1, borderRadius: "10px" }}
+              onClick={handleSignInClick}
+              sx={{
+                borderRadius: "10px",
+                mb: 1,
+                mt: 2,
+              }}
             >
               Next
             </CustomButton>

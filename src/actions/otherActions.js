@@ -1,4 +1,4 @@
-import { actionCreator } from "functions/utilities/stateUtils";
+import { actionCreator } from "functions/utilities/stateUtilities";
 
 import { initialActions } from "variables/initials/initialActions/initialActions";
 

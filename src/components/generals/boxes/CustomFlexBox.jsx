@@ -9,6 +9,7 @@ const CustomFlexBox = ({
   justifyContent,
   fd,
   flexDirection,
+  gap = 0,
 
   ...props
 }) => {
@@ -21,6 +22,7 @@ const CustomFlexBox = ({
 
   return (
     <Box
+      gap={gap}
       flexDirection={boxFlexDirection}
       justifyContent={boxJustifyContent}
       alignItems={boxAlignItems}

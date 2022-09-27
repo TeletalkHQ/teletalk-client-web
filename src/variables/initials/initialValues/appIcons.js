@@ -2,14 +2,20 @@ import {
   AccountCircleOutlined as AccountCircleOutlinedIcon,
   AnnouncementOutlined as AnnouncementOutlinedIcon,
   ArrowBack as ArrowBackIcon,
+  AttachFile as AttachFileIcon,
   Brightness4Outlined as Brightness4OutlinedIcon,
   CallOutlined as CallOutlinedIcon,
   CampaignOutlined as CampaignOutlinedIcon,
   Check as CheckIcon,
+  Close as CloseIcon,
+  EmojiEmotions as EmojiEmotionsIcon,
+  Fingerprint as FingerprintIcon,
   ForumOutlined as ForumOutlinedIcon,
   LockOutlined as LockOutlinedIcon,
   LogoutOutlined as LogoutOutlinedIcon,
   Menu as MenuIcon,
+  MicNone as MicNoneIcon,
+  MoreVert as MoreVertIcon,
   PeopleOutline as PeopleOutlineIcon,
   PermIdentity as PermIdentityIcon,
   PersonOutlineOutlined as PersonOutlineOutlinedIcon,
@@ -17,17 +23,11 @@ import {
   SettingsInputComponentOutlined as SettingsInputComponentOutlinedIcon,
   SettingsOutlined as SettingsOutlinedIcon,
   SmartToyOutlined as SmartToyOutlinedIcon,
-  VerifiedUser as VerifiedUserIcon,
-  Fingerprint as FingerprintIcon,
-  Close as CloseIcon,
-  MoreVert as MoreVertIcon,
-  AttachFile as AttachFileIcon,
-  EmojiEmotions as EmojiEmotionsIcon,
-  MicNone as MicNoneIcon,
   Telegram as TelegramIcon,
+  VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
 
-import { elementNames } from "variables/initials/initialValues/elementNames";
+import { ELEMENT_NAMES } from "variables/otherVariables/constants";
 
 const appIconProperties = (text, elementName, Icon) => ({
   text,
@@ -38,94 +38,94 @@ const appIconProperties = (text, elementName, Icon) => ({
 const appIcons = {
   accountCircle: appIconProperties(
     "Account",
-    elementNames.account,
+    ELEMENT_NAMES.ACCOUNT,
     AccountCircleOutlinedIcon
   ),
   allChats: appIconProperties(
     "All Chats",
-    elementNames.allChats,
+    ELEMENT_NAMES.ALL_CHATS,
     ForumOutlinedIcon
   ),
-  arrowBack: appIconProperties("Back", elementNames.back, ArrowBackIcon),
+  arrowBack: appIconProperties("Back", ELEMENT_NAMES.BACK, ArrowBackIcon),
   attachFile: appIconProperties(
     "AttachFile",
-    elementNames.attachFile,
+    ELEMENT_NAMES.ATTACH_FILE,
     AttachFileIcon
   ),
-  bot: appIconProperties("Bot", elementNames.bot, SmartToyOutlinedIcon),
-  calls: appIconProperties("Calls", elementNames.calls, PermIdentityIcon),
+  bot: appIconProperties("Bot", ELEMENT_NAMES.BOT, SmartToyOutlinedIcon),
+  calls: appIconProperties("Calls", ELEMENT_NAMES.CALLS, PermIdentityIcon),
   channels: appIconProperties(
     "Channels",
-    elementNames.channels,
+    ELEMENT_NAMES.CHANNELS,
     CallOutlinedIcon
   ),
-  check: appIconProperties("Check", elementNames.check, CheckIcon),
-  close: appIconProperties("Close", elementNames.close, CloseIcon),
+  check: appIconProperties("Check", ELEMENT_NAMES.CHECK, CheckIcon),
+  close: appIconProperties("Close", ELEMENT_NAMES.CLOSE, CloseIcon),
   contacts: appIconProperties(
     "Contacts",
-    elementNames.contacts,
+    ELEMENT_NAMES.CONTACTS,
     PeopleOutlineIcon
   ),
   editChats: appIconProperties(
     "Edit Chats",
-    elementNames.editChats,
+    ELEMENT_NAMES.EDIT_CHATS,
     SettingsInputComponentOutlinedIcon
   ),
   emojiEmotions: appIconProperties(
     "EmojiEmotions",
-    elementNames.emojiEmotions,
+    ELEMENT_NAMES.EMOJI_EMOTIONS,
     EmojiEmotionsIcon
   ),
   fingerprint: appIconProperties(
     "Fingerprint",
-    elementNames.lock,
+    ELEMENT_NAMES.LOCK,
     FingerprintIcon
   ),
   groups: appIconProperties(
     "Groups",
-    elementNames.groups,
+    ELEMENT_NAMES.GROUPS,
     CampaignOutlinedIcon
   ),
-  lockOutlined: appIconProperties("Lock", elementNames.lock, LockOutlinedIcon),
-  logout: appIconProperties("Logout", elementNames.logout, LogoutOutlinedIcon),
-  menu: appIconProperties("Menu", elementNames.menu, MenuIcon),
-  micNone: appIconProperties("MicNone", elementNames.micNone, MicNoneIcon),
-  moreVertical: appIconProperties("More", elementNames.more, MoreVertIcon),
+  lockOutlined: appIconProperties("Lock", ELEMENT_NAMES.LOCK, LockOutlinedIcon),
+  logout: appIconProperties("Logout", ELEMENT_NAMES.LOGOUT, LogoutOutlinedIcon),
+  menu: appIconProperties("Menu", ELEMENT_NAMES.MENU, MenuIcon),
+  micNone: appIconProperties("MicNone", ELEMENT_NAMES.MIC_NONE, MicNoneIcon),
+  moreVertical: appIconProperties("More", ELEMENT_NAMES.MORE, MoreVertIcon),
   newChannel: appIconProperties(
     "New Channel",
-    elementNames.newChannel,
+    ELEMENT_NAMES.NEW_CHANNEL,
     CallOutlinedIcon
   ),
   newGroup: appIconProperties(
     "New Group",
-    elementNames.newGroup,
+    ELEMENT_NAMES.NEW_GROUP,
     CampaignOutlinedIcon
   ),
   nightMode: appIconProperties(
     "Night Mode",
-    elementNames.nightMode,
+    ELEMENT_NAMES.NIGHT_MODE,
     Brightness4OutlinedIcon
   ),
   personal: appIconProperties(
     "Personal",
-    elementNames.personal,
+    ELEMENT_NAMES.PERSONAL,
     PersonOutlineOutlinedIcon
   ),
-  search: appIconProperties("Search", elementNames.search, SearchIcon),
+  search: appIconProperties("Search", ELEMENT_NAMES.SEARCH, SearchIcon),
   settings: appIconProperties(
     "Settings",
-    elementNames.settings,
+    ELEMENT_NAMES.SETTINGS,
     SettingsOutlinedIcon
   ),
-  telegram: appIconProperties("Telegram", elementNames.telegram, TelegramIcon),
+  telegram: appIconProperties("Telegram", ELEMENT_NAMES.TELEGRAM, TelegramIcon),
   unread: appIconProperties(
     "Unread Messages",
-    elementNames.unread,
+    ELEMENT_NAMES.UNREAD,
     AnnouncementOutlinedIcon
   ),
   verifiedUser: appIconProperties(
     "Verified User",
-    elementNames.lock,
+    ELEMENT_NAMES.LOCK,
     VerifiedUserIcon
   ),
 };

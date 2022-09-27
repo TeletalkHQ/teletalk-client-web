@@ -1,12 +1,14 @@
+import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
+
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const {
   globalState: {
     appDrawerState,
+    appProgressions,
     globalLoadingState,
     onlineStatus,
     viewMode,
-    appProgressions,
   },
 } = initialStates;
 
@@ -24,10 +26,10 @@ const appProgressionChangeInitialAction = {
 
 const dialogOpenChangeInitialAction = {
   payload: {
+    ...defaultDialogStateItemProps(),
     dialogName: "",
-    open: false,
   },
-  type: "DIALOG_STATE_CHANGE",
+  type: "DIALOG_OPEN_STATE_CHANGE",
 };
 
 const globalLoadingOpenChangeInitialAction = {

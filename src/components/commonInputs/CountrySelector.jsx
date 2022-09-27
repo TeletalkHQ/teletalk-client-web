@@ -4,13 +4,13 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
 import Img from "components/generals/otherGeneralComponents/Img";
 
-import { elementNames } from "variables/initials/initialValues/elementNames";
+import { ELEMENT_NAMES } from "variables/otherVariables/constants";
 
 //CLEANME CountrySelector Autocomplete
 const CountrySelector = ({
   countries,
   countryName,
-  onCountryNameAutocompleteInputChange,
+  onSelectedCountryChange,
   onCountryNameInputChange,
   selectedCountry,
 }) => {
@@ -18,7 +18,7 @@ const CountrySelector = ({
     <Autocomplete
       value={selectedCountry}
       onChange={(_, newValue) => {
-        onCountryNameAutocompleteInputChange(newValue);
+        onSelectedCountryChange(newValue);
       }}
       inputValue={countryName}
       onInputChange={(_, newInputValue) => {
@@ -48,7 +48,7 @@ const CountrySelector = ({
         <CustomTextInput
           {...params}
           required
-          name={elementNames.countryName}
+          name={ELEMENT_NAMES.COUNTRY_NAME}
           label="Choose a country"
           InputProps={{
             ...params.InputProps,
