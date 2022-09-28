@@ -30,7 +30,7 @@ const verifySignIn = () => {
       if (!verifyToken) {
         commonFunctionalities.changeViewMode().signIn();
         notificationManager.submitErrorNotification(
-          notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
+          notifications.error.VERIFY_TOKEN_NOT_FOUND
         );
 
         return;
@@ -164,7 +164,7 @@ const createNewUser = () => {
       commonFunctionalities.checkAndExecute(!verifyToken, () => {
         commonFunctionalities.changeViewMode().signIn();
         notificationManager.submitErrorNotification(
-          notifications.localErrors.VERIFY_TOKEN_NOT_FOUND
+          notifications.error.VERIFY_TOKEN_NOT_FOUND
         );
       });
 

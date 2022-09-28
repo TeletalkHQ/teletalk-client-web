@@ -8,8 +8,8 @@ const {
   dialogOpenChangeInitialAction,
   globalLoadingOpenChangeInitialAction,
   onlineStatusInitialAction,
-  viewModeInitialAction,
   resetGlobalStateInitialAction,
+  viewModeInitialAction,
 } = globalInitialActions;
 
 const appDrawerOpenChange = (

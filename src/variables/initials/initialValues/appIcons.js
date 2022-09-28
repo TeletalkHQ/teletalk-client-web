@@ -30,9 +30,9 @@ import {
 import { ELEMENT_NAMES } from "variables/otherVariables/constants";
 
 const appIconProperties = (text, elementName, Icon) => ({
-  text,
   elementName,
   Icon,
+  text,
 });
 
 const appIcons = {

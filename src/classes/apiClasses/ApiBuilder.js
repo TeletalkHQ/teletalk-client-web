@@ -59,7 +59,7 @@ class ApiBuilder {
 
   #checkMinimumRequirements() {
     errorThrower(!this.requirements.routeObject.fullUrl, {
-      ...notifications.localErrors.URL_NOT_FOUND,
+      ...notifications.error.URL_NOT_FOUND,
       requirements: this.requirements,
     });
   }
