@@ -1,4 +1,5 @@
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
+
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { apiManager } from "classes/apiClasses/ApiManager";
 
@@ -23,7 +24,7 @@ const sendPrivateMessageController = () => {
         });
 
       const { chatId, newMessage } = response.data;
-      dispatch(userActions.addNewMessageToChatAction({ chatId, newMessage }));
+      dispatch(actions.addNewMessageToChat({ chatId, newMessage }));
 
       commonFunctionalities.resetMessageInputText();
     } catch (error) {

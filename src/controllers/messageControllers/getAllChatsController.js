@@ -1,4 +1,4 @@
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
@@ -10,9 +10,7 @@ const getAllChatsController = () => {
       const response =
         await apiManager.apis.getAllChats.sendFullFeaturedRequest();
 
-      dispatch(
-        userActions.updateAllUserDataAction({ chats: response.data.chats })
-      );
+      dispatch(actions.updateAllUserData({ chats: response.data.chats }));
     } catch (error) {
       printCatchError(getAllChatsController.name, error);
     }

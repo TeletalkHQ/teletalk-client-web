@@ -1,4 +1,4 @@
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
@@ -9,8 +9,6 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
-
-const { updateAllUserDataAction } = userActions;
 
 const signInController = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -34,7 +32,7 @@ const signInController = () => {
         verifyToken
       );
 
-      dispatch(updateAllUserDataAction(response.data.user));
+      dispatch(actions.updateAllUserData(response.data.user));
 
       commonFunctionalities.changeViewMode().verifySignIn();
 

@@ -1,9 +1,9 @@
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
 
+import { apiManager } from "classes/apiClasses/ApiManager";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { notificationManager } from "classes/NotificationManager";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
-import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { apiManager } from "classes/apiClasses/ApiManager";
 
 import { authenticationProgressChange } from "functions/utilities/commonActions";
 import { printCatchError } from "functions/utilities/otherUtilities";
@@ -40,7 +40,7 @@ const createNewUserController = () => {
       );
 
       userPropsUtilities.removeVerifyTokenFromStorage();
-      dispatch(userActions.updateAllUserDataAction(user));
+      dispatch(actions.updateAllUserData(user));
       commonFunctionalities.changeViewMode().messenger();
     } catch (error) {
       printCatchError(createNewUserController.name, error);

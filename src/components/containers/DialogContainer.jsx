@@ -1,3 +1,5 @@
+import { actions } from "actions/actions";
+
 import AddNewContactDialog from "components/dialogs/AddNewContactDialog";
 import ContactsDialog from "components/dialogs/ContactsDialog";
 import LogoutDialog from "components/dialogs/LogoutDialog";
@@ -6,8 +8,6 @@ import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities"
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { globalActions } from "actions/globalActions";
-
 const DialogContainer = () => {
   const {
     hooksOutput: { dispatch },
@@ -15,7 +15,7 @@ const DialogContainer = () => {
 
   const handleDialogClose = (dialogName) => {
     dispatch(
-      globalActions.dialogOpenChangeAction({
+      actions.dialogOpenChange({
         ...defaultDialogStateItemProps(),
         dialogName,
       })

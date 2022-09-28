@@ -6,12 +6,11 @@ const {
   notificationInitialActions: { errorNotificationInitialAction },
 } = initialActions;
 
-const errorNotificationAction = (
-  payload = errorNotificationInitialAction.payload
-) => actionCreator(errorNotificationInitialAction.type, payload);
+const errorNotification = (payload = errorNotificationInitialAction.payload) =>
+  actionCreator(errorNotificationInitialAction.type, payload);
 
 const notificationActions = {
-  errorNotificationAction,
+  errorNotification: errorNotification,
 };
 
 export { notificationActions };

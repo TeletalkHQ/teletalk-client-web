@@ -1,4 +1,4 @@
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
@@ -11,7 +11,7 @@ const getContactsController = () => {
         await apiManager.apis.getContacts.sendFullFeaturedRequest();
 
       dispatch(
-        userActions.updateAllUserContactsAction({
+        actions.updateAllUserContacts({
           contacts: result.data.contacts,
         })
       );

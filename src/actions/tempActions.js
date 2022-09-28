@@ -19,53 +19,48 @@ const {
 const selectedContactId = (payload = selectedContactIdInitialAction.payload) =>
   actionCreator(selectedContactIdInitialAction.type, payload);
 
-const selectedCountryAction = (
-  payload = selectedCountryInitialAction.payload
-) => actionCreator(selectedCountryInitialAction.type, payload);
+const selectedCountry = (payload = selectedCountryInitialAction.payload) =>
+  actionCreator(selectedCountryInitialAction.type, payload);
 
-const countryCodeOnChangeAction = (
-  payload = countryCodeInitialAction.payload
-) => actionCreator(countryCodeInitialAction.type, payload);
+const countryCodeOnChange = (payload = countryCodeInitialAction.payload) =>
+  actionCreator(countryCodeInitialAction.type, payload);
 
-const countryNameOnChangeAction = (
-  payload = countryNameInitialAction.payload
-) => actionCreator(countryNameInitialAction.type, payload);
+const countryNameOnChange = (payload = countryNameInitialAction.payload) =>
+  actionCreator(countryNameInitialAction.type, payload);
 
-const firstNameOnChangeAction = (payload = firstNameInitialAction.payload) =>
+const firstNameOnChange = (payload = firstNameInitialAction.payload) =>
   actionCreator(firstNameInitialAction.type, payload);
 
-const lastNameOnChangeAction = (payload = lastNameInitialAction.payload) =>
+const lastNameOnChange = (payload = lastNameInitialAction.payload) =>
   actionCreator(lastNameInitialAction.type, payload);
 
-const messageInputOnChangeAction = (
-  payload = messageInputInitialAction.payload
-) => actionCreator(messageInputInitialAction.type, payload);
+const messageInputOnChange = (payload = messageInputInitialAction.payload) =>
+  actionCreator(messageInputInitialAction.type, payload);
 
-const setMessagesAction = (payload = setMessagesInitialAction.payload) =>
+const setMessages = (payload = setMessagesInitialAction.payload) =>
   actionCreator(setMessagesInitialAction.type, payload);
 
-const phoneNumberOnChangeAction = (
-  payload = phoneNumberInitialAction.payload
-) => actionCreator(phoneNumberInitialAction.type, payload);
+const phoneNumberOnChange = (payload = phoneNumberInitialAction.payload) =>
+  actionCreator(phoneNumberInitialAction.type, payload);
 
-const verificationCodeOnChangeAction = (
+const verificationCodeOnChange = (
   payload = verificationCodeInitialAction.payload
 ) => actionCreator(verificationCodeInitialAction.type, payload);
 
 const resetTempState = () => actionCreator(resetTempStateInitialAction.type);
 
 const tempActions = {
-  countryCodeOnChangeAction,
-  countryNameOnChangeAction,
-  firstNameOnChangeAction,
-  lastNameOnChangeAction,
-  messageInputOnChangeAction,
-  phoneNumberOnChangeAction,
+  countryCodeOnChange,
+  countryNameOnChange,
+  firstNameOnChange,
+  lastNameOnChange,
+  messageInputOnChange,
+  phoneNumberOnChange,
   resetTempState,
   selectedContactId,
-  selectedCountryAction,
-  setMessagesAction,
-  verificationCodeOnChangeAction,
+  selectedCountry,
+  setMessages,
+  verificationCodeOnChange,
 };
 
 export { tempActions };

@@ -1,31 +1,28 @@
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
-import { globalActions } from "actions/globalActions";
-import { otherActions } from "actions/otherActions";
-import { tempActions } from "actions/tempActions";
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
 
 import { commonNotificationManager } from "classes/CommonNotificationManager";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
+import { stuffStore } from "classes/StuffStore";
 
 import { checkErrorCodeIsConnAborted } from "functions/utilities/otherUtilities";
 
 import { extractedDispatch } from "hooks/useThunkReducer";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
-import { stuffStore } from "classes/StuffStore";
 
 class CommonFunctionalities {
   resetEverything() {
     persistentStorage.setDefaultStorage();
 
     [
-      userActions.resetUserState,
-      otherActions.resetOtherState,
-      globalActions.resetGlobalState,
-      tempActions.resetTempState,
+      actions.resetUserState,
+      actions.resetOtherState,
+      actions.resetGlobalState,
+      actions.resetTempState,
     ].forEach((action) => {
       extractedDispatch(action());
     });
@@ -34,9 +31,7 @@ class CommonFunctionalities {
   }
 
   resetMessageInputText() {
-    extractedDispatch(
-      tempActions.messageInputOnChangeAction({ messageInputText: "" })
-    );
+    extractedDispatch(actions.messageInputOnChange({ messageInputText: "" }));
   }
 
   checkAndExecute(condition, callback) {
@@ -56,7 +51,7 @@ class CommonFunctionalities {
     const { MESSENGER, NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN } = VIEW_MODES;
 
     const viewModeChanger = (viewMode) => () =>
-      extractedDispatch(globalActions.viewModeChangeAction({ viewMode }));
+      extractedDispatch(actions.viewModeChange({ viewMode }));
 
     return {
       messenger: viewModeChanger(MESSENGER),

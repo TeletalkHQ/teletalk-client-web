@@ -1,7 +1,7 @@
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 
-import { tempActions } from "actions/tempActions";
+import { actions } from "actions/actions";
 
 import { stuffStore } from "classes/StuffStore";
 
@@ -23,13 +23,6 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { appIcons } from "variables/initials/initialValues/appIcons";
 
-const {
-  countryCodeOnChangeAction,
-  countryNameOnChangeAction,
-  phoneNumberOnChangeAction,
-  selectedCountryAction,
-} = tempActions;
-
 const SignIn = () => {
   const {
     hooksOutput: { dispatch },
@@ -48,11 +41,11 @@ const SignIn = () => {
 
   const handlePhoneNumberInputChange = (event) => {
     const { value } = event.target;
-    dispatch(phoneNumberOnChangeAction({ phoneNumber: value }));
+    dispatch(actions.phoneNumberOnChange({ phoneNumber: value }));
   };
 
   const handleCountryCodeInputChange = (value) => {
-    dispatch(countryCodeOnChangeAction({ countryCode: value }));
+    dispatch(actions.countryCodeOnChange({ countryCode: value }));
   };
 
   const selectCountryByCountryCodeInputChange = (value) => {
@@ -69,20 +62,20 @@ const SignIn = () => {
     selectedCountryDispatcher(newValue);
 
     dispatch(
-      countryCodeOnChangeAction({ countryCode: newValue?.countryCode || "" })
+      actions.countryCodeOnChange({ countryCode: newValue?.countryCode || "" })
     );
 
     dispatch(
-      countryNameOnChangeAction({ countryName: newValue?.countryName || "" })
+      actions.countryNameOnChange({ countryName: newValue?.countryName || "" })
     );
   };
 
   const handleCountryNameInputChange = (newInputValue) => {
-    dispatch(countryNameOnChangeAction({ countryName: newInputValue }));
+    dispatch(actions.countryNameOnChange({ countryName: newInputValue }));
   };
 
   const selectedCountryDispatcher = (country) => {
-    dispatch(selectedCountryAction({ selectedCountry: country || null }));
+    dispatch(actions.selectedCountry({ selectedCountry: country || null }));
   };
 
   const isSignInSubmitButtonDisabled = () => {

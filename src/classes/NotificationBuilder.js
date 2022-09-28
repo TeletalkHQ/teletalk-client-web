@@ -2,8 +2,8 @@ class NotificationBuilder {
   #notificationObject = {
     description: "Default notification description",
     message: "Unknown notification message",
-    notificationReason: "UNKNOWN_ERROR_REASON",
     notificationCode: 4000,
+    notificationReason: "UNKNOWN_ERROR_REASON",
   };
 
   #addProperty(key, value) {

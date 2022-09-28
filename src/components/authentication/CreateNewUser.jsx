@@ -1,4 +1,4 @@
-import { tempActions } from "actions/tempActions";
+import { actions } from "actions/actions";
 
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
@@ -15,8 +15,6 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { appIcons } from "variables/initials/initialValues/appIcons";
 
-const { firstNameOnChangeAction, lastNameOnChangeAction } = tempActions;
-
 const CreateNewUser = ({ onBackToSignInClick }) => {
   const {
     hooksOutput: { dispatch },
@@ -29,11 +27,11 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
   } = useMainContext();
 
   const handleFirstNameInputChange = (e) => {
-    dispatch(firstNameOnChangeAction({ firstName: e.target.value }));
+    dispatch(actions.firstNameOnChange({ firstName: e.target.value }));
   };
 
   const handleLastNameInputChange = (e) => {
-    dispatch(lastNameOnChangeAction({ lastName: e.target.value }));
+    dispatch(actions.lastNameOnChange({ lastName: e.target.value }));
   };
 
   const handleCreateNewUserConfirmClick = () => {

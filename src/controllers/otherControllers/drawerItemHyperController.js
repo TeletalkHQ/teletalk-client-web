@@ -1,3 +1,0 @@
-const drawerItemHyperController = () => {};
-
-export { drawerItemHyperController };

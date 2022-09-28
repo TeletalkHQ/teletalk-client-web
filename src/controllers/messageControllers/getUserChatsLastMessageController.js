@@ -1,4 +1,4 @@
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
@@ -48,9 +48,7 @@ const getUserChatsLastMessageController = ({ chats }) => {
         chatsWithLastMessage: response.data.chats,
       });
 
-      dispatch(
-        userActions.updateAllUserDataAction({ chats: chatsWithLastMessage })
-      );
+      dispatch(actions.updateAllUserData({ chats: chatsWithLastMessage }));
     } catch (error) {
       printCatchError(getUserChatsLastMessageController.name, error);
     }

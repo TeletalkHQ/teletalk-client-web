@@ -10,18 +10,18 @@ const {
   },
 } = initialActions;
 
-const getCountriesAction = (payload = getCountriesInitialAction.payload) =>
+const getCountries = (payload = getCountriesInitialAction.payload) =>
   actionCreator(getCountriesInitialAction.type, payload);
 
-const welcomeMessageAction = (payload = welcomeInitialAction.payload) =>
+const welcomeMessage = (payload = welcomeInitialAction.payload) =>
   actionCreator(welcomeInitialAction.type, payload);
 
 const resetOtherState = () => actionCreator(resetOtherStateInitialAction.type);
 
 const otherActions = {
-  getCountriesAction,
+  getCountries,
   resetOtherState,
-  welcomeMessageAction,
+  welcomeMessage,
 };
 
 export { otherActions };
