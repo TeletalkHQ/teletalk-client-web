@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { tempActions } from "actions/tempActions";
+import { actions } from "actions/actions";
 
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 
@@ -13,8 +13,6 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
 
-const { verificationCodeOnChangeAction } = tempActions;
-
 const Authentication = () => {
   const {
     hooksOutput: { dispatch },
@@ -24,7 +22,7 @@ const Authentication = () => {
   } = useMainContext();
 
   const handleBackToSignInClick = () => {
-    dispatch(verificationCodeOnChangeAction({ verificationCode: "" }));
+    dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
     commonFunctionalities.changeViewMode().signIn();
   };
 

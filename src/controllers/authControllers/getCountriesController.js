@@ -1,4 +1,4 @@
-import { otherActions } from "actions/otherActions";
+import { actions } from "actions/actions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
@@ -10,7 +10,7 @@ const getCountriesController = () => {
       const {
         data: { countries },
       } = await apiManager.apis.getCountries.sendFullFeaturedRequest();
-      dispatch(otherActions.getCountriesAction({ countries }));
+      dispatch(actions.getCountries({ countries }));
     } catch (error) {
       printCatchError(getCountriesController.name, error);
     }

@@ -1,12 +1,7 @@
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
-
 import { SwipeableDrawer } from "@mui/material";
 
-import { useMainContext } from "hooks/useMainContext";
-
-import { appIcons } from "variables/initials/initialValues/appIcons";
-
-import { globalActions } from "actions/globalActions";
+import { actions } from "actions/actions";
 
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomList from "components/generals/boxes/CustomList";
@@ -14,6 +9,10 @@ import CustomListItem from "components/generals/boxes/CustomListItem";
 import CustomListItemIcon from "components/generals/otherGeneralComponents/CustomListItemIcon";
 import CustomListItemText from "components/generals/boxes/CustomListItemText";
 import Div from "components/generals/boxes/Div";
+
+import { useMainContext } from "hooks/useMainContext";
+
+import { appIcons } from "variables/initials/initialValues/appIcons";
 
 const { calls, contacts, logout, newChannel, newGroup, nightMode, settings } =
   appIcons;
@@ -53,12 +52,12 @@ const AppDrawer = () => {
       return;
     }
 
-    dispatch(globalActions.appDrawerOpenChangeAction({ open }));
+    dispatch(actions.appDrawerOpenChange({ open }));
   };
 
   const handleDrawerItemClick = (elementName) => {
     dispatch(
-      globalActions.dialogOpenChangeAction({
+      actions.dialogOpenChange({
         dialogName: elementName,
         open: true,
       })

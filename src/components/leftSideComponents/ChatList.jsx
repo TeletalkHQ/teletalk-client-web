@@ -35,7 +35,7 @@ const ChatList = () => {
             //         selected={!!findParticipant}
             //         onChatListItemClick={() => {
             //           dispatch(
-            //             tempActions.selectedContactId({
+            //             actions.selectedContactId({
             //               selectedContactId: senderId,
             //             })
             //           );

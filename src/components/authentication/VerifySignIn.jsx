@@ -1,7 +1,7 @@
 import { domUtilities } from "utility-store/src/classes/DomUtilities";
 import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 
-import { tempActions } from "actions/tempActions";
+import { actions } from "actions/actions";
 
 import { stuffStore } from "classes/StuffStore";
 import { validatorManager } from "classes/ValidatorManager";
@@ -24,8 +24,6 @@ import {
   ELEMENT_NAMES,
   VALIDATION_KEYS,
 } from "variables/otherVariables/constants";
-
-const { verificationCodeOnChangeAction } = tempActions;
 
 const VerifySignIn = ({ onBackToSignInClick }) => {
   const {
@@ -67,7 +65,9 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
       .printInputValidatorError()
       .executeIfNoError(() =>
         dispatch(
-          verificationCodeOnChangeAction({ verificationCode: trimmedValue })
+          actions.verificationCodeOnChange({
+            verificationCode: trimmedValue,
+          })
         )
       );
   };

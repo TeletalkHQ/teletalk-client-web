@@ -1,4 +1,4 @@
-import { tempActions } from "actions/tempActions";
+import { actions } from "actions/actions";
 
 import ChatBar from "components/rightSideComponents/ChatBar";
 import CustomBox from "components/generals/boxes/CustomBox";
@@ -10,7 +10,8 @@ import { sendPrivateMessageController } from "controllers/messageControllers/sen
 
 import { useMainContext } from "hooks/useMainContext";
 
-const { selectedContactId, messageInputOnChangeAction } = tempActions;
+const { selectedContactId, messageInputOnChange: messageInputOnChangeAction } =
+  actions;
 
 const RightSideContainer = () => {
   const {

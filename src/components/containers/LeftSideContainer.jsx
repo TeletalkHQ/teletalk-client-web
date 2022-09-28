@@ -1,4 +1,4 @@
-import { globalActions } from "actions/globalActions";
+import { actions } from "actions/actions";
 
 import ChatList from "components/leftSideComponents/ChatList";
 
@@ -19,7 +19,7 @@ const LeftSideContainer = () => {
   } = useMainContext();
 
   const handleDrawerIconClick = () => {
-    dispatch(globalActions.appDrawerOpenChangeAction({ open: true }));
+    dispatch(actions.appDrawerOpenChange({ open: true }));
   };
 
   return (

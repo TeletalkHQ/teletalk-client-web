@@ -1,4 +1,4 @@
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
@@ -13,7 +13,7 @@ const getAllChatMessagesController = ({ chatId }) => {
         });
 
       dispatch(
-        userActions.updateAllChatMessagesAction({
+        actions.updateAllChatMessages({
           messages: response.data.messages,
           chatId,
         })

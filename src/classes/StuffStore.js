@@ -1,5 +1,6 @@
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 import { persistentStorage } from "classes/PersistentStorage";
+
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 
 class StuffStore {
   constructor() {

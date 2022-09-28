@@ -13,34 +13,33 @@ const {
   },
 } = initialActions;
 
-const addNewContactAction = (payload = addNewContactInitialAction.payload) =>
+const addNewContact = (payload = addNewContactInitialAction.payload) =>
   actionCreator(addNewContactInitialAction.type, payload);
 
-const addNewMessageToChatAction = (
+const addNewMessageToChat = (
   payload = addNewMessageToChatInitialAction.payload
 ) => actionCreator(addNewMessageToChatInitialAction.type, payload);
 
-const updateAllChatMessagesAction = (
+const updateAllChatMessages = (
   payload = updateAllChatMessagesInitialAction.payload
 ) => actionCreator(updateAllChatMessagesInitialAction.type, payload);
 
-const updateAllUserDataAction = (
-  payload = updateAllUserDataInitialAction.payload
-) => actionCreator(updateAllUserDataInitialAction.type, payload);
+const updateAllUserData = (payload = updateAllUserDataInitialAction.payload) =>
+  actionCreator(updateAllUserDataInitialAction.type, payload);
 
-const updateAllUserContactsAction = (
+const updateAllUserContacts = (
   payload = updateUserContactsInitialAction.payload
 ) => actionCreator(updateUserContactsInitialAction.type, payload);
 
 const resetUserState = () => actionCreator(resetUserStateInitialAction.type);
 
 const userActions = {
-  addNewContactAction,
-  addNewMessageToChatAction,
+  addNewContact,
+  addNewMessageToChat,
   resetUserState,
-  updateAllChatMessagesAction,
-  updateAllUserContactsAction,
-  updateAllUserDataAction,
+  updateAllChatMessages,
+  updateAllUserContacts,
+  updateAllUserData,
 };
 
 export { userActions };

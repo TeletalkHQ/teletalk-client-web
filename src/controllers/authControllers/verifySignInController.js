@@ -1,5 +1,4 @@
-import { tempActions } from "actions/tempActions";
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
@@ -12,8 +11,6 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 import { getInitialState } from "variables/initials/initialStates/initialStates";
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 import { notifications } from "variables/otherVariables/notifications";
-
-const { updateAllUserDataAction } = userActions;
 
 const verifySignInController = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -45,9 +42,7 @@ const verifySignInController = () => {
           { token: verifyToken }
         );
 
-      dispatch(
-        tempActions.verificationCodeOnChangeAction({ verificationCode: "" })
-      );
+      dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
       const { user: userData } = response.data;
 
       if (userData.newUser) {
@@ -63,7 +58,7 @@ const verifySignInController = () => {
           mainToken
         );
 
-        dispatch(updateAllUserDataAction(userData));
+        dispatch(actions.updateAllUserData(userData));
         commonFunctionalities.changeViewMode().messenger();
       }
     } catch (error) {

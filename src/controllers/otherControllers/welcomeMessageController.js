@@ -1,24 +1,24 @@
-import { otherActions } from "actions/otherActions";
+import { actions } from "actions/actions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-const welcomeMessageController = () => {
+const getWelcomeMessageController = () => {
   return async (dispatch) => {
     try {
       const { getWelcomeMessage: getWelcomeMessageApi } = apiManager.apis;
       const response = await getWelcomeMessageApi.sendFullFeaturedRequest();
 
       dispatch(
-        otherActions.welcomeMessageAction({
+        actions.welcomeMessage({
           welcomeMessage: response.data.message,
         })
       );
     } catch (error) {
-      printCatchError(welcomeMessageController.name, error);
+      printCatchError(getWelcomeMessageController.name, error);
     }
   };
 };
 
-export { welcomeMessageController };
+export { getWelcomeMessageController };

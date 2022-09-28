@@ -12,7 +12,7 @@ const {
   resetGlobalStateInitialAction,
 } = globalInitialActions;
 
-const appDrawerOpenChangeAction = (
+const appDrawerOpenChange = (
   payload = appDrawerOpenChangeInitialAction.payload
 ) => actionCreator(appDrawerOpenChangeInitialAction.type, payload);
 
@@ -20,32 +20,30 @@ const appProgressionChange = (
   payload = appProgressionChangeInitialAction.payload
 ) => actionCreator(appProgressionChangeInitialAction.type, payload);
 
-const dialogOpenChangeAction = (
-  payload = dialogOpenChangeInitialAction.payload
-) => actionCreator(dialogOpenChangeInitialAction.type, payload);
+const dialogOpenChange = (payload = dialogOpenChangeInitialAction.payload) =>
+  actionCreator(dialogOpenChangeInitialAction.type, payload);
 
-const globalLoadingStateOpenChangeAction = (
+const globalLoadingStateOpenChange = (
   payload = globalLoadingOpenChangeInitialAction.payload
 ) => actionCreator(globalLoadingOpenChangeInitialAction.type, payload);
 
-const onlineStatusChangeAction = (
-  payload = onlineStatusInitialAction.payload
-) => actionCreator(onlineStatusInitialAction.type, payload);
+const onlineStatusChange = (payload = onlineStatusInitialAction.payload) =>
+  actionCreator(onlineStatusInitialAction.type, payload);
 
-const viewModeChangeAction = (payload = viewModeInitialAction.payload) =>
+const viewModeChange = (payload = viewModeInitialAction.payload) =>
   actionCreator(viewModeInitialAction.type, payload);
 
 const resetGlobalState = () =>
   actionCreator(resetGlobalStateInitialAction.type);
 
 const globalActions = {
-  appDrawerOpenChangeAction,
+  appDrawerOpenChange,
   appProgressionChange,
-  dialogOpenChangeAction,
-  globalLoadingStateOpenChangeAction,
-  onlineStatusChangeAction,
-  viewModeChangeAction,
+  dialogOpenChange,
+  globalLoadingStateOpenChange,
+  onlineStatusChange,
   resetGlobalState,
+  viewModeChange,
 };
 
 export { globalActions };

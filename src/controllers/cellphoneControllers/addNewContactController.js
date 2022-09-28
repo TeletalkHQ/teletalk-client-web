@@ -1,4 +1,4 @@
-import { userActions } from "actions/userActions";
+import { actions } from "actions/actions";
 
 import { apiManager } from "classes/apiClasses/ApiManager";
 
@@ -12,7 +12,7 @@ const addNewContactController = (contact) => {
       );
 
       dispatch(
-        userActions.addNewContactAction({
+        actions.addNewContact({
           newContact: result.data.addedContact,
         })
       );
