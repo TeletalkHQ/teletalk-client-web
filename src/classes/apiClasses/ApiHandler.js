@@ -13,7 +13,7 @@ import { errorThrower } from "functions/utilities/otherUtilities";
 import { notifications } from "variables/otherVariables/notifications";
 
 const {
-  localErrors: {
+  error: {
     INPUT_FIELDS_MISSING,
     INPUT_FIELDS_OVERLOAD,
     OUTPUT_FIELDS_MISSING,

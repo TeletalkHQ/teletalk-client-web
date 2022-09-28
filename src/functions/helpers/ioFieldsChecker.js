@@ -8,7 +8,7 @@ import { notifications } from "variables/otherVariables/notifications";
 //TODO Move to utility-store
 
 const {
-  localErrors: {
+  error: {
     REQUIRED_FIELDS_NOT_DEFINED,
     REQUIRED_IO_FIELD_IS_NOT_ARRAY,
     REQUIRED_IO_FIELD_IS_NOT_OBJECT,

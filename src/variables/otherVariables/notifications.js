@@ -73,15 +73,13 @@ const VERIFY_TOKEN_NOT_FOUND = notificationBuilder
   .notificationReason("VERIFY_TOKEN_NOT_FOUND")
   .message("Verify token not defined")
   .build();
-
 //#endregion //* errors
 
-//#region //* successes
-const successes = {};
+//#region //* success
+const successNotifications = {};
+//#endregion //* success
 
-//#endregion //* successes
-
-const localErrors = {
+const errorNotifications = {
   ECONNABORTED,
   INPUT_FIELDS_MISSING,
   INPUT_FIELDS_OVERLOAD,
@@ -95,8 +93,8 @@ const localErrors = {
 };
 
 const notifications = {
-  localErrors,
-  successes,
+  error: errorNotifications,
+  success: successNotifications,
 };
 
 export { notifications };
