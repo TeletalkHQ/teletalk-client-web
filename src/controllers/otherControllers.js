@@ -4,7 +4,7 @@ import { apiManager } from "classes/apiClasses/ApiManager";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-const getWelcomeMessageController = () => {
+const getWelcomeMessage = () => {
   return async (dispatch) => {
     try {
       const { getWelcomeMessage: getWelcomeMessageApi } = apiManager.apis;
@@ -16,9 +16,11 @@ const getWelcomeMessageController = () => {
         })
       );
     } catch (error) {
-      printCatchError(getWelcomeMessageController.name, error);
+      printCatchError(getWelcomeMessage.name, error);
     }
   };
 };
 
-export { getWelcomeMessageController };
+const otherControllers = { getWelcomeMessage };
+
+export { otherControllers };

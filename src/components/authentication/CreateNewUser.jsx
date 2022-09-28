@@ -9,7 +9,7 @@ import FirstName from "components/commonInputs/FirstNameInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import LastName from "components/commonInputs/LastNameInput";
 
-import { createNewUserController } from "controllers/authControllers/createNewUserController";
+import { controllers } from "controllers/controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -35,7 +35,7 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
   };
 
   const handleCreateNewUserConfirmClick = () => {
-    dispatch(createNewUserController());
+    dispatch(controllers.createNewUser());
   };
 
   return (

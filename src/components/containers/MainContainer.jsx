@@ -9,7 +9,7 @@ import PortalContainer from "components/portal/PortalContainer";
 import FullPageLoading from "components/portal/FullPageLoading";
 import MessengerContainer from "components/containers/MessengerContainer";
 
-import { getAllStuffController } from "controllers/versionControlControllers/getAllStuffController";
+import { controllers } from "controllers/controllers";
 
 import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 import { thingsToDoAfterAllStuffReceived } from "events/eventListeners";
@@ -19,8 +19,6 @@ import { updateWindowCustomProperties } from "functions/otherFunctions/otherFunc
 import { useMainContext } from "hooks/useMainContext";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
-import { userStatusCheckerController } from "controllers/authControllers/userStatusCheckerController";
-import { getCountriesController } from "controllers/authControllers/getCountriesController";
 
 const visibleComponent = (viewMode, globalLoadingState) => {
   const { MESSENGER, NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN, LOADING } =
@@ -55,13 +53,13 @@ const MainContainer = () => {
 
     eventManager.addListener(ALL_STUFF_RECEIVED, async () => {
       thingsToDoAfterAllStuffReceived();
-      await dispatchAsync(userStatusCheckerController());
+      await dispatchAsync(controllers.userStatusChecker());
       //FIXME: Its unsafe to do it after userStatusCheckerController;
-      dispatch(getCountriesController());
+      dispatch(controllers.getCountries());
     });
 
     addOnlineStatusEvents();
-    dispatch(getAllStuffController());
+    dispatch(controllers.getAllStuff());
 
     return () => {
       eventManager.removeAllListener(ALL_STUFF_RECEIVED);

@@ -3,7 +3,7 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 
-import { logoutController } from "controllers/authControllers/logoutController";
+import { controllers } from "controllers/controllers";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
@@ -23,7 +23,7 @@ const LogoutDialog = ({ onDialogClose }) => {
 
   const handleLogout = () => {
     try {
-      dispatch(logoutController());
+      dispatch(controllers.logout());
 
       handleClose();
     } catch (error) {

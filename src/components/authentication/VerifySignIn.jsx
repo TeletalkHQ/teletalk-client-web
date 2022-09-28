@@ -15,7 +15,7 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import H5 from "components/generals/typographies/H5";
 
-import { verifySignInController } from "controllers/authControllers/verifySignInController";
+import { controllers } from "controllers/controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -53,7 +53,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
       .setElementByName(ELEMENT_NAMES.VERIFICATION_CODE)
       .focusElement()
       .selectAllValue();
-    dispatch(verifySignInController());
+    dispatch(controllers.verifySignIn());
   };
 
   const handleVerificationCodeInputChange = (event) => {

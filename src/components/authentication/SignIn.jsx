@@ -17,7 +17,7 @@ import GreyTextParagraph from "components/generals/typographies/GreyTextParagrap
 import H5 from "components/generals/typographies/H5";
 import PhoneNumber from "components/commonInputs/PhoneNumberInput";
 
-import { signInController } from "controllers/authControllers/signInController";
+import { controllers } from "controllers/controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -36,7 +36,7 @@ const SignIn = () => {
   } = useMainContext();
 
   const handleSignInClick = () => {
-    dispatch(signInController());
+    dispatch(controllers.signIn());
   };
 
   const handlePhoneNumberInputChange = (event) => {
