@@ -15,7 +15,7 @@ import PhoneNumber from "components/commonInputs/PhoneNumberInput";
 
 import { commonActions } from "functions/utilities/commonActions";
 
-import { addNewContactController } from "controllers/cellphoneControllers/addNewContactController";
+import { controllers } from "controllers/controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -126,7 +126,7 @@ const AddNewContactDialog = ({ onDialogClose }) => {
 
   const handleAddNewContactClick = () => {
     const { privateId, ...rest } = contact;
-    dispatch(addNewContactController(rest));
+    dispatch(controllers.addNewContact(rest));
 
     setContact(initialContact);
   };

@@ -11,7 +11,7 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 
-const getAllStuffController = () => {
+const getAllStuff = () => {
   return async () => {
     try {
       const {
@@ -43,10 +43,12 @@ const getAllStuffController = () => {
       eventManager.emitEvent(ALL_STUFF_RECEIVED);
       systemController.changeEventStatusToDone(ALL_STUFF_RECEIVED);
     } catch (error) {
-      printCatchError(getAllStuffController.name, error);
+      printCatchError(getAllStuff.name, error);
       throw error;
     }
   };
 };
 
-export { getAllStuffController };
+const stuffControllers = { getAllStuff };
+
+export { stuffControllers };

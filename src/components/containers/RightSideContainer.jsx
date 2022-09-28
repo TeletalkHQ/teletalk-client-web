@@ -6,7 +6,7 @@ import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import MessageInput from "components/rightSideComponents/MessageInput";
 import GridContainer from "components/generals/boxes/GridContainer";
 
-import { sendPrivateMessageController } from "controllers/messageControllers/sendPrivateMessageController";
+import { controllers } from "controllers/controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -30,7 +30,7 @@ const RightSideContainer = () => {
   };
 
   const handleAddNewMessage = async () => {
-    dispatch(sendPrivateMessageController());
+    dispatch(controllers.sendPrivateMessage());
   };
 
   const handleMessageContainerCloseClick = () => {
