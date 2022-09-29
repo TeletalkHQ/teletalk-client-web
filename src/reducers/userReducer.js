@@ -3,9 +3,11 @@ import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { defaultUserState } from "variables/initials/initialStates/userInitialState";
 import { initialActions } from "variables/initials/initialActions/initialActions";
-import { initialStates } from "variables/initials/initialStates/initialStates";
+import {
+  defaultUserState,
+  initialStates,
+} from "variables/initials/initialStates";
 
 const userReducer = (
   state = initialStates.user,

@@ -20,7 +20,7 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { VIEW_MODES } from "variables/otherVariables/constants";
 
-const visibleComponent = (viewMode, globalLoadingState) => {
+const visibleComponent = (viewMode, loading) => {
   const { MESSENGER, NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN, LOADING } =
     VIEW_MODES;
   const authenticationViewModes = [NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN];
@@ -29,8 +29,7 @@ const visibleComponent = (viewMode, globalLoadingState) => {
 
   if (viewMode === MESSENGER) return <MessengerContainer />;
 
-  if (viewMode === LOADING)
-    return <FullPageLoading globalLoadingState={globalLoadingState} />;
+  if (viewMode === LOADING) return <FullPageLoading loading={loading} />;
 
   return null;
 };
@@ -42,7 +41,7 @@ const MainContainer = () => {
   } = useMainContext();
 
   const {
-    global: { viewMode, globalLoadingState },
+    global: { viewMode, loading },
   } = state;
 
   useEffect(() => updateWindowCustomProperties(state), [state]);
@@ -69,7 +68,7 @@ const MainContainer = () => {
 
   return (
     <>
-      {visibleComponent(viewMode, globalLoadingState)}
+      {visibleComponent(viewMode, loading)}
       <PortalContainer />
     </>
   );

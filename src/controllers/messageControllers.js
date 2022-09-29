@@ -5,7 +5,7 @@ import { apiManager } from "classes/apiClasses/ApiManager";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { getInitialState } from "variables/initials/initialStates/initialStates";
+import { getInitialState } from "variables/initials/initialStates";
 
 const getAllChats = () => {
   return async (dispatch) => {

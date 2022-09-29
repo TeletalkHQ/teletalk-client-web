@@ -1,5 +1,5 @@
 import { initialCountry } from "variables/initials/initialValues/initialValues";
-import { initialStates } from "variables/initials/initialStates/initialStates";
+import { initialStates } from "variables/initials/initialStates";
 
 const {
   temp: { messageInputText, messages, tempUserState, verificationCode },

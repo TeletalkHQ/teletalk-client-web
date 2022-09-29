@@ -1,4 +1,4 @@
-import { initialStates } from "variables/initials/initialStates/initialStates";
+import { initialStates } from "variables/initials/initialStates";
 import { initialContact } from "variables/initials/initialValues/initialValues";
 
 const { user } = initialStates;

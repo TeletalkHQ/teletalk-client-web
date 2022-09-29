@@ -2,8 +2,10 @@ import { appOptions } from "classes/AppOptions";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { initialStates } from "variables/initials/initialStates/initialStates";
-import { defaultGlobalState } from "variables/initials/initialStates/globalInitialState";
+import {
+  defaultGlobalState,
+  initialStates,
+} from "variables/initials/initialStates";
 import { initialActions } from "variables/initials/initialActions/initialActions";
 
 const globalReducer = (
@@ -48,8 +50,8 @@ export { globalReducer };
 const handleGlobalLoadingStateOpenChange = (prevState, payload) => {
   return {
     ...prevState,
-    globalLoadingState: {
-      ...prevState.globalLoadingState,
+    loading: {
+      ...prevState.loading,
       open: payload.open,
     },
   };

@@ -3,9 +3,11 @@ import { appOptions } from "classes/AppOptions";
 import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { defaultTempState } from "variables/initials/initialStates/tempInitialState";
 import { initialActions } from "variables/initials/initialActions/initialActions";
-import { initialStates } from "variables/initials/initialStates/initialStates";
+import {
+  defaultTempState,
+  initialStates,
+} from "variables/initials/initialStates";
 
 const tempReducer = (
   state = initialStates.temp,
