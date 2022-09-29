@@ -2,17 +2,16 @@ import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import MoonLoader from "react-spinners/MoonLoader";
 import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/constants";
 
-const FullPageLoading = ({ globalLoadingState }) => {
+const FullPageLoading = ({ loading }) => {
   return (
     <CustomFlexBox jc={"center"} ai={"center"} style={{ height: "100vh" }}>
       <MoonLoader
-        color={globalLoadingState.color}
+        color={loading.color}
         loading={
-          globalLoadingState.open &&
-          globalLoadingState.type === GLOBAL_LOADING_TYPES.FULL_PAGE
+          loading.open && loading.type === GLOBAL_LOADING_TYPES.FULL_PAGE
         }
-        size={globalLoadingState.size}
-        speedMultiplier={globalLoadingState.speedMultiplier}
+        size={loading.size}
+        speedMultiplier={loading.speedMultiplier}
       />
     </CustomFlexBox>
   );

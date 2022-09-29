@@ -9,7 +9,7 @@ import { userPropsUtilities } from "classes/UserPropsUtilities";
 import { authenticationProgressChange } from "functions/utilities/commonActions";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { getInitialState } from "variables/initials/initialStates/initialStates";
+import { getInitialState } from "variables/initials/initialStates";
 import { notifications } from "variables/otherVariables/notifications";
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
 import { VIEW_MODES } from "variables/otherVariables/constants";

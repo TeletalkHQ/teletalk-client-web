@@ -1,9 +1,9 @@
 import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
 
-import { initialStates } from "variables/initials/initialStates/initialStates";
+import { initialStates } from "variables/initials/initialStates";
 
 const {
-  global: { appDrawer, appProgressions, globalLoadingState },
+  global: { appDrawer, appProgressions, loading },
   global,
 } = initialStates;
 
@@ -29,7 +29,7 @@ const dialogOpenChange = {
 
 const globalLoadingOpenChange = {
   payload: {
-    open: globalLoadingState.open,
+    open: loading.open,
   },
   type: "GLOBAL_LOADING_STATE_CHANGE",
 };

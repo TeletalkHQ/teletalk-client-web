@@ -3,21 +3,18 @@ import CustomCircularProgress from "components/generals/progresses/CustomCircula
 
 import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/constants";
 
-const OverlayLoading = ({ globalLoadingState, onGlobalLoadingClose }) => {
+const OverlayLoading = ({ loading, onGlobalLoadingClose }) => {
   return (
     <>
       <CustomBackdrop
         sx={{
-          color: globalLoadingState.color,
+          color: loading.color,
           // zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
-        open={
-          globalLoadingState.open &&
-          globalLoadingState.type === GLOBAL_LOADING_TYPES.OVERLAY
-        }
+        open={loading.open && loading.type === GLOBAL_LOADING_TYPES.OVERLAY}
         onClick={onGlobalLoadingClose}
       >
-        <CustomCircularProgress color={globalLoadingState.progressColor} />
+        <CustomCircularProgress color={loading.progressColor} />
       </CustomBackdrop>
     </>
   );

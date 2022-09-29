@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 import { appOptions } from "classes/AppOptions";
 
-import { initialStates } from "variables/initials/initialStates/initialStates";
+import { initialStates } from "variables/initials/initialStates";
 
 const MainContext = createContext({
   state: initialStates,

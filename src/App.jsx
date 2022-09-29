@@ -15,7 +15,7 @@ import { rootReducer } from "reducers/rootReducer";
 
 import { baseTheme } from "theme/baseTheme";
 
-import { initialStates } from "variables/initials/initialStates/initialStates";
+import { initialStates } from "variables/initials/initialStates";
 
 const App = () => {
   const [state = initialStates, dispatch] = useThunkReducer(
