@@ -3,28 +3,23 @@ import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities"
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const {
-  globalState: {
-    appDrawerState,
-    appProgressions,
-    globalLoadingState,
-    onlineStatus,
-    viewMode,
-  },
+  global: { appDrawer, appProgressions, globalLoadingState },
+  global,
 } = initialStates;
 
-const appDrawerOpenChangeInitialAction = {
+const appDrawerOpenChange = {
   payload: {
-    open: appDrawerState.anchor.left,
+    open: appDrawer.anchor.left,
   },
   type: "APP_DRAWER_STATE_CHANGE",
 };
 
-const appProgressionChangeInitialAction = {
+const appProgressionChange = {
   payload: appProgressions,
   type: "APP_PROGRESSION_CHANGE",
 };
 
-const dialogOpenChangeInitialAction = {
+const dialogOpenChange = {
   payload: {
     ...defaultDialogStateItemProps(),
     dialogName: "",
@@ -32,37 +27,37 @@ const dialogOpenChangeInitialAction = {
   type: "DIALOG_OPEN_STATE_CHANGE",
 };
 
-const globalLoadingOpenChangeInitialAction = {
+const globalLoadingOpenChange = {
   payload: {
     open: globalLoadingState.open,
   },
   type: "GLOBAL_LOADING_STATE_CHANGE",
 };
 
-const onlineStatusInitialAction = {
-  payload: onlineStatus,
+const onlineStatusChange = {
+  payload: global.onlineStatus,
   type: "ONLINE_STATUS",
 };
 
-const viewModeInitialAction = {
+const viewModeChange = {
   payload: {
-    viewMode,
+    viewMode: global.viewMode,
   },
   type: "VIEW_MODE_ONCHANGE",
 };
 
-const resetGlobalStateInitialAction = {
+const resetGlobalState = {
   type: "RESET_GLOBAL_STATE",
 };
 
 const globalInitialActions = {
-  appDrawerOpenChangeInitialAction,
-  appProgressionChangeInitialAction,
-  dialogOpenChangeInitialAction,
-  globalLoadingOpenChangeInitialAction,
-  onlineStatusInitialAction,
-  viewModeInitialAction,
-  resetGlobalStateInitialAction,
+  appDrawerOpenChange,
+  appProgressionChange,
+  dialogOpenChange,
+  globalLoadingOpenChange,
+  onlineStatusChange,
+  resetGlobalState,
+  viewModeChange,
 };
 
 export { globalInitialActions };

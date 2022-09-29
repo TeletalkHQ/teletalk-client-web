@@ -3,26 +3,12 @@ import { appOptions } from "classes/AppOptions";
 import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { initialStates } from "variables/initials/initialStates/initialStates";
-import { tempInitialActions } from "variables/initials/initialActions/tempInitialActions";
 import { defaultTempState } from "variables/initials/initialStates/tempInitialState";
-
-const {
-  countryCodeInitialAction,
-  countryNameInitialAction,
-  firstNameInitialAction,
-  lastNameInitialAction,
-  messageInputInitialAction,
-  phoneNumberInitialAction,
-  resetTempStateInitialAction,
-  selectedContactIdInitialAction,
-  selectedCountryInitialAction,
-  setMessagesInitialAction,
-  verificationCodeInitialAction,
-} = tempInitialActions;
+import { initialActions } from "variables/initials/initialActions/initialActions";
+import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const tempReducer = (
-  state = initialStates.tempState,
+  state = initialStates.temp,
   action = appOptions.getOptions().actionOptions
 ) => {
   try {
@@ -31,37 +17,37 @@ const tempReducer = (
     const fn = () => mergePrevStateWithPayload({ state, payload });
 
     switch (type) {
-      case selectedContactIdInitialAction.type:
+      case initialActions.selectedContactId.type:
         return fn();
 
-      case setMessagesInitialAction.type:
+      case initialActions.setMessages.type:
         return fn();
 
-      case messageInputInitialAction.type:
+      case initialActions.messageInputOnChange.type:
         return fn();
 
-      case countryCodeInitialAction.type:
+      case initialActions.countryCodeOnChange.type:
         return fn();
 
-      case countryNameInitialAction.type:
+      case initialActions.countryNameOnChange.type:
         return fn();
 
-      case firstNameInitialAction.type:
+      case initialActions.firstNameOnChange.type:
         return fn();
 
-      case lastNameInitialAction.type:
+      case initialActions.lastNameOnChange.type:
         return fn();
 
-      case phoneNumberInitialAction.type:
+      case initialActions.phoneNumberOnChange.type:
         return fn();
 
-      case selectedCountryInitialAction.type:
+      case initialActions.selectedCountry.type:
         return fn();
 
-      case verificationCodeInitialAction.type:
+      case initialActions.verificationCodeOnChange.type:
         return fn();
 
-      case resetTempStateInitialAction.type:
+      case initialActions.resetTempState.type:
         return defaultTempState();
 
       default:

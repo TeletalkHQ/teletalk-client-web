@@ -42,7 +42,7 @@ const MainContainer = () => {
   } = useMainContext();
 
   const {
-    globalState: { viewMode, globalLoadingState },
+    global: { viewMode, globalLoadingState },
   } = state;
 
   useEffect(() => updateWindowCustomProperties(state), [state]);

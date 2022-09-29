@@ -11,7 +11,7 @@ const {
 } = appConfigs.getConfigs();
 
 const defaultGlobalState = () => ({
-  appDrawerState: {
+  appDrawer: {
     anchor: {
       bottom: false,
       left: false,

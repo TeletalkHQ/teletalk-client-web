@@ -7,11 +7,11 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 const getWelcomeMessage = () => {
   return async (dispatch) => {
     try {
-      const { getWelcomeMessage: getWelcomeMessageApi } = apiManager.apis;
-      const response = await getWelcomeMessageApi.sendFullFeaturedRequest();
+      const response =
+        await apiManager.apis.getWelcomeMessage.sendFullFeaturedRequest();
 
       dispatch(
-        actions.welcomeMessage({
+        actions.setWelcomeMessage({
           welcomeMessage: response.data.message,
         })
       );

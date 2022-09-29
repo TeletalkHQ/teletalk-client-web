@@ -41,7 +41,7 @@ const DialogTemplate = ({
       zIndex={zIndex}
       fullScreen={fullScreen}
       keepMounted
-      {...(customTypeof.check(onClose).type.isFunction && {
+      {...(customTypeof.isFunction(onClose) && {
         onClose: () => onClose(),
       })}
       // onEscapeKeyDown={onEscapeKeyDown}

@@ -8,7 +8,7 @@ import { useMainContext } from "hooks/useMainContext";
 const PortalContainer = ({ onGlobalLoadingClose }) => {
   const {
     state: {
-      globalState: { globalLoadingState },
+      global: { globalLoadingState },
     },
   } = useMainContext();
 

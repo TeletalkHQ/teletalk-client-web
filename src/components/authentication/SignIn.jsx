@@ -27,11 +27,11 @@ const SignIn = () => {
   const {
     hooksOutput: { dispatch },
     state: {
-      globalState: {
+      global: {
         appProgressions: { authenticationProgress },
       },
-      otherState: { countries },
-      tempState: { countryCode, countryName, phoneNumber, selectedCountry },
+      other: { countries },
+      temp: { countryCode, countryName, phoneNumber, selectedCountry },
     },
   } = useMainContext();
 

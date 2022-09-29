@@ -1,16 +1,16 @@
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const {
-  notificationState: { errorNotificationState },
+  notification: { errorNotificationState },
 } = initialStates;
 
-const errorNotificationInitialAction = {
+const errorNotification = {
   payload: errorNotificationState,
   type: "ERROR_NOTIFICATION",
 };
 
 const notificationInitialActions = {
-  errorNotificationInitialAction,
+  errorNotification,
 };
 
 export { notificationInitialActions };

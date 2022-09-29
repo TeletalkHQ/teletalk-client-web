@@ -51,8 +51,8 @@ const ContactsDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
     state: {
-      globalState: { dialogState },
-      userState,
+      global: { dialogState },
+      user,
     },
   } = useMainContext();
 
@@ -65,8 +65,8 @@ const ContactsDialog = ({ onDialogClose }) => {
     onDialogClose("contacts");
   };
 
-  console.log(userState.contacts);
-  const mainContent = userState.contacts?.map((contact, index) => (
+  console.log(user.contacts);
+  const mainContent = user.contacts?.map((contact, index) => (
     <ContactListItem
       key={index}
       name={`${contact.firstName} ${contact.lastName}`}

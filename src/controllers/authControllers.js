@@ -17,7 +17,7 @@ import { VIEW_MODES } from "variables/otherVariables/constants";
 const verifySignIn = () => {
   return async (dispatch, getState = getInitialState) => {
     const {
-      tempState: { verificationCode },
+      temp: { verificationCode },
     } = getState();
 
     try {
@@ -85,7 +85,7 @@ const userStatusChecker = () => {
     } catch (error) {
       printCatchError(userStatusChecker.name, error);
     } finally {
-      dispatch(actions.globalLoadingStateOpenChange({ open: false }));
+      dispatch(actions.globalLoadingOpenChange({ open: false }));
     }
   };
 };
@@ -93,7 +93,7 @@ const userStatusChecker = () => {
 const signIn = () => {
   return async (dispatch, getState = getInitialState) => {
     const {
-      tempState: { phoneNumber, countryCode, countryName },
+      temp: { phoneNumber, countryCode, countryName },
     } = getState();
 
     try {
@@ -153,7 +153,7 @@ const getCountries = () => {
 const createNewUser = () => {
   return async (dispatch, getState = getInitialState) => {
     const {
-      tempState: { firstName, lastName },
+      temp: { firstName, lastName },
     } = getState();
 
     try {

@@ -4,18 +4,11 @@ import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
-import { otherInitialActions } from "variables/initials/initialActions/otherInitialActions";
 import { defaultOtherState } from "variables/initials/initialStates/otherInitialState";
-
-const {
-  getCountriesInitialAction,
-  resetOtherStateInitialAction,
-  selectContactInitialAction,
-  welcomeInitialAction,
-} = otherInitialActions;
+import { initialActions } from "variables/initials/initialActions/initialActions";
 
 const otherReducer = (
-  state = initialStates.otherState,
+  state = initialStates.other,
   action = appOptions.getOptions().actionOptions
 ) => {
   try {
@@ -28,16 +21,16 @@ const otherReducer = (
       });
 
     switch (type) {
-      case welcomeInitialAction.type:
+      case initialActions.setWelcomeMessage.type:
         return fn();
 
-      case getCountriesInitialAction.type:
+      case initialActions.getCountries.type:
         return fn();
 
-      case selectContactInitialAction.type:
+      case initialActions.selectContact.type:
         return fn();
 
-      case resetOtherStateInitialAction.type:
+      case initialActions.resetOtherState.type:
         return defaultOtherState();
 
       default:

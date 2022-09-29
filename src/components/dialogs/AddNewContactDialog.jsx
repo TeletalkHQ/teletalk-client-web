@@ -112,8 +112,8 @@ const AddNewContactDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
     state: {
-      globalState: { dialogState },
-      otherState: { countries },
+      global: { dialogState },
+      other: { countries },
     },
   } = useMainContext();
 

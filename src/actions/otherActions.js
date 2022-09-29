@@ -2,26 +2,20 @@ import { actionCreator } from "functions/utilities/stateUtilities";
 
 import { initialActions } from "variables/initials/initialActions/initialActions";
 
-const {
-  otherInitialActions: {
-    getCountriesInitialAction,
-    welcomeInitialAction,
-    resetOtherStateInitialAction,
-  },
-} = initialActions;
+const getCountries = (payload = initialActions.getCountries.payload) =>
+  actionCreator(initialActions.getCountries.type, payload);
 
-const getCountries = (payload = getCountriesInitialAction.payload) =>
-  actionCreator(getCountriesInitialAction.type, payload);
+const setWelcomeMessage = (
+  payload = initialActions.setWelcomeMessage.payload
+) => actionCreator(initialActions.setWelcomeMessage.type, payload);
 
-const welcomeMessage = (payload = welcomeInitialAction.payload) =>
-  actionCreator(welcomeInitialAction.type, payload);
-
-const resetOtherState = () => actionCreator(resetOtherStateInitialAction.type);
+const resetOtherState = () =>
+  actionCreator(initialActions.resetOtherState.type);
 
 const otherActions = {
   getCountries,
   resetOtherState,
-  welcomeMessage,
+  setWelcomeMessage,
 };
 
 export { otherActions };

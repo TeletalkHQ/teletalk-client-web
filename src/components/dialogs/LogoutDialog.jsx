@@ -13,7 +13,7 @@ const LogoutDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
     state: {
-      globalState: { dialogState },
+      global: { dialogState },
     },
   } = useMainContext();
 
