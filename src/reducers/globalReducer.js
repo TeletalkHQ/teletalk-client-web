@@ -3,46 +3,36 @@ import { appOptions } from "classes/AppOptions";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
-import { globalInitialActions } from "variables/initials/initialActions/globalInitialActions";
 import { defaultGlobalState } from "variables/initials/initialStates/globalInitialState";
-
-const {
-  appDrawerOpenChangeInitialAction,
-  appProgressionChangeInitialAction,
-  dialogOpenChangeInitialAction,
-  globalLoadingOpenChangeInitialAction,
-  onlineStatusInitialAction,
-  resetGlobalStateInitialAction,
-  viewModeInitialAction,
-} = globalInitialActions;
+import { initialActions } from "variables/initials/initialActions/initialActions";
 
 const globalReducer = (
-  state = initialStates.globalState,
+  state = initialStates.global,
   action = appOptions.getOptions().actionOptions
 ) => {
   const { payload, type } = action;
 
   try {
     switch (type) {
-      case appDrawerOpenChangeInitialAction.type:
+      case initialActions.appDrawerOpenChange.type:
         return handleAppDrawerStateOpenChange(state, payload);
 
-      case appProgressionChangeInitialAction.type:
+      case initialActions.appProgressionChange.type:
         return handleAppProgressionChange(state, payload);
 
-      case dialogOpenChangeInitialAction.type:
+      case initialActions.dialogOpenChange.type:
         return handleDialogOpenChange(state, payload);
 
-      case globalLoadingOpenChangeInitialAction.type:
+      case initialActions.globalLoadingOpenChange.type:
         return handleGlobalLoadingStateOpenChange(state, payload);
 
-      case onlineStatusInitialAction.type:
+      case initialActions.onlineStatusChange.type:
         return handleOnlineStatusStateChange(state, payload);
 
-      case viewModeInitialAction.type:
+      case initialActions.viewModeChange.type:
         return handleUpdateViewMode(state, payload);
 
-      case resetGlobalStateInitialAction.type:
+      case initialActions.resetGlobalState.type:
         return defaultGlobalState();
 
       default:
@@ -68,11 +58,11 @@ const handleGlobalLoadingStateOpenChange = (prevState, payload) => {
 const handleAppDrawerStateOpenChange = (prevState, payload) => {
   return {
     ...prevState,
-    appDrawerState: {
-      ...prevState.appDrawerState,
+    appDrawer: {
+      ...prevState.appDrawer,
       anchor: {
-        ...prevState.appDrawerState.anchor,
-        [prevState.appDrawerState.currentAnchor]: payload.open,
+        ...prevState.appDrawer.anchor,
+        [prevState.appDrawer.currentAnchor]: payload.open,
       },
     },
   };

@@ -22,7 +22,7 @@ const ChatList = () => {
             //     const senderId = lastMessage.messageSender.senderId;
             //     const sender =
             //       contacts.find((contact) => contact.privateId === senderId) ||
-            //       userState;
+            //       user;
             //     const findParticipant = chat.participants.find(
             //       (participant) =>
             //         participant?.participantId === selectedContact?.privateId

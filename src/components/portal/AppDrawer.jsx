@@ -30,15 +30,15 @@ const drawerList = [
 
 //TODO: Move to appConfigs
 const iOS =
-  !customTypeof.check(navigator).type.isUndefined &&
+  !customTypeof.isUndefined(navigator) &&
   /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const AppDrawer = () => {
   const {
     state: {
-      globalState: {
-        appDrawerState,
-        appDrawerState: { currentAnchor },
+      global: {
+        appDrawer,
+        appDrawer: { currentAnchor },
       },
     },
     hooksOutput: { dispatch },
@@ -70,7 +70,7 @@ const AppDrawer = () => {
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
         anchor={currentAnchor}
-        open={appDrawerState.anchor[currentAnchor]}
+        open={appDrawer.anchor[currentAnchor]}
         onClose={(event) => toggleDrawer(event, false)}
         onOpen={(event) => toggleDrawer(event, true)}
       >

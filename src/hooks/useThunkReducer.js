@@ -12,16 +12,19 @@ let extractedDispatchAsync = async (action = { type: "", payload: {} }) =>
   action;
 
 let useDispatch = () => extractedDispatch;
-// eslint-disable-next-line no-unused-vars
-let useSelector = (callback = () => {}) => {
-  return initialStates;
+const initialUseSelectorCallbackParam = (state = initialStates) => {
+  return state;
 };
-let actionLogger = (action) => {
-  console.log("actionLogger:", action);
+let useSelector = (callback = initialUseSelectorCallbackParam) => {
+  return callback();
+};
+
+const actionLogger = (action) => {
+  console.log("action:", action);
 };
 
 const defaultConfigs = {
-  actionLogger: false,
+  logActions: false,
 };
 
 const combineReducers = (reducers) => {
@@ -42,10 +45,10 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
 
     const customDispatch = useCallback(
       (action) => {
-        return customTypeof.check(action).type.isFunction
+        return customTypeof.isFunction(action)
           ? action(dispatch, getState)
           : (() => {
-              if (configs.actionLogger) actionLogger(action);
+              if (configs.logActions) actionLogger(action);
               dispatch(action);
             })();
       },
@@ -54,14 +57,10 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
     );
 
     extractedDispatch = customDispatch;
-    extractedDispatchAsync = async (action) => customDispatch(action);
+    extractedDispatchAsync = async (action) => await customDispatch(action);
     useDispatch = useCallback(() => customDispatch, [customDispatch]);
     useSelector = useCallback(
-      (callback) => {
-        if (callback) return callback(state);
-        return state;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-      },
+      (callback = initialUseSelectorCallbackParam) => callback(state),
       [state]
     );
 
@@ -75,7 +74,6 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
 export default useThunkReducer;
 
 export {
-  actionLogger,
   combineReducers,
   extractedDispatch,
   extractedDispatchAsync,

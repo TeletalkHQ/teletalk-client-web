@@ -7,11 +7,11 @@ import { otherReducer } from "reducers/otherReducer";
 import { tempReducer } from "reducers/tempReducer";
 
 const rootReducer = combineReducers({
-  userState: userReducer,
-  notificationState: notificationReducer,
-  globalState: globalReducer,
-  otherState: otherReducer,
-  tempState: tempReducer,
+  user: userReducer,
+  notification: notificationReducer,
+  global: globalReducer,
+  other: otherReducer,
+  temp: tempReducer,
 });
 
 export { rootReducer };

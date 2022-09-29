@@ -1,16 +1,16 @@
 import { initialStates } from "variables/initials/initialStates/initialStates";
 import { initialContact } from "variables/initials/initialValues/initialValues";
 
-const { userState } = initialStates;
+const { user } = initialStates;
 
-const addNewContactInitialAction = {
+const addNewContact = {
   payload: {
     newContact: initialContact,
   },
   type: "ADD_NEW_CONTACT",
 };
 
-const addNewMessageToChatInitialAction = {
+const addNewMessageToChat = {
   payload: {
     newMessage: "",
     chatId: "",
@@ -18,34 +18,34 @@ const addNewMessageToChatInitialAction = {
   type: "ADD_NEW_MESSAGE_TO_CHAT",
 };
 
-const updateAllUserDataInitialAction = {
-  payload: userState,
+const updateAllUserData = {
+  payload: user,
   type: "UPDATE_ALL_USER_DATA",
 };
 
-const updateAllChatMessagesInitialAction = {
+const updateAllChatMessages = {
   payload: { messages: [], chatId: "" },
   type: "UPDATE_ALL_CHAT_MESSAGES",
 };
 
-const updateUserContactsInitialAction = {
+const updateAllUserContacts = {
   payload: {
-    contacts: userState.contacts,
+    contacts: user.contacts,
   },
   type: "UPDATE_USER_CONTACTS",
 };
 
-const resetUserStateInitialAction = {
+const resetUserState = {
   type: "RESET_USER_STATE",
 };
 
 const userInitialActions = {
-  addNewContactInitialAction,
-  addNewMessageToChatInitialAction,
-  resetUserStateInitialAction,
-  updateAllChatMessagesInitialAction,
-  updateAllUserDataInitialAction,
-  updateUserContactsInitialAction,
+  addNewContact,
+  addNewMessageToChat,
+  resetUserState,
+  updateAllChatMessages,
+  updateAllUserData,
+  updateAllUserContacts,
 };
 
 export { userInitialActions };

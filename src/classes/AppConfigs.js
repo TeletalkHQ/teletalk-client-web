@@ -50,8 +50,8 @@ class AppConfigs {
         defaultDialogTransitionalComponentType: "Grow",
         dialogTransitionalComponentType: "Grow",
       },
-      useThunkReducer: {
-        actionLogger: true,
+      stateManagement: {
+        logActions: true,
       },
     };
   }

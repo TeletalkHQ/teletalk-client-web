@@ -17,7 +17,7 @@ const Authentication = () => {
   const {
     hooksOutput: { dispatch },
     state: {
-      globalState: { viewMode },
+      global: { viewMode },
     },
   } = useMainContext();
 

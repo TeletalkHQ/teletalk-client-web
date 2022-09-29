@@ -13,8 +13,8 @@ const LeftSideContainer = () => {
   const {
     hooksOutput: { dispatch },
     state: {
-      tempState: { selectedContact },
-      userState: { chats, contacts },
+      temp: { selectedContact },
+      user: { chats, contacts },
     },
   } = useMainContext();
 

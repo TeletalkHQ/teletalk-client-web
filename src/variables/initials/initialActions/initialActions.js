@@ -5,11 +5,9 @@ import { tempInitialActions } from "variables/initials/initialActions/tempInitia
 import { userInitialActions } from "variables/initials/initialActions/userInitialActions";
 
 export const initialActions = {
-  globalInitialActions,
-  notificationInitialActions,
-  otherInitialActions,
-  tempInitialActions,
-  userInitialActions,
+  ...globalInitialActions,
+  ...notificationInitialActions,
+  ...otherInitialActions,
+  ...tempInitialActions,
+  ...userInitialActions,
 };
-
-// export { actions };

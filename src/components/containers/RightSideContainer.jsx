@@ -16,7 +16,7 @@ const { selectedContactId, messageInputOnChange: messageInputOnChangeAction } =
 const RightSideContainer = () => {
   const {
     state: {
-      tempState: {
+      temp: {
         selectedContact: { firstName, lastName },
         selectedContact,
         messageInputText,
@@ -38,7 +38,7 @@ const RightSideContainer = () => {
   };
 
   // const chat = arrayUtilities.findByPropValueEquality(
-  //   userState.chats,
+  //   user.chats,
   //   privateId,
   //   "participantId"
   // );
@@ -71,7 +71,7 @@ const RightSideContainer = () => {
           <CustomBox sx={{ height: "100%", width: "100%" }}>
             {/* <MessageList
               messages={chat?.messages || []}
-              userState={userState}
+              user={user}
             /> */}
           </CustomBox>
 

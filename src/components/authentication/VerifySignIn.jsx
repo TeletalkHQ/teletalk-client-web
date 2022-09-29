@@ -29,10 +29,10 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
   const {
     hooksOutput: { dispatch },
     state: {
-      globalState: {
+      global: {
         appProgressions: { authenticationProgress },
       },
-      tempState: { countryCode, phoneNumber, verificationCode },
+      temp: { countryCode, phoneNumber, verificationCode },
     },
   } = useMainContext();
 

@@ -6,7 +6,7 @@ const checkErrorCodeIsConnAborted = (errorCode) => errorCode === "ECONNABORTED";
 
 const errorThrower = (condition, error) => {
   if (condition) {
-    if (customTypeof.check(error).type.isFunction) throw error();
+    if (customTypeof.isFunction(error)) throw error();
     throw error;
   }
 };

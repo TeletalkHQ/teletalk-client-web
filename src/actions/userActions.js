@@ -2,36 +2,26 @@ import { actionCreator } from "functions/utilities/stateUtilities";
 
 import { initialActions } from "variables/initials/initialActions/initialActions";
 
-const {
-  userInitialActions: {
-    addNewContactInitialAction,
-    addNewMessageToChatInitialAction,
-    updateAllChatMessagesInitialAction,
-    updateAllUserDataInitialAction,
-    updateUserContactsInitialAction,
-    resetUserStateInitialAction,
-  },
-} = initialActions;
-
-const addNewContact = (payload = addNewContactInitialAction.payload) =>
-  actionCreator(addNewContactInitialAction.type, payload);
+const addNewContact = (payload = initialActions.addNewContact.payload) =>
+  actionCreator(initialActions.addNewContact.type, payload);
 
 const addNewMessageToChat = (
-  payload = addNewMessageToChatInitialAction.payload
-) => actionCreator(addNewMessageToChatInitialAction.type, payload);
+  payload = initialActions.addNewMessageToChat.payload
+) => actionCreator(initialActions.addNewMessageToChat.type, payload);
 
 const updateAllChatMessages = (
-  payload = updateAllChatMessagesInitialAction.payload
-) => actionCreator(updateAllChatMessagesInitialAction.type, payload);
+  payload = initialActions.updateAllChatMessages.payload
+) => actionCreator(initialActions.updateAllChatMessages.type, payload);
 
-const updateAllUserData = (payload = updateAllUserDataInitialAction.payload) =>
-  actionCreator(updateAllUserDataInitialAction.type, payload);
+const updateAllUserData = (
+  payload = initialActions.updateAllUserData.payload
+) => actionCreator(initialActions.updateAllUserData.type, payload);
 
 const updateAllUserContacts = (
-  payload = updateUserContactsInitialAction.payload
-) => actionCreator(updateUserContactsInitialAction.type, payload);
+  payload = initialActions.updateAllUserContacts.payload
+) => actionCreator(initialActions.updateAllUserContacts.type, payload);
 
-const resetUserState = () => actionCreator(resetUserStateInitialAction.type);
+const resetUserState = () => actionCreator(initialActions.resetUserState.type);
 
 const userActions = {
   addNewContact,

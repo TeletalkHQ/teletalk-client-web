@@ -21,7 +21,7 @@ const App = () => {
   const [state = initialStates, dispatch] = useThunkReducer(
     rootReducer,
     initialStates,
-    appConfigs.getConfigs().useThunkReducer
+    appConfigs.getConfigs().stateManagement
   );
 
   return (

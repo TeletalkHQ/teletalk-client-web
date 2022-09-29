@@ -2,94 +2,94 @@ import { initialCountry } from "variables/initials/initialValues/initialValues";
 import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const {
-  tempState: { messageInputText, messages, tempUserState, verificationCode },
+  temp: { messageInputText, messages, tempUserState, verificationCode },
 } = initialStates;
 
-const selectedContactIdInitialAction = {
+const selectedContactId = {
   payload: {
     selectedContactId: "",
   },
   type: "CONTACT_SELECTED",
 };
 
-const messageInputInitialAction = {
+const messageInputOnChange = {
   payload: {
     messageInputText,
   },
   type: "MESSAGE_INPUT_ONCHANGE",
 };
 
-const setMessagesInitialAction = {
+const setMessages = {
   payload: {
     messages,
   },
   type: "SET_MESSAGES",
 };
 
-const countryNameInitialAction = {
+const countryNameOnChange = {
   payload: {
     countryName: tempUserState.countryName,
   },
   type: "COUNTRY_NAME_ONCHANGE",
 };
 
-const countryCodeInitialAction = {
+const countryCodeOnChange = {
   payload: {
     countryCode: tempUserState.countryCode,
   },
   type: "COUNTRY_CODE_ONCHANGE",
 };
 
-const firstNameInitialAction = {
+const firstNameOnChange = {
   payload: {
     firstName: tempUserState.firstName,
   },
   type: "FIRST_NAME_ONCHANGE",
 };
-const lastNameInitialAction = {
+const lastNameOnChange = {
   payload: {
     lastName: tempUserState.lastName,
   },
   type: "LAST_NAME_ONCHANGE",
 };
 
-const phoneNumberInitialAction = {
+const phoneNumberOnChange = {
   payload: {
     phoneNumber: tempUserState.phoneNumber,
   },
   type: "PHONE_NUMBER_ONCHANGE",
 };
 
-const verificationCodeInitialAction = {
+const verificationCodeOnChange = {
   payload: {
     verificationCode,
   },
   type: "VERIFICATION_CODE_ONCHANGE",
 };
 
-const selectedCountryInitialAction = {
+const selectedCountry = {
   payload: {
     selectedCountry: initialCountry,
   },
   type: "SELECTED_COUNTRY_ONCHANGE",
 };
 
-const resetTempStateInitialAction = {
+const resetTempState = {
   type: "RESET_TEMP_STATE",
 };
 
 const tempInitialActions = {
-  countryCodeInitialAction,
-  countryNameInitialAction,
-  firstNameInitialAction,
-  lastNameInitialAction,
-  messageInputInitialAction,
-  phoneNumberInitialAction,
-  resetTempStateInitialAction,
-  selectedContactIdInitialAction,
-  selectedCountryInitialAction,
-  setMessagesInitialAction,
-  verificationCodeInitialAction,
+  countryCodeOnChange,
+  countryNameOnChange,
+  firstNameOnChange,
+  lastNameOnChange,
+  messageInputOnChange,
+  phoneNumberOnChange,
+  resetTempState,
+  selectedContactId,
+  selectedCountry,
+  setMessages,
+  verificationCodeOnChange,
 };
 
 export { tempInitialActions };

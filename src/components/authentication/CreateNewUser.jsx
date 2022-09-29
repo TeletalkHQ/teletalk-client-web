@@ -19,10 +19,10 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
   const {
     hooksOutput: { dispatch },
     state: {
-      globalState: {
+      global: {
         appProgressions: { authenticationProgress },
       },
-      tempState: { firstName, lastName },
+      temp: { firstName, lastName },
     },
   } = useMainContext();
 

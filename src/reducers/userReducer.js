@@ -3,21 +3,12 @@ import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { userInitialActions } from "variables/initials/initialActions/userInitialActions";
-import { initialStates } from "variables/initials/initialStates/initialStates";
 import { defaultUserState } from "variables/initials/initialStates/userInitialState";
-
-const {
-  addNewContactInitialAction,
-  addNewMessageToChatInitialAction,
-  resetUserStateInitialAction,
-  updateAllChatMessagesInitialAction,
-  updateAllUserDataInitialAction,
-  updateUserContactsInitialAction,
-} = userInitialActions;
+import { initialActions } from "variables/initials/initialActions/initialActions";
+import { initialStates } from "variables/initials/initialStates/initialStates";
 
 const userReducer = (
-  state = initialStates.userState,
+  state = initialStates.user,
   action = appOptions.getOptions().actionOptions
 ) => {
   console.log(action);
@@ -25,22 +16,22 @@ const userReducer = (
     const { payload, type } = action;
 
     switch (type) {
-      case addNewContactInitialAction.type:
+      case initialActions.addNewContact.type:
         return handleAddNewContact(state, payload);
 
-      case addNewMessageToChatInitialAction.type:
+      case initialActions.addNewMessageToChat.type:
         return handleAddNewToChatMessage(state, payload);
 
-      case updateUserContactsInitialAction.type:
+      case initialActions.updateAllUserContacts.type:
         return handleUpdateAllContacts(state, payload);
 
-      case updateAllChatMessagesInitialAction.type:
+      case initialActions.updateAllChatMessages.type:
         return handleUpdateChatMessages(state, payload);
 
-      case updateAllUserDataInitialAction.type:
+      case initialActions.updateAllUserData.type:
         return payload;
 
-      case resetUserStateInitialAction.type:
+      case initialActions.resetUserState.type:
         return defaultUserState();
 
       default:

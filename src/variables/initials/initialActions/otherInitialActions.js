@@ -2,35 +2,35 @@ import { initialStates } from "variables/initials/initialStates/initialStates";
 import { initialContact } from "variables/initials/initialValues/initialValues";
 
 const {
-  otherState: { countries, welcomeMessage },
+  other: { countries, welcomeMessage },
 } = initialStates;
 
-const getCountriesInitialAction = {
+const getCountries = {
   payload: {
     countries,
   },
   type: "GET_COUNTRIES",
 };
 
-const selectContactInitialAction = {
+const selectContact = {
   payload: initialContact,
   type: "SELECT_CONTACT",
 };
 
-const welcomeInitialAction = {
+const setWelcomeMessage = {
   payload: { welcomeMessage },
   type: "WELCOME",
 };
 
-const resetOtherStateInitialAction = {
+const resetOtherState = {
   type: "RESET_OTHER_STATE",
 };
 
 const otherInitialActions = {
-  getCountriesInitialAction,
-  resetOtherStateInitialAction,
-  selectContactInitialAction,
-  welcomeInitialAction,
+  getCountries,
+  resetOtherState,
+  selectContact,
+  setWelcomeMessage,
 };
 
 export { otherInitialActions };

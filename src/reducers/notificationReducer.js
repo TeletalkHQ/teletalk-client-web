@@ -4,12 +4,10 @@ import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates/initialStates";
-import { notificationInitialActions } from "variables/initials/initialActions/notificationInitialActions";
-
-const { errorNotificationInitialAction } = notificationInitialActions;
+import { initialActions } from "variables/initials/initialActions/initialActions";
 
 const notificationReducer = (
-  state = initialStates.notificationState,
+  state = initialStates.notification,
   action = appOptions.getOptions().actionOptions
 ) => {
   try {
@@ -18,7 +16,7 @@ const notificationReducer = (
     const fn = () => mergePrevStateWithPayload({ state, payload });
 
     switch (type) {
-      case errorNotificationInitialAction.type:
+      case initialActions.errorNotification.type:
         return fn();
 
       default:

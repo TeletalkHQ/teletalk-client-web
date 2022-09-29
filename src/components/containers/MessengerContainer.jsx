@@ -14,7 +14,7 @@ const MessengerContainer = () => {
 
 export default MessengerContainer;
 
-//  const chat = userState.chats.find((chat) => {
+//  const chat = user.chats.find((chat) => {
 //    return chat.participants.find(
 //      (participant) => participant.participantId === privateId
 //    );
