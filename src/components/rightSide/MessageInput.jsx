@@ -4,7 +4,7 @@ import CustomIconButton from "components/generals/otherGeneralComponents/CustomI
 import CustomPaper from "components/generals/boxes/CustomPaper";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
-import { appIcons } from "variables/initials/initialValues/appIcons";
+import { Icons } from "components/others/Icons";
 
 const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
   return (
@@ -12,7 +12,7 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
       <CustomFlexBox sx={{ width: "100%" }} jc="space-between" ai="center">
         <CustomBox>
           <CustomIconButton onClick={() => {}}>
-            <appIcons.attachFile.Icon />
+            <Icons.AttachFile.Icon />
           </CustomIconButton>
         </CustomBox>
 
@@ -30,14 +30,14 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
 
         <CustomBox>
           <CustomIconButton>
-            <appIcons.emojiEmotions.Icon />
+            <Icons.EmojiEmotions.Icon />
           </CustomIconButton>
         </CustomBox>
 
         <CustomBox>
           {messageInputText ? (
             <CustomIconButton onClick={() => onAddNewMessage()}>
-              <appIcons.telegram.Icon color="primary" />
+              <Icons.Telegram.Icon color="primary" />
             </CustomIconButton>
           ) : (
             <>
@@ -46,7 +46,7 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
                   logger.debug("Mic clicked");
                 }}
               >
-                <appIcons.micNone.Icon />
+                <Icons.MicNone.Icon />
               </CustomIconButton>
             </>
           )}

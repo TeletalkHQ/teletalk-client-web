@@ -4,7 +4,7 @@ import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { initialStates } from "variables/initials/initialStates";
-import { initialActions } from "variables/initials/initialActions/initialActions";
+import { initialActions } from "variables/initials/initialActions";
 
 const notificationReducer = (
   state = initialStates.notification,
@@ -13,18 +13,22 @@ const notificationReducer = (
   try {
     const { payload, type } = action;
 
-    const fn = () => mergePrevStateWithPayload({ state, payload });
+    const reducerCase = notificationReducerCases[type];
 
-    switch (type) {
-      case initialActions.errorNotification.type:
-        return fn();
-
-      default:
-        return state;
+    if (reducerCase) {
+      return reducerCase(state, payload);
     }
+
+    return state;
   } catch (error) {
     printCatchError(notificationReducer.name, error);
   }
+};
+const fn = (state, payload) => mergePrevStateWithPayload({ state, payload });
+
+const notificationReducerCases = {
+  [initialActions.errorNotification.type]: (state, payload) =>
+    fn(state, payload),
 };
 
 export { notificationReducer };

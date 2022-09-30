@@ -1,6 +1,6 @@
 import { actionCreator } from "functions/utilities/stateUtilities";
 
-import { initialActions } from "variables/initials/initialActions/initialActions";
+import { initialActions } from "variables/initials/initialActions";
 
 const addNewContact = (payload = initialActions.addNewContact.payload) =>
   actionCreator(initialActions.addNewContact.type, payload);

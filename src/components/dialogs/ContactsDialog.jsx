@@ -1,6 +1,6 @@
 import { useMainContext } from "hooks/useMainContext";
 
-import ContactListItem from "components/otherComponents/ContactListItem";
+import ContactListItem from "components/others/ContactListItem";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";

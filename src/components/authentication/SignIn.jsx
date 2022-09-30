@@ -21,7 +21,7 @@ import { controllers } from "controllers/controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { appIcons } from "variables/initials/initialValues/appIcons";
+import { Icons } from "components/others/Icons";
 
 const SignIn = () => {
   const {
@@ -99,7 +99,7 @@ const SignIn = () => {
     <CustomContainer mw="xl">
       <CustomFlexBox mt={8} ai="center" col>
         <CustomAvatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <appIcons.lockOutlined.Icon />
+          <Icons.LockOutlined.Icon />
         </CustomAvatar>
         <H5>Teletalk</H5>
         <CustomContainer mw="xs">

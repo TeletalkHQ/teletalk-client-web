@@ -12,20 +12,17 @@ import Div from "components/generals/boxes/Div";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { appIcons } from "variables/initials/initialValues/appIcons";
-
-const { calls, contacts, logout, newChannel, newGroup, nightMode, settings } =
-  appIcons;
+import { Icons } from "components/others/Icons";
 
 //TODO Add to some functionality and add priority to each
 const drawerList = [
-  calls,
-  contacts,
-  logout,
-  newChannel,
-  newGroup,
-  nightMode,
-  settings,
+  Icons.Calls,
+  Icons.Contacts,
+  Icons.LogoutOutlined,
+  Icons.NewChannelOutlined,
+  Icons.NewGroupOutlined,
+  Icons.NightModeOutlined,
+  Icons.SettingsOutlined,
 ];
 
 //TODO: Move to appConfigs

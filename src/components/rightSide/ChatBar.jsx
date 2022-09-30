@@ -5,7 +5,7 @@ import CustomIconButton from "components/generals/otherGeneralComponents/CustomI
 import CustomPaper from "components/generals/boxes/CustomPaper";
 import CustomTypography from "components/generals/typographies/CustomTypography";
 
-import { appIcons } from "variables/initials/initialValues/appIcons";
+import { Icons } from "components/others/Icons";
 
 const ChatBar = ({ chatName, onMessageContainerCloseClick }) => {
   return (
@@ -18,7 +18,7 @@ const ChatBar = ({ chatName, onMessageContainerCloseClick }) => {
         >
           <CustomBox>
             <CustomIconButton onClick={onMessageContainerCloseClick}>
-              <appIcons.close.Icon />
+              <Icons.Close.Icon />
             </CustomIconButton>
           </CustomBox>
           <CustomFlexBox ai="center">
@@ -27,7 +27,7 @@ const ChatBar = ({ chatName, onMessageContainerCloseClick }) => {
           </CustomFlexBox>
           <CustomBox>
             <CustomIconButton>
-              <appIcons.moreVertical.Icon />
+              <Icons.MoreVertical.Icon />
             </CustomIconButton>
           </CustomBox>
         </CustomFlexBox>

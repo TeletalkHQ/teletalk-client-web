@@ -3,7 +3,7 @@ import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { initialActions } from "variables/initials/initialActions/initialActions";
+import { initialActions } from "variables/initials/initialActions";
 import {
   defaultUserState,
   initialStates,
@@ -13,32 +13,16 @@ const userReducer = (
   state = initialStates.user,
   action = appOptions.getOptions().actionOptions
 ) => {
-  console.log(action);
   try {
     const { payload, type } = action;
 
-    switch (type) {
-      case initialActions.addNewContact.type:
-        return handleAddNewContact(state, payload);
+    const reducerCase = userReducerCases[type];
 
-      case initialActions.addNewMessageToChat.type:
-        return handleAddNewToChatMessage(state, payload);
-
-      case initialActions.updateAllUserContacts.type:
-        return handleUpdateAllContacts(state, payload);
-
-      case initialActions.updateAllChatMessages.type:
-        return handleUpdateChatMessages(state, payload);
-
-      case initialActions.updateAllUserData.type:
-        return payload;
-
-      case initialActions.resetUserState.type:
-        return defaultUserState();
-
-      default:
-        return state;
+    if (reducerCase) {
+      return reducerCase(state, payload);
     }
+
+    return state;
   } catch (error) {
     printCatchError(userReducer.name, error);
   }
@@ -109,4 +93,22 @@ const handleUpdateChatMessages = (prevState, payload) => {
 
 const handleAddNewMessage = (messages, newMessage) => {
   return arrayUtilities.pushNewItems(messages, newMessage);
+};
+
+const userReducerCases = {
+  [initialActions.addNewContact.type]: (state, payload) =>
+    handleAddNewContact(state, payload),
+
+  [initialActions.addNewMessageToChat.type]: (state, payload) =>
+    handleAddNewToChatMessage(state, payload),
+
+  [initialActions.updateAllUserContacts.type]: (state, payload) =>
+    handleUpdateAllContacts(state, payload),
+
+  [initialActions.updateAllChatMessages.type]: (state, payload) =>
+    handleUpdateChatMessages(state, payload),
+
+  [initialActions.updateAllUserData.type]: (_state, payload) => payload,
+
+  [initialActions.resetUserState.type]: () => defaultUserState(),
 };
