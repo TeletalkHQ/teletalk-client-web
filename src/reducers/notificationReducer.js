@@ -3,8 +3,8 @@ import { appOptions } from "classes/AppOptions";
 import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { initialStates } from "variables/initials/initialStates";
 import { initialActions } from "variables/initials/initialActions";
+import { initialStates } from "variables/initials/initialStates";
 
 const notificationReducer = (
   state = initialStates.notification,
