@@ -2,7 +2,7 @@ import { UserPropsUtilities as UserPropsUtilitiesMain } from "utility-store/src/
 
 import { persistentStorage } from "classes/PersistentStorage";
 
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
 
 class UserPropsUtilities extends UserPropsUtilitiesMain {
   constructor(id) {

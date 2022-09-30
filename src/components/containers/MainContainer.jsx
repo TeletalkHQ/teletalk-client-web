@@ -18,7 +18,7 @@ import { updateWindowCustomProperties } from "functions/otherFunctions/otherFunc
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { VIEW_MODES } from "variables/otherVariables/constants";
+import { VIEW_MODES } from "variables/otherVariables/helpers";
 
 const visibleComponent = (viewMode, loading) => {
   const { MESSENGER, NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN, LOADING } =

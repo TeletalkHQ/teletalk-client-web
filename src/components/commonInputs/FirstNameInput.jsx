@@ -4,7 +4,7 @@ import withInputValidator from "components/hoc/withInputValidator";
 import {
   ELEMENT_NAMES,
   VALIDATION_KEYS,
-} from "variables/otherVariables/constants";
+} from "variables/otherVariables/helpers";
 
 const FirstNameInput = ({ inputValue, onInputChange, required = true }) => {
   return (

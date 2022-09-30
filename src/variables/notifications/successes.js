@@ -1,0 +1,3 @@
+const successes = {};
+
+export { successes };

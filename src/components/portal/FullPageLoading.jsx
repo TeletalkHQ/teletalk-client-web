@@ -1,6 +1,6 @@
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import MoonLoader from "react-spinners/MoonLoader";
-import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/constants";
+import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/helpers";
 
 const FullPageLoading = ({ loading }) => {
   return (

@@ -1,7 +1,7 @@
 import CustomBackdrop from "components/generals/otherGeneralComponents/CustomBackdrop";
 import CustomCircularProgress from "components/generals/progresses/CustomCircularProgress";
 
-import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/constants";
+import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/helpers";
 
 const OverlayLoading = ({ loading, onGlobalLoadingClose }) => {
   return (

@@ -1,4 +1,4 @@
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
 
 class PersistentStorage {
   constructor(storageKeys) {

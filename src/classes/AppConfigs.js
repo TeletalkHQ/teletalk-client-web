@@ -3,7 +3,7 @@ import { envManager } from "classes/EnvironmentManager";
 import {
   APP_DRAWER_ANCHORS,
   VIEW_MODES,
-} from "variables/otherVariables/constants";
+} from "variables/otherVariables/helpers";
 
 class AppConfigs {
   constructor() {

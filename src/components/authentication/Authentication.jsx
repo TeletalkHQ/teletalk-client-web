@@ -11,7 +11,7 @@ import VerifySignIn from "components/authentication/VerifySignIn";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { VIEW_MODES } from "variables/otherVariables/constants";
+import { VIEW_MODES } from "variables/otherVariables/helpers";
 
 const Authentication = () => {
   const {

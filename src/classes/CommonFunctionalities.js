@@ -12,7 +12,7 @@ import { checkErrorCodeIsConnAborted } from "functions/utilities/otherUtilities"
 
 import { extractedDispatch } from "hooks/useThunkReducer";
 
-import { VIEW_MODES } from "variables/otherVariables/constants";
+import { VIEW_MODES } from "variables/otherVariables/helpers";
 
 class CommonFunctionalities {
   resetEverything() {

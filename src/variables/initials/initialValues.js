@@ -7,18 +7,18 @@ const contact = {
   privateId: "",
 };
 
-const initialMessage = {
+const message = {
   messageId: "",
   senderId: "",
   text: "",
 };
 
-const initialCountry = {
+const country = {
   countryCode: "",
   countryName: "",
   countryShortName: "",
 };
 
-const initialValues = { contact, initialCountry, initialMessage };
+const initialValues = { contact, country, message };
 
 export { initialValues };

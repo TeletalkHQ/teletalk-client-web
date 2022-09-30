@@ -4,7 +4,7 @@ import { appConfigs } from "classes/AppConfigs";
 
 import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
 
-import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/constants";
+import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/helpers";
 import { initialValues } from "variables/initials/initialValues";
 
 const {

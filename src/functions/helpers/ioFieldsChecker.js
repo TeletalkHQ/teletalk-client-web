@@ -3,7 +3,7 @@ import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
 import { errorThrower } from "functions/utilities/otherUtilities";
 
-import { notifications } from "variables/otherVariables/notifications";
+import { notifications } from "variables/notifications/notifications";
 
 //TODO Move to utility-store
 

@@ -27,7 +27,7 @@ import {
   VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
 
-import { ELEMENT_NAMES } from "variables/otherVariables/constants";
+import { ELEMENT_NAMES } from "variables/otherVariables/helpers";
 
 const iconProperties = (text, elementName, Icon) => ({
   elementName,
