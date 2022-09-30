@@ -1,9 +1,9 @@
 import { actions } from "actions/actions";
 
-import ChatBar from "components/rightSideComponents/ChatBar";
+import ChatBar from "components/rightSide/ChatBar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import MessageInput from "components/rightSideComponents/MessageInput";
+import MessageInput from "components/rightSide/MessageInput";
 import GridContainer from "components/generals/boxes/GridContainer";
 
 import { controllers } from "controllers/controllers";

@@ -1,11 +1,11 @@
 import { actions } from "actions/actions";
 
-import ChatList from "components/leftSideComponents/ChatList";
+import ChatList from "components/leftSide/ChatList";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import SearchBar from "components/leftSideComponents/SearchBar";
-import SideBarList from "components/leftSideComponents/SideBarList";
+import SearchBar from "components/leftSide/SearchBar";
+import SideBarList from "components/leftSide/SideBarList";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import GridContainer from "components/generals/boxes/GridContainer";
 

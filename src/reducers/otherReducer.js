@@ -7,7 +7,7 @@ import {
   defaultOtherState,
   initialStates,
 } from "variables/initials/initialStates";
-import { initialActions } from "variables/initials/initialActions/initialActions";
+import { initialActions } from "variables/initials/initialActions";
 
 const otherReducer = (
   state = initialStates.other,
@@ -16,31 +16,33 @@ const otherReducer = (
   try {
     const { payload, type } = action;
 
-    const fn = () =>
-      mergePrevStateWithPayload({
-        payload,
-        state,
-      });
+    const reducerCase = otherReducerCases[type];
 
-    switch (type) {
-      case initialActions.setWelcomeMessage.type:
-        return fn();
-
-      case initialActions.getCountries.type:
-        return fn();
-
-      case initialActions.selectContact.type:
-        return fn();
-
-      case initialActions.resetOtherState.type:
-        return defaultOtherState();
-
-      default:
-        return state;
+    if (reducerCase) {
+      return reducerCase(state, payload);
     }
+
+    return state;
   } catch (error) {
     printCatchError(otherReducer.name, error);
   }
+};
+
+const fn = (state, payload) =>
+  mergePrevStateWithPayload({
+    payload,
+    state,
+  });
+
+const otherReducerCases = {
+  [initialActions.setWelcomeMessage.type]: (state, payload) =>
+    fn(state, payload),
+
+  [initialActions.getCountries.type]: (state, payload) => fn(state, payload),
+
+  [initialActions.selectContact.type]: (state, payload) => fn(state, payload),
+
+  [initialActions.resetOtherState.type]: () => defaultOtherState(),
 };
 
 export { otherReducer };

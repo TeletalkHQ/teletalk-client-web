@@ -1,4 +1,4 @@
-const initialContact = {
+const contact = {
   countryCode: "",
   countryName: "",
   firstName: "",
@@ -19,4 +19,6 @@ const initialCountry = {
   countryShortName: "",
 };
 
-export { initialContact, initialCountry, initialMessage };
+const initialValues = { contact, initialCountry, initialMessage };
+
+export { initialValues };

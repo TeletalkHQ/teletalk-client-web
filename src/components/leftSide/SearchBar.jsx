@@ -3,16 +3,14 @@ import CustomIconButton from "components/generals/otherGeneralComponents/CustomI
 import CustomInputAdornment from "components/generals/otherGeneralComponents/CustomInputAdornment";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
-import { appIcons } from "variables/initials/initialValues/appIcons";
-
-const { menu, search } = appIcons;
+import { Icons } from "components/others/Icons";
 
 const SearchBar = ({ onDrawerIconClick }) => {
   return (
     <>
       <CustomBox>
         <CustomIconButton onClick={onDrawerIconClick}>
-          <menu.Icon />
+          <Icons.Menu.Icon />
         </CustomIconButton>
       </CustomBox>
       <CustomBox p={1} sx={{ width: "100%" }}>
@@ -26,7 +24,7 @@ const SearchBar = ({ onDrawerIconClick }) => {
             },
             startAdornment: (
               <CustomInputAdornment position="start">
-                <search.Icon />
+                <Icons.Search.Icon />
               </CustomInputAdornment>
             ),
           }}

@@ -29,105 +29,105 @@ import {
 
 import { ELEMENT_NAMES } from "variables/otherVariables/constants";
 
-const appIconProperties = (text, elementName, Icon) => ({
+const iconProperties = (text, elementName, Icon) => ({
   elementName,
   Icon,
   text,
 });
 
-const appIcons = {
-  accountCircle: appIconProperties(
+const Icons = {
+  AccountCircleOutlined: iconProperties(
     "Account",
     ELEMENT_NAMES.ACCOUNT,
     AccountCircleOutlinedIcon
   ),
-  allChats: appIconProperties(
+  AllChatsOutlined7: iconProperties(
     "All Chats",
     ELEMENT_NAMES.ALL_CHATS,
     ForumOutlinedIcon
   ),
-  arrowBack: appIconProperties("Back", ELEMENT_NAMES.BACK, ArrowBackIcon),
-  attachFile: appIconProperties(
+  ArrowBack: iconProperties("Back", ELEMENT_NAMES.BACK, ArrowBackIcon),
+  AttachFile: iconProperties(
     "AttachFile",
     ELEMENT_NAMES.ATTACH_FILE,
     AttachFileIcon
   ),
-  bot: appIconProperties("Bot", ELEMENT_NAMES.BOT, SmartToyOutlinedIcon),
-  calls: appIconProperties("Calls", ELEMENT_NAMES.CALLS, PermIdentityIcon),
-  channels: appIconProperties(
+  BotOutlined: iconProperties("Bot", ELEMENT_NAMES.BOT, SmartToyOutlinedIcon),
+  Calls: iconProperties("Calls", ELEMENT_NAMES.CALLS, PermIdentityIcon),
+  ChannelsOutlined: iconProperties(
     "Channels",
     ELEMENT_NAMES.CHANNELS,
     CallOutlinedIcon
   ),
-  check: appIconProperties("Check", ELEMENT_NAMES.CHECK, CheckIcon),
-  close: appIconProperties("Close", ELEMENT_NAMES.CLOSE, CloseIcon),
-  contacts: appIconProperties(
+  Check: iconProperties("Check", ELEMENT_NAMES.CHECK, CheckIcon),
+  Close: iconProperties("Close", ELEMENT_NAMES.CLOSE, CloseIcon),
+  Contacts: iconProperties(
     "Contacts",
     ELEMENT_NAMES.CONTACTS,
     PeopleOutlineIcon
   ),
-  editChats: appIconProperties(
+  EditChatsOutlined: iconProperties(
     "Edit Chats",
     ELEMENT_NAMES.EDIT_CHATS,
     SettingsInputComponentOutlinedIcon
   ),
-  emojiEmotions: appIconProperties(
+  EmojiEmotions: iconProperties(
     "EmojiEmotions",
     ELEMENT_NAMES.EMOJI_EMOTIONS,
     EmojiEmotionsIcon
   ),
-  fingerprint: appIconProperties(
+  Fingerprint: iconProperties(
     "Fingerprint",
     ELEMENT_NAMES.LOCK,
     FingerprintIcon
   ),
-  groups: appIconProperties(
-    "Groups",
-    ELEMENT_NAMES.GROUPS,
-    CampaignOutlinedIcon
+  Groups: iconProperties("Groups", ELEMENT_NAMES.GROUPS, CampaignOutlinedIcon),
+  LockOutlined: iconProperties("Lock", ELEMENT_NAMES.LOCK, LockOutlinedIcon),
+  LogoutOutlined: iconProperties(
+    "Logout",
+    ELEMENT_NAMES.LOGOUT,
+    LogoutOutlinedIcon
   ),
-  lockOutlined: appIconProperties("Lock", ELEMENT_NAMES.LOCK, LockOutlinedIcon),
-  logout: appIconProperties("Logout", ELEMENT_NAMES.LOGOUT, LogoutOutlinedIcon),
-  menu: appIconProperties("Menu", ELEMENT_NAMES.MENU, MenuIcon),
-  micNone: appIconProperties("MicNone", ELEMENT_NAMES.MIC_NONE, MicNoneIcon),
-  moreVertical: appIconProperties("More", ELEMENT_NAMES.MORE, MoreVertIcon),
-  newChannel: appIconProperties(
+  Menu: iconProperties("Menu", ELEMENT_NAMES.MENU, MenuIcon),
+  MicNone: iconProperties("MicNone", ELEMENT_NAMES.MIC_NONE, MicNoneIcon),
+  MoreVertical: iconProperties("More", ELEMENT_NAMES.MORE, MoreVertIcon),
+  NewChannelOutlined: iconProperties(
     "New Channel",
     ELEMENT_NAMES.NEW_CHANNEL,
     CallOutlinedIcon
   ),
-  newGroup: appIconProperties(
+  NewGroupOutlined: iconProperties(
     "New Group",
     ELEMENT_NAMES.NEW_GROUP,
     CampaignOutlinedIcon
   ),
-  nightMode: appIconProperties(
+  NightModeOutlined: iconProperties(
     "Night Mode",
     ELEMENT_NAMES.NIGHT_MODE,
     Brightness4OutlinedIcon
   ),
-  personal: appIconProperties(
+  PersonalOutlined: iconProperties(
     "Personal",
     ELEMENT_NAMES.PERSONAL,
     PersonOutlineOutlinedIcon
   ),
-  search: appIconProperties("Search", ELEMENT_NAMES.SEARCH, SearchIcon),
-  settings: appIconProperties(
+  Search: iconProperties("Search", ELEMENT_NAMES.SEARCH, SearchIcon),
+  SettingsOutlined: iconProperties(
     "Settings",
     ELEMENT_NAMES.SETTINGS,
     SettingsOutlinedIcon
   ),
-  telegram: appIconProperties("Telegram", ELEMENT_NAMES.TELEGRAM, TelegramIcon),
-  unread: appIconProperties(
+  Telegram: iconProperties("Telegram", ELEMENT_NAMES.TELEGRAM, TelegramIcon),
+  UnreadOutlined: iconProperties(
     "Unread Messages",
     ELEMENT_NAMES.UNREAD,
     AnnouncementOutlinedIcon
   ),
-  verifiedUser: appIconProperties(
+  VerifiedUser: iconProperties(
     "Verified User",
     ELEMENT_NAMES.LOCK,
     VerifiedUserIcon
   ),
 };
 
-export { appIcons };
+export { Icons };

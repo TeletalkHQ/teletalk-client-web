@@ -19,7 +19,7 @@ import { controllers } from "controllers/controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { appIcons } from "variables/initials/initialValues/appIcons";
+import { Icons } from "components/others/Icons";
 import {
   ELEMENT_NAMES,
   VALIDATION_KEYS,
@@ -76,7 +76,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
     <CustomContainer maxWidth="xl">
       <CustomBox sx={{ mt: 1 }}>
         <CustomIconButton onClick={onBackToSignInClick}>
-          <appIcons.arrowBack.Icon />
+          <Icons.ArrowBack.Icon />
         </CustomIconButton>
       </CustomBox>
       <CustomBox
@@ -88,7 +88,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
         }}
       >
         <CustomAvatar sx={{ m: 1, bgcolor: "secondary.secondary" }}>
-          <appIcons.verifiedUser.Icon />
+          <Icons.VerifiedUser.Icon />
         </CustomAvatar>
         <CustomContainer maxWidth="xs">
           <CustomBox sx={{ mt: 1 }}>
@@ -115,7 +115,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
               loading={authenticationProgress}
               loadingPosition="end"
               onClick={handleVerifySignInClick}
-              endIcon={<appIcons.fingerprint.Icon />}
+              endIcon={<Icons.Fingerprint.Icon />}
               sx={{ mt: 2, mb: 2 }}
             >
               Verify

@@ -1,17 +1,17 @@
 import { combineReducers } from "hooks/useThunkReducer";
 
-import { userReducer } from "reducers/userReducer";
-import { notificationReducer } from "reducers/notificationReducer";
 import { globalReducer } from "reducers/globalReducer";
+import { notificationReducer } from "reducers/notificationReducer";
 import { otherReducer } from "reducers/otherReducer";
 import { tempReducer } from "reducers/tempReducer";
+import { userReducer } from "reducers/userReducer";
 
 const rootReducer = combineReducers({
-  user: userReducer,
-  notification: notificationReducer,
   global: globalReducer,
+  notification: notificationReducer,
   other: otherReducer,
   temp: tempReducer,
+  user: userReducer,
 });
 
 export { rootReducer };

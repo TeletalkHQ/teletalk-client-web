@@ -6,7 +6,7 @@ import {
   defaultGlobalState,
   initialStates,
 } from "variables/initials/initialStates";
-import { initialActions } from "variables/initials/initialActions/initialActions";
+import { initialActions } from "variables/initials/initialActions";
 
 const globalReducer = (
   state = initialStates.global,

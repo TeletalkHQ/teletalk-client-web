@@ -1,29 +1,26 @@
 import CustomList from "components/generals/boxes/CustomList";
 import CustomListItem from "components/generals/boxes/CustomListItem";
 
-import { appIcons } from "variables/initials/initialValues/appIcons";
-
-const { allChats, bot, channels, editChats, groups, personal, unread } =
-  appIcons;
+import { Icons } from "components/others/Icons";
 
 //TODO Add to some functionality and add priority to each
 const sidebarList = [
-  allChats,
-  unread,
-  personal,
-  channels,
-  groups,
-  bot,
-  editChats,
+  Icons.AllChatsOutlined7,
+  Icons.UnreadOutlined,
+  Icons.PersonalOutlined,
+  Icons.ChannelsOutlined,
+  Icons.Groups,
+  Icons.BotOutlined,
+  Icons.EditChatsOutlined,
 ];
 
 const SideBarList = () => {
   return (
     <>
       <CustomList sx={{ width: "20%" }}>
-        {sidebarList.map((item, index) => {
+        {sidebarList.map(({ Icon }, index) => {
           return (
-            //TODO Flex list item
+            //TODO Flex list Item
             <CustomListItem
               button
               key={index}
@@ -36,7 +33,7 @@ const SideBarList = () => {
                 alignItems: "center",
               }}
             >
-              <item.Icon />
+              <Icon />
             </CustomListItem>
           );
         })}

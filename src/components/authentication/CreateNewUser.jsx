@@ -13,7 +13,7 @@ import { controllers } from "controllers/controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { appIcons } from "variables/initials/initialValues/appIcons";
+import { Icons } from "components/others/Icons";
 
 const CreateNewUser = ({ onBackToSignInClick }) => {
   const {
@@ -42,12 +42,12 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
     <CustomContainer mw="xl">
       <CustomBox sx={{ mt: 1 }}>
         <CustomIconButton onClick={onBackToSignInClick}>
-          <appIcons.arrowBack.Icon />
+          <Icons.ArrowBack.Icon />
         </CustomIconButton>
       </CustomBox>
       <CustomFlexBox sx={{ marginTop: 8 }} col ai="center">
         <CustomBox>
-          <appIcons.accountCircle.Icon fontSize="large" color="primary" />
+          <Icons.AccountCircleOutlined.Icon fontSize="large" color="primary" />
         </CustomBox>
         <CustomContainer mw="xs">
           <GreyTextParagraph>
@@ -66,7 +66,7 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
             loading={authenticationProgress}
             loadingPosition="end"
             onClick={handleCreateNewUserConfirmClick}
-            endIcon={<appIcons.check.Icon />}
+            endIcon={<Icons.Check.Icon />}
             sx={{ mt: 1 }}
           >
             Confirm
