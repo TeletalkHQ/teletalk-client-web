@@ -10,9 +10,9 @@ import { authenticationProgressChange } from "functions/utilities/commonActions"
 import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { getInitialState } from "variables/initials/initialStates";
-import { notifications } from "variables/otherVariables/notifications";
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
-import { VIEW_MODES } from "variables/otherVariables/constants";
+import { notifications } from "variables/notifications/notifications";
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
+import { VIEW_MODES } from "variables/otherVariables/helpers";
 
 const verifySignIn = () => {
   return async (dispatch, getState = getInitialState) => {

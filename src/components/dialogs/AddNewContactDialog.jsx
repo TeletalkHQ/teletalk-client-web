@@ -19,7 +19,7 @@ import { controllers } from "controllers/controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { DIALOG_NAMES } from "variables/otherVariables/constants";
+import { DIALOG_NAMES } from "variables/otherVariables/helpers";
 import { initialValues } from "variables/initials/initialValues";
 
 const AddContactDialogTitle = () => {

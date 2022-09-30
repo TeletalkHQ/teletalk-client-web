@@ -172,7 +172,7 @@ const tempInitialActions = {
   },
   selectedCountry: {
     payload: {
-      selectedCountry: initialValues.initialCountry,
+      selectedCountry: initialValues.country,
     },
     type: "SELECTED_COUNTRY_ONCHANGE",
   },

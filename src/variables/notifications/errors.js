@@ -1,6 +1,5 @@
 import { notificationBuilder } from "classes/NotificationBuilder";
 
-//#region //* errors
 const ECONNABORTED = notificationBuilder
   .create()
   .description(
@@ -73,13 +72,8 @@ const VERIFY_TOKEN_NOT_FOUND = notificationBuilder
   .notificationReason("VERIFY_TOKEN_NOT_FOUND")
   .message("Verify token not defined")
   .build();
-//#endregion //* errors
 
-//#region //* success
-const successNotifications = {};
-//#endregion //* success
-
-const errorNotifications = {
+const errors = {
   ECONNABORTED,
   INPUT_FIELDS_MISSING,
   INPUT_FIELDS_OVERLOAD,
@@ -92,9 +86,4 @@ const errorNotifications = {
   VERIFY_TOKEN_NOT_FOUND,
 };
 
-const notifications = {
-  error: errorNotifications,
-  success: successNotifications,
-};
-
-export { notifications };
+export { errors };

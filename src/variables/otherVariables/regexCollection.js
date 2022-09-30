@@ -1,5 +1,7 @@
 const enNumber = new RegExp("^[0-9]+$");
 
-const regexCollection = { enNumber };
+const regexCollection = {
+  enNumber,
+};
 
 export { regexCollection };

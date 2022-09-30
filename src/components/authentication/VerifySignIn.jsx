@@ -23,7 +23,7 @@ import { Icons } from "components/others/Icons";
 import {
   ELEMENT_NAMES,
   VALIDATION_KEYS,
-} from "variables/otherVariables/constants";
+} from "variables/otherVariables/helpers";
 
 const VerifySignIn = ({ onBackToSignInClick }) => {
   const {

@@ -4,7 +4,7 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
 import Img from "components/generals/otherGeneralComponents/Img";
 
-import { ELEMENT_NAMES } from "variables/otherVariables/constants";
+import { ELEMENT_NAMES } from "variables/otherVariables/helpers";
 
 //CLEANME CountrySelector Autocomplete
 const CountrySelector = ({

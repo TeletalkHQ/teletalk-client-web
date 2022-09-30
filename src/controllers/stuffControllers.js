@@ -9,7 +9,7 @@ import { systemController } from "classes/SystemController";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/constants";
+import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
 
 const getAllStuff = () => {
   return async () => {

@@ -7,7 +7,7 @@ import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import DialogTemplate from "components/dialogs/DialogTemplate";
 import H5 from "components/generals/typographies/H5";
 
-import { DIALOG_NAMES } from "variables/otherVariables/constants";
+import { DIALOG_NAMES } from "variables/otherVariables/helpers";
 import { commonActions } from "functions/utilities/commonActions";
 
 const ContactsTitle = () => (
