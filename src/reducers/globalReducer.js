@@ -12,40 +12,20 @@ const globalReducer = (
   state = initialStates.global,
   action = appOptions.getOptions().actionOptions
 ) => {
-  const { payload, type } = action;
-
   try {
-    switch (type) {
-      case initialActions.appDrawerOpenChange.type:
-        return handleAppDrawerStateOpenChange(state, payload);
+    const { payload, type } = action;
 
-      case initialActions.appProgressionChange.type:
-        return handleAppProgressionChange(state, payload);
+    const reducerCase = globalReducerCases[type];
 
-      case initialActions.dialogOpenChange.type:
-        return handleDialogOpenChange(state, payload);
-
-      case initialActions.globalLoadingOpenChange.type:
-        return handleGlobalLoadingStateOpenChange(state, payload);
-
-      case initialActions.onlineStatusChange.type:
-        return handleOnlineStatusStateChange(state, payload);
-
-      case initialActions.viewModeChange.type:
-        return handleUpdateViewMode(state, payload);
-
-      case initialActions.resetGlobalState.type:
-        return defaultGlobalState();
-
-      default:
-        return state;
+    if (reducerCase) {
+      return reducerCase(state, payload);
     }
+
+    return state;
   } catch (error) {
     printCatchError(globalReducer.name, error);
   }
 };
-
-export { globalReducer };
 
 const handleGlobalLoadingStateOpenChange = (prevState, payload) => {
   return {
@@ -106,3 +86,21 @@ const handleUpdateViewMode = (prevState, payload) => ({
 // const handleGetContacts = () => {
 //   dispatch(getContactsController());
 // };
+
+const globalReducerCases = {
+  [initialActions.appDrawerOpenChange.type]: (state, payload) =>
+    handleAppDrawerStateOpenChange(state, payload),
+  [initialActions.appProgressionChange.type]: (state, payload) =>
+    handleAppProgressionChange(state, payload),
+  [initialActions.dialogOpenChange.type]: (state, payload) =>
+    handleDialogOpenChange(state, payload),
+  [initialActions.globalLoadingOpenChange.type]: (state, payload) =>
+    handleGlobalLoadingStateOpenChange(state, payload),
+  [initialActions.onlineStatusChange.type]: (state, payload) =>
+    handleOnlineStatusStateChange(state, payload),
+  [initialActions.viewModeChange.type]: (state, payload) =>
+    handleUpdateViewMode(state, payload),
+  [initialActions.resetGlobalState.type]: () => defaultGlobalState(),
+};
+
+export { globalReducer };

@@ -26,31 +26,24 @@ const Authentication = () => {
     commonFunctionalities.changeViewMode().signIn();
   };
 
-  const authComponent = useMemo(() => {
+  const authComponent = () => {
     const props = {
       onBackToSignInClick: handleBackToSignInClick,
     };
-    const componentOutput = (Component) => <Component {...props} />;
+    const Views = {
+      [VIEW_MODES.SIGN_IN]: SignIn,
+      [VIEW_MODES.VERIFY_SIGN_IN]: VerifySignIn,
+      [VIEW_MODES.NEW_USER_PROFILE]: CreateNewUser,
+    };
 
-    switch (viewMode) {
-      case VIEW_MODES.SIGN_IN:
-        return componentOutput(SignIn);
+    const View = Views[viewMode];
 
-      case VIEW_MODES.VERIFY_SIGN_IN:
-        return componentOutput(VerifySignIn);
-
-      case VIEW_MODES.NEW_USER_PROFILE:
-        return componentOutput(CreateNewUser);
-
-      default:
-        break;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewMode]);
+    return <View {...props} />;
+  };
 
   return (
     <>
-      {authComponent}
+      {authComponent()}
       <Copyright
         sx={{
           mb: 4,
