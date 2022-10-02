@@ -7,7 +7,12 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 import { initialStates } from "variables/initials/initialStates";
 
 //! Use it in special cases only!
-let extractedDispatch = (action = { type: "", payload: {} }) => action;
+let extractedDispatch = (
+  action = {
+    payload: {},
+    type: "",
+  }
+) => action;
 let extractedDispatchAsync = async (action = { type: "", payload: {} }) =>
   action;
 
@@ -37,6 +42,15 @@ const combineReducers = (reducers) => {
   };
 };
 
+const dispatcher = ({ action, configs, dispatch, getState }) => {
+  return customTypeof.isFunction(action)
+    ? action(dispatch, getState)
+    : (() => {
+        if (configs.logActions) actionLogger(action);
+        dispatch(action);
+      })();
+};
+
 const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
   try {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -44,14 +58,13 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
     const getState = useCallback(() => state, [state]);
 
     const customDispatch = useCallback(
-      (action) => {
-        return customTypeof.isFunction(action)
-          ? action(dispatch, getState)
-          : (() => {
-              if (configs.logActions) actionLogger(action);
-              dispatch(action);
-            })();
-      },
+      (action) =>
+        dispatcher({
+          action,
+          configs,
+          dispatch,
+          getState,
+        }),
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [getState, dispatch]
     );

@@ -1,7 +1,8 @@
-import { appOptions } from "classes/AppOptions";
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
-import { printCatchError } from "functions/utilities/otherUtilities";
+import { appOptions } from "classes/AppOptions";
+
+import { triers } from "functions/helpers/triers";
 
 import { initialActions } from "variables/initials/initialActions";
 import {
@@ -13,19 +14,12 @@ const userReducer = (
   state = initialStates.user,
   action = appOptions.getOptions().actionOptions
 ) => {
-  try {
-    const { payload, type } = action;
-
-    const reducerCase = userReducerCases[type];
-
-    if (reducerCase) {
-      return reducerCase(state, payload);
-    }
-
-    return state;
-  } catch (error) {
-    printCatchError(userReducer.name, error);
-  }
+  return triers.reducerTrier({
+    action,
+    callerName: userReducer.name,
+    reducerCases: userReducerCases,
+    state,
+  });
 };
 
 export { userReducer };

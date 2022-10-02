@@ -1,4 +1,4 @@
-import { socket } from "functions/otherFunctions/socket";
+import { socket } from "functions/others/socket";
 
 const addSocketEmitter = (cb) => {
   cb(socket);

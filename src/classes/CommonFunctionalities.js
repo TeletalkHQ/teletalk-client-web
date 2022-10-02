@@ -55,7 +55,7 @@ class CommonFunctionalities {
 
     return {
       messenger: viewModeChanger(MESSENGER),
-      newUserProfile: viewModeChanger(NEW_USER_PROFILE),
+      createNewUser: viewModeChanger(NEW_USER_PROFILE),
       signIn: viewModeChanger(SIGN_IN),
       verifySignIn: viewModeChanger(VERIFY_SIGN_IN),
     };
