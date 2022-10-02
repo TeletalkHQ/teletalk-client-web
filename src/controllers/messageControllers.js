@@ -1,3 +1,5 @@
+import { trier } from "utility-store/src/classes/Trier";
+
 import { actions } from "actions/actions";
 
 import { commonFunctionalities } from "classes/CommonFunctionalities";
@@ -7,16 +9,19 @@ import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { getInitialState } from "variables/initials/initialStates";
 
+const tryToGetAllChats = async () => {
+  return await apiManager.apis.getAllChats.sendFullFeaturedRequest();
+};
+
+const executeIfNoErrorOnTryToGetAllChats = (response, dispatch) => {
+  dispatch(actions.updateAllUserData({ chats: response.data.chats }));
+};
+
 const getAllChats = () => {
   return async (dispatch) => {
-    try {
-      const response =
-        await apiManager.apis.getAllChats.sendFullFeaturedRequest();
-
-      dispatch(actions.updateAllUserData({ chats: response.data.chats }));
-    } catch (error) {
-      printCatchError(getAllChats.name, error);
-    }
+    (await trier(getAllChats.name).tryAsync(tryToGetAllChats))
+      .executeIfNoError(executeIfNoErrorOnTryToGetAllChats, dispatch)
+      .catch(printCatchError, getAllChats.name);
   };
 };
 

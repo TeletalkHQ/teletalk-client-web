@@ -84,7 +84,7 @@ class ApiHandler {
       overloadFieldsError,
     });
 
-    errorThrower(!ioDataFieldsCheckResult.done, {
+    errorThrower(!ioDataFieldsCheckResult.ok, {
       ...ioDataFieldsCheckResult.errorObject,
       requiredFields,
       ioData,

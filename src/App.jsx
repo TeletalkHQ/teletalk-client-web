@@ -1,5 +1,4 @@
 import { SnackbarProvider } from "notistack";
-
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 

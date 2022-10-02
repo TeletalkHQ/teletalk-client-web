@@ -14,7 +14,7 @@ import { controllers } from "controllers/controllers";
 import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 import { thingsToDoAfterAllStuffReceived } from "events/eventListeners";
 
-import { updateWindowCustomProperties } from "functions/otherFunctions/otherFunctions";
+import { updateWindowCustomProperties } from "functions/others/otherFunctions";
 
 import { useMainContext } from "hooks/useMainContext";
 

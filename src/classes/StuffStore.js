@@ -36,7 +36,7 @@ class StuffStore {
     this.languageData = languageData;
     return this;
   }
-  updateAllStuff(errors, models, routes, validationModels, languageData) {
+  updateAllStuff({ errors, languageData, models, routes, validationModels }) {
     this.updateErrors(errors)
       .updateModels(models)
       .updateRoutes(routes)

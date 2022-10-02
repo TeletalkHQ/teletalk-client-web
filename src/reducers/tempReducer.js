@@ -1,7 +1,7 @@
 import { appOptions } from "classes/AppOptions";
 
 import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
-import { printCatchError } from "functions/utilities/otherUtilities";
+import { triers } from "functions/helpers/triers";
 
 import { initialActions } from "variables/initials/initialActions";
 import {
@@ -13,19 +13,12 @@ const tempReducer = (
   state = initialStates.temp,
   action = appOptions.getOptions().actionOptions
 ) => {
-  try {
-    const { payload, type } = action;
-
-    const reducerCase = tempReducerCases[type];
-
-    if (reducerCase) {
-      return reducerCase(state, payload);
-    }
-
-    return state;
-  } catch (error) {
-    printCatchError(tempReducer.name, error);
-  }
+  return triers.reducerTrier({
+    action,
+    callerName: tempReducer.name,
+    reducerCases: tempReducerCases,
+    state,
+  });
 };
 
 const fn = (state, payload) => mergePrevStateWithPayload({ state, payload });

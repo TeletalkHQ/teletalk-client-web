@@ -1,6 +1,6 @@
 import { appOptions } from "classes/AppOptions";
 
-import { printCatchError } from "functions/utilities/otherUtilities";
+import { triers } from "functions/helpers/triers";
 
 import {
   defaultGlobalState,
@@ -12,19 +12,12 @@ const globalReducer = (
   state = initialStates.global,
   action = appOptions.getOptions().actionOptions
 ) => {
-  try {
-    const { payload, type } = action;
-
-    const reducerCase = globalReducerCases[type];
-
-    if (reducerCase) {
-      return reducerCase(state, payload);
-    }
-
-    return state;
-  } catch (error) {
-    printCatchError(globalReducer.name, error);
-  }
+  return triers.reducerTrier({
+    action,
+    callerName: globalReducer.name,
+    reducerCases: globalReducerCases,
+    state,
+  });
 };
 
 const handleGlobalLoadingStateOpenChange = (prevState, payload) => {
