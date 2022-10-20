@@ -1,5 +1,5 @@
-import { logger as consoleLogger } from "classes/Logger";
+import { BrowserLogger } from "utility-store/src/classes/BrowserLogger";
 
 declare global {
-  var logger = consoleLogger;
+  var logger = new BrowserLogger();
 }

@@ -38,7 +38,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
 
   const isVerificationSubmitButtonDisabled = () => {
     const {
-      verificationCodeModel: {
+      verificationCode: {
         length: { value: verificationCodeLength },
       },
     } = stuffStore.models;

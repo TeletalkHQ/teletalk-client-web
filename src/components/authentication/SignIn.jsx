@@ -80,7 +80,7 @@ const SignIn = () => {
 
   const isSignInSubmitButtonDisabled = () => {
     const {
-      phoneNumberModel: {
+      phoneNumber: {
         maxlength: { value: phoneNumberMaxlength },
         minlength: { value: phoneNumberMinlength },
       },

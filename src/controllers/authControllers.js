@@ -24,6 +24,9 @@ const printVerifyTokenNotFound = () =>
     notifications.error.VERIFY_TOKEN_NOT_FOUND
   );
 
+const saveUserTokenIntoPersistentStorage = (mainToken) =>
+  persistentStorage.setItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN, mainToken);
+
 const tryToVerifySignIn = async (verificationCode) => {
   const verifyToken = persistentStorage.getItem(
     PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN
@@ -50,7 +53,7 @@ const tasksIfUserIsNotNew = (dispatch, user) => {
   const mainToken = user.mainToken;
   delete user.mainToken;
 
-  persistentStorage.setItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN, mainToken);
+  saveUserTokenIntoPersistentStorage(mainToken);
 
   dispatch(actions.updateAllUserData(user));
   commonFunctionalities.changeViewMode().messenger();
@@ -171,12 +174,17 @@ const tryToCreateNewUser = async (firstName, lastName) => {
     },
     { token: verifyToken }
   );
+
   return user;
 };
 const executeIfNoErrorOnTryToCreateNewUser = (user, dispatch) => {
   userPropsUtilities.removeVerifyTokenFromStorage();
   dispatch(actions.updateAllUserData(user));
   commonFunctionalities.changeViewMode().messenger();
+  const mainToken = user.mainToken;
+  delete user.mainToken;
+
+  saveUserTokenIntoPersistentStorage(mainToken);
 };
 const createNewUser = () => {
   return async (dispatch, getState = getInitialState) => {
