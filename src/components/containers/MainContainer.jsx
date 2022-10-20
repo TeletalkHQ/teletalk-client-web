@@ -5,9 +5,9 @@ import { eventManager } from "utility-store/src/classes/EventManager";
 import { appOptions } from "classes/AppOptions";
 
 import Authentication from "components/authentication/Authentication";
-import PortalContainer from "components/portal/PortalContainer";
 import FullPageLoading from "components/portal/FullPageLoading";
 import MessengerContainer from "components/containers/MessengerContainer";
+import PortalContainer from "components/portal/PortalContainer";
 
 import { controllers } from "controllers/controllers";
 

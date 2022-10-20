@@ -1,6 +1,6 @@
 import { apiBuilder } from "classes/apiClasses/ApiBuilder";
-import { stuffStore } from "classes/StuffStore";
 import { apiHandler } from "classes/apiClasses/ApiHandler";
+import { stuffStore } from "classes/StuffStore";
 
 import { addUniqueIdToEachCountry } from "functions/others/apiTransformers";
 
@@ -8,7 +8,7 @@ const {
   addContact,
   createNewUser,
   getAllChatMessages,
-  getAllChats,
+  getAllPrivateChats,
   getContacts,
   getCountries,
   getUserChatsLastMessage,
@@ -22,7 +22,7 @@ const {
   addContact: "addContact",
   createNewUser: "createNewUser",
   getAllChatMessages: "getAllChatMessages",
-  getAllChats: "getAllChats",
+  getAllPrivateChats: "getAllPrivateChats",
   getContacts: "getContacts",
   getCountries: "getCountries",
   getUserChatsLastMessage: "getUserChatsLastMessage",
@@ -42,7 +42,7 @@ class ApiManager {
       addContact: this.apiTemplate,
       createNewUser: this.apiTemplate,
       getAllChatMessages: this.apiTemplate,
-      getAllChats: this.apiTemplate,
+      getAllPrivateChats: this.apiTemplate,
       getContacts: this.apiTemplate,
       getCountries: this.apiTemplate,
       getUserChatsLastMessage: this.apiTemplate,
@@ -56,6 +56,8 @@ class ApiManager {
   }
 
   buildApiWithJustRouteObject(routeObject) {
+    console.log("stuffStore:::", stuffStore.routes);
+    console.log("rm", "routeObject:::", routeObject);
     return apiBuilder.create().setRequirements({ routeObject }).build();
   }
 
@@ -66,42 +68,27 @@ class ApiManager {
   }
 
   rebuildAllApis() {
-    const {
-      addContactRoute,
-      chatsLastMessageRoute,
-      checkUserStatusRoute,
-      createNewUserRoute,
-      getAllChatsRoute,
-      getContactsRoute,
-      getPrivateChatMessagesRoute,
-      getWelcomeMessageRoute,
-      logoutNormalRoute,
-      sendMessageRoute,
-      signInNormalRoute,
-      verifySignInNormalRoute,
-    } = stuffStore.routes;
+    console.log(stuffStore.routes);
 
     this.buildMultipleApiWithJustRouteObject([
-      [addContact, addContactRoute],
-      [createNewUser, createNewUserRoute],
-      [getAllChatMessages, getPrivateChatMessagesRoute],
-      [getAllChats, getAllChatsRoute],
-      [getContacts, getContactsRoute],
-      [getUserChatsLastMessage, chatsLastMessageRoute],
-      [getWelcomeMessage, getWelcomeMessageRoute],
-      [logout, logoutNormalRoute],
-      [sendPrivateMessage, sendMessageRoute],
-      [signIn, signInNormalRoute],
-      [userStatusChecker, checkUserStatusRoute],
-      [verifySignIn, verifySignInNormalRoute],
+      [addContact, stuffStore.routes.addContact],
+      [createNewUser, stuffStore.routes.createNewUser],
+      [getAllChatMessages, stuffStore.routes.getPrivateChatMessages],
+      [getAllPrivateChats, stuffStore.routes.getAllPrivateChats],
+      [getContacts, stuffStore.routes.getContacts],
+      [getUserChatsLastMessage, stuffStore.routes.chatsLastMessage],
+      [getWelcomeMessage, stuffStore.routes.getWelcomeMessage],
+      [logout, stuffStore.routes.logoutNormal],
+      [sendPrivateMessage, stuffStore.routes.sendMessage],
+      [signIn, stuffStore.routes.signInNormal],
+      [userStatusChecker, stuffStore.routes.checkUserStatus],
+      [verifySignIn, stuffStore.routes.verifySignInNormal],
     ]);
-
-    const { getCountriesRoute } = stuffStore.routes;
 
     this.apis[getCountries] = apiBuilder
       .create()
       .setRequirements({
-        routeObject: getCountriesRoute,
+        routeObject: stuffStore.routes.getCountries,
         responseTransformer: addUniqueIdToEachCountry,
       })
       .build();
