@@ -65,7 +65,6 @@ const ContactsDialog = ({ onDialogClose }) => {
     onDialogClose("contacts");
   };
 
-  console.log(user.contacts);
   const mainContent = user.contacts?.map((contact, index) => (
     <ContactListItem
       key={index}

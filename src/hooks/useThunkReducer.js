@@ -25,7 +25,7 @@ let useSelector = (callback = initialUseSelectorCallbackParam) => {
 };
 
 const actionLogger = (action) => {
-  console.log("action:", action);
+  logger.debug("action:", action);
 };
 
 const defaultConfigs = {

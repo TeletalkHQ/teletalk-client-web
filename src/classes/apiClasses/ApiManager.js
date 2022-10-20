@@ -56,8 +56,6 @@ class ApiManager {
   }
 
   buildApiWithJustRouteObject(routeObject) {
-    console.log("stuffStore:::", stuffStore.routes);
-    console.log("rm", "routeObject:::", routeObject);
     return apiBuilder.create().setRequirements({ routeObject }).build();
   }
 
@@ -68,8 +66,6 @@ class ApiManager {
   }
 
   rebuildAllApis() {
-    console.log(stuffStore.routes);
-
     this.buildMultipleApiWithJustRouteObject([
       [addContact, stuffStore.routes.addContact],
       [createNewUser, stuffStore.routes.createNewUser],

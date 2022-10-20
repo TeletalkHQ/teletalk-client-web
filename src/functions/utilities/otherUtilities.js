@@ -13,7 +13,7 @@ const errorThrower = (condition, error) => {
 
 const printCatchError = (error, functionName) => {
   logger.error(`${functionName} catch, error: `);
-  console.error(error);
+  logger.error(error);
 };
 
 const fixErrorBuilderErrors = (errorObject, extraData = {}) => {
