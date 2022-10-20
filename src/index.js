@@ -24,5 +24,5 @@ const {
   others: { logPerformanceMeasuring },
 } = appConfigs.getConfigs();
 if (logPerformanceMeasuring) {
-  reportWebVitals(console.log);
+  reportWebVitals(console.debug);
 }

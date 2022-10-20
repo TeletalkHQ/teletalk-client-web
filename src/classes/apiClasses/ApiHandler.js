@@ -250,7 +250,7 @@ class ApiHandler {
     } = appConfigs.getConfigs();
 
     commonFunctionalities.checkAndExecute(logSuccessfulResponse, () =>
-      console.log("response:", response)
+      logger.debug("response:", response)
     );
   }
   #logFailureResponse(error) {

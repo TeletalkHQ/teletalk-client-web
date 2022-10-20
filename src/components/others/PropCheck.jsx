@@ -1,5 +1,5 @@
 const PropCheck = ({ children, childrenProps }) => {
-  console.log(childrenProps);
+  logger.debug(childrenProps);
 
   return children(childrenProps);
 };
