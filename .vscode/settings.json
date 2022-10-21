@@ -32,7 +32,10 @@
     "thunder-tests": true,
     ".vscode": true,
     ".editorconfig": true,
-    "webpack.config.js": true
+    "webpack.config.js": true,
+    ".npmrc": true,
+    ".eslintrc.json": true,
+    "cspell.json": true
   },
   "explorerExclude.backup": {},
   "cSpell.words": ["regexs"],
