@@ -16,7 +16,7 @@ const {
   logout,
   sendPrivateMessage,
   signIn,
-  userStatusChecker,
+  checkUserStatus,
   verifySignIn,
 } = {
   addContact: "addContact",
@@ -30,7 +30,7 @@ const {
   logout: "logout",
   sendPrivateMessage: "sendPrivateMessage",
   signIn: "signIn",
-  userStatusChecker: "userStatusChecker",
+  checkUserStatus: "checkUserStatus",
   verifySignIn: "verifySignIn",
 };
 
@@ -50,7 +50,7 @@ class ApiManager {
       logout: this.apiTemplate,
       sendPrivateMessage: this.apiTemplate,
       signIn: this.apiTemplate,
-      userStatusChecker: this.apiTemplate,
+      checkUserStatus: this.apiTemplate,
       verifySignIn: this.apiTemplate,
     };
   }
@@ -77,7 +77,7 @@ class ApiManager {
       [logout, stuffStore.routes.logoutNormal],
       [sendPrivateMessage, stuffStore.routes.sendMessage],
       [signIn, stuffStore.routes.signInNormal],
-      [userStatusChecker, stuffStore.routes.checkUserStatus],
+      [checkUserStatus, stuffStore.routes.checkUserStatus],
       [verifySignIn, stuffStore.routes.verifySignInNormal],
     ]);
 

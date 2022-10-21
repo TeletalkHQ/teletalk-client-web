@@ -92,20 +92,25 @@ const verifySignIn = () => {
 const tryToCheckUserStatus = async () => {
   const {
     data: { user },
-  } = await apiManager.apis.userStatusChecker.sendFullFeaturedRequest();
+  } = await apiManager.apis.checkUserStatus.sendFullFeaturedRequest();
 
   return { user };
 };
-const executeIfNoErrorOnTryToCheckUserStatus = (user, dispatch) => {
+const executeIfNoErrorOnTryToCheckUserStatus = ({ user }, dispatch) => {
   dispatch(actions.updateAllUserData(user));
   dispatch(actions.viewModeChange({ viewMode: VIEW_MODES.MESSENGER }));
 };
-const userStatusChecker = () => {
+const checkUserStatus = () => {
   return async (dispatch) => {
-    (await trier(userStatusChecker.name).tryAsync(tryToCheckUserStatus))
+    (await trier(checkUserStatus.name).tryAsync(tryToCheckUserStatus))
       .executeIfNoError(executeIfNoErrorOnTryToCheckUserStatus, dispatch)
-      .catch(printCatchError, userStatusChecker.name)
-      .finally(dispatch, actions.globalLoadingOpenChange({ open: false }));
+      .catch(() => {
+        printCatchError();
+        dispatch(actions.viewModeChange({ viewMode: VIEW_MODES.SIGN_IN }));
+      }, checkUserStatus.name)
+      .finally(() =>
+        dispatch(actions.globalLoadingOpenChange({ open: false }))
+      );
   };
 };
 
@@ -209,10 +214,10 @@ const createNewUser = () => {
 };
 
 const authControllers = {
+  checkUserStatus,
   createNewUser,
   logout,
   signIn,
-  userStatusChecker,
   verifySignIn,
 };
 

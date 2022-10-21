@@ -8,7 +8,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-10T19:25:28.375Z",
-    "modified": "2022-07-18T11:51:01.774Z",
+    "modified": "2022-07-18T08:01:50.843Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -22,7 +22,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-04-10T19:25:47.734Z",
-    "modified": "2022-07-18T11:27:34.803Z",
+    "modified": "2022-07-02T18:48:23.194Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -69,7 +69,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2022-04-11T16:06:54.836Z",
-    "modified": "2022-05-03T15:50:59.810Z",
+    "modified": "2022-10-21T10:13:23.315Z",
     "headers": [],
     "params": [],
     "body": {
@@ -111,7 +111,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2022-04-11T16:08:24.958Z",
-    "modified": "2022-05-03T15:51:52.686Z",
+    "modified": "2022-10-21T10:14:01.398Z",
     "headers": [],
     "params": [],
     "body": {
@@ -200,7 +200,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2022-05-02T15:08:10.694Z",
-    "modified": "2022-05-03T16:01:16.829Z",
+    "modified": "2022-07-02T18:48:14.452Z",
     "headers": [],
     "params": [],
     "body": {
@@ -265,7 +265,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2022-05-03T15:52:58.159Z",
-    "modified": "2022-05-03T15:53:31.208Z",
+    "modified": "2022-07-02T18:48:05.885Z",
     "headers": [],
     "params": [],
     "body": {
@@ -277,20 +277,6 @@
       "type": "bearer",
       "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZU51bWJlciI6IjkxMTkxMTkxOTEiLCJjb3VudHJ5Q29kZSI6Ijk4IiwiY291bnRyeU5hbWUiOiJJcmFuLCBJc2xhbWljIFJlcHVibGljIG9mIiwiaWF0IjoxNjUxNTkzMDU5fQ.DvVNhOfz7nG16BKTFhtfVdnmv9BxT1evtRcvPSidWGk"
     },
-    "tests": []
-  },
-  {
-    "_id": "d32f1f5a-05b7-4e97-8b5b-f862263f2419",
-    "colId": "history",
-    "containerId": "",
-    "name": "https://teletalk-server.herokuapp.com/versionControl/getAllStuff",
-    "url": "https://teletalk-server.herokuapp.com/versionControl/getAllStuff",
-    "method": "GET",
-    "sortNum": 0,
-    "created": "2022-07-18T11:49:08.720Z",
-    "modified": "2022-07-18T11:50:59.718Z",
-    "headers": [],
-    "params": [],
     "tests": []
   }
 ]

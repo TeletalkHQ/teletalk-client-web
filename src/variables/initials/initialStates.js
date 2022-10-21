@@ -5,7 +5,7 @@ import { appConfigs } from "classes/AppConfigs";
 import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
 
 import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/helpers";
-import { initialValues } from "variables/initials/initialValues";
+import { initialObjects } from "variables/initials/initialObjects";
 
 const {
   others: { appDrawerCurrentAnchor, startupViewMode },
@@ -13,9 +13,9 @@ const {
 
 const defaultOtherState = () => ({
   countries: [],
-  messages: [],
   messageInputText: "",
-  selectedContact: initialValues.initialContact,
+  messages: [],
+  selectedContact: initialObjects.contact(),
   welcomeMessage: "",
 });
 

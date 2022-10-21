@@ -20,7 +20,7 @@ import { controllers } from "controllers/controllers";
 import { useMainContext } from "hooks/useMainContext";
 
 import { DIALOG_NAMES } from "variables/otherVariables/helpers";
-import { initialValues } from "variables/initials/initialValues";
+import { initialObjects } from "variables/initials/initialObjects";
 
 const AddContactDialogTitle = () => {
   return (
@@ -117,7 +117,7 @@ const AddNewContactDialog = ({ onDialogClose }) => {
     },
   } = useMainContext();
 
-  const [contact, setContact] = useState(initialValues.contact);
+  const [contact, setContact] = useState(() => initialObjects.contact());
   const [selectedCountry, setSelectedCountry] = useState(null);
 
   const handleInputChange = (event) => {
@@ -128,16 +128,20 @@ const AddNewContactDialog = ({ onDialogClose }) => {
     const { privateId, ...rest } = contact;
     dispatch(controllers.addNewContact(rest));
 
-    setContact(initialValues.contact);
+    setContact(initialObjects.c());
   };
 
   const handleContactDialogClose = () => {
     onDialogClose(DIALOG_NAMES.ADD_NEW_CONTACT);
+    selectedCountryDispatcher();
+    setContact(initialObjects.contact());
   };
 
   const handleContactDialogCancelClick = () => {
     dispatch(commonActions.openDialog(DIALOG_NAMES.CONTACTS));
     dispatch(commonActions.closeDialog(DIALOG_NAMES.ADD_NEW_CONTACT));
+    selectedCountryDispatcher();
+    setContact(initialObjects.contact());
   };
 
   const handleCountryNameInputChange = (countryName) => {
