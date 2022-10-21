@@ -52,8 +52,7 @@ const MainContainer = () => {
 
     eventManager.addListener(ALL_STUFF_RECEIVED, async () => {
       thingsToDoAfterAllStuffReceived();
-      await dispatchAsync(controllers.userStatusChecker());
-      //FIXME: Its unsafe to do it after userStatusCheckerController;
+      await dispatchAsync(controllers.checkUserStatus());
       dispatch(controllers.getCountries());
     });
 

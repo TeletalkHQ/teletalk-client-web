@@ -1,6 +1,6 @@
 import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
 
-import { initialValues } from "variables/initials/initialValues";
+import { initialObjects } from "variables/initials/initialObjects";
 import { initialStates } from "variables/initials/initialStates";
 
 const {
@@ -69,7 +69,7 @@ const otherInitialActions = {
     type: "GET_COUNTRIES",
   },
   selectContact: {
-    payload: initialValues.initialContact,
+    payload: initialObjects.contact(),
     type: "SELECT_CONTACT",
   },
   setWelcomeMessage: {
@@ -91,7 +91,7 @@ const notificationInitialActions = {
 const userInitialActions = {
   addNewContact: {
     payload: {
-      newContact: initialValues.initialContact,
+      newContact: initialObjects.contact(),
     },
     type: "ADD_NEW_CONTACT",
   },
@@ -172,7 +172,7 @@ const tempInitialActions = {
   },
   selectedCountry: {
     payload: {
-      selectedCountry: initialValues.country,
+      selectedCountry: initialObjects.country(),
     },
     type: "SELECTED_COUNTRY_ONCHANGE",
   },
