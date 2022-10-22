@@ -3,9 +3,9 @@ import { actions } from "actions/actions";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 import Copyright from "components/utils/Copyright";
-import CreateNewUser from "components/authentication/CreateNewUser";
-import SignIn from "components/authentication/SignIn";
-import VerifySignIn from "components/authentication/VerifySignIn";
+import CreateNewUser from "pages/authentication/CreateNewUser";
+import SignIn from "pages/authentication/SignIn";
+import VerifySignIn from "pages/authentication/VerifySignIn";
 
 import { useMainContext } from "hooks/useMainContext";
 

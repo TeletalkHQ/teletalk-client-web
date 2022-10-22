@@ -4,7 +4,7 @@ import { eventManager } from "utility-store/src/classes/EventManager";
 
 import { appOptions } from "classes/AppOptions";
 
-import Authentication from "components/authentication/Authentication";
+import Authentication from "pages/authentication/Authentication";
 import FullPageLoading from "components/portal/FullPageLoading";
 import MessengerContainer from "components/containers/MessengerContainer";
 import PortalContainer from "components/portal/PortalContainer";
