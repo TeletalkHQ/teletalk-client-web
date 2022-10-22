@@ -22,7 +22,7 @@ const FirstNameInput = ({ inputValue, onInputChange, required = true }) => {
 };
 
 const FirstName = {
-  Ui: FirstNameInput,
+  Native: FirstNameInput,
   WithValidator: withInputValidator(FirstNameInput, VALIDATION_KEYS.firstName),
 };
 

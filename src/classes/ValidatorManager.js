@@ -11,18 +11,19 @@ const fastestValidatorCompiler = new FastestValidator();
 class ValidatorManager {
   constructor() {
     this.validators = {
-      countryCodeValidator: this.#defaultValidator,
-      countryNameValidator: this.#defaultValidator,
-      firstNameValidator: this.#defaultValidator,
-      lastNameValidator: this.#defaultValidator,
-      phoneNumberValidator: this.#defaultValidator,
-      usernameValidator: this.#defaultValidator,
-      verificationCodeValidator: this.#defaultValidator,
+      countryCode: this.#defaultValidator,
+      countryName: this.#defaultValidator,
+      firstName: this.#defaultValidator,
+      lastName: this.#defaultValidator,
+      phoneNumber: this.#defaultValidator,
+      username: this.#defaultValidator,
+      verificationCode: this.#defaultValidator,
     };
   }
   #defaultValidator = validator.create(() => {}, "");
 
   compileValidators = (validationModels) => {
+    //TODO: Update with Trier
     try {
       objectUtilities
         .objectEntries(validationModels)
@@ -33,21 +34,16 @@ class ValidatorManager {
     }
   };
   #processValidationModel([validationModelKey, validationModelValue]) {
-    const validatorName =
-      this.#convertValidationModelKeyToValidatorName(validationModelKey);
-
-    const filteredValidationModel =
-      this.#filterValidationModel(validationModelValue);
+    const validationModelWithoutVersion =
+      this.#excludeVersionFromValidationModel(validationModelValue);
     const compiledValidator = this.#validationModelCompiler(
-      filteredValidationModel
+      validationModelWithoutVersion
     );
 
-    this.#createAndSetValidator(validatorName, compiledValidator);
+    this.#createAndSetValidator(validationModelKey, compiledValidator);
   }
-  #convertValidationModelKeyToValidatorName(validationModelKey) {
-    return validationModelKey.replace("ValidationModel", "Validator");
-  }
-  #filterValidationModel(validationModel) {
+
+  #excludeVersionFromValidationModel(validationModel) {
     const { version, ...restOfValidationModelProps } = validationModel;
     return restOfValidationModelProps;
   }

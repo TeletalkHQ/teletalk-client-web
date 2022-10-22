@@ -20,7 +20,7 @@ const LastNameInput = ({ inputValue, onInputChange, required = true }) => {
 };
 
 const LastName = {
-  Ui: LastNameInput,
+  Native: LastNameInput,
   WithValidator: withInputValidator(LastNameInput, VALIDATION_KEYS.lastName),
 };
 

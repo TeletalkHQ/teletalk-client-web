@@ -1,5 +1,7 @@
 import Autocomplete from "@mui/material/Autocomplete";
 
+import { validatorManager } from "classes/ValidatorManager";
+
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
 import Img from "components/generals/otherGeneralComponents/Img";
@@ -10,8 +12,8 @@ import { ELEMENT_NAMES } from "variables/otherVariables/helpers";
 const CountrySelector = ({
   countries,
   countryName,
-  onSelectedCountryChange,
   onCountryNameInputChange,
+  onSelectedCountryChange,
   selectedCountry,
 }) => {
   return (
@@ -22,7 +24,10 @@ const CountrySelector = ({
       }}
       inputValue={countryName}
       onInputChange={(_, newInputValue) => {
-        onCountryNameInputChange(newInputValue);
+        validatorManager.validators.countryName
+          .inputValidator("countryName", newInputValue)
+          .printInputValidatorError()
+          .executeIfNoError(() => onCountryNameInputChange(newInputValue));
       }}
       options={countries}
       autoHighlight
@@ -35,11 +40,11 @@ const CountrySelector = ({
           {...props}
         >
           <Img
+            alt=""
             loading="lazy"
-            width="20"
             src={`https://flagcdn.com/w20/${option.countryShortName.toLowerCase()}.png`}
             srcSet={`https://flagcdn.com/w40/${option.countryShortName.toLowerCase()}.png 2x`}
-            alt=""
+            width="20"
           />
           {option.countryName} ({option.countryShortName}) +{option.countryCode}
         </CustomBox>

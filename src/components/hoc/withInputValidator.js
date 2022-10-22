@@ -2,7 +2,7 @@ import { validatorManager } from "classes/ValidatorManager";
 
 const withInputValidator = (Component, validationKey) => {
   return ({ inputValue, onInputChange }) => {
-    const handlePhoneNumberInputChange = (event) => {
+    const handleInputChange = (event) => {
       const { value } = event.target;
       inputValidator({
         validationKey,
@@ -12,16 +12,13 @@ const withInputValidator = (Component, validationKey) => {
     };
 
     return (
-      <Component
-        inputValue={inputValue}
-        onInputChange={handlePhoneNumberInputChange}
-      />
+      <Component inputValue={inputValue} onInputChange={handleInputChange} />
     );
   };
 };
 
 const inputValidator = ({ validationKey, inputValue, executeIfNoError }) => {
-  validatorManager.validators[`${validationKey}Validator`]
+  validatorManager.validators[validationKey]
     .inputValidator(validationKey, inputValue)
     .printInputValidatorError()
     .executeIfNoError(executeIfNoError);

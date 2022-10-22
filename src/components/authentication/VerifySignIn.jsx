@@ -60,7 +60,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
     const { value } = event.target;
     const trimmedValue = value.trim();
 
-    validatorManager.validators.verificationCodeValidator
+    validatorManager.validators.verificationCode
       .inputValidator(VALIDATION_KEYS.verificationCode, trimmedValue)
       .printInputValidatorError()
       .executeIfNoError(() =>
