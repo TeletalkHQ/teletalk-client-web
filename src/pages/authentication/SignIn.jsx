@@ -22,17 +22,12 @@ import { controllers } from "controllers";
 import { useMainContext } from "hooks/useMainContext";
 
 import { Icons } from "components/others/Icons";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 const SignIn = () => {
   const {
     hooksOutput: { dispatch },
-    state: {
-      global: {
-        appProgressions: { authenticationProgress },
-      },
-      other: { countries },
-      temp: { countryCode, countryName, phoneNumber, selectedCountry },
-    },
+    state,
   } = useMainContext();
 
   const handleSignInClick = () => {
@@ -50,7 +45,7 @@ const SignIn = () => {
 
   const selectCountryByCountryCodeInputChange = (value) => {
     const country = arrayUtilities.findByPropValueEquality(
-      countries,
+      state.other.countries,
       value,
       "countryCode"
     );
@@ -79,20 +74,13 @@ const SignIn = () => {
   };
 
   const isSignInSubmitButtonDisabled = () => {
-    const {
-      phoneNumber: {
-        maxlength: { value: phoneNumberMaxlength },
-        minlength: { value: phoneNumberMinlength },
-      },
-    } = stuffStore.models;
+    const validateResult =
+      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+        stuffStore.models.phoneNumber,
+        state.temp.phoneNumber
+      );
 
-    const phoneNumberLength = stringUtilities.valueLength(phoneNumber);
-
-    return (
-      phoneNumberLength < phoneNumberMinlength ||
-      phoneNumberLength > phoneNumberMaxlength ||
-      !selectedCountry
-    );
+    return !validateResult || !state.temp.selectedCountry;
   };
 
   return (
@@ -110,16 +98,16 @@ const SignIn = () => {
             </GreyTextParagraph>
 
             <CountrySelector
-              countries={countries}
-              countryName={countryName}
+              countries={state.other.countries}
+              countryName={state.temp.countryName}
               onSelectedCountryChange={handleSelectedCountryChange}
               onCountryNameInputChange={handleCountryNameInputChange}
-              selectedCountry={selectedCountry}
+              selectedCountry={state.temp.selectedCountry}
             />
 
             <CustomFlexBox jc="space-between">
               <CountryCode.WithValidator
-                inputValue={countryCode}
+                inputValue={state.temp.countryCode}
                 onInputChange={(event) => {
                   const { value } = event.target;
                   handleCountryCodeInputChange(value);
@@ -128,14 +116,14 @@ const SignIn = () => {
               />
               <PhoneNumber.WithValidator
                 onInputChange={handlePhoneNumberInputChange}
-                inputValue={phoneNumber}
+                inputValue={state.temp.phoneNumber}
               />
             </CustomFlexBox>
 
             <CustomButton
               lbtn
               disabled={isSignInSubmitButtonDisabled()}
-              loading={authenticationProgress}
+              loading={state.global.appProgressions.authenticationProgress}
               loadingIndicator={
                 <>
                   <span>Please wait...</span> &nbsp;&nbsp;

@@ -1,8 +1,8 @@
 import { domUtilities } from "utility-store/src/classes/DomUtilities";
-import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 
 import { actions } from "actions/actions";
 
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { stuffStore } from "classes/StuffStore";
 import { validatorManager } from "classes/ValidatorManager";
 
@@ -28,23 +28,13 @@ import {
 const VerifySignIn = ({ onBackToSignInClick }) => {
   const {
     hooksOutput: { dispatch },
-    state: {
-      global: {
-        appProgressions: { authenticationProgress },
-      },
-      temp: { countryCode, phoneNumber, verificationCode },
-    },
+    state,
   } = useMainContext();
 
   const isVerificationSubmitButtonDisabled = () => {
-    const {
-      verificationCode: {
-        length: { value: verificationCodeLength },
-      },
-    } = stuffStore.models;
-
-    return (
-      stringUtilities.valueLength(verificationCode) !== verificationCodeLength
+    return !commonFunctionalities.validateInputValueLengthByModelLength(
+      stuffStore.models.verificationCode,
+      state.temp.verificationCode
     );
   };
 
@@ -93,7 +83,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
         <CustomContainer maxWidth="xs">
           <CustomBox sx={{ mt: 1 }}>
             <H5>
-              +{countryCode} {phoneNumber}
+              +{state.temp.countryCode} {state.temp.phoneNumber}
             </H5>
 
             <GreyTextParagraph>
@@ -105,14 +95,14 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
               label="Verification code"
               name={ELEMENT_NAMES.VERIFICATION_CODE}
               autoFocus
-              value={verificationCode}
+              value={state.temp.verificationCode}
               onChange={handleVerificationCodeInputChange}
             />
 
             <CustomButton
               lbtn
               disabled={isVerificationSubmitButtonDisabled()}
-              loading={authenticationProgress}
+              loading={state.global.appProgressions.authenticationProgress}
               loadingPosition="end"
               onClick={handleVerifySignInClick}
               endIcon={<Icons.Fingerprint.Icon />}

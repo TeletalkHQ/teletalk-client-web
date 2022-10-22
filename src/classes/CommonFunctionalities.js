@@ -1,4 +1,5 @@
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
+import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 import { actions } from "actions/actions";
@@ -89,6 +90,24 @@ class CommonFunctionalities {
   correctErrorsAndPrint(errors) {
     const correctedErrors = this.correctServerLikeErrors(errors);
     this.errorsPrinter(correctedErrors);
+  }
+
+  validateInputValueLengthByModelMinMaxLength(model, inputValue) {
+    const {
+      maxlength: { value: maxlengthValue },
+      minlength: { value: minlengthValue },
+    } = model;
+
+    const inputValueLength = stringUtilities.valueLength(inputValue);
+
+    return (
+      inputValueLength >= minlengthValue && inputValueLength <= maxlengthValue
+    );
+  }
+
+  validateInputValueLengthByModelLength(model, inputValue) {
+    const inputValueLength = stringUtilities.valueLength(inputValue);
+    return inputValueLength === model.length.value;
   }
 }
 
