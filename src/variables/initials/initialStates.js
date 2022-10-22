@@ -13,9 +13,6 @@ const {
 
 const defaultOtherState = () => ({
   countries: [],
-  messageInputText: "",
-  messages: [],
-  selectedContact: initialObjects.contact(),
   welcomeMessage: "",
 });
 
@@ -26,13 +23,10 @@ const defaultTempState = () => ({
   lastName: "",
   messages: [],
   phoneNumber: "",
-  selectedContact: {},
+  selectedContact: initialObjects.contact(),
   selectedCountry: null,
   tempUserState: {},
   verificationCode: "",
-  welcome: {
-    message: "",
-  },
 });
 
 const defaultUserState = () => ({

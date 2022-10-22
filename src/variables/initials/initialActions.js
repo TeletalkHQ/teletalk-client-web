@@ -68,10 +68,6 @@ const otherInitialActions = {
     },
     type: "GET_COUNTRIES",
   },
-  selectContact: {
-    payload: initialObjects.contact(),
-    type: "SELECT_CONTACT",
-  },
   setWelcomeMessage: {
     payload: { welcomeMessage },
     type: "WELCOME",
