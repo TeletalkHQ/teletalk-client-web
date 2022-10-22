@@ -21,6 +21,8 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { DIALOG_NAMES } from "variables/otherVariables/helpers";
 import { initialObjects } from "variables/initials/initialObjects";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { stuffStore } from "classes/StuffStore";
 
 const AddContactDialogTitle = () => {
   return (
@@ -38,6 +40,7 @@ const AddContactDialogTitle = () => {
 const AddContactDialogActions = ({
   onAddNewContactClick,
   onContactDialogCancelClick,
+  isAddNewContactButtonDisabled,
 }) => {
   return (
     <>
@@ -49,7 +52,11 @@ const AddContactDialogActions = ({
           </CustomButton>
         </CustomBox>
         <CustomBox>
-          <CustomButton variant="text" onClick={onAddNewContactClick}>
+          <CustomButton
+            disabled={isAddNewContactButtonDisabled}
+            variant="text"
+            onClick={onAddNewContactClick}
+          >
             Create
           </CustomButton>
         </CustomBox>
@@ -111,10 +118,7 @@ const AddContactDialogContent = ({
 const AddNewContactDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch, dispatchAsync },
-    state: {
-      global: { dialogState },
-      other: { countries },
-    },
+    state,
   } = useMainContext();
 
   const [contact, setContact] = useState(() => initialObjects.contact());
@@ -164,12 +168,39 @@ const AddNewContactDialog = ({ onDialogClose }) => {
 
   const selectCountryByCountryCodeInputChange = (value) => {
     const country = arrayUtilities.findByPropValueEquality(
-      countries,
+      state.other.countries,
       value,
       "countryCode"
     );
 
     selectedCountryDispatcher(country);
+  };
+
+  const isAddNewContactButtonDisabled = () => {
+    const firstNameValidateResult =
+      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+        stuffStore.models.firstName,
+        contact.firstName
+      );
+
+    const lastNameValidateResult =
+      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+        stuffStore.models.lastName,
+        contact.lastName
+      );
+
+    const phoneNumberValidateResult =
+      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+        stuffStore.models.phoneNumber,
+        contact.phoneNumber
+      );
+
+    return (
+      !firstNameValidateResult ||
+      !phoneNumberValidateResult ||
+      !lastNameValidateResult ||
+      !selectedCountry
+    );
   };
 
   return (
@@ -179,7 +210,7 @@ const AddNewContactDialog = ({ onDialogClose }) => {
         mainContent={
           <AddContactDialogContent
             contact={contact}
-            countries={countries}
+            countries={state.other.countries}
             countryCode={selectedCountry?.countryCode}
             countryName={contact.countryName}
             onCountryNameInputChange={handleCountryNameInputChange}
@@ -198,9 +229,10 @@ const AddNewContactDialog = ({ onDialogClose }) => {
               handleAddNewContactClick(...args);
             }}
             onContactDialogCancelClick={handleReturnToContactsDialog}
+            isAddNewContactButtonDisabled={isAddNewContactButtonDisabled()}
           />
         }
-        open={dialogState.addNewContact.open}
+        open={state.global.dialogState.addNewContact.open}
         paperStyle={{
           height: "50vh",
         }}
