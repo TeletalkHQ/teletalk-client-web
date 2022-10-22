@@ -20,7 +20,6 @@ class CommonFunctionalities {
 
     [
       actions.resetUserState,
-      actions.resetOtherState,
       actions.resetGlobalState,
       actions.resetTempState,
     ].forEach((action) => {

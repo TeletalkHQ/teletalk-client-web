@@ -1,8 +1,8 @@
-import { globalActions } from "actions/globalActions";
-import { notificationActions } from "actions/notificationActions";
-import { otherActions } from "actions/otherActions";
-import { tempActions } from "actions/tempActions";
-import { userActions } from "actions/userActions";
+import { globalActions } from "actions/global";
+import { notificationActions } from "actions/notification";
+import { otherActions } from "actions/other";
+import { tempActions } from "actions/temp";
+import { userActions } from "actions/user";
 
 const actions = {
   ...globalActions,

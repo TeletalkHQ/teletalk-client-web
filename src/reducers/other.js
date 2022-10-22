@@ -33,8 +33,6 @@ const otherReducerCases = {
 
   [initialActions.getCountries.type]: (state, payload) => fn(state, payload),
 
-  [initialActions.selectContact.type]: (state, payload) => fn(state, payload),
-
   [initialActions.resetOtherState.type]: () => defaultOtherState(),
 };
 
