@@ -210,14 +210,14 @@ const verificationCodeValidatorErrorBuilder = (
 };
 
 const errorBuilders = {
-  countryCodeValidatorErrorBuilder,
-  countryNameValidatorErrorBuilder,
-  firstNameValidatorErrorBuilder,
-  lastNameValidatorErrorBuilder,
-  phoneNumberValidatorErrorBuilder,
-  privateIdValidatorErrorBuilder,
-  usernameValidatorErrorBuilder,
-  verificationCodeValidatorErrorBuilder,
+  countryCode: countryCodeValidatorErrorBuilder,
+  countryName: countryNameValidatorErrorBuilder,
+  firstName: firstNameValidatorErrorBuilder,
+  lastName: lastNameValidatorErrorBuilder,
+  phoneNumber: phoneNumberValidatorErrorBuilder,
+  privateId: privateIdValidatorErrorBuilder,
+  username: usernameValidatorErrorBuilder,
+  verificationCode: verificationCodeValidatorErrorBuilder,
 };
 
 export { errorBuilders };

@@ -20,7 +20,7 @@ class Validator {
   ];
 
   findValidatorErrorBuilder() {
-    return errorBuilders[`${this.validatorName}ErrorBuilder`];
+    return errorBuilders[`${this.validatorName}`];
   }
 
   inputValidator(validationKey, validationValue) {

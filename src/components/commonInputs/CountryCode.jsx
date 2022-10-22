@@ -28,7 +28,7 @@ const CountryCodeInput = ({ inputValue, onInputChange }) => {
 };
 
 const CountryCode = {
-  Ui: CountryCodeInput,
+  Native: CountryCodeInput,
   WithValidator: withInputValidator(
     CountryCodeInput,
     VALIDATION_KEYS.countryCode

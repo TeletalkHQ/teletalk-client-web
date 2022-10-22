@@ -21,7 +21,7 @@ const PhoneNumberInput = ({ inputValue, onInputChange }) => {
 };
 
 const PhoneNumber = {
-  Ui: PhoneNumberInput,
+  Native: PhoneNumberInput,
   WithValidator: withInputValidator(
     PhoneNumberInput,
     VALIDATION_KEYS.phoneNumber
