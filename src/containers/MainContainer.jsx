@@ -6,7 +6,7 @@ import { appOptions } from "classes/AppOptions";
 
 import Authentication from "pages/authentication/Authentication";
 import FullPageLoading from "components/portal/FullPageLoading";
-import MessengerContainer from "components/containers/MessengerContainer";
+import Messenger from "pages/Messenger";
 import PortalContainer from "components/portal/PortalContainer";
 
 import { controllers } from "controllers";
@@ -27,7 +27,7 @@ const visibleComponent = (viewMode, loading) => {
 
   if (authenticationViewModes.includes(viewMode)) return <Authentication />;
 
-  if (viewMode === MESSENGER) return <MessengerContainer />;
+  if (viewMode === MESSENGER) return <Messenger />;
 
   if (viewMode === LOADING) return <FullPageLoading loading={loading} />;
 

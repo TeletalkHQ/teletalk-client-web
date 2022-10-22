@@ -1,9 +1,9 @@
 import GridContainer from "components/generals/boxes/GridContainer";
 
-import LeftSideContainer from "components/containers/LeftSideContainer";
-import RightSideContainer from "components/containers/RightSideContainer";
+import LeftSideContainer from "containers/LeftSideContainer";
+import RightSideContainer from "containers/RightSideContainer";
 
-const MessengerContainer = () => {
+const Messenger = () => {
   return (
     <GridContainer style={{ height: "100vh" }}>
       <LeftSideContainer />
@@ -12,7 +12,7 @@ const MessengerContainer = () => {
   );
 };
 
-export default MessengerContainer;
+export default Messenger;
 
 //  const chat = user.chats.find((chat) => {
 //    return chat.participants.find(
