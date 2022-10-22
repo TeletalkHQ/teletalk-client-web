@@ -1,5 +1,5 @@
-import { apiBuilder } from "classes/apiClasses/ApiBuilder";
-import { apiHandler } from "classes/apiClasses/ApiHandler";
+import { apiBuilder } from "classes/api/ApiBuilder";
+import { apiHandler } from "classes/api/ApiHandler";
 import { stuffStore } from "classes/StuffStore";
 
 import { addUniqueIdToEachCountry } from "functions/others/apiTransformers";

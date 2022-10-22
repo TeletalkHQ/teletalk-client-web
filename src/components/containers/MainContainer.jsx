@@ -9,7 +9,7 @@ import FullPageLoading from "components/portal/FullPageLoading";
 import MessengerContainer from "components/containers/MessengerContainer";
 import PortalContainer from "components/portal/PortalContainer";
 
-import { controllers } from "controllers/controllers";
+import { controllers } from "controllers";
 
 import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 import { thingsToDoAfterAllStuffReceived } from "events/eventListeners";

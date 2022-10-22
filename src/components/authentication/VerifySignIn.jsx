@@ -15,7 +15,7 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import H5 from "components/generals/typographies/H5";
 
-import { controllers } from "controllers/controllers";
+import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 

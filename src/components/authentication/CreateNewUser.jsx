@@ -9,7 +9,7 @@ import FirstName from "components/commonInputs/FirstNameInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import LastName from "components/commonInputs/LastNameInput";
 
-import { controllers } from "controllers/controllers";
+import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 

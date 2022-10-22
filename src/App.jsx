@@ -10,7 +10,7 @@ import { MainContext } from "contexts/MainContext";
 
 import { useThunkReducer } from "hooks/useThunkReducer";
 
-import { rootReducer } from "reducers/rootReducer";
+import { rootReducer } from "reducers/root";
 
 import { baseTheme } from "theme/baseTheme";
 

@@ -1,4 +1,4 @@
-import { apiHandler } from "classes/apiClasses/ApiHandler";
+import { apiHandler } from "classes/api/ApiHandler";
 
 import { errorThrower } from "functions/utilities/otherUtilities";
 

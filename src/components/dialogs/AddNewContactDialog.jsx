@@ -15,7 +15,7 @@ import PhoneNumber from "components/commonInputs/PhoneNumberInput";
 
 import { commonActions } from "functions/utilities/commonActions";
 
-import { controllers } from "controllers/controllers";
+import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
