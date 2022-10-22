@@ -1,5 +1,7 @@
 import { actions } from "actions/actions";
 
+import { stuffStore } from "classes/StuffStore";
+
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomContainer from "components/generals/boxes/CustomContainer";
@@ -14,16 +16,12 @@ import { controllers } from "controllers";
 import { useMainContext } from "hooks/useMainContext";
 
 import { Icons } from "components/others/Icons";
+import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 const CreateNewUser = ({ onBackToSignInClick }) => {
   const {
     hooksOutput: { dispatch },
-    state: {
-      global: {
-        appProgressions: { authenticationProgress },
-      },
-      temp: { firstName, lastName },
-    },
+    state,
   } = useMainContext();
 
   const handleFirstNameInputChange = (e) => {
@@ -38,9 +36,29 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
     dispatch(controllers.createNewUser());
   };
 
+  const isCreateNewUserConfirmButtonDisabled = () => {
+    const firstNameValidateResult =
+      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+        stuffStore.models.firstName,
+        state.temp.firstName
+      );
+
+    const lastNameValidateResult =
+      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+        stuffStore.models.lastName,
+        state.temp.lastName
+      );
+
+    return !firstNameValidateResult || !lastNameValidateResult;
+  };
+
   return (
     <CustomContainer mw="xl">
-      <CustomBox sx={{ mt: 1 }}>
+      <CustomBox
+        sx={{
+          mt: 1,
+        }}
+      >
         <CustomIconButton onClick={onBackToSignInClick}>
           <Icons.ArrowBack.Icon />
         </CustomIconButton>
@@ -54,20 +72,21 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
             Please enter this information to complete your account creation.
           </GreyTextParagraph>
           <FirstName.WithValidator
-            inputValue={firstName}
+            inputValue={state.temp.firstName}
             onInputChange={handleFirstNameInputChange}
           />
           <LastName.WithValidator
-            inputValue={lastName}
+            inputValue={state.temp.lastName}
             onInputChange={handleLastNameInputChange}
           />
 
           <CustomButton
-            loading={authenticationProgress}
+            loading={state.global.appProgressions.authenticationProgress}
             loadingPosition="end"
             onClick={handleCreateNewUserConfirmClick}
             endIcon={<Icons.Check.Icon />}
             sx={{ mt: 1 }}
+            disabled={isCreateNewUserConfirmButtonDisabled()}
           >
             Confirm
           </CustomButton>
