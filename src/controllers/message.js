@@ -3,7 +3,7 @@ import { trier } from "utility-store/src/classes/Trier";
 import { actions } from "actions/actions";
 
 import { commonFunctionalities } from "classes/CommonFunctionalities";
-import { apiManager } from "classes/apiClasses/ApiManager";
+import { apiManager } from "classes/api/ApiManager";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 

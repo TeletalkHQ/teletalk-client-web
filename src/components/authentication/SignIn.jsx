@@ -17,7 +17,7 @@ import GreyTextParagraph from "components/generals/typographies/GreyTextParagrap
 import H5 from "components/generals/typographies/H5";
 import PhoneNumber from "components/commonInputs/PhoneNumberInput";
 
-import { controllers } from "controllers/controllers";
+import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 

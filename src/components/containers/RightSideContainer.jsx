@@ -6,7 +6,7 @@ import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import MessageInput from "components/rightSide/MessageInput";
 import GridContainer from "components/generals/boxes/GridContainer";
 
-import { controllers } from "controllers/controllers";
+import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 

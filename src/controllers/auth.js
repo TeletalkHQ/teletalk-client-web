@@ -2,7 +2,7 @@ import { trier } from "utility-store/src/classes/Trier";
 
 import { actions } from "actions/actions";
 
-import { apiManager } from "classes/apiClasses/ApiManager";
+import { apiManager } from "classes/api/ApiManager";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";

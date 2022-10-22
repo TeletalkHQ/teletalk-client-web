@@ -1,6 +1,6 @@
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
-import { apiManager } from "classes/apiClasses/ApiManager";
+import { apiManager } from "classes/api/ApiManager";
 import { stuffStore } from "classes/StuffStore";
 import { validatorManager } from "classes/ValidatorManager";
 
