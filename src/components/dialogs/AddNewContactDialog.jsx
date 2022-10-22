@@ -110,7 +110,7 @@ const AddContactDialogContent = ({
 
 const AddNewContactDialog = ({ onDialogClose }) => {
   const {
-    hooksOutput: { dispatch },
+    hooksOutput: { dispatch, dispatchAsync },
     state: {
       global: { dialogState },
       other: { countries },
@@ -124,24 +124,24 @@ const AddNewContactDialog = ({ onDialogClose }) => {
     setContact({ ...contact, [event.target.name]: event.target.value });
   };
 
-  const handleAddNewContactClick = () => {
+  const handleAddNewContactClick = async () => {
     const { privateId, ...rest } = contact;
-    dispatch(controllers.addNewContact(rest));
+    const result = await dispatchAsync(controllers.addNewContact(rest));
 
-    setContact(initialObjects.c());
+    if (result.ok === false) return;
+
+    handleReturnToContactsDialog();
   };
 
-  const handleContactDialogClose = () => {
+  const handleCloseAddNewContactDialog = () => {
     onDialogClose(DIALOG_NAMES.ADD_NEW_CONTACT);
     selectedCountryDispatcher();
     setContact(initialObjects.contact());
   };
 
-  const handleContactDialogCancelClick = () => {
+  const handleReturnToContactsDialog = () => {
+    handleCloseAddNewContactDialog();
     dispatch(commonActions.openDialog(DIALOG_NAMES.CONTACTS));
-    dispatch(commonActions.closeDialog(DIALOG_NAMES.ADD_NEW_CONTACT));
-    selectedCountryDispatcher();
-    setContact(initialObjects.contact());
   };
 
   const handleCountryNameInputChange = (countryName) => {
@@ -180,7 +180,7 @@ const AddNewContactDialog = ({ onDialogClose }) => {
           <AddContactDialogContent
             contact={contact}
             countries={countries}
-            countryCode={contact.countryCode}
+            countryCode={selectedCountry?.countryCode}
             countryName={contact.countryName}
             onCountryNameInputChange={handleCountryNameInputChange}
             onSelectedCountryChange={handleSelectedCountryChange}
@@ -197,14 +197,14 @@ const AddNewContactDialog = ({ onDialogClose }) => {
             onAddNewContactClick={(...args) => {
               handleAddNewContactClick(...args);
             }}
-            onContactDialogCancelClick={handleContactDialogCancelClick}
+            onContactDialogCancelClick={handleReturnToContactsDialog}
           />
         }
         open={dialogState.addNewContact.open}
         paperStyle={{
           height: "50vh",
         }}
-        onClose={handleContactDialogClose}
+        onClose={handleCloseAddNewContactDialog}
       />
     </>
   );

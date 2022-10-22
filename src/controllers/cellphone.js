@@ -36,9 +36,15 @@ const executeIfNoErrorOnTryToAddNewContact = (response, dispatch) => {
 };
 const addNewContact = (contact) => {
   return async (dispatch) => {
-    (await trier(addNewContact.name).tryAsync(tryToAddNewContact, contact))
+    return (
+      await trier(addNewContact.name).tryAsync(tryToAddNewContact, contact)
+    )
       .executeIfNoError(executeIfNoErrorOnTryToAddNewContact, dispatch)
-      .catch(printCatchError, addNewContact.name);
+      .catch(() => {
+        printCatchError(addNewContact.name);
+        return { ok: false };
+      })
+      .result();
   };
 };
 
