@@ -39,7 +39,7 @@ const defaultUserState = () => ({
   firstName: "",
   lastName: "",
   phoneNumber: "",
-  privateId: "",
+  userId: "",
   username: "",
 });
 

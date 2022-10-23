@@ -132,7 +132,7 @@ const phoneNumberValidatorErrorBuilder = (validationResult, phoneNumber) => {
     .execute();
 };
 
-const privateIdValidatorErrorBuilder = (validationResult, privateId) => {
+const userIdValidatorErrorBuilder = (validationResult, userId) => {
   const {
     PRIVATE_ID_INVALID,
     PRIVATE_ID_INVALID_TYPE,
@@ -145,7 +145,7 @@ const privateIdValidatorErrorBuilder = (validationResult, privateId) => {
     .create()
     .setRequirements(validationResult, {
       extraErrorFields: {
-        validatedPrivateId: privateId,
+        validatedUserId: userId,
       },
     })
     .required(PRIVATE_ID_REQUIRED)
@@ -215,7 +215,7 @@ const errorBuilders = {
   firstName: firstNameValidatorErrorBuilder,
   lastName: lastNameValidatorErrorBuilder,
   phoneNumber: phoneNumberValidatorErrorBuilder,
-  privateId: privateIdValidatorErrorBuilder,
+  userId: userIdValidatorErrorBuilder,
   username: usernameValidatorErrorBuilder,
   verificationCode: verificationCodeValidatorErrorBuilder,
 };

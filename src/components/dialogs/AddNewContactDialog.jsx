@@ -129,7 +129,7 @@ const AddNewContactDialog = ({ onDialogClose }) => {
   };
 
   const handleAddNewContactClick = async () => {
-    const { privateId, ...rest } = contact;
+    const { userId, ...rest } = contact;
     const result = await dispatchAsync(controllers.addNewContact(rest));
 
     if (result.ok === false) return;

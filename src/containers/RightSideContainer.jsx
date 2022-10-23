@@ -39,7 +39,7 @@ const RightSideContainer = () => {
 
   // const chat = arrayUtilities.findByPropValueEquality(
   //   user.chats,
-  //   privateId,
+  //   userId,
   //   "participantId"
   // );
 
@@ -54,7 +54,7 @@ const RightSideContainer = () => {
       lg={9}
       md={8}
     >
-      {selectedContact.privateId && (
+      {selectedContact.userId && (
         <CustomFlexBox
           col
           sx={{ width: "100%", height: "100%" }}

@@ -7,8 +7,9 @@ import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import DialogTemplate from "components/dialogs/DialogTemplate";
 import H5 from "components/generals/typographies/H5";
 
-import { DIALOG_NAMES } from "variables/otherVariables/helpers";
 import { commonActions } from "functions/utilities/commonActions";
+
+import { DIALOG_NAMES } from "variables/otherVariables/helpers";
 
 const ContactsTitle = () => (
   <>
@@ -47,13 +48,10 @@ const ContactsActions = ({ onClose, onAddContactClick }) => (
     </CustomFlexBox>
   </>
 );
-const ContactsDialog = ({ onDialogClose }) => {
+const Contacts = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
-    state: {
-      global: { dialogState },
-      user,
-    },
+    state,
   } = useMainContext();
 
   const handleAddContactClick = () => {
@@ -65,8 +63,9 @@ const ContactsDialog = ({ onDialogClose }) => {
     onDialogClose("contacts");
   };
 
-  const mainContent = user.contacts?.map((contact, index) => (
+  const mainContent = state.user.contacts?.map((contact, index) => (
     <ContactListItem
+      onContactClick={() => console.log("Contact clicked")}
       key={index}
       name={`${contact.firstName} ${contact.lastName}`}
     />
@@ -82,11 +81,11 @@ const ContactsDialog = ({ onDialogClose }) => {
           onAddContactClick={handleAddContactClick}
         />
       }
-      open={dialogState.contacts.open}
+      open={state.global.dialogState.contacts.open}
       paperStyle={{ height: "90vh" }}
       onClose={handleClose}
     />
   );
 };
 
-export default ContactsDialog;
+export default Contacts;
