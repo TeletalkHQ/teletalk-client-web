@@ -5,7 +5,7 @@ const initialObjects = {
     firstName: "",
     lastName: "",
     phoneNumber: "",
-    privateId: "",
+    userId: "",
   }),
   country: () => ({
     countryCode: "",

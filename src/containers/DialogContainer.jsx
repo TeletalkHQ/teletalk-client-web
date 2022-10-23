@@ -1,7 +1,7 @@
 import { actions } from "actions/actions";
 
 import AddNewContactDialog from "components/dialogs/AddNewContactDialog";
-import ContactsDialog from "components/dialogs/ContactsDialog";
+import Contacts from "components/dialogs/Contacts";
 import LogoutDialog from "components/dialogs/LogoutDialog";
 
 import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
@@ -24,11 +24,9 @@ const DialogContainer = () => {
 
   return (
     <>
-      {[AddNewContactDialog, ContactsDialog, LogoutDialog].map(
-        (Component, i) => (
-          <Component key={i} onDialogClose={handleDialogClose} />
-        )
-      )}
+      {[AddNewContactDialog, Contacts, LogoutDialog].map((Component, i) => (
+        <Component key={i} onDialogClose={handleDialogClose} />
+      ))}
     </>
   );
 };

@@ -82,14 +82,14 @@ const sendPrivateMessage = () => {
       const {
         temp: {
           messageInputText,
-          selectedContact: { privateId },
+          selectedContact: { userId },
         },
       } = getState();
 
       const response =
         await apiManager.apis.sendPrivateMessage.sendFullFeaturedRequest({
           message: messageInputText,
-          participantId: privateId,
+          participantId: userId,
         });
 
       const { chatId, newMessage } = response.data;

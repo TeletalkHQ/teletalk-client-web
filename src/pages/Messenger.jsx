@@ -16,7 +16,7 @@ export default Messenger;
 
 //  const chat = user.chats.find((chat) => {
 //    return chat.participants.find(
-//      (participant) => participant.participantId === privateId
+//      (participant) => participant.participantId === userId
 //    );
 //  });
 
