@@ -3,34 +3,24 @@ import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities"
 import { initialObjects } from "variables/initials/initialObjects";
 import { initialStates } from "variables/initials/initialStates";
 
-const {
-  temp: { messageInputText, messages, tempUserState, verificationCode },
-} = initialStates;
+const tempInitialState = initialStates.temp();
 
-const {
-  global: { appDrawer, appProgressions, loading },
-  global,
-} = initialStates;
+const globalInitialState = initialStates.global();
+const userInitialState = initialStates.user();
 
-const { user } = initialStates;
+const otherInitialState = initialStates.other();
 
-const {
-  other: { countries, welcomeMessage },
-} = initialStates;
-
-const {
-  notification: { errorNotificationState },
-} = initialStates;
+const notificationInitialState = initialStates.notification();
 
 const globalInitialActions = {
   appDrawerOpenChange: {
     payload: {
-      open: appDrawer.anchor.left,
+      open: globalInitialState.appDrawer.anchor.left,
     },
     type: "APP_DRAWER_STATE_CHANGE",
   },
   appProgressionChange: {
-    payload: appProgressions,
+    payload: globalInitialState.appProgressions,
     type: "APP_PROGRESSION_CHANGE",
   },
   dialogOpenChange: {
@@ -42,7 +32,7 @@ const globalInitialActions = {
   },
   globalLoadingOpenChange: {
     payload: {
-      open: loading.open,
+      open: globalInitialState.loading.open,
     },
     type: "GLOBAL_LOADING_STATE_CHANGE",
   },
@@ -64,12 +54,14 @@ const globalInitialActions = {
 const otherInitialActions = {
   getCountries: {
     payload: {
-      countries,
+      countries: otherInitialState.countries,
     },
     type: "GET_COUNTRIES",
   },
   setWelcomeMessage: {
-    payload: { welcomeMessage },
+    payload: {
+      welcomeMessage: otherInitialState.welcomeMessage,
+    },
     type: "WELCOME",
   },
   resetOtherState: {
@@ -79,7 +71,7 @@ const otherInitialActions = {
 
 const notificationInitialActions = {
   errorNotification: {
-    payload: errorNotificationState,
+    payload: notificationInitialState.errorNotificationState,
     type: "ERROR_NOTIFICATION",
   },
 };
@@ -110,12 +102,12 @@ const userInitialActions = {
   },
   updateAllUserContacts: {
     payload: {
-      contacts: user.contacts,
+      contacts: userInitialState.contacts,
     },
     type: "UPDATE_USER_CONTACTS",
   },
   updateAllUserData: {
-    payload: user,
+    payload: userInitialState,
     type: "UPDATE_ALL_USER_DATA",
   },
 };
@@ -123,37 +115,37 @@ const userInitialActions = {
 const tempInitialActions = {
   countryCodeOnChange: {
     payload: {
-      countryCode: tempUserState.countryCode,
+      countryCode: tempInitialState.countryCode,
     },
     type: "COUNTRY_CODE_ONCHANGE",
   },
   countryNameOnChange: {
     payload: {
-      countryName: tempUserState.countryName,
+      countryName: tempInitialState.countryName,
     },
     type: "COUNTRY_NAME_ONCHANGE",
   },
   firstNameOnChange: {
     payload: {
-      firstName: tempUserState.firstName,
+      firstName: tempInitialState.firstName,
     },
     type: "FIRST_NAME_ONCHANGE",
   },
   lastNameOnChange: {
     payload: {
-      lastName: tempUserState.lastName,
+      lastName: tempInitialState.lastName,
     },
     type: "LAST_NAME_ONCHANGE",
   },
   messageInputOnChange: {
     payload: {
-      messageInputText,
+      messageInputText: tempInitialState.messageInputText,
     },
     type: "MESSAGE_INPUT_ONCHANGE",
   },
   phoneNumberOnChange: {
     payload: {
-      phoneNumber: tempUserState.phoneNumber,
+      phoneNumber: tempInitialState.phoneNumber,
     },
     type: "PHONE_NUMBER_ONCHANGE",
   },
@@ -174,13 +166,13 @@ const tempInitialActions = {
   },
   setMessages: {
     payload: {
-      messages,
+      messages: tempInitialState.messages,
     },
     type: "SET_MESSAGES",
   },
   verificationCodeOnChange: {
     payload: {
-      verificationCode,
+      verificationCode: tempInitialState.verificationCode,
     },
     type: "VERIFICATION_CODE_ONCHANGE",
   },

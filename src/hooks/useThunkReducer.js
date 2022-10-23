@@ -4,7 +4,7 @@ import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { initialStates } from "variables/initials/initialStates";
+import { getInitialState } from "variables/initials/initialStates";
 
 //! Use it in special cases only!
 let extractedDispatch = (
@@ -17,7 +17,7 @@ let extractedDispatchAsync = async (action = { type: "", payload: {} }) =>
   action;
 
 let useDispatch = () => extractedDispatch;
-const initialUseSelectorCallbackParam = (state = initialStates) => {
+const initialUseSelectorCallbackParam = (state = getInitialState()) => {
   return state;
 };
 let useSelector = (callback = initialUseSelectorCallbackParam) => {

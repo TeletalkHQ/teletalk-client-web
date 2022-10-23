@@ -3,11 +3,12 @@ import { actions } from "actions/actions";
 import { commonFunctionalities } from "classes/CommonFunctionalities";
 
 import Copyright from "components/utils/Copyright";
+
+import { useMainContext } from "hooks/useMainContext";
+
 import CreateNewUser from "pages/authentication/CreateNewUser";
 import SignIn from "pages/authentication/SignIn";
 import VerifySignIn from "pages/authentication/VerifySignIn";
-
-import { useMainContext } from "hooks/useMainContext";
 
 import { VIEW_MODES } from "variables/otherVariables/helpers";
 

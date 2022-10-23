@@ -25,6 +25,7 @@ const defaultTempState = () => ({
   phoneNumber: "",
   selectedContact: initialObjects.contact(),
   selectedCountry: null,
+  selectedUserIdForPrivateChat: "",
   tempUserState: {},
   verificationCode: "",
 });
@@ -86,28 +87,20 @@ const defaultGlobalState = () => ({
   viewMode: startupViewMode,
 });
 
-const global = defaultGlobalState();
-const notification = defaultNotificationState();
-const other = defaultOtherState();
-const temp = defaultTempState();
-const user = defaultUserState();
-
 const initialStates = {
-  global,
-  notification,
-  other,
-  temp,
-  user,
+  global: defaultGlobalState,
+  notification: defaultNotificationState,
+  other: defaultOtherState,
+  temp: defaultTempState,
+  user: defaultUserState,
 };
 
-const getInitialState = () => initialStates;
+const getInitialState = () => ({
+  global: defaultGlobalState(),
+  notification: defaultNotificationState(),
+  other: defaultOtherState(),
+  temp: defaultTempState(),
+  user: defaultUserState(),
+});
 
-export {
-  defaultGlobalState,
-  defaultNotificationState,
-  defaultOtherState,
-  defaultTempState,
-  defaultUserState,
-  getInitialState,
-  initialStates,
-};
+export { getInitialState, initialStates };

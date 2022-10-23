@@ -5,13 +5,10 @@ import { appOptions } from "classes/AppOptions";
 import { triers } from "functions/helpers/triers";
 
 import { initialActions } from "variables/initials/initialActions";
-import {
-  defaultUserState,
-  initialStates,
-} from "variables/initials/initialStates";
+import { initialStates } from "variables/initials/initialStates";
 
 const userReducer = (
-  state = initialStates.user,
+  state = initialStates.user(),
   action = appOptions.getOptions().actionOptions
 ) => {
   return triers.reducerTrier({
@@ -104,5 +101,5 @@ const userReducerCases = {
 
   [initialActions.updateAllUserData.type]: (_state, payload) => payload,
 
-  [initialActions.resetUserState.type]: () => defaultUserState(),
+  [initialActions.resetUserState.type]: () => initialStates.user(),
 };

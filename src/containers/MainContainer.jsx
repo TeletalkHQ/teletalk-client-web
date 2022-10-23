@@ -4,9 +4,7 @@ import { eventManager } from "utility-store/src/classes/EventManager";
 
 import { appOptions } from "classes/AppOptions";
 
-import Authentication from "pages/authentication/Authentication";
 import FullPageLoading from "components/portal/FullPageLoading";
-import Messenger from "pages/Messenger";
 import PortalContainer from "components/portal/PortalContainer";
 
 import { controllers } from "controllers";
@@ -17,6 +15,9 @@ import { thingsToDoAfterAllStuffReceived } from "events/eventListeners";
 import { updateWindowCustomProperties } from "functions/others/otherFunctions";
 
 import { useMainContext } from "hooks/useMainContext";
+
+import Authentication from "pages/authentication/Authentication";
+import Messenger from "pages/Messenger";
 
 import { VIEW_MODES } from "variables/otherVariables/helpers";
 

@@ -1,6 +1,6 @@
-import { SnackbarProvider } from "notistack";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
+import { SnackbarProvider } from "notistack";
 
 import { appConfigs } from "classes/AppConfigs";
 
@@ -14,7 +14,9 @@ import { rootReducer } from "reducers/root";
 
 import { baseTheme } from "theme/baseTheme";
 
-import { initialStates } from "variables/initials/initialStates";
+import { getInitialState } from "variables/initials/initialStates";
+
+const initialStates = getInitialState();
 
 const App = () => {
   const [state = initialStates, dispatch] = useThunkReducer(
