@@ -7,7 +7,7 @@ import { initialActions } from "variables/initials/initialActions";
 import { initialStates } from "variables/initials/initialStates";
 
 const notificationReducer = (
-  state = initialStates.notification,
+  state = initialStates.notification(),
   action = appOptions.getOptions().actionOptions
 ) => {
   return triers.reducerTrier({

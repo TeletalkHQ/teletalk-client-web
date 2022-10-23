@@ -4,13 +4,10 @@ import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
 import { triers } from "functions/helpers/triers";
 
 import { initialActions } from "variables/initials/initialActions";
-import {
-  defaultTempState,
-  initialStates,
-} from "variables/initials/initialStates";
+import { initialStates } from "variables/initials/initialStates";
 
 const tempReducer = (
-  state = initialStates.temp,
+  state = initialStates.temp(),
   action = appOptions.getOptions().actionOptions
 ) => {
   return triers.reducerTrier({
@@ -42,7 +39,7 @@ const tempReducerCases = {
   [initialActions.phoneNumberOnChange.type]: (state, payload) =>
     fn(state, payload),
 
-  [initialActions.resetTempState.type]: () => defaultTempState(),
+  [initialActions.resetTempState.type]: () => initialStates.temp(),
 
   [initialActions.selectedContactId.type]: (state, payload) =>
     fn(state, payload),

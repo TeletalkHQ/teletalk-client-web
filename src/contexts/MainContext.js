@@ -2,10 +2,10 @@ import { createContext } from "react";
 
 import { appOptions } from "classes/AppOptions";
 
-import { initialStates } from "variables/initials/initialStates";
+import { getInitialState } from "variables/initials/initialStates";
 
 const MainContext = createContext({
-  state: initialStates,
+  state: getInitialState(),
   hooksOutput: {
     dispatch: (action = appOptions.getOptions().actionOptions) => action,
     dispatchAsync: async (action = async () => {}) => {

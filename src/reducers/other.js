@@ -3,14 +3,11 @@ import { appOptions } from "classes/AppOptions";
 import { mergePrevStateWithPayload } from "functions/utilities/stateUtilities";
 import { triers } from "functions/helpers/triers";
 
-import {
-  defaultOtherState,
-  initialStates,
-} from "variables/initials/initialStates";
+import { initialStates } from "variables/initials/initialStates";
 import { initialActions } from "variables/initials/initialActions";
 
 const otherReducer = (
-  state = initialStates.other,
+  state = initialStates.other(),
   action = appOptions.getOptions().actionOptions
 ) => {
   return triers.reducerTrier({
@@ -33,7 +30,7 @@ const otherReducerCases = {
 
   [initialActions.getCountries.type]: (state, payload) => fn(state, payload),
 
-  [initialActions.resetOtherState.type]: () => defaultOtherState(),
+  [initialActions.resetOtherState.type]: () => initialStates.other(),
 };
 
 export { otherReducer };

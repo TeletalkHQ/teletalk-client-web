@@ -2,14 +2,11 @@ import { appOptions } from "classes/AppOptions";
 
 import { triers } from "functions/helpers/triers";
 
-import {
-  defaultGlobalState,
-  initialStates,
-} from "variables/initials/initialStates";
+import { initialStates } from "variables/initials/initialStates";
 import { initialActions } from "variables/initials/initialActions";
 
 const globalReducer = (
-  state = initialStates.global,
+  state = initialStates.global(),
   action = appOptions.getOptions().actionOptions
 ) => {
   return triers.reducerTrier({
@@ -93,7 +90,7 @@ const globalReducerCases = {
     handleOnlineStatusStateChange(state, payload),
   [initialActions.viewModeChange.type]: (state, payload) =>
     handleUpdateViewMode(state, payload),
-  [initialActions.resetGlobalState.type]: () => defaultGlobalState(),
+  [initialActions.resetGlobalState.type]: () => initialStates.global(),
 };
 
 export { globalReducer };
