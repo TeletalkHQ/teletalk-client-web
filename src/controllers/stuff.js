@@ -3,12 +3,9 @@ import { trier } from "utility-store/src/classes/Trier";
 import { getAllStuffApi } from "apis/versionControlApis";
 
 import { jobsHandler } from "classes/JobsHandler";
-import { persistentStorage } from "classes/PersistentStorage";
 import { stuffStore } from "classes/StuffStore";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
-
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
 
 const tryToGetAllStuff = async () => {
   const { data } = await getAllStuffApi.sendFullFeaturedRequest({
@@ -19,14 +16,6 @@ const tryToGetAllStuff = async () => {
 
 const executeIfNoErrorOnTryToGetAllStuff = (response) => {
   const { errors, models, routes, validationModels, languageData } = response;
-
-  persistentStorage.setItem(PERSISTENT_STORAGE_KEYS.STUFFS, {
-    errors,
-    languageData,
-    models,
-    routes,
-    validationModels,
-  });
 
   stuffStore.updateAllStuff({
     errors,

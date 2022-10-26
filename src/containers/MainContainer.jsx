@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { eventManager } from "utility-store/src/classes/EventManager";
 
 import { appOptions } from "classes/AppOptions";
+import { jobsHandler } from "classes/JobsHandler";
 
 import FullPageLoading from "components/portal/FullPageLoading";
 import PortalContainer from "components/portal/PortalContainer";
@@ -51,7 +52,7 @@ const MainContainer = () => {
     } = appOptions.getOptions();
 
     eventManager.addListener(ALL_STUFF_RECEIVED, async () => {
-      events.thingsToDoAfterAllStuffReceived();
+      jobsHandler.thingsToDoAfterAllStuffReceived();
       await dispatchAsync(controllers.checkUserStatus());
       dispatch(controllers.getCountries());
     });
