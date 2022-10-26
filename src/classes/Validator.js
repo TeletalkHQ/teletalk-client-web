@@ -1,6 +1,6 @@
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
-import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 
 import { errorBuilders } from "functions/helpers/errorBuilders";
 import { fixErrorBuilderErrors } from "functions/utilities/otherUtilities";
@@ -69,7 +69,7 @@ class Validator {
       return this;
     } catch (errors) {
       const fixedErrors = fixErrorBuilderErrors(errors);
-      commonFunctionalities.correctErrorsAndPrint(fixedErrors);
+      commonJobsHandler.correctErrorsAndPrint(fixedErrors);
       return this;
     }
   }

@@ -6,20 +6,20 @@ class SystemController {
       },
     };
   }
-  getAllEventsStatus() {
-    return this.events;
-  }
-  getEventStatus(eventName) {
+  getEvent(eventName) {
     return this.events[eventName];
   }
+  getEventStatus(eventName) {
+    return this.getEvent(eventName).status;
+  }
   setEventStatus(eventName, status) {
-    const event = this.getEventStatus(eventName);
+    const event = this.getEvent(eventName);
     this.changeEventStatus(event, status);
-
     return this;
   }
   changeEventStatus(event, status) {
     event.status = status;
+    return this;
   }
 
   changeEventStatusToDone(eventName) {

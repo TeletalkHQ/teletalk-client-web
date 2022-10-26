@@ -2,7 +2,7 @@ import { domUtilities } from "utility-store/src/classes/DomUtilities";
 
 import { actions } from "actions/actions";
 
-import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 import { stuffStore } from "classes/StuffStore";
 import { validatorManager } from "classes/ValidatorManager";
 
@@ -32,7 +32,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
   } = useMainContext();
 
   const isVerificationSubmitButtonDisabled = () => {
-    return !commonFunctionalities.validateInputValueLengthByModelLength(
+    return !commonJobsHandler.validateInputValueLengthByModelLength(
       stuffStore.models.verificationCode,
       state.temp.verificationCode
     );

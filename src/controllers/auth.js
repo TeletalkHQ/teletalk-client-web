@@ -3,7 +3,7 @@ import { trier } from "utility-store/src/classes/Trier";
 import { actions } from "actions/actions";
 
 import { apiManager } from "classes/api/ApiManager";
-import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
@@ -17,7 +17,7 @@ import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
 import { VIEW_MODES } from "variables/otherVariables/helpers";
 
 const changeViewModeToSignIn = () =>
-  commonFunctionalities.changeViewMode().signIn();
+  commonJobsHandler.changeViewMode().signIn();
 
 const printVerifyTokenNotFound = () =>
   notificationManager.submitErrorNotification(
@@ -45,7 +45,7 @@ const tryToVerifySignIn = async (verificationCode) => {
   );
 };
 const tasksIfUserIsNew = () => {
-  commonFunctionalities.changeViewMode().createNewUser();
+  commonJobsHandler.changeViewMode().createNewUser();
 };
 const tasksIfUserIsNotNew = (dispatch, user) => {
   persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
@@ -56,7 +56,7 @@ const tasksIfUserIsNotNew = (dispatch, user) => {
   saveUserTokenIntoPersistentStorage(mainToken);
 
   dispatch(actions.updateAllUserData(user));
-  commonFunctionalities.changeViewMode().messenger();
+  commonJobsHandler.changeViewMode().messenger();
 };
 const executeIfNoErrorTryToVerifySignIn = (response, dispatch) => {
   dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
@@ -127,7 +127,7 @@ const executeIfNoErrorOnTryToSignIn = (response, dispatch) => {
 
   dispatch(actions.updateAllUserData(response.data.user));
 
-  commonFunctionalities.changeViewMode().verifySignIn();
+  commonJobsHandler.changeViewMode().verifySignIn();
 };
 const signIn = () => {
   return async (dispatch, getState = getInitialState) => {
@@ -159,13 +159,13 @@ const logout = () => {
   return async () => {
     (await trier(logout.name).tryAsync(tryToLogout))
       .catch(printCatchError, logout.name)
-      .executeIfNoError(() => commonFunctionalities.resetEverything());
+      .executeIfNoError(() => commonJobsHandler.resetEverything());
   };
 };
 
 const tryToCreateNewUser = async (firstName, lastName) => {
   const verifyToken = userPropsUtilities.getVerifyTokenFromStorage();
-  commonFunctionalities.checkAndExecute(!verifyToken, () => {
+  commonJobsHandler.checkAndExecute(!verifyToken, () => {
     changeViewModeToSignIn();
     printVerifyTokenNotFound();
   });
@@ -185,7 +185,7 @@ const tryToCreateNewUser = async (firstName, lastName) => {
 const executeIfNoErrorOnTryToCreateNewUser = (user, dispatch) => {
   userPropsUtilities.removeVerifyTokenFromStorage();
   dispatch(actions.updateAllUserData(user));
-  commonFunctionalities.changeViewMode().messenger();
+  commonJobsHandler.changeViewMode().messenger();
   const mainToken = user.mainToken;
   delete user.mainToken;
 

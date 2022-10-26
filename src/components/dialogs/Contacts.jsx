@@ -65,7 +65,7 @@ const Contacts = ({ onDialogClose }) => {
 
   const mainContent = state.user.contacts?.map((contact, index) => (
     <ContactListItem
-      onContactClick={() => console.log("Contact clicked")}
+      onContactClick={() => logger.info("Contact clicked")}
       key={index}
       name={`${contact.firstName} ${contact.lastName}`}
     />

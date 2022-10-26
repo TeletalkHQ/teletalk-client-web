@@ -1,6 +1,6 @@
 import { actions } from "actions/actions";
 
-import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 
 import Copyright from "components/utils/Copyright";
 
@@ -22,7 +22,7 @@ const Authentication = () => {
 
   const handleBackToSignInClick = () => {
     dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
-    commonFunctionalities.changeViewMode().signIn();
+    commonJobsHandler.changeViewMode().signIn();
   };
 
   const authComponent = () => {

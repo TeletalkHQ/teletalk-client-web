@@ -21,7 +21,7 @@ import { useMainContext } from "hooks/useMainContext";
 
 import { DIALOG_NAMES } from "variables/otherVariables/helpers";
 import { initialObjects } from "variables/initials/initialObjects";
-import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 import { stuffStore } from "classes/StuffStore";
 
 const AddContactDialogTitle = () => {
@@ -178,19 +178,19 @@ const AddNewContactDialog = ({ onDialogClose }) => {
 
   const isAddNewContactButtonDisabled = () => {
     const firstNameValidateResult =
-      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+      commonJobsHandler.validateInputValueLengthByModelMinMaxLength(
         stuffStore.models.firstName,
         contact.firstName
       );
 
     const lastNameValidateResult =
-      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+      commonJobsHandler.validateInputValueLengthByModelMinMaxLength(
         stuffStore.models.lastName,
         contact.lastName
       );
 
     const phoneNumberValidateResult =
-      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+      commonJobsHandler.validateInputValueLengthByModelMinMaxLength(
         stuffStore.models.phoneNumber,
         contact.phoneNumber
       );

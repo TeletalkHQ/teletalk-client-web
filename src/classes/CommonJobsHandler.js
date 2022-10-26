@@ -15,7 +15,7 @@ import { extractedDispatch } from "hooks/useThunkReducer";
 
 import { VIEW_MODES } from "variables/otherVariables/helpers";
 
-class CommonFunctionalities {
+class CommonJobsHandler {
   resetEverything() {
     persistentStorage.setDefaultStorage();
 
@@ -111,6 +111,6 @@ class CommonFunctionalities {
   }
 }
 
-const commonFunctionalities = new CommonFunctionalities();
+const commonJobsHandler = new CommonJobsHandler();
 
-export { commonFunctionalities, CommonFunctionalities };
+export { commonJobsHandler, CommonJobsHandler };
