@@ -2,7 +2,7 @@ import { trier } from "utility-store/src/classes/Trier";
 
 import { actions } from "actions/actions";
 
-import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 import { apiManager } from "classes/api/ApiManager";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
@@ -95,7 +95,7 @@ const sendPrivateMessage = () => {
       const { chatId, newMessage } = response.data;
       dispatch(actions.addNewMessageToChat({ chatId, newMessage }));
 
-      commonFunctionalities.resetMessageInputText();
+      commonJobsHandler.resetMessageInputText();
     } catch (error) {
       printCatchError(sendPrivateMessage.name, error);
     }

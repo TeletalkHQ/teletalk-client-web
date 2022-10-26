@@ -22,7 +22,7 @@ import { controllers } from "controllers";
 import { useMainContext } from "hooks/useMainContext";
 
 import { Icons } from "components/others/Icons";
-import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 
 const SignIn = () => {
   const {
@@ -75,7 +75,7 @@ const SignIn = () => {
 
   const isSignInSubmitButtonDisabled = () => {
     const validateResult =
-      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+      commonJobsHandler.validateInputValueLengthByModelMinMaxLength(
         stuffStore.models.phoneNumber,
         state.temp.phoneNumber
       );

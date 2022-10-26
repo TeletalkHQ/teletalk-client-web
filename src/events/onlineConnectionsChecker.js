@@ -6,7 +6,6 @@ import { extractedDispatch } from "hooks/useThunkReducer";
 
 const onlineStatusOnChangeEvent = () => {
   const isOnline = windowUtilities.isOnline();
-
   extractedDispatch(actions.onlineStatusChange({ isOnline }));
 };
 

@@ -9,8 +9,7 @@ import PortalContainer from "components/portal/PortalContainer";
 
 import { controllers } from "controllers";
 
-import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
-import { thingsToDoAfterAllStuffReceived } from "events/eventListeners";
+import { events } from "events/index";
 
 import { updateWindowCustomProperties } from "functions/others/otherFunctions";
 
@@ -52,12 +51,12 @@ const MainContainer = () => {
     } = appOptions.getOptions();
 
     eventManager.addListener(ALL_STUFF_RECEIVED, async () => {
-      thingsToDoAfterAllStuffReceived();
+      events.thingsToDoAfterAllStuffReceived();
       await dispatchAsync(controllers.checkUserStatus());
       dispatch(controllers.getCountries());
     });
 
-    addOnlineStatusEvents();
+    events.addOnlineStatusEvents();
     dispatch(controllers.getAllStuff());
 
     return () => {

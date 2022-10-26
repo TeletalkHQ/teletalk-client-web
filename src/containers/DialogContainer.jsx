@@ -1,5 +1,8 @@
 import { actions } from "actions/actions";
 
+import { appOptions } from "classes/AppOptions";
+import { systemController } from "classes/SystemController";
+
 import AddNewContactDialog from "components/dialogs/AddNewContactDialog";
 import Contacts from "components/dialogs/Contacts";
 import LogoutDialog from "components/dialogs/LogoutDialog";
@@ -24,9 +27,12 @@ const DialogContainer = () => {
 
   return (
     <>
-      {[AddNewContactDialog, Contacts, LogoutDialog].map((Component, i) => (
-        <Component key={i} onDialogClose={handleDialogClose} />
-      ))}
+      {systemController.getEventStatus(
+        appOptions.getEventEmitterEvents().ALL_STUFF_RECEIVED
+      ) === "done" &&
+        [AddNewContactDialog, Contacts, LogoutDialog].map((Component, i) => (
+          <Component key={i} onDialogClose={handleDialogClose} />
+        ))}
     </>
   );
 };

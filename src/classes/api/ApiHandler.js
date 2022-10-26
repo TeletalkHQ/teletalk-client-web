@@ -2,7 +2,7 @@ import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 
 import { appConfigs } from "classes/AppConfigs";
 import { appOptions } from "classes/AppOptions";
-import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
@@ -91,11 +91,9 @@ class ApiHandler {
     });
   }
   inputDataFieldsCheck(inputData = this.getData()) {
-    const {
-      apiConfigs: { inputDataPropertiesCheck },
-    } = appConfigs.getConfigs();
+    const { apiConfigs } = appConfigs.getConfigs();
 
-    commonFunctionalities.checkAndExecute(inputDataPropertiesCheck, () => {
+    commonJobsHandler.checkAndExecute(apiConfigs.inputDataFieldsCheck, () => {
       this.#ioDataFieldsCheck(
         inputData,
         this.#routeObject.inputFields,
@@ -111,7 +109,7 @@ class ApiHandler {
       apiConfigs: { outputDataPropertiesCheck },
     } = appConfigs.getConfigs();
 
-    commonFunctionalities.checkAndExecute(outputDataPropertiesCheck, () => {
+    commonJobsHandler.checkAndExecute(outputDataPropertiesCheck, () => {
       this.#ioDataFieldsCheck(
         outputData,
         this.#routeObject.outputFields,
@@ -133,9 +131,9 @@ class ApiHandler {
     const responseCode = statusCode || status;
 
     if (responseCode >= 400) {
-      if (responseCode === 401) commonFunctionalities.resetEverything();
+      if (responseCode === 401) commonJobsHandler.resetEverything();
 
-      commonFunctionalities.correctErrorsAndPrint(errors);
+      commonJobsHandler.correctErrorsAndPrint(errors);
 
       throw errors;
     }
@@ -239,7 +237,7 @@ class ApiHandler {
       return this.getResponse();
     } catch (error) {
       this.#logFailureResponse(error);
-      commonFunctionalities.throwConnAbortNotification();
+      commonJobsHandler.throwConnAbortNotification();
       throw error;
     }
   }
@@ -249,7 +247,7 @@ class ApiHandler {
       apiConfigs: { logSuccessfulResponse },
     } = appConfigs.getConfigs();
 
-    commonFunctionalities.checkAndExecute(logSuccessfulResponse, () =>
+    commonJobsHandler.checkAndExecute(logSuccessfulResponse, () =>
       logger.debug("response:", response)
     );
   }
@@ -258,7 +256,7 @@ class ApiHandler {
       apiConfigs: { logFailureResponse },
     } = appConfigs.getConfigs();
 
-    commonFunctionalities.checkAndExecute(logFailureResponse, () =>
+    commonJobsHandler.checkAndExecute(logFailureResponse, () =>
       logger.error(`Api:${this.#routeObject.fullUrl} Api catch, error:`, error)
     );
   }

@@ -16,7 +16,7 @@ import { controllers } from "controllers";
 import { useMainContext } from "hooks/useMainContext";
 
 import { Icons } from "components/others/Icons";
-import { commonFunctionalities } from "classes/CommonFunctionalities";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 
 const CreateNewUser = ({ onBackToSignInClick }) => {
   const {
@@ -38,13 +38,13 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
 
   const isCreateNewUserConfirmButtonDisabled = () => {
     const firstNameValidateResult =
-      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+      commonJobsHandler.validateInputValueLengthByModelMinMaxLength(
         stuffStore.models.firstName,
         state.temp.firstName
       );
 
     const lastNameValidateResult =
-      commonFunctionalities.validateInputValueLengthByModelMinMaxLength(
+      commonJobsHandler.validateInputValueLengthByModelMinMaxLength(
         stuffStore.models.lastName,
         state.temp.lastName
       );
