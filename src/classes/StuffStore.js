@@ -1,15 +1,8 @@
-import { persistentStorage } from "classes/PersistentStorage";
-
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
-
 class StuffStore {
   constructor() {
-    this.stuffs = persistentStorage.getAndParseItem(
-      PERSISTENT_STORAGE_KEYS.STUFFS
-    );
-    this.errors = this.stuffs.errors;
-    this.models = this.stuffs.models;
-    this.routes = this.stuffs.routes;
+    this.errors = {};
+    this.models = {};
+    this.routes = {};
     this.validationModels = {};
     this.languageData = {
       errorMessages: {},
