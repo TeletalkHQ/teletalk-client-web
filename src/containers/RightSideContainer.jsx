@@ -17,7 +17,7 @@ const RightSideContainer = () => {
   } = useMainContext();
 
   const handleInputChange = ({ target: { value } }) => {
-    dispatch(actions.messageInputOnChange({ messageInputText: value }));
+    dispatch(actions.messageInputOnChange({ messageInputTextValue: value }));
   };
 
   const handleSendMessage = async () => {
@@ -68,7 +68,7 @@ const RightSideContainer = () => {
 
           <CustomBox sx={{ width: "100%" }}>
             <MessageInput
-              messageInputText={state.temp.messageInputText}
+              messageInputTextValue={state.temp.messageInputTextValue}
               onSendMessage={handleSendMessage}
               onInputChange={handleInputChange}
             />

@@ -5,8 +5,8 @@ import { actions } from "actions/actions";
 
 import { stuffStore } from "classes/StuffStore";
 
-import CountryCode from "components/commonInputs/CountryCode";
-import CountrySelector from "components/commonInputs/CountrySelector";
+import CountryCode from "components/generals/inputs/commonInputs/CountryCode";
+import CountrySelector from "components/generals/inputs/commonInputs/CountrySelector";
 import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
@@ -14,8 +14,8 @@ import CustomCircularProgress from "components/generals/progresses/CustomCircula
 import CustomContainer from "components/generals/boxes/CustomContainer";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
-import H5 from "components/generals/typographies/H5";
-import PhoneNumber from "components/commonInputs/PhoneNumberInput";
+import H5 from "components/generals/headers/H5";
+import PhoneNumber from "components/generals/inputs/commonInputs/PhoneNumberInput";
 
 import { controllers } from "controllers";
 

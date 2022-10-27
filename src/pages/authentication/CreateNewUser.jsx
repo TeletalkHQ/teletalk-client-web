@@ -7,9 +7,9 @@ import CustomButton from "components/generals/inputs/CustomButton";
 import CustomContainer from "components/generals/boxes/CustomContainer";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
-import FirstName from "components/commonInputs/FirstNameInput";
+import FirstName from "components/generals/inputs/commonInputs/FirstNameInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
-import LastName from "components/commonInputs/LastNameInput";
+import LastName from "components/generals/inputs/commonInputs/LastNameInput";
 
 import { controllers } from "controllers";
 

@@ -31,7 +31,9 @@ class CommonJobsHandler {
   }
 
   resetMessageInputText() {
-    extractedDispatch(actions.messageInputOnChange({ messageInputText: "" }));
+    extractedDispatch(
+      actions.messageInputOnChange({ messageInputTextValue: "" })
+    );
   }
 
   checkAndExecute(condition, callback) {

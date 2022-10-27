@@ -27,7 +27,7 @@ const defaultTempState = () => ({
   selectedCountry: null,
   tempUserState: {},
   verificationCode: "",
-  messageInputText: "",
+  messageInputTextValue: "",
 });
 
 const defaultUserState = () => ({

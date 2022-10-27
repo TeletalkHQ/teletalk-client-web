@@ -83,7 +83,7 @@ const sendPrivateMessage = () => {
 
       const response =
         await apiManager.apis.sendPrivateMessage.sendFullFeaturedRequest({
-          message: state.temp.messageInputText,
+          message: state.temp.messageInputTextValue,
           participantId: state.temp.selectedUserForPrivateChat.userId,
         });
 

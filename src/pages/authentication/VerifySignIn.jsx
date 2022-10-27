@@ -13,7 +13,7 @@ import CustomContainer from "components/generals/boxes/CustomContainer";
 import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
-import H5 from "components/generals/typographies/H5";
+import H5 from "components/generals/headers/H5";
 
 import { controllers } from "controllers";
 
