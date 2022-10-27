@@ -10,9 +10,7 @@ import { useMainContext } from "hooks/useMainContext";
 const LogoutDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
-    state: {
-      global: { dialogState },
-    },
+    state,
   } = useMainContext();
 
   const handleClose = () => {
@@ -46,7 +44,7 @@ const LogoutDialog = ({ onDialogClose }) => {
   return (
     <>
       <DialogTemplate
-        open={dialogState.logout.open}
+        open={state.global.dialogState.logout.open}
         actionContent={actionContent}
         mainContent={mainContent}
         onClose={handleClose}

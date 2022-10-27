@@ -32,13 +32,8 @@ const iOS =
 
 const AppDrawer = () => {
   const {
-    state: {
-      global: {
-        appDrawer,
-        appDrawer: { currentAnchor },
-      },
-    },
     hooksOutput: { dispatch },
+    state,
   } = useMainContext();
 
   const toggleDrawer = (event, open) => {
@@ -66,15 +61,18 @@ const AppDrawer = () => {
       <SwipeableDrawer
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
-        anchor={currentAnchor}
-        open={appDrawer.anchor[currentAnchor]}
+        anchor={state.global.appDrawer.currentAnchor}
+        open={
+          state.global.appDrawer.anchor[state.global.appDrawer.currentAnchor]
+        }
         onClose={(event) => toggleDrawer(event, false)}
         onOpen={(event) => toggleDrawer(event, true)}
       >
         <CustomBox
           sx={{
             width:
-              currentAnchor === "top" || currentAnchor === "bottom"
+              state.global.appDrawer.currentAnchor === "top" ||
+              state.global.appDrawer.currentAnchor === "bottom"
                 ? "auto"
                 : 250,
           }}

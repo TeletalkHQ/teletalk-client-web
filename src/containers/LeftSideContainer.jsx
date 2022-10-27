@@ -12,10 +12,7 @@ import GridContainer from "components/generals/boxes/GridContainer";
 const LeftSideContainer = () => {
   const {
     hooksOutput: { dispatch },
-    state: {
-      temp: { selectedUserForPrivateChat: selectedContact },
-      user: { chats, contacts },
-    },
+    state,
   } = useMainContext();
 
   const handleDrawerIconClick = () => {
@@ -38,9 +35,9 @@ const LeftSideContainer = () => {
           <CustomFlexBox jc="space-between" sx={{ height: "100%" }}>
             <SideBarList />
             <ChatList
-              selectedContact={selectedContact}
-              chats={chats}
-              contacts={contacts}
+              selectedUserForPrivateChat={state.temp.selectedUserForPrivateChat}
+              chatInfo={state.user.chatInfo}
+              contacts={state.user.contacts}
             />
           </CustomFlexBox>
         </CustomFlexBox>

@@ -15,9 +15,7 @@ import { VIEW_MODES } from "variables/otherVariables/helpers";
 const Authentication = () => {
   const {
     hooksOutput: { dispatch },
-    state: {
-      global: { viewMode },
-    },
+    state,
   } = useMainContext();
 
   const handleBackToSignInClick = () => {
@@ -35,7 +33,7 @@ const Authentication = () => {
       [VIEW_MODES.NEW_USER_PROFILE]: CreateNewUser,
     };
 
-    const View = Views[viewMode];
+    const View = Views[state.global.viewMode];
 
     return <View {...props} />;
   };

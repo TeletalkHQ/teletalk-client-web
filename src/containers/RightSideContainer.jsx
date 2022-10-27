@@ -1,4 +1,9 @@
+import { eventManager } from "utility-store/src/classes/EventManager";
+
 import { actions } from "actions/actions";
+
+import { appOptions } from "classes/AppOptions";
+import { commonJobsHandler } from "classes/CommonJobsHandler";
 
 import ChatBar from "components/rightSide/ChatBar";
 import CustomBox from "components/generals/boxes/CustomBox";
@@ -9,12 +14,29 @@ import GridContainer from "components/generals/boxes/GridContainer";
 import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
+import { useEffect } from "react";
 
 const RightSideContainer = () => {
   const {
-    state,
     hooksOutput: { dispatch },
+    state,
   } = useMainContext();
+
+  useEffect(() => {
+    const eventName = appOptions.getOptions().EVENT_EMITTER_EVENTS.MESSAGE_SENT;
+    eventManager.addListener(
+      eventName,
+      commonJobsHandler.resetMessageInputText
+    );
+
+    //     dispatch(actions.addNewMessageToChat({ chatId, newMessage }));
+
+    return () => {};
+  }, []);
+
+  useEffect(() => {
+    return () => {};
+  }, [state.user.chatInfo]);
 
   const handleInputChange = ({ target: { value } }) => {
     dispatch(actions.messageInputOnChange({ messageInputTextValue: value }));

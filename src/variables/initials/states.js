@@ -25,7 +25,6 @@ const defaultTempState = () => ({
   phoneNumber: "",
   selectedUserForPrivateChat: initialObjects.contact(),
   selectedCountry: null,
-  tempUserState: {},
   verificationCode: "",
   messageInputTextValue: "",
 });
@@ -33,7 +32,7 @@ const defaultTempState = () => ({
 const defaultUserState = () => ({
   bio: "",
   blacklist: [],
-  chats: [],
+  chatInfo: [],
   contacts: [],
   countryCode: "",
   countryName: "",
