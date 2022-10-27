@@ -1,9 +1,10 @@
+import { eventManager } from "utility-store/src/classes/EventManager";
 import { trier } from "utility-store/src/classes/Trier";
 
 import { actions } from "actions/actions";
 
-import { commonJobsHandler } from "classes/CommonJobsHandler";
 import { apiManager } from "classes/api/ApiManager";
+import { appOptions } from "classes/AppOptions";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
@@ -14,7 +15,7 @@ const tryToGetAllChats = async () => {
 };
 
 const executeIfNoErrorOnTryToGetAllChats = (response, dispatch) => {
-  dispatch(actions.updateAllUserData({ chats: response.data.chats }));
+  dispatch(actions.updateAllUserData({ chatInfo: response.data.chats }));
 };
 
 const getAllChats = () => {
@@ -69,7 +70,7 @@ const getUserChatsLastMessage = ({ chats }) => {
         chatsWithLastMessage: response.data.chats,
       });
 
-      dispatch(actions.updateAllUserData({ chats: chatsWithLastMessage }));
+      dispatch(actions.updateAllUserData({ chatInfo: chatsWithLastMessage }));
     } catch (error) {
       printCatchError(getUserChatsLastMessage.name, error);
     }
@@ -77,7 +78,7 @@ const getUserChatsLastMessage = ({ chats }) => {
 };
 
 const sendPrivateMessage = () => {
-  return async (dispatch, getState = getInitialState) => {
+  return async (_dispatch, getState = getInitialState) => {
     try {
       const state = getState();
 
@@ -88,10 +89,9 @@ const sendPrivateMessage = () => {
         });
 
       const { chatId, newMessage } = response.data;
-      console.log({ chatId, newMessage });
-      dispatch(actions.addNewMessageToChat({ chatId, newMessage }));
-
-      commonJobsHandler.resetMessageInputText();
+      const eventName =
+        appOptions.getOptions().EVENT_EMITTER_EVENTS.MESSAGE_SENT;
+      eventManager.emitEvent(eventName, { chatId, newMessage });
     } catch (error) {
       printCatchError(sendPrivateMessage.name, error);
     }

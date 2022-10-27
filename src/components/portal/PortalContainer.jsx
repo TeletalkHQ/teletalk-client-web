@@ -6,18 +6,14 @@ import Portal from "components/portal/Portal";
 import { useMainContext } from "hooks/useMainContext";
 
 const PortalContainer = ({ onGlobalLoadingClose }) => {
-  const {
-    state: {
-      global: { loading },
-    },
-  } = useMainContext();
+  const { state } = useMainContext();
 
   return (
     <Portal>
       <AppDrawer />
       <OverlayLoading
         onGlobalLoadingClose={onGlobalLoadingClose}
-        loading={loading}
+        loading={state.global.loading}
       />
 
       <DialogContainer />
