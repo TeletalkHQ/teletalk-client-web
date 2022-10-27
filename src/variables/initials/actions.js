@@ -139,7 +139,7 @@ const tempInitialActions = {
   },
   messageInputOnChange: {
     payload: {
-      messageInputText: tempInitialState.messageInputText,
+      messageInputTextValue: tempInitialState.messageInputTextValue,
     },
     type: "MESSAGE_INPUT_ONCHANGE",
   },

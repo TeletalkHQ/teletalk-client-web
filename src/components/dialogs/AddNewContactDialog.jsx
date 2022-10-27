@@ -2,16 +2,16 @@ import { useState } from "react";
 
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
-import CountryCode from "components/commonInputs/CountryCode";
-import CountrySelector from "components/commonInputs/CountrySelector";
+import CountryCode from "components/generals/inputs/commonInputs/CountryCode";
+import CountrySelector from "components/generals/inputs/commonInputs/CountrySelector";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import DialogTemplate from "components/dialogs/DialogTemplate";
-import FirstName from "components/commonInputs/FirstNameInput";
-import H5 from "components/generals/typographies/H5";
-import LastName from "components/commonInputs/LastNameInput";
-import PhoneNumber from "components/commonInputs/PhoneNumberInput";
+import FirstName from "components/generals/inputs/commonInputs/FirstNameInput";
+import H5 from "components/generals/headers/H5";
+import LastName from "components/generals/inputs/commonInputs/LastNameInput";
+import PhoneNumber from "components/generals/inputs/commonInputs/PhoneNumberInput";
 
 import { commonActions } from "functions/utilities/commonActions";
 

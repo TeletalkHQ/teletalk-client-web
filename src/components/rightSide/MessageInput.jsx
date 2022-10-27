@@ -3,10 +3,13 @@ import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
 import CustomPaper from "components/generals/boxes/CustomPaper";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
-
 import { Icons } from "components/others/Icons";
 
-const MessageInput = ({ onInputChange, onSendMessage, messageInputText }) => {
+const MessageInput = ({
+  messageInputTextValue,
+  onInputChange,
+  onSendMessage,
+}) => {
   return (
     <CustomPaper sx={{ width: "100%" }}>
       <CustomFlexBox sx={{ width: "100%" }} jc="space-between" ai="center">
@@ -19,12 +22,12 @@ const MessageInput = ({ onInputChange, onSendMessage, messageInputText }) => {
         <CustomBox sx={{ width: "100%" }}>
           <CustomTextInput
             id="standard-multiline-flexible"
-            placeholder={!messageInputText ? "Write a message..." : " "}
+            placeholder={!messageInputTextValue ? "Write a message..." : " "}
             multiline
             maxRows={8}
             autoFocus
             onChange={onInputChange}
-            value={messageInputText}
+            value={messageInputTextValue}
           />
         </CustomBox>
 
@@ -35,7 +38,7 @@ const MessageInput = ({ onInputChange, onSendMessage, messageInputText }) => {
         </CustomBox>
 
         <CustomBox>
-          {messageInputText ? (
+          {messageInputTextValue ? (
             <CustomIconButton onClick={() => onSendMessage()}>
               <Icons.Telegram.Icon color="primary" />
             </CustomIconButton>

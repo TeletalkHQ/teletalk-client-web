@@ -7,7 +7,7 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import DialogTemplate from "components/dialogs/DialogTemplate";
-import H5 from "components/generals/typographies/H5";
+import H5 from "components/generals/headers/H5";
 
 import { commonActions } from "functions/utilities/commonActions";
 
