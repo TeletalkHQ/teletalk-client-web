@@ -6,7 +6,7 @@ import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 import { Icons } from "components/others/Icons";
 
-const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
+const MessageInput = ({ onInputChange, onSendMessage, messageInputText }) => {
   return (
     <CustomPaper sx={{ width: "100%" }}>
       <CustomFlexBox sx={{ width: "100%" }} jc="space-between" ai="center">
@@ -36,7 +36,7 @@ const MessageInput = ({ onInputChange, onAddNewMessage, messageInputText }) => {
 
         <CustomBox>
           {messageInputText ? (
-            <CustomIconButton onClick={() => onAddNewMessage()}>
+            <CustomIconButton onClick={() => onSendMessage()}>
               <Icons.Telegram.Icon color="primary" />
             </CustomIconButton>
           ) : (

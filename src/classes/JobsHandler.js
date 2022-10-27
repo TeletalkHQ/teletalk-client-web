@@ -25,16 +25,19 @@ class JobsHandler {
 
     apiManager.rebuildAllApis();
     windowUtilities.addProperty("apiManager", apiManager);
+
     validatorManager.compileValidators(validationModels);
     windowUtilities.addProperty("validatorManager", validatorManager);
 
-    persistentStorage.setItem(PERSISTENT_STORAGE_KEYS.STUFFS, {
+    const stuffs = {
       errors: stuffStore.errors,
       languageData: stuffStore.languageData,
       models: stuffStore.models,
       routes: stuffStore.routes,
       validationModels: stuffStore.validationModels,
-    });
+    };
+    windowUtilities.addProperty("stuffs", stuffs);
+    persistentStorage.setItem(PERSISTENT_STORAGE_KEYS.STUFFS, stuffs);
   }
 }
 

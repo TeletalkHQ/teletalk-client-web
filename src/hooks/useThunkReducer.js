@@ -4,7 +4,7 @@ import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { getInitialState } from "variables/initials/initialStates";
+import { getInitialState } from "variables/initials/states";
 
 //! Use it in special cases only!
 let extractedDispatch = (

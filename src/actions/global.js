@@ -1,6 +1,6 @@
 import { actionCreator } from "functions/utilities/stateUtilities";
 
-import { initialActions } from "variables/initials/initialActions";
+import { initialActions } from "variables/initials/actions";
 
 const appDrawerOpenChange = (
   payload = initialActions.appDrawerOpenChange.payload
