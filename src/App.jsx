@@ -14,7 +14,7 @@ import { rootReducer } from "reducers/root";
 
 import { baseTheme } from "theme/baseTheme";
 
-import { getInitialState } from "variables/initials/initialStates";
+import { getInitialState } from "variables/initials/states";
 
 const initialStates = getInitialState();
 

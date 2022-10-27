@@ -10,31 +10,22 @@ import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
 
-const { selectedContactId, messageInputOnChange: messageInputOnChangeAction } =
-  actions;
-
 const RightSideContainer = () => {
   const {
-    state: {
-      temp: {
-        selectedContact: { firstName, lastName },
-        selectedContact,
-        messageInputText,
-      },
-    },
+    state,
     hooksOutput: { dispatch },
   } = useMainContext();
 
   const handleInputChange = ({ target: { value } }) => {
-    dispatch(messageInputOnChangeAction({ messageInputText: value }));
+    dispatch(actions.messageInputOnChange({ messageInputText: value }));
   };
 
-  const handleAddNewMessage = async () => {
+  const handleSendMessage = async () => {
     dispatch(controllers.sendPrivateMessage());
   };
 
   const handleMessageContainerCloseClick = () => {
-    dispatch(selectedContactId({ selectedContactId: "" }));
+    dispatch(actions.selectedUserForPrivateChat({ selectedContactId: "" }));
   };
 
   // const chat = arrayUtilities.findByPropValueEquality(
@@ -54,7 +45,7 @@ const RightSideContainer = () => {
       lg={9}
       md={8}
     >
-      {selectedContact.userId && (
+      {state.temp.selectedUserForPrivateChat.userId && (
         <CustomFlexBox
           col
           sx={{ width: "100%", height: "100%" }}
@@ -64,7 +55,7 @@ const RightSideContainer = () => {
           <CustomBox sx={{ height: "50px", width: "100%" }}>
             <ChatBar
               onMessageContainerCloseClick={handleMessageContainerCloseClick}
-              chatName={`${firstName} ${lastName}`}
+              chatName={`${state.temp.selectedUserForPrivateChat.firstName} ${state.temp.selectedUserForPrivateChat.lastName}`}
             />
           </CustomBox>
 
@@ -77,8 +68,8 @@ const RightSideContainer = () => {
 
           <CustomBox sx={{ width: "100%" }}>
             <MessageInput
-              messageInputText={messageInputText}
-              onAddNewMessage={handleAddNewMessage}
+              messageInputText={state.temp.messageInputText}
+              onSendMessage={handleSendMessage}
               onInputChange={handleInputChange}
             />
           </CustomBox>

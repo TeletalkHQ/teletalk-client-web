@@ -20,7 +20,7 @@ import { controllers } from "controllers";
 import { useMainContext } from "hooks/useMainContext";
 
 import { DIALOG_NAMES } from "variables/otherVariables/helpers";
-import { initialObjects } from "variables/initials/initialObjects";
+import { initialObjects } from "variables/initials/objects";
 import { commonJobsHandler } from "classes/CommonJobsHandler";
 import { stuffStore } from "classes/StuffStore";
 

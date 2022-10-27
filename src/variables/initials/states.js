@@ -5,7 +5,7 @@ import { appConfigs } from "classes/AppConfigs";
 import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
 
 import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/helpers";
-import { initialObjects } from "variables/initials/initialObjects";
+import { initialObjects } from "variables/initials/objects";
 
 const {
   others: { appDrawerCurrentAnchor, startupViewMode },
@@ -23,11 +23,11 @@ const defaultTempState = () => ({
   lastName: "",
   messages: [],
   phoneNumber: "",
-  selectedContact: initialObjects.contact(),
+  selectedUserForPrivateChat: initialObjects.contact(),
   selectedCountry: null,
-  selectedUserIdForPrivateChat: "",
   tempUserState: {},
   verificationCode: "",
+  messageInputText: "",
 });
 
 const defaultUserState = () => ({

@@ -1,10 +1,10 @@
 import { actionCreator } from "functions/utilities/stateUtilities";
 
-import { initialActions } from "variables/initials/initialActions";
+import { initialActions } from "variables/initials/actions";
 
-const selectedContactId = (
-  payload = initialActions.selectedContactId.payload
-) => actionCreator(initialActions.selectedContactId.type, payload);
+const selectedUserForPrivateChat = (
+  payload = initialActions.selectedUserForPrivateChat.payload
+) => actionCreator(initialActions.selectedUserForPrivateChat.type, payload);
 
 const selectedCountry = (payload = initialActions.selectedCountry.payload) =>
   actionCreator(initialActions.selectedCountry.type, payload);
@@ -49,7 +49,7 @@ const tempActions = {
   messageInputOnChange,
   phoneNumberOnChange,
   resetTempState,
-  selectedContactId,
+  selectedUserForPrivateChat,
   selectedCountry,
   setMessages,
   verificationCodeOnChange,

@@ -1,5 +1,7 @@
 import { useMainContext } from "hooks/useMainContext";
 
+import { actions } from "actions/actions";
+
 import ContactListItem from "components/others/ContactListItem";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
@@ -48,6 +50,7 @@ const ContactsActions = ({ onClose, onAddContactClick }) => (
     </CustomFlexBox>
   </>
 );
+
 const Contacts = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
@@ -59,13 +62,21 @@ const Contacts = ({ onDialogClose }) => {
     dispatch(commonActions.openDialog(DIALOG_NAMES.ADD_NEW_CONTACT));
   };
 
-  const handleClose = () => {
+  const handleCloseContactDialog = () => {
     onDialogClose("contacts");
   };
 
+  const handleContactItemClicked = (contact) => {
+    handleCloseContactDialog();
+    dispatch(
+      actions.selectedUserForPrivateChat({
+        selectedUserForPrivateChat: contact,
+      })
+    );
+  };
   const mainContent = state.user.contacts?.map((contact, index) => (
     <ContactListItem
-      onContactClick={() => logger.info("Contact clicked")}
+      onContactClick={() => handleContactItemClicked(contact)}
       key={index}
       name={`${contact.firstName} ${contact.lastName}`}
     />
@@ -77,13 +88,13 @@ const Contacts = ({ onDialogClose }) => {
       mainContent={mainContent}
       actionContent={
         <ContactsActions
-          onClose={handleClose}
+          onClose={handleCloseContactDialog}
           onAddContactClick={handleAddContactClick}
         />
       }
       open={state.global.dialogState.contacts.open}
       paperStyle={{ height: "90vh" }}
-      onClose={handleClose}
+      onClose={handleCloseContactDialog}
     />
   );
 };

@@ -7,7 +7,7 @@ import { apiManager } from "classes/api/ApiManager";
 
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { getInitialState } from "variables/initials/initialStates";
+import { getInitialState } from "variables/initials/states";
 
 const tryToGetAllChats = async () => {
   return await apiManager.apis.getAllChats.sendFullFeaturedRequest();
@@ -79,20 +79,16 @@ const getUserChatsLastMessage = ({ chats }) => {
 const sendPrivateMessage = () => {
   return async (dispatch, getState = getInitialState) => {
     try {
-      const {
-        temp: {
-          messageInputText,
-          selectedContact: { userId },
-        },
-      } = getState();
+      const state = getState();
 
       const response =
         await apiManager.apis.sendPrivateMessage.sendFullFeaturedRequest({
-          message: messageInputText,
-          participantId: userId,
+          message: state.temp.messageInputText,
+          participantId: state.temp.selectedUserForPrivateChat.userId,
         });
 
       const { chatId, newMessage } = response.data;
+      console.log({ chatId, newMessage });
       dispatch(actions.addNewMessageToChat({ chatId, newMessage }));
 
       commonJobsHandler.resetMessageInputText();

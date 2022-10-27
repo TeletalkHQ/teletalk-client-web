@@ -1,7 +1,7 @@
 import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
 
-import { initialObjects } from "variables/initials/initialObjects";
-import { initialStates } from "variables/initials/initialStates";
+import { initialObjects } from "variables/initials/objects";
+import { initialStates } from "variables/initials/states";
 
 const tempInitialState = initialStates.temp();
 
@@ -152,11 +152,11 @@ const tempInitialActions = {
   resetTempState: {
     type: "RESET_TEMP_STATE",
   },
-  selectedContactId: {
+  selectedUserForPrivateChat: {
     payload: {
-      selectedContactId: "",
+      selectedUserForPrivateChat: tempInitialState.selectedUserForPrivateChat,
     },
-    type: "CONTACT_SELECTED",
+    type: "USER_SELECTED_FOR_PRIVATE_CHAT",
   },
   selectedCountry: {
     payload: {

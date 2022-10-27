@@ -11,7 +11,7 @@ import { userPropsUtilities } from "classes/UserPropsUtilities";
 import { authenticationProgressChange } from "functions/utilities/commonActions";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
-import { getInitialState } from "variables/initials/initialStates";
+import { getInitialState } from "variables/initials/states";
 import { notifications } from "variables/notifications/notifications";
 import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
 import { VIEW_MODES } from "variables/otherVariables/helpers";

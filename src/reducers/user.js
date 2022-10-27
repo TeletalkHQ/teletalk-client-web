@@ -4,8 +4,8 @@ import { appOptions } from "classes/AppOptions";
 
 import { triers } from "functions/helpers/triers";
 
-import { initialActions } from "variables/initials/initialActions";
-import { initialStates } from "variables/initials/initialStates";
+import { initialActions } from "variables/initials/actions";
+import { initialStates } from "variables/initials/states";
 
 const userReducer = (
   state = initialStates.user(),
