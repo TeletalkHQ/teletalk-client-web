@@ -35,6 +35,9 @@ const App = () => {
             dispatchAsync: async (action) => await dispatch(action),
           },
           state,
+          others: {
+            getState: () => state,
+          },
         }}
       >
         <ThemeProvider theme={baseTheme}>

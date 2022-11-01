@@ -98,11 +98,11 @@ const sendPrivateMessage = () => {
   };
 };
 
-const getAllChatMessages = ({ chatId }) => {
+const getPrivateChatMessages = ({ chatId }) => {
   return async (dispatch) => {
     try {
       const response =
-        await apiManager.apis.getAllChatMessages.sendFullFeaturedRequest({
+        await apiManager.apis.getPrivateChatMessages.sendFullFeaturedRequest({
           chatId,
         });
 
@@ -115,13 +115,13 @@ const getAllChatMessages = ({ chatId }) => {
 
       // dispatch(setMessagesAction({ messages: response.data.messages }));
     } catch (error) {
-      printCatchError(getAllChatMessages.name, error);
+      printCatchError(getPrivateChatMessages.name, error);
     }
   };
 };
 
 const messageControllers = {
-  getAllChatMessages,
+  getPrivateChatMessages,
   getAllChats,
   getUserChatsLastMessage,
   sendPrivateMessage,
