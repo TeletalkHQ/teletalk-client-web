@@ -1,24 +1,27 @@
+import { useEffect } from "react";
+
 import { eventManager } from "utility-store/src/classes/EventManager";
 
 import { actions } from "actions/actions";
 
 import { appOptions } from "classes/AppOptions";
+
 import { commonJobsHandler } from "classes/CommonJobsHandler";
 
 import ChatBar from "components/rightSide/ChatBar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import MessageInput from "components/rightSide/MessageInput";
 import GridContainer from "components/generals/boxes/GridContainer";
+import MessageInput from "components/rightSide/MessageInput";
 
 import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
-import { useEffect } from "react";
 
 const RightSideContainer = () => {
   const {
     hooksOutput: { dispatch },
+    // others: { getState },
     state,
   } = useMainContext();
 
@@ -35,7 +38,32 @@ const RightSideContainer = () => {
   }, []);
 
   useEffect(() => {
-    return () => {};
+    let intervalId;
+
+    // const chatInfoLength = arrayUtilities.arrayLength(state.user.chatInfo);
+    // if (chatInfoLength) {
+    //   intervalId = setInterval(async () => {
+    //     const state = getState();
+
+    //     for (const chatItem of state.user.chatInfo) {
+    //       const response =
+    //         await apiManager.apis.getPrivateChatMessages.sendFullFeaturedRequest(
+    //           {
+    //             chatId: chatItem.chatId,
+    //           }
+    //         );
+
+    //       const { messages } = response.data;
+
+    //       // if(chatItem.chatId === state.temp.selectedUserForPrivateChat.)
+    //       dispatch(actions.setMessages({ messages }));
+    //     }
+    //   }, 2000);
+    // }
+    return () => {
+      clearInterval(intervalId);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.user.chatInfo]);
 
   const handleInputChange = ({ target: { value } }) => {
