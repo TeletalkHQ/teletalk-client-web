@@ -20,7 +20,7 @@ class AppConfigs {
   };
   #SERVER_BASE_URLS = {
     development: "http://localhost:8080",
-    production: "https://teletalk-server.herokuapp.com",
+    production: "https://teletalk-server-production.up.railway.app",
   };
 
   getDefaultConfigs() {
