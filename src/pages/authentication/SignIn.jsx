@@ -1,5 +1,4 @@
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
-import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 
 import { actions } from "actions/actions";
 
