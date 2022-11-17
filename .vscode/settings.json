@@ -35,7 +35,9 @@
     "webpack.config.js": true,
     ".npmrc": true,
     ".eslintrc.json": true,
-    "cspell.json": true
+    "cspell.json": true,
+    ".trashcan": true,
+    ".eslintignore": true
   },
   "explorerExclude.backup": {},
   "cSpell.words": ["regexs"],
