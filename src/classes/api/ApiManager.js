@@ -8,7 +8,7 @@ const {
   addContact,
   createNewUser,
   getPrivateChatMessages,
-  getAllPrivateChatsInfo,
+  getChatInfo,
   getContacts,
   getCountries,
   getUserChatsLastMessage,
@@ -22,7 +22,7 @@ const {
   addContact: "addContact",
   createNewUser: "createNewUser",
   getPrivateChatMessages: "getPrivateChatMessages",
-  getAllPrivateChatsInfo: "getAllPrivateChatsInfo",
+  getChatInfo: "getChatInfo",
   getContacts: "getContacts",
   getCountries: "getCountries",
   getUserChatsLastMessage: "getUserChatsLastMessage",
@@ -42,7 +42,7 @@ class ApiManager {
       addContact: this.apiTemplate,
       createNewUser: this.apiTemplate,
       getPrivateChatMessages: this.apiTemplate,
-      getAllPrivateChatsInfo: this.apiTemplate,
+      getChatInfo: this.apiTemplate,
       getContacts: this.apiTemplate,
       getCountries: this.apiTemplate,
       getUserChatsLastMessage: this.apiTemplate,
@@ -66,11 +66,26 @@ class ApiManager {
   }
 
   rebuildAllApis() {
+    console.log("rebuilding all api's...");
+    console.log([
+      [addContact, stuffStore.routes.addContact],
+      [createNewUser, stuffStore.routes.createNewUser],
+      [getPrivateChatMessages, stuffStore.routes.getPrivateChatMessages],
+      [getChatInfo, stuffStore.routes.getChatInfo],
+      [getContacts, stuffStore.routes.getContacts],
+      [getUserChatsLastMessage, stuffStore.routes.chatsLastMessage],
+      [getWelcomeMessage, stuffStore.routes.getWelcomeMessage],
+      [logout, stuffStore.routes.logoutNormal],
+      [sendPrivateMessage, stuffStore.routes.sendPrivateMessage],
+      [signIn, stuffStore.routes.signInNormal],
+      [checkUserStatus, stuffStore.routes.checkUserStatus],
+      [verifySignIn, stuffStore.routes.verifySignInNormal],
+    ]);
     this.buildMultipleApiWithJustRouteObject([
       [addContact, stuffStore.routes.addContact],
       [createNewUser, stuffStore.routes.createNewUser],
       [getPrivateChatMessages, stuffStore.routes.getPrivateChatMessages],
-      [getAllPrivateChatsInfo, stuffStore.routes.getAllPrivateChatsInfo],
+      [getChatInfo, stuffStore.routes.getChatInfo],
       [getContacts, stuffStore.routes.getContacts],
       [getUserChatsLastMessage, stuffStore.routes.chatsLastMessage],
       [getWelcomeMessage, stuffStore.routes.getWelcomeMessage],
