@@ -24,6 +24,11 @@ const INPUT_FIELDS_OVERLOAD = notificationBuilder
   .notificationCode(5000)
   .notificationReason("INPUT_FIELDS_OVERLOAD")
   .build();
+const INPUT_FILED_TYPE_WRONG = notificationBuilder
+  .create()
+  .description("Input field type is wrong")
+  .notificationCode(5000)
+  .notificationReason("INPUT_FILED_TYPE_WRONG");
 
 const OUTPUT_FIELDS_MISSING = notificationBuilder
   .create()
@@ -47,16 +52,11 @@ const REQUIRED_FIELDS_NOT_DEFINED = notificationBuilder
   )
   .notificationReason("REQUIRED_FIELDS_NOT_DEFINED")
   .build();
-const REQUIRED_IO_FIELD_IS_NOT_OBJECT = notificationBuilder
+const REQUIRED_FIELD_TYPE_WRONG = notificationBuilder
   .create()
-  .message("Required field is not object")
-  .notificationReason()
-  .build("REQUIRED_IO_FIELD_IS_NOT_OBJECT");
-const REQUIRED_IO_FIELD_IS_NOT_ARRAY = notificationBuilder
-  .create()
-  .message("Required field is not array")
-  .notificationReason()
-  .build("REQUIRED_IO_FIELD_IS_NOT_ARRAY");
+  .message("Required field type is wrong")
+  .notificationReason("REQUIRED_FIELD_TYPE_WRONG")
+  .build();
 
 const URL_NOT_FOUND = notificationBuilder
   .create()
@@ -77,11 +77,11 @@ const errors = {
   ECONNABORTED,
   INPUT_FIELDS_MISSING,
   INPUT_FIELDS_OVERLOAD,
+  INPUT_FILED_TYPE_WRONG,
   OUTPUT_FIELDS_MISSING,
   OUTPUT_FIELDS_OVERLOAD,
+  REQUIRED_FIELD_TYPE_WRONG,
   REQUIRED_FIELDS_NOT_DEFINED,
-  REQUIRED_IO_FIELD_IS_NOT_ARRAY,
-  REQUIRED_IO_FIELD_IS_NOT_OBJECT,
   URL_NOT_FOUND,
   VERIFY_TOKEN_NOT_FOUND,
 };

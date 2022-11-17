@@ -49,7 +49,7 @@
     "react-scroll-up": "^1.3.7",
     "react-spinners": "^0.13.6",
     "socket.io-client": "^4.5.3",
-    "utility-store": "^3.4.2",
+    "utility-store": "^3.5.1",
     "web-vitals": "^3.0.4"
   },
   "devDependencies": {

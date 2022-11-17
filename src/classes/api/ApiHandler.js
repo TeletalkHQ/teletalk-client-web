@@ -1,4 +1,5 @@
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
+import { ioFieldsChecker } from "utility-store/src/functions/ioFieldsChecker";
 
 import { appConfigs } from "classes/AppConfigs";
 import { appOptions } from "classes/AppOptions";
@@ -6,20 +7,10 @@ import { commonJobsHandler } from "classes/CommonJobsHandler";
 
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
-import { ioFieldsChecker } from "functions/helpers/ioFieldsChecker";
 import { requester } from "functions/utilities/apiUtilities";
 import { errorThrower } from "functions/utilities/otherUtilities";
 
 import { notifications } from "variables/notifications/notifications";
-
-const {
-  error: {
-    INPUT_FIELDS_MISSING,
-    INPUT_FIELDS_OVERLOAD,
-    OUTPUT_FIELDS_MISSING,
-    OUTPUT_FIELDS_OVERLOAD,
-  },
-} = notifications;
 
 class ApiHandler {
   constructor({
@@ -73,15 +64,15 @@ class ApiHandler {
     return this.#routeObject.fullUrl;
   }
 
-  #ioDataFieldsCheck(
-    ioData,
-    requiredFields,
-    missingFieldsError,
-    overloadFieldsError
-  ) {
+  #ioDataFieldsCheck(ioData, requiredFields) {
     const ioDataFieldsCheckResult = ioFieldsChecker(ioData, requiredFields, {
-      missingFieldsError,
-      overloadFieldsError,
+      missingFieldsError: notifications.error.INPUT_FIELDS_MISSING,
+      overloadFieldsError: notifications.error.INPUT_FIELDS_OVERLOAD,
+      ioDataFieldTypeWrongError: notifications.error.INPUT_FILED_TYPE_WRONG,
+      requiredFieldsNotDefinedError:
+        notifications.error.REQUIRED_FIELDS_NOT_DEFINED,
+      requiredFieldTypeWrongError:
+        notifications.error.REQUIRED_FIELD_TYPE_WRONG,
     });
 
     errorThrower(!ioDataFieldsCheckResult.ok, {
@@ -94,12 +85,7 @@ class ApiHandler {
     const { apiConfigs } = appConfigs.getConfigs();
 
     commonJobsHandler.checkAndExecute(apiConfigs.inputDataFieldsCheck, () => {
-      this.#ioDataFieldsCheck(
-        inputData,
-        this.#routeObject.inputFields,
-        INPUT_FIELDS_MISSING,
-        INPUT_FIELDS_OVERLOAD
-      );
+      this.#ioDataFieldsCheck(inputData, this.#routeObject.inputFields);
     });
 
     return this;
@@ -110,12 +96,7 @@ class ApiHandler {
     } = appConfigs.getConfigs();
 
     commonJobsHandler.checkAndExecute(outputDataPropertiesCheck, () => {
-      this.#ioDataFieldsCheck(
-        outputData,
-        this.#routeObject.outputFields,
-        OUTPUT_FIELDS_MISSING,
-        OUTPUT_FIELDS_OVERLOAD
-      );
+      this.#ioDataFieldsCheck(outputData, this.#routeObject.outputFields);
     });
 
     return this;
