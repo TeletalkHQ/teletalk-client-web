@@ -36,7 +36,7 @@ class AppConfigs {
         logFailureResponse: false,
         logSuccessfulResponse: false,
         outputDataPropertiesCheck: false,
-        requestTimeout: 20000,
+        requestTimeout: 60000,
         SERVER_BASE_URL: this.#SERVER_BASE_URLS[this.#RUNTIME_MODE],
         validateStatus: false,
       },
