@@ -46,8 +46,6 @@ const tempReducerCases = {
 
   [initialActions.selectedCountry.type]: (state, payload) => fn(state, payload),
 
-  [initialActions.setMessages.type]: (state, payload) => fn(state, payload),
-
   [initialActions.verificationCodeOnChange.type]: (state, payload) =>
     fn(state, payload),
 };

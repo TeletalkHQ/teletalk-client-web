@@ -1,5 +1,4 @@
 import { eventManager } from "utility-store/src/classes/EventManager";
-import { trier } from "utility-store/src/classes/Trier";
 
 import { actions } from "actions/actions";
 
@@ -9,22 +8,6 @@ import { appOptions } from "classes/AppOptions";
 import { printCatchError } from "functions/utilities/otherUtilities";
 
 import { getInitialState } from "variables/initials/states";
-
-const tryToGetAllChats = async () => {
-  return await apiManager.apis.getAllChats.sendFullFeaturedRequest();
-};
-
-const executeIfNoErrorOnTryToGetAllChats = (response, dispatch) => {
-  dispatch(actions.updateAllUserData({ chatInfo: response.data.chats }));
-};
-
-const getAllChats = () => {
-  return async (dispatch) => {
-    (await trier(getAllChats.name).tryAsync(tryToGetAllChats))
-      .executeIfNoError(executeIfNoErrorOnTryToGetAllChats, dispatch)
-      .catch(printCatchError, getAllChats.name);
-  };
-};
 
 const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   try {
@@ -59,11 +42,11 @@ const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   }
 };
 
-const getUserChatsLastMessage = ({ chats }) => {
+const getChatsLastMessage = ({ chats }) => {
   return async (dispatch) => {
     try {
       const response =
-        await apiManager.apis.getUserChatsLastMessage.sendFullFeaturedRequest();
+        await apiManager.apis.getChatsLastMessage.sendFullFeaturedRequest();
 
       const { chatsWithLastMessage } = handleAddUserLastMessage({
         chats,
@@ -72,7 +55,7 @@ const getUserChatsLastMessage = ({ chats }) => {
 
       dispatch(actions.updateAllUserData({ chatInfo: chatsWithLastMessage }));
     } catch (error) {
-      printCatchError(getUserChatsLastMessage.name, error);
+      printCatchError(getChatsLastMessage.name, error);
     }
   };
 };
@@ -98,32 +81,29 @@ const sendPrivateMessage = () => {
   };
 };
 
-const getPrivateChatMessages = ({ chatId }) => {
-  return async (dispatch) => {
+const getPrivateChats = () => {
+  return async (dispatch, getState = getInitialState) => {
     try {
-      const response =
-        await apiManager.apis.getPrivateChatMessages.sendFullFeaturedRequest({
-          chatId,
-        });
+      const state = getState();
 
-      dispatch(
-        actions.updateAllChatMessages({
-          messages: response.data.messages,
-          chatId,
-        })
-      );
+      for (const chatInfoItem of state.user.chatInfo) {
+        const { chatId } = chatInfoItem;
+        const response =
+          await apiManager.apis.getPrivateChat.sendFullFeaturedRequest({
+            chatId,
+          });
 
-      // dispatch(setMessagesAction({ messages: response.data.messages }));
+        dispatch(actions.updatePrivateChatMessages(response.data.privateChat));
+      }
     } catch (error) {
-      printCatchError(getPrivateChatMessages.name, error);
+      printCatchError(getPrivateChats.name, error);
     }
   };
 };
 
 const messageControllers = {
-  getPrivateChatMessages,
-  getAllChats,
-  getUserChatsLastMessage,
+  getPrivateChats,
+  getChatsLastMessage,
   sendPrivateMessage,
 };
 

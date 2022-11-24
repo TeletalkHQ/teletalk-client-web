@@ -28,9 +28,6 @@ const messageInputOnChange = (
   payload = initialActions.messageInputOnChange.payload
 ) => actionCreator(initialActions.messageInputOnChange.type, payload);
 
-const setMessages = (payload = initialActions.setMessages.payload) =>
-  actionCreator(initialActions.setMessages.type, payload);
-
 const phoneNumberOnChange = (
   payload = initialActions.phoneNumberOnChange.payload
 ) => actionCreator(initialActions.phoneNumberOnChange.type, payload);
@@ -51,7 +48,6 @@ const tempActions = {
   resetTempState,
   selectedUserForPrivateChat,
   selectedCountry,
-  setMessages,
   verificationCodeOnChange,
 };
 

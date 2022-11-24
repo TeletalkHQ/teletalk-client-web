@@ -3,14 +3,12 @@ import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities"
 import { initialObjects } from "variables/initials/objects";
 import { initialStates } from "variables/initials/states";
 
-const tempInitialState = initialStates.temp();
-
 const globalInitialState = initialStates.global();
-const userInitialState = initialStates.user();
-
-const otherInitialState = initialStates.other();
-
 const notificationInitialState = initialStates.notification();
+const otherInitialState = initialStates.other();
+const tempInitialState = initialStates.temp();
+const userInitialState = initialStates.user();
+// const messageInitialState = initialStates.message();
 
 const globalInitialActions = {
   appDrawerOpenChange: {
@@ -51,6 +49,24 @@ const globalInitialActions = {
   },
 };
 
+const messageInitialActions = {
+  updatePrivateChatMessages: {
+    payload: {
+      chatId: "",
+      messages: [],
+    },
+    type: "UPDATE_PRIVATE_CHAT_MESSAGES",
+  },
+  resetMessageState: { type: "RESET_MESSAGE_STATE" },
+};
+
+const notificationInitialActions = {
+  errorNotification: {
+    payload: notificationInitialState.errorNotificationState,
+    type: "ERROR_NOTIFICATION",
+  },
+};
+
 const otherInitialActions = {
   getCountries: {
     payload: {
@@ -69,13 +85,6 @@ const otherInitialActions = {
   },
 };
 
-const notificationInitialActions = {
-  errorNotification: {
-    payload: notificationInitialState.errorNotificationState,
-    type: "ERROR_NOTIFICATION",
-  },
-};
-
 const userInitialActions = {
   addNewContact: {
     payload: {
@@ -83,22 +92,8 @@ const userInitialActions = {
     },
     type: "ADD_NEW_CONTACT",
   },
-  addNewMessageToChat: {
-    payload: {
-      chatId: "",
-      newMessage: "",
-    },
-    type: "ADD_NEW_MESSAGE_TO_CHAT",
-  },
   resetUserState: {
     type: "RESET_USER_STATE",
-  },
-  updateAllChatMessages: {
-    payload: {
-      chatId: "",
-      messages: [],
-    },
-    type: "UPDATE_ALL_CHAT_MESSAGES",
   },
   updateAllUserContacts: {
     payload: {
@@ -164,12 +159,6 @@ const tempInitialActions = {
     },
     type: "SELECTED_COUNTRY_ONCHANGE",
   },
-  setMessages: {
-    payload: {
-      messages: tempInitialState.messages,
-    },
-    type: "SET_MESSAGES",
-  },
   verificationCodeOnChange: {
     payload: {
       verificationCode: tempInitialState.verificationCode,
@@ -184,4 +173,5 @@ export const initialActions = {
   ...otherInitialActions,
   ...tempInitialActions,
   ...userInitialActions,
+  ...messageInitialActions,
 };
