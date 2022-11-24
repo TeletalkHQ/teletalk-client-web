@@ -4,7 +4,7 @@ import { SnackbarProvider } from "notistack";
 
 import { appConfigs } from "classes/AppConfigs";
 
-import MainContainer from "containers/MainContainer";
+import MainContainer from "containers/Root";
 
 import { MainContext } from "contexts/MainContext";
 

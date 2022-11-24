@@ -7,7 +7,7 @@ import CountrySelector from "components/generals/inputs/commonInputs/CountrySele
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import DialogTemplate from "components/dialogs/DialogTemplate";
+import DialogTemplate from "components/dialogs/Template";
 import FirstName from "components/generals/inputs/commonInputs/FirstNameInput";
 import H5 from "components/generals/headers/H5";
 import LastName from "components/generals/inputs/commonInputs/LastNameInput";

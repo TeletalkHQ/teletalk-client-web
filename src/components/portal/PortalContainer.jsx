@@ -1,6 +1,6 @@
 import AppDrawer from "components/portal/AppDrawer";
 import OverlayLoading from "components/portal/OverlayLoading";
-import DialogContainer from "containers/DialogContainer";
+import DialogContainer from "containers/Dialog";
 import Portal from "components/portal/Portal";
 
 import { useMainContext } from "hooks/useMainContext";

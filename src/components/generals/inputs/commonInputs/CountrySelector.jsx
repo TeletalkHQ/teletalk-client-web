@@ -4,7 +4,7 @@ import { validatorManager } from "classes/ValidatorManager";
 
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import CustomBox from "components/generals/boxes/CustomBox";
-import Img from "components/generals/otherGeneralComponents/Img";
+import Img from "components/generals/others/Img";
 
 import { ELEMENT_NAMES } from "variables/otherVariables/helpers";
 

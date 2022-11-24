@@ -1,6 +1,6 @@
 import CustomBox from "components/generals/boxes/CustomBox";
-import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
-import CustomInputAdornment from "components/generals/otherGeneralComponents/CustomInputAdornment";
+import CustomIconButton from "components/generals/others/CustomIconButton";
+import CustomInputAdornment from "components/generals/others/CustomInputAdornment";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 
 import { Icons } from "components/others/Icons";

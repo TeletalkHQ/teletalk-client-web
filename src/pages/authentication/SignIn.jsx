@@ -6,7 +6,7 @@ import { stuffStore } from "classes/StuffStore";
 
 import CountryCode from "components/generals/inputs/commonInputs/CountryCode";
 import CountrySelector from "components/generals/inputs/commonInputs/CountrySelector";
-import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
+import CustomAvatar from "components/generals/others/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomCircularProgress from "components/generals/progresses/CustomCircularProgress";

@@ -6,7 +6,7 @@ import { actions } from "actions/actions";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomList from "components/generals/boxes/CustomList";
 import CustomListItem from "components/generals/boxes/CustomListItem";
-import CustomListItemIcon from "components/generals/otherGeneralComponents/CustomListItemIcon";
+import CustomListItemIcon from "components/generals/others/CustomListItemIcon";
 import CustomListItemText from "components/generals/boxes/CustomListItemText";
 import Div from "components/generals/boxes/Div";
 

@@ -1,4 +1,4 @@
-import CustomBackdrop from "components/generals/otherGeneralComponents/CustomBackdrop";
+import CustomBackdrop from "components/generals/others/CustomBackdrop";
 import CustomCircularProgress from "components/generals/progresses/CustomCircularProgress";
 
 import { GLOBAL_LOADING_TYPES } from "variables/otherVariables/helpers";

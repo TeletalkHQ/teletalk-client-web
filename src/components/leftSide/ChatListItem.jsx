@@ -1,4 +1,4 @@
-import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
+import CustomAvatar from "components/generals/others/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomListItem from "components/generals/boxes/CustomListItem";
