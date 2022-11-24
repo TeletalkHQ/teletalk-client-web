@@ -6,7 +6,7 @@ import ContactListItem from "components/others/ContactListItem";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import DialogTemplate from "components/dialogs/DialogTemplate";
+import DialogTemplate from "components/dialogs/Template";
 import H5 from "components/generals/headers/H5";
 
 import { commonActions } from "functions/utilities/commonActions";

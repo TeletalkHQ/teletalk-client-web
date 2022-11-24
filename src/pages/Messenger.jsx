@@ -1,7 +1,7 @@
 import GridContainer from "components/generals/boxes/GridContainer";
 
-import LeftSideContainer from "containers/LeftSideContainer";
-import RightSideContainer from "containers/RightSideContainer";
+import LeftSideContainer from "containers/LeftSide";
+import RightSideContainer from "containers/RightSide";
 
 const Messenger = () => {
   return (

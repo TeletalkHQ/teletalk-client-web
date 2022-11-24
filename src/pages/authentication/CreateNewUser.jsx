@@ -6,7 +6,7 @@ import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomContainer from "components/generals/boxes/CustomContainer";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
+import CustomIconButton from "components/generals/others/CustomIconButton";
 import FirstName from "components/generals/inputs/commonInputs/FirstNameInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import LastName from "components/generals/inputs/commonInputs/LastNameInput";

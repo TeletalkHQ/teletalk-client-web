@@ -1,6 +1,6 @@
 import { appConfigs } from "classes/AppConfigs";
 
-import CustomLink from "components/generals/otherGeneralComponents/CustomLink";
+import CustomLink from "components/generals/others/CustomLink";
 import CustomTypography from "components/generals/typographies/CustomTypography";
 
 const Copyright = (props) => {

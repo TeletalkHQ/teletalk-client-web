@@ -66,21 +66,6 @@ class ApiManager {
   }
 
   rebuildAllApis() {
-    console.log("rebuilding all api's...");
-    console.log([
-      [addContact, stuffStore.routes.addContact],
-      [createNewUser, stuffStore.routes.createNewUser],
-      [getPrivateChatMessages, stuffStore.routes.getPrivateChatMessages],
-      [getChatInfo, stuffStore.routes.getChatInfo],
-      [getContacts, stuffStore.routes.getContacts],
-      [getUserChatsLastMessage, stuffStore.routes.chatsLastMessage],
-      [getWelcomeMessage, stuffStore.routes.getWelcomeMessage],
-      [logout, stuffStore.routes.logoutNormal],
-      [sendPrivateMessage, stuffStore.routes.sendPrivateMessage],
-      [signIn, stuffStore.routes.signInNormal],
-      [checkUserStatus, stuffStore.routes.checkUserStatus],
-      [verifySignIn, stuffStore.routes.verifySignInNormal],
-    ]);
     this.buildMultipleApiWithJustRouteObject([
       [addContact, stuffStore.routes.addContact],
       [createNewUser, stuffStore.routes.createNewUser],

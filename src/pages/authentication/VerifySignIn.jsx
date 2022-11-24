@@ -6,11 +6,11 @@ import { commonJobsHandler } from "classes/CommonJobsHandler";
 import { stuffStore } from "classes/StuffStore";
 import { validatorManager } from "classes/ValidatorManager";
 
-import CustomAvatar from "components/generals/otherGeneralComponents/CustomAvatar";
+import CustomAvatar from "components/generals/others/CustomAvatar";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomButton from "components/generals/inputs/CustomButton";
 import CustomContainer from "components/generals/boxes/CustomContainer";
-import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
+import CustomIconButton from "components/generals/others/CustomIconButton";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import GreyTextParagraph from "components/generals/typographies/GreyTextParagraph";
 import H5 from "components/generals/headers/H5";

@@ -1,6 +1,6 @@
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomIconButton from "components/generals/otherGeneralComponents/CustomIconButton";
+import CustomIconButton from "components/generals/others/CustomIconButton";
 import CustomPaper from "components/generals/boxes/CustomPaper";
 import CustomTextInput from "components/generals/inputs/CustomTextInput";
 import { Icons } from "components/others/Icons";

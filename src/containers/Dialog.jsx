@@ -3,9 +3,9 @@ import { actions } from "actions/actions";
 import { appOptions } from "classes/AppOptions";
 import { systemController } from "classes/SystemController";
 
-import AddNewContactDialog from "components/dialogs/AddNewContactDialog";
+import AddNewContactDialog from "components/dialogs/AddNewContact";
 import Contacts from "components/dialogs/Contacts";
-import LogoutDialog from "components/dialogs/LogoutDialog";
+import LogoutDialog from "components/dialogs/Logout";
 
 import { defaultDialogStateItemProps } from "functions/utilities/stateUtilities";
 

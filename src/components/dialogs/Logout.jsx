@@ -1,4 +1,4 @@
-import DialogTemplate from "components/dialogs/DialogTemplate";
+import DialogTemplate from "components/dialogs/Template";
 import CustomBox from "components/generals/boxes/CustomBox";
 import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
 import CustomButton from "components/generals/inputs/CustomButton";
