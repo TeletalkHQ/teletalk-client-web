@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 import { eventManager } from "utility-store/src/classes/EventManager";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import { actions } from "actions/actions";
 
@@ -32,37 +33,14 @@ const RightSideContainer = () => {
       commonJobsHandler.resetMessageInputText
     );
 
-    //     dispatch(actions.addNewMessageToChat({ chatId, newMessage }));
-
     return () => {};
   }, []);
 
   useEffect(() => {
-    let intervalId;
-
-    // const chatInfoLength = arrayUtilities.arrayLength(state.user.chatInfo);
-    // if (chatInfoLength) {
-    //   intervalId = setInterval(async () => {
-    //     const state = getState();
-
-    //     for (const chatItem of state.user.chatInfo) {
-    //       const response =
-    //         await apiManager.apis.getPrivateChatMessages.sendFullFeaturedRequest(
-    //           {
-    //             chatId: chatItem.chatId,
-    //           }
-    //         );
-
-    //       const { messages } = response.data;
-
-    //       // if(chatItem.chatId === state.temp.selectedUserForPrivateChat.)
-    //       dispatch(actions.setMessages({ messages }));
-    //     }
-    //   }, 2000);
-    // }
-    return () => {
-      clearInterval(intervalId);
-    };
+    if (arrayUtilities.arrayLength(state.user.chatInfo)) {
+      dispatch(controllers.getPrivateChats());
+    }
+    return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.user.chatInfo]);
 
@@ -77,16 +55,6 @@ const RightSideContainer = () => {
   const handleMessageContainerCloseClick = () => {
     dispatch(actions.selectedUserForPrivateChat({ selectedContactId: "" }));
   };
-
-  // const chat = arrayUtilities.findByPropValueEquality(
-  //   user.chats,
-  //   userId,
-  //   "participantId"
-  // );
-
-  // if (!chat && !selectedContact) {
-  //   return null;
-  // }
 
   return (
     <GridContainer

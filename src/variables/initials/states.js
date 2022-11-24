@@ -11,47 +11,6 @@ const {
   others: { appDrawerCurrentAnchor, startupViewMode },
 } = appConfigs.getConfigs();
 
-const defaultOtherState = () => ({
-  countries: [],
-  welcomeMessage: "",
-});
-
-const defaultTempState = () => ({
-  countryCode: "",
-  countryName: "",
-  firstName: "",
-  lastName: "",
-  messageInputTextValue: "",
-  messages: [],
-  phoneNumber: "",
-  selectedCountry: null,
-  selectedUserForPrivateChat: initialObjects.contact(),
-  verificationCode: "",
-});
-
-const defaultUserState = () => ({
-  bio: "",
-  blacklist: [],
-  chatInfo: [],
-  contacts: [],
-  countryCode: "",
-  countryName: "",
-  firstName: "",
-  lastName: "",
-  phoneNumber: "",
-  userId: "",
-  username: "",
-});
-
-const defaultNotificationState = () => ({
-  errorNotificationState: {
-    description: "",
-    errorCode: "",
-    errorReason: "",
-    message: "",
-  },
-});
-
 const defaultGlobalState = () => ({
   appDrawer: {
     anchor: {
@@ -86,8 +45,54 @@ const defaultGlobalState = () => ({
   viewMode: startupViewMode,
 });
 
+const defaultMessageState = () => ({
+  privateChatMessages: [],
+});
+
+const defaultNotificationState = () => ({
+  errorNotificationState: {
+    description: "",
+    errorCode: "",
+    errorReason: "",
+    message: "",
+  },
+});
+
+const defaultOtherState = () => ({
+  countries: [],
+  welcomeMessage: "",
+});
+
+const defaultTempState = () => ({
+  countryCode: "",
+  countryName: "",
+  firstName: "",
+  lastName: "",
+  messageInputTextValue: "",
+  messages: [],
+  phoneNumber: "",
+  selectedCountry: null,
+  selectedUserForPrivateChat: initialObjects.contact(),
+  verificationCode: "",
+});
+
+const defaultUserState = () => ({
+  bio: "",
+  blacklist: [],
+  chatInfo: [],
+  contacts: [],
+  countryCode: "",
+  countryName: "",
+  firstName: "",
+  lastName: "",
+  phoneNumber: "",
+  userId: "",
+  username: "",
+});
+
 const initialStates = {
   global: defaultGlobalState,
+  message: defaultMessageState,
   notification: defaultNotificationState,
   other: defaultOtherState,
   temp: defaultTempState,

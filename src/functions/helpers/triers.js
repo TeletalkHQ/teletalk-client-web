@@ -1,4 +1,3 @@
-import { printCatchError } from "functions/utilities/otherUtilities";
 import { trier } from "utility-store/src/classes/Trier";
 
 const tryToExecuteCase = ({ action, reducerCases, state }) => {
@@ -20,10 +19,8 @@ const reducerTrier = ({ action, callerName, reducerCases, state }) => {
       reducerCases,
       state,
     })
-    .catch((error) => {
-      printCatchError(error, callerName);
-      return state;
-    })
+    .printError()
+    .catch(() => state)
     .result();
 };
 
