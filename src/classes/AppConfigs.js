@@ -15,19 +15,24 @@ class AppConfigs {
     envManager.ENVIRONMENT_KEYS.REACT_APP_RUNTIME_MODE
   );
   #CLIENT_BASE_URLS = (() => {
-    const { CLIENT_BASE_URL_DEVELOPMENT, CLIENT_BASE_URL_PRODUCTION } =
-      envManager.getAllLocalEnvironments();
+    const {
+      REACT_APP_CLIENT_BASE_URL_DEVELOPMENT,
+      REACT_APP_CLIENT_BASE_URL_PRODUCTION,
+    } = envManager.getAllLocalEnvironments();
+
     return {
-      development: CLIENT_BASE_URL_DEVELOPMENT,
-      production: CLIENT_BASE_URL_PRODUCTION,
+      development: REACT_APP_CLIENT_BASE_URL_DEVELOPMENT,
+      production: REACT_APP_CLIENT_BASE_URL_PRODUCTION,
     };
   })();
   #SERVER_BASE_URLS = (() => {
-    const { SERVER_BASE_URL_DEVELOPMENT, SERVER_BASE_URL_PRODUCTION } =
-      envManager.getAllLocalEnvironments();
+    const {
+      REACT_APP_SERVER_BASE_URL_DEVELOPMENT,
+      REACT_APP_SERVER_BASE_URL_PRODUCTION,
+    } = envManager.getAllLocalEnvironments();
     return {
-      development: SERVER_BASE_URL_DEVELOPMENT,
-      production: SERVER_BASE_URL_PRODUCTION,
+      development: REACT_APP_SERVER_BASE_URL_DEVELOPMENT,
+      production: REACT_APP_SERVER_BASE_URL_PRODUCTION,
     };
   })();
 
