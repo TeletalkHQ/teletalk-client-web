@@ -5,3 +5,4 @@ Add validators to auth components
 Add Class for completed tasks logs
 Read state from useSelector instead of useMyContext
 Do not destructure state;
+If it receives a 404 response request, the program will crash
