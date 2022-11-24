@@ -1,3 +1,5 @@
+//TODO: Move to appOptions
+
 const APP_DRAWER_ANCHORS = {
   bottom: "bottom",
   left: "left",
