@@ -20,8 +20,6 @@ COPY public/ public/
 
 RUN npm run build
 
-COPY build/ build/
-
 EXPOSE 3000
 
 CMD ["serve", "-s", "build"]

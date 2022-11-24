@@ -14,14 +14,22 @@ class AppConfigs {
   #RUNTIME_MODE = envManager.getEnvironment(
     envManager.ENVIRONMENT_KEYS.REACT_APP_RUNTIME_MODE
   );
-  #CLIENT_BASE_URLS = {
-    development: "http://localhost:3000",
-    production: "https://teletalk-client-web.vercel.app",
-  };
-  #SERVER_BASE_URLS = {
-    development: "http://localhost:8080",
-    production: "https://teletalk-server-production.up.railway.app",
-  };
+  #CLIENT_BASE_URLS = (() => {
+    const { CLIENT_BASE_URL_DEVELOPMENT, CLIENT_BASE_URL_PRODUCTION } =
+      envManager.getAllLocalEnvironments();
+    return {
+      development: CLIENT_BASE_URL_DEVELOPMENT,
+      production: CLIENT_BASE_URL_PRODUCTION,
+    };
+  })();
+  #SERVER_BASE_URLS = (() => {
+    const { SERVER_BASE_URL_DEVELOPMENT, SERVER_BASE_URL_PRODUCTION } =
+      envManager.getAllLocalEnvironments();
+    return {
+      development: SERVER_BASE_URL_DEVELOPMENT,
+      production: SERVER_BASE_URL_PRODUCTION,
+    };
+  })();
 
   getDefaultConfigs() {
     return {
