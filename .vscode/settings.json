@@ -39,9 +39,14 @@
     ".trashcan": true,
     ".eslintignore": true,
     "build": true,
-    "Dockerfile": true
+    "Dockerfile": true,
+    "aliases.sh": true,
+    "aliasLoader.sh": true
   },
   "explorerExclude.backup": {},
   "cSpell.words": ["regexs"],
-  "marquee.widgets.npm-stats.packageNames": ["teletalk-client"]
+  "marquee.widgets.npm-stats.packageNames": ["teletalk-client"],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
 }
