@@ -1,13 +1,13 @@
-import CustomAvatar from "components/generals/others/CustomAvatar";
-import CustomBox from "components/generals/boxes/CustomBox";
-import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomIconButton from "components/generals/others/CustomIconButton";
-import CustomPaper from "components/generals/boxes/CustomPaper";
-import CustomTypography from "components/generals/typographies/CustomTypography";
+import CustomAvatar from "components/general/other/CustomAvatar";
+import CustomBox from "components/general/box/CustomBox";
+import CustomFlexBox from "components/general/box/CustomFlexBox";
+import CustomIconButton from "components/general/other/CustomIconButton";
+import CustomPaper from "components/general/box/CustomPaper";
+import CustomTypography from "components/general/typography/CustomTypography";
 
-import { Icons } from "components/others/Icons";
+import { Icons } from "components/other/Icons";
 
-const ChatBar = ({ chatName, onMessageContainerCloseClick }) => {
+const ChatBar = ({ contactName, onMessageContainerCloseClick }) => {
   return (
     <>
       <CustomPaper sx={{ width: "100%", height: "100%" }}>
@@ -22,8 +22,8 @@ const ChatBar = ({ chatName, onMessageContainerCloseClick }) => {
             </CustomIconButton>
           </CustomBox>
           <CustomFlexBox ai="center">
-            <CustomAvatar alt={chatName} />
-            <CustomTypography>{chatName}</CustomTypography>
+            <CustomAvatar alt={contactName} />
+            <CustomTypography>{contactName}</CustomTypography>
           </CustomFlexBox>
           <CustomBox>
             <CustomIconButton>

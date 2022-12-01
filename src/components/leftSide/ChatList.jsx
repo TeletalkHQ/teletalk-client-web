@@ -1,16 +1,31 @@
-import CustomList from "components/generals/boxes/CustomList";
+import CustomList from "components/general/box/CustomList";
+import ChatListItem from "components/leftSide/ChatListItem";
 
-const ChatList = () => {
+const ChatList = ({
+  chatList,
+  onChatListItemClick,
+  selectedUserForPrivateChat,
+}) => {
   return (
     <>
       <CustomList
         sx={{
-          width: "80%",
+          width: "100%",
           height: "100%",
-          overflowY: "scroll",
+          overflowY: "auto",
           scrollBehavior: "smooth",
         }}
-      ></CustomList>
+      >
+        {chatList.map((chatListItem, i) => (
+          <ChatListItem
+            onChatListItemClick={() => onChatListItemClick(chatListItem.userId)}
+            key={i}
+            message={chatListItem.message}
+            name={chatListItem.name}
+            selected={selectedUserForPrivateChat.userId === chatListItem.userId}
+          />
+        ))}
+      </CustomList>
     </>
   );
 };

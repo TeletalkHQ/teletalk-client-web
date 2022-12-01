@@ -1,6 +1,6 @@
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
-import { actions } from "actions/actions";
+import { actions } from "store/actions";
 
 import { extractedDispatch } from "hooks/useThunkReducer";
 

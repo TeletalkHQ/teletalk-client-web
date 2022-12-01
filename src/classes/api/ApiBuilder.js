@@ -1,8 +1,8 @@
 import { apiHandler } from "classes/api/ApiHandler";
 
-import { errorThrower } from "functions/utilities/otherUtilities";
+import { utilities } from "utilities";
 
-import { notifications } from "variables/notifications/notifications";
+import { variables } from "variables";
 
 class ApiBuilder {
   constructor() {
@@ -58,8 +58,8 @@ class ApiBuilder {
   }
 
   #checkMinimumRequirements() {
-    errorThrower(!this.requirements.routeObject.fullUrl, {
-      ...notifications.error.URL_NOT_FOUND,
+    utilities.errorThrower(!this.requirements.routeObject.fullUrl, {
+      ...variables.notification.error.URL_NOT_FOUND,
       requirements: this.requirements,
     });
   }

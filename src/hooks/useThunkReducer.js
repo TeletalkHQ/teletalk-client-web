@@ -2,9 +2,7 @@ import { useCallback, useReducer } from "react";
 
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
-import { printCatchError } from "functions/utilities/otherUtilities";
-
-import { getInitialState } from "variables/initials/states";
+import { utilities } from "utilities";
 
 //! Use it in special cases only!
 let extractedDispatch = (
@@ -17,19 +15,11 @@ let extractedDispatchAsync = async (action = { type: "", payload: {} }) =>
   action;
 
 let useDispatch = () => extractedDispatch;
-const initialUseSelectorCallbackParam = (state = getInitialState()) => {
+const initialUseSelectorCallbackParam = (state) => {
   return state;
 };
 let useSelector = (callback = initialUseSelectorCallbackParam) => {
   return callback();
-};
-
-const actionLogger = (action) => {
-  logger.debug("action:", action);
-};
-
-const defaultConfigs = {
-  logActions: false,
 };
 
 const combineReducers = (reducers) => {
@@ -42,26 +32,22 @@ const combineReducers = (reducers) => {
   };
 };
 
-const dispatcher = ({ action, configs, dispatch, getState }) => {
+const dispatcher = ({ action, dispatch, getState }) => {
   return customTypeof.isFunction(action)
     ? action(dispatch, getState)
-    : (() => {
-        if (configs.logActions) actionLogger(action);
-        dispatch(action);
-      })();
+    : dispatch(action);
 };
 
-const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
+const useThunkReducer = (reducer, initialState) => {
   try {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const getState = useCallback(() => state, [state]);
+    const getState = () => state;
 
     const customDispatch = useCallback(
       (action) =>
         dispatcher({
           action,
-          configs,
           dispatch,
           getState,
         }),
@@ -79,7 +65,7 @@ const useThunkReducer = (reducer, initialState, configs = defaultConfigs) => {
 
     return [state, customDispatch];
   } catch (error) {
-    printCatchError(useThunkReducer.name, error);
+    utilities.printCatchError(useThunkReducer.name, error);
     throw error;
   }
 };

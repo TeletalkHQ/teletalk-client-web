@@ -2,31 +2,23 @@ import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
 
-import { appConfigs } from "classes/AppConfigs";
+import Containers from "containers";
 
-import MainContainer from "containers/Root";
-
-import { MainContext } from "contexts/MainContext";
+import { MainContext } from "context/MainContext";
 
 import { useThunkReducer } from "hooks/useThunkReducer";
 
-import { rootReducer } from "reducers/root";
+import { store } from "store/store";
 
 import { baseTheme } from "theme/baseTheme";
 
-import { getInitialState } from "variables/initials/states";
-
-const initialStates = getInitialState();
+const states = store.initialState();
 
 const App = () => {
-  const [state = initialStates, dispatch] = useThunkReducer(
-    rootReducer,
-    initialStates,
-    appConfigs.getConfigs().stateManagement
-  );
+  const [state = states, dispatch] = useThunkReducer(store.rootReducer, states);
 
   return (
-    //TODO Move this configs to appConfigs
+    //TODO: Move this configs to appConfigs
     <SnackbarProvider maxSnack={10}>
       <MainContext.Provider
         value={{
@@ -34,15 +26,15 @@ const App = () => {
             dispatch,
             dispatchAsync: async (action) => await dispatch(action),
           },
-          state,
           others: {
             getState: () => state,
           },
+          state,
         }}
       >
         <ThemeProvider theme={baseTheme}>
           <CssBaseline enableColorScheme />
-          <MainContainer />
+          <Containers.Provider />
         </ThemeProvider>
       </MainContext.Provider>
     </SnackbarProvider>

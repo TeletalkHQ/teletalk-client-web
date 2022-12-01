@@ -1,10 +1,10 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { actions } from "actions/actions";
+import { actions } from "store/actions";
 
 import { apiManager } from "classes/api/ApiManager";
 
-import { printCatchError } from "functions/utilities/otherUtilities";
+import { utilities } from "utilities";
 
 const tryToGetWelcomeMessage = async () => {
   return await apiManager.apis.getWelcomeMessage.sendFullFeaturedRequest();
@@ -20,7 +20,7 @@ const getWelcomeMessage = () => {
   return async (dispatch) => {
     (await trier(getWelcomeMessage.name).tryAsync(tryToGetWelcomeMessage))
       .executeIfNoError(executeIfNoErrorOnTryToGetWelcomeMessage, dispatch)
-      .catch(printCatchError, getWelcomeMessage.name);
+      .catch(utilities.printCatchError, getWelcomeMessage.name);
   };
 };
 
@@ -37,7 +37,7 @@ const getCountries = () => {
   return async (dispatch) => {
     (await trier(getCountries.name).tryAsync(tryToGetCountries))
       .executeIfNoError(executeIfNoErrorOnTryToGetCountries, dispatch)
-      .catch(printCatchError, getCountries.name);
+      .catch(utilities.printCatchError, getCountries.name);
   };
 };
 

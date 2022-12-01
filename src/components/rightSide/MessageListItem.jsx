@@ -1,12 +1,12 @@
-import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomPaper from "components/generals/boxes/CustomPaper";
-import CustomTypography from "components/generals/typographies/CustomTypography";
+import CustomFlexBox from "components/general/box/CustomFlexBox";
+import CustomPaper from "components/general/box/CustomPaper";
+import CustomTypography from "components/general/typography/CustomTypography";
 
-import { transitionComponents } from "variables/otherVariables/transitionComponents";
+// import { Transitions } from "components/others/Transitions";
 
 const MessageListItem = ({
   chatDate,
-  direction,
+  // direction,
   justify,
   message,
   messageItemClassName,
@@ -18,26 +18,26 @@ const MessageListItem = ({
         sx={{ width: "100%", padding: "3px" }}
         justifyContent={justify}
       >
-        <transitionComponents.Slide
+        {/* <Transitions.Slide
           direction={direction}
           in={true}
           mountOnEnter
           unmountOnExit
+        > */}
+        <CustomPaper
+          sx={{ padding: "3px" }}
+          className={`${messageItemClassName}`}
+          elevation={1}
+          // onContextMenu={(e) => onOtherStateChange(e)}
         >
-          <CustomPaper
-            sx={{ padding: "3px" }}
-            className={`${messageItemClassName}`}
-            elevation={1}
-            // onContextMenu={(e) => onOtherStateChange(e)}
-          >
-            <CustomTypography style={{ wordBreak: "break-word" }}>
-              {message}
-            </CustomTypography>
-            <CustomTypography style={{ fontSize: "13px", float: "right" }}>
-              {messageTime} {chatDate}
-            </CustomTypography>
-          </CustomPaper>
-        </transitionComponents.Slide>
+          <CustomTypography style={{ wordBreak: "break-word" }}>
+            {message}
+          </CustomTypography>
+          <CustomTypography style={{ fontSize: "13px", float: "right" }}>
+            {messageTime} {chatDate}
+          </CustomTypography>
+        </CustomPaper>
+        {/* </Transitions.Slide> */}
       </CustomFlexBox>
     </>
   );

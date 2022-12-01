@@ -3,14 +3,13 @@ import { ioFieldsChecker } from "utility-store/src/functions/ioFieldsChecker";
 
 import { appConfigs } from "classes/AppConfigs";
 import { appOptions } from "classes/AppOptions";
-import { commonJobsHandler } from "classes/CommonJobsHandler";
+import { commonTasks } from "classes/CommonTasks";
 
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
-import { requester } from "functions/utilities/apiUtilities";
-import { errorThrower } from "functions/utilities/otherUtilities";
+import { utilities } from "utilities";
 
-import { notifications } from "variables/notifications/notifications";
+import { variables } from "variables";
 
 class ApiHandler {
   constructor({
@@ -64,27 +63,28 @@ class ApiHandler {
     return this.#routeObject.fullUrl;
   }
 
-  #ioDataFieldsCheck(ioData, requiredFields) {
-    const ioDataFieldsCheckResult = ioFieldsChecker(ioData, requiredFields, {
-      missingFieldsError: notifications.error.INPUT_FIELDS_MISSING,
-      overloadFieldsError: notifications.error.INPUT_FIELDS_OVERLOAD,
-      ioDataFieldTypeWrongError: notifications.error.INPUT_FILED_TYPE_WRONG,
+  #ioDataFieldsCheck(ioData, inputFields) {
+    const ioDataFieldsCheckResult = ioFieldsChecker(ioData, inputFields, {
+      missingFieldsError: variables.notification.error.INPUT_FIELDS_MISSING,
+      overloadFieldsError: variables.notification.error.INPUT_FIELDS_OVERLOAD,
+      ioDataFieldTypeWrongError:
+        variables.notification.error.INPUT_FILED_TYPE_WRONG,
       requiredFieldsNotDefinedError:
-        notifications.error.REQUIRED_FIELDS_NOT_DEFINED,
+        variables.notification.error.REQUIRED_FIELDS_NOT_DEFINED,
       requiredFieldTypeWrongError:
-        notifications.error.REQUIRED_FIELD_TYPE_WRONG,
+        variables.notification.error.REQUIRED_FIELD_TYPE_WRONG,
     });
 
-    errorThrower(!ioDataFieldsCheckResult.ok, {
+    utilities.errorThrower(!ioDataFieldsCheckResult.ok, {
       ...ioDataFieldsCheckResult.errorObject,
-      requiredFields,
+      inputFields,
       ioData,
     });
   }
   inputDataFieldsCheck(inputData = this.getData()) {
     const { apiConfigs } = appConfigs.getConfigs();
 
-    commonJobsHandler.checkAndExecute(apiConfigs.inputDataFieldsCheck, () => {
+    commonTasks.checkAndExecute(apiConfigs.inputDataFieldsCheck, () => {
       this.#ioDataFieldsCheck(inputData, this.#routeObject.inputFields);
     });
 
@@ -95,8 +95,8 @@ class ApiHandler {
       apiConfigs: { outputDataPropertiesCheck },
     } = appConfigs.getConfigs();
 
-    commonJobsHandler.checkAndExecute(outputDataPropertiesCheck, () => {
-      this.#ioDataFieldsCheck(outputData, this.#routeObject.outputFields);
+    commonTasks.checkAndExecute(outputDataPropertiesCheck, () => {
+      this.#ioDataFieldsCheck(outputData, this.#routeObject.outputFields[0]);
     });
 
     return this;
@@ -112,9 +112,9 @@ class ApiHandler {
     const responseCode = statusCode || status;
 
     if (responseCode >= 400) {
-      if (responseCode === 401) commonJobsHandler.resetEverything();
+      if (responseCode === 401) commonTasks.resetEverything();
 
-      commonJobsHandler.correctErrorsAndPrint(errors);
+      commonTasks.correctErrorsAndPrint(errors);
 
       throw errors;
     }
@@ -191,7 +191,7 @@ class ApiHandler {
   }
 
   async sendRequest(options = this.requesterOptions) {
-    const response = await requester(options);
+    const response = await utilities.requester(options);
     this.setResponse(response).setData(response.data);
     return this;
   }
@@ -218,7 +218,7 @@ class ApiHandler {
       return this.getResponse();
     } catch (error) {
       this.#logFailureResponse(error);
-      commonJobsHandler.throwConnAbortNotification();
+      commonTasks.throwConnAbortNotification();
       throw error;
     }
   }
@@ -228,7 +228,7 @@ class ApiHandler {
       apiConfigs: { logSuccessfulResponse },
     } = appConfigs.getConfigs();
 
-    commonJobsHandler.checkAndExecute(logSuccessfulResponse, () =>
+    commonTasks.checkAndExecute(logSuccessfulResponse, () =>
       logger.debug("response:", response)
     );
   }
@@ -237,7 +237,7 @@ class ApiHandler {
       apiConfigs: { logFailureResponse },
     } = appConfigs.getConfigs();
 
-    commonJobsHandler.checkAndExecute(logFailureResponse, () =>
+    commonTasks.checkAndExecute(logFailureResponse, () =>
       logger.error(`Api:${this.#routeObject.fullUrl} Api catch, error:`, error)
     );
   }

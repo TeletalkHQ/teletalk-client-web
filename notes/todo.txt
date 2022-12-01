@@ -7,3 +7,5 @@ Read state from useSelector instead of useMyContext
 Do not destructure state;
 If it receives a 404 response request, the program will crash
 Update try|catch with Trier
+Review reducer handlers
+Replace withValidator hoc with custom hook

@@ -2,35 +2,37 @@ import { apiBuilder } from "classes/api/ApiBuilder";
 import { apiHandler } from "classes/api/ApiHandler";
 import { stuffStore } from "classes/StuffStore";
 
-import { addUniqueIdToEachCountry } from "functions/others/apiTransformers";
+import { transformers } from "api/transformers";
 
 const {
   addContact,
+  getUserData,
   createNewUser,
-  getPrivateChat,
   getChatInfo,
+  getChatsLastMessage,
   getContacts,
   getCountries,
-  getChatsLastMessage,
+  getPrivateChat,
+  getPublicUserInfo,
   getWelcomeMessage,
   logout,
   sendPrivateMessage,
   signIn,
-  checkUserStatus,
   verifySignIn,
 } = {
   addContact: "addContact",
+  getUserData: "getUserData",
   createNewUser: "createNewUser",
-  getPrivateChat: "getPrivateChat",
   getChatInfo: "getChatInfo",
+  getChatsLastMessage: "getChatsLastMessage",
   getContacts: "getContacts",
   getCountries: "getCountries",
-  getChatsLastMessage: "getChatsLastMessage",
+  getPrivateChat: "getPrivateChat",
+  getPublicUserInfo: "getPublicUserInfo",
   getWelcomeMessage: "getWelcomeMessage",
   logout: "logout",
   sendPrivateMessage: "sendPrivateMessage",
   signIn: "signIn",
-  checkUserStatus: "checkUserStatus",
   verifySignIn: "verifySignIn",
 };
 
@@ -40,52 +42,54 @@ class ApiManager {
 
     this.apis = {
       addContact: this.apiTemplate,
+      getUserData: this.apiTemplate,
       createNewUser: this.apiTemplate,
-      getPrivateChat: this.apiTemplate,
       getChatInfo: this.apiTemplate,
+      getChatsLastMessage: this.apiTemplate,
       getContacts: this.apiTemplate,
       getCountries: this.apiTemplate,
-      getChatsLastMessage: this.apiTemplate,
+      getPrivateChat: this.apiTemplate,
+      getPublicUserInfo: this.apiTemplate,
       getWelcomeMessage: this.apiTemplate,
       logout: this.apiTemplate,
       sendPrivateMessage: this.apiTemplate,
       signIn: this.apiTemplate,
-      checkUserStatus: this.apiTemplate,
       verifySignIn: this.apiTemplate,
     };
   }
 
-  buildApiWithJustRouteObject(routeObject) {
+  buildWithRouteObject(routeObject) {
     return apiBuilder.create().setRequirements({ routeObject }).build();
   }
 
-  buildMultipleApiWithJustRouteObject(arrayOfApiNameAndRouteObject) {
+  buildMultipleWithRouteObject(arrayOfApiNameAndRouteObject) {
     arrayOfApiNameAndRouteObject.forEach(([apiName, routeObject]) => {
-      this.apis[apiName] = this.buildApiWithJustRouteObject(routeObject);
+      this.apis[apiName] = this.buildWithRouteObject(routeObject);
     });
   }
 
-  rebuildAllApis() {
-    this.buildMultipleApiWithJustRouteObject([
+  build() {
+    this.buildMultipleWithRouteObject([
       [addContact, stuffStore.routes.addContact],
+      [getUserData, stuffStore.routes.getUserData],
       [createNewUser, stuffStore.routes.createNewUser],
-      [getPrivateChat, stuffStore.routes.getPrivateChat],
       [getChatInfo, stuffStore.routes.getChatInfo],
-      [getContacts, stuffStore.routes.getContacts],
       [getChatsLastMessage, stuffStore.routes.getChatsLastMessage],
+      [getContacts, stuffStore.routes.getContacts],
+      [getPrivateChat, stuffStore.routes.getPrivateChat],
+      [getPublicUserInfo, stuffStore.routes.getPublicUserInfo],
       [getWelcomeMessage, stuffStore.routes.getWelcomeMessage],
       [logout, stuffStore.routes.logoutNormal],
       [sendPrivateMessage, stuffStore.routes.sendPrivateMessage],
       [signIn, stuffStore.routes.signInNormal],
-      [checkUserStatus, stuffStore.routes.checkUserStatus],
       [verifySignIn, stuffStore.routes.verifySignInNormal],
     ]);
 
     this.apis[getCountries] = apiBuilder
       .create()
       .setRequirements({
+        responseTransformer: transformers.addUniqueIdToEachCountry,
         routeObject: stuffStore.routes.getCountries,
-        responseTransformer: addUniqueIdToEachCountry,
       })
       .build();
   }
