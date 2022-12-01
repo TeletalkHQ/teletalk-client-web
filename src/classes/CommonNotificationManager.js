@@ -1,10 +1,10 @@
 import { NotificationManager } from "classes/NotificationManager";
 
-import { notifications } from "variables/notifications/notifications";
+import { variables } from "variables";
 
 class CommonNotificationManager extends NotificationManager {
   submitAbortedConnectionNotification() {
-    this.submitErrorNotification(notifications.error.ECONNABORTED);
+    this.submitErrorNotification(variables.notification.error.ECONNABORTED);
   }
 }
 

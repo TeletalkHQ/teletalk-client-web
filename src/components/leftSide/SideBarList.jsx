@@ -1,9 +1,9 @@
-import CustomList from "components/generals/boxes/CustomList";
-import CustomListItem from "components/generals/boxes/CustomListItem";
+import CustomList from "components/general/box/CustomList";
+import CustomListItem from "components/general/box/CustomListItem";
 
-import { Icons } from "components/others/Icons";
+import { Icons } from "components/other/Icons";
 
-//TODO Add to some functionality and add priority to each
+//TODO: Add to some functionality and add priority to each
 const sidebarList = [
   Icons.AllChatsOutlined7,
   Icons.UnreadOutlined,
@@ -20,7 +20,7 @@ const SideBarList = () => {
       <CustomList sx={{ width: "20%" }}>
         {sidebarList.map(({ Icon }, index) => {
           return (
-            //TODO Flex list Item
+            //TODO: Flex list Item
             <CustomListItem
               button
               key={index}

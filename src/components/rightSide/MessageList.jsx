@@ -1,18 +1,20 @@
 import MessageListItem from "components/rightSide/MessageListItem";
 
-const MessageList = ({ messages, user }) => {
+const MessageList = ({ messages, currentUserId }) => {
   const listOfMessages = messages.map((messageItem, index) => {
     return (
       <MessageListItem
         key={index}
         message={messageItem.message}
         justify={
-          user.userId === messageItem.messageSender.senderId
+          currentUserId === messageItem.messageSender.senderId
             ? "flex-end"
             : "flex-start"
         }
         direction={
-          user.userId === messageItem.messageSender.senderId ? "left" : "right"
+          currentUserId === messageItem.messageSender.senderId
+            ? "left"
+            : "right"
         }
       />
     );

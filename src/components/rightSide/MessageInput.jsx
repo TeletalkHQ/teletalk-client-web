@@ -1,9 +1,9 @@
-import CustomBox from "components/generals/boxes/CustomBox";
-import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomIconButton from "components/generals/others/CustomIconButton";
-import CustomPaper from "components/generals/boxes/CustomPaper";
-import CustomTextInput from "components/generals/inputs/CustomTextInput";
-import { Icons } from "components/others/Icons";
+import CustomBox from "components/general/box/CustomBox";
+import CustomFlexBox from "components/general/box/CustomFlexBox";
+import CustomIconButton from "components/general/other/CustomIconButton";
+import CustomPaper from "components/general/box/CustomPaper";
+import CustomTextInput from "components/general/input/CustomTextInput";
+import { Icons } from "components/other/Icons";
 
 const MessageInput = ({
   messageInputTextValue,

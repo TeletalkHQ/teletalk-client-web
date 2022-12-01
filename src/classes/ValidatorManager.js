@@ -4,7 +4,7 @@ import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 
 import { validator } from "classes/Validator";
 
-import { printCatchError } from "functions/utilities/otherUtilities";
+import { utilities } from "utilities";
 
 const fastestValidatorCompiler = new FastestValidator();
 
@@ -29,7 +29,7 @@ class ValidatorManager {
         .objectEntries(validationModels)
         .forEach(this.#processValidationModel.bind(this));
     } catch (error) {
-      printCatchError(this.compileValidators.name, error);
+      utilities.printCatchError(this.compileValidators.name, error);
       throw error;
     }
   };

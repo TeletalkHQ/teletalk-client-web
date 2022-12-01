@@ -1,4 +1,4 @@
-import { addOnlineStatusEvents } from "./onlineConnectionsChecker";
+import { addOnlineStatusEvents } from "events/onlineConnectionsChecker";
 
 const events = {
   addOnlineStatusEvents,

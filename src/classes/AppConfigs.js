@@ -1,42 +1,24 @@
 import { envManager } from "classes/EnvironmentManager";
 
-import {
-  APP_DRAWER_ANCHORS,
-  VIEW_MODES,
-} from "variables/otherVariables/helpers";
+import { stateStatics } from "store/stateStatics";
 
 class AppConfigs {
-  constructor() {
-    this.configs = this.getDefaultConfigs();
+  #env = envManager.getAllLocalEnvironments();
 
-    this.runConfigs();
-  }
-  #RUNTIME_MODE = envManager.getEnvironment(
-    envManager.ENVIRONMENT_KEYS.REACT_APP_RUNTIME_MODE
-  );
-  #CLIENT_BASE_URLS = (() => {
-    const {
-      REACT_APP_CLIENT_BASE_URL_DEVELOPMENT,
-      REACT_APP_CLIENT_BASE_URL_PRODUCTION,
-    } = envManager.getAllLocalEnvironments();
+  #RUNTIME_MODE = this.#env.REACT_APP_RUNTIME_MODE;
 
-    return {
-      development: REACT_APP_CLIENT_BASE_URL_DEVELOPMENT,
-      production: REACT_APP_CLIENT_BASE_URL_PRODUCTION,
-    };
-  })();
-  #SERVER_BASE_URLS = (() => {
-    const {
-      REACT_APP_SERVER_BASE_URL_DEVELOPMENT,
-      REACT_APP_SERVER_BASE_URL_PRODUCTION,
-    } = envManager.getAllLocalEnvironments();
-    return {
-      development: REACT_APP_SERVER_BASE_URL_DEVELOPMENT,
-      production: REACT_APP_SERVER_BASE_URL_PRODUCTION,
-    };
-  })();
+  #CLIENT_BASE_URLS = {
+    development: this.#env.REACT_APP_CLIENT_BASE_URL_DEVELOPMENT,
+    production: this.#env.REACT_APP_CLIENT_BASE_URL_PRODUCTION,
+  };
+  #SERVER_BASE_URLS = {
+    development: this.#env.REACT_APP_SERVER_BASE_URL_DEVELOPMENT,
+    production: this.#env.REACT_APP_SERVER_BASE_URL_PRODUCTION,
+  };
 
-  getDefaultConfigs() {
+  #configs = this.#getDefaultConfigs();
+
+  #getDefaultConfigs() {
     return {
       apiConfigs: {
         checkResponseStatus: true,
@@ -54,12 +36,12 @@ class AppConfigs {
         validateStatus: false,
       },
       others: {
-        appDrawerCurrentAnchor: APP_DRAWER_ANCHORS.left,
         logPerformanceMeasuring: false,
         RUNTIME_MODE: this.#RUNTIME_MODE,
-        startupViewMode: VIEW_MODES.LOADING,
+        startupViewMode: stateStatics.VIEW_MODES.INITIAL_SETUP,
       },
       ui: {
+        appDrawerCurrentAnchor: stateStatics.APP_DRAWER_ANCHORS.left,
         defaultDialogTransitionalComponentType: "Grow",
         dialogTransitionalComponentType: "Grow",
       },
@@ -68,11 +50,14 @@ class AppConfigs {
       },
     };
   }
+
   getConfigs() {
-    return this.configs;
+    return this.#configs;
   }
 
-  runConfigs() {
+  // runConfigs() {}
+
+  setDebugLevel() {
     logger.setLevel("debug");
   }
 }

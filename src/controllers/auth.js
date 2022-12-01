@@ -1,38 +1,41 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { actions } from "actions/actions";
+import { actions } from "store/actions";
 
 import { apiManager } from "classes/api/ApiManager";
-import { commonJobsHandler } from "classes/CommonJobsHandler";
+import { commonTasks } from "classes/CommonTasks";
 import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
-import { authenticationProgressChange } from "functions/utilities/commonActions";
-import { printCatchError } from "functions/utilities/otherUtilities";
+import { controllers } from "controllers";
 
-import { getInitialState } from "variables/initials/states";
-import { notifications } from "variables/notifications/notifications";
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
-import { VIEW_MODES } from "variables/otherVariables/helpers";
+import { utilities } from "utilities";
 
-const changeViewModeToSignIn = () =>
-  commonJobsHandler.changeViewMode().signIn();
+import { extractedDispatchAsync } from "hooks/useThunkReducer";
+
+import { store } from "store/store";
+import { commonActions } from "store/commonActions";
+
+import { variables } from "variables";
 
 const printVerifyTokenNotFound = () =>
   notificationManager.submitErrorNotification(
-    notifications.error.VERIFY_TOKEN_NOT_FOUND
+    variables.notification.error.VERIFY_TOKEN_NOT_FOUND
   );
 
 const saveUserTokenIntoPersistentStorage = (mainToken) =>
-  persistentStorage.setItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN, mainToken);
+  persistentStorage.setItem(
+    persistentStorage.storageKeys.MAIN_TOKEN,
+    mainToken
+  );
 
-const tryToVerifySignIn = async (verificationCode) => {
+const tryToVerifySignIn = async (verificationCode, dispatch) => {
   const verifyToken = persistentStorage.getItem(
-    PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN
+    persistentStorage.storageKeys.VERIFY_TOKEN
   );
   if (!verifyToken) {
-    changeViewModeToSignIn();
+    dispatch(commonActions.changeViewMode.signIn());
     printVerifyTokenNotFound();
     return;
   }
@@ -44,70 +47,75 @@ const tryToVerifySignIn = async (verificationCode) => {
     { token: verifyToken }
   );
 };
-const tasksIfUserIsNew = () => {
-  commonJobsHandler.changeViewMode().createNewUser();
-};
+
 const tasksIfUserIsNotNew = (dispatch, user) => {
-  persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
+  persistentStorage.removeItem(persistentStorage.storageKeys.VERIFY_TOKEN);
 
   const mainToken = user.mainToken;
   delete user.mainToken;
+  delete user.newUser;
 
   saveUserTokenIntoPersistentStorage(mainToken);
 
   dispatch(actions.updateAllUserData(user));
-  commonJobsHandler.changeViewMode().messenger();
+  dispatch(commonActions.changeViewMode.messenger());
 };
 const executeIfNoErrorTryToVerifySignIn = (response, dispatch) => {
   dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
   const { user } = response.data;
 
   if (user.newUser) {
-    tasksIfUserIsNew();
+    dispatch(commonActions.changeViewMode.createNewUser());
   } else {
     tasksIfUserIsNotNew(dispatch, user);
   }
 };
 const verifySignIn = () => {
-  return async (dispatch, getState = getInitialState) => {
+  return async (dispatch, getState = store.initialState) => {
     const {
-      temp: { verificationCode },
+      auth: { verificationCode },
     } = getState();
 
-    dispatch(authenticationProgressChange(true));
+    dispatch(commonActions.changeAuthenticationProgress(true));
 
     (
       await trier(verifySignIn.name).tryAsync(
         tryToVerifySignIn,
-        verificationCode
+        verificationCode,
+        dispatch
       )
     )
       .executeIfNoError(executeIfNoErrorTryToVerifySignIn, dispatch)
-      .catch(printCatchError, verifySignIn.name);
+      .catch(utilities.printCatchError, verifySignIn.name);
 
-    dispatch(authenticationProgressChange(false));
+    dispatch(commonActions.changeAuthenticationProgress(false));
   };
 };
 
 const tryToCheckUserStatus = async () => {
   const {
     data: { user },
-  } = await apiManager.apis.checkUserStatus.sendFullFeaturedRequest();
+  } = await apiManager.apis.getUserData.sendFullFeaturedRequest();
+  await extractedDispatchAsync(controllers.getPrivateChats());
 
   return { user };
 };
 const executeIfNoErrorOnTryToCheckUserStatus = ({ user }, dispatch) => {
+  delete user.mainToken;
   dispatch(actions.updateAllUserData(user));
-  dispatch(actions.viewModeChange({ viewMode: VIEW_MODES.MESSENGER }));
+  dispatch(commonActions.changeViewMode.messenger());
 };
-const checkUserStatus = () => {
+const getUserData = () => {
   return async (dispatch) => {
-    (await trier(checkUserStatus.name).tryAsync(tryToCheckUserStatus))
+    if (!localStorage.getItem("MAIN_TOKEN")) {
+      return;
+    }
+
+    (await trier(getUserData.name).tryAsync(tryToCheckUserStatus))
       .executeIfNoError(executeIfNoErrorOnTryToCheckUserStatus, dispatch)
       .catch(() => {
-        printCatchError();
-        dispatch(actions.viewModeChange({ viewMode: VIEW_MODES.SIGN_IN }));
-      }, checkUserStatus.name)
+        utilities.printCatchError();
+      }, getUserData.name)
       .finally(() =>
         dispatch(actions.globalLoadingOpenChange({ open: false }))
       );
@@ -123,18 +131,19 @@ const tryToSignIn = async ({ countryCode, countryName, phoneNumber }) => {
 };
 const executeIfNoErrorOnTryToSignIn = (response, dispatch) => {
   const { verifyToken } = response.data.user;
-  persistentStorage.setItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN, verifyToken);
+  persistentStorage.setItem(
+    persistentStorage.storageKeys.VERIFY_TOKEN,
+    verifyToken
+  );
 
-  dispatch(actions.updateAllUserData(response.data.user));
-
-  commonJobsHandler.changeViewMode().verifySignIn();
+  dispatch(commonActions.changeViewMode.verifySignIn());
 };
 const signIn = () => {
-  return async (dispatch, getState = getInitialState) => {
+  return async (dispatch, getState = store.initialState) => {
     const {
-      temp: { phoneNumber, countryCode, countryName },
+      auth: { phoneNumber, countryCode, countryName },
     } = getState();
-    dispatch(authenticationProgressChange(true));
+    dispatch(commonActions.changeAuthenticationProgress(true));
 
     const response = (
       await trier(signIn.name).tryAsync(tryToSignIn, {
@@ -144,10 +153,10 @@ const signIn = () => {
       })
     )
       .executeIfNoError(executeIfNoErrorOnTryToSignIn, dispatch)
-      .catch(printCatchError, signIn.name)
+      .catch(utilities.printCatchError, signIn.name)
       .result();
 
-    dispatch(authenticationProgressChange(false));
+    dispatch(commonActions.changeAuthenticationProgress(false));
 
     return response;
   };
@@ -158,15 +167,15 @@ const tryToLogout = async () =>
 const logout = () => {
   return async () => {
     (await trier(logout.name).tryAsync(tryToLogout))
-      .catch(printCatchError, logout.name)
-      .executeIfNoError(() => commonJobsHandler.resetEverything());
+      .catch(utilities.printCatchError, logout.name)
+      .executeIfNoError(() => commonTasks.resetEverything());
   };
 };
 
-const tryToCreateNewUser = async (firstName, lastName) => {
+const tryToCreateNewUser = async (firstName, lastName, dispatch) => {
   const verifyToken = userPropsUtilities.getVerifyTokenFromStorage();
-  commonJobsHandler.checkAndExecute(!verifyToken, () => {
-    changeViewModeToSignIn();
+  commonTasks.checkAndExecute(!verifyToken, () => {
+    dispatch(commonActions.changeViewMode.signIn());
     printVerifyTokenNotFound();
   });
 
@@ -183,38 +192,40 @@ const tryToCreateNewUser = async (firstName, lastName) => {
   return user;
 };
 const executeIfNoErrorOnTryToCreateNewUser = (user, dispatch) => {
-  userPropsUtilities.removeVerifyTokenFromStorage();
-  dispatch(actions.updateAllUserData(user));
-  commonJobsHandler.changeViewMode().messenger();
   const mainToken = user.mainToken;
   delete user.mainToken;
+
+  userPropsUtilities.removeVerifyTokenFromStorage();
+  dispatch(actions.updateAllUserData(user));
+  dispatch(commonActions.changeViewMode.messenger());
 
   saveUserTokenIntoPersistentStorage(mainToken);
 };
 const createNewUser = () => {
-  return async (dispatch, getState = getInitialState) => {
+  return async (dispatch, getState = store.initialState) => {
     const {
-      temp: { firstName, lastName },
+      auth: { firstName, lastName },
     } = getState();
 
-    dispatch(authenticationProgressChange(true));
+    dispatch(commonActions.changeAuthenticationProgress(true));
 
     (
       await trier(createNewUser.name).tryAsync(
         tryToCreateNewUser,
         firstName,
-        lastName
+        lastName,
+        dispatch
       )
     )
       .executeIfNoError(executeIfNoErrorOnTryToCreateNewUser, dispatch)
-      .catch(printCatchError, createNewUser.name);
+      .catch(utilities.printCatchError, createNewUser.name);
 
-    dispatch(authenticationProgressChange(false));
+    dispatch(commonActions.changeAuthenticationProgress(false));
   };
 };
 
 const authControllers = {
-  checkUserStatus,
+  getUserData,
   createNewUser,
   logout,
   signIn,

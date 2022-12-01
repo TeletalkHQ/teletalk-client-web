@@ -2,8 +2,6 @@ import { UserPropsUtilities as UserPropsUtilitiesMain } from "utility-store/src/
 
 import { persistentStorage } from "classes/PersistentStorage";
 
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
-
 class UserPropsUtilities extends UserPropsUtilitiesMain {
   constructor(id) {
     super();
@@ -11,17 +9,19 @@ class UserPropsUtilities extends UserPropsUtilitiesMain {
   }
 
   getVerifyTokenFromStorage() {
-    return persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
+    return persistentStorage.getItem(
+      persistentStorage.storageKeys.VERIFY_TOKEN
+    );
   }
   removeVerifyTokenFromStorage() {
-    persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN);
+    persistentStorage.removeItem(persistentStorage.storageKeys.VERIFY_TOKEN);
   }
 
   getMainTokenFromStorage() {
-    return persistentStorage.getItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN);
+    return persistentStorage.getItem(persistentStorage.storageKeys.MAIN_TOKEN);
   }
   removeMainTokenFromStorage() {
-    persistentStorage.removeItem(PERSISTENT_STORAGE_KEYS.MAIN_TOKEN);
+    persistentStorage.removeItem(persistentStorage.storageKeys.MAIN_TOKEN);
   }
 }
 

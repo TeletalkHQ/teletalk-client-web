@@ -1,3 +1,0 @@
-const successes = {};
-
-export { successes };

@@ -1,10 +1,10 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { actions } from "actions/actions";
+import { actions } from "store/actions";
 
 import { apiManager } from "classes/api/ApiManager";
 
-import { printCatchError } from "functions/utilities/otherUtilities";
+import { utilities } from "utilities";
 
 const tryToGetContacts = async () => {
   return await apiManager.apis.getContacts.sendFullFeaturedRequest();
@@ -20,7 +20,7 @@ const getContacts = () => {
   return async (dispatch) => {
     (await trier(getContacts.name).tryAsync(tryToGetContacts))
       .executeIfNoError(executeIfNoErrorOnTryToGetContacts, dispatch)
-      .catch(printCatchError, getContacts.name);
+      .catch(utilities.printCatchError, getContacts.name);
   };
 };
 
@@ -41,7 +41,7 @@ const addNewContact = (contact) => {
     )
       .executeIfNoError(executeIfNoErrorOnTryToAddNewContact, dispatch)
       .catch(() => {
-        printCatchError(addNewContact.name);
+        utilities.printCatchError(addNewContact.name);
         return { ok: false };
       })
       .result();

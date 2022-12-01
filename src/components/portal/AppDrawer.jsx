@@ -1,20 +1,21 @@
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 import { SwipeableDrawer } from "@mui/material";
 
-import { actions } from "actions/actions";
+import { actions } from "store/actions";
 
-import CustomBox from "components/generals/boxes/CustomBox";
-import CustomList from "components/generals/boxes/CustomList";
-import CustomListItem from "components/generals/boxes/CustomListItem";
-import CustomListItemIcon from "components/generals/others/CustomListItemIcon";
-import CustomListItemText from "components/generals/boxes/CustomListItemText";
-import Div from "components/generals/boxes/Div";
+import CustomBox from "components/general/box/CustomBox";
+import CustomList from "components/general/box/CustomList";
+import CustomListItem from "components/general/box/CustomListItem";
+import CustomListItemIcon from "components/general/other/CustomListItemIcon";
+import CustomListItemText from "components/general/box/CustomListItemText";
+import Div from "components/general/box/Div";
 
 import { useMainContext } from "hooks/useMainContext";
 
-import { Icons } from "components/others/Icons";
+import { Icons } from "components/other/Icons";
+import { commonActions } from "store/commonActions";
 
-//TODO Add to some functionality and add priority to each
+//TODO: Add to some functionality and add priority to each
 const drawerList = [
   Icons.Calls,
   Icons.Contacts,
@@ -48,12 +49,7 @@ const AppDrawer = () => {
   };
 
   const handleDrawerItemClick = (elementName) => {
-    dispatch(
-      actions.dialogOpenChange({
-        dialogName: elementName,
-        open: true,
-      })
-    );
+    dispatch(commonActions.openDialog(elementName));
   };
 
   return (

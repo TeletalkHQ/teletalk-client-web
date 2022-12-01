@@ -1,11 +1,8 @@
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
-
-import { PERSISTENT_STORAGE_KEYS } from "variables/otherVariables/helpers";
+import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 
 class Storage {
-  constructor() {
-    this.storage = localStorage;
-  }
+  storage = localStorage;
 
   #fixingCondition(value) {
     return customTypeof.isObject(value) || customTypeof.isArray(value);
@@ -37,14 +34,18 @@ class Storage {
 }
 
 class PersistentStorage {
-  constructor(storageKeys) {
-    this.persistentStorage = new Storage();
-    this.storageKeys = storageKeys;
+  constructor() {
     this.#initialDefaultStorage();
   }
+  persistentStorage = new Storage();
+  storageKeys = {
+    MAIN_TOKEN: "MAIN_TOKEN",
+    STUFFS: "STUFFS",
+    VERIFY_TOKEN: "VERIFY_TOKEN",
+  };
 
   #initialDefaultStorage() {
-    this.storageKeys.forEach((key) => {
+    objectUtilities.objectKeys(this.storageKeys).forEach((key) => {
       const latestKeyValue = this.getItem(key);
       this.setItem(key, latestKeyValue || "");
     });
@@ -83,10 +84,6 @@ class PersistentStorage {
   }
 }
 
-const defaultPersistentStorage = new PersistentStorage([
-  PERSISTENT_STORAGE_KEYS.MAIN_TOKEN,
-  PERSISTENT_STORAGE_KEYS.VERIFY_TOKEN,
-  PERSISTENT_STORAGE_KEYS.STUFFS,
-]);
+const defaultPersistentStorage = new PersistentStorage();
 
 export { defaultPersistentStorage as persistentStorage, PersistentStorage };

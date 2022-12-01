@@ -1,7 +1,7 @@
-import CustomAvatar from "components/generals/others/CustomAvatar";
-import CustomBox from "components/generals/boxes/CustomBox";
-import CustomFlexBox from "components/generals/boxes/CustomFlexBox";
-import CustomListItem from "components/generals/boxes/CustomListItem";
+import CustomAvatar from "components/general/other/CustomAvatar";
+import CustomBox from "components/general/box/CustomBox";
+import CustomFlexBox from "components/general/box/CustomFlexBox";
+import CustomListItem from "components/general/box/CustomListItem";
 
 const ChatListItem = ({ message, name, onChatListItemClick, selected }) => {
   return (
@@ -18,11 +18,11 @@ const ChatListItem = ({ message, name, onChatListItemClick, selected }) => {
         <CustomAvatar />
       </CustomBox>
       <CustomFlexBox col sx={{ width: "100%" }}>
-        <CustomFlexBox jc="space-between" ai="center">
+        <CustomFlexBox sx={{ width: "100%" }} jc="space-between" ai="center">
           <CustomBox>{name}</CustomBox>
-          <CustomBox>clock</CustomBox>
+          <CustomBox>time</CustomBox>
         </CustomFlexBox>
-        <CustomFlexBox jc="space-between" ai="center">
+        <CustomFlexBox jc="space-between" sx={{ width: "100%" }} ai="center">
           <CustomBox>{message}</CustomBox>
           <CustomBox>icons</CustomBox>
         </CustomFlexBox>
