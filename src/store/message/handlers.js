@@ -1,26 +1,8 @@
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
-import { initialMessageState } from "store/message/initialState";
-
-const handleUpdateChatMessages = (payload, state = initialMessageState()) => {
-  const { privateChats } = state;
-
-  const copyPrivateChatMessages = arrayUtilities.shallowCopy(privateChats);
-
-  const privateChatItemIndex = arrayUtilities.findIndexByPropValueEquality(
-    copyPrivateChatMessages,
-    payload.chatId,
-    "chatId"
-  );
-
-  if (privateChatItemIndex !== -1) {
-    copyPrivateChatMessages.splice(privateChatItemIndex, 1, payload);
-  } else {
-    copyPrivateChatMessages.push(payload);
-  }
-
+const handleUpdateAllPrivateChats = (payload) => {
   return {
-    privateChats: copyPrivateChatMessages,
+    privateChats: payload.privateChats,
   };
 };
 
@@ -74,7 +56,7 @@ const messageReducerHandlers = {
   handleAddNewToChatMessage,
   handleCloseRightSide,
   handleSelectedUserForPrivateChat,
-  handleUpdateChatMessages,
+  handleUpdateAllPrivateChats,
 };
 
 export { messageReducerHandlers };

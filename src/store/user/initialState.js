@@ -1,7 +1,6 @@
 const initialUserState = () => ({
   bio: "",
   blacklist: [],
-  chatInfo: [],
   contacts: [],
   countryCode: "",
   countryName: "",

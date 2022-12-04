@@ -13,7 +13,6 @@ const userActionPayloads = {
   [USER_ACTION_TYPES.UPDATE_ALL_USER_DATA]: {
     bio: fields.single.bio,
     blacklist: fields.collection.blacklist,
-    chatInfo: fields.collection.chatInfo,
     contacts: fields.collection.contacts,
     countryCode: fields.single.countryCode,
     countryName: fields.single.countryName,

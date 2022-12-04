@@ -81,28 +81,25 @@ const sendPrivateMessage = () => {
   };
 };
 
-const getPrivateChats = () => {
-  return async (dispatch, getState = store.initialState) => {
+const getAllPrivateChats = () => {
+  return async (dispatch) => {
     try {
-      const state = getState();
+      const response =
+        await apiManager.apis.getAllPrivateChats.sendFullFeaturedRequest();
 
-      for (const chatInfoItem of state.user.chatInfo) {
-        const { chatId } = chatInfoItem;
-        const response =
-          await apiManager.apis.getPrivateChat.sendFullFeaturedRequest({
-            chatId,
-          });
-
-        dispatch(actions.updatePrivateChatMessages(response.data.privateChat));
-      }
+      dispatch(
+        actions.updateAllPrivateChats({
+          privateChats: response.data.privateChats,
+        })
+      );
     } catch (error) {
-      utilities.printCatchError(getPrivateChats.name, error);
+      utilities.printCatchError(getAllPrivateChats.name, error);
     }
   };
 };
 
 const messageControllers = {
-  getPrivateChats,
+  getAllPrivateChats,
   getChatsLastMessage,
   sendPrivateMessage,
 };

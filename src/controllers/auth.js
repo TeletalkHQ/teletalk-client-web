@@ -96,7 +96,7 @@ const tryToCheckUserStatus = async () => {
   const {
     data: { user },
   } = await apiManager.apis.getUserData.sendFullFeaturedRequest();
-  await extractedDispatchAsync(controllers.getPrivateChats());
+  await extractedDispatchAsync(controllers.getAllPrivateChats());
 
   return { user };
 };
