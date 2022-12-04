@@ -9,16 +9,18 @@ class EnvironmentManager extends EnvironmentManagerMain {
         "REACT_APP_CLIENT_BASE_URL_DEVELOPMENT",
       REACT_APP_CLIENT_BASE_URL_PRODUCTION:
         "REACT_APP_CLIENT_BASE_URL_PRODUCTION",
-      NODE_ENV: "NODE_ENV",
       REACT_APP_RUNTIME_MODE: "REACT_APP_RUNTIME_MODE",
       REACT_APP_SERVER_BASE_URL_DEVELOPMENT:
         "REACT_APP_SERVER_BASE_URL_DEVELOPMENT",
-      REACT_APP_SERVER_BASE_URL_PRODUCTION:
+      REACT_APP_SERVER_BASE_URL_PRODUCTION_1:
         "REACT_APP_SERVER_BASE_URL_PRODUCTION",
+      REACT_APP_SERVER_BASE_URL_PRODUCTION_2:
+        "REACT_APP_SERVER_BASE_URL_PRODUCTION",
+      REACT_APP_SERVER_BASE_URL_INDEX: "REACT_APP_SERVER_BASE_URL_INDEX",
     };
 
     this.ENVIRONMENT_VALUES = {
-      NODE_ENV: {
+      REACT_APP_RUNTIME_MODE: {
         development: "development",
         production: "production",
         test: "test",
@@ -36,11 +38,11 @@ class EnvironmentManager extends EnvironmentManagerMain {
     return environments;
   }
 
-  getNodeEnv() {
-    return this.getEnvironment(this.ENVIRONMENT_KEYS.NODE_ENV);
+  getReactAppRuntimeMode() {
+    return this.getEnvironment(this.ENVIRONMENT_KEYS.REACT_APP_RUNTIME_MODE);
   }
-  getNodeEnvValues() {
-    return this.ENVIRONMENT_VALUES.NODE_ENV;
+  getReactAppRuntimeModeValues() {
+    return this.ENVIRONMENT_VALUES.REACT_APP_RUNTIME_MODE;
   }
 }
 

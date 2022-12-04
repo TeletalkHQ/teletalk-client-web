@@ -26,6 +26,7 @@ const RightSide = () => {
     state,
   } = useMainContext();
   const [selectedUserToChat, setSelectedUserToChat] = useState({});
+  const selectedUserId = state.message.selectedUserForPrivateChat.userId;
 
   useEffect(() => {
     const eventName = appOptions.getEventEmitterEvents().MESSAGE_SENT;
@@ -34,8 +35,10 @@ const RightSide = () => {
 
   useEffect(() => {
     const fn = async () => {
+      if (!selectedUserId) return;
+
       const foundContact = state.user.contacts.find(
-        (c) => c.userId === state.message.selectedUserForPrivateChat.userId
+        (c) => c.userId === selectedUserId
       );
 
       if (foundContact) {
@@ -43,7 +46,7 @@ const RightSide = () => {
       } else {
         const response =
           await apiManager.apis.getPublicUserInfo.sendFullFeaturedRequest({
-            userId: state.message.selectedUserForPrivateChat.userId,
+            userId: selectedUserId,
           });
 
         const { publicUserInfo } = response.data;
@@ -55,7 +58,7 @@ const RightSide = () => {
     fn();
     return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message.selectedUserForPrivateChat.userId]);
+  }, [selectedUserId]);
 
   const handleInputChange = ({ target: { value } }) => {
     dispatch(actions.messageInputOnChange({ messageInputTextValue: value }));

@@ -8,8 +8,8 @@ const messageReducerCases = {
   [MESSAGE_ACTION_TYPES.CLOSE_RIGHT_SIDE]:
     messageReducerHandlers.handleCloseRightSide,
 
-  [MESSAGE_ACTION_TYPES.UPDATE_PRIVATE_CHAT_MESSAGES]:
-    messageReducerHandlers.handleUpdateChatMessages,
+  [MESSAGE_ACTION_TYPES.UPDATE_ALL_PRIVATE_CHATS]:
+    messageReducerHandlers.handleUpdateAllPrivateChats,
 
   [MESSAGE_ACTION_TYPES.RESET_MESSAGE_STATE]: initialMessageState,
 

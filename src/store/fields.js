@@ -76,10 +76,6 @@ const dialog = {
   props: dialogProps,
 };
 
-const chatInfoItem = {
-  chatId,
-};
-
 const messageSender = statics.object({
   senderId,
 });
@@ -102,7 +98,6 @@ const participantItem = {
 };
 
 const blacklist = statics.array(contact);
-const chatInfo = statics.array(chatInfoItem);
 const contacts = statics.array(contact);
 const countries = statics.array(country);
 const messages = statics.array(messageItem);
@@ -141,8 +136,6 @@ const single = {
 const collection = {
   authenticationProgress,
   blacklist,
-  chatInfo,
-  chatInfoItem,
   contact,
   contacts,
   countries,
@@ -161,6 +154,7 @@ const collection = {
 const fields = {
   collection,
   single,
+  statics,
 };
 
 export { fields };

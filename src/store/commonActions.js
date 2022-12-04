@@ -25,7 +25,7 @@ const changeViewMode = {
   fullPageLoading: () =>
     viewModeChanger(stateStatics.VIEW_MODES.FULL_PAGE_LOADING),
   messenger: () => viewModeChanger(stateStatics.VIEW_MODES.MESSENGER),
-  newUserProfile: () =>
+  createNewUser: () =>
     viewModeChanger(stateStatics.VIEW_MODES.NEW_USER_PROFILE),
   signIn: () => viewModeChanger(stateStatics.VIEW_MODES.SIGN_IN),
   verifySignIn: () => viewModeChanger(stateStatics.VIEW_MODES.VERIFY_SIGN_IN),

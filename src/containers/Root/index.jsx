@@ -45,7 +45,7 @@ const Root = () => {
       const updater = () => {
         setTimeout(async () => {
           await dispatchAsync(controllers.getUserData());
-          // updater();
+          updater();
         }, 2000);
       };
       updater();
