@@ -66,8 +66,7 @@ class ApiBuilder {
   build() {
     this.#checkMinimumRequirements();
 
-    const api = apiHandler.create(this.requirements);
-    return api;
+    return apiHandler.create(this.requirements);
   }
 }
 

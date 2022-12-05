@@ -8,20 +8,11 @@ class UserPropsUtilities extends UserPropsUtilitiesMain {
     this.id = id;
   }
 
-  getVerifyTokenFromStorage() {
-    return persistentStorage.getItem(
-      persistentStorage.storageKeys.VERIFY_TOKEN
-    );
+  getTokenFromStorage() {
+    return persistentStorage.getItem(persistentStorage.storageKeys.TOKEN);
   }
-  removeVerifyTokenFromStorage() {
-    persistentStorage.removeItem(persistentStorage.storageKeys.VERIFY_TOKEN);
-  }
-
-  getMainTokenFromStorage() {
-    return persistentStorage.getItem(persistentStorage.storageKeys.MAIN_TOKEN);
-  }
-  removeMainTokenFromStorage() {
-    persistentStorage.removeItem(persistentStorage.storageKeys.MAIN_TOKEN);
+  removeTokenFromStorage() {
+    persistentStorage.removeItem(persistentStorage.storageKeys.TOKEN);
   }
 }
 

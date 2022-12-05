@@ -39,9 +39,8 @@ class PersistentStorage {
   }
   persistentStorage = new Storage();
   storageKeys = {
-    MAIN_TOKEN: "MAIN_TOKEN",
+    TOKEN: "TOKEN",
     STUFFS: "STUFFS",
-    VERIFY_TOKEN: "VERIFY_TOKEN",
   };
 
   #initialDefaultStorage() {
@@ -52,8 +51,7 @@ class PersistentStorage {
   }
 
   getItem(key) {
-    const item = this.persistentStorage.getItem(key);
-    return item;
+    return this.persistentStorage.getItem(key);
   }
   getAndParseItem(key) {
     const value = this.getItem(key);

@@ -70,12 +70,10 @@ class ActionHandler {
   }
 
   createAction() {
-    const action = {
+    return {
       type: this.type,
       payload: this.payload,
     };
-
-    return action;
   }
 
   logAction(action) {
