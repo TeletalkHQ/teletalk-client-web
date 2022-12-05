@@ -19,58 +19,56 @@ import { commonActions } from "store/commonActions";
 
 import { variables } from "variables";
 
-const printVerifyTokenNotFound = () =>
+const saveTokenIntoPersistentStorage = (token) =>
+  persistentStorage.setItem(persistentStorage.storageKeys.TOKEN, token);
+
+const printTokenNotFound = () =>
   notificationManager.submitErrorNotification(
     variables.notification.error.VERIFY_TOKEN_NOT_FOUND
   );
 
-const saveUserTokenIntoPersistentStorage = (mainToken) =>
-  persistentStorage.setItem(
-    persistentStorage.storageKeys.MAIN_TOKEN,
-    mainToken
-  );
-
-const tryToVerifySignIn = async (verificationCode, dispatch) => {
-  const verifyToken = persistentStorage.getItem(
-    persistentStorage.storageKeys.VERIFY_TOKEN
-  );
-  if (!verifyToken) {
-    dispatch(commonActions.changeViewMode.signIn());
-    printVerifyTokenNotFound();
-    return;
-  }
-
-  return await apiManager.apis.verifySignIn.sendFullFeaturedRequest(
-    {
-      verificationCode,
-    },
-    { token: verifyToken }
-  );
-};
-
-const tasksIfUserIsNotNew = (dispatch, user) => {
-  persistentStorage.removeItem(persistentStorage.storageKeys.VERIFY_TOKEN);
-
-  const mainToken = user.mainToken;
-  delete user.mainToken;
-  delete user.newUser;
-
-  saveUserTokenIntoPersistentStorage(mainToken);
-
-  dispatch(actions.updateAllUserData(user));
-  dispatch(commonActions.changeViewMode.messenger());
-};
-const executeIfNoErrorTryToVerifySignIn = (response, dispatch) => {
-  dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
-  const { user } = response.data;
-
-  if (user.newUser) {
-    dispatch(commonActions.changeViewMode.createNewUser());
-  } else {
-    tasksIfUserIsNotNew(dispatch, user);
-  }
-};
 const verifySignIn = () => {
+  const tryToVerifySignIn = async (verificationCode, dispatch) => {
+    const token = persistentStorage.getItem(
+      persistentStorage.storageKeys.TOKEN
+    );
+    if (!token) {
+      dispatch(commonActions.changeViewMode.signIn());
+      printTokenNotFound();
+      return;
+    }
+
+    return await apiManager.apis.verifySignIn.sendFullFeaturedRequest(
+      {
+        verificationCode,
+      },
+      { token: token }
+    );
+  };
+
+  const tasksIfUserIsNotNew = (dispatch, user) => {
+    persistentStorage.removeItem(persistentStorage.storageKeys.TOKEN);
+
+    const token = user.token;
+    delete user.token;
+    delete user.newUser;
+
+    saveTokenIntoPersistentStorage(token);
+
+    dispatch(actions.updateAllUserData(user));
+    dispatch(commonActions.changeViewMode.messenger());
+  };
+  const executeIfNoErrorTryToVerifySignIn = (response, dispatch) => {
+    dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
+    const { user } = response.data;
+
+    if (user.newUser) {
+      dispatch(commonActions.changeViewMode.createNewUser());
+    } else {
+      tasksIfUserIsNotNew(dispatch, user);
+    }
+  };
+
   return async (dispatch, getState = store.initialState) => {
     const {
       auth: { verificationCode },
@@ -92,53 +90,50 @@ const verifySignIn = () => {
   };
 };
 
-const tryToCheckUserStatus = async () => {
-  const {
-    data: { user },
-  } = await apiManager.apis.getUserData.sendFullFeaturedRequest();
-  await extractedDispatchAsync(controllers.getAllPrivateChats());
-
-  return { user };
-};
-const executeIfNoErrorOnTryToCheckUserStatus = ({ user }, dispatch) => {
-  delete user.mainToken;
-  dispatch(actions.updateAllUserData(user));
-  dispatch(commonActions.changeViewMode.messenger());
-};
 const getUserData = () => {
+  const tryToGetUserData = async () => {
+    const {
+      data: { user },
+    } = await apiManager.apis.getUserData.sendFullFeaturedRequest();
+    await extractedDispatchAsync(controllers.getAllPrivateChats());
+
+    return { user };
+  };
+  const executeIfNoError = ({ user }, dispatch) => {
+    delete user.token;
+    dispatch(actions.updateAllUserData(user));
+    dispatch(commonActions.changeViewMode.messenger());
+  };
+
   return async (dispatch) => {
-    if (!localStorage.getItem("MAIN_TOKEN")) {
+    if (!localStorage.getItem("TOKEN")) {
       return;
     }
 
-    (await trier(getUserData.name).tryAsync(tryToCheckUserStatus))
-      .executeIfNoError(executeIfNoErrorOnTryToCheckUserStatus, dispatch)
-      .catch(() => {
-        utilities.printCatchError();
-      }, getUserData.name)
+    (await trier(getUserData.name).tryAsync(tryToGetUserData))
+      .executeIfNoError(executeIfNoError, dispatch)
+      .catch(utilities.printCatchError, getUserData.name)
       .finally(() =>
         dispatch(actions.globalLoadingOpenChange({ open: false }))
       );
   };
 };
 
-const tryToSignIn = async ({ countryCode, countryName, phoneNumber }) => {
-  return await apiManager.apis.signIn.sendFullFeaturedRequest({
-    countryCode,
-    countryName,
-    phoneNumber,
-  });
-};
-const executeIfNoErrorOnTryToSignIn = (response, dispatch) => {
-  const { verifyToken } = response.data.user;
-  persistentStorage.setItem(
-    persistentStorage.storageKeys.VERIFY_TOKEN,
-    verifyToken
-  );
-
-  dispatch(commonActions.changeViewMode.verifySignIn());
-};
 const signIn = () => {
+  const tryToSignIn = async ({ countryCode, countryName, phoneNumber }) => {
+    return await apiManager.apis.signIn.sendFullFeaturedRequest({
+      countryCode,
+      countryName,
+      phoneNumber,
+    });
+  };
+  const executeIfNoErrorOnTryToSignIn = (response, dispatch) => {
+    const { token } = response.data.user;
+    persistentStorage.setItem(persistentStorage.storageKeys.TOKEN, token);
+
+    dispatch(commonActions.changeViewMode.verifySignIn());
+  };
+
   return async (dispatch, getState = store.initialState) => {
     const {
       auth: { phoneNumber, countryCode, countryName },
@@ -162,9 +157,10 @@ const signIn = () => {
   };
 };
 
-const tryToLogout = async () =>
-  await apiManager.apis.logout.sendFullFeaturedRequest();
 const logout = () => {
+  const tryToLogout = async () =>
+    await apiManager.apis.logout.sendFullFeaturedRequest();
+
   return async () => {
     (await trier(logout.name).tryAsync(tryToLogout))
       .catch(utilities.printCatchError, logout.name)
@@ -172,36 +168,37 @@ const logout = () => {
   };
 };
 
-const tryToCreateNewUser = async (firstName, lastName, dispatch) => {
-  const verifyToken = userPropsUtilities.getVerifyTokenFromStorage();
-  commonTasks.checkAndExecute(!verifyToken, () => {
-    dispatch(commonActions.changeViewMode.signIn());
-    printVerifyTokenNotFound();
-  });
-
-  const {
-    data: { user },
-  } = await apiManager.apis.createNewUser.sendFullFeaturedRequest(
-    {
-      firstName,
-      lastName,
-    },
-    { token: verifyToken }
-  );
-
-  return user;
-};
-const executeIfNoErrorOnTryToCreateNewUser = (user, dispatch) => {
-  const mainToken = user.mainToken;
-  delete user.mainToken;
-
-  userPropsUtilities.removeVerifyTokenFromStorage();
-  dispatch(actions.updateAllUserData(user));
-  dispatch(commonActions.changeViewMode.messenger());
-
-  saveUserTokenIntoPersistentStorage(mainToken);
-};
 const createNewUser = () => {
+  const tryToCreateNewUser = async (firstName, lastName, dispatch) => {
+    const token = userPropsUtilities.getTokenFromStorage();
+    commonTasks.checkAndExecute(!token, () => {
+      dispatch(commonActions.changeViewMode.signIn());
+      printTokenNotFound();
+    });
+
+    const {
+      data: { user },
+    } = await apiManager.apis.createNewUser.sendFullFeaturedRequest(
+      {
+        firstName,
+        lastName,
+      },
+      { token }
+    );
+
+    return user;
+  };
+  const executeIfNoErrorOnTryToCreateNewUser = (user, dispatch) => {
+    const token = user.token;
+    delete user.token;
+
+    userPropsUtilities.removeTokenFromStorage();
+    dispatch(actions.updateAllUserData(user));
+    dispatch(commonActions.changeViewMode.messenger());
+
+    saveTokenIntoPersistentStorage(token);
+  };
+
   return async (dispatch, getState = store.initialState) => {
     const {
       auth: { firstName, lastName },
@@ -225,8 +222,8 @@ const createNewUser = () => {
 };
 
 const authControllers = {
-  getUserData,
   createNewUser,
+  getUserData,
   logout,
   signIn,
   verifySignIn,

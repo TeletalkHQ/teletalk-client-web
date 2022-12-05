@@ -36,11 +36,11 @@ class ReducerBuilder {
     const items = [initialState, reducerCases, reducerName];
     items.forEach((item) => {
       if (!item) {
-        const error = {
+        // eslint-disable-next-line no-throw-literal
+        throw {
           ...variables.notification.error.REQUIREMENT_ITEM_MISSING,
           allItems: items,
         };
-        throw error;
       }
     });
 

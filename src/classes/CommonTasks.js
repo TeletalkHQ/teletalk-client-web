@@ -53,7 +53,7 @@ class CommonTasks {
   convertServerFormatErrors(errors) {
     const arrayOfErrors = objectUtilities.objectValues(errors);
 
-    const correctedErrors = arrayOfErrors.map((errorItem) => {
+    return arrayOfErrors.map((errorItem) => {
       const { errorCode, reason, ...finalErrorItem } = errorItem;
 
       finalErrorItem.notificationCode = errorCode;
@@ -61,8 +61,6 @@ class CommonTasks {
 
       return finalErrorItem;
     });
-
-    return correctedErrors;
   }
 
   errorsPrinter(errors) {
@@ -102,11 +100,11 @@ class CommonTasks {
   checkRequirements(...items) {
     items.forEach((item) => {
       if (!item) {
-        const error = {
+        // eslint-disable-next-line no-throw-literal
+        throw {
           ...variables.notification.error.REQUIREMENT_ITEM_MISSING,
           allItems: items,
         };
-        throw error;
       }
     });
   }

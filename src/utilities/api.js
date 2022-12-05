@@ -19,8 +19,7 @@ const customAxios = axios.create({
 });
 
 const requester = async (options) => {
-  const response = await customAxios(options);
-  return response;
+  return await customAxios(options);
 };
 
 const apiUtilities = { requester, customAxios };

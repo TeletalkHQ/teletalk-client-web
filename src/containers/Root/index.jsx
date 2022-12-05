@@ -39,7 +39,7 @@ const Root = () => {
   useEffect(() => {
     const fn = async () => {
       await dispatchAsync(controllers.getCountries());
-      if (!localStorage.getItem("MAIN_TOKEN")) {
+      if (!localStorage.getItem("TOKEN")) {
         dispatch(commonActions.changeViewMode.signIn());
       }
       const updater = () => {

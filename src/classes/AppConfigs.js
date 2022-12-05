@@ -12,11 +12,19 @@ class AppConfigs {
     production: this.#env.REACT_APP_CLIENT_BASE_URL_PRODUCTION,
   };
   #SERVER_BASE_URLS = {
-    development: this.#env.REACT_APP_SERVER_BASE_URL_DEVELOPMENT,
-    production_1: this.#env.REACT_APP_SERVER_BASE_URL_PRODUCTION_1,
-    production_2: this.#env.REACT_APP_SERVER_BASE_URL_PRODUCTION_2,
+    development_1: this.#env.REACT_APP_DEVELOPMENT_SERVER_BASE_URL_1,
+    development_2: this.#env.REACT_APP_DEVELOPMENT_SERVER_BASE_URL_2,
+    production_1: this.#env.REACT_APP_PRODUCTION_SERVER_BASE_URL_1,
+    production_2: this.#env.REACT_APP_PRODUCTION_SERVER_BASE_URL_2,
   };
-  #SERVER_BASE_URL_INDEX = this.#env.REACT_APP_SERVER_BASE_URL_INDEX;
+  #SERVER_BASE_URL_INDEX = (() => {
+    const indexKey = `REACT_APP_${this.#RUNTIME_MODE.toUpperCase()}SERVER_BASE_URL_INDEX`;
+    const index = this.#env[indexKey];
+    if (index) return index;
+
+    const defaultIndexKey = `REACT_APP_${this.#RUNTIME_MODE.toUpperCase()}SERVER_BASE_URL_DEFAULT_INDEX`;
+    return this.#env[defaultIndexKey];
+  })();
 
   #configs = this.#getDefaultConfigs();
 
@@ -25,14 +33,11 @@ class AppConfigs {
       this.#env.REACT_APP_RUNTIME_MODE ===
       envManager.ENVIRONMENT_VALUES.REACT_APP_RUNTIME_MODE.development
     )
-      return this.#SERVER_BASE_URLS.development;
+      return this.#SERVER_BASE_URLS.development_1;
 
     const index = this.#SERVER_BASE_URL_INDEX;
     const runtimeMode = `${this.#RUNTIME_MODE}_${index}`;
-    console.log("index:::", runtimeMode);
-    const baseUrl = this.#SERVER_BASE_URLS[runtimeMode];
-    console.log("baseUrl:::", baseUrl);
-    return baseUrl;
+    return this.#SERVER_BASE_URLS[runtimeMode];
   }
 
   #getDefaultConfigs() {
