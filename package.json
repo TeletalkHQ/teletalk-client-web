@@ -10,6 +10,7 @@
     "url": "https://github.com/S-STALWART-S/teletalk-client"
   },
   "scripts": {
+    "build": "npm run production:build",
     "check:format": "prettier --write ./",
     "check:lint": "eslint ./",
     "check:lint:default": "eslint 'src/**/*.js' 'src/**/*.jsx'",

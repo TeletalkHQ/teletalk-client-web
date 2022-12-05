@@ -131,10 +131,11 @@ const AddNewContactDialog = ({ onDialogClose }) => {
   const isCountrySelected = () => {
     const country = selectedCountry;
 
-    if (country.countryCode && country.countryName && country.countryShortName)
-      return true;
-
-    return false;
+    return !!(
+      country.countryCode &&
+      country.countryName &&
+      country.countryShortName
+    );
   };
 
   const handleInputChange = (event) => {
