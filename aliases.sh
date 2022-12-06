@@ -19,6 +19,12 @@ alias nrb="npm run build"
 alias nrcf="npm run check:format"
 alias nrcl="npm run check:lint"
 alias nrcs="npm run check:style"
+alias nrsd="npm run start:dev"
+alias nrsd1="npm run start:dev:1"
+alias nrsd2="npm run start:dev:2"
+alias nrsp="npm run start:production"
+alias nrsp1="npm run start:production:1"
+alias nrsp2="npm run start:production:2"
 alias sb="serve build"
 
 #? yarn aliases

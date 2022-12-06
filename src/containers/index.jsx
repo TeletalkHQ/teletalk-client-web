@@ -26,7 +26,7 @@ import { stuffStore } from "classes/StuffStore";
 
 const Provider = () => {
   const {
-    hooksOutput: { dispatch },
+    hooksOutput: { dispatchAsync },
     state,
   } = useMainContext();
   const [forceUpdate, setForceUpdate] = useState(false);
@@ -48,8 +48,12 @@ const Provider = () => {
 
   useEffect(() => {
     events.addOnlineStatusEvents();
-    dispatch(controllers.getAllStuff());
 
+    const fn = async () => {
+      await dispatchAsync(controllers.getAllStuff());
+    };
+
+    fn();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

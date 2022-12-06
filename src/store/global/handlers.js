@@ -47,10 +47,10 @@ const handleAppProgressionChange = (payload, prevState) => ({
   },
 });
 
-const handleResetGlobalState = () => ({
-  ...initialGlobalState(),
-  viewMode: stateStatics.VIEW_MODES.SIGN_IN,
-});
+const handleResetGlobalState = () => {
+  const { initialSetupDetails, ...state } = initialGlobalState();
+  return state;
+};
 
 const handleUpdateViewMode = (payload) => ({
   viewMode: payload.viewMode,

@@ -63,18 +63,14 @@ const SignIn = () => {
     selectedCountryDispatcher(country);
   };
 
-  const handleSelectedCountryChange = (
-    newValue = variables.common.object.country()
-  ) => {
-    selectedCountryDispatcher(newValue);
+  const handleSelectedCountryChange = (newValue) => {
+    const country = newValue || variables.common.object.country();
 
-    dispatch(
-      actions.countryCodeOnChange({ countryCode: newValue.countryCode })
-    );
+    selectedCountryDispatcher(country);
 
-    dispatch(
-      actions.countryNameOnChange({ countryName: newValue.countryName })
-    );
+    dispatch(actions.countryCodeOnChange({ countryCode: country.countryCode }));
+
+    dispatch(actions.countryNameOnChange({ countryName: country.countryName }));
   };
 
   const handleCountryNameInputChange = (newInputValue) => {

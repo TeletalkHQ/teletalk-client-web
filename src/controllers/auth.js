@@ -8,11 +8,7 @@ import { notificationManager } from "classes/NotificationManager";
 import { persistentStorage } from "classes/PersistentStorage";
 import { userPropsUtilities } from "classes/UserPropsUtilities";
 
-import { controllers } from "controllers";
-
 import { utilities } from "utilities";
-
-import { extractedDispatchAsync } from "hooks/useThunkReducer";
 
 import { store } from "store/store";
 import { commonActions } from "store/commonActions";
@@ -20,7 +16,7 @@ import { commonActions } from "store/commonActions";
 import { variables } from "variables";
 
 const saveTokenIntoPersistentStorage = (token) =>
-  persistentStorage.setItem(persistentStorage.storageKeys.TOKEN, token);
+  persistentStorage.setItem(persistentStorage.STORAGE_KEYS.TOKEN, token);
 
 const printTokenNotFound = () =>
   notificationManager.submitErrorNotification(
@@ -30,7 +26,7 @@ const printTokenNotFound = () =>
 const verifySignIn = () => {
   const tryToVerifySignIn = async (verificationCode, dispatch) => {
     const token = persistentStorage.getItem(
-      persistentStorage.storageKeys.TOKEN
+      persistentStorage.STORAGE_KEYS.TOKEN
     );
     if (!token) {
       dispatch(commonActions.changeViewMode.signIn());
@@ -38,7 +34,7 @@ const verifySignIn = () => {
       return;
     }
 
-    return await apiManager.apis.verifySignIn.sendFullFeaturedRequest(
+    return await apiManager.apis.verifySignInNormal.sendFullFeaturedRequest(
       {
         verificationCode,
       },
@@ -47,7 +43,7 @@ const verifySignIn = () => {
   };
 
   const tasksIfUserIsNotNew = (dispatch, user) => {
-    persistentStorage.removeItem(persistentStorage.storageKeys.TOKEN);
+    persistentStorage.removeItem(persistentStorage.STORAGE_KEYS.TOKEN);
 
     const token = user.token;
     delete user.token;
@@ -95,7 +91,6 @@ const getUserData = () => {
     const {
       data: { user },
     } = await apiManager.apis.getUserData.sendFullFeaturedRequest();
-    await extractedDispatchAsync(controllers.getAllPrivateChats());
 
     return { user };
   };
@@ -106,22 +101,18 @@ const getUserData = () => {
   };
 
   return async (dispatch) => {
-    if (!localStorage.getItem("TOKEN")) {
-      return;
-    }
-
     (await trier(getUserData.name).tryAsync(tryToGetUserData))
       .executeIfNoError(executeIfNoError, dispatch)
-      .catch(utilities.printCatchError, getUserData.name)
-      .finally(() =>
-        dispatch(actions.globalLoadingOpenChange({ open: false }))
-      );
+      .catch((error) => {
+        utilities.printCatchError(error, getUserData.name);
+        dispatch(commonActions.changeViewMode.signIn());
+      }, getUserData.name);
   };
 };
 
 const signIn = () => {
   const tryToSignIn = async ({ countryCode, countryName, phoneNumber }) => {
-    return await apiManager.apis.signIn.sendFullFeaturedRequest({
+    return await apiManager.apis.signInNormal.sendFullFeaturedRequest({
       countryCode,
       countryName,
       phoneNumber,
@@ -129,7 +120,7 @@ const signIn = () => {
   };
   const executeIfNoErrorOnTryToSignIn = (response, dispatch) => {
     const { token } = response.data.user;
-    persistentStorage.setItem(persistentStorage.storageKeys.TOKEN, token);
+    persistentStorage.setItem(persistentStorage.STORAGE_KEYS.TOKEN, token);
 
     dispatch(commonActions.changeViewMode.verifySignIn());
   };
@@ -159,12 +150,15 @@ const signIn = () => {
 
 const logout = () => {
   const tryToLogout = async () =>
-    await apiManager.apis.logout.sendFullFeaturedRequest();
+    await apiManager.apis.logoutNormal.sendFullFeaturedRequest();
 
-  return async () => {
+  return async (dispatch) => {
     (await trier(logout.name).tryAsync(tryToLogout))
       .catch(utilities.printCatchError, logout.name)
-      .executeIfNoError(() => commonTasks.resetEverything());
+      .executeIfNoError(() => {
+        commonTasks.resetEverything();
+        dispatch(commonActions.changeViewMode.signIn());
+      });
   };
 };
 
