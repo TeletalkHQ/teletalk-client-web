@@ -12,6 +12,8 @@ import Auth from "containers/auth";
 import Messenger from "containers/messenger";
 
 import { stateStatics } from "store/stateStatics";
+import { actions } from "store/actions";
+import { persistentStorage } from "classes/PersistentStorage";
 import { commonActions } from "store/commonActions";
 
 const visibleComponent = (viewMode) => {
@@ -38,17 +40,20 @@ const Root = () => {
 
   useEffect(() => {
     const fn = async () => {
+      //TODO: Add to commonActions
+      dispatch(actions.globalLoadingOpenChange({ open: true }));
       await dispatchAsync(controllers.getCountries());
-      if (!localStorage.getItem("TOKEN")) {
+
+      const TOKEN = persistentStorage.getItem(
+        persistentStorage.STORAGE_KEYS.TOKEN
+      );
+      if (TOKEN) {
+        await dispatchAsync(controllers.getUserData());
+      } else {
         dispatch(commonActions.changeViewMode.signIn());
       }
-      const updater = () => {
-        setTimeout(async () => {
-          await dispatchAsync(controllers.getUserData());
-          updater();
-        }, 2000);
-      };
-      updater();
+
+      dispatch(actions.globalLoadingOpenChange({ open: false }));
     };
 
     fn();

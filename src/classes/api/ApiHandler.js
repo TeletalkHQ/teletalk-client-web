@@ -133,7 +133,7 @@ class ApiHandler {
         ...apiDefaultOptions.headers,
         ...(extraOptions.headers || {}),
       },
-      token: extraOptions.token || userPropsUtilities.getMainTokenFromStorage(),
+      token: extraOptions.token || userPropsUtilities.getTokenFromStorage(),
     };
 
     if (mergedOptions.token) {

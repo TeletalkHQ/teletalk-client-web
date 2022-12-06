@@ -9,10 +9,10 @@ class UserPropsUtilities extends UserPropsUtilitiesMain {
   }
 
   getTokenFromStorage() {
-    return persistentStorage.getItem(persistentStorage.storageKeys.TOKEN);
+    return persistentStorage.getItem(persistentStorage.STORAGE_KEYS.TOKEN);
   }
   removeTokenFromStorage() {
-    persistentStorage.removeItem(persistentStorage.storageKeys.TOKEN);
+    persistentStorage.removeItem(persistentStorage.STORAGE_KEYS.TOKEN);
   }
 }
 

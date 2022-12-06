@@ -38,13 +38,13 @@ class PersistentStorage {
     this.#initialDefaultStorage();
   }
   persistentStorage = new Storage();
-  storageKeys = {
+  STORAGE_KEYS = {
     TOKEN: "TOKEN",
     STUFFS: "STUFFS",
   };
 
   #initialDefaultStorage() {
-    objectUtilities.objectKeys(this.storageKeys).forEach((key) => {
+    objectUtilities.objectKeys(this.STORAGE_KEYS).forEach((key) => {
       const latestKeyValue = this.getItem(key);
       this.setItem(key, latestKeyValue || "");
     });

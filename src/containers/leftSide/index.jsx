@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-
-import { apiManager } from "classes/api/ApiManager";
+import { useMemo } from "react";
 
 import ChatList from "components/leftSide/ChatList";
 import CustomFlexBox from "components/general/box/CustomFlexBox";
@@ -12,62 +10,32 @@ import { useMainContext } from "hooks/useMainContext";
 import { actions } from "store/actions";
 import { commonActions } from "store/commonActions";
 
-const LeftSide = () => {
+const LeftSide = ({ users }) => {
   const {
     hooksOutput: { dispatch },
     state,
   } = useMainContext();
 
-  const [chatList, setChatList] = useState([]);
+  const chatList = useMemo(() => {
+    if (!users.length) return [];
+    return state.message.privateChats.map((privateChatItem) => {
+      const lastChatMessage = privateChatItem.messages.at(-1);
 
-  useEffect(() => {
-    const makeChatList = async () => {
-      const listOfChatsWithName = [];
+      const { participantId } = privateChatItem.participants.find(
+        (participantItem) => participantItem.participantId !== state.user.userId
+      );
 
-      for (const privateChatItem of state.message.privateChats) {
-        const lastChatMessage = privateChatItem.messages.at(-1);
+      console.log(users);
+      const user = users.find((c) => c.userId === participantId);
 
-        const { participantId } = privateChatItem.participants.find(
-          (participantItem) =>
-            participantItem.participantId !== state.user.userId
-        );
-
-        const foundContact = state.user.contacts.find(
-          (c) => c.userId === participantId
-        );
-
-        if (foundContact) {
-          listOfChatsWithName.push({
-            message: lastChatMessage.message,
-            name: `${foundContact.firstName} ${foundContact.lastName}`,
-            userId: foundContact.userId,
-          });
-        } else {
-          const response =
-            await apiManager.apis.getPublicUserInfo.sendFullFeaturedRequest({
-              userId: participantId,
-            });
-
-          const {
-            publicUserInfo: { userId, firstName, lastName },
-          } = response.data;
-
-          listOfChatsWithName.push({
-            message: lastChatMessage.message,
-            name: `${firstName} ${lastName}`,
-            userId,
-          });
-        }
-      }
-
-      setChatList(listOfChatsWithName);
-    };
-
-    makeChatList();
-
-    return () => {};
+      return {
+        message: lastChatMessage.message,
+        name: `${user.firstName} ${user.lastName}`,
+        userId: user.userId,
+      };
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message.privateChats]);
+  }, [state.message.privateChats, users]);
 
   const handleDrawerIconClick = () => {
     dispatch(commonActions.openAppDrawer());
@@ -80,6 +48,8 @@ const LeftSide = () => {
       })
     );
   };
+
+  console.log("chatList:::", chatList, users);
 
   return (
     <>

@@ -22,11 +22,11 @@
     "production:deploy": "gh-pages -d build",
     "start": "npm run start:production",
     "start:dev": "cross-env REACT_APP_RUNTIME_MODE=development react-scripts start",
-    "start:dev:1": "cross-env REACT_APP_DEVELOPMENT_SERVER_BASE_URL_INDEX=1 npm run start:dev",
-    "start:dev:2": "cross-env REACT_APP_DEVELOPMENT_SERVER_BASE_URL_INDEX=2 npm run start:dev",
+    "start:dev:1": "cross-env PORT=4001 REACT_APP_DEVELOPMENT_SERVER_BASE_URL_INDEX=1 npm run start:dev",
+    "start:dev:2": "cross-env PORT=4002 REACT_APP_DEVELOPMENT_SERVER_BASE_URL_INDEX=2 npm run start:dev",
     "start:production": "cross-env REACT_APP_RUNTIME_MODE=production react-scripts start",
-    "start:production1": "cross-env REACT_APP_PRODUCTION_SERVER_BASE_URL_INDEX=1 npm run start:production",
-    "start:production2": "cross-env REACT_APP_PRODUCTION_SERVER_BASE_URL_INDEX=2 npm run start:production",
+    "start:production1": "cross-env PORT=3001 REACT_APP_PRODUCTION_SERVER_BASE_URL_INDEX=1 npm run start:production",
+    "start:production2": "cross-env PORT=3002 REACT_APP_PRODUCTION_SERVER_BASE_URL_INDEX=2 npm run start:production",
     "test": "react-scripts test"
   },
   "keywords": [
