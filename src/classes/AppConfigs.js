@@ -18,11 +18,11 @@ class AppConfigs {
     production_2: this.#env.REACT_APP_PRODUCTION_SERVER_BASE_URL_2,
   };
   #SERVER_BASE_URL_INDEX = (() => {
-    const indexKey = `REACT_APP_${this.#RUNTIME_MODE.toUpperCase()}SERVER_BASE_URL_INDEX`;
+    const indexKey = `REACT_APP_${this.#RUNTIME_MODE.toUpperCase()}_SERVER_BASE_URL_INDEX`;
     const index = this.#env[indexKey];
     if (index) return index;
 
-    const defaultIndexKey = `REACT_APP_${this.#RUNTIME_MODE.toUpperCase()}SERVER_BASE_URL_DEFAULT_INDEX`;
+    const defaultIndexKey = `REACT_APP_${this.#RUNTIME_MODE.toUpperCase()}_SERVER_BASE_URL_DEFAULT_INDEX`;
     return this.#env[defaultIndexKey];
   })();
 
