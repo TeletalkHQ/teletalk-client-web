@@ -27,10 +27,11 @@ import { stateStatics } from "src/store/stateStatics";
 import { componentController } from "src/classes/ComponentController";
 
 const Provider = () => {
+  const state = useSelector();
+
   const {
     hooksOutput: { dispatchAsync },
   } = useMainContext();
-  const state = useSelector();
 
   const [forceUpdate, setForceUpdate] = useState(false);
 

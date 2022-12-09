@@ -9,10 +9,11 @@ import { useMainContext } from "src/hooks/useMainContext";
 import { useSelector } from "src/hooks/useThunkReducer";
 
 const LogoutDialog = ({ onDialogClose }) => {
+  const state = useSelector();
+
   const {
     hooksOutput: { dispatchAsync },
   } = useMainContext();
-  const state = useSelector();
 
   const handleClose = () => {
     onDialogClose("logout");

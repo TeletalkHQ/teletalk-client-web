@@ -19,7 +19,7 @@ import PhoneNumber from "src/components/general/input/commonInput/PhoneNumberInp
 import { controllers } from "src/controllers";
 
 import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { commonActions } from "src/store/commonActions";
 import { stateStatics } from "src/store/stateStatics";
@@ -30,11 +30,12 @@ import { componentBuilder } from "src/classes/ComponentBuilder";
 const AddNewContact = componentBuilder
   .create()
   .registerComponent("AddNewContact", ({ onDialogClose }) => {
-    const {
-      hooksOutput: { dispatch, dispatchAsync },
-    } = useMainContext();
-
+    const dispatch = useDispatch();
     const state = useSelector();
+
+    const {
+      hooksOutput: { dispatchAsync },
+    } = useMainContext();
 
     const [contact, setContact] = useState(variables.common.object.contact);
     const [selectedCountry, setSelectedCountry] = useState(

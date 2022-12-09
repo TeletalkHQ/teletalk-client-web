@@ -17,14 +17,12 @@ import MessageList from "src/components/rightSide/MessageList";
 
 import { controllers } from "src/controllers";
 
-import { useMainContext } from "src/hooks/useMainContext";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 const RightSide = () => {
-  const {
-    hooksOutput: { dispatch },
-    // others: { getState },
-    state,
-  } = useMainContext();
+  const dispatch = useDispatch();
+  const state = useSelector();
+
   const [selectedUserToChat, setSelectedUserToChat] = useState({});
   const selectedUserId = state.message.selectedUserForPrivateChat.userId;
 

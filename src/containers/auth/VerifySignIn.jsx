@@ -16,17 +16,14 @@ import { Icons } from "src/components/other/Icons";
 
 import { controllers } from "src/controllers";
 
-import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
 
 import { variables } from "src/variables";
 
 const VerifySignIn = ({ onBackToSignInClick }) => {
-  const {
-    hooksOutput: { dispatch },
-  } = useMainContext();
+  const dispatch = useDispatch();
   const state = useSelector();
 
   const isVerificationSubmitButtonDisabled = () => {

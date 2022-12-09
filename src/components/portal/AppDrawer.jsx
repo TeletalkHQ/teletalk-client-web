@@ -11,8 +11,7 @@ import CustomListItemText from "src/components/general/box/CustomListItemText";
 import Div from "src/components/general/box/Div";
 import { Icons } from "src/components/other/Icons";
 
-import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { commonActions } from "src/store/commonActions";
 
@@ -33,9 +32,7 @@ const iOS =
   /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const AppDrawer = () => {
-  const {
-    hooksOutput: { dispatch },
-  } = useMainContext();
+  const dispatch = useDispatch();
   const state = useSelector();
 
   const toggleDrawer = (event, open) => {

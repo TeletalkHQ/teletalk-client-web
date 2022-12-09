@@ -10,16 +10,19 @@ import RightSide from "src/containers/rightSide";
 import { controllers } from "src/controllers";
 
 import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
 import { stateStatics } from "src/store/stateStatics";
 
 const Messenger = () => {
-  const {
-    hooksOutput: { dispatch, dispatchAsync },
-  } = useMainContext();
+  const dispatch = useDispatch();
   const state = useSelector();
+
+  const {
+    hooksOutput: { dispatchAsync },
+  } = useMainContext();
+
   const [users, setUsers] = useState([]);
 
   useEffect(() => {

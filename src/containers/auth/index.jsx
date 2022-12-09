@@ -1,7 +1,6 @@
 import Copyright from "src/components/other/Copyright";
 
-import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import CreateNewUser from "src/containers/auth/CreateNewUser";
 import SignIn from "src/containers/auth/SignIn";
@@ -12,9 +11,7 @@ import { stateStatics } from "src/store/stateStatics";
 import { commonActions } from "src/store/commonActions";
 
 const Auth = () => {
-  const {
-    hooksOutput: { dispatch },
-  } = useMainContext();
+  const dispatch = useDispatch();
   const state = useSelector();
 
   const handleBackToSignInClick = () => {

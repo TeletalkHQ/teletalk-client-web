@@ -17,6 +17,10 @@ const states = store.initialStates();
 const App = () => {
   const [state = states, dispatch] = useThunkReducer(store.rootReducer, states);
 
+  const dispatchAsync = async (action) => await dispatch(action);
+
+  const getState = () => state;
+
   return (
     //TODO: Move this configs to appConfigs
     <SnackbarProvider maxSnack={10}>
@@ -24,10 +28,10 @@ const App = () => {
         value={{
           hooksOutput: {
             dispatch,
-            dispatchAsync: async (action) => await dispatch(action),
+            dispatchAsync,
           },
           others: {
-            getState: () => state,
+            getState,
           },
           state,
         }}

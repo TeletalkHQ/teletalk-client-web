@@ -5,16 +5,14 @@ import CustomFlexBox from "src/components/general/box/CustomFlexBox";
 import GridContainer from "src/components/general/box/GridContainer";
 import SearchBar from "src/components/leftSide/SearchBar";
 
-import { useMainContext } from "src/hooks/useMainContext";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 
 const LeftSide = ({ users }) => {
-  const {
-    hooksOutput: { dispatch },
-    state,
-  } = useMainContext();
+  const dispatch = useDispatch();
+  const state = useSelector();
 
   const chatList = useMemo(() => {
     if (!users.length) return [];
