@@ -1,7 +1,7 @@
-import CustomList from "components/general/box/CustomList";
-import CustomListItem from "components/general/box/CustomListItem";
+import CustomList from "src/components/general/box/CustomList";
+import CustomListItem from "src/components/general/box/CustomListItem";
 
-import { Icons } from "components/other/Icons";
+import { Icons } from "src/components/other/Icons";
 
 //TODO: Add to some functionality and add priority to each
 const sidebarList = [

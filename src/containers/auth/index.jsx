@@ -1,15 +1,15 @@
-import Copyright from "components/other/Copyright";
+import Copyright from "src/components/other/Copyright";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import CreateNewUser from "containers/auth/CreateNewUser";
-import SignIn from "containers/auth/SignIn";
-import VerifySignIn from "containers/auth/VerifySignIn";
+import CreateNewUser from "src/containers/auth/CreateNewUser";
+import SignIn from "src/containers/auth/SignIn";
+import VerifySignIn from "src/containers/auth/VerifySignIn";
 
-import { actions } from "store/actions";
-import { stateStatics } from "store/stateStatics";
-import { commonActions } from "store/commonActions";
+import { actions } from "src/store/actions";
+import { stateStatics } from "src/store/stateStatics";
+import { commonActions } from "src/store/commonActions";
 
 const Auth = () => {
   const {

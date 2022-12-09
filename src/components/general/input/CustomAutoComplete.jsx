@@ -1,5 +1,5 @@
-import match from "autosuggest-highlight/match";
-import parse from "autosuggest-highlight/parse";
+import match from "src/autosuggest-highlight/match";
+import parse from "src/autosuggest-highlight/parse";
 import {
   Autocomplete,
   Box,

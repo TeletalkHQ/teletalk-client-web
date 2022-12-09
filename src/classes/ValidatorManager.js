@@ -2,9 +2,9 @@ import FastestValidator from "fastest-validator";
 
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 
-import { validator } from "classes/Validator";
+import { validator } from "src/classes/Validator";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
 const fastestValidatorCompiler = new FastestValidator();
 

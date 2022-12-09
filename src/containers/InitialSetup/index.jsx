@@ -1,6 +1,6 @@
-import FullPageLoading from "components/portal/FullPageLoading";
+import FullPageLoading from "src/components/portal/FullPageLoading";
 
-import { useSelector } from "hooks/useThunkReducer";
+import { useSelector } from "src/hooks/useThunkReducer";
 
 const InitialSetup = () => {
   const state = useSelector();

@@ -1,4 +1,4 @@
-import CustomTypography from "components/general/typography/CustomTypography";
+import CustomTypography from "src/components/general/typography/CustomTypography";
 
 const H5 = ({ fontWeight, fw, ta, textAlign, v, variant, ...restOfProps }) => {
   return (

@@ -1,29 +1,29 @@
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
-import { stuffStore } from "classes/StuffStore";
-import { commonTasks } from "classes/CommonTasks";
+import { stuffStore } from "src/classes/StuffStore";
+import { commonTasks } from "src/classes/CommonTasks";
 
-import { Icons } from "components/other/Icons";
-import CountryCode from "components/general/input/commonInput/CountryCode";
-import CountrySelector from "components/general/input/commonInput/CountrySelector";
-import CustomAvatar from "components/general/other/CustomAvatar";
-import CustomBox from "components/general/box/CustomBox";
-import CustomButton from "components/general/input/CustomButton";
-import CustomCircularProgress from "components/general/progress/CustomCircularProgress";
-import CustomContainer from "components/general/box/CustomContainer";
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import GreyTextParagraph from "components/general/typography/GreyTextParagraph";
-import H5 from "components/general/header/H5";
-import PhoneNumber from "components/general/input/commonInput/PhoneNumberInput";
+import { Icons } from "src/components/other/Icons";
+import CountryCode from "src/components/general/input/commonInput/CountryCode";
+import CountrySelector from "src/components/general/input/commonInput/CountrySelector";
+import CustomAvatar from "src/components/general/other/CustomAvatar";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomButton from "src/components/general/input/CustomButton";
+import CustomCircularProgress from "src/components/general/progress/CustomCircularProgress";
+import CustomContainer from "src/components/general/box/CustomContainer";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
+import H5 from "src/components/general/header/H5";
+import PhoneNumber from "src/components/general/input/commonInput/PhoneNumberInput";
 
-import { controllers } from "controllers";
+import { controllers } from "src/controllers";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 const SignIn = () => {
   const {

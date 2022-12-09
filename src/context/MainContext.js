@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
-import { appOptions } from "classes/AppOptions";
+import { appOptions } from "src/classes/AppOptions";
 
-import { store } from "store/store";
+import { store } from "src/store/store";
 
 const MainContext = createContext({
   hooksOutput: {

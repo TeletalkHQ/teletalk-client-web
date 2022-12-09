@@ -1,6 +1,6 @@
-import { USER_ACTION_TYPES } from "store/user/types";
+import { USER_ACTION_TYPES } from "src/store/user/types";
 
-import { fields } from "store/fields";
+import { fields } from "src/store/fields";
 
 const userActionPayloads = {
   [USER_ACTION_TYPES.ADD_NEW_CONTACT]: {

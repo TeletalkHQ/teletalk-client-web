@@ -1,6 +1,6 @@
 import { UserPropsUtilities as UserPropsUtilitiesMain } from "utility-store/src/classes/UserPropsUtilities";
 
-import { persistentStorage } from "classes/PersistentStorage";
+import { persistentStorage } from "src/classes/PersistentStorage";
 
 class UserPropsUtilities extends UserPropsUtilitiesMain {
   constructor(id) {

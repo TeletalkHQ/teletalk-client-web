@@ -1,15 +1,15 @@
 import Autocomplete from "@mui/material/Autocomplete";
 
-import { validatorManager } from "classes/ValidatorManager";
+import { validatorManager } from "src/classes/ValidatorManager";
 
-import CustomTextInput from "components/general/input/CustomTextInput";
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import CustomBox from "components/general/box/CustomBox";
-import Img from "components/general/other/Img";
-import Div from "components/general/box/Div";
-import Span from "components/general/box/Span";
+import CustomTextInput from "src/components/general/input/CustomTextInput";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import CustomBox from "src/components/general/box/CustomBox";
+import Img from "src/components/general/other/Img";
+import Div from "src/components/general/box/Div";
+import Span from "src/components/general/box/Span";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 //CLEANME: CountrySelector Autocomplete
 const CountrySelector = ({

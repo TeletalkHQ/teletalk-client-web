@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 
-import ChatList from "components/leftSide/ChatList";
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import GridContainer from "components/general/box/GridContainer";
-import SearchBar from "components/leftSide/SearchBar";
+import ChatList from "src/components/leftSide/ChatList";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import GridContainer from "src/components/general/box/GridContainer";
+import SearchBar from "src/components/leftSide/SearchBar";
 
-import { useMainContext } from "hooks/useMainContext";
+import { useMainContext } from "src/hooks/useMainContext";
 
-import { actions } from "store/actions";
-import { commonActions } from "store/commonActions";
+import { actions } from "src/store/actions";
+import { commonActions } from "src/store/commonActions";
 
 const LeftSide = ({ users }) => {
   const {

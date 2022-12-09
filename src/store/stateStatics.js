@@ -1,4 +1,4 @@
-import { globalStatics } from "store/global/statics";
+import { globalStatics } from "src/store/global/statics";
 
 const stateStatics = {
   ...globalStatics,

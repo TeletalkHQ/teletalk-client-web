@@ -1,6 +1,6 @@
-import { envManager } from "classes/EnvironmentManager";
+import { envManager } from "src/classes/EnvironmentManager";
 
-import { stateStatics } from "store/stateStatics";
+import { stateStatics } from "src/store/stateStatics";
 
 class AppConfigs {
   #env = envManager.getAllLocalEnvironments();

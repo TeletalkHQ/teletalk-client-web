@@ -1,9 +1,9 @@
-import { authActionPayloads } from "store/auth/payloads";
-import { globalActionPayloads } from "store/global/payloads";
-import { messageActionPayloads } from "store/message/payloads";
-import { notificationActionPayloads } from "store/notification/payloads";
-import { otherActionPayloads } from "store/other/payloads";
-import { userActionPayloads } from "store/user/payloads";
+import { authActionPayloads } from "src/store/auth/payloads";
+import { globalActionPayloads } from "src/store/global/payloads";
+import { messageActionPayloads } from "src/store/message/payloads";
+import { notificationActionPayloads } from "src/store/notification/payloads";
+import { otherActionPayloads } from "src/store/other/payloads";
+import { userActionPayloads } from "src/store/user/payloads";
 
 const payloads = {
   auth: authActionPayloads,

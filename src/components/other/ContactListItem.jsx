@@ -1,7 +1,7 @@
-import CustomAvatar from "components/general/other/CustomAvatar";
-import CustomBox from "components/general/box/CustomBox";
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import CustomListItem from "components/general/box/CustomListItem";
+import CustomAvatar from "src/components/general/other/CustomAvatar";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import CustomListItem from "src/components/general/box/CustomListItem";
 
 const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
   return (

@@ -2,30 +2,30 @@ import { useState } from "react";
 
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
-import { commonTasks } from "classes/CommonTasks";
-import { stuffStore } from "classes/StuffStore";
+import { commonTasks } from "src/classes/CommonTasks";
+import { stuffStore } from "src/classes/StuffStore";
 
-import CountryCode from "components/general/input/commonInput/CountryCode";
-import CountrySelector from "components/general/input/commonInput/CountrySelector";
-import CustomBox from "components/general/box/CustomBox";
-import CustomButton from "components/general/input/CustomButton";
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import DialogTemplate from "components/dialog/Template";
-import FirstName from "components/general/input/commonInput/FirstNameInput";
-import H5 from "components/general/header/H5";
-import LastName from "components/general/input/commonInput/LastNameInput";
-import PhoneNumber from "components/general/input/commonInput/PhoneNumberInput";
+import CountryCode from "src/components/general/input/commonInput/CountryCode";
+import CountrySelector from "src/components/general/input/commonInput/CountrySelector";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomButton from "src/components/general/input/CustomButton";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import DialogTemplate from "src/components/dialog/Template";
+import FirstName from "src/components/general/input/commonInput/FirstNameInput";
+import H5 from "src/components/general/header/H5";
+import LastName from "src/components/general/input/commonInput/LastNameInput";
+import PhoneNumber from "src/components/general/input/commonInput/PhoneNumberInput";
 
-import { controllers } from "controllers";
+import { controllers } from "src/controllers";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import { commonActions } from "store/commonActions";
-import { stateStatics } from "store/stateStatics";
+import { commonActions } from "src/store/commonActions";
+import { stateStatics } from "src/store/stateStatics";
 
-import { variables } from "variables";
-import { componentBuilder } from "classes/ComponentBuilder";
+import { variables } from "src/variables";
+import { componentBuilder } from "src/classes/ComponentBuilder";
 
 const AddNewContact = componentBuilder
   .create()

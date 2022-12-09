@@ -1,6 +1,6 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 class ReducerBuilder {
   #options = {

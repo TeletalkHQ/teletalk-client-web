@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
-import { apiManager } from "classes/api/ApiManager";
+import { apiManager } from "src/classes/api/ApiManager";
 
-import GridContainer from "components/general/box/GridContainer";
+import GridContainer from "src/components/general/box/GridContainer";
 
-import LeftSide from "containers/leftSide";
-import RightSide from "containers/rightSide";
+import LeftSide from "src/containers/leftSide";
+import RightSide from "src/containers/rightSide";
 
-import { controllers } from "controllers";
+import { controllers } from "src/controllers";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import { actions } from "store/actions";
-import { stateStatics } from "store/stateStatics";
+import { actions } from "src/store/actions";
+import { stateStatics } from "src/store/stateStatics";
 
 const Messenger = () => {
   const {

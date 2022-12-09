@@ -1,22 +1,22 @@
-import { commonTasks } from "classes/CommonTasks";
-import { stuffStore } from "classes/StuffStore";
+import { commonTasks } from "src/classes/CommonTasks";
+import { stuffStore } from "src/classes/StuffStore";
 
-import CustomBox from "components/general/box/CustomBox";
-import CustomButton from "components/general/input/CustomButton";
-import CustomContainer from "components/general/box/CustomContainer";
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import CustomIconButton from "components/general/other/CustomIconButton";
-import FirstName from "components/general/input/commonInput/FirstNameInput";
-import GreyTextParagraph from "components/general/typography/GreyTextParagraph";
-import LastName from "components/general/input/commonInput/LastNameInput";
-import { Icons } from "components/other/Icons";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomButton from "src/components/general/input/CustomButton";
+import CustomContainer from "src/components/general/box/CustomContainer";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import CustomIconButton from "src/components/general/other/CustomIconButton";
+import FirstName from "src/components/general/input/commonInput/FirstNameInput";
+import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
+import LastName from "src/components/general/input/commonInput/LastNameInput";
+import { Icons } from "src/components/other/Icons";
 
-import { controllers } from "controllers";
+import { controllers } from "src/controllers";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
 const CreateNewUser = ({ onBackToSignInClick }) => {
   const {

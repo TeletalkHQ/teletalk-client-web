@@ -1,8 +1,8 @@
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
-import { extractedDispatch } from "hooks/useThunkReducer";
+import { extractedDispatch } from "src/hooks/useThunkReducer";
 
 const onlineStatusOnChangeEvent = () => {
   const isOnline = windowUtilities.isOnline();

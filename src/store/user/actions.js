@@ -1,6 +1,6 @@
-import { actionHandler } from "classes/ActionHandler";
+import { actionHandler } from "src/classes/ActionHandler";
 
-import { USER_ACTION_TYPES } from "store/user/types";
+import { USER_ACTION_TYPES } from "src/store/user/types";
 
 const addNewContact = (payload) =>
   actionHandler(USER_ACTION_TYPES.ADD_NEW_CONTACT, payload);

@@ -1,13 +1,13 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
-import reportWebVitals from "reportWebVitals";
+import reportWebVitals from "src/reportWebVitals";
 
-import "others/customGlobals";
+import "src/others/customGlobals";
 
-import App from "App";
+import App from "src/App";
 
-import { appConfigs } from "classes/AppConfigs";
+import { appConfigs } from "src/classes/AppConfigs";
 
 appConfigs.setDebugLevel();
 

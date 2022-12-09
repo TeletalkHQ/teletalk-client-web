@@ -1,8 +1,8 @@
-import { reducerBuilder } from "classes/ReducerBuilder";
+import { reducerBuilder } from "src/classes/ReducerBuilder";
 
-import { initialUserState } from "store/user/initialState";
-import { USER_ACTION_TYPES } from "store/user/types";
-import { userReducerHandlers } from "store/user/handlers";
+import { initialUserState } from "src/store/user/initialState";
+import { USER_ACTION_TYPES } from "src/store/user/types";
+import { userReducerHandlers } from "src/store/user/handlers";
 
 const userReducerCases = {
   [USER_ACTION_TYPES.ADD_NEW_CONTACT]: userReducerHandlers.handleAddNewContact,

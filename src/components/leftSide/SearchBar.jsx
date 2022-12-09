@@ -1,9 +1,9 @@
-import CustomBox from "components/general/box/CustomBox";
-import CustomIconButton from "components/general/other/CustomIconButton";
-import CustomInputAdornment from "components/general/other/CustomInputAdornment";
-import CustomTextInput from "components/general/input/CustomTextInput";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomIconButton from "src/components/general/other/CustomIconButton";
+import CustomInputAdornment from "src/components/general/other/CustomInputAdornment";
+import CustomTextInput from "src/components/general/input/CustomTextInput";
 
-import { Icons } from "components/other/Icons";
+import { Icons } from "src/components/other/Icons";
 
 const SearchBar = ({ onDrawerIconClick }) => {
   return (

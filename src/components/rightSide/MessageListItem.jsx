@@ -1,8 +1,8 @@
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import CustomPaper from "components/general/box/CustomPaper";
-import CustomTypography from "components/general/typography/CustomTypography";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import CustomPaper from "src/components/general/box/CustomPaper";
+import CustomTypography from "src/components/general/typography/CustomTypography";
 
-// import { Transitions } from "components/others/Transitions";
+// import { Transitions } from "src/components/others/Transitions";
 
 const MessageListItem = ({
   chatDate,

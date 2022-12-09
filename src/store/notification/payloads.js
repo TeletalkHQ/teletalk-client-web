@@ -1,5 +1,5 @@
-import { NOTIFICATION_ACTION_TYPES } from "store/notification/types";
-import { fields } from "store/fields";
+import { NOTIFICATION_ACTION_TYPES } from "src/store/notification/types";
+import { fields } from "src/store/fields";
 
 const notificationActionPayloads = {
   [NOTIFICATION_ACTION_TYPES.ERROR_NOTIFICATION]:

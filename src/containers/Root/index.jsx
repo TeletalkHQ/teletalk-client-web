@@ -1,21 +1,21 @@
 import { useEffect } from "react";
 
-import { persistentStorage } from "classes/PersistentStorage";
+import { persistentStorage } from "src/classes/PersistentStorage";
 
-import FullPageLoading from "components/portal/FullPageLoading";
+import FullPageLoading from "src/components/portal/FullPageLoading";
 
-import Portal from "containers/portal";
-import Auth from "containers/auth";
-import Messenger from "containers/messenger";
+import Portal from "src/containers/portal";
+import Auth from "src/containers/auth";
+import Messenger from "src/containers/messenger";
 
-import { controllers } from "controllers";
+import { controllers } from "src/controllers";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import { stateStatics } from "store/stateStatics";
-import { actions } from "store/actions";
-import { commonActions } from "store/commonActions";
+import { stateStatics } from "src/store/stateStatics";
+import { actions } from "src/store/actions";
+import { commonActions } from "src/store/commonActions";
 
 const visibleComponent = (viewMode) => {
   const {

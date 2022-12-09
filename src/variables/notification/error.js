@@ -1,4 +1,4 @@
-import { notificationBuilder } from "classes/NotificationBuilder";
+import { notificationBuilder } from "src/classes/NotificationBuilder";
 
 const COMPONENT_NAME_REQUIRED = notificationBuilder
   .create()

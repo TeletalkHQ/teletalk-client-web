@@ -1,7 +1,7 @@
-import CustomBackdrop from "components/general/other/CustomBackdrop";
-import CustomCircularProgress from "components/general/progress/CustomCircularProgress";
+import CustomBackdrop from "src/components/general/other/CustomBackdrop";
+import CustomCircularProgress from "src/components/general/progress/CustomCircularProgress";
 
-import { stateStatics } from "store/stateStatics";
+import { stateStatics } from "src/store/stateStatics";
 
 const OverlayLoading = ({ loading, onGlobalLoadingClose }) => {
   return (

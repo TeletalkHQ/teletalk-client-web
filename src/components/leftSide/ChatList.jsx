@@ -1,5 +1,5 @@
-import CustomList from "components/general/box/CustomList";
-import ChatListItem from "components/leftSide/ChatListItem";
+import CustomList from "src/components/general/box/CustomList";
+import ChatListItem from "src/components/leftSide/ChatListItem";
 
 const ChatList = ({
   chatList,

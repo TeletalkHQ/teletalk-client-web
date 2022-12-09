@@ -1,12 +1,12 @@
-import DialogTemplate from "components/dialog/Template";
-import CustomBox from "components/general/box/CustomBox";
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import CustomButton from "components/general/input/CustomButton";
+import DialogTemplate from "src/components/dialog/Template";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import CustomButton from "src/components/general/input/CustomButton";
 
-import { controllers } from "controllers";
+import { controllers } from "src/controllers";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
 const LogoutDialog = ({ onDialogClose }) => {
   const {

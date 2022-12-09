@@ -1,13 +1,13 @@
 import { eventManager } from "utility-store/src/classes/EventManager";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
-import { apiManager } from "classes/api/ApiManager";
-import { appOptions } from "classes/AppOptions";
+import { apiManager } from "src/classes/api/ApiManager";
+import { appOptions } from "src/classes/AppOptions";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
-import { store } from "store/store";
+import { store } from "src/store/store";
 
 const handleAddUserLastMessage = ({ chats, chatsWithLastMessage }) => {
   try {

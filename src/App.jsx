@@ -2,15 +2,15 @@ import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
 
-import Containers from "containers";
+import Containers from "src/containers";
 
-import { MainContext } from "context/MainContext";
+import { MainContext } from "src/context/MainContext";
 
-import { useThunkReducer } from "hooks/useThunkReducer";
+import { useThunkReducer } from "src/hooks/useThunkReducer";
 
-import { store } from "store/store";
+import { store } from "src/store/store";
 
-import { baseTheme } from "theme/baseTheme";
+import { baseTheme } from "src/theme/baseTheme";
 
 const states = store.initialStates();
 

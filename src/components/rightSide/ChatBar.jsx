@@ -1,11 +1,11 @@
-import CustomAvatar from "components/general/other/CustomAvatar";
-import CustomBox from "components/general/box/CustomBox";
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import CustomIconButton from "components/general/other/CustomIconButton";
-import CustomPaper from "components/general/box/CustomPaper";
-import CustomTypography from "components/general/typography/CustomTypography";
+import CustomAvatar from "src/components/general/other/CustomAvatar";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import CustomIconButton from "src/components/general/other/CustomIconButton";
+import CustomPaper from "src/components/general/box/CustomPaper";
+import CustomTypography from "src/components/general/typography/CustomTypography";
 
-import { Icons } from "components/other/Icons";
+import { Icons } from "src/components/other/Icons";
 
 const ChatBar = ({ contactName, onMessageContainerCloseClick }) => {
   return (

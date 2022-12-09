@@ -1,6 +1,6 @@
-import { actionHandler } from "classes/ActionHandler";
+import { actionHandler } from "src/classes/ActionHandler";
 
-import { GLOBAL_ACTION_TYPES } from "store/global/types";
+import { GLOBAL_ACTION_TYPES } from "src/store/global/types";
 
 const appDrawerOpenChange = (payload) =>
   actionHandler(GLOBAL_ACTION_TYPES.APP_DRAWER_OPEN_CHANGE, payload);

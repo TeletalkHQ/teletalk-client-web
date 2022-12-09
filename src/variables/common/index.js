@@ -1,4 +1,4 @@
-import { commonObject } from "variables/common/object";
+import { commonObject } from "src/variables/common/object";
 
 const common = {
   object: commonObject,
