@@ -68,7 +68,7 @@ class AppConfigs {
         dialogTransitionalComponentType: "Grow",
       },
       stateManagement: {
-        logActions: true,
+        logActions: false,
       },
     };
   }

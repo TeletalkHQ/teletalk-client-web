@@ -24,6 +24,7 @@ import { useMainContext } from "hooks/useMainContext";
 import { useSelector } from "hooks/useThunkReducer";
 
 import { stateStatics } from "store/stateStatics";
+import { componentController } from "classes/ComponentController";
 
 const Provider = () => {
   const {
@@ -40,6 +41,7 @@ const Provider = () => {
     windowUtilities
       .addProperty("apiManager", apiManager)
       .addProperty("appConfigs", appConfigs)
+      .addProperty("componentController", componentController)
       .addProperty("eventManager", eventManager)
       .addProperty("forceUpdater", forceUpdater)
       .addProperty("state", state)

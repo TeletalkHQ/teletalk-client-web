@@ -54,17 +54,16 @@ class ActionHandler {
       this.logAction(action);
       return action;
     } catch (error) {
-      console.log(error);
-      console.log("type:", this.type);
-      console.log(
+      logger.debug(error);
+      logger.debug("type:", this.type);
+      logger.debug(
         "payloadModel:",
         Object.keys(this.payloadModel).length,
         this.payloadModel
       );
-      console.log("payload:", Object.keys(this.payload).length, this.payload);
+      logger.debug("payload:", Object.keys(this.payload).length, this.payload);
       //FIXME: Add specific action for this error
       // return this.createAction();
-      // throw error;
       return {};
     }
   }

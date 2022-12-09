@@ -25,7 +25,6 @@ const LeftSide = ({ users }) => {
         (participantItem) => participantItem.participantId !== state.user.userId
       );
 
-      console.log(users);
       const user = users.find((c) => c.userId === participantId);
 
       return {
@@ -48,8 +47,6 @@ const LeftSide = ({ users }) => {
       })
     );
   };
-
-  console.log("chatList:::", chatList, users);
 
   return (
     <>

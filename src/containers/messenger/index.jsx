@@ -59,8 +59,6 @@ const Messenger = () => {
         })
         .filter((user) => users.every((u) => u.userId !== user.userId));
 
-      console.log(usersWithoutInfo);
-
       for (let i = 0; i < usersWithoutInfo.length; i++) {
         const user = usersWithoutInfo[i];
 
