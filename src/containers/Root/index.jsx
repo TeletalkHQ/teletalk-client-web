@@ -11,7 +11,7 @@ import Messenger from "src/containers/messenger";
 import { controllers } from "src/controllers";
 
 import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { stateStatics } from "src/store/stateStatics";
 import { actions } from "src/store/actions";
@@ -34,10 +34,12 @@ const visibleComponent = (viewMode) => {
 };
 
 const Root = () => {
-  const {
-    hooksOutput: { dispatch, dispatchAsync },
-  } = useMainContext();
+  const dispatch = useDispatch();
   const state = useSelector();
+
+  const {
+    hooksOutput: { dispatchAsync },
+  } = useMainContext();
 
   useEffect(() => {
     const fn = async () => {

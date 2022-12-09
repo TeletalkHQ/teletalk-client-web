@@ -5,8 +5,7 @@ import CustomFlexBox from "src/components/general/box/CustomFlexBox";
 import DialogTemplate from "src/components/dialog/Template";
 import H5 from "src/components/general/header/H5";
 
-import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
@@ -51,9 +50,7 @@ const ContactsActions = ({ onClose, onAddContactClick }) => (
 );
 
 const Contacts = ({ onDialogClose }) => {
-  const {
-    hooksOutput: { dispatch },
-  } = useMainContext();
+  const dispatch = useDispatch();
   const state = useSelector();
 
   const handleAddContactClick = () => {

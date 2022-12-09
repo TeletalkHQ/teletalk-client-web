@@ -1,5 +1,4 @@
 import { initialGlobalState } from "src/store/global/initialState";
-import { stateStatics } from "src/store/stateStatics";
 
 const handleGlobalLoadingStateOpenChange = (payload, prevState) => {
   return {

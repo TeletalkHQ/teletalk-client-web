@@ -2,14 +2,12 @@ import AddNewContact from "src/containers/dialog/AddNewContact";
 import Contacts from "src/containers/dialog/Contacts";
 import LogoutDialog from "src/containers/dialog/Logout";
 
-import { useMainContext } from "src/hooks/useMainContext";
+import { useDispatch } from "src/hooks/useThunkReducer";
 
 import { commonActions } from "src/store/commonActions";
 
 const Dialog = () => {
-  const {
-    hooksOutput: { dispatch },
-  } = useMainContext();
+  const dispatch = useDispatch();
 
   const handleDialogClose = (dialogName) => {
     dispatch(commonActions.closeDialog(dialogName));

@@ -18,17 +18,14 @@ import PhoneNumber from "src/components/general/input/commonInput/PhoneNumberInp
 
 import { controllers } from "src/controllers";
 
-import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
 
 import { variables } from "src/variables";
 
 const SignIn = () => {
-  const {
-    hooksOutput: { dispatch },
-  } = useMainContext();
+  const dispatch = useDispatch();
   const state = useSelector();
 
   const isCountrySelected = () => {
