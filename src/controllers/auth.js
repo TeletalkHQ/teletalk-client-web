@@ -1,19 +1,19 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
-import { apiManager } from "classes/api/ApiManager";
-import { commonTasks } from "classes/CommonTasks";
-import { notificationManager } from "classes/NotificationManager";
-import { persistentStorage } from "classes/PersistentStorage";
-import { userPropsUtilities } from "classes/UserPropsUtilities";
+import { apiManager } from "src/classes/api/ApiManager";
+import { commonTasks } from "src/classes/CommonTasks";
+import { notificationManager } from "src/classes/NotificationManager";
+import { persistentStorage } from "src/classes/PersistentStorage";
+import { userPropsUtilities } from "src/classes/UserPropsUtilities";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
-import { store } from "store/store";
-import { commonActions } from "store/commonActions";
+import { store } from "src/store/store";
+import { commonActions } from "src/store/commonActions";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 const saveTokenIntoPersistentStorage = (token) =>
   persistentStorage.setItem(persistentStorage.STORAGE_KEYS.TOKEN, token);

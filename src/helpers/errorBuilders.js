@@ -1,6 +1,6 @@
 import { validationErrorBuilder } from "utility-store/src/classes/ValidationErrorBuilder";
 
-import { stuffStore } from "classes/StuffStore";
+import { stuffStore } from "src/classes/StuffStore";
 
 const countryCodeValidatorErrorBuilder = (validationResult, countryCode) => {
   const {

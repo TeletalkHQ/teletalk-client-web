@@ -1,15 +1,15 @@
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 import { ioFieldsChecker } from "utility-store/src/functions/ioFieldsChecker";
 
-import { appConfigs } from "classes/AppConfigs";
-import { appOptions } from "classes/AppOptions";
-import { commonTasks } from "classes/CommonTasks";
+import { appConfigs } from "src/classes/AppConfigs";
+import { appOptions } from "src/classes/AppOptions";
+import { commonTasks } from "src/classes/CommonTasks";
 
-import { userPropsUtilities } from "classes/UserPropsUtilities";
+import { userPropsUtilities } from "src/classes/UserPropsUtilities";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 class ApiHandler {
   constructor({

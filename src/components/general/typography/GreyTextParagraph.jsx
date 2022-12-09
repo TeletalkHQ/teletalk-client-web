@@ -1,4 +1,4 @@
-import CustomTypography from "components/general/typography/CustomTypography";
+import CustomTypography from "src/components/general/typography/CustomTypography";
 
 const GreyTextParagraph = (props) => {
   const { ...restOfProps } = props;

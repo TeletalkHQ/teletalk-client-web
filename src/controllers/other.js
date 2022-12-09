@@ -1,10 +1,10 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
-import { apiManager } from "classes/api/ApiManager";
+import { apiManager } from "src/classes/api/ApiManager";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
 const tryToGetWelcomeMessage = async () => {
   return await apiManager.apis.getWelcomeMessage.sendFullFeaturedRequest();

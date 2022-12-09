@@ -1,8 +1,8 @@
 import MoonLoader from "react-spinners/MoonLoader";
 
-import CustomFlexBox from "components/general/box/CustomFlexBox";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
 
-import { stateStatics } from "store/stateStatics";
+import { stateStatics } from "src/store/stateStatics";
 
 const FullPageLoading = ({ fullPageLoading }) => {
   return (

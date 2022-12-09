@@ -2,29 +2,29 @@ import { useEffect, useState } from "react";
 
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
-import { appConfigs } from "classes/AppConfigs";
-import { eventManager } from "classes/EventManager";
-import { apiManager } from "classes/api/ApiManager";
-import { validatorManager } from "classes/ValidatorManager";
-import { stuffStore } from "classes/StuffStore";
+import { appConfigs } from "src/classes/AppConfigs";
+import { eventManager } from "src/classes/EventManager";
+import { apiManager } from "src/classes/api/ApiManager";
+import { validatorManager } from "src/classes/ValidatorManager";
+import { stuffStore } from "src/classes/StuffStore";
 
-import Root from "containers/Root";
-import InitialSetup from "containers/InitialSetup";
-import Auth from "containers/auth";
-import Dialog from "containers/dialog";
-import LeftSide from "containers/leftSide";
-import Portal from "containers/portal";
-import RightSide from "containers/rightSide";
+import Root from "src/containers/Root";
+import InitialSetup from "src/containers/InitialSetup";
+import Auth from "src/containers/auth";
+import Dialog from "src/containers/dialog";
+import LeftSide from "src/containers/leftSide";
+import Portal from "src/containers/portal";
+import RightSide from "src/containers/rightSide";
 
-import { controllers } from "controllers";
+import { controllers } from "src/controllers";
 
-import { events } from "events/index";
+import { events } from "src/events/index";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import { stateStatics } from "store/stateStatics";
-import { componentController } from "classes/ComponentController";
+import { stateStatics } from "src/store/stateStatics";
+import { componentController } from "src/classes/ComponentController";
 
 const Provider = () => {
   const {

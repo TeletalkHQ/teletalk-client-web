@@ -1,20 +1,20 @@
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 import { SwipeableDrawer } from "@mui/material";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
-import CustomBox from "components/general/box/CustomBox";
-import CustomList from "components/general/box/CustomList";
-import CustomListItem from "components/general/box/CustomListItem";
-import CustomListItemIcon from "components/general/other/CustomListItemIcon";
-import CustomListItemText from "components/general/box/CustomListItemText";
-import Div from "components/general/box/Div";
-import { Icons } from "components/other/Icons";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomList from "src/components/general/box/CustomList";
+import CustomListItem from "src/components/general/box/CustomListItem";
+import CustomListItemIcon from "src/components/general/other/CustomListItemIcon";
+import CustomListItemText from "src/components/general/box/CustomListItemText";
+import Div from "src/components/general/box/Div";
+import { Icons } from "src/components/other/Icons";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import { commonActions } from "store/commonActions";
+import { commonActions } from "src/store/commonActions";
 
 //TODO: Add to some functionality and add priority to each
 const drawerList = [

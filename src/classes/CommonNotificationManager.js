@@ -1,6 +1,6 @@
-import { NotificationManager } from "classes/NotificationManager";
+import { NotificationManager } from "src/classes/NotificationManager";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 class CommonNotificationManager extends NotificationManager {
   submitAbortedConnectionNotification() {

@@ -1,6 +1,6 @@
-import { appConfigs } from "classes/AppConfigs";
+import { appConfigs } from "src/classes/AppConfigs";
 
-import { stateStatics } from "store/stateStatics";
+import { stateStatics } from "src/store/stateStatics";
 
 const defaultDialogStateItemProps = () => ({
   open: false,

@@ -1,27 +1,27 @@
 import { domUtilities } from "utility-store/src/classes/DomUtilities";
 
-import { commonTasks } from "classes/CommonTasks";
-import { stuffStore } from "classes/StuffStore";
-import { validatorManager } from "classes/ValidatorManager";
+import { commonTasks } from "src/classes/CommonTasks";
+import { stuffStore } from "src/classes/StuffStore";
+import { validatorManager } from "src/classes/ValidatorManager";
 
-import CustomAvatar from "components/general/other/CustomAvatar";
-import CustomBox from "components/general/box/CustomBox";
-import CustomButton from "components/general/input/CustomButton";
-import CustomContainer from "components/general/box/CustomContainer";
-import CustomIconButton from "components/general/other/CustomIconButton";
-import CustomTextInput from "components/general/input/CustomTextInput";
-import GreyTextParagraph from "components/general/typography/GreyTextParagraph";
-import H5 from "components/general/header/H5";
-import { Icons } from "components/other/Icons";
+import CustomAvatar from "src/components/general/other/CustomAvatar";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomButton from "src/components/general/input/CustomButton";
+import CustomContainer from "src/components/general/box/CustomContainer";
+import CustomIconButton from "src/components/general/other/CustomIconButton";
+import CustomTextInput from "src/components/general/input/CustomTextInput";
+import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
+import H5 from "src/components/general/header/H5";
+import { Icons } from "src/components/other/Icons";
 
-import { controllers } from "controllers";
+import { controllers } from "src/controllers";
 
-import { useMainContext } from "hooks/useMainContext";
-import { useSelector } from "hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 const VerifySignIn = ({ onBackToSignInClick }) => {
   const {

@@ -3,64 +3,71 @@ import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 
-import { appConfigs } from "classes/AppConfigs";
+import { appConfigs } from "src/classes/AppConfigs";
 
-import CustomDialog from "components/general/box/CustomDialog";
-import CustomDialogActions from "components/general/box/CustomDialogActions";
-import CustomDialogContent from "components/general/box/CustomDialogContent";
-import CustomDialogTitle from "components/general/box/CustomDialogTitle";
-import { Transitions } from "components/other/Transitions";
+import CustomDialog from "src/components/general/box/CustomDialog";
+import CustomDialogActions from "src/components/general/box/CustomDialogActions";
+import CustomDialogContent from "src/components/general/box/CustomDialogContent";
+import CustomDialogTitle from "src/components/general/box/CustomDialogTitle";
+import { Transitions } from "src/components/other/Transitions";
+import { componentBuilder } from "src/classes/ComponentBuilder";
 
-const DialogTemplate = ({
-  actionContent,
-  mainContent,
-  dialogStyle,
-  onClose,
-  onKeyDown,
-  open,
-  paperStyle,
-  titleContent,
-  TransitionComponent,
-  transitionDuration,
-}) => {
-  const theme = useTheme();
+const DialogTemplate = componentBuilder
+  .create()
+  .registerComponent(
+    "DialogTemplate",
+    ({
+      actionContent,
+      mainContent,
+      dialogStyle,
+      onClose,
+      onKeyDown,
+      open,
+      paperStyle,
+      titleContent,
+      TransitionComponent,
+      transitionDuration,
+    }) => {
+      const theme = useTheme();
 
-  const defaultTransitionComponentType =
-    appConfigs.getConfigs().ui.defaultDialogTransitionalComponentType;
+      const defaultTransitionComponentType =
+        appConfigs.getConfigs().ui.defaultDialogTransitionalComponentType;
 
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+      const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const Transition =
-    Transitions[TransitionComponent] ||
-    Transitions[defaultTransitionComponentType];
+      const Transition =
+        Transitions[TransitionComponent] ||
+        Transitions[defaultTransitionComponentType];
 
-  return (
-    <CustomDialog
-      fullScreen={fullScreen}
-      keepMounted
-      {...(customTypeof.isFunction(onClose) && {
-        onClose: () => onClose(),
-      })}
-      // onEscapeKeyDown={onEscapeKeyDown}
-      onKeyDown={onKeyDown}
-      open={open}
-      PaperProps={{
-        style: {
-          borderRadius: !fullScreen ? "15px" : "",
-          minWidth: !fullScreen ? "450px" : "auto",
-          ...paperStyle,
-          height: !fullScreen ? paperStyle?.height : "100vh",
-        },
-      }}
-      sx={{ ...dialogStyle }}
-      TransitionComponent={Transition}
-      transitionDuration={transitionDuration || 500}
-    >
-      <CustomDialogTitle>{titleContent}</CustomDialogTitle>
-      <CustomDialogContent>{mainContent}</CustomDialogContent>
-      <CustomDialogActions>{actionContent}</CustomDialogActions>
-    </CustomDialog>
-  );
-};
+      return (
+        <CustomDialog
+          fullScreen={fullScreen}
+          keepMounted
+          {...(customTypeof.isFunction(onClose) && {
+            onClose: () => onClose(),
+          })}
+          // onEscapeKeyDown={onEscapeKeyDown}
+          onKeyDown={onKeyDown}
+          open={open}
+          PaperProps={{
+            style: {
+              borderRadius: !fullScreen ? "15px" : "",
+              minWidth: !fullScreen ? "450px" : "auto",
+              ...paperStyle,
+              height: !fullScreen ? paperStyle?.height : "100vh",
+            },
+          }}
+          sx={{ ...dialogStyle }}
+          TransitionComponent={Transition}
+          transitionDuration={transitionDuration || 500}
+        >
+          <CustomDialogTitle>{titleContent}</CustomDialogTitle>
+          <CustomDialogContent>{mainContent}</CustomDialogContent>
+          <CustomDialogActions>{actionContent}</CustomDialogActions>
+        </CustomDialog>
+      );
+    }
+  )
+  .build();
 
 export default DialogTemplate;

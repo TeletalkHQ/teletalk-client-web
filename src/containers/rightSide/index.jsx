@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 
 import { eventManager } from "utility-store/src/classes/EventManager";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
-import { appOptions } from "classes/AppOptions";
-import { apiManager } from "classes/api/ApiManager";
-import { commonTasks } from "classes/CommonTasks";
+import { appOptions } from "src/classes/AppOptions";
+import { apiManager } from "src/classes/api/ApiManager";
+import { commonTasks } from "src/classes/CommonTasks";
 
-import ChatBar from "components/rightSide/ChatBar";
-import CustomBox from "components/general/box/CustomBox";
-import CustomFlexBox from "components/general/box/CustomFlexBox";
-import GridContainer from "components/general/box/GridContainer";
-import MessageInput from "components/rightSide/MessageInput";
-import MessageList from "components/rightSide/MessageList";
+import ChatBar from "src/components/rightSide/ChatBar";
+import CustomBox from "src/components/general/box/CustomBox";
+import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import GridContainer from "src/components/general/box/GridContainer";
+import MessageInput from "src/components/rightSide/MessageInput";
+import MessageList from "src/components/rightSide/MessageList";
 
-import { controllers } from "controllers";
+import { controllers } from "src/controllers";
 
-import { useMainContext } from "hooks/useMainContext";
+import { useMainContext } from "src/hooks/useMainContext";
 
 const RightSide = () => {
   const {

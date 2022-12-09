@@ -1,9 +1,9 @@
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
-import { commonTasks } from "classes/CommonTasks";
+import { commonTasks } from "src/classes/CommonTasks";
 
-import { errorBuilders } from "helpers/errorBuilders";
-import { utilities } from "utilities";
+import { errorBuilders } from "src/helpers/errorBuilders";
+import { utilities } from "src/utilities";
 
 class Validator {
   constructor(compiledValidator, validatorName) {

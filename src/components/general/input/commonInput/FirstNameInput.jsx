@@ -1,7 +1,7 @@
-import CustomTextInput from "components/general/input/CustomTextInput";
-import withInputValidator from "hoc/withInputValidator";
+import CustomTextInput from "src/components/general/input/CustomTextInput";
+import withInputValidator from "src/hoc/withInputValidator";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 const FirstNameInput = ({ inputValue, onInputChange, required = true }) => {
   return (

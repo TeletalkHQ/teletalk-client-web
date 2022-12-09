@@ -1,8 +1,8 @@
-import { combineReducers } from "hooks/useThunkReducer/tools";
+import { combineReducers } from "src/hooks/useThunkReducer/tools";
 
-import { initialStates } from "store/initialStates";
-import { payloads } from "store/payloads";
-import { reducers } from "store/reducers";
+import { initialStates } from "src/store/initialStates";
+import { payloads } from "src/store/payloads";
+import { reducers } from "src/store/reducers";
 
 const rootReducer = combineReducers(reducers);
 

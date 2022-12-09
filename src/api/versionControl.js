@@ -1,4 +1,4 @@
-import { apiBuilder } from "classes/api/ApiBuilder";
+import { apiBuilder } from "src/classes/api/ApiBuilder";
 
 const getAllStuffs = {
   description:

@@ -1,7 +1,7 @@
-import { reducerBuilder } from "classes/ReducerBuilder";
+import { reducerBuilder } from "src/classes/ReducerBuilder";
 
-import { initialOtherState } from "store/other/initialState";
-import { OTHER_ACTION_TYPES } from "store/other/types";
+import { initialOtherState } from "src/store/other/initialState";
+import { OTHER_ACTION_TYPES } from "src/store/other/types";
 
 const otherReducerCases = {
   [OTHER_ACTION_TYPES.SET_WELCOME_MESSAGE]: (payload) => payload,

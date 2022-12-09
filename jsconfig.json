@@ -1,19 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "./"
   },
   "exclude": ["node_modules"],
   "typeAcquisition": {
-    "exclude": [
-      "defer-to-connect",
-      "safe-stable-stringify",
-      "source-map",
-      "source-map-js",
-      "agent-base",
-      "node_modules",
-      "dotenv",
-      "https-proxy-agent"
-    ],
-    "include": ["./src/function/utility/myConsole.js"]
+    "exclude": [],
+    "include": []
   }
 }

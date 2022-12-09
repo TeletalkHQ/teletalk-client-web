@@ -2,18 +2,18 @@ import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
-import { commonNotificationManager } from "classes/CommonNotificationManager";
-import { notificationManager } from "classes/NotificationManager";
-import { persistentStorage } from "classes/PersistentStorage";
-import { stuffStore } from "classes/StuffStore";
+import { commonNotificationManager } from "src/classes/CommonNotificationManager";
+import { notificationManager } from "src/classes/NotificationManager";
+import { persistentStorage } from "src/classes/PersistentStorage";
+import { stuffStore } from "src/classes/StuffStore";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
-import { extractedDispatch } from "hooks/useThunkReducer";
+import { extractedDispatch } from "src/hooks/useThunkReducer";
 
-import { actions } from "store/actions";
+import { actions } from "src/store/actions";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 class CommonTasks {
   resetEverything() {

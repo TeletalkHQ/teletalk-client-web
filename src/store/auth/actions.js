@@ -1,6 +1,6 @@
-import { actionHandler } from "classes/ActionHandler";
+import { actionHandler } from "src/classes/ActionHandler";
 
-import { AUTH_ACTION_TYPES } from "store/auth/types";
+import { AUTH_ACTION_TYPES } from "src/store/auth/types";
 
 const selectedCountry = (payload) =>
   actionHandler(AUTH_ACTION_TYPES.SELECTED_COUNTRY_ONCHANGE, payload);

@@ -1,13 +1,13 @@
 import { ioFieldsChecker } from "utility-store/src/functions/ioFieldsChecker";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
-import { commonTasks } from "classes/CommonTasks";
-import { appConfigs } from "classes/AppConfigs";
+import { commonTasks } from "src/classes/CommonTasks";
+import { appConfigs } from "src/classes/AppConfigs";
 
-import { store } from "store/store";
+import { store } from "src/store/store";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 const payloads = {
   ...store.payloads.auth,

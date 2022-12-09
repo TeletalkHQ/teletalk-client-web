@@ -2,9 +2,9 @@ import { useCallback, useReducer } from "react";
 
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
-import { initialStates } from "store/initialStates";
+import { initialStates } from "src/store/initialStates";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
 //! Use it in special cases only!
 let extractedDispatch = (

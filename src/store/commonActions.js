@@ -1,6 +1,6 @@
-import { actions } from "store/actions";
-import { defaultDialogStateItemProps } from "store/global/initialState";
-import { stateStatics } from "store/stateStatics";
+import { actions } from "src/store/actions";
+import { defaultDialogStateItemProps } from "src/store/global/initialState";
+import { stateStatics } from "src/store/stateStatics";
 
 const changeAuthenticationProgress = (authenticationProgress) =>
   actions.appProgressionChange({ authenticationProgress });

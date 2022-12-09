@@ -1,16 +1,16 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { versionControl } from "api/versionControl";
+import { versionControl } from "src/api/versionControl";
 
-import { apiManager } from "classes/api/ApiManager";
-import { stuffStore } from "classes/StuffStore";
-import { validatorManager } from "classes/ValidatorManager";
+import { apiManager } from "src/classes/api/ApiManager";
+import { stuffStore } from "src/classes/StuffStore";
+import { validatorManager } from "src/classes/ValidatorManager";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
-import { actions } from "store/actions";
-import { stateStatics } from "store/stateStatics";
-import { commonActions } from "store/commonActions";
+import { actions } from "src/store/actions";
+import { stateStatics } from "src/store/stateStatics";
+import { commonActions } from "src/store/commonActions";
 
 const getAllStuff = () => {
   return async (dispatch) => {

@@ -1,6 +1,6 @@
-import { apiUtilities } from "utilities/api";
-import { otherUtilities } from "utilities/other";
-import { versionUtilities } from "utilities/version";
+import { apiUtilities } from "src/utilities/api";
+import { otherUtilities } from "src/utilities/other";
+import { versionUtilities } from "src/utilities/version";
 
 const utilities = {
   ...apiUtilities,

@@ -1,10 +1,10 @@
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 
-import { apiBuilder } from "classes/api/ApiBuilder";
-import { apiHandler } from "classes/api/ApiHandler";
-import { stuffStore } from "classes/StuffStore";
+import { apiBuilder } from "src/classes/api/ApiBuilder";
+import { apiHandler } from "src/classes/api/ApiHandler";
+import { stuffStore } from "src/classes/StuffStore";
 
-import { transformers } from "api/transformers";
+import { transformers } from "src/api/transformers";
 
 class ApiManager {
   #apiTemplate = apiHandler.create({});

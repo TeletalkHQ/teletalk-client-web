@@ -1,9 +1,9 @@
-import { authActions } from "store/auth/actions";
-import { globalActions } from "store/global/actions";
-import { messageActions } from "store/message/actions";
-import { notificationActions } from "store/notification/actions";
-import { otherActions } from "store/other/actions";
-import { userActions } from "store/user/actions";
+import { authActions } from "src/store/auth/actions";
+import { globalActions } from "src/store/global/actions";
+import { messageActions } from "src/store/message/actions";
+import { notificationActions } from "src/store/notification/actions";
+import { otherActions } from "src/store/other/actions";
+import { userActions } from "src/store/user/actions";
 
 const actions = {
   ...authActions,

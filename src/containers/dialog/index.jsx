@@ -1,10 +1,10 @@
-import AddNewContact from "containers/dialog/AddNewContact";
-import Contacts from "containers/dialog/Contacts";
-import LogoutDialog from "containers/dialog/Logout";
+import AddNewContact from "src/containers/dialog/AddNewContact";
+import Contacts from "src/containers/dialog/Contacts";
+import LogoutDialog from "src/containers/dialog/Logout";
 
-import { useMainContext } from "hooks/useMainContext";
+import { useMainContext } from "src/hooks/useMainContext";
 
-import { commonActions } from "store/commonActions";
+import { commonActions } from "src/store/commonActions";
 
 const Dialog = () => {
   const {

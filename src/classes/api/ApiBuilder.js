@@ -1,8 +1,8 @@
-import { apiHandler } from "classes/api/ApiHandler";
+import { apiHandler } from "src/classes/api/ApiHandler";
 
-import { utilities } from "utilities";
+import { utilities } from "src/utilities";
 
-import { variables } from "variables";
+import { variables } from "src/variables";
 
 class ApiBuilder {
   constructor() {
