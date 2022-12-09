@@ -1,19 +1,20 @@
 import { useEffect } from "react";
 
+import { persistentStorage } from "classes/PersistentStorage";
+
 import FullPageLoading from "components/portal/FullPageLoading";
 
 import Portal from "containers/portal";
+import Auth from "containers/auth";
+import Messenger from "containers/messenger";
 
 import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
-
-import Auth from "containers/auth";
-import Messenger from "containers/messenger";
+import { useSelector } from "hooks/useThunkReducer";
 
 import { stateStatics } from "store/stateStatics";
 import { actions } from "store/actions";
-import { persistentStorage } from "classes/PersistentStorage";
 import { commonActions } from "store/commonActions";
 
 const visibleComponent = (viewMode) => {
@@ -35,8 +36,8 @@ const visibleComponent = (viewMode) => {
 const Root = () => {
   const {
     hooksOutput: { dispatch, dispatchAsync },
-    state,
   } = useMainContext();
+  const state = useSelector();
 
   useEffect(() => {
     const fn = async () => {

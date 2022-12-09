@@ -12,7 +12,7 @@ import { store } from "store/store";
 
 import { baseTheme } from "theme/baseTheme";
 
-const states = store.initialState();
+const states = store.initialStates();
 
 const App = () => {
   const [state = states, dispatch] = useThunkReducer(store.rootReducer, states);

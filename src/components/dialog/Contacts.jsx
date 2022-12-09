@@ -1,7 +1,3 @@
-import { useMainContext } from "hooks/useMainContext";
-
-import { actions } from "store/actions";
-
 import ContactListItem from "components/other/ContactListItem";
 import CustomBox from "components/general/box/CustomBox";
 import CustomButton from "components/general/input/CustomButton";
@@ -9,6 +5,10 @@ import CustomFlexBox from "components/general/box/CustomFlexBox";
 import DialogTemplate from "components/dialog/Template";
 import H5 from "components/general/header/H5";
 
+import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
+
+import { actions } from "store/actions";
 import { commonActions } from "store/commonActions";
 import { stateStatics } from "store/stateStatics";
 
@@ -53,8 +53,8 @@ const ContactsActions = ({ onClose, onAddContactClick }) => (
 const Contacts = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch },
-    state,
   } = useMainContext();
+  const state = useSelector();
 
   const handleAddContactClick = () => {
     dispatch(commonActions.closeDialog(stateStatics.DIALOG_NAMES.CONTACTS));

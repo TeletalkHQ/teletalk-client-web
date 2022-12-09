@@ -65,7 +65,7 @@ const verifySignIn = () => {
     }
   };
 
-  return async (dispatch, getState = store.initialState) => {
+  return async (dispatch, getState = store.initialStates) => {
     const {
       auth: { verificationCode },
     } = getState();
@@ -125,7 +125,7 @@ const signIn = () => {
     dispatch(commonActions.changeViewMode.verifySignIn());
   };
 
-  return async (dispatch, getState = store.initialState) => {
+  return async (dispatch, getState = store.initialStates) => {
     const {
       auth: { phoneNumber, countryCode, countryName },
     } = getState();
@@ -193,7 +193,7 @@ const createNewUser = () => {
     saveTokenIntoPersistentStorage(token);
   };
 
-  return async (dispatch, getState = store.initialState) => {
+  return async (dispatch, getState = store.initialStates) => {
     const {
       auth: { firstName, lastName },
     } = getState();

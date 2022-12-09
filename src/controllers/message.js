@@ -61,7 +61,7 @@ const getChatsLastMessage = ({ chats }) => {
 };
 
 const sendPrivateMessage = () => {
-  return async (_dispatch, getState = store.initialState) => {
+  return async (_dispatch, getState = store.initialStates) => {
     try {
       const state = getState();
 

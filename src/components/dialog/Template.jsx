@@ -22,7 +22,6 @@ const DialogTemplate = ({
   titleContent,
   TransitionComponent,
   transitionDuration,
-  zIndex,
 }) => {
   const theme = useTheme();
 
@@ -37,7 +36,6 @@ const DialogTemplate = ({
 
   return (
     <CustomDialog
-      zIndex={zIndex}
       fullScreen={fullScreen}
       keepMounted
       {...(customTypeof.isFunction(onClose) && {

@@ -4,6 +4,9 @@ import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 import { appConfigs } from "classes/AppConfigs";
 import { eventManager } from "classes/EventManager";
+import { apiManager } from "classes/api/ApiManager";
+import { validatorManager } from "classes/ValidatorManager";
+import { stuffStore } from "classes/StuffStore";
 
 import Root from "containers/Root";
 import InitialSetup from "containers/InitialSetup";
@@ -18,17 +21,16 @@ import { controllers } from "controllers";
 import { events } from "events/index";
 
 import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
 
 import { stateStatics } from "store/stateStatics";
-import { apiManager } from "classes/api/ApiManager";
-import { validatorManager } from "classes/ValidatorManager";
-import { stuffStore } from "classes/StuffStore";
 
 const Provider = () => {
   const {
     hooksOutput: { dispatchAsync },
-    state,
   } = useMainContext();
+  const state = useSelector();
+
   const [forceUpdate, setForceUpdate] = useState(false);
 
   useEffect(() => {

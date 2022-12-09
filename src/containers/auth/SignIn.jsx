@@ -1,7 +1,5 @@
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
-import { actions } from "store/actions";
-
 import { stuffStore } from "classes/StuffStore";
 import { commonTasks } from "classes/CommonTasks";
 
@@ -21,14 +19,17 @@ import PhoneNumber from "components/general/input/commonInput/PhoneNumberInput";
 import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
+
+import { actions } from "store/actions";
 
 import { variables } from "variables";
 
 const SignIn = () => {
   const {
     hooksOutput: { dispatch },
-    state,
   } = useMainContext();
+  const state = useSelector();
 
   const isCountrySelected = () => {
     const country = state.auth.selectedCountry;

@@ -1,9 +1,9 @@
 import FullPageLoading from "components/portal/FullPageLoading";
 
-import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
 
 const InitialSetup = () => {
-  const { state } = useMainContext();
+  const state = useSelector();
 
   return <FullPageLoading fullPageLoading={state.global.fullPageLoading} />;
 };

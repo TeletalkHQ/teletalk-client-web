@@ -1,5 +1,4 @@
-import { actions } from "store/actions";
-
+import { commonTasks } from "classes/CommonTasks";
 import { stuffStore } from "classes/StuffStore";
 
 import CustomBox from "components/general/box/CustomBox";
@@ -10,19 +9,20 @@ import CustomIconButton from "components/general/other/CustomIconButton";
 import FirstName from "components/general/input/commonInput/FirstNameInput";
 import GreyTextParagraph from "components/general/typography/GreyTextParagraph";
 import LastName from "components/general/input/commonInput/LastNameInput";
+import { Icons } from "components/other/Icons";
 
 import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
 
-import { Icons } from "components/other/Icons";
-import { commonTasks } from "classes/CommonTasks";
+import { actions } from "store/actions";
 
 const CreateNewUser = ({ onBackToSignInClick }) => {
   const {
     hooksOutput: { dispatch },
-    state,
   } = useMainContext();
+  const state = useSelector();
 
   const handleFirstNameInputChange = (e) => {
     dispatch(actions.firstNameOnChange({ firstName: e.target.value }));
