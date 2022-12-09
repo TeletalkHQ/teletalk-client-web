@@ -9,7 +9,7 @@ class ComponentBuilder {
     this.component = undefined;
     this.componentName = "";
   }
-  setComponent(component, componentName) {
+  setComponent(componentName, component) {
     this.component = component;
 
     errorThrower(
@@ -18,6 +18,14 @@ class ComponentBuilder {
     );
 
     this.componentName = componentName;
+
+    return this;
+  }
+
+  registerComponent(componentName, component) {
+    this.setComponent(componentName, component);
+    componentController.registerComponent(componentName);
+    return this;
   }
 
   build() {

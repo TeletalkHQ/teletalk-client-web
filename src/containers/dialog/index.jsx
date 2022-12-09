@@ -1,6 +1,6 @@
-import AddNewContactDialog from "components/dialog/AddNewContact";
-import Contacts from "components/dialog/Contacts";
-import LogoutDialog from "components/dialog/Logout";
+import AddNewContact from "containers/dialog/AddNewContact";
+import Contacts from "containers/dialog/Contacts";
+import LogoutDialog from "containers/dialog/Logout";
 
 import { useMainContext } from "hooks/useMainContext";
 
@@ -17,7 +17,7 @@ const Dialog = () => {
 
   return (
     <>
-      {[AddNewContactDialog, Contacts, LogoutDialog].map((Component, i) => (
+      {[AddNewContact, Contacts, LogoutDialog].map((Component, i) => (
         <Component key={i} onDialogClose={handleDialogClose} />
       ))}
     </>
