@@ -1,5 +1,11 @@
 import { notificationBuilder } from "classes/NotificationBuilder";
 
+const COMPONENT_NAME_REQUIRED = notificationBuilder
+  .create()
+  .message("COMPONENT_NAME_REQUIRED")
+  .notificationReason("COMPONENT_NAME_REQUIRED")
+  .build();
+
 const ECONNABORTED = notificationBuilder
   .create()
   .notificationCode(4000)
@@ -69,6 +75,7 @@ const VERIFY_TOKEN_NOT_FOUND = notificationBuilder
   .build();
 
 const error = {
+  COMPONENT_NAME_REQUIRED,
   ECONNABORTED,
   INPUT_FIELDS_MISSING,
   INPUT_FIELDS_NOT_DEFINED_ERROR,
