@@ -1,4 +1,4 @@
-import { combineReducers } from "hooks/useThunkReducer";
+import { combineReducers } from "hooks/useThunkReducer/tools";
 
 import { initialStates } from "store/initialStates";
 import { payloads } from "store/payloads";

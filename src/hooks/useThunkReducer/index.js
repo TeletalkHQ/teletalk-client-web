@@ -2,8 +2,9 @@ import { useCallback, useReducer } from "react";
 
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
-import { utilities } from "utilities";
 import { initialStates } from "store/initialStates";
+
+import { utilities } from "utilities";
 
 //! Use it in special cases only!
 let extractedDispatch = (
@@ -22,16 +23,6 @@ const initialUseSelectorCallbackParam = (state = initialStates()) => {
 };
 let useSelector = (callback = initialUseSelectorCallbackParam) => {
   return callback();
-};
-
-const combineReducers = (reducers) => {
-  return (state = {}, action) => {
-    const newState = {};
-    for (let key in reducers) {
-      newState[key] = reducers[key](state[key], action);
-    }
-    return newState;
-  };
 };
 
 const dispatcher = ({ action, dispatch, getState }) => {
@@ -75,7 +66,6 @@ const useThunkReducer = (reducer, initialState) => {
 export default useThunkReducer;
 
 export {
-  combineReducers,
   extractedDispatch,
   extractedDispatchAsync,
   useDispatch,
