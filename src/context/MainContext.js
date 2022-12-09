@@ -11,8 +11,8 @@ const MainContext = createContext({
       return await action();
     },
   },
-  others: { getState: store.initialState },
-  state: store.initialState(),
+  others: { getState: store.initialStates },
+  state: store.initialStates(),
 });
 
 export { MainContext };

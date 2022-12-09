@@ -1,7 +1,5 @@
 import { domUtilities } from "utility-store/src/classes/DomUtilities";
 
-import { actions } from "store/actions";
-
 import { commonTasks } from "classes/CommonTasks";
 import { stuffStore } from "classes/StuffStore";
 import { validatorManager } from "classes/ValidatorManager";
@@ -19,14 +17,17 @@ import { Icons } from "components/other/Icons";
 import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
+
+import { actions } from "store/actions";
 
 import { variables } from "variables";
 
 const VerifySignIn = ({ onBackToSignInClick }) => {
   const {
     hooksOutput: { dispatch },
-    state,
   } = useMainContext();
+  const state = useSelector();
 
   const isVerificationSubmitButtonDisabled = () => {
     return !commonTasks.validateInputValueLengthByModelLength(

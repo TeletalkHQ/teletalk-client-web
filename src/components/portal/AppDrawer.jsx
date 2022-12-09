@@ -9,10 +9,11 @@ import CustomListItem from "components/general/box/CustomListItem";
 import CustomListItemIcon from "components/general/other/CustomListItemIcon";
 import CustomListItemText from "components/general/box/CustomListItemText";
 import Div from "components/general/box/Div";
+import { Icons } from "components/other/Icons";
 
 import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
 
-import { Icons } from "components/other/Icons";
 import { commonActions } from "store/commonActions";
 
 //TODO: Add to some functionality and add priority to each
@@ -34,8 +35,8 @@ const iOS =
 const AppDrawer = () => {
   const {
     hooksOutput: { dispatch },
-    state,
   } = useMainContext();
+  const state = useSelector();
 
   const toggleDrawer = (event, open) => {
     if (

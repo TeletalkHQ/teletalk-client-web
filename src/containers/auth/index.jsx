@@ -1,21 +1,21 @@
-import { actions } from "store/actions";
-
 import Copyright from "components/other/Copyright";
 
 import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
 
 import CreateNewUser from "containers/auth/CreateNewUser";
 import SignIn from "containers/auth/SignIn";
 import VerifySignIn from "containers/auth/VerifySignIn";
 
+import { actions } from "store/actions";
 import { stateStatics } from "store/stateStatics";
 import { commonActions } from "store/commonActions";
 
 const Auth = () => {
   const {
     hooksOutput: { dispatch },
-    state,
   } = useMainContext();
+  const state = useSelector();
 
   const handleBackToSignInClick = () => {
     dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));

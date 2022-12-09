@@ -5,14 +5,14 @@ import OverlayLoading from "components/portal/OverlayLoading";
 
 import DialogContainer from "containers/dialog";
 
-import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
 
 const PortalContainer = ({ children }) => {
   return createPortal(children, document.querySelector("#portalContainer"));
 };
 
 const Portal = ({ onGlobalLoadingClose }) => {
-  const { state } = useMainContext();
+  const state = useSelector();
 
   return (
     <PortalContainer>

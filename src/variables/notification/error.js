@@ -10,36 +10,30 @@ const ECONNABORTED = notificationBuilder
 const INPUT_FIELDS_MISSING = notificationBuilder
   .create()
   .message("INPUT_FIELDS_MISSING")
-  .notificationCode(5000)
   .notificationReason("INPUT_FIELDS_MISSING")
   .build();
 const INPUT_FIELDS_OVERLOAD = notificationBuilder
   .create()
   .message("INPUT_FIELDS_OVERLOAD")
-  .notificationCode(5000)
   .notificationReason("INPUT_FIELDS_OVERLOAD")
   .build();
 const INPUT_FIELDS_NOT_DEFINED_ERROR = notificationBuilder
   .create()
   .message("INPUT_FIELDS_NOT_DEFINED_ERROR")
-  .notificationCode(5000)
   .notificationReason("INPUT_FIELDS_NOT_DEFINED_ERROR")
   .build();
 const INPUT_FILED_TYPE_WRONG = notificationBuilder
   .create()
-  .notificationCode(5000)
   .notificationReason("INPUT_FILED_TYPE_WRONG");
 
 const OUTPUT_FIELDS_MISSING = notificationBuilder
   .create()
   .message("OUTPUT_FIELDS_MISSING")
-  .notificationCode(5000)
   .notificationReason("OUTPUT_FIELDS_MISSING")
   .build();
 const OUTPUT_FIELDS_OVERLOAD = notificationBuilder
   .create()
   .message("OUTPUT_FIELDS_OVERLOAD")
-  .notificationCode(5000)
   .notificationReason("OUTPUT_FIELDS_OVERLOAD")
   .build();
 
@@ -70,7 +64,6 @@ const URL_NOT_FOUND = notificationBuilder
 
 const VERIFY_TOKEN_NOT_FOUND = notificationBuilder
   .create()
-  .notificationCode(4000)
   .notificationReason("VERIFY_TOKEN_NOT_FOUND")
   .message("Verify token not defined")
   .build();

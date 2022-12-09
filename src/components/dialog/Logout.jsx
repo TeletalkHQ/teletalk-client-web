@@ -6,12 +6,13 @@ import CustomButton from "components/general/input/CustomButton";
 import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
 
 const LogoutDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatchAsync },
-    state,
   } = useMainContext();
+  const state = useSelector();
 
   const handleClose = () => {
     onDialogClose("logout");

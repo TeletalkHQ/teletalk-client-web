@@ -3,6 +3,7 @@ import { useCallback, useReducer } from "react";
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 
 import { utilities } from "utilities";
+import { initialStates } from "store/initialStates";
 
 //! Use it in special cases only!
 let extractedDispatch = (
@@ -15,7 +16,8 @@ let extractedDispatchAsync = async (action = { type: "", payload: {} }) =>
   action;
 
 let useDispatch = () => extractedDispatch;
-const initialUseSelectorCallbackParam = (state) => {
+
+const initialUseSelectorCallbackParam = (state = initialStates()) => {
   return state;
 };
 let useSelector = (callback = initialUseSelectorCallbackParam) => {

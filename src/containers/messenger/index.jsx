@@ -1,20 +1,25 @@
 import { useEffect, useState } from "react";
 
+import { apiManager } from "classes/api/ApiManager";
+
 import GridContainer from "components/general/box/GridContainer";
 
 import LeftSide from "containers/leftSide";
 import RightSide from "containers/rightSide";
-import { useMainContext } from "hooks/useMainContext";
+
 import { controllers } from "controllers";
-import { apiManager } from "classes/api/ApiManager";
+
+import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
+
 import { actions } from "store/actions";
 import { stateStatics } from "store/stateStatics";
 
 const Messenger = () => {
   const {
     hooksOutput: { dispatch, dispatchAsync },
-    state,
   } = useMainContext();
+  const state = useSelector();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -29,7 +34,7 @@ const Messenger = () => {
             await dispatchAsync(controllers.getAllPrivateChats());
           }
           updater();
-        }, 2000);
+        }, 500);
       };
 
       updater();

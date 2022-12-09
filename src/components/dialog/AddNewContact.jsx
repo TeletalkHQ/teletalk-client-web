@@ -19,6 +19,7 @@ import PhoneNumber from "components/general/input/commonInput/PhoneNumberInput";
 import { controllers } from "controllers";
 
 import { useMainContext } from "hooks/useMainContext";
+import { useSelector } from "hooks/useThunkReducer";
 
 import { commonActions } from "store/commonActions";
 import { stateStatics } from "store/stateStatics";
@@ -119,8 +120,9 @@ const AddContactDialogContent = ({
 const AddNewContactDialog = ({ onDialogClose }) => {
   const {
     hooksOutput: { dispatch, dispatchAsync },
-    state,
   } = useMainContext();
+
+  const state = useSelector();
 
   const [contact, setContact] = useState(variables.common.object.contact);
   const [selectedCountry, setSelectedCountry] = useState(
