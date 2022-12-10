@@ -55,6 +55,7 @@ const SignIn = () => {
     const country = arrayUtilities.findByPropValueEquality(
       state.other.countries,
       value,
+      //TODO: Read from statics
       "countryCode"
     );
 

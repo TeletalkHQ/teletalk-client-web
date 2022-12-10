@@ -86,31 +86,6 @@ const verifySignIn = () => {
   };
 };
 
-const getUserData = () => {
-  const tryToGetUserData = async () => {
-    const {
-      data: { user },
-    } = await apiManager.apis.getUserData.sendFullFeaturedRequest();
-
-    return user;
-  };
-  const executeIfNoError = (user, dispatch) => {
-    delete user.token;
-    dispatch(actions.updateAllUserData(user));
-    dispatch(commonActions.changeViewMode.messenger());
-  };
-
-  const catchTryToGetUserData = (dispatch) =>
-    dispatch(commonActions.changeViewMode.signIn());
-
-  return async (dispatch) => {
-    (await trier(getUserData.name).tryAsync(tryToGetUserData))
-      .executeIfNoError(executeIfNoError, dispatch)
-      .catch(catchTryToGetUserData, dispatch)
-      .printError();
-  };
-};
-
 const signIn = () => {
   const tryToSignIn = async ({ countryCode, countryName, phoneNumber }) => {
     return await apiManager.apis.signInNormal.sendFullFeaturedRequest({
@@ -216,7 +191,6 @@ const createNewUser = () => {
 
 const authControllers = {
   createNewUser,
-  getUserData,
   logout,
   signIn,
   verifySignIn,
