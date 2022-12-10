@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { apiManager } from "src/classes/api/ApiManager";
-
 import GridContainer from "src/components/general/box/GridContainer";
 
 import LeftSide from "src/containers/leftSide";
@@ -21,7 +19,7 @@ const Messenger = () => {
     hooksOutput: { dispatchAsync },
   } = useMainContext();
 
-  const [users, setUsers] = useState([]);
+  const [participants, setParticipants] = useState([]);
 
   useEffect(() => {
     let timeoutId;
@@ -48,34 +46,24 @@ const Messenger = () => {
 
   useEffect(() => {
     const fn = async () => {
-      const usersWithInfo = users.filter((p) => !p.firstName);
-      const usersWithoutInfo = state.message.privateChats
-        .map((pc) => {
-          const { participantId, ...p } = pc.participants.find(
-            (p) => p.participantId !== state.user.userId
-          );
+      const participantsFromPrivateChats =
+        extractParticipantsFromPrivateChats();
+      const newParticipants = getNewParticipants(participantsFromPrivateChats);
 
-          return { ...p, userId: participantId };
-        })
-        .filter((user) => users.every((u) => u.userId !== user.userId));
+      for (let i = 0; i < newParticipants.length; i++) {
+        const participant = newParticipants[i];
 
-      for (let i = 0; i < usersWithoutInfo.length; i++) {
-        const user = usersWithoutInfo[i];
+        const publicUserInfo = await controllers.getPublicUserInfo(
+          participant.participantId
+        );
 
-        const response =
-          await apiManager.apis.getPublicUserInfo.sendFullFeaturedRequest({
-            userId: user.userId,
-          });
-
-        const { publicUserInfo } = response.data;
-
-        usersWithInfo.splice(i, 1, {
-          ...user,
+        newParticipants.splice(i, 1, {
+          ...participant,
           ...publicUserInfo,
         });
       }
 
-      setUsers([...users, ...usersWithInfo]);
+      updateParticipants(newParticipants);
     };
 
     fn();
@@ -83,14 +71,42 @@ const Messenger = () => {
   }, [state.message.privateChats]);
 
   useEffect(() => {
-    setUsers([...users, ...state.user.contacts]);
+    updateParticipants(
+      state.user.contacts.map((contact) => ({
+        ...contact,
+        participantId: contact.userId,
+      }))
+    );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.user.contacts]);
 
+  const updateParticipants = (newParticipants) => {
+    setParticipants([...participants, ...newParticipants]);
+  };
+
+  const extractParticipantsFromPrivateChats = () =>
+    state.message.privateChats.map((pc) => {
+      const { participantId, ...p } = pc.participants.find(
+        (p) => p.participantId !== state.user.userId
+      );
+
+      return { ...p, participantId };
+    });
+
+  const getNewParticipants = (participantsFromPrivateChats) =>
+    participantsFromPrivateChats.filter((p1) =>
+      participants.every((p2) => p2.participantId !== p1.participantId)
+    );
+
   return (
-    <GridContainer style={{ height: "100vh" }}>
-      <LeftSide users={users} />
-      <RightSide />
+    <GridContainer
+      style={{
+        height: "100vh",
+      }}
+    >
+      <LeftSide participants={participants} />
+      <RightSide participants={participants} />
     </GridContainer>
   );
 };

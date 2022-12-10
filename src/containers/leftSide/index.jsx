@@ -10,29 +10,25 @@ import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 
-const LeftSide = ({ users }) => {
+const LeftSide = ({ participants }) => {
   const dispatch = useDispatch();
   const state = useSelector();
 
   const chatList = useMemo(() => {
-    if (!users.length) return [];
+    if (!participants.length) return [];
+
     return state.message.privateChats.map((privateChatItem) => {
-      const lastChatMessage = privateChatItem.messages.at(-1);
-
-      const { participantId } = privateChatItem.participants.find(
-        (participantItem) => participantItem.participantId !== state.user.userId
+      const chatLastMessage = getChatLastMessage(privateChatItem);
+      const participantId = findParticipantId(
+        privateChatItem,
+        state.user.userId
       );
+      const participant = findParticipant(participants, participantId);
 
-      const user = users.find((c) => c.userId === participantId);
-
-      return {
-        message: lastChatMessage.message,
-        name: `${user.firstName} ${user.lastName}`,
-        userId: user.userId,
-      };
+      return createChatListItem(chatLastMessage, participant);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message.privateChats, users]);
+  }, [state.message.privateChats, participants]);
 
   const handleDrawerIconClick = () => {
     dispatch(commonActions.openAppDrawer());
@@ -76,3 +72,24 @@ const LeftSide = ({ users }) => {
 };
 
 export default LeftSide;
+
+const findParticipant = (participants, participantId) => {
+  return participants.find((c) => c.userId === participantId);
+};
+const findParticipantId = (privateChatItem, userId) => {
+  return privateChatItem.participants.find(
+    (participantItem) => participantItem.participantId !== userId
+  ).participantId;
+};
+
+const getChatLastMessage = (privateChatItem) => {
+  return privateChatItem.messages.at(-1);
+};
+
+const createChatListItem = (chatLastMessage, participant) => {
+  return {
+    message: chatLastMessage.message,
+    name: `${participant.firstName} ${participant.lastName}`,
+    userId: participant.userId,
+  };
+};

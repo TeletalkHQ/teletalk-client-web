@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { eventManager } from "utility-store/src/classes/EventManager";
 
 import { actions } from "src/store/actions";
 
 import { appOptions } from "src/classes/AppOptions";
-import { apiManager } from "src/classes/api/ApiManager";
 import { commonTasks } from "src/classes/CommonTasks";
 
 import ChatBar from "src/components/rightSide/ChatBar";
@@ -19,44 +18,24 @@ import { controllers } from "src/controllers";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
-const RightSide = () => {
+const RightSide = ({ participants }) => {
   const dispatch = useDispatch();
   const state = useSelector();
-
-  const [selectedUserToChat, setSelectedUserToChat] = useState({});
-  const selectedUserId = state.message.selectedUserForPrivateChat.userId;
 
   useEffect(() => {
     const eventName = appOptions.getEventEmitterEvents().MESSAGE_SENT;
     eventManager.addListener(eventName, commonTasks.resetMessageInputText);
   }, []);
 
-  useEffect(() => {
-    const fn = async () => {
-      if (!selectedUserId) return;
+  const selectedUserId = state.message.selectedUserForPrivateChat.userId;
 
-      const foundContact = state.user.contacts.find(
-        (c) => c.userId === selectedUserId
-      );
+  const selectedParticipantToChat = participants.find(
+    (p) => p.participantId === selectedUserId
+  );
 
-      if (foundContact) {
-        setSelectedUserToChat(foundContact);
-      } else {
-        const response =
-          await apiManager.apis.getPublicUserInfo.sendFullFeaturedRequest({
-            userId: selectedUserId,
-          });
-
-        const { publicUserInfo } = response.data;
-
-        setSelectedUserToChat(publicUserInfo);
-      }
-    };
-
-    fn();
-    return () => {};
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedUserId]);
+  const selectedChatMessages = state.message.privateChats.find((pc) => {
+    return pc.participants.find((p) => p.participantId === selectedUserId);
+  })?.messages;
 
   const handleInputChange = ({ target: { value } }) => {
     dispatch(actions.messageInputOnChange({ messageInputTextValue: value }));
@@ -69,10 +48,6 @@ const RightSide = () => {
   const handleMessageContainerCloseClick = () => {
     dispatch(actions.closeRightSide());
   };
-
-  const selectedChatMessages = state.message.privateChats.find((pc) => {
-    return pc.participants.find((p) => p.participantId !== state.user.userId);
-  })?.messages;
 
   return (
     <GridContainer
@@ -96,7 +71,7 @@ const RightSide = () => {
           >
             <ChatBar
               onMessageContainerCloseClick={handleMessageContainerCloseClick}
-              contactName={`${selectedUserToChat.firstName} ${selectedUserToChat.lastName}`}
+              contactName={`${selectedParticipantToChat.firstName} ${selectedParticipantToChat.lastName}`}
             />
           </CustomBox>
 
