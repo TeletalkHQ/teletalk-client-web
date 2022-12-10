@@ -6,21 +6,27 @@ const statics = {
   array: (value) =>
     ioFieldMaker
       .create()
-      .type(variables.other.dataTypes.ARRAY)
+      .type(variables.common.DATA_TYPES.ARRAY)
       .value([value])
       .build(),
   boolean: ioFieldMaker
     .create()
-    .type(variables.other.dataTypes.BOOLEAN)
+    .type(variables.common.DATA_TYPES.BOOLEAN)
     .build(),
-  number: ioFieldMaker.create().type(variables.other.dataTypes.NUMBER).build(),
+  number: ioFieldMaker
+    .create()
+    .type(variables.common.DATA_TYPES.NUMBER)
+    .build(),
   object: (value) =>
     ioFieldMaker
       .create()
-      .type(variables.other.dataTypes.OBJECT)
+      .type(variables.common.DATA_TYPES.OBJECT)
       .value(value)
       .build(),
-  string: ioFieldMaker.create().type(variables.other.dataTypes.STRING).build(),
+  string: ioFieldMaker
+    .create()
+    .type(variables.common.DATA_TYPES.STRING)
+    .build(),
 };
 
 const authenticationProgress = statics.boolean;

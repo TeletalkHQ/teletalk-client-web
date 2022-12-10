@@ -2,8 +2,8 @@ import { initialGlobalState } from "src/store/global/initialState";
 
 const handleGlobalLoadingStateOpenChange = (payload, prevState) => {
   return {
-    loading: {
-      ...prevState.loading,
+    globalLoading: {
+      ...prevState.globalLoading,
       open: payload.open,
     },
   };

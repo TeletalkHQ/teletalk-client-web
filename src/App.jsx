@@ -2,7 +2,7 @@ import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
 
-import Containers from "src/containers";
+import Provider from "src/containers/provider";
 
 import { MainContext } from "src/context/MainContext";
 
@@ -38,7 +38,7 @@ const App = () => {
       >
         <ThemeProvider theme={baseTheme}>
           <CssBaseline enableColorScheme />
-          <Containers.Provider />
+          <Provider />
         </ThemeProvider>
       </MainContext.Provider>
     </SnackbarProvider>
