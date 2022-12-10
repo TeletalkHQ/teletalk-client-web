@@ -10,13 +10,11 @@ import RightSide from "src/containers/rightSide";
 import { controllers } from "src/controllers";
 
 import { useMainContext } from "src/hooks/useMainContext";
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useSelector } from "src/hooks/useThunkReducer";
 
-import { actions } from "src/store/actions";
 import { stateStatics } from "src/store/stateStatics";
 
 const Messenger = () => {
-  const dispatch = useDispatch();
   const state = useSelector();
 
   const {
@@ -29,7 +27,6 @@ const Messenger = () => {
     let timeoutId;
     const fn = async () => {
       await dispatchAsync(controllers.getUserData());
-      dispatch(actions.globalLoadingOpenChange({ open: false }));
 
       const updater = () => {
         timeoutId = setTimeout(async () => {

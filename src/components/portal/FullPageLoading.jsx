@@ -4,19 +4,32 @@ import CustomFlexBox from "src/components/general/box/CustomFlexBox";
 
 import { stateStatics } from "src/store/stateStatics";
 
-const FullPageLoading = ({ fullPageLoading }) => {
+const FullPageLoading = ({ globalLoading }) => {
   return (
-    <CustomFlexBox jc={"center"} ai={"center"} style={{ height: "100vh" }}>
-      <MoonLoader
-        color={fullPageLoading.color}
-        loading={
-          fullPageLoading.open &&
-          fullPageLoading.type === stateStatics.GLOBAL_LOADING_TYPES.FULL_PAGE
-        }
-        size={fullPageLoading.size}
-        speedMultiplier={fullPageLoading.speedMultiplier}
-      />
-    </CustomFlexBox>
+    globalLoading.open &&
+    globalLoading.type === stateStatics.GLOBAL_LOADING_TYPES.FULL_PAGE && (
+      <CustomFlexBox
+        jc={"center"}
+        ai={"center"}
+        style={{
+          //TODO: Read from mui
+          zIndex: 1000,
+          top: "0",
+          left: "0",
+          position: "absolute",
+          backgroundColor: "#ffffff",
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <MoonLoader
+          color={globalLoading.color}
+          loading
+          size={globalLoading.size}
+          speedMultiplier={globalLoading.speedMultiplier}
+        />
+      </CustomFlexBox>
+    )
   );
 };
 

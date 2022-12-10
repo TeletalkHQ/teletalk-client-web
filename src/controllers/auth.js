@@ -80,7 +80,7 @@ const verifySignIn = () => {
       )
     )
       .executeIfNoError(executeIfNoErrorTryToVerifySignIn, dispatch)
-      .catch(utilities.printCatchError, verifySignIn.name);
+      .printError();
 
     dispatch(commonActions.changeAuthenticationProgress(false));
   };
@@ -92,21 +92,22 @@ const getUserData = () => {
       data: { user },
     } = await apiManager.apis.getUserData.sendFullFeaturedRequest();
 
-    return { user };
+    return user;
   };
-  const executeIfNoError = ({ user }, dispatch) => {
+  const executeIfNoError = (user, dispatch) => {
     delete user.token;
     dispatch(actions.updateAllUserData(user));
     dispatch(commonActions.changeViewMode.messenger());
   };
 
+  const catchTryToGetUserData = (dispatch) =>
+    dispatch(commonActions.changeViewMode.signIn());
+
   return async (dispatch) => {
     (await trier(getUserData.name).tryAsync(tryToGetUserData))
       .executeIfNoError(executeIfNoError, dispatch)
-      .catch((error) => {
-        utilities.printCatchError(error, getUserData.name);
-        dispatch(commonActions.changeViewMode.signIn());
-      }, getUserData.name);
+      .catch(catchTryToGetUserData, dispatch)
+      .printError();
   };
 };
 
@@ -131,7 +132,7 @@ const signIn = () => {
     } = getState();
     dispatch(commonActions.changeAuthenticationProgress(true));
 
-    const response = (
+    (
       await trier(signIn.name).tryAsync(tryToSignIn, {
         countryCode,
         countryName,
@@ -139,12 +140,10 @@ const signIn = () => {
       })
     )
       .executeIfNoError(executeIfNoErrorOnTryToSignIn, dispatch)
-      .catch(utilities.printCatchError, signIn.name)
+      .printError()
       .result();
 
     dispatch(commonActions.changeAuthenticationProgress(false));
-
-    return response;
   };
 };
 
@@ -154,7 +153,7 @@ const logout = () => {
 
   return async (dispatch) => {
     (await trier(logout.name).tryAsync(tryToLogout))
-      .catch(utilities.printCatchError, logout.name)
+      .printError()
       .executeIfNoError(() => {
         commonTasks.resetEverything();
         dispatch(commonActions.changeViewMode.signIn());
@@ -209,7 +208,7 @@ const createNewUser = () => {
       )
     )
       .executeIfNoError(executeIfNoErrorOnTryToCreateNewUser, dispatch)
-      .catch(utilities.printCatchError, createNewUser.name);
+      .printError();
 
     dispatch(commonActions.changeAuthenticationProgress(false));
   };

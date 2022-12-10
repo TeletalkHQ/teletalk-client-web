@@ -20,7 +20,7 @@ const getWelcomeMessage = () => {
   return async (dispatch) => {
     (await trier(getWelcomeMessage.name).tryAsync(tryToGetWelcomeMessage))
       .executeIfNoError(executeIfNoErrorOnTryToGetWelcomeMessage, dispatch)
-      .catch(utilities.printCatchError, getWelcomeMessage.name);
+      .printAndThrow();
   };
 };
 
@@ -37,7 +37,7 @@ const getCountries = () => {
   return async (dispatch) => {
     (await trier(getCountries.name).tryAsync(tryToGetCountries))
       .executeIfNoError(executeIfNoErrorOnTryToGetCountries, dispatch)
-      .catch(utilities.printCatchError, getCountries.name);
+      .printError();
   };
 };
 

@@ -26,10 +26,10 @@ const initialGlobalState = () => ({
     contacts: defaultDialogStateItemProps(),
     logout: defaultDialogStateItemProps(),
   },
-  fullPageLoading: {
+  globalLoading: {
     color: "blue",
-    //TODO: Move it to configs
     open: true,
+    //TODO: Move it to configs
     progressColor: "inherit",
     size: 80,
     speedMultiplier: 1,

@@ -1,7 +1,7 @@
 const enNumber = new RegExp("^[0-9]+$");
 
 const regex = {
-  enNumber,
+  numbers: { en: enNumber },
 };
 
 export { regex };

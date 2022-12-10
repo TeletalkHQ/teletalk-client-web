@@ -13,8 +13,7 @@ let extractedDispatch = (
     type: "",
   }
 ) => action;
-let extractedDispatchAsync = async (action = { type: "", payload: {} }) =>
-  action;
+let extractedDispatchAsync = async () => {};
 
 let useDispatch = () => extractedDispatch;
 

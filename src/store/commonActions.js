@@ -22,8 +22,6 @@ const openAppDrawer = () => actions.appDrawerOpenChange({ open: true });
 
 const viewModeChanger = (viewMode) => actions.viewModeChange({ viewMode });
 const changeViewMode = {
-  fullPageLoading: () =>
-    viewModeChanger(stateStatics.VIEW_MODES.FULL_PAGE_LOADING),
   messenger: () => viewModeChanger(stateStatics.VIEW_MODES.MESSENGER),
   createNewUser: () =>
     viewModeChanger(stateStatics.VIEW_MODES.NEW_USER_PROFILE),

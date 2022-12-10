@@ -20,7 +20,7 @@ const getContacts = () => {
   return async (dispatch) => {
     (await trier(getContacts.name).tryAsync(tryToGetContacts))
       .executeIfNoError(executeIfNoErrorOnTryToGetContacts, dispatch)
-      .catch(utilities.printCatchError, getContacts.name);
+      .printError();
   };
 };
 
