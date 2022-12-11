@@ -7,14 +7,12 @@ const MessageList = ({ messages, currentUserId }) => {
         key={index}
         message={messageItem.message}
         justify={
-          currentUserId === messageItem.messageSender.senderId
+          currentUserId === messageItem.sender.senderId
             ? "flex-end"
             : "flex-start"
         }
         direction={
-          currentUserId === messageItem.messageSender.senderId
-            ? "left"
-            : "right"
+          currentUserId === messageItem.sender.senderId ? "left" : "right"
         }
       />
     );

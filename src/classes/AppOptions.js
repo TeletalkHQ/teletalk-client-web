@@ -1,3 +1,4 @@
+//CLEANME: Remove from both side
 class AppOptions {
   #options = {
     EVENT_EMITTER_EVENTS: {

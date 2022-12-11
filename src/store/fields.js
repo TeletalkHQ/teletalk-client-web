@@ -37,7 +37,7 @@ const countryName = statics.string;
 const countryShortName = statics.string;
 const description = statics.string;
 const dialogName = statics.string;
-const errorCode = statics.string;
+const errorCode = statics.number;
 const errorReason = statics.string;
 const firstName = statics.string;
 const isOnline = statics.boolean;
@@ -51,6 +51,7 @@ const phoneNumber = statics.string;
 const ping = statics.number;
 const senderId = statics.string;
 const status = statics.string;
+const type = statics.string;
 const userId = statics.string;
 const username = statics.string;
 const verificationCode = statics.string;
@@ -82,14 +83,14 @@ const dialog = {
   props: dialogProps,
 };
 
-const messageSender = statics.object({
+const sender = statics.object({
   senderId,
 });
 
 const messageItem = {
   message,
   messageId,
-  messageSender,
+  sender,
 };
 
 const notification = {
@@ -97,6 +98,7 @@ const notification = {
   errorCode,
   errorReason,
   message,
+  type,
 };
 
 const participantItem = {
@@ -150,7 +152,7 @@ const collection = {
   dialogProps,
   messageItem,
   messages,
-  messageSender,
+  sender,
   newContact,
   notification,
   participants,

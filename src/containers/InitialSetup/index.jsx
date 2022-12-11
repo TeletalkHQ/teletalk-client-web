@@ -39,6 +39,8 @@ const InitialSetup = () => {
     await dispatchAsync(controllers.getAllStuff());
 
     windowUtilities
+      .addProperty("actions", actions)
+      .addProperty("dispatch", dispatch)
       .addProperty("apiManager", apiManager)
       .addProperty("appConfigs", appConfigs)
       .addProperty("componentController", componentController)
