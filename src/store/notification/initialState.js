@@ -1,9 +1,10 @@
 const initialNotificationState = () => ({
-  errorNotification: {
-    description: "",
-    errorCode: "",
-    errorReason: "",
-    message: "",
+  notifications: {
+    debug: [],
+    error: [],
+    info: [],
+    success: [],
+    warning: [],
   },
 });
 

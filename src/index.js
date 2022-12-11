@@ -20,9 +20,6 @@ root.render(
   // </React.StrictMode>
 );
 
-const {
-  others: { logPerformanceMeasuring },
-} = appConfigs.getConfigs();
-if (logPerformanceMeasuring) {
+if (appConfigs.getConfigs().others.logPerformanceMeasuring) {
   reportWebVitals(console.debug);
 }
