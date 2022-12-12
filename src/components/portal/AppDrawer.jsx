@@ -1,4 +1,3 @@
-import { customTypeof } from "utility-store/src/classes/CustomTypeof";
 import { SwipeableDrawer } from "@mui/material";
 
 import { actions } from "src/store/actions";
@@ -15,7 +14,8 @@ import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { commonActions } from "src/store/commonActions";
 
-//TODO: Add to some functionality and add priority to each
+import { utilities } from "src/utilities";
+
 const drawerList = [
   Icons.Calls,
   Icons.Contacts,
@@ -25,11 +25,6 @@ const drawerList = [
   Icons.NightModeOutlined,
   Icons.SettingsOutlined,
 ];
-
-//TODO: Move to appConfigs
-const iOS =
-  !customTypeof.isUndefined(navigator) &&
-  /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const AppDrawer = () => {
   const dispatch = useDispatch();
@@ -53,8 +48,8 @@ const AppDrawer = () => {
   return (
     <Div>
       <SwipeableDrawer
-        disableBackdropTransition={!iOS}
-        disableDiscovery={iOS}
+        disableBackdropTransition={!utilities.isIos}
+        disableDiscovery={utilities.isIos}
         anchor={state.global.appDrawer.currentAnchor}
         open={
           state.global.appDrawer.anchor[state.global.appDrawer.currentAnchor]

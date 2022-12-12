@@ -8,8 +8,7 @@ import Messenger from "src/containers/messenger";
 import { controllers } from "src/controllers";
 
 import { useMainContext } from "src/hooks/useMainContext";
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
-import { actions } from "src/store/actions";
+import { useSelector } from "src/hooks/useThunkReducer";
 
 import { stateStatics } from "src/store/stateStatics";
 
@@ -25,9 +24,8 @@ const visibleComponent = (viewMode) => {
   return <div>hi</div>;
 };
 
-const View = () => {
+const View = ({ onGlobalLoadingClose }) => {
   const state = useSelector();
-  const dispatch = useDispatch();
 
   const {
     hooksOutput: { dispatchAsync },
@@ -41,7 +39,7 @@ const View = () => {
     );
     if (TOKEN) await dispatchAsync(controllers.getUserData());
 
-    dispatch(actions.globalLoadingOpenChange({ open: false }));
+    onGlobalLoadingClose();
   };
 
   useEffect(() => {

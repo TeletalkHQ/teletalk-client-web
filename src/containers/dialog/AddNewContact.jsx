@@ -26,6 +26,7 @@ import { stateStatics } from "src/store/stateStatics";
 
 import { variables } from "src/variables";
 import { componentBuilder } from "src/classes/ComponentBuilder";
+import { utilities } from "src/utilities";
 
 const AddNewContact = componentBuilder
   .create()
@@ -41,17 +42,6 @@ const AddNewContact = componentBuilder
     const [selectedCountry, setSelectedCountry] = useState(
       variables.common.object.country
     );
-
-    //CLEANME: It is duplicate, Check SignIn.jsx
-    const isCountrySelected = () => {
-      const country = selectedCountry;
-
-      return !!(
-        country.countryCode &&
-        country.countryName &&
-        country.countryShortName
-      );
-    };
 
     const handleInputChange = (event) => {
       setContact({ ...contact, [event.target.name]: event.target.value });
@@ -102,7 +92,7 @@ const AddNewContact = componentBuilder
       const country = arrayUtilities.findByPropValueEquality(
         state.other.countries,
         value,
-        "countryCode"
+        variables.other.helper.PROPS.COUNTRY_CODE
       );
 
       selectedCountryDispatcher(country);
@@ -131,7 +121,7 @@ const AddNewContact = componentBuilder
         !firstNameValidateResult ||
         !phoneNumberValidateResult ||
         !lastNameValidateResult ||
-        !isCountrySelected()
+        !utilities.isCountrySelected(selectedCountry)
       );
     };
 
@@ -152,7 +142,11 @@ const AddNewContact = componentBuilder
                 selectCountryByCountryCodeInputChange(event.target.value);
               }}
               onInputChange={handleInputChange}
-              selectedCountry={isCountrySelected() ? selectedCountry : null}
+              selectedCountry={
+                utilities.isCountrySelected(selectedCountry)
+                  ? selectedCountry
+                  : null
+              }
             />
           }
           actionContent={

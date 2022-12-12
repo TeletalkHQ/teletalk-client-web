@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 
-import { eventManager } from "utility-store/src/classes/EventManager";
-
 import { actions } from "src/store/actions";
 
-import { appOptions } from "src/classes/AppOptions";
 import { commonTasks } from "src/classes/CommonTasks";
+import { eventManager } from "src/classes/EventManager";
 
 import ChatBar from "src/components/rightSide/ChatBar";
 import CustomBox from "src/components/general/box/CustomBox";
@@ -23,7 +21,7 @@ const RightSide = ({ participants }) => {
   const state = useSelector();
 
   useEffect(() => {
-    const eventName = appOptions.getEventEmitterEvents().MESSAGE_SENT;
+    const eventName = eventManager.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
     eventManager.addListener(eventName, commonTasks.resetMessageInputText);
   }, []);
 
@@ -56,7 +54,7 @@ const RightSide = ({ participants }) => {
       lg={9}
       md={8}
     >
-      {state.message.selectedUserForPrivateChat?.userId && (
+      {selectedUserId && (
         <CustomFlexBox
           col
           sx={{ width: "100%", height: "100%" }}

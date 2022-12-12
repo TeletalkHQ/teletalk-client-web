@@ -27,10 +27,29 @@ const fixErrorBuilderErrors = (errorObject, extraData = {}) => {
 const makeNonBreakSpace = (length) =>
   Array.from({ length }).map((_, i) => <Fragment key={i}>&nbsp;</Fragment>);
 
+const isIos = () => {
+  return (
+    !customTypeof.isUndefined(navigator) &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent)
+  );
+};
+
+const isCountrySelected = (selectedCountry) => {
+  const country = selectedCountry;
+
+  return !!(
+    country.countryCode &&
+    country.countryName &&
+    country.countryShortName
+  );
+};
+
 const otherUtilities = {
   checkErrorCodeIsConnAborted,
   errorThrower,
   fixErrorBuilderErrors,
+  isCountrySelected,
+  isIos,
   makeNonBreakSpace,
   printCatchError,
 };

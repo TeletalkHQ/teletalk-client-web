@@ -7,10 +7,8 @@ const FirstNameInput = ({ inputValue, onInputChange, required = true }) => {
   return (
     <CustomTextInput
       autoFocus
-      //TODO: Move to ELEMENT_IDS
-      id="firstNameInput"
-      //TODO: Move to ELEMENT_LABELS
-      label="First Name"
+      id={variables.other.helper.ELEMENT_IDS.FIRST_NAME_INPUT}
+      label={variables.other.helper.ELEMENT_LABELS.FIRST_NAME}
       name={variables.other.helper.ELEMENT_NAMES.FIRST_NAME}
       onChange={onInputChange}
       required={required}

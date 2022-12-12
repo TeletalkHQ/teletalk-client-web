@@ -12,7 +12,7 @@ const CustomButton = ({
   variant = "contained",
   ...props
 }) => {
-  //TODO: WHAT!?! Separate into two components
+  //TODO: Separate into two components
   const SelectedComponent = btn || button ? Button : LoadingButton;
 
   return (

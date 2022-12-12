@@ -6,8 +6,8 @@ import { variables } from "src/variables";
 const LastNameInput = ({ inputValue, onInputChange, required = true }) => {
   return (
     <CustomTextInput
-      id="lastName"
-      label="Last Name"
+      id={variables.other.helper.ELEMENT_IDS.LAST_NAME}
+      label={variables.other.helper.ELEMENT_LABELS.LAST_NAME}
       name={variables.other.helper.ELEMENT_NAMES.LAST_NAME}
       onChange={onInputChange}
       required={required}

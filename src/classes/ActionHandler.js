@@ -63,8 +63,6 @@ class ActionHandler {
   catchTryToHandleAction(error) {
     this.logHandleError(error);
 
-    //FIXME: Add specific action for this error
-    // return this.createAction();
     return {};
   }
   handle() {

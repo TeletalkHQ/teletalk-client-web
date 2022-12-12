@@ -1,16 +1,19 @@
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 
+import { transformers } from "src/api/transformers";
+
 import { apiBuilder } from "src/classes/api/ApiBuilder";
 import { apiHandler } from "src/classes/api/ApiHandler";
 import { stuffStore } from "src/classes/StuffStore";
 
-import { transformers } from "src/api/transformers";
+import { utilities } from "src/utilities";
 
 class ApiManager {
   #apiTemplate = apiHandler.create({});
 
   constructor() {
     this.apis = {
+      //? This is not necessary, its just for intellisense
       addContact: this.#apiTemplate,
       getUserData: this.#apiTemplate,
       createNewUser: this.#apiTemplate,
@@ -28,8 +31,7 @@ class ApiManager {
   }
 
   #buildWithRouteObject() {
-    const { version, ...routes } = stuffStore.routes;
-
+    const routes = utilities.excludeVersion(stuffStore.routes);
     objectUtilities.objectEntries(routes).forEach(([apiName, routeObject]) => {
       this.apis[apiName] = apiBuilder
         .create()

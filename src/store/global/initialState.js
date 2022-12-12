@@ -4,7 +4,7 @@ import { stateStatics } from "src/store/stateStatics";
 
 const defaultDialogStateItemProps = () => ({
   open: false,
-  //TODO: Move to appConfigs + read default value from mui
+  //TODO: read default value from mui
   props: { zIndex: 1300 },
 });
 
@@ -29,7 +29,6 @@ const initialGlobalState = () => ({
   globalLoading: {
     color: "blue",
     open: true,
-    //TODO: Move it to configs
     progressColor: "inherit",
     size: 80,
     speedMultiplier: 1,

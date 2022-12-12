@@ -2,6 +2,8 @@ import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
 
+import { appConfigs } from "classes/AppConfigs";
+
 import Provider from "src/containers/provider";
 
 import { MainContext } from "src/context/MainContext";
@@ -21,9 +23,9 @@ const App = () => {
 
   const getState = () => state;
 
+  const maxNotification = appConfigs.getConfigs().ui.maxNotification;
   return (
-    //TODO: Move this configs to appConfigs
-    <SnackbarProvider maxSnack={10}>
+    <SnackbarProvider maxSnack={maxNotification}>
       <MainContext.Provider
         value={{
           hooksOutput: {

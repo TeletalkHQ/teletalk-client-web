@@ -21,7 +21,7 @@ const extractVersions = (object) => {
   return objectUtilities.objectKeys(object).map((key) => object[key].version);
 };
 
-const excludeVersion = (object) => {
+const excludeMultipleVersion = (object) => {
   const tempObject = {};
 
   for (const key in object) {
@@ -33,6 +33,16 @@ const excludeVersion = (object) => {
   return tempObject;
 };
 
-const versionUtilities = { excludeVersion, extractVersions, versionCalculator };
+const excludeVersion = (object) => {
+  const { version, ...rest } = object;
+  return rest;
+};
+
+const versionUtilities = {
+  excludeMultipleVersion,
+  excludeVersion,
+  extractVersions,
+  versionCalculator,
+};
 
 export { versionUtilities };

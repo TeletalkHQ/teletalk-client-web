@@ -20,8 +20,6 @@ class CommonTasks {
     persistentStorage.setDefaultStorage();
 
     [
-      //TODO: Move to Provider
-      //TODO: Add otherState too
       actions.resetUserState,
       actions.resetGlobalState,
       actions.resetAuthState,
@@ -40,7 +38,7 @@ class CommonTasks {
     if (condition) return callback();
   }
 
-  throwConnAbortNotification(error) {
+  checkConnAbortNotification(error) {
     const isConnectionInterrupted =
       !windowUtilities.isOnline() ||
       utilities.checkErrorCodeIsConnAborted(error?.code);

@@ -23,20 +23,11 @@ import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 import { actions } from "src/store/actions";
 
 import { variables } from "src/variables";
+import { utilities } from "src/utilities";
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const state = useSelector();
-
-  const isCountrySelected = () => {
-    const country = state.auth.selectedCountry;
-
-    return !!(
-      country.countryCode &&
-      country.countryName &&
-      country.countryShortName
-    );
-  };
 
   const handleSignInClick = () => {
     dispatch(controllers.signIn());
@@ -55,8 +46,7 @@ const SignIn = () => {
     const country = arrayUtilities.findByPropValueEquality(
       state.other.countries,
       value,
-      //TODO: Read from statics
-      "countryCode"
+      variables.other.helper.PROPS.COUNTRY_CODE
     );
 
     selectedCountryDispatcher(country);
@@ -93,7 +83,10 @@ const SignIn = () => {
         state.auth.phoneNumber
       );
 
-    return !validateResult || !isCountrySelected();
+    return (
+      !validateResult ||
+      !utilities.isCountrySelected(state.auth.selectedCountry)
+    );
   };
 
   return (
@@ -116,7 +109,9 @@ const SignIn = () => {
               onSelectedCountryChange={handleSelectedCountryChange}
               onCountryNameInputChange={handleCountryNameInputChange}
               selectedCountry={
-                isCountrySelected() ? state.auth.selectedCountry : null
+                utilities.isCountrySelected(state.auth.selectedCountry)
+                  ? state.auth.selectedCountry
+                  : null
               }
             />
 

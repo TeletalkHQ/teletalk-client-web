@@ -1,17 +1,13 @@
 import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+import { trier } from "utility-store/src/classes/Trier";
 
 import { commonTasks } from "src/classes/CommonTasks";
 
 import { errorBuilders } from "src/helpers/errorBuilders";
+
 import { utilities } from "src/utilities";
 
 class Validator {
-  constructor(compiledValidator, validatorName) {
-    this.compiledValidator = compiledValidator;
-    this.validatorName = validatorName;
-    this.validatorErrorBuilder = this.findValidatorErrorBuilder(validatorName);
-    this.validationResult = [];
-  }
   #ignoredErrorTypesForInputValidator = [
     "required",
     "stringEmpty",
@@ -19,8 +15,10 @@ class Validator {
     "stringMin",
   ];
 
-  findValidatorErrorBuilder() {
-    return errorBuilders[`${this.validatorName}`];
+  constructor(compiledValidator, validatorName) {
+    this.compiledValidator = compiledValidator;
+    this.validatorErrorBuilder = errorBuilders[`${validatorName}`];
+    this.validationResult = [];
   }
 
   inputValidator(validationKey, validationValue) {
@@ -58,20 +56,23 @@ class Validator {
     return this;
   }
 
-  checkAndExecuteValidatorErrorBuilder() {
-    if (this.validationResult.length)
-      this.validatorErrorBuilder(this.validationResult);
-  }
-
   printInputValidatorError() {
-    try {
-      this.checkAndExecuteValidatorErrorBuilder();
-      return this;
-    } catch (errors) {
-      const fixedErrors = utilities.fixErrorBuilderErrors(errors);
-      commonTasks.correctErrorsAndPrint(fixedErrors);
-      return this;
-    }
+    return trier(this.correctErrorsAndPrint)
+      .try(this.#tryToCheckErrors.bind(this))
+      .printError()
+      .catch(this.#catchCheckErrors.bind(this))
+      .result();
+  }
+  #tryToCheckErrors() {
+    if (this.validationResult.length)
+      //FIXME validatedXXX is undefined
+      this.validatorErrorBuilder(this.validationResult);
+    return this;
+  }
+  #catchCheckErrors(error) {
+    const fixedErrors = utilities.fixErrorBuilderErrors(error);
+    commonTasks.correctErrorsAndPrint(fixedErrors);
+    return this;
   }
 
   executeIfNoError(cb) {

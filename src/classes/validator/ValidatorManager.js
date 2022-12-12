@@ -1,38 +1,38 @@
 import FastestValidator from "fastest-validator";
-
+import { trier } from "utility-store/src/classes/Trier";
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 
-import { validator } from "src/classes/Validator";
+import { validator } from "src/classes/validator/Validator";
 
 import { utilities } from "src/utilities";
 
 const fastestValidatorCompiler = new FastestValidator();
 
 class ValidatorManager {
+  #validatorTemplate = validator.create();
+
   constructor() {
     this.validators = {
-      countryCode: this.#defaultValidator,
-      countryName: this.#defaultValidator,
-      firstName: this.#defaultValidator,
-      lastName: this.#defaultValidator,
-      phoneNumber: this.#defaultValidator,
-      username: this.#defaultValidator,
-      verificationCode: this.#defaultValidator,
+      countryCode: this.#validatorTemplate,
+      countryName: this.#validatorTemplate,
+      firstName: this.#validatorTemplate,
+      lastName: this.#validatorTemplate,
+      phoneNumber: this.#validatorTemplate,
+      username: this.#validatorTemplate,
+      verificationCode: this.#validatorTemplate,
     };
   }
-  #defaultValidator = validator.create(() => {}, "");
 
   compileValidators = (validationModels) => {
-    //TODO: Update with Trier
-    try {
-      objectUtilities
-        .objectEntries(validationModels)
-        .forEach(this.#processValidationModel.bind(this));
-    } catch (error) {
-      utilities.printCatchError(this.compileValidators.name, error);
-      throw error;
-    }
+    trier(this.compileValidators.name)
+      .try(this.#tryToCompileValidators.bind(this), validationModels)
+      .printAndThrow();
   };
+  #tryToCompileValidators(validationModels) {
+    objectUtilities
+      .objectEntries(validationModels)
+      .forEach(this.#processValidationModel.bind(this));
+  }
   #processValidationModel([validationModelKey, validationModelValue]) {
     const validationModelWithoutVersion =
       this.#excludeVersionFromValidationModel(validationModelValue);
@@ -44,8 +44,7 @@ class ValidatorManager {
   }
 
   #excludeVersionFromValidationModel(validationModel) {
-    const { version, ...restOfValidationModelProps } = validationModel;
-    return restOfValidationModelProps;
+    return utilities.excludeVersion(validationModel);
   }
   #validationModelCompiler(validationModel) {
     return fastestValidatorCompiler.compile(validationModel);

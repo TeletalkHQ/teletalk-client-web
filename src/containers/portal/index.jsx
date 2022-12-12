@@ -18,7 +18,6 @@ const Portal = ({ onGlobalLoadingClose }) => {
     <PortalContainer>
       <AppDrawer />
       <OverlayLoading
-        //FIXME: Check parent sending props
         onGlobalLoadingClose={onGlobalLoadingClose}
         loading={state.global.globalLoading}
       />

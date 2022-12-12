@@ -3,9 +3,8 @@ import CustomListItem from "src/components/general/box/CustomListItem";
 
 import { Icons } from "src/components/other/Icons";
 
-//TODO: Add to some functionality and add priority to each
 const sidebarList = [
-  Icons.AllChatsOutlined7,
+  Icons.AllChatsOutlined,
   Icons.UnreadOutlined,
   Icons.PersonalOutlined,
   Icons.ChannelsOutlined,
