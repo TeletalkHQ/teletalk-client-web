@@ -21,7 +21,6 @@ const MessageInput = ({
 
         <CustomBox sx={{ width: "100%" }}>
           <CustomTextInput
-            id="standard-multiline-flexible"
             placeholder={!messageInputTextValue ? "Write a message..." : " "}
             multiline
             maxRows={8}

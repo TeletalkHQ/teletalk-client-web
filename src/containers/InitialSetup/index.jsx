@@ -7,7 +7,7 @@ import { appConfigs } from "src/classes/AppConfigs";
 import { componentController } from "src/classes/ComponentController";
 import { eventManager } from "src/classes/EventManager";
 import { stuffStore } from "src/classes/StuffStore";
-import { validatorManager } from "src/classes/ValidatorManager";
+import { validatorManager } from "src/classes/validator/ValidatorManager";
 
 import { controllers } from "src/controllers";
 

@@ -15,7 +15,7 @@ const CountryCodeInput = ({ inputValue, onInputChange }) => {
           </>
         ),
       }}
-      label="Code"
+      label={variables.other.helper.ELEMENT_LABELS.CODE}
       name={variables.other.helper.ELEMENT_NAMES.COUNTRY_CODE}
       onChange={onInputChange}
       required

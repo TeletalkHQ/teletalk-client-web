@@ -17,6 +17,7 @@ const commonObject = {
     senderId: "",
     text: "",
   }),
+  action: { type: "", payload: {} },
 };
 
 export { commonObject };

@@ -7,7 +7,7 @@ const PhoneNumberInput = ({ inputValue, onInputChange }) => {
   return (
     <CustomTextInput
       autoComplete="tel-national"
-      label="Phone number"
+      label={variables.other.helper.ELEMENT_LABELS.PHONE_NUMBER}
       name={variables.other.helper.ELEMENT_NAMES.PHONE_NUMBER}
       onChange={onInputChange}
       required

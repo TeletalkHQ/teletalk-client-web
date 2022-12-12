@@ -33,7 +33,6 @@ const CustomAutoComplete = ({
       <Autocomplete
         inputValue={activityInputValue}
         onInputChange={(_e, value) => onInputChange(value)}
-        id="grouped-demo"
         options={finalActivities}
         groupBy={(activity) => activity.header}
         getOptionLabel={(activity) => activity.headerContent}

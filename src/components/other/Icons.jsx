@@ -29,6 +29,8 @@ import {
 
 import { variables } from "src/variables";
 
+const ELEMENT_NAMES = variables.other.helper.ELEMENT_NAMES;
+
 const iconProperties = (text, elementName, Icon) => ({
   elementName,
   Icon,
@@ -38,143 +40,94 @@ const iconProperties = (text, elementName, Icon) => ({
 const Icons = {
   AccountCircleOutlined: iconProperties(
     "Account",
-    variables.other.helper.ELEMENT_NAMES.ACCOUNT,
+    ELEMENT_NAMES.ACCOUNT,
     AccountCircleOutlinedIcon
   ),
-  AllChatsOutlined7: iconProperties(
+  AllChatsOutlined: iconProperties(
     "All Chats",
-    variables.other.helper.ELEMENT_NAMES.ALL_CHATS,
+    ELEMENT_NAMES.ALL_CHATS,
     ForumOutlinedIcon
   ),
-  ArrowBack: iconProperties(
-    "Back",
-    variables.other.helper.ELEMENT_NAMES.BACK,
-    ArrowBackIcon
-  ),
+  ArrowBack: iconProperties("Back", ELEMENT_NAMES.BACK, ArrowBackIcon),
   AttachFile: iconProperties(
     "AttachFile",
-    //FIXME: Some names are undefined
-    variables.other.helper.ELEMENT_NAMES.ATTACH_FILE,
+    ELEMENT_NAMES.ATTACH_FILE,
     AttachFileIcon
   ),
-  BotOutlined: iconProperties(
-    "Bot",
-    variables.other.helper.ELEMENT_NAMES.BOT,
-    SmartToyOutlinedIcon
-  ),
-  Calls: iconProperties(
-    "Calls",
-    variables.other.helper.ELEMENT_NAMES.CALLS,
-    PermIdentityIcon
-  ),
+  BotOutlined: iconProperties("Bot", ELEMENT_NAMES.BOT, SmartToyOutlinedIcon),
+  Calls: iconProperties("Calls", ELEMENT_NAMES.CALLS, PermIdentityIcon),
   ChannelsOutlined: iconProperties(
     "Channels",
-    variables.other.helper.ELEMENT_NAMES.CHANNELS,
+    ELEMENT_NAMES.CHANNELS,
     CallOutlinedIcon
   ),
-  Check: iconProperties(
-    "Check",
-    variables.other.helper.ELEMENT_NAMES.CHECK,
-    CheckIcon
-  ),
-  Close: iconProperties(
-    "Close",
-    variables.other.helper.ELEMENT_NAMES.CLOSE,
-    CloseIcon
-  ),
+  Check: iconProperties("Check", ELEMENT_NAMES.CHECK, CheckIcon),
+  Close: iconProperties("Close", ELEMENT_NAMES.CLOSE, CloseIcon),
   Contacts: iconProperties(
     "Contacts",
-    variables.other.helper.ELEMENT_NAMES.CONTACTS,
+    ELEMENT_NAMES.CONTACTS,
     PeopleOutlineIcon
   ),
   EditChatsOutlined: iconProperties(
     "Edit Chats",
-    variables.other.helper.ELEMENT_NAMES.EDIT_CHATS,
+    ELEMENT_NAMES.EDIT_CHATS,
     SettingsInputComponentOutlinedIcon
   ),
   EmojiEmotions: iconProperties(
     "EmojiEmotions",
-    variables.other.helper.ELEMENT_NAMES.EMOJI_EMOTIONS,
+    ELEMENT_NAMES.EMOJI_EMOTIONS,
     EmojiEmotionsIcon
   ),
   Fingerprint: iconProperties(
     "Fingerprint",
-    variables.other.helper.ELEMENT_NAMES.LOCK,
+    ELEMENT_NAMES.LOCK,
     FingerprintIcon
   ),
-  Groups: iconProperties(
-    "Groups",
-    variables.other.helper.ELEMENT_NAMES.GROUPS,
-    CampaignOutlinedIcon
-  ),
-  LockOutlined: iconProperties(
-    "Lock",
-    variables.other.helper.ELEMENT_NAMES.LOCK,
-    LockOutlinedIcon
-  ),
+  Groups: iconProperties("Groups", ELEMENT_NAMES.GROUPS, CampaignOutlinedIcon),
+  LockOutlined: iconProperties("Lock", ELEMENT_NAMES.LOCK, LockOutlinedIcon),
   LogoutOutlined: iconProperties(
     "Logout",
-    variables.other.helper.ELEMENT_NAMES.LOGOUT,
+    ELEMENT_NAMES.LOGOUT,
     LogoutOutlinedIcon
   ),
-  Menu: iconProperties(
-    "Menu",
-    variables.other.helper.ELEMENT_NAMES.MENU,
-    MenuIcon
-  ),
-  MicNone: iconProperties(
-    "MicNone",
-    variables.other.helper.ELEMENT_NAMES.MIC_NONE,
-    MicNoneIcon
-  ),
-  MoreVertical: iconProperties(
-    "More",
-    variables.other.helper.ELEMENT_NAMES.MORE,
-    MoreVertIcon
-  ),
+  Menu: iconProperties("Menu", ELEMENT_NAMES.MENU, MenuIcon),
+  MicNone: iconProperties("MicNone", ELEMENT_NAMES.MIC_NONE, MicNoneIcon),
+  MoreVertical: iconProperties("More", ELEMENT_NAMES.MORE, MoreVertIcon),
   NewChannelOutlined: iconProperties(
     "New Channel",
-    variables.other.helper.ELEMENT_NAMES.NEW_CHANNEL,
+    ELEMENT_NAMES.NEW_CHANNEL,
     CallOutlinedIcon
   ),
   NewGroupOutlined: iconProperties(
     "New Group",
-    variables.other.helper.ELEMENT_NAMES.NEW_GROUP,
+    ELEMENT_NAMES.NEW_GROUP,
     CampaignOutlinedIcon
   ),
   NightModeOutlined: iconProperties(
     "Night Mode",
-    variables.other.helper.ELEMENT_NAMES.NIGHT_MODE,
+    ELEMENT_NAMES.NIGHT_MODE,
     Brightness4OutlinedIcon
   ),
   PersonalOutlined: iconProperties(
     "Personal",
-    variables.other.helper.ELEMENT_NAMES.PERSONAL,
+    ELEMENT_NAMES.PERSONAL,
     PersonOutlineOutlinedIcon
   ),
-  Search: iconProperties(
-    "Search",
-    variables.other.helper.ELEMENT_NAMES.SEARCH,
-    SearchIcon
-  ),
+  Search: iconProperties("Search", ELEMENT_NAMES.SEARCH, SearchIcon),
   SettingsOutlined: iconProperties(
     "Settings",
-    variables.other.helper.ELEMENT_NAMES.SETTINGS,
+    ELEMENT_NAMES.SETTINGS,
     SettingsOutlinedIcon
   ),
-  Telegram: iconProperties(
-    "Telegram",
-    variables.other.helper.ELEMENT_NAMES.TELEGRAM,
-    TelegramIcon
-  ),
+  Telegram: iconProperties("Telegram", ELEMENT_NAMES.TELEGRAM, TelegramIcon),
   UnreadOutlined: iconProperties(
     "Unread Messages",
-    variables.other.helper.ELEMENT_NAMES.UNREAD,
+    ELEMENT_NAMES.UNREAD,
     AnnouncementOutlinedIcon
   ),
   VerifiedUser: iconProperties(
     "Verified User",
-    variables.other.helper.ELEMENT_NAMES.LOCK,
+    ELEMENT_NAMES.LOCK,
     VerifiedUserIcon
   ),
 };

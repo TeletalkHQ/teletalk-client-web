@@ -2,7 +2,7 @@ import { domUtilities } from "utility-store/src/classes/DomUtilities";
 
 import { commonTasks } from "src/classes/CommonTasks";
 import { stuffStore } from "src/classes/StuffStore";
-import { validatorManager } from "src/classes/ValidatorManager";
+import { validatorManager } from "src/classes/validator/ValidatorManager";
 
 import CustomAvatar from "src/components/general/other/CustomAvatar";
 import CustomBox from "src/components/general/box/CustomBox";
@@ -90,7 +90,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
 
             <CustomTextInput
               required
-              label="Verification code"
+              label={variables.other.helper.ELEMENT_LABELS.VERIFICATION_CODE}
               name={variables.other.helper.ELEMENT_NAMES.VERIFICATION_CODE}
               autoFocus
               value={state.auth.verificationCode}

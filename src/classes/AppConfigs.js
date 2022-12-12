@@ -66,6 +66,7 @@ class AppConfigs {
         appDrawerCurrentAnchor: stateStatics.APP_DRAWER_ANCHORS.left,
         defaultDialogTransitionalComponentType: "Grow",
         dialogTransitionalComponentType: "Grow",
+        maxNotification: 10,
       },
       stateManagement: {
         logActions: false,

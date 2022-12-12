@@ -8,12 +8,14 @@ import Portal from "src/containers/portal";
 
 import FullPageLoading from "src/components/portal/FullPageLoading";
 
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { stateStatics } from "src/store/stateStatics";
+import { commonActions } from "src/store/commonActions";
 
 const Provider = () => {
   const state = useSelector();
+  const dispatch = useDispatch();
 
   const [forceUpdate, setForceUpdate] = useState(false);
 
@@ -29,6 +31,10 @@ const Provider = () => {
     windowUtilities.addProperty("state", state);
   }, [state]);
 
+  const handleGlobalLoadingClose = () => {
+    dispatch(commonActions.closeGlobalLoading());
+  };
+
   return (
     <>
       {state.global.initialSetupDetails.status !==
@@ -36,8 +42,8 @@ const Provider = () => {
         <InitialSetup />
       ) : (
         <>
-          <View />
-          <Portal />
+          <View onGlobalLoadingClose={handleGlobalLoadingClose} />
+          <Portal onGlobalLoadingClose={handleGlobalLoadingClose} />
         </>
       )}
 

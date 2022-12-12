@@ -1,6 +1,6 @@
 import Autocomplete from "@mui/material/Autocomplete";
 
-import { validatorManager } from "src/classes/ValidatorManager";
+import { validatorManager } from "src/classes/validator/ValidatorManager";
 
 import CustomTextInput from "src/components/general/input/CustomTextInput";
 import CustomFlexBox from "src/components/general/box/CustomFlexBox";
@@ -28,8 +28,10 @@ const CountrySelector = ({
       inputValue={countryName}
       onInputChange={(_, newInputValue) => {
         validatorManager.validators.countryName
-          //TODO: Move validatorKeys to statics
-          .inputValidator("countryName", newInputValue)
+          .inputValidator(
+            variables.other.helper.VALIDATION_KEYS.countryName,
+            newInputValue
+          )
           .printInputValidatorError()
           .executeIfNoError(() => onCountryNameInputChange(newInputValue));
       }}
@@ -59,7 +61,7 @@ const CountrySelector = ({
           {...params}
           required
           name={variables.other.helper.ELEMENT_NAMES.COUNTRY_NAME}
-          label="Choose a country"
+          label={variables.other.helper.ELEMENT_LABELS.CHOOSE_A_COUNTRY}
           InputProps={{
             ...params.InputProps,
           }}
