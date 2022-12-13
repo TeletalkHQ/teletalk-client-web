@@ -2,7 +2,7 @@ import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
 
-import { appConfigs } from "classes/AppConfigs";
+import { appConfigs } from "src/classes/AppConfigs";
 
 import Provider from "src/containers/provider";
 
