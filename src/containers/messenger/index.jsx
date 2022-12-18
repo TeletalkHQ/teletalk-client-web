@@ -53,7 +53,7 @@ const Messenger = () => {
       for (let i = 0; i < newParticipants.length; i++) {
         const participant = newParticipants[i];
 
-        const publicUserInfo = await controllers.getPublicUserInfo(
+        const publicUserInfo = await controllers.getPublicUserData(
           participant.participantId
         );
 

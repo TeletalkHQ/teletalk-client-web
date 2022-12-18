@@ -21,7 +21,7 @@ class ApiManager {
       getContacts: this.#apiTemplate,
       getCountries: this.#apiTemplate,
       getAllPrivateChats: this.#apiTemplate,
-      getPublicUserInfo: this.#apiTemplate,
+      getPublicUserData: this.#apiTemplate,
       getWelcomeMessage: this.#apiTemplate,
       logoutNormal: this.#apiTemplate,
       sendPrivateMessage: this.#apiTemplate,
