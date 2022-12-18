@@ -11,8 +11,8 @@ const triggerMessageSentEvent = () => {
   eventManager.emitEvent(eventName);
 };
 
-const sendPrivateMessage = (state) => {
-  const tryToSendPrivateMessage = async () => {
+const sendPrivateMessage = () => {
+  const tryToSendPrivateMessage = async (state) => {
     await apiManager.apis.sendPrivateMessage.sendFullFeaturedRequest({
       message: state.message.messageInputTextValue,
       participantId: state.message.selectedUserForPrivateChat.userId,

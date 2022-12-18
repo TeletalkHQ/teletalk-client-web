@@ -3,7 +3,7 @@ import { apiBuilder } from "src/classes/api/ApiBuilder";
 const getAllStuffs = {
   description:
     "Use for get all routes, models, validation models, errors and more",
-  fullUrl: "/versionControl/getAllStuff",
+  fullUrl: "/stuff/getAllStuff",
   inputFields: {
     language: { type: "string" },
   },
@@ -18,6 +18,6 @@ const getAllStuff = apiBuilder
   .setRequirements({ routeObject: getAllStuffs })
   .build();
 
-const versionControl = { getAllStuff };
+const stuff = { getAllStuff };
 
-export { versionControl };
+export { stuff };

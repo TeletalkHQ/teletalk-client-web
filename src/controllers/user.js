@@ -29,9 +29,9 @@ const getUserData = () => {
   };
 };
 
-const getPublicUserInfo = async (userId) => {
+const getPublicUserData = async (userId) => {
   const response =
-    await apiManager.apis.getPublicUserInfo.sendFullFeaturedRequest({
+    await apiManager.apis.getPublicUserData.sendFullFeaturedRequest({
       userId,
     });
 
@@ -39,7 +39,7 @@ const getPublicUserInfo = async (userId) => {
 };
 
 const userControllers = {
-  getPublicUserInfo,
+  getPublicUserData,
   getUserData,
 };
 

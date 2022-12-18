@@ -1,0 +1,3 @@
+const Box = {};
+
+export { Box };

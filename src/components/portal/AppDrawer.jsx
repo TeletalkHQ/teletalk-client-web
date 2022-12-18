@@ -48,8 +48,8 @@ const AppDrawer = () => {
   return (
     <Div>
       <SwipeableDrawer
-        disableBackdropTransition={!utilities.isIos}
-        disableDiscovery={utilities.isIos}
+        disableBackdropTransition={!utilities.isIos()}
+        disableDiscovery={utilities.isIos()}
         anchor={state.global.appDrawer.currentAnchor}
         open={
           state.global.appDrawer.anchor[state.global.appDrawer.currentAnchor]

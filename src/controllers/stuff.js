@@ -1,6 +1,6 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { versionControl } from "src/api/versionControl";
+import { api } from "src/api";
 
 import { apiManager } from "src/classes/api/ApiManager";
 import { stuffStore } from "src/classes/StuffStore";
@@ -10,7 +10,7 @@ import { utilities } from "src/utilities";
 
 const getAllStuff = () => {
   const tryToGetAllStuff = async () => {
-    const { data } = await versionControl.getAllStuff.sendFullFeaturedRequest({
+    const { data } = await api.getAllStuff.sendFullFeaturedRequest({
       language: "en",
     });
     return data;
