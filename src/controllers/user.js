@@ -24,8 +24,7 @@ const getUserData = () => {
   return async (dispatch) => {
     (await trier(getUserData.name).tryAsync(tryToGetUserData))
       .executeIfNoError(executeIfNoError, dispatch)
-      .catch(catchTryToGetUserData, dispatch)
-      .printError();
+      .catch(catchTryToGetUserData, dispatch);
   };
 };
 

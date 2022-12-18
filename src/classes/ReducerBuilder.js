@@ -71,7 +71,7 @@ class ReducerBuilder {
         reducerCases,
         state,
       })
-      .printError()
+
       .catch(() => state)
       .result();
   }

@@ -29,9 +29,7 @@ const sendPrivateMessage = () => {
         tryToSendPrivateMessage,
         getState()
       )
-    )
-      .executeIfNoError(executeIfNoError)
-      .printError();
+    ).executeIfNoError(executeIfNoError);
   };
 };
 
@@ -52,9 +50,9 @@ const getAllPrivateChats = () => {
   };
 
   return async (dispatch) => {
-    (await trier(getAllPrivateChats.name).tryAsync(tryToGetAllPrivateChats))
-      .executeIfNoError(executeIfNoError, dispatch)
-      .printError();
+    (
+      await trier(getAllPrivateChats.name).tryAsync(tryToGetAllPrivateChats)
+    ).executeIfNoError(executeIfNoError, dispatch);
   };
 };
 
