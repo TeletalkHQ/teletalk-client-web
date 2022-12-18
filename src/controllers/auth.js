@@ -78,9 +78,7 @@ const verifySignIn = () => {
         verificationCode,
         dispatch
       )
-    )
-      .executeIfNoError(executeIfNoErrorTryToVerifySignIn, dispatch)
-      .printError();
+    ).executeIfNoError(executeIfNoErrorTryToVerifySignIn, dispatch);
 
     dispatch(commonActions.changeAuthenticationProgress(false));
   };
@@ -115,7 +113,7 @@ const signIn = () => {
       })
     )
       .executeIfNoError(executeIfNoErrorOnTryToSignIn, dispatch)
-      .printError()
+
       .result();
 
     dispatch(commonActions.changeAuthenticationProgress(false));
@@ -127,12 +125,10 @@ const logout = () => {
     await apiManager.apis.logoutNormal.sendFullFeaturedRequest();
 
   return async (dispatch) => {
-    (await trier(logout.name).tryAsync(tryToLogout))
-      .printError()
-      .executeIfNoError(() => {
-        commonTasks.resetEverything();
-        dispatch(commonActions.changeViewMode.signIn());
-      });
+    (await trier(logout.name).tryAsync(tryToLogout)).executeIfNoError(() => {
+      commonTasks.resetEverything();
+      dispatch(commonActions.changeViewMode.signIn());
+    });
   };
 };
 
@@ -181,9 +177,7 @@ const createNewUser = () => {
         lastName,
         dispatch
       )
-    )
-      .executeIfNoError(executeIfNoErrorOnTryToCreateNewUser, dispatch)
-      .printError();
+    ).executeIfNoError(executeIfNoErrorOnTryToCreateNewUser, dispatch);
 
     dispatch(commonActions.changeAuthenticationProgress(false));
   };

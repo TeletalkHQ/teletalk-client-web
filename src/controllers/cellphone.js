@@ -18,9 +18,10 @@ const executeIfNoErrorOnTryToGetContacts = (response, dispatch) => {
 };
 const getContacts = () => {
   return async (dispatch) => {
-    (await trier(getContacts.name).tryAsync(tryToGetContacts))
-      .executeIfNoError(executeIfNoErrorOnTryToGetContacts, dispatch)
-      .printError();
+    (await trier(getContacts.name).tryAsync(tryToGetContacts)).executeIfNoError(
+      executeIfNoErrorOnTryToGetContacts,
+      dispatch
+    );
   };
 };
 

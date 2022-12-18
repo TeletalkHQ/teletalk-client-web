@@ -59,7 +59,7 @@ class Validator {
   printInputValidatorError() {
     return trier(this.correctErrorsAndPrint)
       .try(this.#tryToCheckErrors.bind(this))
-      .printError()
+
       .catch(this.#catchCheckErrors.bind(this))
       .result();
   }

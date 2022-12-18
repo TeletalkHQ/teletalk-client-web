@@ -35,9 +35,9 @@ const executeIfNoErrorOnTryToGetCountries = (countries, dispatch) => {
 };
 const getCountries = () => {
   return async (dispatch) => {
-    (await trier(getCountries.name).tryAsync(tryToGetCountries))
-      .executeIfNoError(executeIfNoErrorOnTryToGetCountries, dispatch)
-      .printError();
+    (
+      await trier(getCountries.name).tryAsync(tryToGetCountries)
+    ).executeIfNoError(executeIfNoErrorOnTryToGetCountries, dispatch);
   };
 };
 
