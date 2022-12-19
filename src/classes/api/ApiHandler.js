@@ -83,15 +83,14 @@ class ApiHandler {
     requestData = {},
     extraOptions = this.requesterOptions
   ) {
-    return (
-      await trier(this.sendFullFeaturedRequest.name).tryAsync(
+    return await trier(this.sendFullFeaturedRequest.name)
+      .tryAsync(
         this.#tryToSendFullFeaturedRequest.bind(this),
         requestData,
         extraOptions
       )
-    )
       .catch(this.#catchSendFullFeaturedRequest)
-      .result();
+      .runAsync();
   }
   async #tryToSendFullFeaturedRequest(requestData, extraOptions) {
     return (

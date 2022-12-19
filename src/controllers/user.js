@@ -22,9 +22,11 @@ const getUserData = () => {
     dispatch(commonActions.changeViewMode.signIn());
 
   return async (dispatch) => {
-    (await trier(getUserData.name).tryAsync(tryToGetUserData))
+    await trier(getUserData.name)
+      .tryAsync(tryToGetUserData)
       .executeIfNoError(executeIfNoError, dispatch)
-      .catch(catchTryToGetUserData, dispatch);
+      .catch(catchTryToGetUserData, dispatch)
+      .runAsync();
   };
 };
 

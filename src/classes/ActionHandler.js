@@ -69,7 +69,7 @@ class ActionHandler {
     return trier(`${ActionHandler.name}.${this.handle.name}`)
       .try(this.tryToHandleAction)
       .catch(this.catchTryToHandleAction)
-      .result();
+      .run();
   }
 
   createAction() {

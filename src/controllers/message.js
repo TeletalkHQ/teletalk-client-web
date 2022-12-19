@@ -24,12 +24,10 @@ const sendPrivateMessage = () => {
   };
 
   return async (_dispatch, getState = store.initialStates) => {
-    (
-      await trier(sendPrivateMessage.name).tryAsync(
-        tryToSendPrivateMessage,
-        getState()
-      )
-    ).executeIfNoError(executeIfNoError);
+    await trier(sendPrivateMessage.name)
+      .tryAsync(tryToSendPrivateMessage, getState())
+      .executeIfNoError(executeIfNoError)
+      .runAsync();
   };
 };
 
@@ -50,9 +48,10 @@ const getAllPrivateChats = () => {
   };
 
   return async (dispatch) => {
-    (
-      await trier(getAllPrivateChats.name).tryAsync(tryToGetAllPrivateChats)
-    ).executeIfNoError(executeIfNoError, dispatch);
+    await trier(getAllPrivateChats.name)
+      .tryAsync(tryToGetAllPrivateChats)
+      .executeIfNoError(executeIfNoError, dispatch)
+      .runAsync();
   };
 };
 

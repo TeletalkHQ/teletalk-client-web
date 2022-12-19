@@ -28,9 +28,11 @@ const getAllStuff = () => {
   };
 
   return async () => {
-    (await trier(getAllStuff.name).tryAsync(tryToGetAllStuff))
+    await trier(getAllStuff.name)
+      .tryAsync(tryToGetAllStuff)
       .executeIfNoError(executeIfNoError)
-      .printAndThrow();
+      .throw()
+      .runAsync();
   };
 };
 

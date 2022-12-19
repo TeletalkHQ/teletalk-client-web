@@ -4,8 +4,6 @@ import { actions } from "src/store/actions";
 
 import { apiManager } from "src/classes/api/ApiManager";
 
-import { utilities } from "src/utilities";
-
 const tryToGetWelcomeMessage = async () => {
   return await apiManager.apis.getWelcomeMessage.sendFullFeaturedRequest();
 };
@@ -18,9 +16,11 @@ const executeIfNoErrorOnTryToGetWelcomeMessage = (response, dispatch) => {
 };
 const getWelcomeMessage = () => {
   return async (dispatch) => {
-    (await trier(getWelcomeMessage.name).tryAsync(tryToGetWelcomeMessage))
+    await trier(getWelcomeMessage.name)
+      .tryAsync(tryToGetWelcomeMessage)
       .executeIfNoError(executeIfNoErrorOnTryToGetWelcomeMessage, dispatch)
-      .printAndThrow();
+      .throw()
+      .runAsync();
   };
 };
 
@@ -35,9 +35,10 @@ const executeIfNoErrorOnTryToGetCountries = (countries, dispatch) => {
 };
 const getCountries = () => {
   return async (dispatch) => {
-    (
-      await trier(getCountries.name).tryAsync(tryToGetCountries)
-    ).executeIfNoError(executeIfNoErrorOnTryToGetCountries, dispatch);
+    await trier(getCountries.name)
+      .tryAsync(tryToGetCountries)
+      .executeIfNoError(executeIfNoErrorOnTryToGetCountries, dispatch)
+      .runAsync();
   };
 };
 
