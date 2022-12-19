@@ -73,7 +73,7 @@ class ReducerBuilder {
       })
 
       .catch(() => state)
-      .result();
+      .run();
   }
 
   #tryToExecuteCase({ action, reducerCases, state }) {

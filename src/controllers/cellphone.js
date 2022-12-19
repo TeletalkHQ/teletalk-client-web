@@ -18,10 +18,10 @@ const executeIfNoErrorOnTryToGetContacts = (response, dispatch) => {
 };
 const getContacts = () => {
   return async (dispatch) => {
-    (await trier(getContacts.name).tryAsync(tryToGetContacts)).executeIfNoError(
-      executeIfNoErrorOnTryToGetContacts,
-      dispatch
-    );
+    await trier(getContacts.name)
+      .tryAsync(tryToGetContacts)
+      .executeIfNoError(executeIfNoErrorOnTryToGetContacts, dispatch)
+      .runAsync();
   };
 };
 
@@ -37,15 +37,14 @@ const executeIfNoErrorOnTryToAddNewContact = (response, dispatch) => {
 };
 const addNewContact = (contact) => {
   return async (dispatch) => {
-    return (
-      await trier(addNewContact.name).tryAsync(tryToAddNewContact, contact)
-    )
+    return await trier(addNewContact.name)
+      .tryAsync(tryToAddNewContact, contact)
       .executeIfNoError(executeIfNoErrorOnTryToAddNewContact, dispatch)
       .catch(() => {
         utilities.printCatchError(addNewContact.name);
         return { ok: false };
       })
-      .result();
+      .runAsync();
   };
 };
 

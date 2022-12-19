@@ -61,7 +61,7 @@ class Validator {
       .try(this.#tryToCheckErrors.bind(this))
 
       .catch(this.#catchCheckErrors.bind(this))
-      .result();
+      .run();
   }
   #tryToCheckErrors() {
     if (this.validationResult.length)

@@ -72,13 +72,10 @@ const verifySignIn = () => {
 
     dispatch(commonActions.changeAuthenticationProgress(true));
 
-    (
-      await trier(verifySignIn.name).tryAsync(
-        tryToVerifySignIn,
-        verificationCode,
-        dispatch
-      )
-    ).executeIfNoError(executeIfNoErrorTryToVerifySignIn, dispatch);
+    await trier(verifySignIn.name)
+      .tryAsync(tryToVerifySignIn, verificationCode, dispatch)
+      .executeIfNoError(executeIfNoErrorTryToVerifySignIn, dispatch)
+      .runAsync();
 
     dispatch(commonActions.changeAuthenticationProgress(false));
   };
@@ -105,16 +102,14 @@ const signIn = () => {
     } = getState();
     dispatch(commonActions.changeAuthenticationProgress(true));
 
-    (
-      await trier(signIn.name).tryAsync(tryToSignIn, {
+    await trier(signIn.name)
+      .tryAsync(tryToSignIn, {
         countryCode,
         countryName,
         phoneNumber,
       })
-    )
       .executeIfNoError(executeIfNoErrorOnTryToSignIn, dispatch)
-
-      .result();
+      .runAsync();
 
     dispatch(commonActions.changeAuthenticationProgress(false));
   };
@@ -125,10 +120,13 @@ const logout = () => {
     await apiManager.apis.logoutNormal.sendFullFeaturedRequest();
 
   return async (dispatch) => {
-    (await trier(logout.name).tryAsync(tryToLogout)).executeIfNoError(() => {
-      commonTasks.resetEverything();
-      dispatch(commonActions.changeViewMode.signIn());
-    });
+    await trier(logout.name)
+      .tryAsync(tryToLogout)
+      .executeIfNoError(() => {
+        commonTasks.resetEverything();
+        dispatch(commonActions.changeViewMode.signIn());
+      })
+      .runAsync();
   };
 };
 
@@ -170,14 +168,10 @@ const createNewUser = () => {
 
     dispatch(commonActions.changeAuthenticationProgress(true));
 
-    (
-      await trier(createNewUser.name).tryAsync(
-        tryToCreateNewUser,
-        firstName,
-        lastName,
-        dispatch
-      )
-    ).executeIfNoError(executeIfNoErrorOnTryToCreateNewUser, dispatch);
+    await trier(createNewUser.name)
+      .tryAsync(tryToCreateNewUser, firstName, lastName, dispatch)
+      .executeIfNoError(executeIfNoErrorOnTryToCreateNewUser, dispatch)
+      .runAsync();
 
     dispatch(commonActions.changeAuthenticationProgress(false));
   };

@@ -26,7 +26,8 @@ class ValidatorManager {
   compileValidators = (validationModels) => {
     trier(this.compileValidators.name)
       .try(this.#tryToCompileValidators.bind(this), validationModels)
-      .printAndThrow();
+      .throw()
+      .run();
   };
   #tryToCompileValidators(validationModels) {
     objectUtilities
