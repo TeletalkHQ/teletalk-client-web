@@ -1,4 +1,4 @@
-import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+import { customTypeof } from "custom-typeof";
 import { trier } from "utility-store/src/classes/Trier";
 
 import { commonTasks } from "src/classes/CommonTasks";

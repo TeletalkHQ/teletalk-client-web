@@ -1,20 +1,19 @@
 const { trier } = require("utility-store/src/classes/Trier");
 
 const { apiManager } = require("src/classes/api/ApiManager");
+
 const { actions } = require("src/store/actions");
 const { commonActions } = require("src/store/commonActions");
 
-const getUserData = () => {
+const getCurrentUserData = () => {
   const tryToGetUserData = async () => {
-    const {
-      data: { user },
-    } = await apiManager.apis.getUserData.sendFullFeaturedRequest();
+    const { data } =
+      await apiManager.apis.getCurrentUserData.sendFullFeaturedRequest();
 
-    return user;
+    return data;
   };
-  const executeIfNoError = (user, dispatch) => {
-    delete user.token;
-    dispatch(actions.updateAllUserData(user));
+  const executeIfNoError = (data, dispatch) => {
+    dispatch(actions.updateAllUserData(data.user));
     dispatch(commonActions.changeViewMode.messenger());
   };
 
@@ -22,7 +21,7 @@ const getUserData = () => {
     dispatch(commonActions.changeViewMode.signIn());
 
   return async (dispatch) => {
-    await trier(getUserData.name)
+    await trier(getCurrentUserData.name)
       .tryAsync(tryToGetUserData)
       .executeIfNoError(executeIfNoError, dispatch)
       .catch(catchTryToGetUserData, dispatch)
@@ -36,12 +35,12 @@ const getPublicUserData = async (userId) => {
       userId,
     });
 
-  return response.data.publicUserInfo;
+  return response.data.publicUserData;
 };
 
 const userControllers = {
   getPublicUserData,
-  getUserData,
+  getCurrentUserData,
 };
 
 export { userControllers };

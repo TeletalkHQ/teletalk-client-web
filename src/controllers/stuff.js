@@ -6,8 +6,6 @@ import { apiManager } from "src/classes/api/ApiManager";
 import { stuffStore } from "src/classes/StuffStore";
 import { validatorManager } from "src/classes/validator/ValidatorManager";
 
-import { utilities } from "src/utilities";
-
 const getAllStuff = () => {
   const tryToGetAllStuff = async () => {
     const { data } = await api.getAllStuff.sendFullFeaturedRequest({
@@ -20,11 +18,7 @@ const getAllStuff = () => {
     stuffStore.updateStore(data);
 
     apiManager.build();
-
-    const validationModels = utilities.excludeVersion(
-      stuffStore.validationModels
-    );
-    validatorManager.compileValidators(validationModels);
+    validatorManager.compileValidators(stuffStore.validationModels);
   };
 
   return async () => {

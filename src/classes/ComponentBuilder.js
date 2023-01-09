@@ -1,4 +1,4 @@
-import { errorThrower } from "utility-store/src/functions/utilities";
+import { errorThrower } from "utility-store/src/utilities/utilities";
 
 import { componentController } from "src/classes/ComponentController";
 

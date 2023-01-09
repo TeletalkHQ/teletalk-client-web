@@ -24,7 +24,7 @@ const Messenger = () => {
   useEffect(() => {
     let timeoutId;
     const fn = async () => {
-      await dispatchAsync(controllers.getUserData());
+      await dispatchAsync(controllers.getCurrentUserData());
 
       const updater = () => {
         timeoutId = setTimeout(async () => {

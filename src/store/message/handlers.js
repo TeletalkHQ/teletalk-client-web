@@ -15,7 +15,7 @@ const handleCloseRightSide = () => {
 };
 
 const addNewMessage = (messages, newMessage) => {
-  return arrayUtilities.pushNewItems(messages, newMessage);
+  return arrayUtilities.pushItems(messages, newMessage);
 };
 const handleAddNewToChatMessage = (payload, prevState) => {
   const copyUser = { ...prevState };

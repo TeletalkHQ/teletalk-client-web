@@ -4,7 +4,7 @@ const addUniqueIdToEachCountry = (responseData) => {
   return {
     countries: responseData.countries.map((country) => ({
       ...country,
-      id: randomMaker.randomId(),
+      id: randomMaker.id(),
     })),
   };
 };

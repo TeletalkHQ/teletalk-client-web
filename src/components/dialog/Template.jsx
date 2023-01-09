@@ -1,4 +1,4 @@
-import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+import { customTypeof } from "custom-typeof";
 
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";

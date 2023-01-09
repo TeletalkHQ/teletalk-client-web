@@ -28,7 +28,7 @@ const initialGlobalState = () => ({
   },
   globalLoading: {
     color: "blue",
-    open: true,
+    open: false,
     progressColor: "inherit",
     size: 80,
     speedMultiplier: 1,

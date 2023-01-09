@@ -1,12 +1,8 @@
-import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
-
 import { transformers } from "src/api/transformers";
 
 import { apiBuilder } from "src/classes/api/ApiBuilder";
 import { apiHandler } from "src/classes/api/ApiHandler";
 import { stuffStore } from "src/classes/StuffStore";
-
-import { utilities } from "src/utilities";
 
 class ApiManager {
   #apiTemplate = apiHandler.create({});
@@ -15,7 +11,7 @@ class ApiManager {
     this.apis = {
       //? This is not necessary, its just for intellisense
       addContact: this.#apiTemplate,
-      getUserData: this.#apiTemplate,
+      getCurrentUserData: this.#apiTemplate,
       createNewUser: this.#apiTemplate,
       getChatsLastMessage: this.#apiTemplate,
       getContacts: this.#apiTemplate,
@@ -23,16 +19,16 @@ class ApiManager {
       getAllPrivateChats: this.#apiTemplate,
       getPublicUserData: this.#apiTemplate,
       getWelcomeMessage: this.#apiTemplate,
-      logoutNormal: this.#apiTemplate,
+      logout: this.#apiTemplate,
       sendPrivateMessage: this.#apiTemplate,
-      signInNormal: this.#apiTemplate,
-      verifySignInNormal: this.#apiTemplate,
+      signIn: this.#apiTemplate,
+      verify: this.#apiTemplate,
     };
   }
 
   #buildWithRouteObject() {
-    const routes = utilities.excludeVersion(stuffStore.routes);
-    objectUtilities.objectEntries(routes).forEach(([apiName, routeObject]) => {
+    const routes = stuffStore.routes;
+    Object.entries(routes).forEach(([apiName, routeObject]) => {
       this.apis[apiName] = apiBuilder
         .create()
         .setRequirements({ routeObject })
