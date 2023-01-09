@@ -1,10 +1,7 @@
 import FastestValidator from "fastest-validator";
 import { trier } from "utility-store/src/classes/Trier";
-import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 
 import { validator } from "src/classes/validator/Validator";
-
-import { utilities } from "src/utilities";
 
 const fastestValidatorCompiler = new FastestValidator();
 
@@ -30,23 +27,17 @@ class ValidatorManager {
       .run();
   };
   #tryToCompileValidators(validationModels) {
-    objectUtilities
-      .objectEntries(validationModels)
-      .forEach(this.#processValidationModel.bind(this));
+    Object.entries(validationModels).forEach(
+      this.#processValidationModel.bind(this)
+    );
   }
   #processValidationModel([validationModelKey, validationModelValue]) {
-    const validationModelWithoutVersion =
-      this.#excludeVersionFromValidationModel(validationModelValue);
-    const compiledValidator = this.#validationModelCompiler(
-      validationModelWithoutVersion
-    );
+    const compiledValidator =
+      this.#validationModelCompiler(validationModelValue);
 
     this.#createAndSetValidator(validationModelKey, compiledValidator);
   }
 
-  #excludeVersionFromValidationModel(validationModel) {
-    return utilities.excludeVersion(validationModel);
-  }
   #validationModelCompiler(validationModel) {
     return fastestValidatorCompiler.compile(validationModel);
   }

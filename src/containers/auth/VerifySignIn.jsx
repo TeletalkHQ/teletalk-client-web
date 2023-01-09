@@ -34,7 +34,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
   };
 
   const handleVerifySignInClick = () => {
-    domUtilities
+    domUtilities()
       .setElementByName(variables.other.helper.ELEMENT_NAMES.VERIFICATION_CODE)
       .focusElement()
       .selectAllValue();

@@ -37,7 +37,7 @@ const View = ({ onGlobalLoadingClose }) => {
     const TOKEN = persistentStorage.getItem(
       persistentStorage.STORAGE_KEYS.TOKEN
     );
-    if (TOKEN) await dispatchAsync(controllers.getUserData());
+    if (TOKEN) await dispatchAsync(controllers.getCurrentUserData());
 
     onGlobalLoadingClose();
   };

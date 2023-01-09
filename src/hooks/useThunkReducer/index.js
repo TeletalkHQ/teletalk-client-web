@@ -1,6 +1,6 @@
 import { useCallback, useReducer } from "react";
 
-import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+import { customTypeof } from "custom-typeof";
 
 import { initialStates } from "src/store/initialStates";
 

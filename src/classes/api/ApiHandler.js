@@ -1,10 +1,10 @@
 import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
-import { ioFieldsChecker } from "utility-store/src/functions/ioFieldsChecker";
+import { ioFieldsChecker } from "utility-store/src/utilities/ioFieldsChecker";
 
 import { appConfigs } from "src/classes/AppConfigs";
 import { commonTasks } from "src/classes/CommonTasks";
 
-import { userPropsUtilities } from "src/classes/UserPropsUtilities";
+import { userUtilities } from "src/classes/UserUtilities";
 
 import { utilities } from "src/utilities";
 
@@ -23,11 +23,11 @@ class ApiHandler {
 
   constructor({
     // requestDefaultData,
-    requestInterceptorsArray,
-    requestTransformer,
-    responseInterceptorsArray,
-    responseTransformer,
-    routeObject,
+    requestInterceptorsArray = () => {},
+    requestTransformer = () => {},
+    responseInterceptorsArray = () => {},
+    responseTransformer = () => {},
+    routeObject = {},
   }) {
     this.requestTransformer = requestTransformer;
     this.#requestInterceptorsArray = requestInterceptorsArray;
@@ -37,7 +37,7 @@ class ApiHandler {
     this.response = {
       data: this.getData(),
     };
-    this.#routeObject = objectUtilities.freezeObject(routeObject);
+    this.#routeObject = Object.freeze(routeObject);
     this.requesterOptions = {
       ...this.#getApiUrlAndMethod(),
       data: this.getData(),
@@ -140,7 +140,7 @@ class ApiHandler {
         ...this.#apiDefaultOptions.headers,
         ...(extraOptions.headers || {}),
       },
-      token: extraOptions.token || userPropsUtilities.getTokenFromStorage(),
+      token: extraOptions.token || userUtilities.getToken(),
     };
 
     if (mergedOptions.token) {
@@ -148,7 +148,7 @@ class ApiHandler {
     }
 
     const data = this.getData();
-    if (objectUtilities.objectKeysLength(data)) {
+    if (Object.keys(data)) {
       mergedOptions.data = data;
     }
 

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 const LeftSide = ({ participants }) => {
   const dispatch = useDispatch();
@@ -82,9 +83,8 @@ const findParticipantId = (privateChatItem, userId) => {
   ).participantId;
 };
 
-const getChatLastMessage = (privateChatItem) => {
-  return privateChatItem.messages.at(-1);
-};
+const getChatLastMessage = (privateChatItem) =>
+  arrayUtilities.lastItem(privateChatItem.messages);
 
 const createChatListItem = (chatLastMessage, participant) => {
   return {

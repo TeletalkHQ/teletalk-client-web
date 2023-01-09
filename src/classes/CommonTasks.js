@@ -1,4 +1,3 @@
-import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
@@ -49,7 +48,7 @@ class CommonTasks {
   }
 
   convertServerFormatErrors(errors) {
-    const arrayOfErrors = objectUtilities.objectValues(errors);
+    const arrayOfErrors = Object.values(errors);
 
     return arrayOfErrors.map((errorItem) => {
       const { errorCode, reason, ...finalErrorItem } = errorItem;

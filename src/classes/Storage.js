@@ -1,4 +1,4 @@
-import { customTypeof } from "utility-store/src/classes/CustomTypeof";
+import { customTypeof } from "custom-typeof";
 
 class Storage {
   storage = localStorage;

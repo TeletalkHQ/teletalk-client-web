@@ -1,5 +1,3 @@
-import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
-
 import { Storage } from "src/classes/Storage";
 
 class PersistentStorage {
@@ -13,7 +11,7 @@ class PersistentStorage {
   };
 
   #initialDefaultStorage() {
-    objectUtilities.objectKeys(this.STORAGE_KEYS).forEach((key) => {
+    Object.keys(this.STORAGE_KEYS).forEach((key) => {
       const latestKeyValue = this.getItem(key);
       this.setItem(key, latestKeyValue || "");
     });

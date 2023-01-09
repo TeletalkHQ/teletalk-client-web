@@ -1,4 +1,4 @@
-import { ioFieldsChecker } from "utility-store/src/functions/ioFieldsChecker";
+import { ioFieldsChecker } from "utility-store/src/utilities/ioFieldsChecker";
 import { trier } from "utility-store/src/classes/Trier";
 
 import { utilities } from "src/utilities";
