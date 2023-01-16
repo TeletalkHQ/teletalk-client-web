@@ -14,6 +14,11 @@ alias docr="docker run -it -u 0 -p 3000:3000 stalwart95/teletalk-client-web"
 alias rwl="railway logs"
 alias rwu="railway up"
 
+#? Liara aliases
+alias lrdd="liara deploy --platform=docker"
+alias lrdn="liara deploy --platform=node"
+alias lrl="liara logs"
+
 #? npm aliases
 alias nrb="npm run build"
 alias nrcf="npm run check:format"

@@ -89,7 +89,7 @@ class ApiHandler {
         requestData,
         extraOptions
       )
-      .catch(this.#catchSendFullFeaturedRequest)
+      .catch(this.#catchSendFullFeaturedRequest.bind(this))
       .runAsync();
   }
   async #tryToSendFullFeaturedRequest(requestData, extraOptions) {
@@ -211,10 +211,11 @@ class ApiHandler {
   }
 
   #catchSendFullFeaturedRequest(error) {
-    this.#logFailureResponse(error);
+    this.logFailureResponse(error);
     commonTasks.checkConnAbortNotification();
+    throw error;
   }
-  #logFailureResponse(error) {
+  logFailureResponse(error) {
     const {
       apiConfigs: { logFailureResponse },
     } = appConfigs.getConfigs();
