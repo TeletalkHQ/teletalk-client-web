@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
@@ -37,6 +37,15 @@ const AddNewContact = componentBuilder
     const {
       hooksOutput: { dispatchAsync },
     } = useMainContext();
+
+    useEffect(() => {
+      const fn = async () => {
+        dispatch(controllers.getCountries());
+      };
+
+      fn();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const [contact, setContact] = useState(variables.common.object.contact);
     const [selectedCountry, setSelectedCountry] = useState(

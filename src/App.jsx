@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
+
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
+import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 import { appConfigs } from "src/classes/AppConfigs";
 
-import Provider from "src/containers/provider";
+import View from "src/containers/view";
 
 import { MainContext } from "src/context/MainContext";
 
@@ -18,6 +21,18 @@ const states = store.initialStates();
 
 const App = () => {
   const [state = states, dispatch] = useThunkReducer(store.rootReducer, states);
+  const [forceUpdate, setForceUpdate] = useState(false);
+
+  useEffect(() => {
+    const updater = () => {
+      setForceUpdate(!forceUpdate);
+    };
+    windowUtilities.addProperty("updater", updater);
+  }, [forceUpdate]);
+
+  useEffect(() => {
+    windowUtilities.addProperty("state", state);
+  }, [state]);
 
   const dispatchAsync = async (action) => await dispatch(action);
 
@@ -40,7 +55,7 @@ const App = () => {
       >
         <ThemeProvider theme={baseTheme}>
           <CssBaseline enableColorScheme />
-          <Provider />
+          <View />
         </ThemeProvider>
       </MainContext.Provider>
     </SnackbarProvider>

@@ -1,57 +1,57 @@
-import { useEffect } from "react";
-
-import { persistentStorage } from "src/classes/PersistentStorage";
-
 import Auth from "src/containers/auth";
 import Messenger from "src/containers/messenger";
+import Portal from "src/containers/portal";
+import InitialSetup from "src/containers/InitialSetup";
 
-import { controllers } from "src/controllers";
-
-import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { stateStatics } from "src/store/stateStatics";
+import { commonActions } from "src/store/commonActions";
 
-const visibleComponent = (viewMode) => {
-  const { MESSENGER, NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN } =
-    stateStatics.VIEW_MODES;
-
-  const authenticationViewModes = [NEW_USER_PROFILE, SIGN_IN, VERIFY_SIGN_IN];
-
-  if (authenticationViewModes.includes(viewMode)) return Auth;
-  if (viewMode === MESSENGER) return Messenger;
-
-  return <div>hi</div>;
-};
-
-const View = ({ onGlobalLoadingClose }) => {
+const View = () => {
   const state = useSelector();
+  const dispatch = useDispatch();
 
-  const {
-    hooksOutput: { dispatchAsync },
-  } = useMainContext();
-
-  const handleGetRequirements = async () => {
-    await dispatchAsync(controllers.getCountries());
-
-    const TOKEN = persistentStorage.getItem(
-      persistentStorage.STORAGE_KEYS.TOKEN
-    );
-    if (TOKEN) await dispatchAsync(controllers.getCurrentUserData());
-
-    onGlobalLoadingClose();
+  const handleGlobalLoadingClose = () => {
+    dispatch(commonActions.closeGlobalLoading());
   };
 
-  useEffect(() => {
-    handleGetRequirements();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const visibleContainer = () => {
+    const viewMode = state.global.viewMode;
 
-  const Component = visibleComponent(state.global.viewMode);
+    const {
+      AUTH,
+      INITIAL_SETUP,
+      MESSENGER,
+      NEW_USER_PROFILE,
+      SIGN_IN,
+      VERIFY_SIGN_IN,
+    } = stateStatics.VIEW_MODES;
+
+    const authenticationViewModes = [
+      AUTH,
+      NEW_USER_PROFILE,
+      SIGN_IN,
+      VERIFY_SIGN_IN,
+    ];
+
+    if (viewMode === INITIAL_SETUP) return InitialSetup;
+    if (authenticationViewModes.includes(viewMode)) return Auth;
+    if (viewMode === MESSENGER) return Messenger;
+  };
+
+  const Container = visibleContainer();
 
   return (
     <>
-      <Component />
+      <>
+        <Container />
+
+        {state.global.initialSetupDetails.status ===
+          stateStatics.INITIAL_SETUP_STATUS.DONE && (
+          <Portal onGlobalLoadingClose={handleGlobalLoadingClose} />
+        )}
+      </>
     </>
   );
 };

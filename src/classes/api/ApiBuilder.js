@@ -8,32 +8,32 @@ class ApiBuilder {
   constructor() {
     this.requirements = {
       requestDefaultData: {},
-      requestInterceptorsArray: [],
+      requestInterceptors: [],
       requestTransformer: (data) => data,
-      responseInterceptorsArray: [],
+      responseInterceptors: [],
       responseTransformer: (data) => data,
-      routeObject: {},
+      route: {},
     };
   }
 
   setRequirements({
-    routeObject = this.requirements.routeObject,
+    route = this.requirements.route,
     requestDefaultData = this.requirements.requestDefaultData,
     requestTransformer = this.requirements.requestTransformer,
     responseTransformer = this.requirements.responseTransformer,
-    requestInterceptorsArray = this.requirements.requestInterceptorsArray,
-    responseInterceptorsArray = this.requirements.responseInterceptorsArray,
+    requestInterceptors = this.requirements.requestInterceptors,
+    responseInterceptors = this.requirements.responseInterceptors,
   }) {
-    this.setRouteObject(routeObject);
+    this.setRouteObject(route);
     this.setRequestDefaultData(requestDefaultData);
     this.setRequestTransformer(requestTransformer);
     this.setResponseTransformer(responseTransformer);
-    this.setRequestInterceptors(...requestInterceptorsArray);
-    this.setResponseInterceptors(...responseInterceptorsArray);
+    this.setRequestInterceptors(...requestInterceptors);
+    this.setResponseInterceptors(...responseInterceptors);
     return this;
   }
-  setRouteObject(routeObject) {
-    this.requirements.routeObject = routeObject;
+  setRouteObject(route) {
+    this.requirements.route = route;
     return this;
   }
   setRequestDefaultData(data) {
@@ -41,11 +41,11 @@ class ApiBuilder {
     return this;
   }
   setRequestInterceptors(...callbacks) {
-    this.requirements.requestInterceptorsArray = callbacks;
+    this.requirements.requestInterceptors = callbacks;
     return this;
   }
   setResponseInterceptors(...callbacks) {
-    this.requirements.responseInterceptorsArray = callbacks;
+    this.requirements.responseInterceptors = callbacks;
     return this;
   }
   setRequestTransformer(callback = this.requestTransformer) {
@@ -58,7 +58,7 @@ class ApiBuilder {
   }
 
   #checkMinimumRequirements() {
-    utilities.errorThrower(!this.requirements.routeObject.fullUrl, {
+    utilities.errorThrower(!this.requirements.route.fullUrl, {
       ...variables.notification.error.URL_NOT_FOUND,
       requirements: this.requirements,
     });

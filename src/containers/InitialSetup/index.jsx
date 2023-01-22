@@ -1,14 +1,17 @@
 import { useEffect } from "react";
 
 import { Box } from "src/components/general/box";
+import FullPageLoading from "src/components/portal/FullPageLoading";
 
 import { controllers } from "src/controllers";
 
-import { useDispatch } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 import { useMainContext } from "src/hooks/useMainContext";
 
 const InitialSetup = () => {
   const dispatch = useDispatch();
+  const state = useSelector();
+
   const {
     hooksOutput: { dispatchAsync },
   } = useMainContext();
@@ -24,10 +27,13 @@ const InitialSetup = () => {
   };
 
   return (
-    <Box.Fullscreen>
-      <p>server is not available</p>
-      <button onClick={startSetup}>try again</button>
-    </Box.Fullscreen>
+    <>
+      <Box.Fullscreen>
+        <p>server is not available</p>
+        <button onClick={startSetup}>try again</button>
+      </Box.Fullscreen>
+      <FullPageLoading loading={state.global.globalLoading} />
+    </>
   );
 };
 

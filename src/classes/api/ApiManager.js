@@ -28,10 +28,10 @@ class ApiManager {
 
   #buildWithRouteObject() {
     const routes = stuffStore.routes;
-    Object.entries(routes).forEach(([apiName, routeObject]) => {
+    Object.entries(routes).forEach(([apiName, route]) => {
       this.apis[apiName] = apiBuilder
         .create()
-        .setRequirements({ routeObject })
+        .setRequirements({ route })
         .build();
     });
   }
@@ -43,7 +43,7 @@ class ApiManager {
       .create()
       .setRequirements({
         responseTransformer: transformers.addUniqueIdToEachCountry,
-        routeObject: stuffStore.routes.getCountries,
+        route: stuffStore.routes.getCountries,
       })
       .build();
   }

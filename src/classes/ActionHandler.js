@@ -50,7 +50,7 @@ class ActionHandler {
         ioFieldsCheckerErrors
       );
 
-      utilities.errorThrower(checkResult.ok === false, checkResult.errorObject);
+      utilities.errorThrower(checkResult.ok === false, checkResult.error);
     }
   }
   tryToHandleAction() {
