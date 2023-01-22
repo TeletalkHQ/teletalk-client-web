@@ -46,7 +46,7 @@ const OUTPUT_FIELDS_OVERLOAD = notificationBuilder
 const REQUIRED_FIELDS_NOT_DEFINED = notificationBuilder
   .create()
   .message(
-    "Required fields is not denied, If you want to check io fields you need to provide required fields."
+    "Required fields is not defined, If you want to check io fields you need to provide required fields."
   )
   .notificationReason("REQUIRED_FIELDS_NOT_DEFINED")
   .build();

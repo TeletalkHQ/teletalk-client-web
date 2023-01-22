@@ -38,8 +38,7 @@ const initialGlobalState = () => ({
     isOnline: false,
     ping: 0,
   },
-  viewMode: appConfigs.getConfigs().others.startupViewMode,
-
+  viewMode: stateStatics.VIEW_MODES.INITIAL_SETUP,
   initialSetupDetails: {
     status: stateStatics.INITIAL_SETUP_STATUS.NEVER,
   },

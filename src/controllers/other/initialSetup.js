@@ -33,7 +33,8 @@ const tryBlock = async (dispatch, dispatchAsync) => {
 
   addWindowProperties(dispatch, dispatchAsync);
 
-  dispatch(commonActions.changeViewMode.signIn());
+  dispatch(commonActions.changeViewMode.auth());
+
   dispatch(
     actions.changeInitialSetupStatus({
       status: stateStatics.INITIAL_SETUP_STATUS.DONE,

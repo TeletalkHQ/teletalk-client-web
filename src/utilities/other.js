@@ -16,11 +16,11 @@ const printCatchError = (error, functionName) => {
   logger.error(error);
 };
 
-const fixErrorBuilderErrors = (errorObject, extraData = {}) => {
-  const { errorKey, ...error } = errorObject;
+const fixErrorBuilderErrors = (error, extraData = {}) => {
+  const { errorKey, ...rest } = error;
 
   return {
-    [errorKey]: { ...error, ...extraData },
+    [errorKey]: { ...rest, ...extraData },
   };
 };
 

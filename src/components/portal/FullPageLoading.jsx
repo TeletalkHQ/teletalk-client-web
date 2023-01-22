@@ -4,10 +4,10 @@ import CustomFlexBox from "src/components/general/box/CustomFlexBox";
 
 import { stateStatics } from "src/store/stateStatics";
 
-const FullPageLoading = ({ globalLoading }) => {
+const FullPageLoading = ({ loading }) => {
   return (
-    globalLoading.open &&
-    globalLoading.type === stateStatics.GLOBAL_LOADING_TYPES.FULL_PAGE && (
+    loading.open &&
+    loading.type === stateStatics.GLOBAL_LOADING_TYPES.FULL_PAGE && (
       <CustomFlexBox
         jc={"center"}
         ai={"center"}
@@ -23,10 +23,10 @@ const FullPageLoading = ({ globalLoading }) => {
         }}
       >
         <MoonLoader
-          color={globalLoading.color}
+          color={loading.color}
           loading
-          size={globalLoading.size}
-          speedMultiplier={globalLoading.speedMultiplier}
+          size={loading.size}
+          speedMultiplier={loading.speedMultiplier}
         />
       </CustomFlexBox>
     )

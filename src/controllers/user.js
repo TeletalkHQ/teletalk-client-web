@@ -6,7 +6,8 @@ const { actions } = require("src/store/actions");
 const { commonActions } = require("src/store/commonActions");
 
 const getCurrentUserData = () => {
-  const tryToGetUserData = async () => {
+  const tryToGetUserData = async (dispatch) => {
+    dispatch(commonActions.openGlobalLoading());
     const { data } =
       await apiManager.apis.getCurrentUserData.sendFullFeaturedRequest();
 
@@ -22,9 +23,10 @@ const getCurrentUserData = () => {
 
   return async (dispatch) => {
     await trier(getCurrentUserData.name)
-      .tryAsync(tryToGetUserData)
+      .tryAsync(tryToGetUserData, dispatch)
       .executeIfNoError(executeIfNoError, dispatch)
       .catch(catchTryToGetUserData, dispatch)
+      .finally(() => dispatch(commonActions.closeGlobalLoading()))
       .runAsync();
   };
 };

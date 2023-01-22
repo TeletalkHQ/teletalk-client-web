@@ -3,6 +3,7 @@ import Copyright from "src/components/other/Copyright";
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import CreateNewUser from "src/containers/auth/CreateNewUser";
+import CheckCurrentUser from "src/containers/auth/CheckCurrentUser";
 import SignIn from "src/containers/auth/SignIn";
 import VerifySignIn from "src/containers/auth/VerifySignIn";
 
@@ -19,24 +20,25 @@ const Auth = () => {
     dispatch(commonActions.changeViewMode.signIn());
   };
 
-  const authComponent = () => {
+  const visibleContainer = () => {
     const props = {
       onBackToSignInClick: handleBackToSignInClick,
     };
     const Views = {
+      [stateStatics.VIEW_MODES.AUTH]: CheckCurrentUser,
       [stateStatics.VIEW_MODES.SIGN_IN]: SignIn,
       [stateStatics.VIEW_MODES.VERIFY_SIGN_IN]: VerifySignIn,
       [stateStatics.VIEW_MODES.NEW_USER_PROFILE]: CreateNewUser,
     };
 
-    const View = Views[state.global.viewMode];
+    const Container = Views[state.global.viewMode];
 
-    return <View {...props} />;
+    return <Container {...props} />;
   };
 
   return (
     <>
-      {authComponent()}
+      {visibleContainer()}
       <Copyright
         sx={{
           mb: 4,

@@ -15,7 +15,7 @@ const getAllStuffs = {
 
 const getAllStuff = apiBuilder
   .create()
-  .setRequirements({ routeObject: getAllStuffs })
+  .setRequirements({ route: getAllStuffs })
   .build();
 
 const stuff = { getAllStuff };

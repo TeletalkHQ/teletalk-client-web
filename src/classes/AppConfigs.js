@@ -60,7 +60,6 @@ class AppConfigs {
       others: {
         logPerformanceMeasuring: false,
         RUNTIME_MODE: this.#RUNTIME_MODE,
-        startupViewMode: stateStatics.VIEW_MODES.INITIAL_SETUP,
       },
       ui: {
         appDrawerCurrentAnchor: stateStatics.APP_DRAWER_ANCHORS.left,

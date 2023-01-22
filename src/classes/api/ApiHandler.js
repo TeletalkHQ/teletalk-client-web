@@ -1,5 +1,5 @@
-import { objectUtilities } from "utility-store/src/classes/ObjectUtilities";
 import { ioFieldsChecker } from "utility-store/src/utilities/ioFieldsChecker";
+import { trier } from "utility-store/src/classes/Trier";
 
 import { appConfigs } from "src/classes/AppConfigs";
 import { commonTasks } from "src/classes/CommonTasks";
@@ -9,12 +9,11 @@ import { userUtilities } from "src/classes/UserUtilities";
 import { utilities } from "src/utilities";
 
 import { variables } from "src/variables";
-import { trier } from "utility-store/src/classes/Trier";
 
 class ApiHandler {
-  #requestInterceptorsArray = [];
-  #responseInterceptorsArray = [];
-  #routeObject = {};
+  #requestInterceptors = [];
+  #responseInterceptors = [];
+  #route = {};
   #apiDefaultOptions = {
     method: "GET",
     url: "",
@@ -22,22 +21,21 @@ class ApiHandler {
   };
 
   constructor({
-    // requestDefaultData,
-    requestInterceptorsArray = () => {},
+    requestInterceptors = [],
     requestTransformer = () => {},
-    responseInterceptorsArray = () => {},
+    responseInterceptors = [],
     responseTransformer = () => {},
-    routeObject = {},
+    route = {},
   }) {
     this.requestTransformer = requestTransformer;
-    this.#requestInterceptorsArray = requestInterceptorsArray;
+    this.#requestInterceptors = requestInterceptors;
     this.responseTransformer = responseTransformer;
-    this.#responseInterceptorsArray = responseInterceptorsArray;
+    this.#responseInterceptors = responseInterceptors;
     this.data = {};
     this.response = {
       data: this.getData(),
     };
-    this.#routeObject = Object.freeze(routeObject);
+    this.#route = Object.freeze(route);
     this.requesterOptions = {
       ...this.#getApiUrlAndMethod(),
       data: this.getData(),
@@ -52,10 +50,10 @@ class ApiHandler {
     };
   }
   #getApiMethodFromRouteObject() {
-    return this.#routeObject.method;
+    return this.#route.method;
   }
   #getApiUrlFromRouteObject() {
-    return this.#routeObject.fullUrl;
+    return this.#route.fullUrl;
   }
 
   getData() {
@@ -115,7 +113,7 @@ class ApiHandler {
   }
   #executeRequestInterceptors(requestData = this.getData()) {
     const newData = this.#executeInterceptors(
-      this.#requestInterceptorsArray,
+      this.#requestInterceptors,
       requestData
     );
     this.setData(newData);
@@ -125,7 +123,7 @@ class ApiHandler {
     const { apiConfigs } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(apiConfigs.inputDataFieldsCheck, () => {
-      this.#ioDataFieldsCheck(inputData, this.#routeObject.inputFields);
+      this.#ioDataFieldsCheck(inputData, this.#route.inputFields);
     });
 
     return this;
@@ -180,7 +178,7 @@ class ApiHandler {
     } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(outputDataPropertiesCheck, () => {
-      this.#ioDataFieldsCheck(outputData, this.#routeObject.outputFields[0]);
+      this.#ioDataFieldsCheck(outputData, this.#route.outputFields[0]);
     });
 
     return this;
@@ -192,7 +190,7 @@ class ApiHandler {
   }
   #executeResponseInterceptors(response = this.getResponse()) {
     const mutatedResponse = this.#executeInterceptors(
-      this.#responseInterceptorsArray,
+      this.#responseInterceptors,
       response
     );
     this.setResponse(mutatedResponse);
@@ -221,7 +219,7 @@ class ApiHandler {
     } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(logFailureResponse, () =>
-      logger.error(`Api:${this.#routeObject.fullUrl} Api catch, error:`, error)
+      logger.error(`Api:${this.#route.fullUrl} Api catch, error:`, error)
     );
   }
 
@@ -238,7 +236,7 @@ class ApiHandler {
     });
 
     utilities.errorThrower(!ioDataFieldsCheckResult.ok, {
-      ...ioDataFieldsCheckResult.errorObject,
+      ...ioDataFieldsCheckResult.error,
       inputFields,
       ioData,
     });
