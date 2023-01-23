@@ -58,7 +58,7 @@ const AddNewContact = componentBuilder
 
     const handleAddNewContactClick = async () => {
       const { userId, ...rest } = contact;
-      const result = await dispatchAsync(controllers.addNewContact(rest));
+      const result = await dispatchAsync(controllers.addContact(rest));
 
       if (result.ok === false) return;
 
@@ -66,7 +66,7 @@ const AddNewContact = componentBuilder
     };
 
     const handleCloseAddNewContactDialog = () => {
-      onDialogClose(stateStatics.DIALOG_NAMES.ADD_NEW_CONTACT);
+      onDialogClose(stateStatics.DIALOG_NAMES.ADD_CONTACT);
       selectedCountryDispatcher();
       setContact(variables.common.object.contact());
     };
@@ -165,7 +165,7 @@ const AddNewContact = componentBuilder
               isAddNewContactButtonDisabled={isAddNewContactButtonDisabled()}
             />
           }
-          open={state.global.dialogState.addNewContact.open}
+          open={state.global.dialogState.addContact.open}
           paperStyle={{
             height: "50vh",
           }}

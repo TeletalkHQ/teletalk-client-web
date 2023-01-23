@@ -2,7 +2,7 @@ import { actionHandler } from "src/classes/ActionHandler";
 
 import { USER_ACTION_TYPES } from "src/store/user/types";
 
-const addNewContact = (payload) =>
+const addContact = (payload) =>
   actionHandler(USER_ACTION_TYPES.ADD_NEW_CONTACT, payload);
 
 const updateAllUserData = (payload) =>
@@ -14,7 +14,7 @@ const updateAllUserContacts = (payload) =>
 const resetUserState = () => actionHandler(USER_ACTION_TYPES.RESET_USER_STATE);
 
 const userActions = {
-  addNewContact,
+  addContact,
   resetUserState,
   updateAllUserContacts,
   updateAllUserData,

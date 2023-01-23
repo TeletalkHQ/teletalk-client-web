@@ -30,7 +30,7 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
   };
 
   const handleCreateNewUserConfirmClick = () => {
-    dispatch(controllers.createNewUser());
+    dispatch(controllers.createUser());
   };
 
   const isCreateNewUserConfirmButtonDisabled = () => {

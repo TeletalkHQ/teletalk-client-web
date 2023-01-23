@@ -22,7 +22,7 @@ const initialGlobalState = () => ({
     authenticationProgress: false,
   },
   dialogState: {
-    addNewContact: defaultDialogStateItemProps(),
+    addContact: defaultDialogStateItemProps(),
     contacts: defaultDialogStateItemProps(),
     logout: defaultDialogStateItemProps(),
   },

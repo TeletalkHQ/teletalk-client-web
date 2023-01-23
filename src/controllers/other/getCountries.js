@@ -19,6 +19,7 @@ const tryToGetCountries = async () => {
   } = await apiManager.apis.getCountries.sendFullFeaturedRequest();
   return countries;
 };
+
 const executeIfNoErrorOnTryToGetCountries = (countries, dispatch) => {
   dispatch(actions.getCountries({ countries }));
 };

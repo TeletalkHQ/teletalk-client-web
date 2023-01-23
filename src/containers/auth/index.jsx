@@ -20,25 +20,11 @@ const Auth = () => {
     dispatch(commonActions.changeViewMode.signIn());
   };
 
-  const visibleContainer = () => {
-    const props = {
-      onBackToSignInClick: handleBackToSignInClick,
-    };
-    const Views = {
-      [stateStatics.VIEW_MODES.AUTH]: CheckCurrentUser,
-      [stateStatics.VIEW_MODES.SIGN_IN]: SignIn,
-      [stateStatics.VIEW_MODES.VERIFY_SIGN_IN]: VerifySignIn,
-      [stateStatics.VIEW_MODES.NEW_USER_PROFILE]: CreateNewUser,
-    };
-
-    const Container = Views[state.global.viewMode];
-
-    return <Container {...props} />;
-  };
+  const Container = visibleContainer(state.global.viewMode);
 
   return (
     <>
-      {visibleContainer()}
+      <Container onBackToSignInClick={handleBackToSignInClick} />
       <Copyright
         sx={{
           mb: 4,
@@ -47,6 +33,14 @@ const Auth = () => {
       />
     </>
   );
+};
+
+const visibleContainer = (viewMode) => Views[viewMode];
+const Views = {
+  [stateStatics.VIEW_MODES.AUTH]: CheckCurrentUser,
+  [stateStatics.VIEW_MODES.SIGN_IN]: SignIn,
+  [stateStatics.VIEW_MODES.VERIFY_SIGN_IN]: VerifySignIn,
+  [stateStatics.VIEW_MODES.NEW_USER_PROFILE]: CreateNewUser,
 };
 
 export default Auth;

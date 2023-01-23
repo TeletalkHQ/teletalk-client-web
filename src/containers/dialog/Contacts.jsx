@@ -55,9 +55,7 @@ const Contacts = ({ onDialogClose }) => {
 
   const handleAddContactClick = () => {
     dispatch(commonActions.closeDialog(stateStatics.DIALOG_NAMES.CONTACTS));
-    dispatch(
-      commonActions.openDialog(stateStatics.DIALOG_NAMES.ADD_NEW_CONTACT)
-    );
+    dispatch(commonActions.openDialog(stateStatics.DIALOG_NAMES.ADD_CONTACT));
   };
 
   const handleCloseContactDialog = () => {

@@ -38,7 +38,7 @@ const VerifySignIn = ({ onBackToSignInClick }) => {
       .setElementByName(variables.other.helper.ELEMENT_NAMES.VERIFICATION_CODE)
       .focusElement()
       .selectAllValue();
-    dispatch(controllers.verifySignIn());
+    dispatch(controllers.verify());
   };
 
   const handleVerificationCodeInputChange = (event) => {
