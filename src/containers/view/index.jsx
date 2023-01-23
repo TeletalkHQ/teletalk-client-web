@@ -16,44 +16,38 @@ const View = () => {
     dispatch(commonActions.closeGlobalLoading());
   };
 
-  const visibleContainer = () => {
-    const viewMode = state.global.viewMode;
-
-    const {
-      AUTH,
-      INITIAL_SETUP,
-      MESSENGER,
-      NEW_USER_PROFILE,
-      SIGN_IN,
-      VERIFY_SIGN_IN,
-    } = stateStatics.VIEW_MODES;
-
-    const authenticationViewModes = [
-      AUTH,
-      NEW_USER_PROFILE,
-      SIGN_IN,
-      VERIFY_SIGN_IN,
-    ];
-
-    if (viewMode === INITIAL_SETUP) return InitialSetup;
-    if (authenticationViewModes.includes(viewMode)) return Auth;
-    if (viewMode === MESSENGER) return Messenger;
-  };
-
-  const Container = visibleContainer();
+  const Container = visibleContainer(state.global.viewMode);
 
   return (
     <>
       <>
         <Container />
-
-        {state.global.initialSetupDetails.status ===
-          stateStatics.INITIAL_SETUP_STATUS.DONE && (
-          <Portal onGlobalLoadingClose={handleGlobalLoadingClose} />
-        )}
+        <Portal onGlobalLoadingClose={handleGlobalLoadingClose} />
       </>
     </>
   );
+};
+
+const visibleContainer = (viewMode) => {
+  const {
+    AUTH,
+    INITIAL_SETUP,
+    MESSENGER,
+    NEW_USER_PROFILE,
+    SIGN_IN,
+    VERIFY_SIGN_IN,
+  } = stateStatics.VIEW_MODES;
+
+  const authenticationViewModes = [
+    AUTH,
+    NEW_USER_PROFILE,
+    SIGN_IN,
+    VERIFY_SIGN_IN,
+  ];
+
+  if (viewMode === INITIAL_SETUP) return InitialSetup;
+  if (authenticationViewModes.includes(viewMode)) return Auth;
+  if (viewMode === MESSENGER) return Messenger;
 };
 
 export default View;

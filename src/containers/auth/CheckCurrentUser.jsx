@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { persistentStorage } from "src/classes/PersistentStorage";
+import { userUtilities } from "src/classes/UserUtilities";
 
 import { controllers } from "src/controllers";
 
@@ -11,9 +11,7 @@ const CheckCurrentUser = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const TOKEN = persistentStorage.getItem(
-      persistentStorage.STORAGE_KEYS.TOKEN
-    );
+    const TOKEN = userUtilities.getToken();
 
     if (TOKEN) dispatch(controllers.getCurrentUserData());
     else dispatch(commonActions.changeViewMode.signIn());

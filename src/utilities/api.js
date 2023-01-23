@@ -156,11 +156,8 @@ export { apiUtilities };
 // axios.post('http://something.com/', querystring.stringify({ foo: 'bar' }));
 // or 'URLSearchParams' from 'url module' as follows:
 
-// const url = require('url');
 // const params = new url.URLSearchParams({ foo: 'bar' });
 // axios.post('http://something.com/', params.toString());
-
-// const FormData = require('form-data');
 
 // const form = new FormData();
 // form.append('my_field', 'my value');

@@ -6,7 +6,7 @@ const APP_DRAWER_ANCHORS = {
 };
 
 const DIALOG_NAMES = {
-  ADD_NEW_CONTACT: "addNewContact",
+  ADD_CONTACT: "addContact",
   CONTACTS: "contacts",
 };
 

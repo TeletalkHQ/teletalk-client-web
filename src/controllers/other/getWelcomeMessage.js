@@ -17,6 +17,7 @@ const getWelcomeMessage = () => {
 const tryToGetWelcomeMessage = async () => {
   return await apiManager.apis.getWelcomeMessage.sendFullFeaturedRequest();
 };
+
 const executeIfNoErrorOnTryToGetWelcomeMessage = (response, dispatch) => {
   dispatch(
     actions.setWelcomeMessage({

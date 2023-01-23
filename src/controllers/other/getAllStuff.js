@@ -7,20 +7,6 @@ import { stuffStore } from "src/classes/StuffStore";
 import { validatorManager } from "src/classes/validator/ValidatorManager";
 
 const getAllStuff = () => {
-  const tryToGetAllStuff = async () => {
-    const { data } = await api.getAllStuff.sendFullFeaturedRequest({
-      language: "en",
-    });
-    return data;
-  };
-
-  const executeIfNoError = (data) => {
-    stuffStore.updateStore(data);
-
-    apiManager.build();
-    validatorManager.compileValidators(stuffStore.validationModels);
-  };
-
   return async () => {
     await trier(getAllStuff.name)
       .tryAsync(tryToGetAllStuff)
@@ -30,6 +16,18 @@ const getAllStuff = () => {
   };
 };
 
-const stuffControllers = { getAllStuff };
+const tryToGetAllStuff = async () => {
+  const { data } = await api.getAllStuff.sendFullFeaturedRequest({
+    language: "en",
+  });
+  return data;
+};
 
-export { stuffControllers };
+const executeIfNoError = (data) => {
+  stuffStore.updateStore(data);
+
+  apiManager.build();
+  validatorManager.compileValidators(stuffStore.validationModels);
+};
+
+export { getAllStuff };

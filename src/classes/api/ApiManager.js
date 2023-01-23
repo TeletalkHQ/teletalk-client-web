@@ -12,7 +12,7 @@ class ApiManager {
       //? This is not necessary, its just for intellisense
       addContact: this.#apiTemplate,
       getCurrentUserData: this.#apiTemplate,
-      createNewUser: this.#apiTemplate,
+      createUser: this.#apiTemplate,
       getChatsLastMessage: this.#apiTemplate,
       getContacts: this.#apiTemplate,
       getCountries: this.#apiTemplate,

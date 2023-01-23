@@ -17,12 +17,12 @@ const InitialSetup = () => {
   } = useMainContext();
 
   useEffect(() => {
-    startSetup();
+    startInitialSetup();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const startSetup = () => {
+  const startInitialSetup = () => {
     dispatch(controllers.initialSetup(dispatchAsync));
   };
 
@@ -30,7 +30,7 @@ const InitialSetup = () => {
     <>
       <Box.Fullscreen>
         <p>server is not available</p>
-        <button onClick={startSetup}>try again</button>
+        <button onClick={startInitialSetup}>try again</button>
       </Box.Fullscreen>
       <FullPageLoading loading={state.global.globalLoading} />
     </>

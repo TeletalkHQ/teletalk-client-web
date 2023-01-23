@@ -20,11 +20,10 @@ const changeViewModeHelper = (viewMode) => actions.viewModeChange({ viewMode });
 const changeViewMode = {
   auth: () => changeViewModeHelper(stateStatics.VIEW_MODES.AUTH),
   messenger: () => changeViewModeHelper(stateStatics.VIEW_MODES.MESSENGER),
-  createNewUser: () =>
+  createUser: () =>
     changeViewModeHelper(stateStatics.VIEW_MODES.NEW_USER_PROFILE),
   signIn: () => changeViewModeHelper(stateStatics.VIEW_MODES.SIGN_IN),
-  verifySignIn: () =>
-    changeViewModeHelper(stateStatics.VIEW_MODES.VERIFY_SIGN_IN),
+  verify: () => changeViewModeHelper(stateStatics.VIEW_MODES.VERIFY_SIGN_IN),
 };
 const openAppDrawer = () => actions.appDrawerOpenChange({ open: true });
 

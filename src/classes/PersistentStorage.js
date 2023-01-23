@@ -49,6 +49,6 @@ class PersistentStorage {
   }
 }
 
-const defaultPersistentStorage = new PersistentStorage();
+const persistentStorage = new PersistentStorage();
 
-export { defaultPersistentStorage as persistentStorage, PersistentStorage };
+export { persistentStorage, PersistentStorage };
