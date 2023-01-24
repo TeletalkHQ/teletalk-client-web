@@ -1,11 +1,9 @@
-import CustomAvatar from "src/components/general/other/CustomAvatar";
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
-import CustomListItem from "src/components/general/box/CustomListItem";
+import Avatar from "src/components/general/other/Avatar";
+import { Box } from "src/components/general/box";
 
 const ChatListItem = ({ message, name, onChatListItemClick, selected }) => {
   return (
-    <CustomListItem
+    <Box.ListItem
       button
       selected={selected}
       sx={{
@@ -14,20 +12,20 @@ const ChatListItem = ({ message, name, onChatListItemClick, selected }) => {
       }}
       onClick={onChatListItemClick}
     >
-      <CustomBox>
-        <CustomAvatar />
-      </CustomBox>
-      <CustomFlexBox col sx={{ width: "100%" }}>
-        <CustomFlexBox sx={{ width: "100%" }} jc="space-between" ai="center">
-          <CustomBox>{name}</CustomBox>
-          <CustomBox>time</CustomBox>
-        </CustomFlexBox>
-        <CustomFlexBox jc="space-between" sx={{ width: "100%" }} ai="center">
-          <CustomBox>{message}</CustomBox>
-          <CustomBox>icons</CustomBox>
-        </CustomFlexBox>
-      </CustomFlexBox>
-    </CustomListItem>
+      <Box.Div>
+        <Avatar />
+      </Box.Div>
+      <Box.Flex col sx={{ width: "100%" }}>
+        <Box.Flex sx={{ width: "100%" }} jc="space-between" ai="center">
+          <Box.Div>{name}</Box.Div>
+          <Box.Div>time</Box.Div>
+        </Box.Flex>
+        <Box.Flex jc="space-between" sx={{ width: "100%" }} ai="center">
+          <Box.Div>{message}</Box.Div>
+          <Box.Div>icons</Box.Div>
+        </Box.Flex>
+      </Box.Flex>
+    </Box.ListItem>
   );
 };
 

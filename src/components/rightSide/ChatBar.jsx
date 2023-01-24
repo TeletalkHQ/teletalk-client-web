@@ -1,37 +1,35 @@
-import CustomAvatar from "src/components/general/other/CustomAvatar";
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
-import CustomIconButton from "src/components/general/other/CustomIconButton";
-import CustomPaper from "src/components/general/box/CustomPaper";
-import CustomTypography from "src/components/general/typography/CustomTypography";
+import Avatar from "src/components/general/other/Avatar";
+import { Box } from "src/components/general/box";
 
 import { Icons } from "src/components/other/Icons";
+import IconButton from "src/components/general/other/IconButton";
+import Typography from "src/components/general/typography/Typography";
 
 const ChatBar = ({ contactName, onMessageContainerCloseClick }) => {
   return (
     <>
-      <CustomPaper sx={{ width: "100%", height: "100%" }}>
-        <CustomFlexBox
+      <Box.Paper sx={{ width: "100%", height: "100%" }}>
+        <Box.Flex
           sx={{ width: "100%", height: "100%" }}
           jc="space-between"
           ai="center"
         >
-          <CustomBox>
-            <CustomIconButton onClick={onMessageContainerCloseClick}>
+          <Box.Div>
+            <IconButton onClick={onMessageContainerCloseClick}>
               <Icons.Close.Icon />
-            </CustomIconButton>
-          </CustomBox>
-          <CustomFlexBox ai="center">
-            <CustomAvatar alt={contactName} />
-            <CustomTypography>{contactName}</CustomTypography>
-          </CustomFlexBox>
-          <CustomBox>
-            <CustomIconButton>
+            </IconButton>
+          </Box.Div>
+          <Box.Flex ai="center">
+            <Avatar alt={contactName} />
+            <Typography>{contactName}</Typography>
+          </Box.Flex>
+          <Box.Div>
+            <IconButton>
               <Icons.MoreVertical.Icon />
-            </CustomIconButton>
-          </CustomBox>
-        </CustomFlexBox>
-      </CustomPaper>
+            </IconButton>
+          </Box.Div>
+        </Box.Flex>
+      </Box.Paper>
     </>
   );
 };

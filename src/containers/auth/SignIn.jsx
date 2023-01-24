@@ -5,18 +5,12 @@ import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 import { stuffStore } from "src/classes/StuffStore";
 import { commonTasks } from "src/classes/CommonTasks";
 
+import { Box } from "src/components/general/box";
 import { Icons } from "src/components/other/Icons";
-import CountryCode from "src/components/general/input/commonInput/CountryCode";
-import CountrySelector from "src/components/general/input/commonInput/CountrySelector";
-import CustomAvatar from "src/components/general/other/CustomAvatar";
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomButton from "src/components/general/input/CustomButton";
-import CustomCircularProgress from "src/components/general/progress/CustomCircularProgress";
-import CustomContainer from "src/components/general/box/CustomContainer";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import CircularProgress from "src/components/general/progress/CircularProgress";
 import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
-import H5 from "src/components/general/header/H5";
-import PhoneNumber from "src/components/general/input/commonInput/PhoneNumberInput";
+import H5 from "src/components/general/typography/header/H5";
+import { Input } from "src/components/general/input";
 
 import { controllers } from "src/controllers";
 
@@ -26,6 +20,7 @@ import { actions } from "src/store/actions";
 
 import { variables } from "src/variables";
 import { utilities } from "src/utilities";
+import Avatar from "src/components/general/other/Avatar";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -101,20 +96,20 @@ const SignIn = () => {
   };
 
   return (
-    <CustomContainer mw="xl">
-      <CustomFlexBox mt={8} ai="center" col>
-        <CustomAvatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+    <Box.Container mw="xl">
+      <Box.Flex mt={8} ai="center" col>
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
           <Icons.LockOutlined.Icon />
-        </CustomAvatar>
+        </Avatar>
         <H5>Teletalk</H5>
-        <CustomContainer mw="xs">
-          <CustomBox style={{ marginTop: 1 }}>
+        <Box.Container mw="xs">
+          <Box.Div style={{ marginTop: 1 }}>
             <GreyTextParagraph>
               Please verify your country code and enter your mobile phone
               number.
             </GreyTextParagraph>
 
-            <CountrySelector
+            <Input.CountrySelector
               countries={state.other.countries}
               countryName={state.auth.countryName}
               onSelectedCountryChange={handleSelectedCountryChange}
@@ -126,8 +121,8 @@ const SignIn = () => {
               }
             />
 
-            <CustomFlexBox jc="space-between">
-              <CountryCode.WithValidator
+            <Box.Flex jc="space-between">
+              <Input.CountryCode.WithValidator
                 inputValue={state.auth.countryCode}
                 onInputChange={(event) => {
                   const { value } = event.target;
@@ -135,20 +130,20 @@ const SignIn = () => {
                   selectCountryByCountryCodeInputChange(value);
                 }}
               />
-              <PhoneNumber.WithValidator
+              <Input.PhoneNumber.WithValidator
                 onInputChange={handlePhoneNumberInputChange}
                 inputValue={state.auth.phoneNumber}
               />
-            </CustomFlexBox>
+            </Box.Flex>
 
-            <CustomButton
+            <Input.Button
               lbtn
               disabled={isSignInSubmitButtonDisabled()}
               loading={state.global.appProgressions.authenticationProgress}
               loadingIndicator={
                 <>
                   <span>Please wait...</span> &nbsp;&nbsp;
-                  <CustomCircularProgress size={25} color="info" />
+                  <CircularProgress size={25} color="info" />
                 </>
               }
               onClick={handleSignInClick}
@@ -159,11 +154,11 @@ const SignIn = () => {
               }}
             >
               Next
-            </CustomButton>
-          </CustomBox>
-        </CustomContainer>
-      </CustomFlexBox>
-    </CustomContainer>
+            </Input.Button>
+          </Box.Div>
+        </Box.Container>
+      </Box.Flex>
+    </Box.Container>
   );
 };
 

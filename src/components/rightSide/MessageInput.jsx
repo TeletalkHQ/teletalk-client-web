@@ -1,8 +1,6 @@
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
-import CustomIconButton from "src/components/general/other/CustomIconButton";
-import CustomPaper from "src/components/general/box/CustomPaper";
-import CustomTextInput from "src/components/general/input/CustomTextInput";
+import { Box } from "src/components/general/box";
+import IconButton from "src/components/general/other/IconButton";
+import { Input } from "src/components/general/input";
 import { Icons } from "src/components/other/Icons";
 
 const MessageInput = ({
@@ -11,16 +9,16 @@ const MessageInput = ({
   onSendMessage,
 }) => {
   return (
-    <CustomPaper sx={{ width: "100%" }}>
-      <CustomFlexBox sx={{ width: "100%" }} jc="space-between" ai="center">
-        <CustomBox>
-          <CustomIconButton onClick={() => {}}>
+    <Box.Paper sx={{ width: "100%" }}>
+      <Box.Flex sx={{ width: "100%" }} jc="space-between" ai="center">
+        <Box.Div>
+          <IconButton onClick={() => {}}>
             <Icons.AttachFile.Icon />
-          </CustomIconButton>
-        </CustomBox>
+          </IconButton>
+        </Box.Div>
 
-        <CustomBox sx={{ width: "100%" }}>
-          <CustomTextInput
+        <Box.Div style={{ width: "100%" }}>
+          <Input.Text
             placeholder={!messageInputTextValue ? "Write a message..." : " "}
             multiline
             maxRows={8}
@@ -28,33 +26,33 @@ const MessageInput = ({
             onChange={onInputChange}
             value={messageInputTextValue}
           />
-        </CustomBox>
+        </Box.Div>
 
-        <CustomBox>
-          <CustomIconButton>
+        <Box.Div>
+          <IconButton>
             <Icons.EmojiEmotions.Icon />
-          </CustomIconButton>
-        </CustomBox>
+          </IconButton>
+        </Box.Div>
 
-        <CustomBox>
+        <Box.Div>
           {messageInputTextValue ? (
-            <CustomIconButton onClick={() => onSendMessage()}>
+            <IconButton onClick={() => onSendMessage()}>
               <Icons.Telegram.Icon color="primary" />
-            </CustomIconButton>
+            </IconButton>
           ) : (
             <>
-              <CustomIconButton
+              <IconButton
                 onClick={() => {
                   logger.debug("Mic clicked");
                 }}
               >
                 <Icons.MicNone.Icon />
-              </CustomIconButton>
+              </IconButton>
             </>
           )}
-        </CustomBox>
-      </CustomFlexBox>
-    </CustomPaper>
+        </Box.Div>
+      </Box.Flex>
+    </Box.Paper>
   );
 };
 

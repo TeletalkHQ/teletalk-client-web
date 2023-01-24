@@ -1,12 +1,12 @@
-import CustomBackdrop from "src/components/general/other/CustomBackdrop";
-import CustomCircularProgress from "src/components/general/progress/CustomCircularProgress";
+import Backdrop from "src/components/general/other/Backdrop";
+import CircularProgress from "src/components/general/progress/CircularProgress";
 
 import { stateStatics } from "src/store/stateStatics";
 
 const OverlayLoading = ({ loading, onGlobalLoadingClose }) => {
   return (
     <>
-      <CustomBackdrop
+      <Backdrop
         sx={{
           color: loading.color,
           // zIndex: (theme) => theme.zIndex.drawer + 1,
@@ -17,8 +17,8 @@ const OverlayLoading = ({ loading, onGlobalLoadingClose }) => {
         }
         onClick={onGlobalLoadingClose}
       >
-        <CustomCircularProgress color={loading.progressColor} />
-      </CustomBackdrop>
+        <CircularProgress color={loading.progressColor} />
+      </Backdrop>
     </>
   );
 };

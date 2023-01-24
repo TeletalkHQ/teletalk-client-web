@@ -1,14 +1,10 @@
 import { commonTasks } from "src/classes/CommonTasks";
 import { stuffStore } from "src/classes/StuffStore";
 
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomButton from "src/components/general/input/CustomButton";
-import CustomContainer from "src/components/general/box/CustomContainer";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
-import CustomIconButton from "src/components/general/other/CustomIconButton";
-import FirstName from "src/components/general/input/commonInput/FirstNameInput";
+import { Box } from "src/components/general/box";
+import { Input } from "src/components/general/input";
+import IconButton from "src/components/general/other/IconButton";
 import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
-import LastName from "src/components/general/input/commonInput/LastNameInput";
 import { Icons } from "src/components/other/Icons";
 
 import { controllers } from "src/controllers";
@@ -30,7 +26,7 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
   };
 
   const handleCreateNewUserConfirmClick = () => {
-    dispatch(controllers.createUser());
+    dispatch(controllers.createNewUser());
   };
 
   const isCreateNewUserConfirmButtonDisabled = () => {
@@ -50,34 +46,34 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
   };
 
   return (
-    <CustomContainer mw="xl">
-      <CustomBox
-        sx={{
+    <Box.Container mw="xl">
+      <Box.Div
+        style={{
           mt: 1,
         }}
       >
-        <CustomIconButton onClick={onBackToSignInClick}>
+        <IconButton onClick={onBackToSignInClick}>
           <Icons.ArrowBack.Icon />
-        </CustomIconButton>
-      </CustomBox>
-      <CustomFlexBox sx={{ marginTop: 8 }} col ai="center">
-        <CustomBox>
+        </IconButton>
+      </Box.Div>
+      <Box.Flex sx={{ marginTop: 8 }} col ai="center">
+        <Box.Div>
           <Icons.AccountCircleOutlined.Icon fontSize="large" color="primary" />
-        </CustomBox>
-        <CustomContainer mw="xs">
+        </Box.Div>
+        <Box.Container mw="xs">
           <GreyTextParagraph>
             Please enter this information to complete your account creation.
           </GreyTextParagraph>
-          <FirstName.WithValidator
+          <Input.FirstName.WithValidator
             inputValue={state.auth.firstName}
             onInputChange={handleFirstNameInputChange}
           />
-          <LastName.WithValidator
+          <Input.LastName.WithValidator
             inputValue={state.auth.lastName}
             onInputChange={handleLastNameInputChange}
           />
 
-          <CustomButton
+          <Input.Button
             loading={state.global.appProgressions.authenticationProgress}
             loadingPosition="end"
             onClick={handleCreateNewUserConfirmClick}
@@ -86,10 +82,10 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
             disabled={isCreateNewUserConfirmButtonDisabled()}
           >
             Confirm
-          </CustomButton>
-        </CustomContainer>
-      </CustomFlexBox>
-    </CustomContainer>
+          </Input.Button>
+        </Box.Container>
+      </Box.Flex>
+    </Box.Container>
   );
 };
 

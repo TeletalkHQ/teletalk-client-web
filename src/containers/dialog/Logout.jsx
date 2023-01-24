@@ -1,7 +1,6 @@
 import DialogTemplate from "src/components/dialog/Template";
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
-import CustomButton from "src/components/general/input/CustomButton";
+import { Box } from "src/components/general/box";
+import { Input } from "src/components/general/input";
 
 import { controllers } from "src/controllers";
 
@@ -25,21 +24,21 @@ const LogoutDialog = ({ onDialogClose }) => {
 
   const actionContent = (
     <>
-      <CustomButton onClick={handleClose} variant="text" color="primary">
+      <Input.Button onClick={handleClose} variant="text" color="primary">
         Cancel
-      </CustomButton>
+      </Input.Button>
 
-      <CustomButton onClick={handleLogout} variant="text" color="error">
+      <Input.Button onClick={handleLogout} variant="text" color="error">
         Confirm
-      </CustomButton>
+      </Input.Button>
     </>
   );
 
   const mainContent = (
     <>
-      <CustomFlexBox jc="center" ai="center">
-        <CustomBox>Are you sure to logout?</CustomBox>
-      </CustomFlexBox>
+      <Box.Flex jc="center" ai="center">
+        <Box.Div>Are you sure to logout?</Box.Div>
+      </Box.Flex>
     </>
   );
 

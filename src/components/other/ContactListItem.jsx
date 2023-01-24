@@ -1,11 +1,9 @@
-import CustomAvatar from "src/components/general/other/CustomAvatar";
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
-import CustomListItem from "src/components/general/box/CustomListItem";
+import Avatar from "src/components/general/other/Avatar";
+import { Box } from "src/components/general/box";
 
 const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
   return (
-    <CustomListItem
+    <Box.ListItem
       button
       sx={{
         display: "flex",
@@ -13,20 +11,20 @@ const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
       }}
       onClick={onContactClick}
     >
-      <CustomBox>
-        <CustomAvatar />
-      </CustomBox>
-      <CustomBox sx={{ width: "100%", ml: 1 }}>
-        <CustomFlexBox jc="space-between" ai="center">
-          <CustomBox>{name}</CustomBox>
-          {/* <CustomBox>clock</CustomBox> */}
-        </CustomFlexBox>
-        <CustomFlexBox jc="space-between" ai="center">
-          <CustomBox>{lastSeen}</CustomBox>
-          {/* <CustomBox>icons</CustomBox> */}
-        </CustomFlexBox>
-      </CustomBox>
-    </CustomListItem>
+      <Box.Div>
+        <Avatar />
+      </Box.Div>
+      <Box.Div style={{ width: "100%", ml: 1 }}>
+        <Box.Flex jc="space-between" ai="center">
+          <Box.Div>{name}</Box.Div>
+          {/* <Box.Div>time</Box.Div> */}
+        </Box.Flex>
+        <Box.Flex jc="space-between" ai="center">
+          <Box.Div>{lastSeen}</Box.Div>
+          {/* <Box.Div>icons</Box.Div> */}
+        </Box.Flex>
+      </Box.Div>
+    </Box.ListItem>
   );
 };
 
