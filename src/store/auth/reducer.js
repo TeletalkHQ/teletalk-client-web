@@ -18,6 +18,8 @@ const authReducerCases = {
 
   [AUTH_ACTION_TYPES.SELECTED_COUNTRY_ONCHANGE]: (payload) => payload,
 
+  [AUTH_ACTION_TYPES.UPDATE_VERIFY_TOKEN]: (payload) => payload,
+
   [AUTH_ACTION_TYPES.VERIFICATION_CODE_ONCHANGE]: (payload) => payload,
 };
 

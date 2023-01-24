@@ -20,6 +20,9 @@ const lastNameOnChange = (payload) =>
 const phoneNumberOnChange = (payload) =>
   actionHandler(AUTH_ACTION_TYPES.PHONE_NUMBER_ONCHANGE, payload);
 
+const updateVerifyToken = (payload) =>
+  actionHandler(AUTH_ACTION_TYPES.UPDATE_VERIFY_TOKEN, payload);
+
 const verificationCodeOnChange = (payload) =>
   actionHandler(AUTH_ACTION_TYPES.VERIFICATION_CODE_ONCHANGE, payload);
 
@@ -33,6 +36,7 @@ const authActions = {
   phoneNumberOnChange,
   resetAuthState,
   selectedCountry,
+  updateVerifyToken,
   verificationCodeOnChange,
 };
 

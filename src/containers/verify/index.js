@@ -4,23 +4,26 @@ import { commonTasks } from "src/classes/CommonTasks";
 import { stuffStore } from "src/classes/StuffStore";
 import { validatorManager } from "src/classes/validator/ValidatorManager";
 
-import Avatar from "src/components/general/other/Avatar";
 import { Box } from "src/components/general/box";
-import IconButton from "src/components/general/other/IconButton";
+import { Icons } from "src/components/other/Icons";
 import { Input } from "src/components/general/input";
+import AuthFooter from "src/components/other/AuthFooter";
+import Avatar from "src/components/general/other/Avatar";
 import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
 import H5 from "src/components/general/typography/header/H5";
-import { Icons } from "src/components/other/Icons";
+import IconButton from "src/components/general/other/IconButton";
+import LoadingButton from "src/components/auth/LoadingButton";
 
 import { controllers } from "src/controllers";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
+import { commonActions } from "src/store/commonActions";
 
 import { variables } from "src/variables";
 
-const Verify = ({ onBackToSignInClick }) => {
+const Verify = () => {
   const dispatch = useDispatch();
   const state = useSelector();
 
@@ -29,6 +32,11 @@ const Verify = ({ onBackToSignInClick }) => {
       stuffStore.models.verificationCode,
       state.auth.verificationCode
     );
+  };
+
+  const handleBackToSignInClick = () => {
+    dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
+    dispatch(commonActions.changeViewMode.signIn());
   };
 
   const handleVerifyClick = () => {
@@ -61,7 +69,7 @@ const Verify = ({ onBackToSignInClick }) => {
   return (
     <Box.Container maxWidth="xl">
       <Box.Div style={{ mt: 1 }}>
-        <IconButton onClick={onBackToSignInClick}>
+        <IconButton onClick={handleBackToSignInClick}>
           <Icons.ArrowBack.Icon />
         </IconButton>
       </Box.Div>
@@ -77,7 +85,7 @@ const Verify = ({ onBackToSignInClick }) => {
           <Icons.VerifiedUser.Icon />
         </Avatar>
         <Box.Container maxWidth="xs">
-          <Box.Div sx={{ mt: 1 }}>
+          <Box.Div style={{ mt: 1 }}>
             <H5>
               +{state.auth.countryCode} {state.auth.phoneNumber}
             </H5>
@@ -95,20 +103,19 @@ const Verify = ({ onBackToSignInClick }) => {
               onChange={handleVerificationCodeInputChange}
             />
 
-            <Input.Button
-              lbtn
+            <LoadingButton
               disabled={isVerificationSubmitButtonDisabled()}
               loading={state.global.appProgressions.authenticationProgress}
-              loadingPosition="end"
               onClick={handleVerifyClick}
-              endIcon={<Icons.Fingerprint.Icon />}
               sx={{ mt: 2, mb: 2 }}
-            >
-              Verify
-            </Input.Button>
+              buttonValue={"Verify"}
+              indicatorValue={"Verifying..."}
+            />
           </Box.Div>
         </Box.Container>
       </Box.Div>
+
+      <AuthFooter />
     </Box.Container>
   );
 };

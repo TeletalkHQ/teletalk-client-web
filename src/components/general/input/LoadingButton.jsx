@@ -1,4 +1,4 @@
-import { Button as MuiButton } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 
 const Button = ({
   color,
@@ -8,7 +8,7 @@ const Button = ({
   ...props
 }) => {
   return (
-    <MuiButton
+    <LoadingButton
       style={{
         borderRadius: "10px",
         ...style,

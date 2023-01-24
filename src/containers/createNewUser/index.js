@@ -1,24 +1,32 @@
 import { commonTasks } from "src/classes/CommonTasks";
 import { stuffStore } from "src/classes/StuffStore";
+import LoadingButton from "src/components/auth/LoadingButton";
 
 import { Box } from "src/components/general/box";
-import { Input } from "src/components/general/input";
-import IconButton from "src/components/general/other/IconButton";
-import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
 import { Icons } from "src/components/other/Icons";
+import { Input } from "src/components/general/input";
+import AuthFooter from "src/components/other/AuthFooter";
+import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
+import IconButton from "src/components/general/other/IconButton";
 
 import { controllers } from "src/controllers";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
+import { commonActions } from "src/store/commonActions";
 
-const CreateNewUser = ({ onBackToSignInClick }) => {
+const CreateNewUser = () => {
   const dispatch = useDispatch();
   const state = useSelector();
 
   const handleFirstNameInputChange = (e) => {
     dispatch(actions.firstNameOnChange({ firstName: e.target.value }));
+  };
+
+  const handleBackToSignInClick = () => {
+    dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
+    dispatch(commonActions.changeViewMode.signIn());
   };
 
   const handleLastNameInputChange = (e) => {
@@ -52,7 +60,7 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
           mt: 1,
         }}
       >
-        <IconButton onClick={onBackToSignInClick}>
+        <IconButton onClick={handleBackToSignInClick}>
           <Icons.ArrowBack.Icon />
         </IconButton>
       </Box.Div>
@@ -64,27 +72,26 @@ const CreateNewUser = ({ onBackToSignInClick }) => {
           <GreyTextParagraph>
             Please enter this information to complete your account creation.
           </GreyTextParagraph>
-          <Input.FirstName.WithValidator
-            inputValue={state.auth.firstName}
-            onInputChange={handleFirstNameInputChange}
-          />
-          <Input.LastName.WithValidator
-            inputValue={state.auth.lastName}
-            onInputChange={handleLastNameInputChange}
+
+          <Input.FullName
+            firstName={state.auth.firstName}
+            lastName={state.auth.lastName}
+            onFirstNameInputChange={handleFirstNameInputChange}
+            onLastNameInputChange={handleLastNameInputChange}
           />
 
-          <Input.Button
+          <LoadingButton
             loading={state.global.appProgressions.authenticationProgress}
-            loadingPosition="end"
             onClick={handleCreateNewUserConfirmClick}
-            endIcon={<Icons.Check.Icon />}
-            sx={{ mt: 1 }}
+            buttonValue={"Create"}
+            indicatorValue={"Creating..."}
             disabled={isCreateNewUserConfirmButtonDisabled()}
-          >
-            Confirm
-          </Input.Button>
+            sx={{ mt: 1 }}
+          />
         </Box.Container>
       </Box.Flex>
+
+      <AuthFooter />
     </Box.Container>
   );
 };

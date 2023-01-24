@@ -1,10 +1,10 @@
 import { trier } from "utility-store/src/classes/Trier";
 
 import { apiManager } from "src/classes/api/ApiManager";
-import { userUtilities } from "src/classes/UserUtilities";
 
 import { commonActions } from "src/store/commonActions";
 import { store } from "src/store/store";
+import { actions } from "src/store/actions";
 
 const signIn = () => {
   return async (dispatch, getState = store.initialStates) => {
@@ -36,8 +36,8 @@ const tryToSignIn = async ({ countryCode, countryName, phoneNumber }) => {
 
 const executeIfNoError = (response, dispatch) => {
   const { token } = response.data;
-  userUtilities.saveToken(token);
 
+  dispatch(actions.updateVerifyToken({ verifyToken: token }));
   dispatch(commonActions.changeViewMode.verify());
 };
 
