@@ -6,9 +6,7 @@ import { commonTasks } from "src/classes/CommonTasks";
 import { eventManager } from "src/classes/EventManager";
 
 import ChatBar from "src/components/rightSide/ChatBar";
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
-import GridContainer from "src/components/general/box/GridContainer";
+import { Box } from "src/components/general/box";
 import MessageInput from "src/components/rightSide/MessageInput";
 import MessageList from "src/components/rightSide/MessageList";
 
@@ -48,21 +46,22 @@ const RightSide = ({ participants }) => {
   };
 
   return (
-    <GridContainer
+    <Box.Grid
+      container
       sx={{ backgroundColor: "tomato", height: "100%" }}
       item
       lg={9}
       md={8}
     >
       {selectedUserId && (
-        <CustomFlexBox
+        <Box.Flex
           col
           sx={{ width: "100%", height: "100%" }}
           jc="space-between"
           ai="center"
         >
-          <CustomBox
-            sx={{
+          <Box.Div
+            style={{
               height: "50px",
               width: "100%",
             }}
@@ -71,25 +70,25 @@ const RightSide = ({ participants }) => {
               onMessageContainerCloseClick={handleMessageContainerCloseClick}
               contactName={`${selectedParticipantToChat.firstName} ${selectedParticipantToChat.lastName}`}
             />
-          </CustomBox>
+          </Box.Div>
 
-          <CustomBox sx={{ height: "100%", width: "100%" }}>
+          <Box.Div style={{ height: "100%", width: "100%" }}>
             <MessageList
               currentUserId={state.user.userId}
               messages={selectedChatMessages || []}
             />
-          </CustomBox>
+          </Box.Div>
 
-          <CustomBox sx={{ width: "100%" }}>
+          <Box.Div style={{ width: "100%" }}>
             <MessageInput
               messageInputTextValue={state.message.messageInputTextValue}
               onSendMessage={handleSendMessage}
               onInputChange={handleInputChange}
             />
-          </CustomBox>
-        </CustomFlexBox>
+          </Box.Div>
+        </Box.Flex>
       )}
-    </GridContainer>
+    </Box.Grid>
   );
 };
 

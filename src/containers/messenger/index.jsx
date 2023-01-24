@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import GridContainer from "src/components/general/box/GridContainer";
+import { Box } from "src/components/general/box";
 
 import LeftSide from "src/containers/leftSide";
 import RightSide from "src/containers/rightSide";
@@ -100,14 +100,15 @@ const Messenger = () => {
     );
 
   return (
-    <GridContainer
+    <Box.Grid
+      container
       style={{
         height: "100vh",
       }}
     >
       <LeftSide participants={participants} />
       <RightSide participants={participants} />
-    </GridContainer>
+    </Box.Grid>
   );
 };
 

@@ -5,16 +5,10 @@ import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 import { commonTasks } from "src/classes/CommonTasks";
 import { stuffStore } from "src/classes/StuffStore";
 
-import CountryCode from "src/components/general/input/commonInput/CountryCode";
-import CountrySelector from "src/components/general/input/commonInput/CountrySelector";
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomButton from "src/components/general/input/CustomButton";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import { Box } from "src/components/general/box";
 import DialogTemplate from "src/components/dialog/Template";
-import FirstName from "src/components/general/input/commonInput/FirstNameInput";
-import H5 from "src/components/general/header/H5";
-import LastName from "src/components/general/input/commonInput/LastNameInput";
-import PhoneNumber from "src/components/general/input/commonInput/PhoneNumberInput";
+import H5 from "src/components/general/typography/header/H5";
+import { Input } from "src/components/general/input";
 
 import { controllers } from "src/controllers";
 
@@ -181,12 +175,12 @@ const Title = componentBuilder
   .registerComponent("AddNewContactTitle", () => {
     return (
       <>
-        <CustomFlexBox jc="space-between" ai="center">
-          <CustomBox>
+        <Box.Flex jc="space-between" ai="center">
+          <Box.Div>
             <H5>New Contact</H5>
-          </CustomBox>
-          <CustomBox></CustomBox>
-        </CustomFlexBox>
+          </Box.Div>
+          <Box.Div></Box.Div>
+        </Box.Flex>
       </>
     );
   })
@@ -208,8 +202,8 @@ const Content = componentBuilder
     }) => {
       return (
         <>
-          <CustomBox>
-            <CountrySelector
+          <Box.Div>
+            <Input.CountrySelector
               countries={countries}
               countryName={countryName}
               onSelectedCountryChange={onSelectedCountryChange}
@@ -217,31 +211,31 @@ const Content = componentBuilder
               selectedCountry={selectedCountry}
             />
 
-            <CustomBox mt={2}>
-              <FirstName.WithValidator
+            <Box.Div mt={2}>
+              <Input.FirstName.WithValidator
                 inputValue={contact.firstName}
                 onInputChange={onInputChange}
               />
-            </CustomBox>
+            </Box.Div>
 
-            <CustomBox mt={2}>
-              <LastName.WithValidator
+            <Box.Div mt={2}>
+              <Input.LastName.WithValidator
                 inputValue={contact.lastName}
                 onInputChange={onInputChange}
               />
-            </CustomBox>
-            <CustomFlexBox gap={1} jc="space-between" mt={2}>
-              <CountryCode.WithValidator
+            </Box.Div>
+            <Box.Flex gap={1} jc="space-between" mt={2}>
+              <Input.CountryCode.WithValidator
                 inputValue={contact.countryCode}
                 onInputChange={onCountryCodeInputChange}
               />
 
-              <PhoneNumber.WithValidator
+              <Input.PhoneNumber.WithValidator
                 inputValue={contact.phoneNumber}
                 onInputChange={onInputChange}
               />
-            </CustomFlexBox>
-          </CustomBox>
+            </Box.Flex>
+          </Box.Div>
         </>
       );
     }
@@ -260,22 +254,22 @@ const Actions = componentBuilder
       return (
         <>
           {/* //TODO: Extract to static vars */}
-          <CustomFlexBox gap={1} jc="flex-end" ai="center">
-            <CustomBox>
-              <CustomButton variant="text" onClick={onContactDialogCancelClick}>
+          <Box.Flex gap={1} jc="flex-end" ai="center">
+            <Box.Div>
+              <Input.Button variant="text" onClick={onContactDialogCancelClick}>
                 Cancel
-              </CustomButton>
-            </CustomBox>
-            <CustomBox>
-              <CustomButton
+              </Input.Button>
+            </Box.Div>
+            <Box.Div>
+              <Input.Button
                 disabled={isAddNewContactButtonDisabled}
                 variant="text"
                 onClick={onAddNewContactClick}
               >
                 Create
-              </CustomButton>
-            </CustomBox>
-          </CustomFlexBox>
+              </Input.Button>
+            </Box.Div>
+          </Box.Flex>
         </>
       );
     }

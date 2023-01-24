@@ -1,5 +1,4 @@
-import CustomList from "src/components/general/box/CustomList";
-import CustomListItem from "src/components/general/box/CustomListItem";
+import { Box } from "src/components/general/box";
 
 import { Icons } from "src/components/other/Icons";
 
@@ -16,11 +15,11 @@ const sidebarList = [
 const SideBarList = () => {
   return (
     <>
-      <CustomList sx={{ width: "20%" }}>
+      <Box.List sx={{ width: "20%" }}>
         {sidebarList.map(({ Icon }, index) => {
           return (
             //TODO: Flex list Item
-            <CustomListItem
+            <Box.ListItem
               button
               key={index}
               selected={index === 4}
@@ -33,10 +32,10 @@ const SideBarList = () => {
               }}
             >
               <Icon />
-            </CustomListItem>
+            </Box.ListItem>
           );
         })}
-      </CustomList>
+      </Box.List>
     </>
   );
 };

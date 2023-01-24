@@ -133,7 +133,6 @@ class ApiHandler {
       ...this.#apiDefaultOptions,
       ...this.requesterOptions,
       ...extraOptions,
-      data: undefined,
       headers: {
         ...this.#apiDefaultOptions.headers,
         ...(extraOptions.headers || {}),

@@ -5,11 +5,12 @@ import { useMediaQuery } from "@mui/material";
 
 import { appConfigs } from "src/classes/AppConfigs";
 
-import CustomDialog from "src/components/general/box/CustomDialog";
-import CustomDialogActions from "src/components/general/box/CustomDialogActions";
-import CustomDialogContent from "src/components/general/box/CustomDialogContent";
-import CustomDialogTitle from "src/components/general/box/CustomDialogTitle";
+import Dialog from "src/components/dialog/Dialog";
+import DialogActions from "src/components/dialog/DialogActions";
+import DialogContent from "src/components/dialog/DialogContent";
+import DialogTitle from "src/components/dialog/DialogTitle";
 import { Transitions } from "src/components/other/Transitions";
+
 import { componentBuilder } from "src/classes/ComponentBuilder";
 
 const DialogTemplate = componentBuilder
@@ -40,7 +41,7 @@ const DialogTemplate = componentBuilder
         Transitions[defaultTransitionComponentType];
 
       return (
-        <CustomDialog
+        <Dialog
           fullScreen={fullScreen}
           keepMounted
           {...(customTypeof.isFunction(onClose) && {
@@ -61,10 +62,10 @@ const DialogTemplate = componentBuilder
           TransitionComponent={Transition}
           transitionDuration={transitionDuration || 500}
         >
-          <CustomDialogTitle>{titleContent}</CustomDialogTitle>
-          <CustomDialogContent>{mainContent}</CustomDialogContent>
-          <CustomDialogActions>{actionContent}</CustomDialogActions>
-        </CustomDialog>
+          <DialogTitle>{titleContent}</DialogTitle>
+          <DialogContent>{mainContent}</DialogContent>
+          <DialogActions>{actionContent}</DialogActions>
+        </Dialog>
       );
     }
   )

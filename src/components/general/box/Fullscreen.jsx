@@ -2,7 +2,7 @@ import React from "react";
 
 import Div from "src/components/general/box/Div";
 
-const Fullscreen = ({ style = {}, ...props }) => {
+const Fullscreen = ({ style = {}, ...rest }) => {
   return (
     <Div
       style={{
@@ -10,7 +10,7 @@ const Fullscreen = ({ style = {}, ...props }) => {
         height: "100vh",
         width: "100vw",
       }}
-      {...props}
+      {...rest}
     />
   );
 };

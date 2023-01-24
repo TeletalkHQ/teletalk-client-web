@@ -11,12 +11,12 @@ class ApiManager {
     this.apis = {
       //? This is not necessary, its just for intellisense
       addContact: this.#apiTemplate,
-      getCurrentUserData: this.#apiTemplate,
-      createUser: this.#apiTemplate,
+      createNewUser: this.#apiTemplate,
+      getAllPrivateChats: this.#apiTemplate,
       getChatsLastMessage: this.#apiTemplate,
       getContacts: this.#apiTemplate,
       getCountries: this.#apiTemplate,
-      getAllPrivateChats: this.#apiTemplate,
+      getCurrentUserData: this.#apiTemplate,
       getPublicUserData: this.#apiTemplate,
       getWelcomeMessage: this.#apiTemplate,
       logout: this.#apiTemplate,

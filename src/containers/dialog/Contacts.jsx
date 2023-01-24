@@ -1,9 +1,8 @@
 import ContactListItem from "src/components/other/ContactListItem";
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomButton from "src/components/general/input/CustomButton";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import { Box } from "src/components/general/box";
+import { Input } from "src/components/general/input";
+import H5 from "src/components/general/typography/header/H5";
 import DialogTemplate from "src/components/dialog/Template";
-import H5 from "src/components/general/header/H5";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
@@ -13,39 +12,34 @@ import { stateStatics } from "src/store/stateStatics";
 
 const ContactsTitle = () => (
   <>
-    <CustomFlexBox jc="center" ai="center">
+    <Box.Flex jc="center" ai="center">
       <H5>Contacts</H5>
-    </CustomFlexBox>
+    </Box.Flex>
   </>
 );
 
 const ContactsActions = ({ onClose, onAddContactClick }) => (
   <>
-    <CustomFlexBox
-      sx={{ width: "100%" }}
-      jc="space-between"
-      gap={2}
-      ai="center"
-    >
-      <CustomBox>
-        <CustomButton
+    <Box.Flex sx={{ width: "100%" }} jc="space-between" gap={2} ai="center">
+      <Box.Div>
+        <Input.Button
           variant="text"
           style={{ fontWeight: "bold" }}
           onClick={onAddContactClick}
         >
           Add Contact
-        </CustomButton>
-      </CustomBox>
-      <CustomBox>
-        <CustomButton
+        </Input.Button>
+      </Box.Div>
+      <Box.Div>
+        <Input.Button
           variant="text"
           style={{ fontWeight: "bold" }}
           onClick={onClose}
         >
           Close
-        </CustomButton>
-      </CustomBox>
-    </CustomFlexBox>
+        </Input.Button>
+      </Box.Div>
+    </Box.Flex>
   </>
 );
 

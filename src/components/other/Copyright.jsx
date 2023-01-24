@@ -1,7 +1,7 @@
 import { appConfigs } from "src/classes/AppConfigs";
 
-import CustomLink from "src/components/general/other/CustomLink";
-import CustomTypography from "src/components/general/typography/CustomTypography";
+import Link from "src/components/general/other/Link";
+import Typography from "src/components/general/typography/Typography";
 
 const Copyright = (props) => {
   const {
@@ -9,19 +9,19 @@ const Copyright = (props) => {
   } = appConfigs.getConfigs();
 
   return (
-    <CustomTypography
+    <Typography
       variant="body2"
       color="text.secondary"
       align="center"
       {...props}
     >
       {"Copyright © "}
-      <CustomLink color="inherit" href={APPLICATION_URL}>
+      <Link color="inherit" href={APPLICATION_URL}>
         teletalk
-      </CustomLink>
+      </Link>
 
       {new Date().getFullYear()}
-    </CustomTypography>
+    </Typography>
   );
 };
 

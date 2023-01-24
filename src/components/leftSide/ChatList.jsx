@@ -1,4 +1,4 @@
-import CustomList from "src/components/general/box/CustomList";
+import { Box } from "src/components/general/box";
 import ChatListItem from "src/components/leftSide/ChatListItem";
 
 const ChatList = ({
@@ -8,7 +8,7 @@ const ChatList = ({
 }) => {
   return (
     <>
-      <CustomList
+      <Box.List
         sx={{
           width: "100%",
           height: "100%",
@@ -25,7 +25,7 @@ const ChatList = ({
             selected={selectedUserForPrivateChat.userId === chatListItem.userId}
           />
         ))}
-      </CustomList>
+      </Box.List>
     </>
   );
 };

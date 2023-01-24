@@ -1,8 +1,7 @@
 import { useMemo } from "react";
 
 import ChatList from "src/components/leftSide/ChatList";
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
-import GridContainer from "src/components/general/box/GridContainer";
+import { Box } from "src/components/general/box";
 import SearchBar from "src/components/leftSide/SearchBar";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
@@ -45,18 +44,19 @@ const LeftSide = ({ participants }) => {
 
   return (
     <>
-      <GridContainer
+      <Box.Grid
+        container
         sx={{ backgroundColor: "lightcyan" }}
         item
         sm={12}
         md={4}
         lg={3}
       >
-        <CustomFlexBox col style={{ width: "100%", height: "100%" }}>
-          <CustomFlexBox jc="space-between" ai="center">
+        <Box.Flex col style={{ width: "100%", height: "100%" }}>
+          <Box.Flex jc="space-between" ai="center">
             <SearchBar onDrawerIconClick={handleDrawerIconClick} />
-          </CustomFlexBox>
-          <CustomFlexBox sx={{ width: "100%", height: "100%" }}>
+          </Box.Flex>
+          <Box.Flex sx={{ width: "100%", height: "100%" }}>
             {/* <SideBarList /> */}
             <ChatList
               selectedUserForPrivateChat={
@@ -65,9 +65,9 @@ const LeftSide = ({ participants }) => {
               onChatListItemClick={handleChatListItemClick}
               chatList={chatList}
             />
-          </CustomFlexBox>
-        </CustomFlexBox>
-      </GridContainer>
+          </Box.Flex>
+        </Box.Flex>
+      </Box.Grid>
     </>
   );
 };

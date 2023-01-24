@@ -2,13 +2,9 @@ import { SwipeableDrawer } from "@mui/material";
 
 import { actions } from "src/store/actions";
 
-import CustomBox from "src/components/general/box/CustomBox";
-import CustomList from "src/components/general/box/CustomList";
-import CustomListItem from "src/components/general/box/CustomListItem";
-import CustomListItemIcon from "src/components/general/other/CustomListItemIcon";
-import CustomListItemText from "src/components/general/box/CustomListItemText";
-import Div from "src/components/general/box/Div";
+import { Box } from "src/components/general/box";
 import { Icons } from "src/components/other/Icons";
+import ListItemIcon from "src/components/general/other/ListItemIcon";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
@@ -46,7 +42,7 @@ const AppDrawer = () => {
   };
 
   return (
-    <Div>
+    <Box.Div>
       <SwipeableDrawer
         disableBackdropTransition={!utilities.isIos()}
         disableDiscovery={utilities.isIos()}
@@ -57,7 +53,7 @@ const AppDrawer = () => {
         onClose={(event) => toggleDrawer(event, false)}
         onOpen={(event) => toggleDrawer(event, true)}
       >
-        <CustomBox
+        <Box.Div
           sx={{
             width:
               state.global.appDrawer.currentAnchor === "top" ||
@@ -68,9 +64,9 @@ const AppDrawer = () => {
           role="presentation"
           onKeyDown={(event) => toggleDrawer(event, false)}
         >
-          <CustomList>
+          <Box.List>
             {drawerList.map(({ elementName, Icon, text }, index) => (
-              <CustomListItem
+              <Box.ListItem
                 button
                 key={index}
                 onClick={(event) => {
@@ -78,16 +74,16 @@ const AppDrawer = () => {
                   handleDrawerItemClick(elementName);
                 }}
               >
-                <CustomListItemIcon>
+                <ListItemIcon>
                   <Icon />
-                </CustomListItemIcon>
-                <CustomListItemText primary={text} />
-              </CustomListItem>
+                </ListItemIcon>
+                <Box.ListItemText primary={text} />
+              </Box.ListItem>
             ))}
-          </CustomList>
-        </CustomBox>
+          </Box.List>
+        </Box.Div>
       </SwipeableDrawer>
-    </Div>
+    </Box.Div>
   );
 };
 

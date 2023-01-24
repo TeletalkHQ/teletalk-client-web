@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 import CreateNewUser from "src/containers/auth/CreateNewUser";
 import CheckCurrentUser from "src/containers/auth/CheckCurrentUser";
 import SignIn from "src/containers/auth/SignIn";
-import VerifySignIn from "src/containers/auth/VerifySignIn";
+import Verify from "src/containers/auth/Verify";
 
 import { actions } from "src/store/actions";
 import { stateStatics } from "src/store/stateStatics";
@@ -39,7 +39,7 @@ const visibleContainer = (viewMode) => Views[viewMode];
 const Views = {
   [stateStatics.VIEW_MODES.AUTH]: CheckCurrentUser,
   [stateStatics.VIEW_MODES.SIGN_IN]: SignIn,
-  [stateStatics.VIEW_MODES.VERIFY_SIGN_IN]: VerifySignIn,
+  [stateStatics.VIEW_MODES.VERIFY_SIGN_IN]: Verify,
   [stateStatics.VIEW_MODES.NEW_USER_PROFILE]: CreateNewUser,
 };
 

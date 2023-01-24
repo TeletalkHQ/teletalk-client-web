@@ -3,7 +3,7 @@ import { trier } from "utility-store/src/classes/Trier";
 
 import { commonTasks } from "src/classes/CommonTasks";
 
-import { errorBuilders } from "src/helpers/errorBuilders";
+import { errorChecker } from "src/helpers/errorChecker";
 
 import { utilities } from "src/utilities";
 
@@ -17,7 +17,7 @@ class Validator {
 
   constructor(compiledValidator, validatorName) {
     this.compiledValidator = compiledValidator;
-    this.validatorErrorBuilder = errorBuilders[`${validatorName}`];
+    this.validatorErrorBuilder = errorChecker[`${validatorName}`];
     this.validationResult = [];
   }
 

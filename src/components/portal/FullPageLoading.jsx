@@ -1,6 +1,6 @@
 import MoonLoader from "react-spinners/MoonLoader";
 
-import CustomFlexBox from "src/components/general/box/CustomFlexBox";
+import { Box } from "src/components/general/box";
 
 import { stateStatics } from "src/store/stateStatics";
 
@@ -8,7 +8,7 @@ const FullPageLoading = ({ loading }) => {
   return (
     loading.open &&
     loading.type === stateStatics.GLOBAL_LOADING_TYPES.FULL_PAGE && (
-      <CustomFlexBox
+      <Box.Flex
         jc={"center"}
         ai={"center"}
         style={{
@@ -28,7 +28,7 @@ const FullPageLoading = ({ loading }) => {
           size={loading.size}
           speedMultiplier={loading.speedMultiplier}
         />
-      </CustomFlexBox>
+      </Box.Flex>
     )
   );
 };
