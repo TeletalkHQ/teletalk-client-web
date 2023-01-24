@@ -1,7 +1,6 @@
 import { trier } from "utility-store/src/classes/Trier";
 
 import { apiManager } from "src/classes/api/ApiManager";
-import { userUtilities } from "src/classes/UserUtilities";
 
 import { authUtilities } from "src/controllers/auth/utilities";
 
@@ -12,13 +11,17 @@ import { store } from "src/store/store";
 const verify = () => {
   return async (dispatch, getState = store.initialStates) => {
     const {
-      auth: { verificationCode },
+      auth: { verificationCode, verifyToken },
     } = getState();
 
     dispatch(commonActions.changeAuthenticationProgress(true));
 
     await trier(verify.name)
-      .tryAsync(tryToVerify, verificationCode, dispatch)
+      .tryAsync(tryToVerify, {
+        dispatch,
+        verificationCode,
+        verifyToken,
+      })
       .executeIfNoError(executeIfNoError, dispatch)
       .runAsync();
 
@@ -26,10 +29,8 @@ const verify = () => {
   };
 };
 
-const tryToVerify = async (verificationCode, dispatch) => {
-  const token = userUtilities.getToken();
-
-  if (!token) {
+const tryToVerify = async ({ dispatch, verificationCode, verifyToken }) => {
+  if (!verifyToken) {
     dispatch(commonActions.changeViewMode.signIn());
     authUtilities.printTokenNotFound();
     return;
@@ -39,7 +40,7 @@ const tryToVerify = async (verificationCode, dispatch) => {
     {
       verificationCode,
     },
-    { token }
+    { token: verifyToken }
   );
 };
 

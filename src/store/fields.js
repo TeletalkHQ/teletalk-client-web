@@ -52,6 +52,7 @@ const ping = statics.number;
 const senderId = statics.string;
 const status = statics.string;
 const type = statics.string;
+const token = statics.string;
 const userId = statics.string;
 const username = statics.string;
 const verificationCode = statics.string;
@@ -114,6 +115,7 @@ const participants = statics.array(participantItem);
 
 const single = {
   bio,
+  token,
   chatId,
   countryCode,
   countryName,

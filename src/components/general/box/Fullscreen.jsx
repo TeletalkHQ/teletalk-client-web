@@ -1,5 +1,3 @@
-import React from "react";
-
 import Div from "src/components/general/box/Div";
 
 const Fullscreen = ({ style = {}, ...rest }) => {

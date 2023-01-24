@@ -7,10 +7,12 @@ import { commonTasks } from "src/classes/CommonTasks";
 
 import { Box } from "src/components/general/box";
 import { Icons } from "src/components/other/Icons";
-import CircularProgress from "src/components/general/progress/CircularProgress";
+import AuthFooter from "src/components/other/AuthFooter";
+import Avatar from "src/components/general/other/Avatar";
+import Cellphone from "src/components/general/input/common/Cellphone";
 import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
 import H5 from "src/components/general/typography/header/H5";
-import { Input } from "src/components/general/input";
+import LoadingButton from "src/components/auth/LoadingButton";
 
 import { controllers } from "src/controllers";
 
@@ -18,9 +20,9 @@ import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
 
-import { variables } from "src/variables";
 import { utilities } from "src/utilities";
-import Avatar from "src/components/general/other/Avatar";
+
+import { variables } from "src/variables";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -48,7 +50,7 @@ const SignIn = () => {
     dispatch(actions.countryCodeOnChange({ countryCode: value }));
   };
 
-  const selectCountryByCountryCodeInputChange = (value) => {
+  const handleSelectedCountryByCountryCodeInput = (value) => {
     const country = arrayUtilities.findByPropValueEquality(
       state.other.countries,
       value,
@@ -101,7 +103,9 @@ const SignIn = () => {
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
           <Icons.LockOutlined.Icon />
         </Avatar>
+
         <H5>Teletalk</H5>
+
         <Box.Container mw="xs">
           <Box.Div style={{ marginTop: 1 }}>
             <GreyTextParagraph>
@@ -109,55 +113,37 @@ const SignIn = () => {
               number.
             </GreyTextParagraph>
 
-            <Input.CountrySelector
+            <Cellphone
               countries={state.other.countries}
+              countryCode={state.auth.countryCode}
               countryName={state.auth.countryName}
-              onSelectedCountryChange={handleSelectedCountryChange}
+              onCountryCodeInputChange={handleCountryCodeInputChange}
               onCountryNameInputChange={handleCountryNameInputChange}
-              selectedCountry={
-                utilities.isCountrySelected(state.auth.selectedCountry)
-                  ? state.auth.selectedCountry
-                  : null
+              onPhoneNumberInputChange={handlePhoneNumberInputChange}
+              onSelectedCountryChange={handleSelectedCountryChange}
+              phoneNumber={state.auth.phoneNumber}
+              onSelectedCountryByCountryCodeInput={
+                handleSelectedCountryByCountryCodeInput
               }
+              selectedCountry={state.auth.selectedCountry}
             />
 
-            <Box.Flex jc="space-between">
-              <Input.CountryCode.WithValidator
-                inputValue={state.auth.countryCode}
-                onInputChange={(event) => {
-                  const { value } = event.target;
-                  handleCountryCodeInputChange(value);
-                  selectCountryByCountryCodeInputChange(value);
-                }}
-              />
-              <Input.PhoneNumber.WithValidator
-                onInputChange={handlePhoneNumberInputChange}
-                inputValue={state.auth.phoneNumber}
-              />
-            </Box.Flex>
-
-            <Input.Button
-              lbtn
+            <LoadingButton
+              buttonValue={"Next"}
+              onClick={handleSignInClick}
+              indicatorValue={"sign in..."}
               disabled={isSignInSubmitButtonDisabled()}
               loading={state.global.appProgressions.authenticationProgress}
-              loadingIndicator={
-                <>
-                  <span>Please wait...</span> &nbsp;&nbsp;
-                  <CircularProgress size={25} color="info" />
-                </>
-              }
-              onClick={handleSignInClick}
               sx={{
-                borderRadius: "10px",
                 mb: 1,
                 mt: 2,
               }}
-            >
-              Next
-            </Input.Button>
+            />
           </Box.Div>
         </Box.Container>
       </Box.Flex>
+
+      <AuthFooter />
     </Box.Container>
   );
 };
