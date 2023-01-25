@@ -10,7 +10,47 @@ import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 import { stateStatics } from "src/store/stateStatics";
 
-const ContactsTitle = () => (
+const Contacts = ({ onDialogClose }) => {
+  const dispatch = useDispatch();
+  const state = useSelector();
+
+  const handleAddContactClick = () => {
+    dispatch(commonActions.closeDialog(stateStatics.DIALOG_NAMES.CONTACTS));
+    dispatch(commonActions.openDialog(stateStatics.DIALOG_NAMES.ADD_CONTACT));
+  };
+
+  const handleCloseContactDialog = () => {
+    onDialogClose("contacts");
+  };
+
+  const handleContactItemClicked = (contact) => {
+    handleCloseContactDialog();
+    dispatch(actions.selectedUserForPrivateChat({ userId: contact.userId }));
+  };
+
+  return (
+    <DialogTemplate
+      title={<Title />}
+      content={
+        <Content
+          contacts={state.user.contacts}
+          onContactItemClicked={handleContactItemClicked}
+        />
+      }
+      actions={
+        <Actions
+          onClose={handleCloseContactDialog}
+          onAddContactClick={handleAddContactClick}
+        />
+      }
+      open={state.global.dialogState.contacts.open}
+      paperStyle={{ height: "90vh" }}
+      onClose={handleCloseContactDialog}
+    />
+  );
+};
+
+const Title = () => (
   <>
     <Box.Flex jc="center" ai="center">
       <H5>Contacts</H5>
@@ -18,7 +58,16 @@ const ContactsTitle = () => (
   </>
 );
 
-const ContactsActions = ({ onClose, onAddContactClick }) => (
+const Content = ({ contacts, onContactItemClicked }) =>
+  contacts?.map((contact, index) => (
+    <ContactListItem
+      onContactClick={() => onContactItemClicked(contact)}
+      key={index}
+      name={`${contact.firstName} ${contact.lastName}`}
+    />
+  ));
+
+const Actions = ({ onClose, onAddContactClick }) => (
   <>
     <Box.Flex sx={{ width: "100%" }} jc="space-between" gap={2} ai="center">
       <Box.Div>
@@ -42,47 +91,5 @@ const ContactsActions = ({ onClose, onAddContactClick }) => (
     </Box.Flex>
   </>
 );
-
-const Contacts = ({ onDialogClose }) => {
-  const dispatch = useDispatch();
-  const state = useSelector();
-
-  const handleAddContactClick = () => {
-    dispatch(commonActions.closeDialog(stateStatics.DIALOG_NAMES.CONTACTS));
-    dispatch(commonActions.openDialog(stateStatics.DIALOG_NAMES.ADD_CONTACT));
-  };
-
-  const handleCloseContactDialog = () => {
-    onDialogClose("contacts");
-  };
-
-  const handleContactItemClicked = (contact) => {
-    handleCloseContactDialog();
-    dispatch(actions.selectedUserForPrivateChat({ userId: contact.userId }));
-  };
-  const content = state.user.contacts?.map((contact, index) => (
-    <ContactListItem
-      onContactClick={() => handleContactItemClicked(contact)}
-      key={index}
-      name={`${contact.firstName} ${contact.lastName}`}
-    />
-  ));
-
-  return (
-    <DialogTemplate
-      title={<ContactsTitle />}
-      content={content}
-      actions={
-        <ContactsActions
-          onClose={handleCloseContactDialog}
-          onAddContactClick={handleAddContactClick}
-        />
-      }
-      open={state.global.dialogState.contacts.open}
-      paperStyle={{ height: "90vh" }}
-      onClose={handleCloseContactDialog}
-    />
-  );
-};
 
 export default Contacts;
