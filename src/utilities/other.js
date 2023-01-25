@@ -38,9 +38,9 @@ const isCountrySelected = (selectedCountry) => {
   const country = selectedCountry;
 
   return !!(
-    country.countryCode &&
-    country.countryName &&
-    country.countryShortName
+    country?.countryCode &&
+    country?.countryName &&
+    country?.countryShortName
   );
 };
 

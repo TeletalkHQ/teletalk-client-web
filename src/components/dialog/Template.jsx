@@ -18,14 +18,14 @@ const DialogTemplate = componentBuilder
   .registerComponent(
     "DialogTemplate",
     ({
-      actionContent,
-      mainContent,
+      actions,
+      content,
       dialogStyle,
       onClose,
       onKeyDown,
       open,
       paperStyle,
-      titleContent,
+      title,
       TransitionComponent,
       transitionDuration,
     }) => {
@@ -62,9 +62,9 @@ const DialogTemplate = componentBuilder
           TransitionComponent={Transition}
           transitionDuration={transitionDuration || 500}
         >
-          <DialogTitle>{titleContent}</DialogTitle>
-          <DialogContent>{mainContent}</DialogContent>
-          <DialogActions>{actionContent}</DialogActions>
+          <DialogTitle>{title}</DialogTitle>
+          <DialogContent>{content}</DialogContent>
+          <DialogActions>{actions}</DialogActions>
         </Dialog>
       );
     }

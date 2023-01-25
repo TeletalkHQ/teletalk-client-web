@@ -10,7 +10,6 @@ const Cellphone = ({
   onCountryCodeInputChange,
   onCountryNameInputChange,
   onPhoneNumberInputChange,
-  onSelectedCountryByCountryCodeInput,
   onSelectedCountryChange,
   phoneNumber,
   selectedCountry,
@@ -26,14 +25,10 @@ const Cellphone = ({
           utilities.isCountrySelected(selectedCountry) ? selectedCountry : null
         }
       />
-      <Box.Flex jc="space-between">
+      <Box.Flex jc="space-between" style={{ width: "100%" }}>
         <Input.CountryCode.WithValidator
           inputValue={countryCode}
-          onInputChange={(event) => {
-            const { value } = event.target;
-            onCountryCodeInputChange(value);
-            onSelectedCountryByCountryCodeInput(value);
-          }}
+          onInputChange={onCountryCodeInputChange}
         />
         <Input.PhoneNumber.WithValidator
           onInputChange={onPhoneNumberInputChange}

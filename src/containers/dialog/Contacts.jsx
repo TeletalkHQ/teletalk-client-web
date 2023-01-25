@@ -60,7 +60,7 @@ const Contacts = ({ onDialogClose }) => {
     handleCloseContactDialog();
     dispatch(actions.selectedUserForPrivateChat({ userId: contact.userId }));
   };
-  const mainContent = state.user.contacts?.map((contact, index) => (
+  const content = state.user.contacts?.map((contact, index) => (
     <ContactListItem
       onContactClick={() => handleContactItemClicked(contact)}
       key={index}
@@ -70,9 +70,9 @@ const Contacts = ({ onDialogClose }) => {
 
   return (
     <DialogTemplate
-      titleContent={<ContactsTitle />}
-      mainContent={mainContent}
-      actionContent={
+      title={<ContactsTitle />}
+      content={content}
+      actions={
         <ContactsActions
           onClose={handleCloseContactDialog}
           onAddContactClick={handleAddContactClick}

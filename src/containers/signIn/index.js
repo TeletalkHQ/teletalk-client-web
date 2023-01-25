@@ -7,9 +7,9 @@ import { commonTasks } from "src/classes/CommonTasks";
 
 import { Box } from "src/components/general/box";
 import { Icons } from "src/components/other/Icons";
+import { Input } from "src/components/general/input";
 import AuthFooter from "src/components/other/AuthFooter";
 import Avatar from "src/components/general/other/Avatar";
-import Cellphone from "src/components/general/input/common/Cellphone";
 import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
 import H5 from "src/components/general/typography/header/H5";
 import LoadingButton from "src/components/auth/LoadingButton";
@@ -113,18 +113,18 @@ const SignIn = () => {
               number.
             </GreyTextParagraph>
 
-            <Cellphone
+            <Input.Cellphone
               countries={state.other.countries}
               countryCode={state.auth.countryCode}
               countryName={state.auth.countryName}
-              onCountryCodeInputChange={handleCountryCodeInputChange}
+              onCountryCodeInputChange={({ target: { value } }) => {
+                handleCountryCodeInputChange(value);
+                handleSelectedCountryByCountryCodeInput(value);
+              }}
               onCountryNameInputChange={handleCountryNameInputChange}
               onPhoneNumberInputChange={handlePhoneNumberInputChange}
               onSelectedCountryChange={handleSelectedCountryChange}
               phoneNumber={state.auth.phoneNumber}
-              onSelectedCountryByCountryCodeInput={
-                handleSelectedCountryByCountryCodeInput
-              }
               selectedCountry={state.auth.selectedCountry}
             />
 

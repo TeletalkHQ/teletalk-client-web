@@ -4,6 +4,7 @@ import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import { commonTasks } from "src/classes/CommonTasks";
 import { stuffStore } from "src/classes/StuffStore";
+import { componentBuilder } from "src/classes/ComponentBuilder";
 
 import { Box } from "src/components/general/box";
 import DialogTemplate from "src/components/dialog/Template";
@@ -18,9 +19,9 @@ import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 import { commonActions } from "src/store/commonActions";
 import { stateStatics } from "src/store/stateStatics";
 
-import { variables } from "src/variables";
-import { componentBuilder } from "src/classes/ComponentBuilder";
 import { utilities } from "src/utilities";
+
+import { variables } from "src/variables";
 
 const AddNewContact = componentBuilder
   .create()
@@ -131,8 +132,8 @@ const AddNewContact = componentBuilder
     return (
       <>
         <DialogTemplate
-          titleContent={<Title />}
-          mainContent={
+          title={<Title />}
+          content={
             <Content
               contact={contact}
               countries={state.other.countries}
@@ -152,7 +153,7 @@ const AddNewContact = componentBuilder
               }
             />
           }
-          actionContent={
+          actions={
             <Actions
               onAddNewContactClick={handleAddNewContactClick}
               onContactDialogCancelClick={handleReturnToContactsDialog}
@@ -203,36 +204,26 @@ const Content = componentBuilder
       return (
         <>
           <Box.Div>
-            <Input.CountrySelector
-              countries={countries}
-              countryName={countryName}
-              onSelectedCountryChange={onSelectedCountryChange}
-              onCountryNameInputChange={onCountryNameInputChange}
-              selectedCountry={selectedCountry}
-            />
+            <Box.Div></Box.Div>
 
-            <Box.Div mt={2}>
-              <Input.FirstName.WithValidator
-                inputValue={contact.firstName}
-                onInputChange={onInputChange}
-              />
-            </Box.Div>
-
-            <Box.Div mt={2}>
-              <Input.LastName.WithValidator
-                inputValue={contact.lastName}
-                onInputChange={onInputChange}
-              />
-            </Box.Div>
-            <Box.Flex gap={1} jc="space-between" mt={2}>
-              <Input.CountryCode.WithValidator
-                inputValue={contact.countryCode}
-                onInputChange={onCountryCodeInputChange}
+            <Box.Flex col jc="space-between" mt={2}>
+              <Input.FullName
+                firstName={contact.firstName}
+                lastName={contact.lastName}
+                onFirstNameInputChange={onInputChange}
+                onLastNameInputChange={onInputChange}
               />
 
-              <Input.PhoneNumber.WithValidator
-                inputValue={contact.phoneNumber}
-                onInputChange={onInputChange}
+              <Input.Cellphone
+                countries={countries}
+                countryCode={contact.countryCode}
+                countryName={countryName}
+                onCountryCodeInputChange={onCountryCodeInputChange}
+                onCountryNameInputChange={onCountryNameInputChange}
+                onPhoneNumberInputChange={onInputChange}
+                onSelectedCountryChange={onSelectedCountryChange}
+                phoneNumber={contact.phoneNumber}
+                selectedCountry={selectedCountry}
               />
             </Box.Flex>
           </Box.Div>
