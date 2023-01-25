@@ -22,7 +22,7 @@ const LogoutDialog = ({ onDialogClose }) => {
     dispatchAsync(controllers.logout());
   };
 
-  const actionContent = (
+  const actions = (
     <>
       <Input.Button onClick={handleClose} variant="text" color="primary">
         Cancel
@@ -34,7 +34,7 @@ const LogoutDialog = ({ onDialogClose }) => {
     </>
   );
 
-  const mainContent = (
+  const content = (
     <>
       <Box.Flex jc="center" ai="center">
         <Box.Div>Are you sure to logout?</Box.Div>
@@ -46,8 +46,8 @@ const LogoutDialog = ({ onDialogClose }) => {
     <>
       <DialogTemplate
         open={state.global.dialogState.logout.open}
-        actionContent={actionContent}
-        mainContent={mainContent}
+        actions={actions}
+        content={content}
         onClose={handleClose}
       />
     </>
