@@ -22,36 +22,36 @@ const LogoutDialog = ({ onDialogClose }) => {
     dispatchAsync(controllers.logout());
   };
 
-  const actions = (
-    <>
-      <Input.Button onClick={handleClose} variant="text" color="primary">
-        Cancel
-      </Input.Button>
-
-      <Input.Button onClick={handleLogout} variant="text" color="error">
-        Confirm
-      </Input.Button>
-    </>
-  );
-
-  const content = (
-    <>
-      <Box.Flex jc="center" ai="center">
-        <Box.Div>Are you sure to logout?</Box.Div>
-      </Box.Flex>
-    </>
-  );
-
   return (
     <>
       <DialogTemplate
         open={state.global.dialogState.logout.open}
-        actions={actions}
-        content={content}
+        actions={<Actions onClose={handleClose} onLogout={handleLogout} />}
+        content={<Content />}
         onClose={handleClose}
       />
     </>
   );
 };
+
+const Content = () => (
+  <>
+    <Box.Flex jc="center" ai="center">
+      <Box.Div>Are you sure to logout?</Box.Div>
+    </Box.Flex>
+  </>
+);
+
+const Actions = ({ onClose, onLogout }) => (
+  <>
+    <Input.Button onClick={onClose} variant="text" color="primary">
+      Cancel
+    </Input.Button>
+
+    <Input.Button onClick={onLogout} variant="text" color="error">
+      Confirm
+    </Input.Button>
+  </>
+);
 
 export default LogoutDialog;
