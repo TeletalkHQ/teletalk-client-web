@@ -45,8 +45,10 @@ const LeftSide = ({ participants }) => {
   return (
     <>
       <Box.Grid
+        style={{
+          height: "100vh",
+        }}
         container
-        sx={{ backgroundColor: "lightcyan" }}
         item
         sm={12}
         md={4}
@@ -56,8 +58,14 @@ const LeftSide = ({ participants }) => {
           <Box.Flex jc="space-between" ai="center">
             <SearchBar onDrawerIconClick={handleDrawerIconClick} />
           </Box.Flex>
-          <Box.Flex sx={{ width: "100%", height: "100%" }}>
-            {/* <SideBarList /> */}
+          <Box.List
+            sx={{
+              width: "100%",
+              overflowY: "auto",
+              scrollBehavior: "smooth",
+              padding: "5px",
+            }}
+          >
             <ChatList
               selectedUserForPrivateChat={
                 state.message.selectedUserForPrivateChat
@@ -65,7 +73,7 @@ const LeftSide = ({ participants }) => {
               onChatListItemClick={handleChatListItemClick}
               chatList={chatList}
             />
-          </Box.Flex>
+          </Box.List>
         </Box.Flex>
       </Box.Grid>
     </>
