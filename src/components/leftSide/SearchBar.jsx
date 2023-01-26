@@ -8,20 +8,18 @@ import { Icons } from "src/components/other/Icons";
 const SearchBar = ({ onDrawerIconClick }) => {
   return (
     <>
-      <Box.Div>
+      <Box.Div style={{ padding: 10 }}>
         <IconButton onClick={onDrawerIconClick}>
           <Icons.Menu.Icon />
         </IconButton>
       </Box.Div>
-      <Box.Div p={1} sx={{ width: "100%" }}>
+
+      <Box.Div>
         <Input.Text
-          fullWidth
           size="small"
           placeholder="Search"
           InputProps={{
-            sx: {
-              borderRadius: "10px",
-            },
+            style: { borderRadius: "50px" },
             startAdornment: (
               <InputAdornment position="start">
                 <Icons.Search.Icon />
