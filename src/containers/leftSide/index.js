@@ -55,9 +55,8 @@ const LeftSide = ({ participants }) => {
         lg={3}
       >
         <Box.Flex col style={{ width: "100%", height: "100%" }}>
-          <Box.Flex jc="space-between" ai="center">
-            <SearchBar onDrawerIconClick={handleDrawerIconClick} />
-          </Box.Flex>
+          <SearchBar onDrawerIconClick={handleDrawerIconClick} />
+
           <Box.List
             sx={{
               width: "100%",
