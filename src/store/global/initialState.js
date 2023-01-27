@@ -25,6 +25,7 @@ const initialGlobalState = () => ({
     addContact: defaultDialogStateItemProps(),
     contacts: defaultDialogStateItemProps(),
     logout: defaultDialogStateItemProps(),
+    settings: defaultDialogStateItemProps(),
   },
   globalLoading: {
     color: "blue",
