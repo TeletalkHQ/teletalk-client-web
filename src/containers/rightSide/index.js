@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
-import { actions } from "src/store/actions";
+import { domUtilities } from "utility-store/src/classes/DomUtilities";
 
 import { commonTasks } from "src/classes/CommonTasks";
 import { eventManager } from "src/classes/EventManager";
@@ -14,24 +14,45 @@ import { controllers } from "src/controllers";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
+import { actions } from "src/store/actions";
+
 const RightSide = ({ participants }) => {
   const dispatch = useDispatch();
   const state = useSelector();
+  const oldMessages = useRef([]);
+
+  const messageBoxId = "messageBox";
+  const selectedUserId = state.message.selectedUserForPrivateChat.userId;
+
+  const selectedChatMessages = useMemo(
+    () =>
+      state.message.privateChats.find((pc) => {
+        return pc.participants.find((p) => p.participantId === selectedUserId);
+      })?.messages || [],
+    [selectedUserId, state.message.privateChats]
+  );
+
+  useEffect(() => {
+    if (oldMessages.current.length < selectedChatMessages.length) {
+      const messageBox = domUtilities().getElementById(messageBoxId);
+      messageBox.scrollTo({
+        top: "2000",
+      });
+    }
+
+    oldMessages.current = selectedChatMessages;
+  }, [selectedChatMessages]);
 
   useEffect(() => {
     const eventName = eventManager.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
-    eventManager.addListener(eventName, commonTasks.resetMessageInputText);
+    eventManager.addListener(eventName, () => {
+      commonTasks.resetMessageInputText();
+    });
   }, []);
-
-  const selectedUserId = state.message.selectedUserForPrivateChat.userId;
 
   const selectedParticipantToChat = participants.find(
     (p) => p.participantId === selectedUserId
   );
-
-  const selectedChatMessages = state.message.privateChats.find((pc) => {
-    return pc.participants.find((p) => p.participantId === selectedUserId);
-  })?.messages;
 
   const handleInputChange = ({ target: { value } }) => {
     dispatch(actions.messageInputOnChange({ messageInputTextValue: value }));
@@ -48,7 +69,7 @@ const RightSide = ({ participants }) => {
   return (
     <Box.Grid
       container
-      sx={{ backgroundColor: "tomato", height: "100%" }}
+      sx={{ backgroundColor: "lightgray", height: "100%" }}
       item
       lg={9}
       md={8}
@@ -62,7 +83,6 @@ const RightSide = ({ participants }) => {
         >
           <Box.Div
             style={{
-              height: "50px",
               width: "100%",
             }}
           >
@@ -72,10 +92,18 @@ const RightSide = ({ participants }) => {
             />
           </Box.Div>
 
-          <Box.Div style={{ height: "100%", width: "100%" }}>
+          <Box.Div
+            id="messageBox"
+            style={{
+              width: "100%",
+              overflowY: "auto",
+              padding: 5,
+              scrollBehavior: "smooth",
+            }}
+          >
             <MessageList
               currentUserId={state.user.userId}
-              messages={selectedChatMessages || []}
+              messages={selectedChatMessages}
             />
           </Box.Div>
 

@@ -9,8 +9,8 @@ const MessageInput = ({
   onSendMessage,
 }) => {
   return (
-    <Box.Paper sx={{ width: "100%" }}>
-      <Box.Flex sx={{ width: "100%" }} jc="space-between" ai="center">
+    <Box.Paper style={{ borderRadius: 0 }}>
+      <Box.Flex gap={1} style={{ padding: 5 }} jc="space-between" ai="center">
         <Box.Div>
           <IconButton onClick={() => {}}>
             <Icons.AttachFile.Icon />
@@ -36,7 +36,7 @@ const MessageInput = ({
 
         <Box.Div>
           {messageInputTextValue ? (
-            <IconButton onClick={() => onSendMessage()}>
+            <IconButton onClick={onSendMessage}>
               <Icons.Telegram.Icon color="primary" />
             </IconButton>
           ) : (
