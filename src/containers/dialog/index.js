@@ -1,6 +1,7 @@
 import AddNewContact from "src/containers/dialog/AddNewContact";
 import Contacts from "src/containers/dialog/Contacts";
-import LogoutDialog from "src/containers/dialog/Logout";
+import Logout from "src/containers/dialog/Logout";
+import Settings from "src/containers/dialog/Settings";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
@@ -19,7 +20,7 @@ const Dialog = () => {
     <>
       {state.global.initialSetupDetails.status ===
         stateStatics.INITIAL_SETUP_STATUS.DONE &&
-        [AddNewContact, Contacts, LogoutDialog].map((Component, i) => (
+        [AddNewContact, Contacts, Logout, Settings].map((Component, i) => (
           <Component key={i} onDialogClose={handleDialogClose} />
         ))}
     </>

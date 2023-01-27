@@ -80,7 +80,7 @@ class AppConfigs {
   // runConfigs() {}
 
   setDebugLevel() {
-    // logger.setLevel("debug");
+    logger.setLevel("debug");
   }
 }
 

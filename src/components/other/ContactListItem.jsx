@@ -4,7 +4,7 @@ import { Box } from "src/components/general/box";
 const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
   return (
     <Box.ListItemButton
-      sx={{
+      style={{
         display: "flex",
         height: "65px",
         borderRadius: "10px",

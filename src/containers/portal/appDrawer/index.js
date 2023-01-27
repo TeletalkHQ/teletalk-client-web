@@ -3,25 +3,14 @@ import { Divider, SwipeableDrawer } from "@mui/material";
 import { actions } from "src/store/actions";
 
 import { Box } from "src/components/general/box";
-import { Icons } from "src/components/other/Icons";
-import Avatar from "src/components/general/other/Avatar";
-import ListItemIcon from "src/components/general/other/ListItemIcon";
+import DrawerList from "src/components/portal/appDrawer/DrawerList";
+import PersonalData from "src/components/portal/appDrawer/PersonalData";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { commonActions } from "src/store/commonActions";
 
 import { utilities } from "src/utilities";
-
-const drawerList = [
-  Icons.Calls,
-  Icons.Contacts,
-  Icons.LogoutOutlined,
-  Icons.NewChannelOutlined,
-  Icons.NewGroupOutlined,
-  Icons.NightModeOutlined,
-  Icons.SettingsOutlined,
-];
 
 const AppDrawer = () => {
   const dispatch = useDispatch();
@@ -79,39 +68,5 @@ const AppDrawer = () => {
     </SwipeableDrawer>
   );
 };
-
-const PersonalData = ({ countryCode, firstName, lastName, phoneNumber }) => (
-  <Box.Flex col ai="center" jc="center" style={{ padding: 10 }} gap={1}>
-    <Box.Div>
-      <Avatar />
-    </Box.Div>
-    <Box.Div style={{ fontWeight: "bold" }}>
-      {firstName} {lastName}
-    </Box.Div>
-    <Box.Div>
-      +{countryCode} {phoneNumber}
-    </Box.Div>
-  </Box.Flex>
-);
-
-const DrawerList = ({ toggleDrawer, onDrawerItemClick }) => (
-  <Box.List>
-    {drawerList.map(({ elementName, Icon, text }, index) => (
-      <Box.ListItem
-        button
-        key={index}
-        onClick={(event) => {
-          toggleDrawer(event, false);
-          onDrawerItemClick(elementName);
-        }}
-      >
-        <ListItemIcon>
-          <Icon />
-        </ListItemIcon>
-        <Box.ListItemText primary={text} />
-      </Box.ListItem>
-    ))}
-  </Box.List>
-);
 
 export default AppDrawer;
