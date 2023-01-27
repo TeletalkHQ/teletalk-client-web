@@ -1,5 +1,8 @@
+import DoneAllIcon from "@mui/icons-material/DoneAll";
+
 import { Box } from "src/components/general/box";
 import Typography from "src/components/general/typography/Typography";
+import GreyTextParagraph from "../general/typography/GreyTextParagraph";
 
 // import { Transitions } from "src/components/others/Transitions";
 
@@ -13,7 +16,7 @@ const MessageListItem = ({
 }) => {
   return (
     <>
-      <Box.Flex sx={{ width: "100%", padding: "3px" }} justifyContent={justify}>
+      <Box.Flex style={{ padding: 3 }} justifyContent={justify}>
         {/* <Transitions.Slide
           direction={direction}
           in={true}
@@ -21,15 +24,25 @@ const MessageListItem = ({
           unmountOnExit
         > */}
         <Box.Paper
-          sx={{ padding: "3px" }}
+          style={{ padding: 5, borderRadius: 10 }}
           className={`${messageItemClassName}`}
-          elevation={1}
+          elevation={0}
           // onContextMenu={(e) => onOtherStateChange(e)}
         >
           <Typography style={{ wordBreak: "break-word" }}>{message}</Typography>
-          <Typography style={{ fontSize: "13px", float: "right" }}>
-            {messageTime} {chatDate}
-          </Typography>
+
+          <Box.Flex
+            style={{ fontSize: 12 }}
+            justifyContent="flex-end"
+            gap={0.2}
+            alignItems="center"
+          >
+            <GreyTextParagraph>{messageTime || "12:24"}</GreyTextParagraph>
+            <GreyTextParagraph>{chatDate}</GreyTextParagraph>
+            <GreyTextParagraph>
+              <DoneAllIcon fontSize="12" />
+            </GreyTextParagraph>
+          </Box.Flex>
         </Box.Paper>
         {/* </Transitions.Slide> */}
       </Box.Flex>

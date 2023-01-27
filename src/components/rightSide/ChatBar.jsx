@@ -1,4 +1,3 @@
-import Avatar from "src/components/general/other/Avatar";
 import { Box } from "src/components/general/box";
 
 import { Icons } from "src/components/other/Icons";
@@ -8,9 +7,9 @@ import Typography from "src/components/general/typography/Typography";
 const ChatBar = ({ contactName, onMessageContainerCloseClick }) => {
   return (
     <>
-      <Box.Paper sx={{ width: "100%", height: "100%" }}>
+      <Box.Paper style={{ borderRadius: 0 }}>
         <Box.Flex
-          sx={{ width: "100%", height: "100%" }}
+          style={{ height: 50, padding: 5 }}
           jc="space-between"
           ai="center"
         >
@@ -20,8 +19,9 @@ const ChatBar = ({ contactName, onMessageContainerCloseClick }) => {
             </IconButton>
           </Box.Div>
           <Box.Flex ai="center">
-            <Avatar alt={contactName} />
-            <Typography>{contactName}</Typography>
+            <Typography style={{ fontWeight: "500", fontSize: 18 }}>
+              {contactName}
+            </Typography>
           </Box.Flex>
           <Box.Div>
             <IconButton>

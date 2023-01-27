@@ -28,6 +28,7 @@ class CommonTasks {
   }
 
   resetMessageInputText() {
+    //TODO: Remove extractedDispatch
     extractedDispatch(
       actions.messageInputOnChange({ messageInputTextValue: "" })
     );
