@@ -1,0 +1,5 @@
+const SETTINGS_TYPES = {
+  UPDATE_PROFILE: "UPDATE_PROFILE",
+};
+
+export { SETTINGS_TYPES };

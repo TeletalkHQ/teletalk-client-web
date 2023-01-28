@@ -66,12 +66,11 @@ const country = {
   countryShortName,
 };
 
+const cellphone = { countryCode, countryName, phoneNumber };
+const fullName = { firstName, lastName };
 const contact = {
-  countryCode,
-  countryName,
-  firstName,
-  lastName,
-  phoneNumber,
+  ...cellphone,
+  ...fullName,
   userId,
 };
 
@@ -145,7 +144,9 @@ const single = {
 
 const collection = {
   authenticationProgress,
+  fullName,
   blacklist,
+  cellphone,
   contact,
   contacts,
   countries,
@@ -154,11 +155,11 @@ const collection = {
   dialogProps,
   messageItem,
   messages,
-  sender,
   newContact,
   notification,
   participants,
   selectedCountry,
+  sender,
 };
 
 const fields = {
