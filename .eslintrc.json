@@ -54,6 +54,7 @@
       }
     ],
     "quotes": ["error", "double"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "object-shorthand": ["error", "always"]
   }
 }
