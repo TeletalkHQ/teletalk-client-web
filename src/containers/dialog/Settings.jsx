@@ -5,22 +5,32 @@ import CircleNotificationsIcon from "@mui/icons-material/CircleNotificationsTwoT
 import LanguageIcon from "@mui/icons-material/LanguageTwoTone";
 import LockIcon from "@mui/icons-material/LockTwoTone";
 import PieChartIcon from "@mui/icons-material/PieChartTwoTone";
+import { Divider } from "@mui/material";
+import lodash from "lodash";
 
 import { Box } from "src/components/general/box";
 import { Input } from "src/components/general/input";
 import DialogTemplate from "src/components/dialog/Template";
-
-import { useSelector } from "src/hooks/useThunkReducer";
-
 import Avatar from "src/components/general/other/Avatar";
 import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
-import { Divider } from "@mui/material";
+
+import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+
+import { commonActions } from "src/store/commonActions";
 
 const Settings = ({ onDialogClose }) => {
   const state = useSelector();
+  const dispatch = useDispatch();
 
   const handleCloseContactDialog = () => {
     onDialogClose("settings");
+  };
+
+  const handleSettingItemClick = (item) => {
+    const name = lodash.camelCase(item.displayName);
+    handleCloseContactDialog();
+
+    dispatch(commonActions.openDialog(name, { zIndex: 1500 }));
   };
 
   const fullName = `${state.user.firstName} ${state.user.lastName}`;
@@ -34,6 +44,7 @@ const Settings = ({ onDialogClose }) => {
           fullName={fullName}
           fullNumber={fullNumber}
           username={state.user.username}
+          onSettingItemClick={handleSettingItemClick}
         />
       }
       actions={<Actions onClose={handleCloseContactDialog} />}
@@ -52,7 +63,7 @@ const Title = () => {
   );
 };
 
-const Content = ({ fullName, fullNumber, username }) => {
+const Content = ({ fullName, fullNumber, onSettingItemClick, username }) => {
   return (
     <>
       <ProfileOverview
@@ -63,7 +74,7 @@ const Content = ({ fullName, fullNumber, username }) => {
 
       <Divider style={{ margin: "20px 0px 20px 0px" }} />
 
-      <SettingsList />
+      <SettingsList onSettingItemClick={onSettingItemClick} />
     </>
   );
 };
@@ -106,19 +117,22 @@ const ProfileOverview = ({ fullName, fullNumber, username }) => {
   );
 };
 
-const SettingsList = () => (
+const SettingsList = ({ onSettingItemClick }) => (
   <Box.List>
     {[
       {
         Icon: AccountBoxIcon,
-        name: "Edit Profile",
+        displayName: "Edit Profile",
       },
-      { name: "Notifications and Sounds", Icon: CircleNotificationsIcon },
-      { name: "Privacy and Security", Icon: LockIcon },
-      { name: "Chat Settings", Icon: ChatIcon },
-      { name: "Advanced", Icon: PieChartIcon },
-      { name: "Call Settings", Icon: CallIcon },
-      { name: "Language", Icon: LanguageIcon },
+      {
+        displayName: "Notifications and Sounds",
+        Icon: CircleNotificationsIcon,
+      },
+      { displayName: "Privacy and Security", Icon: LockIcon },
+      { displayName: "Chat Settings", Icon: ChatIcon },
+      { displayName: "Advanced", Icon: PieChartIcon },
+      { displayName: "Call Settings", Icon: CallIcon },
+      { displayName: "Language", Icon: LanguageIcon },
     ].map((item, i) => (
       <Box.ListItemButton
         key={i}
@@ -126,15 +140,13 @@ const SettingsList = () => (
           display: "flex",
           height: "65px",
           borderRadius: "10px",
-          gap: 1,
+          gap: 10,
+          alignItems: "center",
         }}
+        onClick={() => onSettingItemClick(item)}
       >
-        <Box.Flex gap={1} ai="center">
-          <Box.Div>
-            <item.Icon style={{ fontSize: 30 }} />
-          </Box.Div>
-          <Box.Div> {item.name}</Box.Div>
-        </Box.Flex>
+        <item.Icon style={{ fontSize: 30 }} />
+        <Box.Div> {item.displayName}</Box.Div>
       </Box.ListItemButton>
     ))}
   </Box.List>

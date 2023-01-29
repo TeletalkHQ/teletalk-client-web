@@ -19,7 +19,7 @@ const MessageInput = ({
 
         <Box.Div style={{ width: "100%" }}>
           <Input.Text
-            placeholder={!messageInputTextValue ? "Write a message..." : " "}
+            placeholder={!messageInputTextValue ? "Message..." : " "}
             multiline
             maxRows={8}
             autoFocus

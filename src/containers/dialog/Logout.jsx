@@ -7,7 +7,7 @@ import { controllers } from "src/controllers";
 import { useMainContext } from "src/hooks/useMainContext";
 import { useSelector } from "src/hooks/useThunkReducer";
 
-const LogoutDialog = ({ onDialogClose }) => {
+const Logout = ({ onDialogClose }) => {
   const state = useSelector();
 
   const {
@@ -54,4 +54,4 @@ const Actions = ({ onClose, onLogout }) => (
   </>
 );
 
-export default LogoutDialog;
+export default Logout;

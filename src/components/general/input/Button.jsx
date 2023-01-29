@@ -4,6 +4,7 @@ const Button = ({
   color,
   style,
   size = "large",
+  fullWidth = true,
   variant = "contained",
   ...props
 }) => {
@@ -13,7 +14,7 @@ const Button = ({
         borderRadius: "10px",
         ...style,
       }}
-      fullWidth
+      fullWidth={fullWidth}
       size={size}
       variant={variant}
       {...{

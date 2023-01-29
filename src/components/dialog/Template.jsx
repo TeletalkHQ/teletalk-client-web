@@ -45,17 +45,17 @@ const DialogTemplate = componentBuilder
           fullScreen={fullScreen}
           keepMounted
           {...(customTypeof.isFunction(onClose) && {
-            onClose: () => onClose(),
+            onClose,
           })}
           // onEscapeKeyDown={onEscapeKeyDown}
           onKeyDown={onKeyDown}
           open={open}
           PaperProps={{
             style: {
-              borderRadius: !fullScreen ? "15px" : "",
-              minWidth: !fullScreen ? "450px" : "auto",
+              borderRadius: fullScreen ? "" : "15px",
+              minWidth: fullScreen ? "auto" : "450px",
               ...paperStyle,
-              height: !fullScreen ? paperStyle?.height : "100vh",
+              height: fullScreen ? "100vh" : paperStyle?.height,
             },
           }}
           sx={{ ...dialogStyle }}

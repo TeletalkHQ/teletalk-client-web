@@ -13,10 +13,14 @@ const drawerList = [
 ];
 
 const DrawerList = ({ toggleDrawer, onDrawerItemClick }) => (
-  <Box.List>
+  <Box.List style={{ padding: 10 }}>
     {drawerList.map(({ elementName, Icon, text }, index) => (
-      <Box.ListItem
-        button
+      <Box.ListItemButton
+        style={{
+          alignItems: "center",
+          borderRadius: "10px",
+          height: "40px",
+        }}
         key={index}
         onClick={(event) => {
           toggleDrawer(event, false);
@@ -27,7 +31,7 @@ const DrawerList = ({ toggleDrawer, onDrawerItemClick }) => (
           <Icon />
         </ListItemIcon>
         <Box.ListItemText primary={text} />
-      </Box.ListItem>
+      </Box.ListItemButton>
     ))}
   </Box.List>
 );
