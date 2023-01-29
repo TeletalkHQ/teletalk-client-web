@@ -1,4 +1,3 @@
-import { stringUtilities } from "utility-store/src/classes/StringUtilities";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 import { commonNotificationManager } from "src/classes/CommonNotificationManager";
@@ -83,7 +82,7 @@ class CommonTasks {
       minlength: { value: minlengthValue },
     } = model;
 
-    const inputValueLength = stringUtilities.valueLength(inputValue);
+    const inputValueLength = inputValue.length;
 
     return (
       inputValueLength >= minlengthValue && inputValueLength <= maxlengthValue
@@ -91,7 +90,7 @@ class CommonTasks {
   }
 
   validateInputValueLengthByModelLength(model, inputValue) {
-    const inputValueLength = stringUtilities.valueLength(inputValue);
+    const inputValueLength = inputValue.length;
     return inputValueLength === model.length.value;
   }
 

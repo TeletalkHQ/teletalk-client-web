@@ -24,6 +24,9 @@ const initialGlobalState = () => ({
   dialogState: {
     addContact: defaultDialogStateItemProps(),
     contacts: defaultDialogStateItemProps(),
+    editProfile: defaultDialogStateItemProps(),
+    editFullName: defaultDialogStateItemProps(),
+    editUsername: defaultDialogStateItemProps(),
     logout: defaultDialogStateItemProps(),
     settings: defaultDialogStateItemProps(),
   },

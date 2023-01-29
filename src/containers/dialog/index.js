@@ -1,5 +1,8 @@
 import AddNewContact from "src/containers/dialog/AddNewContact";
 import Contacts from "src/containers/dialog/Contacts";
+import EditFullName from "src/containers/dialog/EditFullName";
+import EditProfile from "src/containers/dialog/EditProfile";
+import EditUsername from "src/containers/dialog/EditUsername";
 import Logout from "src/containers/dialog/Logout";
 import Settings from "src/containers/dialog/Settings";
 
@@ -19,10 +22,21 @@ const Dialog = () => {
   return (
     <>
       {state.global.initialSetupDetails.status ===
-        stateStatics.INITIAL_SETUP_STATUS.DONE &&
-        [AddNewContact, Contacts, Logout, Settings].map((Component, i) => (
-          <Component key={i} onDialogClose={handleDialogClose} />
-        ))}
+        stateStatics.INITIAL_SETUP_STATUS.DONE && (
+        <>
+          {[
+            AddNewContact,
+            Contacts,
+            EditFullName,
+            EditProfile,
+            EditUsername,
+            Logout,
+            Settings,
+          ].map((Component, i) => (
+            <Component key={i} onDialogClose={handleDialogClose} />
+          ))}
+        </>
+      )}
     </>
   );
 };

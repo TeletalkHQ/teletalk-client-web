@@ -46,10 +46,10 @@ const ELEMENT_IDS = {
 const ELEMENT_LABELS = {
   CHOOSE_A_COUNTRY: "Choose a country",
   CODE: "Code",
-  FIRST_NAME: "firstName",
-  LAST_NAME: "lastName",
-  PHONE_NUMBER: "phoneNumber",
-  VERIFICATION_CODE: "verificationCode",
+  FIRST_NAME: "First Name",
+  LAST_NAME: "Last Name",
+  PHONE_NUMBER: "Phone Number",
+  VERIFICATION_CODE: "Verification Code",
 };
 
 const VALIDATION_KEYS = {
