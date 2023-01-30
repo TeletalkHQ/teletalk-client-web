@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import AccountBoxTwoTone from "@mui/icons-material/AccountBoxTwoTone";
 import AlternateEmailTwoTone from "@mui/icons-material/AlternateEmailTwoTone";
 import CallTwoTone from "@mui/icons-material/CallTwoTone";
-// import EditTwoTone from "@mui/icons-material/EditTwoTone";
+import SettingsAccessibilityTwoToneIcon from "@mui/icons-material/SettingsAccessibilityTwoTone";
 
 import { userUtilities } from "src/classes/UserUtilities";
 
@@ -11,13 +11,12 @@ import DialogTemplate from "src/components/dialog/Template";
 import { Box } from "src/components/general/box";
 import { Input } from "src/components/general/input";
 import Avatar from "src/components/general/other/Avatar";
-// import IconButton from "src/components/general/other/IconButton";
+import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 import { actions } from "src/store/actions";
 
 import { commonActions } from "src/store/commonActions";
-// import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
 
 const EditProfile = ({ onDialogClose }) => {
   const state = useSelector();
@@ -38,7 +37,7 @@ const EditProfile = ({ onDialogClose }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.global.dialogState.editProfile.open, state.user]);
 
-  const handleEditItemClick = (item) => {
+  const handleItemClick = (item) => {
     handleClose();
     dispatch(commonActions.openDialog(item.name, { zIndex: 1500 }));
   };
@@ -68,7 +67,7 @@ const EditProfile = ({ onDialogClose }) => {
           <Content
             profile={state.settings.profile}
             onInputChange={handleInputChange}
-            onEditItemClick={handleEditItemClick}
+            onItemClick={handleItemClick}
           />
         }
         onClose={handleClose}
@@ -80,36 +79,52 @@ const EditProfile = ({ onDialogClose }) => {
 
 const Title = () => <Box.Div>Info</Box.Div>;
 
-const Content = ({ onEditItemClick, profile }) => {
+const Content = ({ onItemClick, profile }) => {
   const fullName = `${profile.firstName} ${profile.lastName}`;
   const fullNumber = `+${profile.countryCode} ${profile.phoneNumber}`;
 
   return (
     <>
-      <Box.Flex gap={1} col jc="center" ai="center">
+      <Box.Flex
+        gap={1}
+        col
+        jc="center"
+        style={{ maxWidth: "400px" }}
+        ai="center"
+      >
         <Box.Flex col gap={1} jc="center" ai="center">
           <Avatar style={{ width: "100px", height: "100px" }} />
           <Box.Div style={{ fontWeight: "500", fontSize: 20 }}>
             {fullName}
           </Box.Div>
         </Box.Flex>
-        {/* <Box.Flex col gap={1} style={{ width: "100%" }}>
-          <Box.ListItemButton
-            style={{
-              alignItems: "center",
-              borderRadius: "10px",
-              justifyContent: "space-between",
-              display: "flex",
-              width: "100%",
-              border: "1px solid red",
-            }}
-            ai="center"
-            jc="space-between"
-          > */}
-        {/* <Box.Div style={{ marginLeft: 5 }}>Bio</Box.Div> */}
-        {/* </Box.ListItemButton> */}
-        {/* <GreyTextParagraph></GreyTextParagraph> */}
-        {/* </Box.Flex> */}
+
+        <Box.ListItemButton
+          onClick={() => onItemClick({ name: "editBio" })}
+          style={{
+            alignItems: "center",
+            borderRadius: "10px",
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+            gap: 10,
+            height: "65px",
+          }}
+          ai="center"
+          jc="space-between"
+        >
+          <SettingsAccessibilityTwoToneIcon style={{ fontSize: 30 }} />
+
+          <Box.Flex jc="space-between" al="center" style={{ width: "100%" }}>
+            <Box.Div>Bio</Box.Div>
+
+            <Box.Div style={{ width: "60%", textAlign: "end" }}>
+              <GreyTextParagraph noWrap>
+                {profile.bio || "Not Set"}
+              </GreyTextParagraph>
+            </Box.Div>
+          </Box.Flex>
+        </Box.ListItemButton>
 
         {[
           {
@@ -134,7 +149,7 @@ const Content = ({ onEditItemClick, profile }) => {
           <Box.ListItemButton
             key={i}
             disabled={item.disabled}
-            onClick={() => onEditItemClick(item)}
+            onClick={() => onItemClick(item)}
             style={{
               alignItems: "center",
               borderRadius: "10px",

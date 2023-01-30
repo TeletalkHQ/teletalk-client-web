@@ -97,6 +97,7 @@ const RightSide = ({ participants }) => {
             style={{
               width: "100%",
               overflowY: "auto",
+              height: "100%",
               padding: 5,
               scrollBehavior: "smooth",
             }}
