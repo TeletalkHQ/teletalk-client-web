@@ -1,6 +1,7 @@
 import AddNewContact from "src/containers/dialog/AddNewContact";
 import Contacts from "src/containers/dialog/Contacts";
 import EditFullName from "src/containers/dialog/EditFullName";
+import EditBio from "src/containers/dialog/EditBio";
 import EditProfile from "src/containers/dialog/EditProfile";
 import EditUsername from "src/containers/dialog/EditUsername";
 import Logout from "src/containers/dialog/Logout";
@@ -27,6 +28,7 @@ const Dialog = () => {
           {[
             AddNewContact,
             Contacts,
+            EditBio,
             EditFullName,
             EditProfile,
             EditUsername,
