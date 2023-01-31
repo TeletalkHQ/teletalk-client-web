@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 import { commonActions } from "src/store/commonActions";
 
 import { utilities } from "src/utilities";
+import { userUtilities } from "src/classes/UserUtilities";
 
 const AppDrawer = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ const AppDrawer = () => {
   const handleDrawerItemClick = (elementName) => {
     dispatch(commonActions.openDialog(elementName));
   };
+
+  const fullName = userUtilities.makeFullName(state.user);
+  const fullNumber = userUtilities.makeFullNumber(state.user);
 
   return (
     <SwipeableDrawer
@@ -51,12 +55,7 @@ const AppDrawer = () => {
         role="presentation"
         onKeyDown={(event) => toggleDrawer(event, false)}
       >
-        <PersonalData
-          countryCode={state.user.countryCode}
-          firstName={state.user.firstName}
-          lastName={state.user.lastName}
-          phoneNumber={state.user.phoneNumber}
-        />
+        <PersonalData fullNumber={fullNumber} fullName={fullName} />
 
         <Divider />
 
