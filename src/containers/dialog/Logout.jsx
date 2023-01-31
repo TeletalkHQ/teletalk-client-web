@@ -1,6 +1,5 @@
 import DialogTemplate from "src/components/dialog/Template";
-import { Box } from "src/components/general/box";
-import { Input } from "src/components/general/input";
+import LogoutComponents from "src/components/dialog/logout";
 
 import { controllers } from "src/controllers";
 
@@ -26,32 +25,17 @@ const Logout = ({ onDialogClose }) => {
     <>
       <DialogTemplate
         open={state.global.dialogState.logout.open}
-        actions={<Actions onClose={handleClose} onLogout={handleLogout} />}
-        content={<Content />}
+        actions={
+          <LogoutComponents.Actions
+            onClose={handleClose}
+            onLogout={handleLogout}
+          />
+        }
+        content={<LogoutComponents.Content />}
         onClose={handleClose}
       />
     </>
   );
 };
-
-const Content = () => (
-  <>
-    <Box.Flex jc="center" ai="center">
-      <Box.Div>Are you sure to logout?</Box.Div>
-    </Box.Flex>
-  </>
-);
-
-const Actions = ({ onClose, onLogout }) => (
-  <>
-    <Input.Button onClick={onClose} variant="text" color="primary">
-      Cancel
-    </Input.Button>
-
-    <Input.Button onClick={onLogout} variant="text" color="error">
-      Confirm
-    </Input.Button>
-  </>
-);
 
 export default Logout;
