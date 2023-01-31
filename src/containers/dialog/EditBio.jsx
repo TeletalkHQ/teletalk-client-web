@@ -1,10 +1,7 @@
-import InputAdornment from "@mui/material/InputAdornment";
 import { stuffStore } from "src/classes/StuffStore";
+import EditBioComponents from "src/components/dialog/editBio";
 
 import DialogTemplate from "src/components/dialog/Template";
-import { Box } from "src/components/general/box";
-import { Input } from "src/components/general/input";
-import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
 import { controllers } from "src/controllers";
 import { useMainContext } from "src/hooks/useMainContext";
 
@@ -43,61 +40,25 @@ const EditBio = ({ onDialogClose }) => {
   return (
     <>
       <DialogTemplate
-        title={<Title />}
+        title={<EditBioComponents.Title />}
         open={state.global.dialogState.editBio.open}
         content={
-          <Content
+          <EditBioComponents.Content
+            bioModelLength={stuffStore.models.bio.maxlength.value}
             bio={state.settings.profile.bio}
             onInputChange={handleInputChange}
           />
         }
         onClose={handleClose}
         actions={
-          <Actions onSaveClick={handleSaveClick} onCancel={handleBack} />
+          <EditBioComponents.Actions
+            onSaveClick={handleSaveClick}
+            onCancel={handleBack}
+          />
         }
       />
     </>
   );
 };
-
-const Title = () => <Box.Div>Edit Bio</Box.Div>;
-
-const Content = ({ bio, onInputChange }) => {
-  return (
-    <Box.Flex style={{ maxWidth: 400 }} col>
-      <Input.Text
-        name="bio"
-        multiline
-        maxRows={3}
-        label="Bio"
-        onChange={onInputChange}
-        value={bio}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              {stuffStore.models.bio.maxlength.value - bio.length}
-            </InputAdornment>
-          ),
-        }}
-      />
-      <GreyTextParagraph>
-        any details such as age, occupation or city. Example: 23 y.o. designer
-        from San Francisco
-      </GreyTextParagraph>
-    </Box.Flex>
-  );
-};
-
-const Actions = ({ onCancel, onSaveClick }) => (
-  <>
-    <Input.Button onClick={onCancel} variant="text" color="error">
-      Cancel
-    </Input.Button>
-
-    <Input.Button onClick={onSaveClick} variant="text" color="primary">
-      Confirm
-    </Input.Button>
-  </>
-);
 
 export default EditBio;
