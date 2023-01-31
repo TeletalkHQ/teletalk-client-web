@@ -1,14 +1,14 @@
 import Avatar from "src/components/general/other/Avatar";
 import { Box } from "src/components/general/box";
 
-const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
+const ListItem = ({ name, lastSeen, onContactClick }) => {
   return (
     <Box.ListItemButton
       style={{
         display: "flex",
         height: "65px",
         borderRadius: "10px",
-        gap: 1,
+        gap: 10,
       }}
       onClick={onContactClick}
     >
@@ -18,9 +18,10 @@ const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
 
       <Box.Div style={{ width: "100%" }}>
         <Box.Flex jc="space-between" ai="center">
-          <Box.Div style={{ fontWeight: "500" }}>{name}</Box.Div>
+          <Box.Div style={{ fontWeight: 500, fontSize: 18 }}>{name}</Box.Div>
           {/* <Box.Div>time</Box.Div> */}
         </Box.Flex>
+
         <Box.Flex jc="space-between" ai="center">
           <Box.Div>{lastSeen}</Box.Div>
           {/* <Box.Div>icons</Box.Div> */}
@@ -30,4 +31,4 @@ const ContactListItem = ({ name, lastSeen = "", onContactClick }) => {
   );
 };
 
-export default ContactListItem;
+export default ListItem;

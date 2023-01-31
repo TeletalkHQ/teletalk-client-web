@@ -1,7 +1,4 @@
-import ContactListItem from "src/components/other/ContactListItem";
-import { Box } from "src/components/general/box";
-import { Input } from "src/components/general/input";
-import H5 from "src/components/general/typography/header/H5";
+import ContactsComponents from "src/components/dialog/contacts";
 import DialogTemplate from "src/components/dialog/Template";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
@@ -30,15 +27,15 @@ const Contacts = ({ onDialogClose }) => {
 
   return (
     <DialogTemplate
-      title={<Title />}
+      title={<ContactsComponents.Title />}
       content={
-        <Content
+        <ContactsComponents.Content
           contacts={state.user.contacts}
           onContactItemClicked={handleContactItemClicked}
         />
       }
       actions={
-        <Actions
+        <ContactsComponents.Actions
           onClose={handleCloseContactDialog}
           onAddContactClick={handleAddContactClick}
         />
@@ -49,47 +46,5 @@ const Contacts = ({ onDialogClose }) => {
     />
   );
 };
-
-const Title = () => (
-  <>
-    <Box.Flex jc="center" ai="center">
-      <H5>Contacts</H5>
-    </Box.Flex>
-  </>
-);
-
-const Content = ({ contacts, onContactItemClicked }) =>
-  contacts?.map((contact, index) => (
-    <ContactListItem
-      onContactClick={() => onContactItemClicked(contact)}
-      key={index}
-      name={`${contact.firstName} ${contact.lastName}`}
-    />
-  ));
-
-const Actions = ({ onClose, onAddContactClick }) => (
-  <>
-    <Box.Flex sx={{ width: "100%" }} jc="space-between" gap={2} ai="center">
-      <Box.Div>
-        <Input.Button
-          variant="text"
-          style={{ fontWeight: "bold" }}
-          onClick={onAddContactClick}
-        >
-          Add Contact
-        </Input.Button>
-      </Box.Div>
-      <Box.Div>
-        <Input.Button
-          variant="text"
-          style={{ fontWeight: "bold" }}
-          onClick={onClose}
-        >
-          Close
-        </Input.Button>
-      </Box.Div>
-    </Box.Flex>
-  </>
-);
 
 export default Contacts;
