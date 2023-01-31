@@ -38,17 +38,15 @@ const CreateNewUser = () => {
   };
 
   const isCreateNewUserConfirmButtonDisabled = () => {
-    const firstNameValidateResult =
-      commonTasks.validateInputValueLengthByModelMinMaxLength(
-        stuffStore.models.firstName,
-        state.auth.firstName
-      );
+    const firstNameValidateResult = commonTasks.validateInputValueLengthByModel(
+      stuffStore.models.firstName,
+      state.auth.firstName
+    );
 
-    const lastNameValidateResult =
-      commonTasks.validateInputValueLengthByModelMinMaxLength(
-        stuffStore.models.lastName,
-        state.auth.lastName
-      );
+    const lastNameValidateResult = commonTasks.validateInputValueLengthByModel(
+      stuffStore.models.lastName,
+      state.auth.lastName
+    );
 
     return !firstNameValidateResult || !lastNameValidateResult;
   };

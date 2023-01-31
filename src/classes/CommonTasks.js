@@ -76,7 +76,7 @@ class CommonTasks {
     this.errorsPrinter(correctedErrors);
   }
 
-  validateInputValueLengthByModelMinMaxLength(model, inputValue) {
+  validateInputValueLengthByModel(model, inputValue) {
     const {
       maxlength: { value: maxlengthValue },
       minlength: { value: minlengthValue },

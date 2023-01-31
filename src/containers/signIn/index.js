@@ -85,11 +85,10 @@ const SignIn = () => {
   };
 
   const isSignInSubmitButtonDisabled = () => {
-    const validateResult =
-      commonTasks.validateInputValueLengthByModelMinMaxLength(
-        stuffStore.models.phoneNumber,
-        state.auth.phoneNumber
-      );
+    const validateResult = commonTasks.validateInputValueLengthByModel(
+      stuffStore.models.phoneNumber,
+      state.auth.phoneNumber
+    );
 
     return (
       !validateResult ||
