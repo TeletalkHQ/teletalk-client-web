@@ -1,7 +1,5 @@
 import DialogTemplate from "src/components/dialog/Template";
-import { Box } from "src/components/general/box";
-import { Input } from "src/components/general/input";
-import { CommonInput } from "src/components/general/input/common";
+import EditFullNameComponents from "src/components/dialog/editFullName";
 
 import { controllers } from "src/controllers";
 
@@ -41,48 +39,24 @@ const EditFullName = ({ onDialogClose }) => {
   return (
     <>
       <DialogTemplate
-        title={<Title />}
+        title={<EditFullNameComponents.Title />}
         open={state.global.dialogState.editFullName.open}
         content={
-          <Content
+          <EditFullNameComponents.Content
             fullName={state.settings.profile}
             onInputChange={handleInputChange}
           />
         }
         onClose={handleClose}
         actions={
-          <Actions onSaveClick={handleSaveClick} onCancel={handleBack} />
+          <EditFullNameComponents.Actions
+            onSaveClick={handleSaveClick}
+            onCancel={handleBack}
+          />
         }
       />
     </>
   );
 };
-
-const Title = () => <Box.Div>Edit Name</Box.Div>;
-
-const Content = ({ fullName, onInputChange }) => {
-  return (
-    <Box.Flex col>
-      <CommonInput.FullName
-        firstName={fullName.firstName}
-        lastName={fullName.lastName}
-        onFirstNameInputChange={onInputChange}
-        onLastNameInputChange={onInputChange}
-      />
-    </Box.Flex>
-  );
-};
-
-const Actions = ({ onCancel, onSaveClick }) => (
-  <>
-    <Input.Button onClick={onCancel} variant="text" color="error">
-      Cancel
-    </Input.Button>
-
-    <Input.Button onClick={onSaveClick} variant="text" color="primary">
-      Save
-    </Input.Button>
-  </>
-);
 
 export default EditFullName;
