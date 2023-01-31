@@ -3,13 +3,11 @@ import { useEffect, useState } from "react";
 import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 import { commonTasks } from "src/classes/CommonTasks";
-import { stuffStore } from "src/classes/StuffStore";
 import { componentBuilder } from "src/classes/ComponentBuilder";
+import { stuffStore } from "src/classes/StuffStore";
 
-import { Box } from "src/components/general/box";
+import AddNewContactComponents from "src/components/dialog/addNewContact";
 import DialogTemplate from "src/components/dialog/Template";
-import H5 from "src/components/general/typography/header/H5";
-import { Input } from "src/components/general/input";
 
 import { controllers } from "src/controllers";
 
@@ -104,37 +102,37 @@ const AddNewContact = componentBuilder
 
     const isAddNewContactButtonDisabled = () => {
       const firstNameValidateResult =
-        commonTasks.validateInputValueLengthByModelMinMaxLength(
+        commonTasks.validateInputValueLengthByModel(
           stuffStore.models.firstName,
           contact.firstName
         );
 
       const lastNameValidateResult =
-        commonTasks.validateInputValueLengthByModelMinMaxLength(
+        commonTasks.validateInputValueLengthByModel(
           stuffStore.models.lastName,
           contact.lastName
         );
 
       const phoneNumberValidateResult =
-        commonTasks.validateInputValueLengthByModelMinMaxLength(
+        commonTasks.validateInputValueLengthByModel(
           stuffStore.models.phoneNumber,
           contact.phoneNumber
         );
 
-      return (
-        !firstNameValidateResult ||
-        !phoneNumberValidateResult ||
-        !lastNameValidateResult ||
-        !utilities.isCountrySelected(selectedCountry)
-      );
+      return ![
+        firstNameValidateResult,
+        phoneNumberValidateResult,
+        lastNameValidateResult,
+        utilities.isCountrySelected(selectedCountry),
+      ].some(Boolean);
     };
 
     return (
       <>
         <DialogTemplate
-          title={<Title />}
+          title={<AddNewContactComponents.Title />}
           content={
-            <Content
+            <AddNewContactComponents.Content
               contact={contact}
               countries={state.other.countries}
               countryCode={selectedCountry?.countryCode}
@@ -154,7 +152,7 @@ const AddNewContact = componentBuilder
             />
           }
           actions={
-            <Actions
+            <AddNewContactComponents.Actions
               onAddNewContactClick={handleAddNewContactClick}
               onContactDialogCancelClick={handleReturnToContactsDialog}
               isAddNewContactButtonDisabled={isAddNewContactButtonDisabled()}
@@ -169,102 +167,6 @@ const AddNewContact = componentBuilder
       </>
     );
   })
-  .build();
-
-const Title = componentBuilder
-  .create()
-  .registerComponent("AddNewContactTitle", () => {
-    return (
-      <>
-        <Box.Flex jc="space-between" ai="center">
-          <Box.Div>
-            <H5>New Contact</H5>
-          </Box.Div>
-          <Box.Div></Box.Div>
-        </Box.Flex>
-      </>
-    );
-  })
-  .build();
-
-const Content = componentBuilder
-  .create()
-  .registerComponent(
-    "AddNewContactContent",
-    ({
-      contact,
-      countries,
-      countryName,
-      onCountryCodeInputChange,
-      onCountryNameInputChange,
-      onInputChange,
-      onSelectedCountryChange,
-      selectedCountry,
-    }) => {
-      return (
-        <>
-          <Box.Div>
-            <Box.Div></Box.Div>
-
-            <Box.Flex col jc="space-between" mt={2}>
-              <Input.FullName
-                firstName={contact.firstName}
-                lastName={contact.lastName}
-                onFirstNameInputChange={onInputChange}
-                onLastNameInputChange={onInputChange}
-              />
-
-              <Input.Cellphone
-                countries={countries}
-                countryCode={contact.countryCode}
-                countryName={countryName}
-                onCountryCodeInputChange={onCountryCodeInputChange}
-                onCountryNameInputChange={onCountryNameInputChange}
-                onPhoneNumberInputChange={onInputChange}
-                onSelectedCountryChange={onSelectedCountryChange}
-                phoneNumber={contact.phoneNumber}
-                selectedCountry={selectedCountry}
-              />
-            </Box.Flex>
-          </Box.Div>
-        </>
-      );
-    }
-  )
-  .build();
-
-const Actions = componentBuilder
-  .create()
-  .registerComponent(
-    "AddNewContactActions",
-    ({
-      onAddNewContactClick,
-      onContactDialogCancelClick,
-      isAddNewContactButtonDisabled,
-    }) => {
-      return (
-        <>
-          {/* //TODO: Extract to static vars */}
-          <Box.Flex gap={1} jc="flex-end" ai="center">
-            <Box.Div>
-              <Input.Button variant="text" onClick={onContactDialogCancelClick}>
-                Cancel
-              </Input.Button>
-            </Box.Div>
-            <Box.Div>
-              <Input.Button
-                disabled={isAddNewContactButtonDisabled}
-                variant="text"
-                onClick={onAddNewContactClick}
-              >
-                Create
-              </Input.Button>
-            </Box.Div>
-          </Box.Flex>
-        </>
-      );
-    }
-  )
   .build();
 
 export default AddNewContact;
