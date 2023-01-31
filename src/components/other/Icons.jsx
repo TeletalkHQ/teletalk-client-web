@@ -50,7 +50,7 @@ const Icons = {
   ),
   ArrowBack: iconProperties("Back", ELEMENT_NAMES.BACK, ArrowBackIcon),
   AttachFile: iconProperties(
-    "AttachFile",
+    "Attach File",
     ELEMENT_NAMES.ATTACH_FILE,
     AttachFileIcon
   ),
@@ -74,7 +74,7 @@ const Icons = {
     SettingsInputComponentOutlinedIcon
   ),
   EmojiEmotions: iconProperties(
-    "EmojiEmotions",
+    "Emoji Emotions",
     ELEMENT_NAMES.EMOJI_EMOTIONS,
     EmojiEmotionsIcon
   ),

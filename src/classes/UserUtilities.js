@@ -17,6 +17,13 @@ class UserUtilities extends UserUtilitiesMain {
   saveToken(token) {
     persistentStorage.setItem(persistentStorage.STORAGE_KEYS.TOKEN, token);
   }
+
+  makeFullName(data) {
+    return `${data.firstName} ${data.lastName}`;
+  }
+  makeFullNumber(data) {
+    return `+${data.countryCode} ${data.phoneNumber}`;
+  }
 }
 
 const userUtilities = new UserUtilities();

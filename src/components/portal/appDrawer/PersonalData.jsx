@@ -1,17 +1,13 @@
 import { Box } from "src/components/general/box";
 import Avatar from "src/components/general/other/Avatar";
 
-const PersonalData = ({ countryCode, firstName, lastName, phoneNumber }) => (
+const PersonalData = ({ fullNumber, fullName }) => (
   <Box.Flex col ai="center" jc="center" style={{ padding: 10 }} gap={1}>
     <Box.Div>
       <Avatar />
     </Box.Div>
-    <Box.Div style={{ fontWeight: "bold" }}>
-      {firstName} {lastName}
-    </Box.Div>
-    <Box.Div>
-      +{countryCode} {phoneNumber}
-    </Box.Div>
+    <Box.Div style={{ fontWeight: "bold", fontSize: 18 }}>{fullName}</Box.Div>
+    <Box.Div style={{ fontSize: 14 }}>{fullNumber}</Box.Div>
   </Box.Flex>
 );
 
