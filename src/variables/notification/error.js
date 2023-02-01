@@ -68,12 +68,6 @@ const URL_NOT_FOUND = notificationBuilder
   .notificationReason("URL_NOT_FOUND")
   .build();
 
-const VERIFY_TOKEN_NOT_FOUND = notificationBuilder
-  .create()
-  .notificationReason("VERIFY_TOKEN_NOT_FOUND")
-  .message("Verify token not defined")
-  .build();
-
 const error = {
   COMPONENT_NAME_REQUIRED,
   ECONNABORTED,
@@ -87,7 +81,6 @@ const error = {
   REQUIRED_FIELDS_NOT_DEFINED,
   REQUIREMENT_ITEM_MISSING,
   URL_NOT_FOUND,
-  VERIFY_TOKEN_NOT_FOUND,
 };
 
 export { error };

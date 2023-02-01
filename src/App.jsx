@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import io from "socket.io-client";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
@@ -17,6 +18,7 @@ import { store } from "src/store/store";
 
 import { baseTheme } from "src/theme/baseTheme";
 
+const socket = io(appConfigs.getConfigs().apiConfigs.SERVER_BASE_URL);
 const states = store.initialStates();
 
 const App = () => {
@@ -34,6 +36,34 @@ const App = () => {
     windowUtilities.addProperty("state", state);
   }, [state]);
 
+  const [isConnected, setIsConnected] = useState(socket.connected);
+  const [lastPong, setLastPong] = useState(null);
+
+  useEffect(() => {
+    socket.on("connection", () => {
+      setIsConnected(true);
+    });
+
+    socket.on("disconnect", () => {
+      setIsConnected(false);
+    });
+
+    socket.on("pong", () => {
+      setLastPong(new Date().toISOString());
+    });
+
+    return () => {
+      socket.off("connect");
+      socket.off("disconnect");
+      socket.off("pong");
+    };
+  }, []);
+
+  const sendPing = () => {
+    socket.emit("ping");
+  };
+
+  console.log("isConnected:::", isConnected, lastPong);
   const dispatchAsync = async (action) => await dispatch(action);
 
   const getState = () => state;

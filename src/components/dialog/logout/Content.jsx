@@ -9,8 +9,9 @@ const Content = () => (
           fontWeight: 600,
         }}
       >
-        logout?
+        logout
       </Box.Span>
+      <Box.Span>?</Box.Span>
     </Box.Div>
   </>
 );

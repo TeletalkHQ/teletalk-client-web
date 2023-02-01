@@ -11,16 +11,14 @@ import { store } from "src/store/store";
 const verify = () => {
   return async (dispatch, getState = store.initialStates) => {
     const {
-      auth: { verificationCode, verifyToken },
+      auth: { verificationCode },
     } = getState();
 
     dispatch(commonActions.changeAuthenticationProgress(true));
 
     await trier(verify.name)
-      .tryAsync(tryToVerify, {
-        dispatch,
+      .tryAsync(tryBlock, {
         verificationCode,
-        verifyToken,
       })
       .executeIfNoError(executeIfNoError, dispatch)
       .runAsync();
@@ -29,19 +27,10 @@ const verify = () => {
   };
 };
 
-const tryToVerify = async ({ dispatch, verificationCode, verifyToken }) => {
-  if (!verifyToken) {
-    dispatch(commonActions.changeViewMode.signIn());
-    authUtilities.printTokenNotFound();
-    return;
-  }
-
-  return await apiManager.apis.verify.sendFullFeaturedRequest(
-    {
-      verificationCode,
-    },
-    { token: verifyToken }
-  );
+const tryBlock = async ({ verificationCode }) => {
+  return await apiManager.apis.verify.sendFullFeaturedRequest({
+    verificationCode,
+  });
 };
 
 const executeIfNoError = (response, dispatch) => {
