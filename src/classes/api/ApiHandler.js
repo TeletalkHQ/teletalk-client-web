@@ -40,7 +40,6 @@ class ApiHandler {
       ...this.#getApiUrlAndMethod(),
       data: this.getData(),
       headers: {},
-      token: "",
     };
   }
   #getApiUrlAndMethod() {
@@ -137,12 +136,7 @@ class ApiHandler {
         ...this.#apiDefaultOptions.headers,
         ...(extraOptions.headers || {}),
       },
-      token: extraOptions.token || userUtilities.getToken(),
     };
-
-    if (mergedOptions.token) {
-      mergedOptions.headers.Authorization = `Bearer ${mergedOptions.token}`;
-    }
 
     const data = this.getData();
     if (Object.keys(data)) {

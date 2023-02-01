@@ -25,9 +25,6 @@ const authActionPayloads = {
     verificationCode: fields.single.verificationCode,
   },
   [AUTH_ACTION_TYPES.RESET_AUTH_STATE]: undefined,
-  [AUTH_ACTION_TYPES.UPDATE_VERIFY_TOKEN]: {
-    verifyToken: fields.single.token,
-  },
 };
 
 export { authActionPayloads };

@@ -30,6 +30,7 @@ const initialGlobalState = () => ({
     editUsername: defaultDialogStateItemProps(),
     logout: defaultDialogStateItemProps(),
     settings: defaultDialogStateItemProps(),
+    userInfo: defaultDialogStateItemProps(),
   },
   globalLoading: {
     color: "blue",

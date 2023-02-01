@@ -1,6 +1,6 @@
 import { Input } from "src/components/general/input";
 
-const SettingsActions = ({ onClose }) => (
+const UserInfoActions = ({ onClose }) => (
   <>
     <Input.Button
       variant="text"
@@ -12,4 +12,4 @@ const SettingsActions = ({ onClose }) => (
   </>
 );
 
-export default SettingsActions;
+export default UserInfoActions;

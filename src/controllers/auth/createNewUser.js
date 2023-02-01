@@ -1,7 +1,6 @@
 import { trier } from "utility-store/src/classes/Trier";
 
 import { apiManager } from "src/classes/api/ApiManager";
-import { commonTasks } from "src/classes/CommonTasks";
 
 import { authUtilities } from "src/controllers/auth/utilities";
 
@@ -11,13 +10,13 @@ import { store } from "src/store/store";
 const createNewUser = () => {
   return async (dispatch, getState = store.initialStates) => {
     const {
-      auth: { firstName, lastName, verifyToken },
+      auth: { firstName, lastName },
     } = getState();
 
     dispatch(commonActions.changeAuthenticationProgress(true));
 
     await trier(createNewUser.name)
-      .tryAsync(tryToCreate, { firstName, lastName, dispatch, verifyToken })
+      .tryAsync(tryToCreate, { firstName, lastName, dispatch })
       .executeIfNoError(authUtilities.update, dispatch)
       .runAsync();
 
@@ -25,19 +24,11 @@ const createNewUser = () => {
   };
 };
 
-const tryToCreate = async ({ firstName, lastName, dispatch, verifyToken }) => {
-  commonTasks.checkAndExecute(!verifyToken, () => {
-    dispatch(commonActions.changeViewMode.signIn());
-    authUtilities.printTokenNotFound();
+const tryToCreate = async ({ firstName, lastName }) => {
+  const { data } = await apiManager.apis.createNewUser.sendFullFeaturedRequest({
+    firstName,
+    lastName,
   });
-
-  const { data } = await apiManager.apis.createNewUser.sendFullFeaturedRequest(
-    {
-      firstName,
-      lastName,
-    },
-    { token: verifyToken }
-  );
 
   return data;
 };

@@ -6,7 +6,6 @@ class PersistentStorage {
   }
   persistentStorage = new Storage();
   STORAGE_KEYS = {
-    TOKEN: "TOKEN",
     STUFFS: "STUFFS",
   };
 

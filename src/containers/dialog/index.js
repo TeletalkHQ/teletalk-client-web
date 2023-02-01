@@ -6,6 +6,7 @@ import EditProfile from "src/containers/dialog/EditProfile";
 import EditUsername from "src/containers/dialog/EditUsername";
 import Logout from "src/containers/dialog/Logout";
 import Settings from "src/containers/dialog/Settings";
+import UserInfo from "src/containers/dialog/UserInfo";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
@@ -34,6 +35,7 @@ const Dialog = () => {
             EditUsername,
             Logout,
             Settings,
+            UserInfo,
           ].map((Component, i) => (
             <Component key={i} onDialogClose={handleDialogClose} />
           ))}

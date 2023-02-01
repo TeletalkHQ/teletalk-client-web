@@ -18,6 +18,8 @@ const customAxios = axios.create({
   validateStatus,
 });
 
+customAxios.defaults.withCredentials = true;
+
 const requester = async (options) => {
   return await customAxios(options);
 };

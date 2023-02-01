@@ -8,7 +8,6 @@ const initialAuthState = () => ({
   phoneNumber: "",
   selectedCountry: variables.common.object.country(),
   verificationCode: "",
-  verifyToken: "",
 });
 
 export { initialAuthState };

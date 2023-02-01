@@ -26,7 +26,7 @@ const SearchBar = ({ onDrawerIconClick }) => {
             size="small"
             placeholder="Search"
             InputProps={{
-              style: { borderRadius: 50 },
+              style: { borderRadius: 10 },
               startAdornment: (
                 <InputAdornment position="start">
                   <Icons.Search.Icon />

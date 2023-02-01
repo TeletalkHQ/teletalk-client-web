@@ -15,13 +15,14 @@ import { controllers } from "src/controllers";
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
 
 import { actions } from "src/store/actions";
+import { commonActions } from "src/store/commonActions";
+import { stateStatics } from "src/store/stateStatics";
 
 const RightSide = ({ participants }) => {
   const dispatch = useDispatch();
   const state = useSelector();
   const oldMessages = useRef([]);
 
-  const messageBoxId = "messageBox";
   const selectedUserId = state.message.selectedUserForPrivateChat.userId;
 
   const selectedChatMessages = useMemo(
@@ -34,7 +35,7 @@ const RightSide = ({ participants }) => {
 
   useEffect(() => {
     if (oldMessages.current.length < selectedChatMessages.length) {
-      const messageBox = domUtilities().getElementById(messageBoxId);
+      const messageBox = domUtilities().getElementById("messageBox");
       messageBox.scrollTo({
         top: "2000",
       });
@@ -66,6 +67,10 @@ const RightSide = ({ participants }) => {
     dispatch(actions.closeRightSide());
   };
 
+  const handleChatBarClick = () => {
+    dispatch(commonActions.openDialog(stateStatics.DIALOG_NAMES.USER_INFO));
+  };
+
   return (
     <Box.Grid
       container
@@ -87,6 +92,7 @@ const RightSide = ({ participants }) => {
             }}
           >
             <ChatBar
+              onChatBarClick={handleChatBarClick}
               onMessageContainerCloseClick={handleMessageContainerCloseClick}
               contactName={`${selectedParticipantToChat.firstName} ${selectedParticipantToChat.lastName}`}
             />

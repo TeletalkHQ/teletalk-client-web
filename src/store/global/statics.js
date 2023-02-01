@@ -5,9 +5,11 @@ const APP_DRAWER_ANCHORS = {
   top: "top",
 };
 
+//TODO: Update settings dialogs
 const DIALOG_NAMES = {
   ADD_CONTACT: "addContact",
   CONTACTS: "contacts",
+  USER_INFO: "userInfo",
 };
 
 const GLOBAL_LOADING_TYPES = {
