@@ -6,7 +6,7 @@ import Typography from "src/components/general/typography/Typography";
 
 const ChatBar = ({
   contactName,
-  onChatBarClick,
+  // onChatBarClick,
   onMessageContainerCloseClick,
 }) => {
   return (
@@ -20,7 +20,7 @@ const ChatBar = ({
           justifyContent: "space-between",
           padding: 5,
         }}
-        onClick={onChatBarClick}
+        // onClick={onChatBarClick}
       >
         <Box.Div>
           <IconButton onClick={onMessageContainerCloseClick}>
