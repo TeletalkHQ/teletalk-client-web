@@ -18,10 +18,13 @@ const getCurrentUserData = () => {
 
 const tryToGetUserData = async (dispatch) => {
   dispatch(commonActions.openGlobalLoading());
-  const { data } =
-    await apiManager.apis.getCurrentUserData.sendFullFeaturedRequest();
+  const response = (
+    await apiManager.apis.getCurrentUserData.sendRequest()
+  ).getResponse();
 
-  return data;
+  if (response.statusText !== "OK") throw response.data;
+
+  return response.data;
 };
 const executeIfNoError = (data, dispatch) => {
   dispatch(actions.updateAllUserData(data.user));
