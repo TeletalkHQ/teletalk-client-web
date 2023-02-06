@@ -26,21 +26,11 @@ const signIn = () => {
 };
 
 const tryToSignIn = async ({ countryCode, countryName, phoneNumber }) => {
-  return await apiManager.apis.signIn.sendFullFeaturedRequest(
-    {
-      countryCode,
-      countryName,
-      phoneNumber,
-    },
-    {
-      // credentials: "include",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    }
-  );
+  return await apiManager.apis.signIn.sendFullFeaturedRequest({
+    countryCode,
+    countryName,
+    phoneNumber,
+  });
 };
 
 const executeIfNoError = (_, dispatch) => {

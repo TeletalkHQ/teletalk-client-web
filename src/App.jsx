@@ -18,7 +18,11 @@ import { store } from "src/store/store";
 
 import { baseTheme } from "src/theme/baseTheme";
 
-const socket = io(appConfigs.getConfigs().apiConfigs.SERVER_BASE_URL);
+const serverUrl = appConfigs.getConfigs().apiConfigs.SERVER_BASE_URL;
+
+const socket = io(serverUrl, {
+  withCredentials: true,
+});
 const states = store.initialStates();
 
 const App = () => {
@@ -29,7 +33,9 @@ const App = () => {
     const updater = () => {
       setForceUpdate(!forceUpdate);
     };
-    windowUtilities.addProperty("updater", updater);
+    windowUtilities
+      .addProperty("updater", updater)
+      .addProperty("sendPing", sendPing);
   }, [forceUpdate]);
 
   useEffect(() => {
@@ -61,9 +67,10 @@ const App = () => {
 
   const sendPing = () => {
     socket.emit("ping");
+    socket.on("ping", (...data) => console.log(data));
+    console.log("isConnected:", isConnected, "lastPong:", lastPong);
   };
 
-  console.log("isConnected:::", isConnected, lastPong);
   const dispatchAsync = async (action) => await dispatch(action);
 
   const getState = () => state;
