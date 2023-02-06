@@ -21,6 +21,10 @@ const userActionPayloads = {
     phoneNumber: fields.single.phoneNumber,
     userId: fields.single.userId,
     username: fields.single.username,
+    createdAt: fields.single.createdAt,
+    status: fields.statics.object({
+      online: fields.single.online,
+    }),
   },
 };
 
