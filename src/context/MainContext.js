@@ -10,7 +10,10 @@ const MainContext = createContext({
       return await action();
     },
   },
-  others: { getState: store.initialStates },
+  others: {
+    getState: store.initialStates,
+    socket: ioSocket,
+  },
   state: store.initialStates(),
 });
 
