@@ -18,7 +18,11 @@ import { store } from "src/store/store";
 
 import { baseTheme } from "src/theme/baseTheme";
 
-const socket = io(appConfigs.getConfigs().apiConfigs.SERVER_BASE_URL);
+const serverUrl = appConfigs.getConfigs().apiConfigs.SERVER_BASE_URL;
+
+const socket = io(serverUrl, {
+  withCredentials: true,
+});
 const states = store.initialStates();
 
 const App = () => {
@@ -29,44 +33,24 @@ const App = () => {
     const updater = () => {
       setForceUpdate(!forceUpdate);
     };
-    windowUtilities.addProperty("updater", updater);
+    windowUtilities
+      .addProperty("updater", updater)
+      .addProperty("sendPing", sendPing)
+      .addProperty("socket", socket);
   }, [forceUpdate]);
 
   useEffect(() => {
     windowUtilities.addProperty("state", state);
   }, [state]);
 
-  const [isConnected, setIsConnected] = useState(socket.connected);
-  const [lastPong, setLastPong] = useState(null);
-
-  useEffect(() => {
-    socket.on("connection", () => {
-      setIsConnected(true);
-    });
-
-    socket.on("disconnect", () => {
-      setIsConnected(false);
-    });
-
-    socket.on("pong", () => {
-      setLastPong(new Date().toISOString());
-    });
-
-    return () => {
-      socket.off("connect");
-      socket.off("disconnect");
-      socket.off("pong");
-    };
-  }, []);
-
-  const sendPing = () => {
-    socket.emit("ping");
-  };
-
-  console.log("isConnected:::", isConnected, lastPong);
   const dispatchAsync = async (action) => await dispatch(action);
 
   const getState = () => state;
+
+  const sendPing = () => {
+    socket.on("pong", (...data) => console.log(...data));
+    socket.emit("ping");
+  };
 
   const maxNotification = appConfigs.getConfigs().ui.maxNotification;
   return (
@@ -79,6 +63,7 @@ const App = () => {
           },
           others: {
             getState,
+            socket,
           },
           state,
         }}

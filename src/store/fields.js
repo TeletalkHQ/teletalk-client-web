@@ -35,6 +35,7 @@ const chatId = statics.string;
 const countryCode = statics.string;
 const countryName = statics.string;
 const countryShortName = statics.string;
+const createdAt = statics.number;
 const description = statics.string;
 const dialogName = statics.string;
 const errorCode = statics.number;
@@ -45,6 +46,7 @@ const lastName = statics.string;
 const message = statics.string;
 const messageId = statics.string;
 const messageInputTextValue = statics.string;
+const online = statics.boolean;
 const open = statics.boolean;
 const participantId = statics.string;
 const phoneNumber = statics.string;
@@ -117,6 +119,7 @@ const single = {
   countryCode,
   countryName,
   countryShortName,
+  createdAt,
   description,
   dialogName,
   errorCode,
@@ -127,6 +130,7 @@ const single = {
   message,
   messageId,
   messageInputTextValue,
+  online,
   open,
   phoneNumber,
   ping,
