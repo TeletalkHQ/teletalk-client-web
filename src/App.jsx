@@ -35,45 +35,22 @@ const App = () => {
     };
     windowUtilities
       .addProperty("updater", updater)
-      .addProperty("sendPing", sendPing);
+      .addProperty("sendPing", sendPing)
+      .addProperty("socket", socket);
   }, [forceUpdate]);
 
   useEffect(() => {
     windowUtilities.addProperty("state", state);
   }, [state]);
 
-  const [isConnected, setIsConnected] = useState(socket.connected);
-  const [lastPong, setLastPong] = useState(null);
-
-  useEffect(() => {
-    socket.on("connection", () => {
-      setIsConnected(true);
-    });
-
-    socket.on("disconnect", () => {
-      setIsConnected(false);
-    });
-
-    socket.on("pong", () => {
-      setLastPong(new Date().toISOString());
-    });
-
-    return () => {
-      socket.off("connect");
-      socket.off("disconnect");
-      socket.off("pong");
-    };
-  }, []);
-
-  const sendPing = () => {
-    socket.emit("ping");
-    socket.on("ping", (...data) => console.log(data));
-    console.log("isConnected:", isConnected, "lastPong:", lastPong);
-  };
-
   const dispatchAsync = async (action) => await dispatch(action);
 
   const getState = () => state;
+
+  const sendPing = () => {
+    socket.on("pong", (...data) => console.log(...data));
+    socket.emit("ping");
+  };
 
   const maxNotification = appConfigs.getConfigs().ui.maxNotification;
   return (
