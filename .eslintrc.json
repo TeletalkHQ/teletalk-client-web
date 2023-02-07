@@ -13,9 +13,8 @@
     "plugin:sonarjs/recommended"
   ],
   "globals": {
-    "expressRequest": true,
-    "expressResponse": true,
-    "logger": true
+    "logger": true,
+    "ioSocket": true
   },
   "overrides": [],
   "parserOptions": {

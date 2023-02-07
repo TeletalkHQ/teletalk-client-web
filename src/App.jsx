@@ -86,6 +86,7 @@ const App = () => {
           },
           others: {
             getState,
+            socket,
           },
           state,
         }}
