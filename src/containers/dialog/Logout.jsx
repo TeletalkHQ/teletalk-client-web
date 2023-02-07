@@ -8,6 +8,9 @@ import { useSelector } from "src/hooks/useThunkReducer";
 
 const Logout = ({ onDialogClose }) => {
   const state = useSelector();
+  const {
+    others: { socket },
+  } = useMainContext();
 
   const {
     hooksOutput: { dispatchAsync },
@@ -19,6 +22,7 @@ const Logout = ({ onDialogClose }) => {
 
   const handleLogout = () => {
     dispatchAsync(controllers.logout());
+    socket.emit("logout");
   };
 
   return (
