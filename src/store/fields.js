@@ -89,6 +89,7 @@ const sender = statics.object({
 });
 
 const messageItem = {
+  createdAt,
   message,
   messageId,
   sender,
