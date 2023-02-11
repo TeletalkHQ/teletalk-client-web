@@ -13,6 +13,7 @@ import MessageList from "src/components/rightSide/MessageList";
 import { controllers } from "src/controllers";
 
 import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useMainContext } from "src/hooks/useMainContext";
 
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
@@ -22,6 +23,9 @@ const RightSide = ({ participants }) => {
   const dispatch = useDispatch();
   const state = useSelector();
   const oldMessages = useRef([]);
+  const {
+    others: { socket },
+  } = useMainContext();
 
   const selectedUserId = state.message.selectedUserForPrivateChat.userId;
 
@@ -60,7 +64,7 @@ const RightSide = ({ participants }) => {
   };
 
   const handleSendMessage = async () => {
-    dispatch(controllers.sendPrivateMessage());
+    dispatch(controllers.sendPrivateMessage(socket));
   };
 
   const handleMessageContainerCloseClick = () => {

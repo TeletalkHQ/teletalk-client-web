@@ -1,26 +1,20 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { apiManager } from "src/classes/api/ApiManager";
 import { eventManager } from "src/classes/EventManager";
 
 import { store } from "src/store/store";
 
-const triggerMessageSentEvent = () => {
-  const eventName = eventManager.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
-  eventManager.emitEvent(eventName);
-};
-
-const sendPrivateMessage = () => {
+const sendPrivateMessage = (socket) => {
   return async (_dispatch, getState = store.initialStates) => {
     await trier(sendPrivateMessage.name)
-      .tryAsync(tryToSendPrivateMessage, getState())
+      .tryAsync(tryBlock, getState(), socket)
       .executeIfNoError(executeIfNoError)
       .runAsync();
   };
 };
 
-const tryToSendPrivateMessage = async (state) => {
-  await apiManager.apis.sendPrivateMessage.sendFullFeaturedRequest({
+const tryBlock = async (state, socket = ioSocket) => {
+  socket.emit("sendPrivateMessage", {
     message: state.message.messageInputTextValue,
     participantId: state.message.selectedUserForPrivateChat.userId,
   });
@@ -28,6 +22,11 @@ const tryToSendPrivateMessage = async (state) => {
 
 const executeIfNoError = () => {
   triggerMessageSentEvent();
+};
+
+const triggerMessageSentEvent = () => {
+  const eventName = eventManager.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
+  eventManager.emitEvent(eventName);
 };
 
 export { sendPrivateMessage };
