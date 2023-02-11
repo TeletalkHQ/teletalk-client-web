@@ -5,6 +5,7 @@ const messageActionPayloads = {
   [MESSAGE_ACTION_TYPES.UPDATE_ALL_PRIVATE_CHATS]: {
     privateChats: fields.statics.array({
       chatId: fields.single.chatId,
+      createdAt: fields.single.createdAt,
       messages: fields.collection.messages,
       participants: fields.collection.participants,
     }),
