@@ -1,8 +1,8 @@
-import { getAllPrivateChats } from "src/controllers/privateChat/getAllPrivateChats";
+import { getPrivateChats } from "src/controllers/privateChat/getPrivateChats";
 import { sendPrivateMessage } from "src/controllers/privateChat/sendPrivateMessage";
 
 const privateChatControllers = {
-  getAllPrivateChats,
+  getPrivateChats,
   sendPrivateMessage,
 };
 

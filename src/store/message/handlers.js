@@ -1,5 +1,3 @@
-import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
-
 const handleUpdateAllPrivateChats = (payload) => {
   return {
     privateChats: payload.privateChats,
@@ -14,35 +12,20 @@ const handleCloseRightSide = () => {
   };
 };
 
-const addNewMessage = (messages, newMessage) => {
-  return arrayUtilities.pushItems(messages, newMessage);
-};
-const handleAddNewToChatMessage = (payload, prevState) => {
-  const copyUser = { ...prevState };
+const handleAddNewMessage = (payload, prevState) => {
   const { chatId, newMessage } = payload;
 
-  const chatIndex = copyUser.chats?.findIndex(
-    (chat) => chat?.chatId === chatId
-  );
+  const copyPrivateChats = [...prevState.privateChats];
+  const index = copyPrivateChats.findIndex((item) => item.chatId === chatId);
+  const chat = copyPrivateChats[index];
+  const newChat = {
+    ...chat,
+    messages: [...chat.messages, newMessage],
+  };
 
-  if (chatIndex !== -1) {
-    const chat = copyUser.chats[chatIndex] || {
-      chatId,
-      messages: [newMessage],
-    };
-    const messagesWithNewMessage = addNewMessage(
-      chat.messages || [],
-      newMessage
-    );
-
-    const newChat = { ...chat, messages: messagesWithNewMessage };
-
-    copyUser.chats.splice(chatIndex, 1, newChat);
-  }
-
+  copyPrivateChats.splice(index, 1, newChat);
   return {
-    ...prevState,
-    chats: copyUser.chats,
+    privateChats: copyPrivateChats,
   };
 };
 
@@ -53,7 +36,7 @@ const handleSelectedUserForPrivateChat = (payload) => {
 };
 
 const messageReducerHandlers = {
-  handleAddNewToChatMessage,
+  handleAddNewMessage,
   handleCloseRightSide,
   handleSelectedUserForPrivateChat,
   handleUpdateAllPrivateChats,
