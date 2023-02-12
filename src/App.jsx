@@ -21,6 +21,11 @@ import { baseTheme } from "src/theme/baseTheme";
 const serverUrl = appConfigs.getConfigs().apiConfigs.SERVER_BASE_URL;
 const socket = io(serverUrl, {
   withCredentials: true,
+  autoConnect: false,
+});
+
+socket.onAny((event, ...args) => {
+  console.log(`socket.event:${event}`, ...args);
 });
 
 const states = store.initialStates();
@@ -34,7 +39,7 @@ const App = () => {
       setForceUpdate(!forceUpdate);
     };
     windowUtilities
-      .addProperty("pingSocket", ping)
+      .addProperty("ping", ping)
       .addProperty("socket", socket)
       .addProperty("updater", updater);
   }, [forceUpdate]);

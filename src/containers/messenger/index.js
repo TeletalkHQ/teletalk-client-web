@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { actions } from "src/store/actions";
+
 import { Box } from "src/components/general/box";
 
 import LeftSide from "src/containers/leftSide";
@@ -16,31 +18,28 @@ const Messenger = () => {
   const state = useSelector();
 
   const {
-    hooksOutput: { dispatchAsync },
+    hooksOutput: { dispatchAsync, dispatch },
+    others: { socket },
   } = useMainContext();
 
   const [participants, setParticipants] = useState([]);
 
   useEffect(() => {
-    let timeoutId;
+    socket.connect();
+    socket.emit("joinRoom");
+    socket.on("newPrivateChatMessage", ({ chatId, newMessage }) => {
+      dispatch(actions.addNewMessage({ chatId, newMessage }));
+    });
     const fn = async () => {
       await dispatchAsync(controllers.getCurrentUserData());
 
-      const updater = () => {
-        timeoutId = setTimeout(async () => {
-          if (state.global.viewMode === stateStatics.VIEW_MODES.MESSENGER) {
-            await dispatchAsync(controllers.getAllPrivateChats());
-          }
-          updater();
-        }, 500);
-      };
-
-      updater();
+      if (state.global.viewMode === stateStatics.VIEW_MODES.MESSENGER) {
+        await dispatchAsync(controllers.getAllPrivateChats());
+      }
     };
 
     fn();
 
-    return () => clearTimeout(timeoutId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
