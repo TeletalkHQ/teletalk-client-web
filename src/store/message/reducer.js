@@ -5,6 +5,9 @@ import { messageReducerHandlers } from "src/store/message/handlers";
 import { MESSAGE_ACTION_TYPES } from "src/store/message/types";
 
 const messageReducerCases = {
+  [MESSAGE_ACTION_TYPES.ADD_NEW_MESSAGE]:
+    messageReducerHandlers.handleAddNewMessage,
+
   [MESSAGE_ACTION_TYPES.CLOSE_RIGHT_SIDE]:
     messageReducerHandlers.handleCloseRightSide,
 
