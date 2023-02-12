@@ -9,10 +9,8 @@ class ApiManager {
 
   constructor() {
     this.apis = {
-      //? This is not necessary, its just for intellisense
       addContact: this.#apiTemplate,
       createNewUser: this.#apiTemplate,
-      getAllPrivateChats: this.#apiTemplate,
       getChatsLastMessage: this.#apiTemplate,
       getContacts: this.#apiTemplate,
       getCountries: this.#apiTemplate,
@@ -20,7 +18,6 @@ class ApiManager {
       getPublicUserData: this.#apiTemplate,
       getWelcomeMessage: this.#apiTemplate,
       logout: this.#apiTemplate,
-      sendPrivateMessage: this.#apiTemplate,
       updatePublicUserData: this.#apiTemplate,
       signIn: this.#apiTemplate,
       verify: this.#apiTemplate,
