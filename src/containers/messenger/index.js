@@ -30,12 +30,12 @@ const Messenger = () => {
     socket.on("newPrivateChatMessage", ({ chatId, newMessage }) => {
       dispatch(actions.addNewMessage({ chatId, newMessage }));
     });
+
     const fn = async () => {
       await dispatchAsync(controllers.getCurrentUserData());
 
-      if (state.global.viewMode === stateStatics.VIEW_MODES.MESSENGER) {
-        await dispatchAsync(controllers.getAllPrivateChats());
-      }
+      if (state.global.viewMode === stateStatics.VIEW_MODES.MESSENGER)
+        await dispatchAsync(controllers.getPrivateChats(socket));
     };
 
     fn();
