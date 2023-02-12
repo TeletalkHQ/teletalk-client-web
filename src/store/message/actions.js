@@ -2,6 +2,9 @@ import { actionHandler } from "src/classes/ActionHandler";
 
 import { MESSAGE_ACTION_TYPES } from "src/store/message/types";
 
+const addNewMessage = (payload) =>
+  actionHandler(MESSAGE_ACTION_TYPES.ADD_NEW_MESSAGE, payload);
+
 const closeRightSide = (payload) =>
   actionHandler(MESSAGE_ACTION_TYPES.CLOSE_RIGHT_SIDE, payload);
 
@@ -15,6 +18,7 @@ const updateAllPrivateChats = (payload) =>
   actionHandler(MESSAGE_ACTION_TYPES.UPDATE_ALL_PRIVATE_CHATS, payload);
 
 const messageActions = {
+  addNewMessage,
   closeRightSide,
   messageInputOnChange,
   selectedUserForPrivateChat,

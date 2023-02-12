@@ -20,7 +20,6 @@ class ApiManager {
       getPublicUserData: this.#apiTemplate,
       getWelcomeMessage: this.#apiTemplate,
       logout: this.#apiTemplate,
-      sendPrivateMessage: this.#apiTemplate,
       updatePublicUserData: this.#apiTemplate,
       signIn: this.#apiTemplate,
       verify: this.#apiTemplate,
