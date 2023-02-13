@@ -13,21 +13,21 @@ import { useMainContext } from "src/hooks/useMainContext";
 import { useSelector } from "src/hooks/useThunkReducer";
 
 import { stateStatics } from "src/store/stateStatics";
+import { websocket } from "src/classes/Websocket";
 
 const Messenger = () => {
   const state = useSelector();
 
   const {
     hooksOutput: { dispatchAsync, dispatch },
-    others: { socket },
   } = useMainContext();
 
   const [participants, setParticipants] = useState([]);
 
   useEffect(() => {
-    socket.connect();
-    socket.emit("joinRoom");
-    socket.on("newPrivateChatMessage", ({ chatId, newMessage }) => {
+    websocket.client.connect();
+    websocket.client.emit("joinRoom");
+    websocket.client.on("newPrivateChatMessage", ({ chatId, newMessage }) => {
       dispatch(actions.addNewMessage({ chatId, newMessage }));
     });
 
@@ -35,7 +35,7 @@ const Messenger = () => {
       await dispatchAsync(controllers.getCurrentUserData());
 
       if (state.global.viewMode === stateStatics.VIEW_MODES.MESSENGER)
-        await dispatchAsync(controllers.getPrivateChats(socket));
+        await dispatchAsync(controllers.getPrivateChats());
     };
 
     fn();

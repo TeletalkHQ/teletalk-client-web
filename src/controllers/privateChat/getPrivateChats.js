@@ -1,17 +1,17 @@
 import { trier } from "utility-store/src/classes/Trier";
 
+import { websocket } from "src/classes/Websocket";
+
 import { actions } from "src/store/actions";
 
-const getPrivateChats = (socket) => {
+const getPrivateChats = () => {
   return async (dispatch) => {
-    await trier(getPrivateChats.name)
-      .tryAsync(tryBlock, socket, dispatch)
-      .runAsync();
+    await trier(getPrivateChats.name).tryAsync(tryBlock, dispatch).runAsync();
   };
 };
 
-const tryBlock = async (socket = ioSocket, dispatch) => {
-  socket.emit("getPrivateChats", undefined, (privateChats) => {
+const tryBlock = async (dispatch) => {
+  websocket.client.emit("getPrivateChats", undefined, (privateChats) => {
     dispatch(
       actions.updateAllPrivateChats({
         privateChats,
