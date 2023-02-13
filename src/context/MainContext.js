@@ -12,7 +12,6 @@ const MainContext = createContext({
   },
   others: {
     getState: store.initialStates,
-    socket: ioSocket,
   },
   state: store.initialStates(),
 });

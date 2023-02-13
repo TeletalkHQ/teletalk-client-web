@@ -30,9 +30,9 @@ const dispatcher = ({ action, dispatch, getState }) => {
     : dispatch(action);
 };
 
-const useThunkReducer = (reducer, initialState) => {
+const useThunkReducer = (reducer, initialState, initializer) => {
   try {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState, initializer);
 
     const getState = () => state;
 

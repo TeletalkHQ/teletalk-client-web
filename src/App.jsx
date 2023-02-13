@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 
 import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
-import io from "socket.io-client";
+import { ThemeProvider } from "@mui/material/styles";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 import { appConfigs } from "src/classes/AppConfigs";
+import { websocket } from "src/classes/Websocket";
 
 import View from "src/containers/view";
 
 import { MainContext } from "src/context/MainContext";
+
+import { events } from "src/events";
 
 import { useThunkReducer } from "src/hooks/useThunkReducer";
 
@@ -18,20 +20,12 @@ import { store } from "src/store/store";
 
 import { baseTheme } from "src/theme/baseTheme";
 
-const serverUrl = appConfigs.getConfigs().apiConfigs.SERVER_BASE_URL;
-const socket = io(serverUrl, {
-  withCredentials: true,
-  autoConnect: false,
-});
-
-socket.onAny((event, ...args) => {
-  console.log(`socket.event:${event}`, ...args);
-});
-
-const states = store.initialStates();
-
 const App = () => {
-  const [state = states, dispatch] = useThunkReducer(store.rootReducer, states);
+  const [state, dispatch] = useThunkReducer(
+    store.rootReducer,
+    {},
+    store.initialStates
+  );
   const [forceUpdate, setForceUpdate] = useState(false);
 
   useEffect(() => {
@@ -39,8 +33,7 @@ const App = () => {
       setForceUpdate(!forceUpdate);
     };
     windowUtilities
-      .addProperty("ping", ping)
-      .addProperty("socket", socket)
+      .addProperty("websocket", websocket)
       .addProperty("updater", updater);
   }, [forceUpdate]);
 
@@ -48,15 +41,13 @@ const App = () => {
     windowUtilities.addProperty("state", state);
   }, [state]);
 
+  useEffect(() => {
+    events.websocket.otherEvents();
+  }, []);
+
   const dispatchAsync = async (action) => await dispatch(action);
 
   const getState = () => state;
-
-  const ping = (...args) => {
-    //TODO: Add http
-    socket.on("pong", (...args) => console.log(...args));
-    socket.emit("ping", ...args);
-  };
 
   const maxNotification = appConfigs.getConfigs().ui.maxNotification;
   return (
@@ -69,7 +60,6 @@ const App = () => {
           },
           others: {
             getState,
-            socket,
           },
           state,
         }}

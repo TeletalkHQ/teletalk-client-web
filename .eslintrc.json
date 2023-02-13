@@ -13,8 +13,7 @@
     "plugin:sonarjs/recommended"
   ],
   "globals": {
-    "logger": true,
-    "ioSocket": true
+    "logger": true
   },
   "overrides": [],
   "parserOptions": {
