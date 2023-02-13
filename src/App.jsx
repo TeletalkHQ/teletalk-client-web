@@ -6,18 +6,19 @@ import { ThemeProvider } from "@mui/material/styles";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 import { appConfigs } from "src/classes/AppConfigs";
+import { websocket } from "src/classes/Websocket";
 
 import View from "src/containers/view";
 
 import { MainContext } from "src/context/MainContext";
+
+import { events } from "src/events";
 
 import { useThunkReducer } from "src/hooks/useThunkReducer";
 
 import { store } from "src/store/store";
 
 import { baseTheme } from "src/theme/baseTheme";
-
-import { websocket } from "src/classes/Websocket";
 
 const App = () => {
   const [state, dispatch] = useThunkReducer(
@@ -39,6 +40,10 @@ const App = () => {
   useEffect(() => {
     windowUtilities.addProperty("state", state);
   }, [state]);
+
+  useEffect(() => {
+    events.websocket.otherEvents();
+  }, []);
 
   const dispatchAsync = async (action) => await dispatch(action);
 
