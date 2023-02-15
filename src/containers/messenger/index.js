@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import { actions } from "src/store/actions";
 
+import { websocket } from "src/classes/Websocket";
+
 import { Box } from "src/components/general/box";
 
 import LeftSide from "src/containers/leftSide";
@@ -13,33 +15,34 @@ import { useMainContext } from "src/hooks/useMainContext";
 import { useSelector } from "src/hooks/useThunkReducer";
 
 import { stateStatics } from "src/store/stateStatics";
-import { websocket } from "src/classes/Websocket";
 
 const Messenger = () => {
   const state = useSelector();
 
   const {
-    hooksOutput: { dispatchAsync, dispatch },
+    hooksOutput: { dispatch, dispatchAsync },
   } = useMainContext();
 
   const [participants, setParticipants] = useState([]);
 
   useEffect(() => {
-    websocket.client.connect();
-    websocket.client.emit("joinRoom");
-    websocket.client.on("newPrivateChatMessage", ({ chatId, newMessage }) => {
-      dispatch(actions.addNewMessage({ chatId, newMessage }));
-    });
-
     const fn = async () => {
+      websocket.client.connect();
+      websocket.client.emit("joinRoom");
+
       await dispatchAsync(controllers.getCurrentUserData());
 
       if (state.global.viewMode === stateStatics.VIEW_MODES.MESSENGER)
         await dispatchAsync(controllers.getPrivateChats());
+
+      websocket.client.on("newPrivateChatMessage", (data) => {
+        dispatch(controllers.newPrivateChatMessage(data));
+      });
     };
 
     fn();
 
+    return () => websocket.client.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

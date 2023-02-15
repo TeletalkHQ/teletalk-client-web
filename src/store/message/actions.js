@@ -17,9 +17,13 @@ const selectedUserForPrivateChat = (payload) =>
 const updateAllPrivateChats = (payload) =>
   actionHandler(MESSAGE_ACTION_TYPES.UPDATE_ALL_PRIVATE_CHATS, payload);
 
+const createNewPrivateChat = (payload) =>
+  actionHandler(MESSAGE_ACTION_TYPES.CREATE_NEW_PRIVATE_CHAT, payload);
+
 const messageActions = {
   addNewMessage,
   closeRightSide,
+  createNewPrivateChat,
   messageInputOnChange,
   selectedUserForPrivateChat,
   updateAllPrivateChats,
