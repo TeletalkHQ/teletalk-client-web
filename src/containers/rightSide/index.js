@@ -47,6 +47,7 @@ const RightSide = ({ participants }) => {
     eventManager.addListener(eventName, () => {
       dispatch(actions.messageInputOnChange({ messageInputTextValue: "" }));
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const selectedParticipantToChat = participants.find(
