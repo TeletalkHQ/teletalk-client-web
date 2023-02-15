@@ -11,8 +11,6 @@ const UserInfo = ({ onDialogClose }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const selectedUserId = state.message.selectedUserForPrivateChat.userId;
-
   const handleItemClick = (item) => {
     handleClose();
     dispatch(commonActions.openDialog(item.name, { zIndex: 1500 }));

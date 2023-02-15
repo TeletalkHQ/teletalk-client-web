@@ -25,6 +25,7 @@ const InitialSetup = () => {
     if (state.other.isStuffImported) {
       dispatch(controllers.initialSetup());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.other.isStuffImported]);
 
   return (

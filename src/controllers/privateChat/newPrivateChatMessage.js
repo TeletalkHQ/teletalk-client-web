@@ -8,14 +8,14 @@ const newPrivateChatMessage = ({ chatId, newMessage }) => {
     if (isChatExist(state, chatId))
       return dispatch(actions.addNewMessage({ chatId, newMessage }));
 
-    // websocket.client.emit("getChatInfo", { chatId }, (chatInfo) => {
-    //   dispatch(
-    //     actions.createNewPrivateChat({
-    //       ...chatInfo,
-    //       messages: [newMessage],
-    //     })
-    //   );
-    // });
+    websocket.client.emit("getChatInfo", { chatId }, (chatInfo) => {
+      dispatch(
+        actions.createNewPrivateChat({
+          ...chatInfo,
+          messages: [newMessage],
+        })
+      );
+    });
   };
 };
 
