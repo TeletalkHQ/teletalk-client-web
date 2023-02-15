@@ -7,14 +7,12 @@ import { stuffStore } from "src/classes/StuffStore";
 
 import { utilities } from "src/utilities";
 
-import { extractedDispatch } from "src/hooks/useThunkReducer";
-
 import { actions } from "src/store/actions";
 
 import { variables } from "src/variables";
 
 class CommonTasks {
-  resetEverything() {
+  resetEverything(dispatch) {
     persistentStorage.setDefaultStorage();
 
     [
@@ -22,15 +20,8 @@ class CommonTasks {
       actions.resetGlobalState,
       actions.resetAuthState,
     ].forEach((action) => {
-      extractedDispatch(action());
+      dispatch(action());
     });
-  }
-
-  resetMessageInputText() {
-    //TODO: Remove extractedDispatch
-    extractedDispatch(
-      actions.messageInputOnChange({ messageInputTextValue: "" })
-    );
   }
 
   checkAndExecute(condition, callback) {

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { actions } from "src/store/actions";
-
 import { websocket } from "src/classes/Websocket";
 
 import { Box } from "src/components/general/box";
@@ -11,17 +9,13 @@ import RightSide from "src/containers/rightSide";
 
 import { controllers } from "src/controllers";
 
-import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { stateStatics } from "src/store/stateStatics";
 
 const Messenger = () => {
-  const state = useSelector();
-
-  const {
-    hooksOutput: { dispatch, dispatchAsync },
-  } = useMainContext();
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const [participants, setParticipants] = useState([]);
 
@@ -30,10 +24,10 @@ const Messenger = () => {
       websocket.client.connect();
       websocket.client.emit("joinRoom");
 
-      await dispatchAsync(controllers.getCurrentUserData());
+      dispatch(controllers.getCurrentUserData());
 
       if (state.global.viewMode === stateStatics.VIEW_MODES.MESSENGER)
-        await dispatchAsync(controllers.getPrivateChats());
+        dispatch(controllers.getPrivateChats());
 
       websocket.client.on("newPrivateChatMessage", (data) => {
         dispatch(controllers.newPrivateChatMessage(data));

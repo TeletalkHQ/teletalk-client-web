@@ -16,7 +16,7 @@ import LoadingButton from "src/components/auth/LoadingButton";
 
 import { controllers } from "src/controllers";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { actions } from "src/store/actions";
 
@@ -26,7 +26,7 @@ import { variables } from "src/variables";
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const state = useSelector();
+  const state = useSelector((state) => state);
 
   useEffect(() => {
     const fn = async () => {

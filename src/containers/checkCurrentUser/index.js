@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-import { controllers } from "src/controllers";
+import { useDispatch } from "react-redux";
 
-import { useDispatch } from "src/hooks/useThunkReducer";
+import { controllers } from "src/controllers";
 
 const CheckCurrentUser = () => {
   const dispatch = useDispatch();

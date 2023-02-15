@@ -6,7 +6,7 @@ import { utilities } from "src/utilities";
 import { commonTasks } from "src/classes/CommonTasks";
 import { appConfigs } from "src/classes/AppConfigs";
 
-import { store } from "src/store/store";
+import { payloads } from "src/store/store";
 
 import { variables } from "src/variables";
 
@@ -23,20 +23,20 @@ const ioFieldsCheckerErrors = {
     variables.notification.error.REQUIRED_FIELD_TYPE_WRONG,
 };
 
-const payloads = {
-  ...store.payloads.auth,
-  ...store.payloads.global,
-  ...store.payloads.message,
-  ...store.payloads.notification,
-  ...store.payloads.other,
-  ...store.payloads.user,
+const allPayloads = {
+  ...payloads.auth,
+  ...payloads.global,
+  ...payloads.message,
+  ...payloads.notification,
+  ...payloads.other,
+  ...payloads.user,
 };
 
 class ActionHandler {
   constructor(type, payload) {
     this.payload = payload;
     this.type = type;
-    this.payloadModel = payloads[this.type];
+    this.payloadModel = allPayloads[this.type];
 
     this.catchTryToHandleAction = this.catchTryToHandleAction.bind(this);
     this.tryToHandleAction = this.tryToHandleAction.bind(this);

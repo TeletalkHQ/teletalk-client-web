@@ -3,19 +3,15 @@ import EditBioComponents from "src/components/dialog/editBio";
 
 import DialogTemplate from "src/components/dialog/Template";
 import { controllers } from "src/controllers";
-import { useMainContext } from "src/hooks/useMainContext";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 
 const EditBio = ({ onDialogClose }) => {
-  const state = useSelector();
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const {
-    hooksOutput: { dispatchAsync },
-  } = useMainContext();
 
   const handleInputChange = (event) => {
     dispatch(
@@ -26,7 +22,7 @@ const EditBio = ({ onDialogClose }) => {
   };
 
   const handleSaveClick = async () => {
-    await dispatchAsync(controllers.updateProfile());
+    await dispatch(controllers.updateProfile());
     handleBack();
   };
   const handleClose = () => {

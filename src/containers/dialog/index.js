@@ -8,14 +8,14 @@ import Logout from "src/containers/dialog/Logout";
 import Settings from "src/containers/dialog/Settings";
 import UserInfo from "src/containers/dialog/UserInfo";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { commonActions } from "src/store/commonActions";
 import { stateStatics } from "src/store/stateStatics";
 
 const Dialog = () => {
   const dispatch = useDispatch();
-  const state = useSelector();
+  const state = useSelector((state) => state);
 
   const handleDialogClose = (dialogName) => {
     dispatch(commonActions.closeDialog(dialogName));

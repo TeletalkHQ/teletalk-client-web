@@ -6,7 +6,7 @@ import { Box } from "src/components/general/box";
 import DrawerList from "src/components/portal/appDrawer/DrawerList";
 import PersonalData from "src/components/portal/appDrawer/PersonalData";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { commonActions } from "src/store/commonActions";
 
@@ -15,7 +15,7 @@ import { userUtilities } from "src/classes/UserUtilities";
 
 const AppDrawer = () => {
   const dispatch = useDispatch();
-  const state = useSelector();
+  const state = useSelector((state) => state);
 
   const toggleDrawer = (event, open) => {
     if (
