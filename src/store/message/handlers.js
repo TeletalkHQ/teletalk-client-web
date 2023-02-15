@@ -35,9 +35,14 @@ const handleSelectedUserForPrivateChat = (payload) => {
   };
 };
 
+const handleCreateNewPrivateChat = (payload) => {
+  console.log("handleCreateNewPrivateChat:", payload);
+};
+
 const messageReducerHandlers = {
   handleAddNewMessage,
   handleCloseRightSide,
+  handleCreateNewPrivateChat,
   handleSelectedUserForPrivateChat,
   handleUpdateAllPrivateChats,
 };

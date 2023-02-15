@@ -2,7 +2,7 @@ import Messenger from "src/containers/messenger";
 import Portal from "src/containers/portal";
 import InitialSetup from "src/containers/InitialSetup";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { stateStatics } from "src/store/stateStatics";
 import { commonActions } from "src/store/commonActions";
@@ -12,7 +12,7 @@ import SignIn from "src/containers/signIn";
 import Verify from "src/containers/verify";
 
 const View = () => {
-  const state = useSelector();
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const handleGlobalLoadingClose = () => {

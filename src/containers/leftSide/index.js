@@ -4,7 +4,7 @@ import ChatList from "src/components/leftSide/ChatList";
 import { Box } from "src/components/general/box";
 import SearchBar from "src/components/leftSide/SearchBar";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
@@ -12,7 +12,7 @@ import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
 const LeftSide = ({ participants }) => {
   const dispatch = useDispatch();
-  const state = useSelector();
+  const state = useSelector((state) => state);
 
   const chatList = useMemo(() => {
     if (!participants.length) return [];

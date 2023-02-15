@@ -5,13 +5,13 @@ import { userUtilities } from "src/classes/UserUtilities";
 import DialogTemplate from "src/components/dialog/Template";
 import EditProfileComponents from "src/components/dialog/editProfile";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 
 const EditProfile = ({ onDialogClose }) => {
-  const state = useSelector();
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const EditProfile = ({ onDialogClose }) => {
         })
       );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.global.dialogState.editProfile.open, state.user]);
+  }, [state.global.dialogState.editProfile.open]);
 
   const handleItemClick = (item) => {
     handleClose();

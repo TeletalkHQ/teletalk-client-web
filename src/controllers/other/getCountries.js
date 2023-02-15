@@ -7,21 +7,22 @@ import { actions } from "src/store/actions";
 const getCountries = () => {
   return async (dispatch) => {
     await trier(getCountries.name)
-      .tryAsync(tryToGetCountries)
-      .executeIfNoError(executeIfNoErrorOnTryToGetCountries, dispatch)
+      .tryAsync(tryBlock)
+      .executeIfNoError(executeIfNoError, dispatch)
       .runAsync();
   };
 };
 
-const tryToGetCountries = async () => {
+const tryBlock = async () => {
   const {
     data: { countries },
   } = await apiManager.apis.getCountries.sendFullFeaturedRequest();
   return countries;
 };
 
-const executeIfNoErrorOnTryToGetCountries = (countries, dispatch) => {
-  dispatch(actions.getCountries({ countries }));
+const executeIfNoError = (countries, dispatch) => {
+  const action = actions.getCountries({ countries });
+  dispatch(action);
 };
 
 export { getCountries };

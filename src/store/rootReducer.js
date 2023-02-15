@@ -1,4 +1,4 @@
-import { combineReducers } from "src/hooks/useThunkReducer/tools";
+import { combineReducers } from "redux";
 
 import { reducers } from "src/store/reducers";
 

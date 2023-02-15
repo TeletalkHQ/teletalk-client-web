@@ -22,10 +22,6 @@ const tryBlock = async (state) => {
 };
 
 const executeIfNoError = () => {
-  triggerMessageSentEvent();
-};
-
-const triggerMessageSentEvent = () => {
   const eventName = eventManager.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
   eventManager.emitEvent(eventName);
 };

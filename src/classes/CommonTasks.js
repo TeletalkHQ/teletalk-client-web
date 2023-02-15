@@ -5,9 +5,9 @@ import { notificationManager } from "src/classes/NotificationManager";
 import { persistentStorage } from "src/classes/PersistentStorage";
 import { stuffStore } from "src/classes/StuffStore";
 
-import { utilities } from "src/utilities";
+import { extractedDispatch } from "src/helpers/extractedDispatch";
 
-import { extractedDispatch } from "src/hooks/useThunkReducer";
+import { utilities } from "src/utilities";
 
 import { actions } from "src/store/actions";
 
@@ -24,13 +24,6 @@ class CommonTasks {
     ].forEach((action) => {
       extractedDispatch(action());
     });
-  }
-
-  resetMessageInputText() {
-    //TODO: Remove extractedDispatch
-    extractedDispatch(
-      actions.messageInputOnChange({ messageInputTextValue: "" })
-    );
   }
 
   checkAndExecute(condition, callback) {

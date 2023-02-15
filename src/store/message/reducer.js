@@ -11,12 +11,15 @@ const messageReducerCases = {
   [MESSAGE_ACTION_TYPES.CLOSE_RIGHT_SIDE]:
     messageReducerHandlers.handleCloseRightSide,
 
+  [MESSAGE_ACTION_TYPES.CREATE_NEW_PRIVATE_CHAT]:
+    messageReducerHandlers.handleCreateNewPrivateChat,
+
+  [MESSAGE_ACTION_TYPES.MESSAGE_INPUT_ONCHANGE]: (payload) => payload,
+
   [MESSAGE_ACTION_TYPES.UPDATE_ALL_PRIVATE_CHATS]:
     messageReducerHandlers.handleUpdateAllPrivateChats,
 
   [MESSAGE_ACTION_TYPES.RESET_MESSAGE_STATE]: initialMessageState,
-
-  [MESSAGE_ACTION_TYPES.MESSAGE_INPUT_ONCHANGE]: (payload) => payload,
 
   [MESSAGE_ACTION_TYPES.SELECTED_USER_FOR_PRIVATE_CHAT]:
     messageReducerHandlers.handleSelectedUserForPrivateChat,

@@ -11,10 +11,13 @@ const ChatListItem = ({ message, name, onChatListItemClick, selected }) => {
     <Box.ListItemButton
       selected={selected}
       style={{
+        borderRadius: "10px",
         display: "flex",
         height: "65px",
-        borderRadius: "10px",
         justifyContent: "space-between",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
       }}
       onClick={onChatListItemClick}
     >
