@@ -6,14 +6,14 @@ import OverlayLoading from "src/components/portal/OverlayLoading";
 
 import DialogContainer from "src/containers/dialog";
 
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useSelector } from "react-redux";
 
 const PortalProvider = ({ children }) => {
   return createPortal(children, document.querySelector("#portalContainer"));
 };
 
 const Portal = ({ onGlobalLoadingClose }) => {
-  const state = useSelector();
+  const state = useSelector((state) => state);
 
   return (
     <PortalProvider>

@@ -1,14 +1,14 @@
 import DialogTemplate from "src/components/dialog/Template";
 import UserInfoComponents from "src/components/dialog/userInfo";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 import { stateStatics } from "src/store/stateStatics";
 
 const UserInfo = ({ onDialogClose }) => {
-  const state = useSelector();
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const selectedUserId = state.message.selectedUserForPrivateChat.userId;

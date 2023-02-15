@@ -5,8 +5,6 @@ const newPrivateChatMessage = ({ chatId, newMessage }) => {
   return (dispatch, getState) => {
     const state = getState();
 
-    console.log(state.message.privateChats, isChatExist(state, chatId));
-
     if (isChatExist(state, chatId))
       return dispatch(actions.addNewMessage({ chatId, newMessage }));
 

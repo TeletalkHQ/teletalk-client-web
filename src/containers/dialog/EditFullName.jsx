@@ -3,18 +3,14 @@ import EditFullNameComponents from "src/components/dialog/editFullName";
 
 import { controllers } from "src/controllers";
 
-import { useMainContext } from "src/hooks/useMainContext";
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 
 const EditFullName = ({ onDialogClose }) => {
-  const state = useSelector();
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const {
-    hooksOutput: { dispatchAsync },
-  } = useMainContext();
 
   const handleInputChange = (event) => {
     dispatch(
@@ -25,7 +21,7 @@ const EditFullName = ({ onDialogClose }) => {
   };
 
   const handleSaveClick = async () => {
-    await dispatchAsync(controllers.updateProfile());
+    await dispatch(controllers.updateProfile());
     handleBack();
   };
   const handleClose = () => {

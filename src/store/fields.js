@@ -42,6 +42,7 @@ const errorCode = statics.number;
 const errorReason = statics.string;
 const firstName = statics.string;
 const isOnline = statics.boolean;
+const isStuffImported = statics.boolean;
 const lastName = statics.string;
 const message = statics.string;
 const messageId = statics.string;
@@ -127,6 +128,7 @@ const single = {
   errorReason,
   firstName,
   isOnline,
+  isStuffImported,
   lastName,
   message,
   messageId,

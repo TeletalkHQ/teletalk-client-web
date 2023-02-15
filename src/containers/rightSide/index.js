@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
 import { domUtilities } from "utility-store/src/classes/DomUtilities";
 
-import { commonTasks } from "src/classes/CommonTasks";
 import { eventManager } from "src/classes/EventManager";
 
 import ChatBar from "src/components/rightSide/ChatBar";
@@ -12,15 +12,13 @@ import MessageList from "src/components/rightSide/MessageList";
 
 import { controllers } from "src/controllers";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
-
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 import { stateStatics } from "src/store/stateStatics";
 
 const RightSide = ({ participants }) => {
   const dispatch = useDispatch();
-  const state = useSelector();
+  const state = useSelector((state) => state);
   const oldMessages = useRef([]);
 
   const selectedUserId = state.message.selectedUserForPrivateChat.userId;
@@ -37,7 +35,7 @@ const RightSide = ({ participants }) => {
     if (oldMessages.current.length < selectedChatMessages.length) {
       const messageBox = domUtilities().getElementById("messageBox");
       messageBox.scrollTo({
-        top: "2000",
+        top: messageBox.scrollHeight,
       });
     }
 
@@ -47,7 +45,7 @@ const RightSide = ({ participants }) => {
   useEffect(() => {
     const eventName = eventManager.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
     eventManager.addListener(eventName, () => {
-      commonTasks.resetMessageInputText();
+      dispatch(actions.messageInputOnChange({ messageInputTextValue: "" }));
     });
   }, []);
 

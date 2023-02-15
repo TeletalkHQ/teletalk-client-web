@@ -11,8 +11,7 @@ import DialogTemplate from "src/components/dialog/Template";
 
 import { controllers } from "src/controllers";
 
-import { useMainContext } from "src/hooks/useMainContext";
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { commonActions } from "src/store/commonActions";
 import { stateStatics } from "src/store/stateStatics";
@@ -25,11 +24,7 @@ const AddNewContact = componentBuilder
   .create()
   .registerComponent("AddNewContact", ({ onDialogClose }) => {
     const dispatch = useDispatch();
-    const state = useSelector();
-
-    const {
-      hooksOutput: { dispatchAsync },
-    } = useMainContext();
+    const state = useSelector((state) => state);
 
     useEffect(() => {
       const fn = async () => {
@@ -51,7 +46,7 @@ const AddNewContact = componentBuilder
 
     const handleAddNewContactClick = async () => {
       const { userId, ...rest } = contact;
-      const result = await dispatchAsync(controllers.addContact(rest));
+      const result = await dispatch(controllers.addContact(rest));
 
       if (result.ok === false) return;
 

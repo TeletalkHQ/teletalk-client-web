@@ -5,21 +5,21 @@ import { userUtilities } from "src/classes/UserUtilities";
 import DialogTemplate from "src/components/dialog/Template";
 import SettingsComponents from "src/components/dialog/settings";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 import { commonActions } from "src/store/commonActions";
 
 const Settings = ({ onDialogClose }) => {
-  const state = useSelector();
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const handleCloseContactDialog = () => {
+  const handleCloseDialog = () => {
     onDialogClose("settings");
   };
 
   const handleSettingItemClick = (item) => {
     const name = lodash.camelCase(item.displayName);
-    handleCloseContactDialog();
+    handleCloseDialog();
 
     dispatch(commonActions.openDialog(name, { zIndex: 1500 }));
   };
@@ -38,11 +38,9 @@ const Settings = ({ onDialogClose }) => {
           onSettingItemClick={handleSettingItemClick}
         />
       }
-      actions={
-        <SettingsComponents.Actions onClose={handleCloseContactDialog} />
-      }
+      actions={<SettingsComponents.Actions onClose={handleCloseDialog} />}
       open={state.global.dialogState.settings.open}
-      onClose={handleCloseContactDialog}
+      onClose={handleCloseDialog}
     />
   );
 };

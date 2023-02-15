@@ -8,16 +8,17 @@ import { commonActions } from "src/store/commonActions";
 const getCurrentUserData = () => {
   return async (dispatch) => {
     await trier(getCurrentUserData.name)
-      .tryAsync(tryToGetUserData, dispatch)
+      .tryAsync(tryBlock, dispatch)
       .executeIfNoError(executeIfNoError, dispatch)
-      .catch(catchTryToGetUserData, dispatch)
+      .catch(catchBlock, dispatch)
       .finally(() => dispatch(commonActions.closeGlobalLoading()))
       .runAsync();
   };
 };
 
-const tryToGetUserData = async (dispatch) => {
+const tryBlock = async (dispatch) => {
   dispatch(commonActions.openGlobalLoading());
+
   const response = (
     await apiManager.apis.getCurrentUserData.sendRequest()
   ).getResponse();
@@ -31,7 +32,7 @@ const executeIfNoError = (data, dispatch) => {
   dispatch(commonActions.changeViewMode.messenger());
 };
 
-const catchTryToGetUserData = (_error, dispatch) =>
+const catchBlock = (_error, dispatch) =>
   dispatch(commonActions.changeViewMode.signIn());
 
 export { getCurrentUserData };
