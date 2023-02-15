@@ -5,16 +5,11 @@ import FullPageLoading from "src/components/portal/FullPageLoading";
 
 import { controllers } from "src/controllers";
 
-import { useDispatch, useSelector } from "src/hooks/useThunkReducer";
-import { useMainContext } from "src/hooks/useMainContext";
+import { useDispatch, useSelector } from "react-redux";
 
 const InitialSetup = () => {
   const dispatch = useDispatch();
-  const state = useSelector();
-
-  const {
-    hooksOutput: { dispatchAsync },
-  } = useMainContext();
+  const state = useSelector((state) => state);
 
   useEffect(() => {
     startInitialSetup();
@@ -23,8 +18,14 @@ const InitialSetup = () => {
   }, []);
 
   const startInitialSetup = () => {
-    dispatch(controllers.initialSetup(dispatchAsync));
+    dispatch(controllers.getAllStuff());
   };
+
+  useEffect(() => {
+    if (state.other.isStuffImported) {
+      dispatch(controllers.initialSetup());
+    }
+  }, [state.other.isStuffImported]);
 
   return (
     <>

@@ -5,22 +5,18 @@ import { websocket } from "src/classes/Websocket";
 
 import { controllers } from "src/controllers";
 
-import { useMainContext } from "src/hooks/useMainContext";
-import { useSelector } from "src/hooks/useThunkReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 const Logout = ({ onDialogClose }) => {
-  const state = useSelector();
-
-  const {
-    hooksOutput: { dispatchAsync },
-  } = useMainContext();
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const handleClose = () => {
     onDialogClose("logout");
   };
 
   const handleLogout = () => {
-    dispatchAsync(controllers.logout());
+    dispatch(controllers.logout());
     websocket.client.emit("logout");
   };
 

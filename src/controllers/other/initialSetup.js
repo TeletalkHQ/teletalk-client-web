@@ -9,29 +9,25 @@ import { eventManager } from "src/classes/EventManager";
 import { stuffStore } from "src/classes/StuffStore";
 import { validatorManager } from "src/classes/validator/ValidatorManager";
 
-import { controllers } from "src/controllers";
-
 import { events } from "src/events";
 
 import { actions } from "src/store/actions";
 import { stateStatics } from "src/store/stateStatics";
 import { commonActions } from "src/store/commonActions";
 
-const initialSetup = (dispatchAsync) => async (dispatch) => {
+const initialSetup = () => async (dispatch) => {
   await trier(initialSetup.name)
-    .tryAsync(tryBlock, dispatch, dispatchAsync)
+    .tryAsync(tryBlock, dispatch, dispatch)
     .catch(catchBlock, dispatch)
     .finally(finallyBlock, dispatch)
     .runAsync();
 };
 
-const tryBlock = async (dispatch, dispatchAsync) => {
+const tryBlock = async (dispatch) => {
   events.addOnlineStatusEvents();
   dispatch(commonActions.openGlobalLoading());
 
-  await dispatchAsync(controllers.getAllStuff());
-
-  addWindowProperties(dispatch, dispatchAsync);
+  addWindowProperties(dispatch);
 
   dispatch(commonActions.changeViewMode.auth());
 
@@ -53,14 +49,13 @@ const catchBlock = (_error, dispatch) => {
 const finallyBlock = (_, dispatch) =>
   dispatch(commonActions.closeGlobalLoading());
 
-const addWindowProperties = (dispatch, dispatchAsync) => {
+const addWindowProperties = (dispatch) => {
   windowUtilities
     .addProperty("actions", actions)
     .addProperty("apiManager", apiManager)
     .addProperty("appConfigs", appConfigs)
     .addProperty("componentController", componentController)
     .addProperty("dispatch", dispatch)
-    .addProperty("dispatchAsync", dispatchAsync)
     .addProperty("envManager", envManager)
     .addProperty("eventManager", eventManager)
     .addProperty("stuffs", stuffStore.getStore())
