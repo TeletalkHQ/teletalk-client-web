@@ -1,13 +1,17 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
-import reportWebVitals from "src/reportWebVitals";
+import { Provider } from "react-redux";
 
 import "src/others/customGlobals";
 
 import App from "src/App";
 
 import { appConfigs } from "src/classes/AppConfigs";
+
+import reportWebVitals from "src/reportWebVitals";
+
+import { store } from "src/store/store";
 
 appConfigs.setDebugLevel();
 
@@ -16,7 +20,9 @@ const root = createRoot(container);
 
 root.render(
   // <React.StrictMode>
-  <App />
+  <Provider store={store}>
+    <App />
+  </Provider>
   // </React.StrictMode>
 );
 
