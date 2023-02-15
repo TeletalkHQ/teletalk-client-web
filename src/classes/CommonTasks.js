@@ -5,6 +5,8 @@ import { notificationManager } from "src/classes/NotificationManager";
 import { persistentStorage } from "src/classes/PersistentStorage";
 import { stuffStore } from "src/classes/StuffStore";
 
+import { extractedDispatch } from "src/helpers/extractedDispatch";
+
 import { utilities } from "src/utilities";
 
 import { actions } from "src/store/actions";
@@ -12,7 +14,7 @@ import { actions } from "src/store/actions";
 import { variables } from "src/variables";
 
 class CommonTasks {
-  resetEverything(dispatch) {
+  resetEverything() {
     persistentStorage.setDefaultStorage();
 
     [
@@ -20,7 +22,7 @@ class CommonTasks {
       actions.resetGlobalState,
       actions.resetAuthState,
     ].forEach((action) => {
-      dispatch(action());
+      extractedDispatch(action());
     });
   }
 
