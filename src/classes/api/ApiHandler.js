@@ -8,14 +8,38 @@ import { utilities } from "src/utilities";
 
 import { variables } from "src/variables";
 
+const inputFieldsCheckErrors = {
+  ioDataFieldTypeWrongError:
+    variables.notification.error.INPUT_FILED_TYPE_WRONG,
+  missingFieldsError: variables.notification.error.INPUT_FIELDS_MISSING,
+  overloadFieldsError: variables.notification.error.INPUT_FIELDS_OVERLOAD,
+  requiredFieldsNotDefinedError:
+    variables.notification.error.REQUIRED_FIELDS_NOT_DEFINED,
+  requiredFieldTypeWrongError:
+    variables.notification.error.REQUIRED_FIELD_TYPE_WRONG,
+};
+
+const outputFieldsCheckErrors = {
+  ioDataFieldTypeWrongError:
+    variables.notification.error.INPUT_FILED_TYPE_WRONG,
+  missingFieldsError: variables.notification.error.OUTPUT_FIELDS_MISSING,
+  overloadFieldsError: variables.notification.error.OUTPUT_FIELDS_OVERLOAD,
+  requiredFieldsNotDefinedError:
+    variables.notification.error.REQUIRED_FIELDS_NOT_DEFINED,
+  requiredFieldTypeWrongError:
+    variables.notification.error.REQUIRED_FIELD_TYPE_WRONG,
+};
+
 class ApiHandler {
   #requestInterceptors = [];
   #responseInterceptors = [];
   #route = {};
   #apiDefaultOptions = {
+    headers: {
+      Authorization: "",
+    },
     method: "GET",
     url: "",
-    headers: { Authorization: "" },
   };
 
   constructor({
@@ -120,7 +144,11 @@ class ApiHandler {
     const { apiConfigs } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(apiConfigs.inputDataFieldsCheck, () => {
-      this.#ioDataFieldsCheck(inputData, this.#route.inputFields);
+      this.#ioDataFieldsCheck(
+        inputData,
+        this.#route.inputFields,
+        inputFieldsCheckErrors
+      );
     });
 
     return this;
@@ -169,7 +197,11 @@ class ApiHandler {
     } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(outputDataPropertiesCheck, () => {
-      this.#ioDataFieldsCheck(outputData, this.#route.outputFields[0]);
+      this.#ioDataFieldsCheck(
+        outputData,
+        this.#route.outputFields[0],
+        outputFieldsCheckErrors
+      );
     });
 
     return this;
@@ -214,17 +246,12 @@ class ApiHandler {
     );
   }
 
-  #ioDataFieldsCheck(ioData, inputFields) {
-    const ioDataFieldsCheckResult = ioFieldsChecker(ioData, inputFields, {
-      missingFieldsError: variables.notification.error.INPUT_FIELDS_MISSING,
-      overloadFieldsError: variables.notification.error.INPUT_FIELDS_OVERLOAD,
-      ioDataFieldTypeWrongError:
-        variables.notification.error.INPUT_FILED_TYPE_WRONG,
-      requiredFieldsNotDefinedError:
-        variables.notification.error.REQUIRED_FIELDS_NOT_DEFINED,
-      requiredFieldTypeWrongError:
-        variables.notification.error.REQUIRED_FIELD_TYPE_WRONG,
-    });
+  #ioDataFieldsCheck(ioData, inputFields, ioErrors) {
+    const ioDataFieldsCheckResult = ioFieldsChecker(
+      ioData,
+      inputFields,
+      ioErrors
+    );
 
     utilities.errorThrower(!ioDataFieldsCheckResult.ok, {
       ...ioDataFieldsCheckResult.error,

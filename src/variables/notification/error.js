@@ -42,6 +42,11 @@ const OUTPUT_FIELDS_OVERLOAD = notificationBuilder
   .message("OUTPUT_FIELDS_OVERLOAD")
   .notificationReason("OUTPUT_FIELDS_OVERLOAD")
   .build();
+const OUTPUT_FILED_TYPE_WRONG = notificationBuilder
+  .create()
+  .message("OUTPUT_FILED_TYPE_WRONG")
+  .notificationReason("OUTPUT_FILED_TYPE_WRONG")
+  .build();
 
 const REQUIRED_FIELDS_NOT_DEFINED = notificationBuilder
   .create()
@@ -77,6 +82,7 @@ const error = {
   INPUT_FILED_TYPE_WRONG,
   OUTPUT_FIELDS_MISSING,
   OUTPUT_FIELDS_OVERLOAD,
+  OUTPUT_FILED_TYPE_WRONG,
   REQUIRED_FIELD_TYPE_WRONG,
   REQUIRED_FIELDS_NOT_DEFINED,
   REQUIREMENT_ITEM_MISSING,

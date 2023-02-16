@@ -11,7 +11,6 @@ class ApiManager {
     this.apis = {
       addContact: this.#apiTemplate,
       createNewUser: this.#apiTemplate,
-      getChatsLastMessage: this.#apiTemplate,
       getContacts: this.#apiTemplate,
       getCountries: this.#apiTemplate,
       getCurrentUserData: this.#apiTemplate,
