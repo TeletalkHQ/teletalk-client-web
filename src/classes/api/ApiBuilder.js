@@ -1,3 +1,5 @@
+import lodash from "lodash";
+
 import { apiHandler } from "src/classes/api/ApiHandler";
 
 import { utilities } from "src/utilities";
@@ -7,7 +9,6 @@ import { variables } from "src/variables";
 class ApiBuilder {
   constructor() {
     this.requirements = {
-      requestDefaultData: {},
       requestInterceptors: [],
       requestTransformer: (data) => data,
       responseInterceptors: [],
@@ -16,28 +17,14 @@ class ApiBuilder {
     };
   }
 
-  setRequirements({
-    route = this.requirements.route,
-    requestDefaultData = this.requirements.requestDefaultData,
-    requestTransformer = this.requirements.requestTransformer,
-    responseTransformer = this.requirements.responseTransformer,
-    requestInterceptors = this.requirements.requestInterceptors,
-    responseInterceptors = this.requirements.responseInterceptors,
-  }) {
-    this.setRouteObject(route);
-    this.setRequestDefaultData(requestDefaultData);
-    this.setRequestTransformer(requestTransformer);
-    this.setResponseTransformer(responseTransformer);
-    this.setRequestInterceptors(...requestInterceptors);
-    this.setResponseInterceptors(...responseInterceptors);
+  setRequirements(requirements) {
+    Object.entries(requirements).forEach(([key, value]) => {
+      this[`set${lodash.upperFirst(key)}`](value);
+    });
     return this;
   }
-  setRouteObject(route) {
+  setRoute(route) {
     this.requirements.route = route;
-    return this;
-  }
-  setRequestDefaultData(data) {
-    this.requirements.requestDefaultData = data;
     return this;
   }
   setRequestInterceptors(...callbacks) {
@@ -57,14 +44,14 @@ class ApiBuilder {
     return this;
   }
 
-  #checkMinimumRequirements() {
+  checkMinimumRequirements() {
     utilities.errorThrower(!this.requirements.route.fullUrl, {
-      ...variables.notification.error.URL_NOT_FOUND,
+      ...variables.notification.error.URL_IS_BROKEN,
       requirements: this.requirements,
     });
   }
   build() {
-    this.#checkMinimumRequirements();
+    this.checkMinimumRequirements();
 
     return apiHandler.create(this.requirements);
   }
