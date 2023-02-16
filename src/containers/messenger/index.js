@@ -37,6 +37,7 @@ const Messenger = () => {
     fn();
 
     return () => websocket.client.disconnect();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
