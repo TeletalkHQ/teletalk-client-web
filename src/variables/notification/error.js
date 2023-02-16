@@ -8,9 +8,14 @@ const COMPONENT_NAME_REQUIRED = notificationBuilder
 
 const ECONNABORTED = notificationBuilder
   .create()
-  .notificationCode(4000)
   .notificationReason("ECONNABORTED")
   .message("Connection interrupted!")
+  .build();
+
+const EVENT_IS_BROKEN = notificationBuilder
+  .create()
+  .message("EVENT_IS_BROKEN")
+  .notificationReason("EVENT_IS_BROKEN")
   .build();
 
 const INPUT_FIELDS_MISSING = notificationBuilder
@@ -57,25 +62,48 @@ const REQUIRED_FIELDS_NOT_DEFINED = notificationBuilder
   .build();
 const REQUIRED_FIELD_TYPE_WRONG = notificationBuilder
   .create()
-  .message("Required field type is wrong")
+  .message("REQUIRED_FIELD_TYPE_WRONG")
   .notificationReason("REQUIRED_FIELD_TYPE_WRONG")
   .build();
 
 const REQUIREMENT_ITEM_MISSING = notificationBuilder
   .create()
-  .message("Requirement item missing")
+  .message("REQUIREMENT_ITEM_MISSING")
   .notificationReason("REQUIREMENT_ITEM_MISSING")
+  .build();
+
+const URL_IS_BROKEN = notificationBuilder
+  .create()
+  .message("URL_IS_BROKEN")
+  .notificationReason("URL_IS_BROKEN")
   .build();
 
 const URL_NOT_FOUND = notificationBuilder
   .create()
-  .message("Url not found")
+  .message("URL_NOT_FOUND")
   .notificationReason("URL_NOT_FOUND")
   .build();
+
+const INPUT = {
+  ioDataFieldTypeWrongError: INPUT_FILED_TYPE_WRONG,
+  missingFieldsError: INPUT_FIELDS_MISSING,
+  overloadFieldsError: INPUT_FIELDS_OVERLOAD,
+  requiredFieldsNotDefinedError: REQUIRED_FIELDS_NOT_DEFINED,
+  requiredFieldTypeWrongError: REQUIRED_FIELD_TYPE_WRONG,
+};
+
+const OUTPUT = {
+  ioDataFieldTypeWrongError: INPUT_FILED_TYPE_WRONG,
+  missingFieldsError: OUTPUT_FIELDS_MISSING,
+  overloadFieldsError: OUTPUT_FIELDS_OVERLOAD,
+  requiredFieldsNotDefinedError: REQUIRED_FIELDS_NOT_DEFINED,
+  requiredFieldTypeWrongError: REQUIRED_FIELD_TYPE_WRONG,
+};
 
 const error = {
   COMPONENT_NAME_REQUIRED,
   ECONNABORTED,
+  EVENT_IS_BROKEN,
   INPUT_FIELDS_MISSING,
   INPUT_FIELDS_NOT_DEFINED_ERROR,
   INPUT_FIELDS_OVERLOAD,
@@ -86,7 +114,12 @@ const error = {
   REQUIRED_FIELD_TYPE_WRONG,
   REQUIRED_FIELDS_NOT_DEFINED,
   REQUIREMENT_ITEM_MISSING,
+  URL_IS_BROKEN,
   URL_NOT_FOUND,
+  IO: {
+    INPUT,
+    OUTPUT,
+  },
 };
 
 export { error };

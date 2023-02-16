@@ -1,4 +1,4 @@
-import { websocket } from "src/classes/Websocket";
+import { websocket } from "src/classes/websocket/Websocket";
 import { actions } from "src/store/actions";
 
 const newPrivateChatMessage = ({ chatId, newMessage }) => {
