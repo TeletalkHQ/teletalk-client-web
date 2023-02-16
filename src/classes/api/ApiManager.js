@@ -11,7 +11,6 @@ class ApiManager {
     this.apis = {
       addContact: this.#apiTemplate,
       createNewUser: this.#apiTemplate,
-      getChatsLastMessage: this.#apiTemplate,
       getContacts: this.#apiTemplate,
       getCountries: this.#apiTemplate,
       getCurrentUserData: this.#apiTemplate,
@@ -24,7 +23,7 @@ class ApiManager {
     };
   }
 
-  #buildWithRouteObject() {
+  #buildWithRoute() {
     const routes = stuffStore.routes;
     Object.entries(routes).forEach(([apiName, route]) => {
       this.apis[apiName] = apiBuilder
@@ -35,7 +34,7 @@ class ApiManager {
   }
 
   build() {
-    this.#buildWithRouteObject();
+    this.#buildWithRoute();
 
     this.apis["getCountries"] = apiBuilder
       .create()

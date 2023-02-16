@@ -33,12 +33,12 @@ const View = () => {
 
 const visibleContainer = (viewMode) => {
   const {
+    CHECK_CURRENT_USER,
+    CREATE_NEW_USER,
     INITIAL_SETUP,
     MESSENGER,
-    CREATE_NEW_USER,
     SIGN_IN,
     VERIFY_SIGN_IN,
-    CHECK_CURRENT_USER,
   } = stateStatics.VIEW_MODES;
 
   switch (viewMode) {
@@ -56,6 +56,7 @@ const visibleContainer = (viewMode) => {
       return Messenger;
 
     default:
+      //TODO: Return fatality view
       return null;
   }
 };

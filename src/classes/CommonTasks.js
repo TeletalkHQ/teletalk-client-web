@@ -40,6 +40,10 @@ class CommonTasks {
     });
   }
 
+  correctErrorsAndPrint(errors) {
+    const correctedErrors = this.convertServerFormatErrors(errors);
+    this.errorsPrinter(correctedErrors);
+  }
   convertServerFormatErrors(errors) {
     const arrayOfErrors = Object.values(errors);
 
@@ -52,7 +56,6 @@ class CommonTasks {
       return finalErrorItem;
     });
   }
-
   errorsPrinter(errors) {
     errors.forEach((errorItem) => {
       const { errorMessages } = stuffStore.languageData;
@@ -62,11 +65,6 @@ class CommonTasks {
       const notificationObject = { ...errorItem, message };
       notificationManager.submitErrorNotification(notificationObject);
     });
-  }
-
-  correctErrorsAndPrint(errors) {
-    const correctedErrors = this.convertServerFormatErrors(errors);
-    this.errorsPrinter(correctedErrors);
   }
 
   validateInputValueLengthByModel(model, inputValue) {

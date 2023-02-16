@@ -3,8 +3,10 @@ import { trier } from "utility-store/src/classes/Trier";
 import { api } from "src/api";
 
 import { apiManager } from "src/classes/api/ApiManager";
+import { eventManager } from "src/classes/websocket/EventManager";
 import { stuffStore } from "src/classes/StuffStore";
 import { validatorManager } from "src/classes/validator/ValidatorManager";
+
 import { actions } from "src/store/actions";
 
 const getAllStuff = () => {
@@ -29,6 +31,7 @@ const executeIfNoError = (data, dispatch) => {
   stuffStore.updateStore(data);
 
   apiManager.build();
+  eventManager.build();
   validatorManager.compileValidators(stuffStore.validationModels);
 
   dispatch(actions.isStuffImported({ isStuffImported: true }));

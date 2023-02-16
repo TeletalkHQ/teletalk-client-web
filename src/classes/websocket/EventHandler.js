@@ -3,23 +3,13 @@ import { trier } from "utility-store/src/classes/Trier";
 
 import { appConfigs } from "src/classes/AppConfigs";
 import { commonTasks } from "src/classes/CommonTasks";
+import { websocket } from "src/classes/websocket/Websocket";
 
 import { utilities } from "src/utilities";
 
 import { variables } from "src/variables";
 
-class ApiHandler {
-  #requestInterceptors = [];
-  #responseInterceptors = [];
-  #route = {};
-  #apiDefaultOptions = {
-    headers: {
-      Authorization: "",
-    },
-    method: "GET",
-    url: "",
-  };
-
+class EventHandler {
   constructor({
     requestInterceptors = [],
     requestTransformer = () => {},
@@ -28,75 +18,80 @@ class ApiHandler {
     route = {},
   }) {
     this.requestTransformer = requestTransformer;
-    this.#requestInterceptors = requestInterceptors;
+    this.requestInterceptors = requestInterceptors;
     this.responseTransformer = responseTransformer;
-    this.#responseInterceptors = responseInterceptors;
-    this.data = {};
+    this.responseInterceptors = responseInterceptors;
+    this.requestData = {};
+    this.requestArgs = [];
     this.response = {
-      data: this.getData(),
+      data: {},
     };
-    this.#route = Object.freeze(route);
-    this.requesterOptions = {
-      ...this.#getApiUrlAndMethod(),
-      data: this.getData(),
-      headers: {},
-    };
-  }
-  #getApiUrlAndMethod() {
-    return {
-      url: this.#getApiUrlFromRouteObject(),
-      method: this.#getApiMethodFromRouteObject(),
-    };
-  }
-  #getApiMethodFromRouteObject() {
-    return this.#route.method;
-  }
-  #getApiUrlFromRouteObject() {
-    return this.#route.fullUrl;
+    this.route = Object.freeze(route);
   }
 
-  getData() {
-    return this.data;
+  getRequestData() {
+    return this.requestData;
   }
-  setData(data) {
-    this.data = data;
+  setRequestData(requestData) {
+    this.requestData = requestData;
     return this;
+  }
+  getRequestArgs() {
+    return this.requestArgs;
+  }
+  setRequestArgs(...args) {
+    this.requestArgs = args;
+    return this;
+  }
+
+  getResponse() {
+    return this.response;
   }
   setResponse(response) {
     this.response = response;
     return this;
   }
-  getResponse() {
-    return this.response;
+  getResponseData() {
+    return this.getResponse().data;
   }
-
-  async sendRequest(options = this.requesterOptions) {
-    const response = await utilities.requester(options);
-    this.setResponse(response).setData(response.data);
+  setResponseData(responseData) {
+    this.response.data = responseData;
     return this;
   }
 
-  async sendFullFeaturedRequest(
-    requestData = {},
-    extraOptions = this.requesterOptions
-  ) {
-    return await trier(this.sendFullFeaturedRequest.name)
-      .tryAsync(
-        this.#tryToSendFullFeaturedRequest.bind(this),
-        requestData,
-        extraOptions
-      )
-      .catch(this.#catchSendFullFeaturedRequest.bind(this))
+  async emit(data = {}, callback = () => {}, ...rest) {
+    const promise = new Promise((resolve, _reject) => {
+      websocket.client.emit(
+        this.route.name,
+        data,
+        (...args) => {
+          resolve(...args);
+          callback(...args);
+        },
+        ...rest
+      );
+    });
+
+    const response = await promise;
+    this.setResponse(response).setResponseData(response.data);
+
+    return this;
+  }
+
+  async emitFull(data, callback, ...rest) {
+    this.setRequestArgs(data, callback, ...rest);
+
+    return await trier(this.emitFull.name)
+      .tryAsync(this.#tryToEmitFull.bind(this))
+      .catch(this.#catchEmitFull.bind(this))
       .runAsync();
   }
-  async #tryToSendFullFeaturedRequest(requestData, extraOptions) {
+  async #tryToEmitFull() {
     return (
-      await this.setData(requestData)
-        .#requestTransformerExecutor()
+      await this.#requestTransformerExecutor()
         .#executeRequestInterceptors()
         .#inputDataFieldsCheck()
-        .#mergeRequesterOptions(extraOptions)
-        .sendRequest()
+        .emit(...this.getRequestArgs())
     )
       .#responseErrorsHandler()
       .#outputDataFieldsCheck()
@@ -105,51 +100,38 @@ class ApiHandler {
       .#logSuccessfulResponse()
       .getResponse();
   }
+  #catchEmitFull(error) {
+    this.logFailureResponse(error);
+    commonTasks.checkConnAbortNotification();
+    throw error;
+  }
 
   #requestTransformerExecutor() {
-    this.requestTransformer(this.getData());
+    this.requestTransformer(this.getRequestData());
     return this;
   }
-  #executeRequestInterceptors(requestData = this.getData()) {
+  #executeRequestInterceptors(requestData = this.getRequestData()) {
     const newData = this.#executeInterceptors(
-      this.#requestInterceptors,
+      this.requestInterceptors,
       requestData
     );
-    this.setData(newData);
+    this.setRequestData(newData);
     return this;
   }
-  #inputDataFieldsCheck(inputData = this.getData()) {
+  #inputDataFieldsCheck(inputData = this.getRequestData()) {
     const { apiConfigs } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(apiConfigs.inputDataFieldsCheck, () => {
       this.#ioDataFieldsCheck(
         inputData,
-        this.#route.inputFields,
+        this.route.inputFields,
         variables.notification.error.IO.INPUT
       );
     });
 
     return this;
   }
-  #mergeRequesterOptions(extraOptions = {}) {
-    const mergedOptions = {
-      ...this.#apiDefaultOptions,
-      ...this.requesterOptions,
-      ...extraOptions,
-      headers: {
-        ...this.#apiDefaultOptions.headers,
-        ...(extraOptions.headers || {}),
-      },
-    };
 
-    const data = this.getData();
-    if (Object.keys(data)) {
-      mergedOptions.data = data;
-    }
-
-    this.requesterOptions = mergedOptions;
-    return this;
-  }
   #responseErrorsHandler(response = this.getResponse()) {
     const {
       data: { errors },
@@ -169,7 +151,7 @@ class ApiHandler {
 
     return this;
   }
-  #outputDataFieldsCheck(outputData = this.getData()) {
+  #outputDataFieldsCheck(outputData = this.getResponseData()) {
     const {
       apiConfigs: { outputDataPropertiesCheck },
     } = appConfigs.getConfigs();
@@ -177,7 +159,7 @@ class ApiHandler {
     commonTasks.checkAndExecute(outputDataPropertiesCheck, () => {
       this.#ioDataFieldsCheck(
         outputData,
-        this.#route.outputFields[0],
+        this.route.outputFields[0],
         variables.notification.error.IO.OUTPUT
       );
     });
@@ -185,18 +167,19 @@ class ApiHandler {
     return this;
   }
   #responseTransformerExecutor() {
-    const transformedData = this.responseTransformer(this.getData());
-    this.setData(transformedData);
+    const transformedData = this.responseTransformer(this.getResponseData());
+    this.setResponseData(transformedData);
     return this;
   }
   #executeResponseInterceptors(response = this.getResponse()) {
-    const mutatedResponse = this.#executeInterceptors(
-      this.#responseInterceptors,
+    const newResponse = this.#executeInterceptors(
+      this.responseInterceptors,
       response
     );
-    this.setResponse(mutatedResponse);
+    this.setResponse(newResponse);
     return this;
   }
+
   #logSuccessfulResponse(response = this.getResponse()) {
     const {
       apiConfigs: { logSuccessfulResponse },
@@ -209,18 +192,13 @@ class ApiHandler {
     return this;
   }
 
-  #catchSendFullFeaturedRequest(error) {
-    this.logFailureResponse(error);
-    commonTasks.checkConnAbortNotification();
-    throw error;
-  }
   logFailureResponse(error) {
     const {
       apiConfigs: { logFailureResponse },
     } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(logFailureResponse, () =>
-      logger.error(`Api:${this.#route.fullUrl} Api catch, error:`, error)
+      logger.error(`Api:${this.route.fullUrl} Api catch, error:`, error)
     );
   }
 
@@ -249,8 +227,8 @@ class ApiHandler {
   }
 }
 
-const apiHandler = {
-  create: (requirements) => new ApiHandler(requirements),
+const eventHandler = {
+  create: (requirements) => new EventHandler(requirements),
 };
 
-export { apiHandler, ApiHandler };
+export { eventHandler, EventHandler };

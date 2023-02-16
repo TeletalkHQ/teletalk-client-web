@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { websocket } from "src/classes/Websocket";
+import { websocket } from "src/classes/websocket/Websocket";
 
 import { Box } from "src/components/general/box";
 
@@ -37,6 +37,7 @@ const Messenger = () => {
     fn();
 
     return () => websocket.client.disconnect();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
