@@ -7,18 +7,22 @@ const onlineStatusOnChangeEvent = (dispatch) => {
   dispatch(actions.onlineStatusChange({ isOnline }));
 };
 
-const addOnlineStatusOnChangeListener = (type) =>
-  windowUtilities.addEventListener(type, onlineStatusOnChangeEvent);
+const addOnlineStatusOnChangeListener = (type, dispatch) =>
+  windowUtilities.addEventListener(type, () =>
+    onlineStatusOnChangeEvent(dispatch)
+  );
 
-const removeOnlineStatusOnChangeListener = (type) =>
-  windowUtilities.removeEventListener(type, onlineStatusOnChangeEvent);
+const removeOnlineStatusOnChangeListener = (type, dispatch) =>
+  windowUtilities.removeEventListener(type, () =>
+    onlineStatusOnChangeEvent(dispatch)
+  );
 
-const addOnlineStatusEvents = () => {
-  removeOnlineStatusOnChangeListener("offline");
-  removeOnlineStatusOnChangeListener("online");
+const addOnlineStatusEvents = (dispatch) => {
+  removeOnlineStatusOnChangeListener("offline", dispatch);
+  removeOnlineStatusOnChangeListener("online", dispatch);
 
-  addOnlineStatusOnChangeListener("offline");
-  addOnlineStatusOnChangeListener("online");
+  addOnlineStatusOnChangeListener("offline", dispatch);
+  addOnlineStatusOnChangeListener("online", dispatch);
 };
 
 export { addOnlineStatusEvents };
