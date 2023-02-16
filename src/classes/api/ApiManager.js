@@ -23,7 +23,7 @@ class ApiManager {
     };
   }
 
-  #buildWithRouteObject() {
+  #buildWithRoute() {
     const routes = stuffStore.routes;
     Object.entries(routes).forEach(([apiName, route]) => {
       this.apis[apiName] = apiBuilder
@@ -34,7 +34,7 @@ class ApiManager {
   }
 
   build() {
-    this.#buildWithRouteObject();
+    this.#buildWithRoute();
 
     this.apis["getCountries"] = apiBuilder
       .create()

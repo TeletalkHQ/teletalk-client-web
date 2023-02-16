@@ -8,28 +8,6 @@ import { utilities } from "src/utilities";
 
 import { variables } from "src/variables";
 
-const inputFieldsCheckErrors = {
-  ioDataFieldTypeWrongError:
-    variables.notification.error.INPUT_FILED_TYPE_WRONG,
-  missingFieldsError: variables.notification.error.INPUT_FIELDS_MISSING,
-  overloadFieldsError: variables.notification.error.INPUT_FIELDS_OVERLOAD,
-  requiredFieldsNotDefinedError:
-    variables.notification.error.REQUIRED_FIELDS_NOT_DEFINED,
-  requiredFieldTypeWrongError:
-    variables.notification.error.REQUIRED_FIELD_TYPE_WRONG,
-};
-
-const outputFieldsCheckErrors = {
-  ioDataFieldTypeWrongError:
-    variables.notification.error.INPUT_FILED_TYPE_WRONG,
-  missingFieldsError: variables.notification.error.OUTPUT_FIELDS_MISSING,
-  overloadFieldsError: variables.notification.error.OUTPUT_FIELDS_OVERLOAD,
-  requiredFieldsNotDefinedError:
-    variables.notification.error.REQUIRED_FIELDS_NOT_DEFINED,
-  requiredFieldTypeWrongError:
-    variables.notification.error.REQUIRED_FIELD_TYPE_WRONG,
-};
-
 class ApiHandler {
   #requestInterceptors = [];
   #responseInterceptors = [];
@@ -147,7 +125,7 @@ class ApiHandler {
       this.#ioDataFieldsCheck(
         inputData,
         this.#route.inputFields,
-        inputFieldsCheckErrors
+        variables.notification.error.IO.INPUT
       );
     });
 
@@ -200,7 +178,7 @@ class ApiHandler {
       this.#ioDataFieldsCheck(
         outputData,
         this.#route.outputFields[0],
-        outputFieldsCheckErrors
+        variables.notification.error.IO.OUTPUT
       );
     });
 
