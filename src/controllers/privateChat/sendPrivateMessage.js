@@ -1,6 +1,6 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { eventManager } from "src/classes/EventManager";
+import { eventEmitter } from "src/classes/EventEmitter";
 import { websocket } from "src/classes/Websocket";
 
 import { store } from "src/store/store";
@@ -22,8 +22,8 @@ const tryBlock = async (state) => {
 };
 
 const executeIfNoError = () => {
-  const eventName = eventManager.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
-  eventManager.emitEvent(eventName);
+  const eventName = eventEmitter.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
+  eventEmitter.emitEvent(eventName);
 };
 
 export { sendPrivateMessage };
