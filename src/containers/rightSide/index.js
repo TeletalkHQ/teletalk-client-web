@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { domUtilities } from "utility-store/src/classes/DomUtilities";
 
-import { eventManager } from "src/classes/EventManager";
+import { eventEmitter } from "src/classes/EventEmitter";
 
 import ChatBar from "src/components/rightSide/ChatBar";
 import { Box } from "src/components/general/box";
@@ -43,8 +43,8 @@ const RightSide = ({ participants }) => {
   }, [selectedChatMessages]);
 
   useEffect(() => {
-    const eventName = eventManager.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
-    eventManager.addListener(eventName, () => {
+    const eventName = eventEmitter.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
+    eventEmitter.addListener(eventName, () => {
       dispatch(actions.messageInputOnChange({ messageInputTextValue: "" }));
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

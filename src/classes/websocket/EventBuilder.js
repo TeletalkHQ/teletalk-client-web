@@ -1,12 +1,12 @@
 import lodash from "lodash";
 
-import { apiHandler } from "src/classes/api/ApiHandler";
+import { eventHandler } from "src/classes/websocket/EventHandler";
 
 import { utilities } from "src/utilities";
 
 import { variables } from "src/variables";
 
-class ApiBuilder {
+class EventBuilder {
   constructor() {
     this.requirements = {
       requestInterceptors: [],
@@ -45,20 +45,20 @@ class ApiBuilder {
   }
 
   checkMinimumRequirements() {
-    utilities.errorThrower(!this.requirements.route.fullUrl, {
-      ...variables.notification.error.URL_IS_BROKEN,
+    utilities.errorThrower(!this.requirements.route.name, {
+      ...variables.notification.error.EVENT_IS_BROKEN,
       requirements: this.requirements,
     });
   }
   build() {
     this.checkMinimumRequirements();
 
-    return apiHandler.create(this.requirements);
+    return eventHandler.create(this.requirements);
   }
 }
 
-const apiBuilder = {
-  create: () => new ApiBuilder(),
+const eventBuilder = {
+  create: () => new EventBuilder(),
 };
 
-export { apiBuilder, ApiBuilder };
+export { eventBuilder, EventBuilder };

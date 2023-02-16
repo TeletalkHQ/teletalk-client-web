@@ -1,8 +1,7 @@
 import { trier } from "utility-store/src/classes/Trier";
 
-import { websocket } from "src/classes/Websocket";
-
 import { actions } from "src/store/actions";
+import { eventManager } from "src/classes/websocket/EventManager";
 
 const getPrivateChats = () => {
   return async (dispatch) => {
@@ -11,13 +10,16 @@ const getPrivateChats = () => {
 };
 
 const tryBlock = async (dispatch) => {
-  websocket.client.emit("getPrivateChats", undefined, (privateChats) => {
-    dispatch(
-      actions.updateAllPrivateChats({
-        privateChats,
-      })
-    );
-  });
+  eventManager.events.getPrivateChats.emitFull(
+    undefined,
+    ({ data: { privateChats } }) => {
+      dispatch(
+        actions.updateAllPrivateChats({
+          privateChats,
+        })
+      );
+    }
+  );
 };
 
 export { getPrivateChats };

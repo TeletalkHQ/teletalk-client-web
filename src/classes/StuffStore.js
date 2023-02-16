@@ -1,6 +1,9 @@
+import lodash from "lodash";
+
 class StuffStore {
   constructor() {
     this.errors = {};
+    this.events = {};
     this.languageData = {
       errorMessages: {},
     };
@@ -30,6 +33,10 @@ class StuffStore {
     this.errors = errors;
     return this;
   }
+  updateEvents(events) {
+    this.events = events;
+    return this;
+  }
   updateValidationModels(validationModels) {
     this.validationModels = validationModels;
     return this;
@@ -38,12 +45,10 @@ class StuffStore {
     this.languageData = languageData;
     return this;
   }
-  updateStore({ errors, languageData, models, routes, validationModels }) {
-    this.updateErrors(errors)
-      .updateModels(models)
-      .updateRoutes(routes)
-      .updateLanguageData(languageData)
-      .updateValidationModels(validationModels);
+  updateStore(data) {
+    Object.entries(data).forEach(([key, value]) => {
+      this[`update${lodash.upperFirst(key)}`](value);
+    });
   }
 }
 

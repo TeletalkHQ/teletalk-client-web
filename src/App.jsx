@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 import { appConfigs } from "src/classes/AppConfigs";
-import { websocket } from "src/classes/Websocket";
 
 import View from "src/containers/view";
 
@@ -28,9 +27,7 @@ const App = () => {
     const updater = () => {
       setForceUpdate(!forceUpdate);
     };
-    windowUtilities
-      .addProperty("websocket", websocket)
-      .addProperty("updater", updater);
+    windowUtilities.addProperty("updater", updater);
   }, [forceUpdate]);
 
   useEffect(() => {
