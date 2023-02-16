@@ -1,5 +1,5 @@
 import { ioFieldsChecker } from "utility-store/src/utilities/ioFieldsChecker";
-import { trier } from "utility-store/src/classes/Trier";
+import { trier } from "simple-trier";
 
 import { utilities } from "src/utilities";
 

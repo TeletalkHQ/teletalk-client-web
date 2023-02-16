@@ -1,5 +1,5 @@
 import FastestValidator from "fastest-validator";
-import { trier } from "utility-store/src/classes/Trier";
+import { trier } from "simple-trier";
 
 import { validator } from "src/classes/validator/Validator";
 

@@ -1,5 +1,5 @@
 import { customTypeof } from "custom-typeof";
-import { trier } from "utility-store/src/classes/Trier";
+import { trier } from "simple-trier";
 
 import { commonTasks } from "src/classes/CommonTasks";
 
