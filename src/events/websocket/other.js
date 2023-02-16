@@ -1,4 +1,4 @@
-import { websocket } from "src/classes/Websocket";
+import { websocket } from "src/classes/websocket/Websocket";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 const otherEvents = () => {

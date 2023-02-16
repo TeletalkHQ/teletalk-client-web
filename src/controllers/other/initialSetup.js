@@ -8,6 +8,8 @@ import { envManager } from "src/classes/EnvironmentManager";
 import { eventEmitter } from "src/classes/EventEmitter";
 import { stuffStore } from "src/classes/StuffStore";
 import { validatorManager } from "src/classes/validator/ValidatorManager";
+import { websocket } from "src/classes/websocket/Websocket";
+import { eventManager } from "src/classes/websocket/EventManager";
 
 import { events } from "src/events";
 
@@ -24,7 +26,7 @@ const initialSetup = () => async (dispatch) => {
 };
 
 const tryBlock = async (dispatch) => {
-  events.addOnlineStatusEvents();
+  events.addOnlineStatusEvents(dispatch);
   dispatch(commonActions.openGlobalLoading());
 
   addWindowProperties(dispatch);
@@ -58,8 +60,10 @@ const addWindowProperties = (dispatch) => {
     .addProperty("dispatch", dispatch)
     .addProperty("envManager", envManager)
     .addProperty("eventEmitter", eventEmitter)
+    .addProperty("eventManager", eventManager)
     .addProperty("stuffs", stuffStore.getStore())
-    .addProperty("validatorManager", validatorManager);
+    .addProperty("validatorManager", validatorManager)
+    .addProperty("websocket", websocket);
 };
 
 export { initialSetup };

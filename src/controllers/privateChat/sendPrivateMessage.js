@@ -1,7 +1,7 @@
 import { trier } from "utility-store/src/classes/Trier";
 
 import { eventEmitter } from "src/classes/EventEmitter";
-import { websocket } from "src/classes/Websocket";
+import { websocket } from "src/classes/websocket/Websocket";
 
 import { store } from "src/store/store";
 
