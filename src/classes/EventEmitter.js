@@ -1,11 +1,11 @@
 import { EventManager as EventManagerMain } from "utility-store/src/classes/EventManager";
 
-class EventManager extends EventManagerMain {
+class EventEmitter extends EventManagerMain {
   EVENT_EMITTER_EVENTS = {
     MESSAGE_SENT: "MESSAGE_SENT",
   };
 }
 
-const eventManager = new EventManager();
+const eventEmitter = new EventEmitter();
 
-export { eventManager, EventManager };
+export { eventEmitter, EventEmitter };

@@ -5,7 +5,7 @@ import { apiManager } from "src/classes/api/ApiManager";
 import { appConfigs } from "src/classes/AppConfigs";
 import { componentController } from "src/classes/ComponentController";
 import { envManager } from "src/classes/EnvironmentManager";
-import { eventManager } from "src/classes/EventManager";
+import { eventEmitter } from "src/classes/EventEmitter";
 import { stuffStore } from "src/classes/StuffStore";
 import { validatorManager } from "src/classes/validator/ValidatorManager";
 
@@ -57,7 +57,7 @@ const addWindowProperties = (dispatch) => {
     .addProperty("componentController", componentController)
     .addProperty("dispatch", dispatch)
     .addProperty("envManager", envManager)
-    .addProperty("eventManager", eventManager)
+    .addProperty("eventEmitter", eventEmitter)
     .addProperty("stuffs", stuffStore.getStore())
     .addProperty("validatorManager", validatorManager);
 };
