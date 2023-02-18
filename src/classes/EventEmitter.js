@@ -1,6 +1,6 @@
-import { EventManager as EventManagerMain } from "utility-store/src/classes/EventManager";
+import { EventEmitter as EventEmitterMain } from "utility-store/src/classes/EventEmitter";
 
-class EventEmitter extends EventManagerMain {
+class EventEmitter extends EventEmitterMain {
   EVENT_EMITTER_EVENTS = {
     MESSAGE_SENT: "MESSAGE_SENT",
   };
