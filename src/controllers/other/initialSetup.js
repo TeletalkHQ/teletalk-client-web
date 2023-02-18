@@ -1,4 +1,4 @@
-import { trier } from "utility-store/src/classes/Trier";
+import { trier } from "simple-trier";
 import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
 
 import { apiManager } from "src/classes/api/ApiManager";

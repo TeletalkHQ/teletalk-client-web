@@ -1,11 +1,10 @@
 import DialogTemplate from "src/components/dialog/Template";
 import LogoutComponents from "src/components/dialog/logout";
 
-import { websocket } from "src/classes/websocket/Websocket";
-
 import { controllers } from "src/controllers";
 
 import { useDispatch, useSelector } from "react-redux";
+import { eventManager } from "src/classes/websocket/EventManager";
 
 const Logout = ({ onDialogClose }) => {
   const state = useSelector((state) => state);
@@ -17,7 +16,7 @@ const Logout = ({ onDialogClose }) => {
 
   const handleLogout = () => {
     dispatch(controllers.logout());
-    websocket.client.emit("logout");
+    eventManager.events.logout.emitFull();
   };
 
   return (

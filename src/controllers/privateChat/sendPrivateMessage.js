@@ -1,4 +1,4 @@
-import { trier } from "utility-store/src/classes/Trier";
+import { trier } from "simple-trier";
 
 import { eventEmitter } from "src/classes/EventEmitter";
 import { websocket } from "src/classes/websocket/Websocket";

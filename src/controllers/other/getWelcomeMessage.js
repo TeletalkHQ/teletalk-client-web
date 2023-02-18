@@ -1,4 +1,4 @@
-import { trier } from "utility-store/src/classes/Trier";
+import { trier } from "simple-trier";
 
 import { actions } from "src/store/actions";
 
