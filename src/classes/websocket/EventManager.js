@@ -7,8 +7,12 @@ class EventManager {
 
   constructor() {
     this.events = {
+      getChatInfo: this.#eventTemplate,
       getPrivateChats: this.#eventTemplate,
+      joinRoom: this.#eventTemplate,
+      logout: this.#eventTemplate,
       ping: this.#eventTemplate,
+      sendPrivateMessage: this.#eventTemplate,
     };
   }
 
