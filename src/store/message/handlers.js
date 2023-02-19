@@ -12,8 +12,9 @@ const handleUpdateAllPrivateChats = (payload) => {
 
 const handleCloseRightSide = () => {
   return {
-    selectedUserForPrivateChat: {
-      userId: "",
+    selectedChat: {
+      id: "",
+      type: "",
     },
   };
 };
@@ -35,9 +36,12 @@ const handleAddNewMessage = (payload, prevState) => {
   };
 };
 
-const handleSelectedUserForPrivateChat = (payload) => {
+const handleSetSelectedChat = (payload) => {
   return {
-    selectedUserForPrivateChat: { userId: payload.userId },
+    selectedChat: {
+      type: payload.type,
+      id: payload.id,
+    },
   };
 };
 
@@ -51,7 +55,7 @@ const messageReducerHandlers = {
   handleAddNewMessage,
   handleCloseRightSide,
   handleCreateNewPrivateChat,
-  handleSelectedUserForPrivateChat,
+  handleSetSelectedChat,
   handleUpdateAllPrivateChats,
   // handleUpdateOnePrivateChat,
 };

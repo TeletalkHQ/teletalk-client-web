@@ -23,8 +23,9 @@ const messageActionPayloads = {
     privateChats: fields.statics.array(fields.collection.privateChatItem),
   },
 
-  [MESSAGE_ACTION_TYPES.SELECTED_USER_FOR_PRIVATE_CHAT]: {
-    userId: fields.single.userId,
+  [MESSAGE_ACTION_TYPES.SELECTED_CHAT]: {
+    id: fields.single.id,
+    type: fields.single.chatType,
   },
 };
 

@@ -12,8 +12,8 @@ const actions = {
   ...messageActions,
   ...notificationActions,
   ...otherActions,
-  ...userActions,
   ...settingsActions,
+  ...userActions,
 };
 
 export { actions };

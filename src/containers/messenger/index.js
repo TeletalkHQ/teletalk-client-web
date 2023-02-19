@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { websocket } from "src/classes/websocket/Websocket";
 
@@ -17,14 +17,11 @@ const Messenger = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const [participants, setParticipants] = useState([]);
-
   useEffect(() => {
     const fn = async () => {
       websocket.client.connect();
+      //TODO: Update in/out events with events from server
       websocket.client.emit("joinRoom");
-
-      dispatch(controllers.getCurrentUserData());
 
       if (state.global.viewMode === stateStatics.VIEW_MODES.MESSENGER)
         dispatch(controllers.getPrivateChats());
@@ -41,61 +38,6 @@ const Messenger = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const fn = async () => {
-      const participantsFromPrivateChats =
-        extractParticipantsFromPrivateChats();
-      const newParticipants = getNewParticipants(participantsFromPrivateChats);
-
-      for (let i = 0; i < newParticipants.length; i++) {
-        const participant = newParticipants[i];
-
-        const publicUserInfo = await controllers.getPublicUserData(
-          participant.participantId
-        );
-
-        newParticipants.splice(i, 1, {
-          ...participant,
-          ...publicUserInfo,
-        });
-      }
-
-      updateParticipants(newParticipants);
-    };
-
-    fn();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message.privateChats]);
-
-  useEffect(() => {
-    updateParticipants(
-      state.user.contacts.map((contact) => ({
-        ...contact,
-        participantId: contact.userId,
-      }))
-    );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.user.contacts]);
-
-  const updateParticipants = (newParticipants) => {
-    setParticipants([...participants, ...newParticipants]);
-  };
-
-  const extractParticipantsFromPrivateChats = () =>
-    state.message.privateChats.map((pc) => {
-      const { participantId, ...p } = pc.participants.find(
-        (p) => p.participantId !== state.user.userId
-      );
-
-      return { ...p, participantId };
-    });
-
-  const getNewParticipants = (participantsFromPrivateChats) =>
-    participantsFromPrivateChats.filter((p1) =>
-      participants.every((p2) => p2.participantId !== p1.participantId)
-    );
-
   return (
     <Box.Grid
       container
@@ -103,8 +45,8 @@ const Messenger = () => {
         height: "100vh",
       }}
     >
-      <LeftSide participants={participants} />
-      <RightSide participants={participants} />
+      <LeftSide />
+      <RightSide />
     </Box.Grid>
   );
 };

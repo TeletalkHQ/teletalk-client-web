@@ -5,6 +5,8 @@ import { settingsReducerHandlers } from "src/store/settings/handlers";
 import { SETTINGS_TYPES } from "src/store/settings/types";
 
 const settingsReducerCases = {
+  [SETTINGS_TYPES.RESET_SETTINGS_STATE]: initialSettingsState,
+
   [SETTINGS_TYPES.UPDATE_PROFILE]: settingsReducerHandlers.updateProfile,
 };
 

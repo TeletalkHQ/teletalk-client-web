@@ -46,7 +46,7 @@ const AddNewContact = componentBuilder
 
     const handleAddNewContactClick = async () => {
       const { userId, ...rest } = contact;
-      const result = await dispatch(controllers.addContact(rest));
+      const result = dispatch(controllers.addContact(rest));
 
       if (result.ok === false) return;
 

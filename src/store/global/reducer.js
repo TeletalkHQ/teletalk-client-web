@@ -5,6 +5,13 @@ import { GLOBAL_ACTION_TYPES } from "src/store/global/types";
 import { globalReducerHandlers } from "src/store/global/handlers";
 
 const globalReducerCases = {
+  [GLOBAL_ACTION_TYPES.ADD_NEW_CONTACT]:
+    globalReducerHandlers.handleAddNewContact,
+
+  [GLOBAL_ACTION_TYPES.ADD_NEW_USER]: globalReducerHandlers.handleAddNewUser,
+
+  [GLOBAL_ACTION_TYPES.ADD_USERS]: globalReducerHandlers.handleAddUsers,
+
   [GLOBAL_ACTION_TYPES.APP_DRAWER_OPEN_CHANGE]:
     globalReducerHandlers.handleAppDrawerStateOpenChange,
 

@@ -18,9 +18,11 @@ class CommonTasks {
     persistentStorage.setDefaultStorage();
 
     [
-      actions.resetUserState,
-      actions.resetGlobalState,
       actions.resetAuthState,
+      actions.resetGlobalState,
+      actions.resetMessageState,
+      actions.resetSettingsState,
+      actions.resetUserState,
     ].forEach((action) => {
       extractedDispatch(action());
     });

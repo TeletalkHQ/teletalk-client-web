@@ -2,8 +2,6 @@ import { trier } from "simple-trier";
 
 import { apiManager } from "src/classes/api/ApiManager";
 
-import { authUtilities } from "src/controllers/auth/utilities";
-
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 import { store } from "src/store/store";
@@ -39,7 +37,7 @@ const executeIfNoError = (response, dispatch) => {
   if (response.data.newUser) {
     dispatch(commonActions.changeViewMode.createUser());
   } else {
-    authUtilities.update(response.data, dispatch);
+    dispatch(commonActions.changeViewMode.checkCurrentUser());
   }
 };
 

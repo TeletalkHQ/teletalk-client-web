@@ -5,7 +5,9 @@ import { stateStatics } from "src/store/stateStatics";
 const defaultDialogStateItemProps = () => ({
   open: false,
   //TODO: read default value from mui
-  props: { zIndex: 1300 },
+  props: {
+    zIndex: 1300,
+  },
 });
 
 const initialGlobalState = () => ({
@@ -40,14 +42,15 @@ const initialGlobalState = () => ({
     speedMultiplier: 1,
     type: stateStatics.GLOBAL_LOADING_TYPES.FULL_PAGE,
   },
+  initialSetupDetails: {
+    status: stateStatics.INITIAL_SETUP_STATUS.NEVER,
+  },
   onlineStatus: {
     isOnline: false,
     ping: 0,
   },
+  users: [],
   viewMode: stateStatics.VIEW_MODES.INITIAL_SETUP,
-  initialSetupDetails: {
-    status: stateStatics.INITIAL_SETUP_STATUS.NEVER,
-  },
 });
 
 export { initialGlobalState, defaultDialogStateItemProps };
