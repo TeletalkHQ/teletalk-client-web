@@ -66,7 +66,8 @@ class ActionHandler {
   catchTryToHandleAction(error) {
     this.logHandleError(error);
 
-    return {};
+    //FIXME: type for internal application error
+    return { type: "error" };
   }
   handle() {
     return trier(`${ActionHandler.name}.${this.handle.name}`)

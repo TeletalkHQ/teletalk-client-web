@@ -17,6 +17,9 @@ const selectedUserForPrivateChat = (payload) =>
 const updateAllPrivateChats = (payload) =>
   actionHandler(MESSAGE_ACTION_TYPES.UPDATE_ALL_PRIVATE_CHATS, payload);
 
+const updateOnePrivateChat = (payload) =>
+  actionHandler(MESSAGE_ACTION_TYPES.UPDATE_ONE_PRIVATE_CHAT, payload);
+
 const createNewPrivateChat = (payload) =>
   actionHandler(MESSAGE_ACTION_TYPES.CREATE_NEW_PRIVATE_CHAT, payload);
 
@@ -27,6 +30,7 @@ const messageActions = {
   messageInputOnChange,
   selectedUserForPrivateChat,
   updateAllPrivateChats,
+  updateOnePrivateChat,
 };
 
 export { messageActions };
