@@ -4,6 +4,12 @@ const handleUpdateAllPrivateChats = (payload) => {
   };
 };
 
+// const handleUpdateOnePrivateChat = (payload, prevState) => {
+//   return {
+//     privateChats: [...prevState.privateChats, payload],
+//   };
+// };
+
 const handleCloseRightSide = () => {
   return {
     selectedUserForPrivateChat: {
@@ -37,7 +43,7 @@ const handleSelectedUserForPrivateChat = (payload) => {
 
 const handleCreateNewPrivateChat = (payload, prevState) => {
   return {
-    privateChats: [...prevState.privateChats, payload],
+    privateChats: [...prevState.privateChats, payload.privateChat],
   };
 };
 
@@ -47,6 +53,7 @@ const messageReducerHandlers = {
   handleCreateNewPrivateChat,
   handleSelectedUserForPrivateChat,
   handleUpdateAllPrivateChats,
+  // handleUpdateOnePrivateChat,
 };
 
 export { messageReducerHandlers };

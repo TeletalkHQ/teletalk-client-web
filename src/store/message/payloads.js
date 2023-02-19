@@ -9,6 +9,10 @@ const messageActionPayloads = {
 
   [MESSAGE_ACTION_TYPES.CLOSE_RIGHT_SIDE]: undefined,
 
+  [MESSAGE_ACTION_TYPES.CREATE_NEW_PRIVATE_CHAT]: {
+    privateChat: fields.collection.privateChat,
+  },
+
   [MESSAGE_ACTION_TYPES.MESSAGE_INPUT_ONCHANGE]: {
     messageInputTextValue: fields.single.messageInputTextValue,
   },
@@ -16,12 +20,7 @@ const messageActionPayloads = {
   [MESSAGE_ACTION_TYPES.RESET_MESSAGE_STATE]: undefined,
 
   [MESSAGE_ACTION_TYPES.UPDATE_ALL_PRIVATE_CHATS]: {
-    privateChats: fields.statics.array({
-      chatId: fields.single.chatId,
-      createdAt: fields.single.createdAt,
-      messages: fields.collection.messages,
-      participants: fields.collection.participants,
-    }),
+    privateChats: fields.statics.array(fields.collection.privateChatItem),
   },
 
   [MESSAGE_ACTION_TYPES.SELECTED_USER_FOR_PRIVATE_CHAT]: {

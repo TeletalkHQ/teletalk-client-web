@@ -112,8 +112,17 @@ const blacklist = statics.array(contact);
 const contacts = statics.array(contact);
 const countries = statics.array(country);
 const messages = statics.array(messageItem);
-const newContact = statics.object(contact);
 const participants = statics.array(participantItem);
+const newContact = statics.object(contact);
+
+const privateChatItem = {
+  chatId,
+  createdAt,
+  messages,
+  participants,
+};
+
+const privateChat = statics.object(privateChatItem);
 
 const single = {
   bio,
@@ -149,7 +158,6 @@ const single = {
 
 const collection = {
   authenticationProgress,
-  fullName,
   blacklist,
   cellphone,
   contact,
@@ -158,11 +166,14 @@ const collection = {
   country,
   dialog,
   dialogProps,
+  fullName,
   messageItem,
   messages,
   newContact,
   notification,
   participants,
+  privateChat,
+  privateChatItem,
   selectedCountry,
   sender,
 };
