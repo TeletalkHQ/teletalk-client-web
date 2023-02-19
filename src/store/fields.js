@@ -32,6 +32,7 @@ const statics = {
 const authenticationProgress = statics.boolean;
 const bio = statics.string;
 const chatId = statics.string;
+const chatType = statics.string;
 const countryCode = statics.string;
 const countryName = statics.string;
 const countryShortName = statics.string;
@@ -41,6 +42,7 @@ const dialogName = statics.string;
 const errorCode = statics.number;
 const errorReason = statics.string;
 const firstName = statics.string;
+const id = statics.string;
 const isOnline = statics.boolean;
 const isStuffImported = statics.boolean;
 const lastName = statics.string;
@@ -127,6 +129,7 @@ const privateChat = statics.object(privateChatItem);
 const single = {
   bio,
   chatId,
+  chatType,
   countryCode,
   countryName,
   countryShortName,
@@ -136,6 +139,7 @@ const single = {
   errorCode,
   errorReason,
   firstName,
+  id,
   isOnline,
   isStuffImported,
   lastName,

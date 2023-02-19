@@ -1,7 +1,8 @@
 const initialMessageState = () => ({
   privateChats: [],
-  selectedUserForPrivateChat: {
-    userId: "",
+  selectedChat: {
+    id: "",
+    type: "",
   },
 });
 

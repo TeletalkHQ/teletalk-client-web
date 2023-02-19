@@ -23,7 +23,7 @@ const EditUsername = ({ onDialogClose }) => {
   };
 
   const handleSaveClick = async () => {
-    await dispatch(controllers.updateProfile());
+    dispatch(controllers.updateProfile());
     handleBack();
   };
   const handleClose = () => {

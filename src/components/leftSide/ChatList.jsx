@@ -1,17 +1,13 @@
 import ChatListItem from "src/components/leftSide/ChatListItem";
 
-const ChatList = ({
-  chatList,
-  onChatListItemClick,
-  selectedUserForPrivateChat,
-}) => {
-  return chatList.map((chatListItem, i) => (
+const ChatList = ({ chatList, onChatListItemClick, selectedChat }) => {
+  return chatList.map((item, i) => (
     <ChatListItem
-      onChatListItemClick={() => onChatListItemClick(chatListItem.userId)}
+      onChatListItemClick={() => onChatListItemClick(item)}
       key={i}
-      message={chatListItem.message}
-      name={chatListItem.name}
-      selected={selectedUserForPrivateChat.userId === chatListItem.userId}
+      message={item.message}
+      name={item.name}
+      selected={selectedChat.id === item.id}
     />
   ));
 };

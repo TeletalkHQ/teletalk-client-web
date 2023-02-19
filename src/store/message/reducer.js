@@ -21,8 +21,8 @@ const messageReducerCases = {
 
   [MESSAGE_ACTION_TYPES.RESET_MESSAGE_STATE]: initialMessageState,
 
-  [MESSAGE_ACTION_TYPES.SELECTED_USER_FOR_PRIVATE_CHAT]:
-    messageReducerHandlers.handleSelectedUserForPrivateChat,
+  [MESSAGE_ACTION_TYPES.SELECTED_CHAT]:
+    messageReducerHandlers.handleSetSelectedChat,
 };
 
 const messageReducer = reducerBuilder

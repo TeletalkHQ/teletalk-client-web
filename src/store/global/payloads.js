@@ -5,6 +5,11 @@ const globalActionPayloads = {
   [GLOBAL_ACTION_TYPES.APP_DRAWER_OPEN_CHANGE]: {
     open: fields.single.open,
   },
+
+  [GLOBAL_ACTION_TYPES.ADD_NEW_CONTACT]: {
+    newContact: fields.collection.newContact,
+  },
+
   [GLOBAL_ACTION_TYPES.APP_PROGRESSION_CHANGE]: {
     authenticationProgress: fields.collection.authenticationProgress,
   },

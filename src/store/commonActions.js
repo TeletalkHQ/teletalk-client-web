@@ -18,7 +18,8 @@ const closeDialog = (dialogName, props = defaultDialogStateItemProps().props) =>
 
 const changeViewModeHelper = (viewMode) => actions.viewModeChange({ viewMode });
 const changeViewMode = {
-  auth: () => changeViewModeHelper(stateStatics.VIEW_MODES.CHECK_CURRENT_USER),
+  checkCurrentUser: () =>
+    changeViewModeHelper(stateStatics.VIEW_MODES.CHECK_CURRENT_USER),
   messenger: () => changeViewModeHelper(stateStatics.VIEW_MODES.MESSENGER),
   createUser: () =>
     changeViewModeHelper(stateStatics.VIEW_MODES.CREATE_NEW_USER),

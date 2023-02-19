@@ -22,15 +22,22 @@ const Contacts = ({ onDialogClose }) => {
 
   const handleContactItemClicked = (contact) => {
     handleCloseContactDialog();
-    dispatch(actions.selectedUserForPrivateChat({ userId: contact.userId }));
+    dispatch(
+      actions.selectedChat({
+        id: contact.userId,
+        type: "private",
+      })
+    );
   };
+
+  const contacts = state.global.users.filter((item) => item.isContact);
 
   return (
     <DialogTemplate
       title={<ContactsComponents.Title />}
       content={
         <ContactsComponents.Content
-          contacts={state.user.contacts}
+          contacts={contacts}
           onContactItemClicked={handleContactItemClicked}
         />
       }
@@ -41,7 +48,9 @@ const Contacts = ({ onDialogClose }) => {
         />
       }
       open={state.global.dialogState.contacts.open}
-      paperStyle={{ height: "90vh" }}
+      paperStyle={{
+        height: "90vh",
+      }}
       onClose={handleCloseContactDialog}
     />
   );
