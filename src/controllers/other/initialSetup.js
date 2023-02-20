@@ -31,7 +31,7 @@ const tryBlock = async (dispatch) => {
 
   addWindowProperties(dispatch);
 
-  dispatch(commonActions.changeViewMode.auth());
+  dispatch(commonActions.changeViewMode.checkCurrentUser());
 
   dispatch(
     actions.changeInitialSetupStatus({

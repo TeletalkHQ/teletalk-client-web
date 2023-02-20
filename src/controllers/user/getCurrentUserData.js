@@ -28,9 +28,22 @@ const tryBlock = async (dispatch) => {
   return response.data;
 };
 const executeIfNoError = (data, dispatch) => {
-  dispatch(actions.updateAllUserData(data.user));
+  const { contacts, ...rest } = data.user;
+  dispatch(actions.updateAllUserData(rest));
+  dispatch(
+    actions.addUsers({
+      users: fixContacts(contacts),
+    })
+  );
+
   dispatch(commonActions.changeViewMode.messenger());
 };
+
+const fixContacts = (contacts) =>
+  contacts.map((item) => ({
+    ...item,
+    isContact: true,
+  }));
 
 const catchBlock = (_error, dispatch) =>
   dispatch(commonActions.changeViewMode.signIn());

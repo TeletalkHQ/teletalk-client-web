@@ -2,6 +2,15 @@ import { actionHandler } from "src/classes/ActionHandler";
 
 import { GLOBAL_ACTION_TYPES } from "src/store/global/types";
 
+const addContact = (payload) =>
+  actionHandler(GLOBAL_ACTION_TYPES.ADD_NEW_CONTACT, payload);
+
+const addNewUser = (payload) =>
+  actionHandler(GLOBAL_ACTION_TYPES.ADD_NEW_USER, payload);
+
+const addUsers = (payload) =>
+  actionHandler(GLOBAL_ACTION_TYPES.ADD_USERS, payload);
+
 const appDrawerOpenChange = (payload) =>
   actionHandler(GLOBAL_ACTION_TYPES.APP_DRAWER_OPEN_CHANGE, payload);
 
@@ -27,14 +36,17 @@ const changeInitialSetupStatus = (payload) =>
   actionHandler(GLOBAL_ACTION_TYPES.CHANGE_INITIAL_SETUP_STATUS, payload);
 
 const globalActions = {
+  addContact,
+  addNewUser,
+  addUsers,
   appDrawerOpenChange,
   appProgressionChange,
+  changeInitialSetupStatus,
   dialogOpenChange,
   globalLoadingOpenChange,
   onlineStatusChange,
   resetGlobalState,
   viewModeChange,
-  changeInitialSetupStatus,
 };
 
 export { globalActions };

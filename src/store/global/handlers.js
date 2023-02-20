@@ -1,5 +1,19 @@
 import { initialGlobalState } from "src/store/global/initialState";
 
+const handleAddNewContact = (payload, prevState) => {
+  return {
+    users: [...prevState.users, { ...payload.newContact, isContact: true }],
+  };
+};
+
+const handleAddNewUser = (payload, prevState) => {
+  return { users: [...prevState.users, payload.user] };
+};
+
+const handleAddUsers = (payload, prevState) => {
+  return { users: [...prevState.users, ...payload.users] };
+};
+
 const handleGlobalLoadingStateOpenChange = (payload, prevState) => {
   return {
     globalLoading: {
@@ -64,6 +78,9 @@ const changeInitialSetupStatus = (payload, prevState) => ({
 
 const globalReducerHandlers = {
   changeInitialSetupStatus,
+  handleAddNewContact,
+  handleAddNewUser,
+  handleAddUsers,
   handleAppDrawerStateOpenChange,
   handleAppProgressionChange,
   handleDialogOpenChange,
