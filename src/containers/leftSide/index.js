@@ -1,43 +1,39 @@
 import { useMemo } from "react";
 
+import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
+import { useDispatch, useSelector } from "react-redux";
+
 import ChatList from "src/components/leftSide/ChatList";
 import { Box } from "src/components/general/box";
 import SearchBar from "src/components/leftSide/SearchBar";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
-import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
 
-const LeftSide = ({ participants }) => {
+const LeftSide = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
   const chatList = useMemo(() => {
-    if (!participants.length) return [];
+    return state.message.privateChats.map((chat) => {
+      const lastMessage = getChatLastMessage(chat);
+      const participantId = findParticipantId(chat, state.user.userId);
+      const user = findUser(state.global.users, participantId);
 
-    return state.message.privateChats.map((privateChatItem) => {
-      const chatLastMessage = getChatLastMessage(privateChatItem);
-      const participantId = findParticipantId(
-        privateChatItem,
-        state.user.userId
-      );
-      const participant = findParticipant(participants, participantId);
-
-      return createChatListItem(chatLastMessage, participant);
+      return createChatListItem(lastMessage, user);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message.privateChats, participants]);
+  }, [state.message.privateChats, state.global.users]);
 
   const handleDrawerIconClick = () => {
     dispatch(commonActions.openAppDrawer());
   };
 
-  const handleChatListItemClick = (userId) => {
+  const handleChatClick = (chatListItem) => {
     dispatch(
-      actions.selectedUserForPrivateChat({
-        userId,
+      actions.selectedChat({
+        id: chatListItem.userId,
+        type: "private",
       })
     );
   };
@@ -59,17 +55,15 @@ const LeftSide = ({ participants }) => {
 
           <Box.List
             sx={{
-              width: "100%",
               overflowY: "auto",
-              scrollBehavior: "smooth",
               padding: "5px",
+              scrollBehavior: "smooth",
+              width: "100%",
             }}
           >
             <ChatList
-              selectedUserForPrivateChat={
-                state.message.selectedUserForPrivateChat
-              }
-              onChatListItemClick={handleChatListItemClick}
+              selectedChat={state.message.selectedChat}
+              onChatListItemClick={handleChatClick}
               chatList={chatList}
             />
           </Box.List>
@@ -81,22 +75,22 @@ const LeftSide = ({ participants }) => {
 
 export default LeftSide;
 
-const findParticipant = (participants, participantId) => {
-  return participants.find((c) => c.userId === participantId);
+const findUser = (users, id) => {
+  return users.find((c) => c.userId === id);
 };
-const findParticipantId = (privateChatItem, userId) => {
-  return privateChatItem.participants.find(
-    (participantItem) => participantItem.participantId !== userId
+const findParticipantId = (chat, userId) => {
+  return chat.participants.find(
+    (participant) => participant.participantId !== userId
   ).participantId;
 };
 
-const getChatLastMessage = (privateChatItem) =>
-  arrayUtilities.lastItem(privateChatItem.messages);
+const getChatLastMessage = (chat) => arrayUtilities.lastItem(chat.messages);
 
-const createChatListItem = (chatLastMessage, participant) => {
+const createChatListItem = (lastMessage, user) => {
   return {
-    message: chatLastMessage.message,
-    name: `${participant.firstName} ${participant.lastName}`,
-    userId: participant.userId,
+    //TODO: rename .message to .text (server side too)
+    message: lastMessage.message,
+    name: `${user.firstName} ${user.lastName}`,
+    userId: user.userId,
   };
 };

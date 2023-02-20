@@ -16,20 +16,25 @@ import { actions } from "src/store/actions";
 import { commonActions } from "src/store/commonActions";
 import { stateStatics } from "src/store/stateStatics";
 
-const RightSide = ({ participants }) => {
+const RightSide = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const oldMessages = useRef([]);
 
-  const selectedUserId = state.message.selectedUserForPrivateChat.userId;
+  const selectedChatMessages = useMemo(() => {
+    if (state.message.selectedChat.type === "private") {
+      return (
+        state.message.privateChats.find((pc) => {
+          return pc.participants.find(
+            (p) => p.participantId === state.message.selectedChat.id
+          );
+        })?.messages || []
+      );
+    }
 
-  const selectedChatMessages = useMemo(
-    () =>
-      state.message.privateChats.find((pc) => {
-        return pc.participants.find((p) => p.participantId === selectedUserId);
-      })?.messages || [],
-    [selectedUserId, state.message.privateChats]
-  );
+    return [];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.message.selectedChat.id, state.message.privateChats]);
 
   useEffect(() => {
     if (oldMessages.current.length < selectedChatMessages.length) {
@@ -50,8 +55,8 @@ const RightSide = ({ participants }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const selectedParticipantToChat = participants.find(
-    (p) => p.participantId === selectedUserId
+  const selectedParticipantToChat = state.global.users.find(
+    (p) => p.userId === state.message.selectedChat.id
   );
 
   const handleInputChange = ({ target: { value } }) => {
@@ -73,15 +78,21 @@ const RightSide = ({ participants }) => {
   return (
     <Box.Grid
       container
-      sx={{ backgroundColor: "lightgray", height: "100%" }}
+      sx={{
+        backgroundColor: "lightgray",
+        height: "100%",
+      }}
       item
       lg={9}
       md={8}
     >
-      {selectedUserId && (
+      {state.message.selectedChat.id && (
         <Box.Flex
           col
-          sx={{ width: "100%", height: "100%" }}
+          sx={{
+            height: "100%",
+            width: "100%",
+          }}
           jc="space-between"
           ai="center"
         >
@@ -100,11 +111,11 @@ const RightSide = ({ participants }) => {
           <Box.Div
             id="messageBox"
             style={{
-              width: "100%",
-              overflowY: "auto",
               height: "100%",
+              overflowY: "auto",
               padding: 5,
               scrollBehavior: "smooth",
+              width: "100%",
             }}
           >
             <MessageList
@@ -113,7 +124,11 @@ const RightSide = ({ participants }) => {
             />
           </Box.Div>
 
-          <Box.Div style={{ width: "100%" }}>
+          <Box.Div
+            style={{
+              width: "100%",
+            }}
+          >
             <MessageInput
               messageInputTextValue={state.message.messageInputTextValue}
               onSendMessage={handleSendMessage}

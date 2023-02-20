@@ -32,6 +32,7 @@ const statics = {
 const authenticationProgress = statics.boolean;
 const bio = statics.string;
 const chatId = statics.string;
+const chatType = statics.string;
 const countryCode = statics.string;
 const countryName = statics.string;
 const countryShortName = statics.string;
@@ -41,6 +42,7 @@ const dialogName = statics.string;
 const errorCode = statics.number;
 const errorReason = statics.string;
 const firstName = statics.string;
+const id = statics.string;
 const isOnline = statics.boolean;
 const isStuffImported = statics.boolean;
 const lastName = statics.string;
@@ -112,12 +114,22 @@ const blacklist = statics.array(contact);
 const contacts = statics.array(contact);
 const countries = statics.array(country);
 const messages = statics.array(messageItem);
-const newContact = statics.object(contact);
 const participants = statics.array(participantItem);
+const newContact = statics.object(contact);
+
+const privateChatItem = {
+  chatId,
+  createdAt,
+  messages,
+  participants,
+};
+
+const privateChat = statics.object(privateChatItem);
 
 const single = {
   bio,
   chatId,
+  chatType,
   countryCode,
   countryName,
   countryShortName,
@@ -127,6 +139,7 @@ const single = {
   errorCode,
   errorReason,
   firstName,
+  id,
   isOnline,
   isStuffImported,
   lastName,
@@ -149,7 +162,6 @@ const single = {
 
 const collection = {
   authenticationProgress,
-  fullName,
   blacklist,
   cellphone,
   contact,
@@ -158,11 +170,14 @@ const collection = {
   country,
   dialog,
   dialogProps,
+  fullName,
   messageItem,
   messages,
   newContact,
   notification,
   participants,
+  privateChat,
+  privateChatItem,
   selectedCountry,
   sender,
 };
