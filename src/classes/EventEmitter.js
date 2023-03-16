@@ -1,4 +1,4 @@
-import { EventEmitter as EventEmitterMain } from "utility-store/src/classes/EventEmitter";
+import { EventEmitter as EventEmitterMain } from "utility-store";
 
 class EventEmitter extends EventEmitterMain {
   EVENT_EMITTER_EVENTS = {
