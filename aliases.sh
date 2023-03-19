@@ -7,8 +7,8 @@
 #* How to run aliasLoader.sh? E.g. bash ./aliasLoader.sh
 
 #? Docker aliases
-alias docb="docker build . -t stalwart95/teletalk-client-web"
-alias docr="docker run -it -u 0 -p 3000:3000 stalwart95/teletalk-client-web"
+alias docb="docker build . -t stalwart95/teletalk-client-react"
+alias docr="docker run -it -u 0 -p 3000:3000 stalwart95/teletalk-client-react"
 
 #? Railway aliases
 alias rwl="railway logs"
