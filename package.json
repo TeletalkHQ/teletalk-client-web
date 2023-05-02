@@ -2,7 +2,7 @@
   "name": "teletalk-client",
   "author": "S_STALWART_S",
   "description": "teletalk messenger app (client)",
-  "license": "GPT-3",
+  "license": "GPL-3",
   "version": "0.1.0",
   "private": true,
   "repository": {
