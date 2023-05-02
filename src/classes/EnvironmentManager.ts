@@ -1,4 +1,4 @@
-import { EnvironmentManager as EnvironmentManagerMain } from "utility-store/src/classes/EnvironmentManager";
+import { EnvironmentManager as EnvironmentManagerMain } from "utility-store";
 
 class EnvironmentManager extends EnvironmentManagerMain {
   constructor() {

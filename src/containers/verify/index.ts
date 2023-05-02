@@ -1,4 +1,4 @@
-import { domUtilities } from "utility-store/src/classes/DomUtilities";
+import { domUtilities } from "utility-store";
 
 import { commonTasks } from "src/classes/CommonTasks";
 import { stuffStore } from "src/classes/StuffStore";

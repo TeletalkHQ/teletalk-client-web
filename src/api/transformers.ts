@@ -1,4 +1,4 @@
-import { randomMaker } from "utility-store/src/classes/RandomMaker";
+import { randomMaker } from "utility-store";
 
 const addUniqueIdToEachCountry = (responseData) => {
   return {

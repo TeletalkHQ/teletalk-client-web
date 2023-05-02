@@ -1,4 +1,4 @@
-import { ioFieldMaker } from "utility-store/src/classes/IoFieldMaker";
+import { ioFieldMaker } from "utility-store";
 
 import { variables } from "src/variables";
 
