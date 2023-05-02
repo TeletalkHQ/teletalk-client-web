@@ -1,4 +1,4 @@
-import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
+import { windowUtilities } from "src/classes/WindowUtilities";
 
 import { commonNotificationManager } from "src/classes/CommonNotificationManager";
 import { notificationManager } from "src/classes/NotificationManager";

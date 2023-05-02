@@ -1,5 +1,5 @@
 import { customTypeof } from "custom-typeof";
-import { validationErrorBuilder } from "utility-store/src/classes/ValidationErrorBuilder";
+import { validationErrorBuilder } from "utility-store";
 
 import { stuffStore } from "src/classes/StuffStore";
 

@@ -1,5 +1,5 @@
 import { websocket } from "src/classes/websocket/Websocket";
-import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
+import { windowUtilities } from "src/classes/WindowUtilities";
 
 const otherEvents = () => {
   websocket.client.onAny((event, ...args) => {

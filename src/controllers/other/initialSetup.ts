@@ -1,5 +1,5 @@
 import { trier } from "simple-trier";
-import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
+import { windowUtilities } from "src/classes/WindowUtilities";
 
 import { apiManager } from "src/classes/api/ApiManager";
 import { appConfigs } from "src/classes/AppConfigs";

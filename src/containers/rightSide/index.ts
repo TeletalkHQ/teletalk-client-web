@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { domUtilities } from "utility-store/src/classes/DomUtilities";
+import { domUtilities } from "utility-store";
 
 import { eventEmitter } from "src/classes/EventEmitter";
 

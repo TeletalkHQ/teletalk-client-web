@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
+import { arrayUtilities } from "utility-store";
 
 import { stuffStore } from "src/classes/StuffStore";
 import { commonTasks } from "src/classes/CommonTasks";
