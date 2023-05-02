@@ -41,7 +41,13 @@
     "build": true,
     "Dockerfile": true,
     "aliases.sh": true,
-    "aliasLoader.sh": true
+    "aliasLoader.sh": true,
+    "next-env.d.ts": true,
+    "tsconfig.json": true,
+    "next.config.js": true,
+    "temp": true,
+    "notes": true,
+    "public": true
   },
   "explorerExclude.backup": {},
   "marquee.widgets.npm-stats.packageNames": ["teletalk-client"],
