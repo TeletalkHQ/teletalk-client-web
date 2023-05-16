@@ -1,4 +1,4 @@
-import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
+import { windowUtilities } from "src/classes/WindowUtilities";
 
 import { actions } from "src/store/actions";
 

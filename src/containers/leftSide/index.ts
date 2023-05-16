@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { arrayUtilities } from "utility-store/src/classes/ArrayUtilities";
+import { arrayUtilities } from "utility-store";
 import { useDispatch, useSelector } from "react-redux";
 
 import ChatList from "src/components/leftSide/ChatList";
