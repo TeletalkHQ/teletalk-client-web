@@ -1,9 +1,6 @@
 {
   "env": {
-    "browser": true,
-    "es6": true,
-    "es2021": true,
-    "mocha": true
+    "browser": true
   },
   "extends": ["eslint:recommended", "next/core-web-vitals", "plugin:@cspell/recommended", "plugin:sonarjs/recommended", "react-app", "react-app/jest"],
   "globals": {
@@ -11,17 +8,15 @@
   },
   "overrides": [],
   "parserOptions": {
-    "ecmaVersion": "latest" // "ecmaVersion": 2019
-
+    "ecmaVersion": "latest"
   },
-  "plugins": ["chai-friendly", "sonarjs", "@cspell"],
+  "plugins": ["sonarjs", "@cspell"],
   "rules": {
     "@cspell/spellchecker": ["warn", {
       "ignoreImportProperties": false,
       "ignoreImports": false
     }],
     "arrow-parens": "warn",
-    "chai-friendly/no-unused-expressions": 2,
     // "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "no-unused-expressions": 0,
