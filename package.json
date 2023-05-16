@@ -1,9 +1,10 @@
 {
  "name": "teletalk-client-web",
-  "version": "0.1.0",
-  "private": true,  "author": "S_STALWART_S",
+    "author": "S_STALWART_S",
   "description": "teletalk messenger app (client)",
-  "license": "GPT-3",
+  "license": "GPL-3",
+  "version": "0.1.0",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/S-STALWART-S/teletalk-client"
