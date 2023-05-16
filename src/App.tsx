@@ -4,7 +4,7 @@ import { CssBaseline } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { windowUtilities } from "utility-store/src/classes/WindowUtilities";
+import { windowUtilities } from "src/classes/WindowUtilities";
 
 import { appConfigs } from "src/classes/AppConfigs";
 

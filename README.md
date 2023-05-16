@@ -1,5 +1,7 @@
 # Teletalk messenger client (web)
 
+[![Gitter](https://img.shields.io/gitter/room/s-stalwart-s/teletalk-server)](https://app.gitter.im/#/room/#teletalk-community:gitter.im)
+
 ### Technical details
 
 The app is based on the ReactJS JavaScript framework. Try it [here](https://teletalk-client-web.vercel.app/).
