@@ -1,6 +1,6 @@
-import Actions from "src/components/dialog/contacts/Actions";
-import Content from "src/components/dialog/contacts/Content";
-import Title from "src/components/dialog/contacts/Title";
+import Actions from "~/components/dialog/contacts/Actions";
+import Content from "~/components/dialog/contacts/Content";
+import Title from "~/components/dialog/contacts/Title";
 
 const ContactsComponents = {
   Actions,

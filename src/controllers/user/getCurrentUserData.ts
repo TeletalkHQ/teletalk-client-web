@@ -1,9 +1,9 @@
 import { trier } from "simple-trier";
 
-import { apiManager } from "src/classes/api/ApiManager";
+import { apiManager } from "~/classes/api/ApiManager";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
 
 const getCurrentUserData = () => {
   return async (dispatch) => {

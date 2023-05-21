@@ -1,7 +1,7 @@
 import FastestValidator from "fastest-validator";
 import { trier } from "simple-trier";
 
-import { validator } from "src/classes/validator/Validator";
+import { validator } from "~/classes/validator/Validator";
 
 const fastestValidatorCompiler = new FastestValidator();
 

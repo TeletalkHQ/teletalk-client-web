@@ -1,5 +1,5 @@
-import { MESSAGE_ACTION_TYPES } from "src/store/message/types";
-import { fields } from "src/store/fields";
+import { MESSAGE_ACTION_TYPES } from "~/store/message/types";
+import { fields } from "~/store/fields";
 
 const messageActionPayloads = {
   [MESSAGE_ACTION_TYPES.ADD_NEW_MESSAGE]: {

@@ -1,11 +1,11 @@
-import ContactsComponents from "src/components/dialog/contacts";
-import DialogTemplate from "src/components/dialog/Template";
+import ContactsComponents from "~/components/dialog/contacts";
+import DialogTemplate from "~/components/dialog/Template";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
-import { stateStatics } from "src/store/stateStatics";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
+import { stateStatics } from "~/store/stateStatics";
 
 const Contacts = ({ onDialogClose }) => {
   const dispatch = useDispatch();

@@ -3,19 +3,19 @@ import { createRoot } from "react-dom/client";
 
 import { Provider } from "react-redux";
 
-import "src/others/customGlobals";
+import "~/others/customGlobals";
 
-import App from "src/App";
+import App from "~/App";
 
-import { appConfigs } from "src/classes/AppConfigs";
+import { appConfigs } from "~/classes/AppConfigs";
 
-import reportWebVitals from "src/reportWebVitals";
+import reportWebVitals from "~/reportWebVitals";
 
-import { store } from "src/store/store";
+import { store } from "~/store/store";
 
 appConfigs.setDebugLevel();
 
-const container = document.getElementById("root");
+const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 root.render(

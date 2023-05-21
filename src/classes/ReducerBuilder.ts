@@ -1,6 +1,6 @@
 import { trier } from "simple-trier";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 class ReducerBuilder {
   #options = {

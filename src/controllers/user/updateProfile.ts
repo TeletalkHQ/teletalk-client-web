@@ -1,6 +1,6 @@
-import { apiManager } from "src/classes/api/ApiManager";
+import { apiManager } from "~/classes/api/ApiManager";
 
-import { actions } from "src/store/actions";
+import { actions } from "~/store/actions";
 
 const updateProfile = () => {
   return async (dispatch, getState) => {

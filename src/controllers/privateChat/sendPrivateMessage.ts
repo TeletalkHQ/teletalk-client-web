@@ -1,9 +1,9 @@
 import { trier } from "simple-trier";
 
-import { eventEmitter } from "src/classes/EventEmitter";
-import { websocket } from "src/classes/websocket/Websocket";
+import { eventEmitter } from "~/classes/EventEmitter";
+import { websocket } from "~/classes/websocket/Websocket";
 
-import { store } from "src/store/store";
+import { store } from "~/store/store";
 
 const sendPrivateMessage = () => {
   return async (_dispatch, getState = store.initialStates) => {

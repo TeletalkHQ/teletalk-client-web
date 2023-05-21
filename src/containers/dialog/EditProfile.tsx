@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 
-import { userUtilities } from "src/classes/UserUtilities";
+import { userUtilities } from "~/classes/UserUtilities";
 
-import DialogTemplate from "src/components/dialog/Template";
-import EditProfileComponents from "src/components/dialog/editProfile";
+import DialogTemplate from "~/components/dialog/Template";
+import EditProfileComponents from "~/components/dialog/editProfile";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
 
 const EditProfile = ({ onDialogClose }) => {
   const state = useSelector((state) => state);

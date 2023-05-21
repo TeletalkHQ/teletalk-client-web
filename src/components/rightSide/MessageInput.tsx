@@ -1,7 +1,7 @@
-import { Box } from "src/components/general/box";
-import IconButton from "src/components/general/other/IconButton";
-import { Input } from "src/components/general/input";
-import { Icons } from "src/components/other/Icons";
+import { Box } from "~/components/general/box";
+import IconButton from "~/components/general/other/IconButton";
+import { Input } from "~/components/general/input";
+import { Icons } from "~/components/other/Icons";
 
 const MessageInput = ({
   messageInputTextValue,

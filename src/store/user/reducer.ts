@@ -1,7 +1,7 @@
-import { reducerBuilder } from "src/classes/ReducerBuilder";
+import { reducerBuilder } from "~/classes/ReducerBuilder";
 
-import { initialUserState } from "src/store/user/initialState";
-import { USER_ACTION_TYPES } from "src/store/user/types";
+import { initialUserState } from "~/store/user/initialState";
+import { USER_ACTION_TYPES } from "~/store/user/types";
 
 const userReducerCases = {
   [USER_ACTION_TYPES.UPDATE_ALL_USER_DATA]: (payload) => payload,

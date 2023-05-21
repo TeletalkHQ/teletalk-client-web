@@ -1,4 +1,4 @@
-import Copyright from "src/components/other/Copyright";
+import Copyright from "~/components/other/Copyright";
 
 const AuthFooter = () => {
   return (

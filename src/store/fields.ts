@@ -1,6 +1,6 @@
 import { ioFieldMaker } from "utility-store";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 const statics = {
   array: (value) =>

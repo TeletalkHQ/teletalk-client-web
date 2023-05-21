@@ -1,14 +1,14 @@
 import { ioFieldsChecker } from "utility-store";
 import { trier } from "simple-trier";
 
-import { utilities } from "src/utilities";
+import { utilities } from "~/utilities";
 
-import { commonTasks } from "src/classes/CommonTasks";
-import { appConfigs } from "src/classes/AppConfigs";
+import { commonTasks } from "~/classes/CommonTasks";
+import { appConfigs } from "~/classes/AppConfigs";
 
-import { payloads } from "src/store/store";
+import { payloads } from "~/store/store";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 const ioFieldsCheckerErrors = {
   ioDataFieldTypeWrongError:

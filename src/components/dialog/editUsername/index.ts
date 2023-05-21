@@ -1,6 +1,6 @@
-import Actions from "src/components/dialog/editUsername/Actions";
-import Content from "src/components/dialog/editUsername/Content";
-import Title from "src/components/dialog/editUsername/Title";
+import Actions from "~/components/dialog/editUsername/Actions";
+import Content from "~/components/dialog/editUsername/Content";
+import Title from "~/components/dialog/editUsername/Title";
 
 const EditUsernameComponents = {
   Actions,

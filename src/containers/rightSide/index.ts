@@ -3,18 +3,18 @@ import { useEffect, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { domUtilities } from "utility-store";
 
-import { eventEmitter } from "src/classes/EventEmitter";
+import { eventEmitter } from "~/classes/EventEmitter";
 
-import ChatBar from "src/components/rightSide/ChatBar";
-import { Box } from "src/components/general/box";
-import MessageInput from "src/components/rightSide/MessageInput";
-import MessageList from "src/components/rightSide/MessageList";
+import ChatBar from "~/components/rightSide/ChatBar";
+import { Box } from "~/components/general/box";
+import MessageInput from "~/components/rightSide/MessageInput";
+import MessageList from "~/components/rightSide/MessageList";
 
-import { controllers } from "src/controllers";
+import { controllers } from "~/controllers";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
-import { stateStatics } from "src/store/stateStatics";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
+import { stateStatics } from "~/store/stateStatics";
 
 const RightSide = () => {
   const dispatch = useDispatch();
