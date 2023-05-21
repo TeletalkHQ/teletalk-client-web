@@ -1,8 +1,8 @@
 import MoonLoader from "react-spinners/MoonLoader";
 
-import { Box } from "src/components/general/box";
+import { Box } from "~/components/general/box";
 
-import { stateStatics } from "src/store/stateStatics";
+import { stateStatics } from "~/store/stateStatics";
 
 const FullPageLoading = ({ loading }) => {
   return (

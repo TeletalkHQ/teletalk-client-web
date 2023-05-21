@@ -1,9 +1,9 @@
 import { trier } from "simple-trier";
 
-import { apiManager } from "src/classes/api/ApiManager";
-import { commonTasks } from "src/classes/CommonTasks";
+import { apiManager } from "~/classes/api/ApiManager";
+import { commonTasks } from "~/classes/CommonTasks";
 
-import { commonActions } from "src/store/commonActions";
+import { commonActions } from "~/store/commonActions";
 
 const logout = () => {
   return async (dispatch) => {

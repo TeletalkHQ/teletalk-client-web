@@ -27,7 +27,7 @@ import {
   VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 const ELEMENT_NAMES = variables.other.helper.ELEMENT_NAMES;
 

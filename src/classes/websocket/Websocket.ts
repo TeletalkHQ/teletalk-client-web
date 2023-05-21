@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import { appConfigs } from "src/classes/AppConfigs";
+import { appConfigs } from "~/classes/AppConfigs";
 
 const serverUrl = appConfigs.getConfigs().apiConfigs.SERVER_BASE_URL;
 

@@ -1,7 +1,7 @@
-import { componentBuilder } from "src/classes/ComponentBuilder";
+import { componentBuilder } from "~/classes/ComponentBuilder";
 
-import { Box } from "src/components/general/box";
-import H5 from "src/components/general/typography/header/H5";
+import { Box } from "~/components/general/box";
+import H5 from "~/components/general/typography/header/H5";
 
 const AddNewContactTitle = componentBuilder
   .create()

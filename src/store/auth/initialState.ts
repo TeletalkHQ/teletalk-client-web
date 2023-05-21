@@ -1,4 +1,4 @@
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 const initialAuthState = () => ({
   countryCode: "",

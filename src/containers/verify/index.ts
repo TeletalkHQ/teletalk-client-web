@@ -1,27 +1,27 @@
 import { domUtilities } from "utility-store";
 
-import { commonTasks } from "src/classes/CommonTasks";
-import { stuffStore } from "src/classes/StuffStore";
-import { validatorManager } from "src/classes/validator/ValidatorManager";
+import { commonTasks } from "~/classes/CommonTasks";
+import { stuffStore } from "~/classes/StuffStore";
+import { validatorManager } from "~/classes/validator/ValidatorManager";
 
-import { Box } from "src/components/general/box";
-import { Icons } from "src/components/other/Icons";
-import { Input } from "src/components/general/input";
-import AuthFooter from "src/components/other/AuthFooter";
-import Avatar from "src/components/general/other/Avatar";
-import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
-import H5 from "src/components/general/typography/header/H5";
-import IconButton from "src/components/general/other/IconButton";
-import LoadingButton from "src/components/auth/LoadingButton";
+import { Box } from "~/components/general/box";
+import { Icons } from "~/components/other/Icons";
+import { Input } from "~/components/general/input";
+import AuthFooter from "~/components/other/AuthFooter";
+import Avatar from "~/components/general/other/Avatar";
+import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
+import H5 from "~/components/general/typography/header/H5";
+import IconButton from "~/components/general/other/IconButton";
+import LoadingButton from "~/components/auth/LoadingButton";
 
-import { controllers } from "src/controllers";
+import { controllers } from "~/controllers";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 const Verify = () => {
   const dispatch = useDispatch();

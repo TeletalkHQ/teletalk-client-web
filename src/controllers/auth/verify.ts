@@ -1,10 +1,10 @@
 import { trier } from "simple-trier";
 
-import { apiManager } from "src/classes/api/ApiManager";
+import { apiManager } from "~/classes/api/ApiManager";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
-import { store } from "src/store/store";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
+import { store } from "~/store/store";
 
 const verify = () => {
   return async (dispatch, getState = store.initialStates) => {

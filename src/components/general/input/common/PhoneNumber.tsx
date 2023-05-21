@@ -1,7 +1,7 @@
-import { Input } from "src/components/general/input";
-import withInputValidator from "src/hoc/withInputValidator";
+import { Input } from "~/components/general/input";
+import withInputValidator from "~/hoc/withInputValidator";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 const PhoneNumberInput = ({ inputValue, onInputChange }) => {
   return (

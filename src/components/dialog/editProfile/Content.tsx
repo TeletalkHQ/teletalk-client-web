@@ -1,6 +1,6 @@
-import { userUtilities } from "src/classes/UserUtilities";
+import { userUtilities } from "~/classes/UserUtilities";
 
-import { Box } from "src/components/general/box";
+import { Box } from "~/components/general/box";
 import Header from "./Header";
 import List from "./List";
 

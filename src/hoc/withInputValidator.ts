@@ -1,4 +1,4 @@
-import { validatorManager } from "src/classes/validator/ValidatorManager";
+import { validatorManager } from "~/classes/validator/ValidatorManager";
 
 const withInputValidator = (Component, validationKey) => {
   return ({ inputValue, onInputChange }) => {

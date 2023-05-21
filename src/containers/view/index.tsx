@@ -1,15 +1,15 @@
-import Messenger from "src/containers/messenger";
-import Portal from "src/containers/portal";
-import InitialSetup from "src/containers/InitialSetup";
+import Messenger from "~/containers/messenger";
+import Portal from "~/containers/portal";
+import InitialSetup from "~/containers/InitialSetup";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { stateStatics } from "src/store/stateStatics";
-import { commonActions } from "src/store/commonActions";
-import CheckCurrentUser from "src/containers/checkCurrentUser";
-import CreateNewUser from "src/containers/createNewUser";
-import SignIn from "src/containers/signIn";
-import Verify from "src/containers/verify";
+import { stateStatics } from "~/store/stateStatics";
+import { commonActions } from "~/store/commonActions";
+import CheckCurrentUser from "~/containers/checkCurrentUser";
+import CreateNewUser from "~/containers/createNewUser";
+import SignIn from "~/containers/signIn";
+import Verify from "~/containers/verify";
 
 const View = () => {
   const state = useSelector((state) => state);

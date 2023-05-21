@@ -3,15 +3,15 @@ import { customTypeof } from "custom-typeof";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 
-import { appConfigs } from "src/classes/AppConfigs";
+import { appConfigs } from "~/classes/AppConfigs";
 
-import Dialog from "src/components/dialog/Dialog";
-import DialogActions from "src/components/dialog/DialogActions";
-import DialogContent from "src/components/dialog/DialogContent";
-import DialogTitle from "src/components/dialog/DialogTitle";
-import { Transitions } from "src/components/other/Transitions";
+import Dialog from "~/components/dialog/Dialog";
+import DialogActions from "~/components/dialog/DialogActions";
+import DialogContent from "~/components/dialog/DialogContent";
+import DialogTitle from "~/components/dialog/DialogTitle";
+import { Transitions } from "~/components/other/Transitions";
 
-import { componentBuilder } from "src/classes/ComponentBuilder";
+import { componentBuilder } from "~/classes/ComponentBuilder";
 
 const DialogTemplate = componentBuilder
   .create()

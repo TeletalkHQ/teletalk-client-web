@@ -4,19 +4,19 @@ import { CssBaseline } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { windowUtilities } from "src/classes/WindowUtilities";
+import { windowUtilities } from "~/classes/WindowUtilities";
 
-import { appConfigs } from "src/classes/AppConfigs";
+import { appConfigs } from "~/classes/AppConfigs";
 
-import View from "src/containers/view";
+import View from "~/containers/view";
 
-import { MainContext } from "src/context/MainContext";
+import { MainContext } from "~/context/MainContext";
 
-import { events } from "src/events";
+import { events } from "~/events";
 
-import { assignDispatch } from "src/helpers/extractedDispatch";
+import { assignDispatch } from "~/helpers/extractedDispatch";
 
-import { baseTheme } from "src/theme/baseTheme";
+import { baseTheme } from "~/theme/baseTheme";
 
 const App = () => {
   const [forceUpdate, setForceUpdate] = useState(false);
@@ -45,7 +45,7 @@ const App = () => {
   const maxNotification = appConfigs.getConfigs().ui.maxNotification;
   return (
     <SnackbarProvider maxSnack={maxNotification}>
-      <MainContext.Provider value={null}>
+      <MainContext.Provider value={{}}>
         <ThemeProvider theme={baseTheme}>
           <CssBaseline enableColorScheme />
           <View />

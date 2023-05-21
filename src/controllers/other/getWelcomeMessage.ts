@@ -1,8 +1,8 @@
 import { trier } from "simple-trier";
 
-import { actions } from "src/store/actions";
+import { actions } from "~/store/actions";
 
-import { apiManager } from "src/classes/api/ApiManager";
+import { apiManager } from "~/classes/api/ApiManager";
 
 const getWelcomeMessage = () => {
   return async (dispatch) => {

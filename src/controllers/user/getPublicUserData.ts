@@ -1,4 +1,4 @@
-import { apiManager } from "src/classes/api/ApiManager";
+import { apiManager } from "~/classes/api/ApiManager";
 
 const getPublicUserData = async (userId) => {
   const response =

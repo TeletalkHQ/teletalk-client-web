@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-import { Box } from "src/components/general/box";
-import FullPageLoading from "src/components/portal/FullPageLoading";
+import { Box } from "~/components/general/box";
+import FullPageLoading from "~/components/portal/FullPageLoading";
 
-import { controllers } from "src/controllers";
+import { controllers } from "~/controllers";
 
 import { useDispatch, useSelector } from "react-redux";
 

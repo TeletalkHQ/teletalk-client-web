@@ -1,6 +1,6 @@
-import { actionHandler } from "src/classes/ActionHandler";
+import { actionHandler } from "~/classes/ActionHandler";
 
-import { USER_ACTION_TYPES } from "src/store/user/types";
+import { USER_ACTION_TYPES } from "~/store/user/types";
 
 const updateAllUserData = (payload) =>
   actionHandler(USER_ACTION_TYPES.UPDATE_ALL_USER_DATA, payload);

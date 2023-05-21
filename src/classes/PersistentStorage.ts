@@ -1,4 +1,4 @@
-import { Storage } from "src/classes/Storage";
+import { Storage } from "~/classes/Storage";
 
 class PersistentStorage {
   constructor() {

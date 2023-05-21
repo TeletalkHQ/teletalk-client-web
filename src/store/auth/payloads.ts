@@ -1,6 +1,6 @@
-import { AUTH_ACTION_TYPES } from "src/store/auth/types";
+import { AUTH_ACTION_TYPES } from "~/store/auth/types";
 
-import { fields } from "src/store/fields";
+import { fields } from "~/store/fields";
 
 const authActionPayloads = {
   [AUTH_ACTION_TYPES.COUNTRY_CODE_ONCHANGE]: {

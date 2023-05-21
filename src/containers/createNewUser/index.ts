@@ -1,20 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { commonTasks } from "src/classes/CommonTasks";
-import { stuffStore } from "src/classes/StuffStore";
-import LoadingButton from "src/components/auth/LoadingButton";
+import { commonTasks } from "~/classes/CommonTasks";
+import { stuffStore } from "~/classes/StuffStore";
+import LoadingButton from "~/components/auth/LoadingButton";
 
-import { Box } from "src/components/general/box";
-import { Icons } from "src/components/other/Icons";
-import { Input } from "src/components/general/input";
-import AuthFooter from "src/components/other/AuthFooter";
-import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
-import IconButton from "src/components/general/other/IconButton";
+import { Box } from "~/components/general/box";
+import { Icons } from "~/components/other/Icons";
+import { Input } from "~/components/general/input";
+import AuthFooter from "~/components/other/AuthFooter";
+import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
+import IconButton from "~/components/general/other/IconButton";
 
-import { controllers } from "src/controllers";
+import { controllers } from "~/controllers";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
 
 const CreateNewUser = () => {
   const dispatch = useDispatch();

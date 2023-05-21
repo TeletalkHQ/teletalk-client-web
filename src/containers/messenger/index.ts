@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 
-import { websocket } from "src/classes/websocket/Websocket";
+import { websocket } from "~/classes/websocket/Websocket";
 
-import { Box } from "src/components/general/box";
+import { Box } from "~/components/general/box";
 
-import LeftSide from "src/containers/leftSide";
-import RightSide from "src/containers/rightSide";
+import LeftSide from "~/containers/leftSide";
+import RightSide from "~/containers/rightSide";
 
-import { controllers } from "src/controllers";
+import { controllers } from "~/controllers";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { stateStatics } from "src/store/stateStatics";
+import { stateStatics } from "~/store/stateStatics";
 
 const Messenger = () => {
   const state = useSelector((state) => state);

@@ -1,12 +1,12 @@
 import Autocomplete from "@mui/material/Autocomplete";
 
-import { validatorManager } from "src/classes/validator/ValidatorManager";
+import { validatorManager } from "~/classes/validator/ValidatorManager";
 
-import { Input } from "src/components/general/input";
-import { Box } from "src/components/general/box";
-import Img from "src/components/general/other/Img";
+import { Input } from "~/components/general/input";
+import { Box } from "~/components/general/box";
+import Img from "~/components/general/other/Img";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 const CountrySelector = ({
   countries,
