@@ -20,6 +20,8 @@
     "lint": "next lint",
     "production:build": "cross-env REACT_APP_RUNTIME_MODE=production react-scripts build",
     "production:deploy": "gh-pages -d build",
+    "setup:alias:load": "./scripts/alias/loader.sh",
+    "setup:alias:unload": "./scripts/alias/unloader.sh",
     "start": "start:production",
     "start:dev": "cross-env REACT_APP_RUNTIME_MODE=development PORT=${PORT:-4090} next dev",
     "start:dev:1": "cross-env PORT=4091 REACT_APP_DEVELOPMENT_SERVER_BASE_URL_INDEX=1 npm run start:dev",
