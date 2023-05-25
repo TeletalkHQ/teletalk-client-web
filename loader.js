@@ -4,7 +4,7 @@ import { promisify } from "node:util";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import resolveCallback from "resolve";
-import { resolve as resolveTs, load } from "ts-node";
+import { resolve as resolveTs, load } from "ts-node/esm";
 import { loadConfig, createMatchPath } from "tsconfig-paths";
 
 const resolveAsync = promisify(resolveCallback);

@@ -1,9 +1,25 @@
-import { websocket } from "~/classes/websocket/Websocket";
+import fs from "fs";
+import io from "socket.io-client";
 
-console.log("Hallo!");
+const run = async () => {
+  saveStuff();
+};
 
-const fn = async () => console.log("Hallo!!!");
+const saveStuff = () => {
+  io("http://localhost:8090", {
+    autoConnect: false,
+    withCredentials: true,
+  })
+    .connect()
+    .emit("getStuff", undefined, (response: any) => {
+      console.log("saving stuff...");
 
-await fn();
+      fs.writeFileSync("./src/data/stuff.json", JSON.stringify(response.data));
 
-websocket.client.connect();
+      console.log("done!");
+
+      process.exit(0);
+    });
+};
+
+run();
