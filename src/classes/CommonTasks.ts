@@ -2,7 +2,7 @@ import { windowUtilities } from "~/classes/WindowUtilities";
 
 import { commonNotificationManager } from "~/classes/CommonNotificationManager";
 import { notificationManager } from "~/classes/NotificationManager";
-import { persistentStorage } from "~/classes/PersistentStorage";
+import { PersistentStorage } from "~/classes/PersistentStorage";
 import { stuffStore } from "~/classes/StuffStore";
 
 import { extractedDispatch } from "~/helpers/extractedDispatch";
@@ -15,7 +15,7 @@ import { variables } from "~/variables";
 
 class CommonTasks {
   resetEverything() {
-    persistentStorage.setDefaultStorage();
+    new PersistentStorage().setDefaultStorage();
 
     [
       actions.resetAuthState,
