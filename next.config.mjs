@@ -1,4 +1,6 @@
-require("dotenv").config({
+import dotenv from "dotenv";
+
+dotenv.config({
   path: "./configs/env/global.env",
 });
 
@@ -16,4 +18,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

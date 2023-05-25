@@ -1,30 +1,20 @@
-import lodash from "lodash";
+import stuff from "~/data/stuff.json";
 
 class StuffStore {
-  constructor() {
-    this.errors = {};
-    this.events = {};
-    this.languageData = {
-      errorMessages: {},
-    };
-    this.models = {};
-    this.routes = {};
-    this.validationModels = {};
-  }
+  errors = stuff.errors;
+  events = stuff.routes;
+  models = stuff.models;
+  validationModels = stuff.validationModels;
 
   getStore() {
     return {
       errors: this.errors,
-      languageData: this.languageData,
       models: this.models,
-      routes: this.routes,
+      events: this.events,
       validationModels: this.validationModels,
     };
   }
-  updateRoutes(routes) {
-    this.routes = routes;
-    return this;
-  }
+
   updateModels(models) {
     this.models = models;
     return this;
@@ -41,17 +31,13 @@ class StuffStore {
     this.validationModels = validationModels;
     return this;
   }
-  updateLanguageData(languageData) {
-    this.languageData = languageData;
-    return this;
-  }
-  updateStore(data) {
-    Object.entries(data).forEach(([key, value]) => {
-      this[`update${lodash.upperFirst(key)}`](value);
-    });
+
+  updateStore(data: typeof stuff) {
+    this.errors = data.errors;
+    this.models = data.models;
+    this.validationModels = data.validationModels;
+    this.events = data.routes;
   }
 }
 
-const stuffStore = new StuffStore();
-
-export { stuffStore };
+export const stuffStore = new StuffStore();

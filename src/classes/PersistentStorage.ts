@@ -48,4 +48,4 @@ class PersistentStorage {
   }
 }
 
-export { PersistentStorage };
+export const persistentStorage = new PersistentStorage();
