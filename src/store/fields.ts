@@ -1,32 +1,20 @@
-import { ioFieldMaker } from "utility-store";
-
+import { ioFieldMaker } from "check-fields";
 import { variables } from "~/variables";
 
 const statics = {
   array: (value) =>
-    ioFieldMaker
-      .create()
+    ioFieldMaker()
       .type(variables.common.DATA_TYPES.ARRAY)
       .value([value])
       .build(),
-  boolean: ioFieldMaker
-    .create()
-    .type(variables.common.DATA_TYPES.BOOLEAN)
-    .build(),
-  number: ioFieldMaker
-    .create()
-    .type(variables.common.DATA_TYPES.NUMBER)
-    .build(),
+  boolean: ioFieldMaker().type(variables.common.DATA_TYPES.BOOLEAN).build(),
+  number: ioFieldMaker().type(variables.common.DATA_TYPES.NUMBER).build(),
   object: (value) =>
-    ioFieldMaker
-      .create()
+    ioFieldMaker()
       .type(variables.common.DATA_TYPES.OBJECT)
       .value(value)
       .build(),
-  string: ioFieldMaker
-    .create()
-    .type(variables.common.DATA_TYPES.STRING)
-    .build(),
+  string: ioFieldMaker().type(variables.common.DATA_TYPES.STRING).build(),
 };
 
 const authenticationProgress = statics.boolean;

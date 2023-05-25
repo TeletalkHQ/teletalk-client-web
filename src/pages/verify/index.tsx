@@ -28,10 +28,12 @@ const Verify = () => {
   const state = useSelector((state) => state);
 
   const isVerificationSubmitButtonDisabled = () => {
-    return !commonTasks.validateInputValueLengthByModelLength(
-      stuffStore.models.verificationCode,
-      state.auth.verificationCode
-    );
+    // return !commonTasks.validateInputValueLengthByModelLength(
+    //   stuffStore.models.verificationCode,
+    //   state.auth.verificationCode
+    // );
+
+    return false;
   };
 
   const handleBackToSignInClick = () => {

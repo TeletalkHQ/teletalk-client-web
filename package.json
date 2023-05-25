@@ -5,6 +5,7 @@
   "license": "GPL-3",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/S-STALWART-S/teletalk-client"
@@ -18,17 +19,18 @@
     "dev": "npm run start:dev",
     "git:prepare": "husky install",
     "lint": "next lint",
-    "production:build": "cross-env REACT_APP_RUNTIME_MODE=production react-scripts build",
+    "production:build": "cross-env NEXT_PUBLIC_RUNTIME_MODE=production react-scripts build",
     "production:deploy": "gh-pages -d build",
+    "production:prebuild": "node --loader ./loader.js ./scripts/prebuild/index.ts",
     "setup:alias:load": "./scripts/alias/loader.sh",
     "setup:alias:unload": "./scripts/alias/unloader.sh",
     "start": "start:production",
-    "start:dev": "cross-env REACT_APP_RUNTIME_MODE=development PORT=${PORT:-4090} next dev",
-    "start:dev:1": "cross-env PORT=4091 REACT_APP_DEVELOPMENT_SERVER_BASE_URL_INDEX=1 npm run start:dev",
-    "start:dev:2": "cross-env PORT=4092 REACT_APP_DEVELOPMENT_SERVER_BASE_URL_INDEX=2 npm run start:dev",
-    "start:production": "cross-env REACT_APP_RUNTIME_MODE=production PORT=${PORT:-4080} next start",
-    "start:production1": "cross-env PORT=4081 REACT_APP_PRODUCTION_SERVER_BASE_URL_INDEX=1 npm run start:production",
-    "start:production2": "cross-env PORT=4082 REACT_APP_PRODUCTION_SERVER_BASE_URL_INDEX=2 npm run start:production",
+    "start:dev": "cross-env NEXT_PUBLIC_RUNTIME_MODE=development PORT=${PORT:-4090} next dev",
+    "start:dev:1": "cross-env PORT=4091 NEXT_PUBLIC_DEVELOPMENT_SERVER_BASE_URL_INDEX=1 npm run start:dev",
+    "start:dev:2": "cross-env PORT=4092 NEXT_PUBLIC_DEVELOPMENT_SERVER_BASE_URL_INDEX=2 npm run start:dev",
+    "start:production": "cross-env NEXT_PUBLIC_RUNTIME_MODE=production PORT=${PORT:-4080} next start",
+    "start:production1": "cross-env PORT=4081 NEXT_PUBLIC_PRODUCTION_SERVER_BASE_URL_INDEX=1 npm run start:production",
+    "start:production2": "cross-env PORT=4082 NEXT_PUBLIC_PRODUCTION_SERVER_BASE_URL_INDEX=2 npm run start:production",
     "test": "react-scripts test"
   },
   "keywords": [
@@ -80,6 +82,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/lodash": "^4.14.194",
     "@types/node": "20.2.3",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
@@ -99,6 +102,8 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.4",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "5.0.4"
   },
   "browserslist": {

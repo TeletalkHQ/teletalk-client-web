@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { stateStatics } from "~/store/stateStatics";
 import { commonActions } from "~/store/commonActions";
 import CheckCurrentUser from "~/containers/checkCurrentUser";
-import CreateNewUser from "~/containers/createNewUser";
+import CreateNewUser from "~/pages/create";
 import SignIn from "~/containers/signIn";
 import Verify from "~/containers/verify";
 
