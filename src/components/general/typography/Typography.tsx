@@ -1,6 +1,6 @@
-import { Typography as MuiTypography } from "@mui/material";
+import { Typography as MuiTypography, TypographyProps } from "@mui/material";
 
-const Typography = (props) => {
+const Typography: React.FC<TypographyProps> = (props) => {
   return <MuiTypography {...props} />;
 };
 
