@@ -1,6 +1,9 @@
-import { InputAdornment as MuiInputAdornment } from "@mui/material";
+import {
+  InputAdornmentProps,
+  InputAdornment as MuiInputAdornment,
+} from "@mui/material";
 
-const InputAdornment = (props) => {
+const InputAdornment: React.FC<InputAdornmentProps> = (props) => {
   return <MuiInputAdornment {...props} />;
 };
 
