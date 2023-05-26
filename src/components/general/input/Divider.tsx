@@ -1,4 +1,8 @@
-const Divider = ({ style = {}, label }) => {
+interface Props {
+  label: string;
+}
+
+const Divider: React.FC<Props> = ({ label }) => {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
       <div
@@ -15,7 +19,6 @@ const Divider = ({ style = {}, label }) => {
           whiteSpace: "nowrap",
           color: "gray",
           fontWeight: "bold",
-          ...style,
         }}
       >
         {label}
@@ -30,4 +33,5 @@ const Divider = ({ style = {}, label }) => {
     </div>
   );
 };
+
 export default Divider;
