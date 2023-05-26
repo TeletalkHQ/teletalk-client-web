@@ -1,15 +1,15 @@
-import { Button as MuiButton } from "@mui/material";
+import { ButtonProps, Button as MuiButton } from "@mui/material";
 
-const Button = ({
-  color,
-  style,
+const Button: React.FC<ButtonProps> = ({
   size = "large",
   fullWidth = true,
   variant = "contained",
-  ...props
+  style,
+  ...rest
 }) => {
   return (
     <MuiButton
+      {...rest}
       style={{
         borderRadius: "10px",
         ...style,
@@ -17,10 +17,6 @@ const Button = ({
       fullWidth={fullWidth}
       size={size}
       variant={variant}
-      {...{
-        color,
-        ...props,
-      }}
     />
   );
 };
