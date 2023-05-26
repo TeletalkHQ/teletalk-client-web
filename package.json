@@ -82,6 +82,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/autosuggest-highlight": "^3.2.0",
     "@types/lodash": "^4.14.194",
     "@types/node": "20.2.3",
     "@types/react": "18.2.7",
@@ -106,9 +107,9 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "5.0.4"
   },
-"peerDependencies": {
-  "react": "^17.0.0"
-},
+  "peerDependencies": {
+    "react": "^17.0.0"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
