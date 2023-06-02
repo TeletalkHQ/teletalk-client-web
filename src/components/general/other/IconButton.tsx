@@ -1,6 +1,6 @@
-import { IconButton as MuiIconButton } from "@mui/material";
+import { IconButtonProps, IconButton as MuiIconButton } from "@mui/material";
 
-const IconButton = (props) => {
+const IconButton: React.FC<IconButtonProps> = (props) => {
   return <MuiIconButton {...props} />;
 };
 

@@ -1,13 +1,13 @@
 import { ioFieldsChecker } from "utility-store";
 import { trier } from "simple-trier";
 
-import { appConfigs } from "src/classes/AppConfigs";
-import { commonTasks } from "src/classes/CommonTasks";
-import { websocket } from "src/classes/websocket/Websocket";
+import { appConfigs } from "~/classes/AppConfigs";
+import { commonTasks } from "~/classes/CommonTasks";
+import { websocket } from "~/classes/websocket/Websocket";
 
-import { utilities } from "src/utilities";
+import { utilities } from "~/utilities";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 class EventHandler {
   constructor({

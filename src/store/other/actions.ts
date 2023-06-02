@@ -1,6 +1,6 @@
-import { actionHandler } from "src/classes/ActionHandler";
+import { actionHandler } from "~/classes/ActionHandler";
 
-import { OTHER_ACTION_TYPES } from "src/store/other/types";
+import { OTHER_ACTION_TYPES } from "~/store/other/types";
 
 const getCountries = (payload) =>
   actionHandler(OTHER_ACTION_TYPES.SET_COUNTRIES, payload);

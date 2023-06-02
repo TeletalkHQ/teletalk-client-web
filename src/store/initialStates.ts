@@ -1,10 +1,10 @@
-import { initialAuthState } from "src/store/auth/initialState";
-import { initialGlobalState } from "src/store/global/initialState";
-import { initialMessageState } from "src/store/message/initialState";
-import { initialNotificationState } from "src/store/notification/initialState";
-import { initialOtherState } from "src/store/other/initialState";
-import { initialSettingsState } from "src/store/settings/initialState";
-import { initialUserState } from "src/store/user/initialState";
+import { initialAuthState } from "~/store/auth/initialState";
+import { initialGlobalState } from "~/store/global/initialState";
+import { initialMessageState } from "~/store/message/initialState";
+import { initialNotificationState } from "~/store/notification/initialState";
+import { initialOtherState } from "~/store/other/initialState";
+import { initialSettingsState } from "~/store/settings/initialState";
+import { initialUserState } from "~/store/user/initialState";
 
 const initialStates = () => ({
   auth: initialAuthState(),

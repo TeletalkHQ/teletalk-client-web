@@ -1,10 +1,10 @@
-import { authReducer } from "src/store/auth/reducer";
-import { globalReducer } from "src/store/global/reducer";
-import { messageReducer } from "src/store/message/reducer";
-import { notificationReducer } from "src/store/notification/reducer";
-import { otherReducer } from "src/store/other/reducer";
-import { settingsReducer } from "src/store/settings/reducer";
-import { userReducer } from "src/store/user/reducer";
+import { authReducer } from "~/store/auth/reducer";
+import { globalReducer } from "~/store/global/reducer";
+import { messageReducer } from "~/store/message/reducer";
+import { notificationReducer } from "~/store/notification/reducer";
+import { otherReducer } from "~/store/other/reducer";
+import { settingsReducer } from "~/store/settings/reducer";
+import { userReducer } from "~/store/user/reducer";
 
 const reducers = {
   auth: authReducer,

@@ -1,9 +1,9 @@
 import { trier } from "simple-trier";
 
-import { apiManager } from "src/classes/api/ApiManager";
+import { apiManager } from "~/classes/api/ApiManager";
 
-import { commonActions } from "src/store/commonActions";
-import { store } from "src/store/store";
+import { commonActions } from "~/store/commonActions";
+import { store } from "~/store/store";
 
 const createNewUser = () => {
   return async (dispatch, getState = store.initialStates) => {

@@ -1,6 +1,6 @@
-import { Link as MuiLink } from "@mui/material";
+import { LinkProps, Link as MuiLink } from "@mui/material";
 
-const Link = (props) => {
+const Link: React.FC<LinkProps> = (props) => {
   return <MuiLink {...props} />;
 };
 

@@ -1,6 +1,6 @@
-import { eventBuilder } from "src/classes/websocket/EventBuilder";
-import { eventHandler } from "src/classes/websocket/EventHandler";
-import { stuffStore } from "src/classes/StuffStore";
+import { eventBuilder } from "~/classes/websocket/EventBuilder";
+import { eventHandler } from "~/classes/websocket/EventHandler";
+import { stuffStore } from "~/classes/StuffStore";
 
 class EventManager {
   #eventTemplate = eventHandler.create({});

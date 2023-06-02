@@ -1,10 +1,10 @@
 import lodash from "lodash";
 
-import { eventHandler } from "src/classes/websocket/EventHandler";
+import { eventHandler } from "~/classes/websocket/EventHandler";
 
-import { utilities } from "src/utilities";
+import { utilities } from "~/utilities";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 class EventBuilder {
   constructor() {

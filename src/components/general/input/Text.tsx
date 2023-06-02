@@ -1,17 +1,18 @@
-import { TextField } from "@mui/material";
+import { TextField, TextFieldProps } from "@mui/material";
 
-const Text = ({ InputProps, margin, m, ...props }) => {
-  const inputPropsSx = InputProps?.sx || {};
+interface Props extends Omit<TextFieldProps, ""> {
+  m?: TextFieldProps["margin"];
+}
 
-  const textFieldMargin = margin || m || "dense";
+const Text: React.FC<Props> = ({ m, ...rest }) => {
   return (
     <TextField
-      margin={textFieldMargin}
+      margin={m || rest.margin || "dense"}
       fullWidth
-      {...props}
+      {...rest}
       InputProps={{
-        ...InputProps,
-        sx: { borderRadius: "10px", ...inputPropsSx },
+        ...rest.InputProps,
+        sx: { borderRadius: "10px", ...(rest.InputProps?.sx || {}) },
       }}
     />
   );

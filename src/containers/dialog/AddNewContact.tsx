@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 
 import { arrayUtilities } from "utility-store";
 
-import { commonTasks } from "src/classes/CommonTasks";
-import { componentBuilder } from "src/classes/ComponentBuilder";
-import { stuffStore } from "src/classes/StuffStore";
+import { commonTasks } from "~/classes/CommonTasks";
+import { componentBuilder } from "~/classes/ComponentBuilder";
+import { stuffStore } from "~/classes/StuffStore";
 
-import AddNewContactComponents from "src/components/dialog/addNewContact";
-import DialogTemplate from "src/components/dialog/Template";
+import AddNewContactComponents from "~/components/dialog/addNewContact";
+import DialogTemplate from "~/components/dialog/Template";
 
-import { controllers } from "src/controllers";
+import { controllers } from "~/controllers";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { commonActions } from "src/store/commonActions";
-import { stateStatics } from "src/store/stateStatics";
+import { commonActions } from "~/store/commonActions";
+import { stateStatics } from "~/store/stateStatics";
 
-import { utilities } from "src/utilities";
+import { utilities } from "~/utilities";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 const AddNewContact = componentBuilder
   .create()

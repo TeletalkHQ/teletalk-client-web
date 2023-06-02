@@ -1,8 +1,8 @@
-import { reducerBuilder } from "src/classes/ReducerBuilder";
+import { reducerBuilder } from "~/classes/ReducerBuilder";
 
-import { initialGlobalState } from "src/store/global/initialState";
-import { GLOBAL_ACTION_TYPES } from "src/store/global/types";
-import { globalReducerHandlers } from "src/store/global/handlers";
+import { initialGlobalState } from "~/store/global/initialState";
+import { GLOBAL_ACTION_TYPES } from "~/store/global/types";
+import { globalReducerHandlers } from "~/store/global/handlers";
 
 const globalReducerCases = {
   [GLOBAL_ACTION_TYPES.ADD_NEW_CONTACT]:

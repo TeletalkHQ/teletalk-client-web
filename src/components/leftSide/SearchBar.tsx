@@ -1,9 +1,9 @@
-import { Box } from "src/components/general/box";
-import IconButton from "src/components/general/other/IconButton";
-import InputAdornment from "src/components/general/other/InputAdornment";
-import { Input } from "src/components/general/input";
+import { Box } from "~/components/general/box";
+import IconButton from "~/components/general/other/IconButton";
+import InputAdornment from "~/components/general/other/InputAdornment";
+import { Input } from "~/components/general/input";
 
-import { Icons } from "src/components/other/Icons";
+import { Icons } from "~/components/other/Icons";
 
 const SearchBar = ({ onDrawerIconClick }) => {
   return (

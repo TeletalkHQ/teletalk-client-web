@@ -1,13 +1,13 @@
 import lodash from "lodash";
 
-import { userUtilities } from "src/classes/UserUtilities";
+import { userUtilities } from "~/classes/UserUtilities";
 
-import DialogTemplate from "src/components/dialog/Template";
-import SettingsComponents from "src/components/dialog/settings";
+import DialogTemplate from "~/components/dialog/Template";
+import SettingsComponents from "~/components/dialog/settings";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { commonActions } from "src/store/commonActions";
+import { commonActions } from "~/store/commonActions";
 
 const Settings = ({ onDialogClose }) => {
   const state = useSelector((state) => state);

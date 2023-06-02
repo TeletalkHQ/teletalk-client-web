@@ -1,17 +1,17 @@
-import { windowUtilities } from "src/classes/WindowUtilities";
+import { windowUtilities } from "~/classes/WindowUtilities";
 
-import { commonNotificationManager } from "src/classes/CommonNotificationManager";
-import { notificationManager } from "src/classes/NotificationManager";
-import { persistentStorage } from "src/classes/PersistentStorage";
-import { stuffStore } from "src/classes/StuffStore";
+import { commonNotificationManager } from "~/classes/CommonNotificationManager";
+import { notificationManager } from "~/classes/NotificationManager";
+import { persistentStorage } from "~/classes/PersistentStorage";
+import { stuffStore } from "~/classes/StuffStore";
 
-import { extractedDispatch } from "src/helpers/extractedDispatch";
+import { extractedDispatch } from "~/helpers/extractedDispatch";
 
-import { utilities } from "src/utilities";
+import { utilities } from "~/utilities";
 
-import { actions } from "src/store/actions";
+import { actions } from "~/store/actions";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 class CommonTasks {
   resetEverything() {

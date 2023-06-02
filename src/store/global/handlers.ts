@@ -1,4 +1,4 @@
-import { initialGlobalState } from "src/store/global/initialState";
+import { initialGlobalState } from "~/store/global/initialState";
 
 const handleAddNewContact = (payload, prevState) => {
   return {

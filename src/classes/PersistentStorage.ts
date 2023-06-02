@@ -1,10 +1,10 @@
-import { Storage } from "src/classes/Storage";
+import { Storage } from "~/classes/Storage";
 
 class PersistentStorage {
   constructor() {
     this.#initialDefaultStorage();
   }
-  persistentStorage = new Storage();
+  storage = new Storage();
   STORAGE_KEYS = {
     STUFFS: "STUFFS",
   };
@@ -17,7 +17,7 @@ class PersistentStorage {
   }
 
   getItem(key) {
-    return this.persistentStorage.getItem(key);
+    return this.storage.getItem(key);
   }
   getAndParseItem(key) {
     const value = this.getItem(key);
@@ -28,17 +28,17 @@ class PersistentStorage {
   }
 
   setItem(key, value = "") {
-    this.persistentStorage.setItem(key, value);
+    this.storage.setItem(key, value);
     return this;
   }
 
   removeItem(key) {
-    this.persistentStorage.removeItem(key);
+    this.storage.removeItem(key);
     return this;
   }
 
   clearStorage() {
-    this.persistentStorage.clear();
+    this.storage.clear();
     return this;
   }
 
@@ -48,6 +48,4 @@ class PersistentStorage {
   }
 }
 
-const persistentStorage = new PersistentStorage();
-
-export { persistentStorage, PersistentStorage };
+export const persistentStorage = new PersistentStorage();

@@ -1,5 +1,5 @@
-import { Box } from "src/components/general/box";
-import { CommonInput } from "src/components/general/input/common";
+import { Box } from "~/components/general/box";
+import { CommonInput } from "~/components/general/input/common";
 
 const EditFullNameContent = ({ fullName, onInputChange }) => {
   return (
