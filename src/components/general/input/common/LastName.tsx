@@ -1,17 +1,30 @@
 import { Input } from "~/components/general/input";
+
 import withInputValidator from "~/hoc/withInputValidator";
+
+import { CommonOnChange } from "~/types";
 
 import { variables } from "~/variables";
 
-const LastNameInput = ({ inputValue, onInputChange, required = true }) => {
+interface Props {
+  value: string;
+  onChange: CommonOnChange;
+  required?: boolean;
+}
+
+const LastNameInput: React.FC<Props> = ({
+  value,
+  onChange,
+  required = true,
+}) => {
   return (
     <Input.Text
       id={variables.other.helper.ELEMENT_IDS.LAST_NAME}
       label={variables.other.helper.ELEMENT_LABELS.LAST_NAME}
-      name={variables.other.helper.ELEMENT_NAMES.LAST_NAME}
-      onChange={onInputChange}
+      name={variables.other.helper.ELEMENT_NAMES.lastName}
+      onChange={onChange}
       required={required}
-      value={inputValue}
+      value={value}
     />
   );
 };
