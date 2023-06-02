@@ -1,13 +1,13 @@
-import { ChangeEventHandler } from "react";
-
 import { Input } from "~/components/general/input";
 
 import withInputValidator from "~/hoc/withInputValidator";
 
+import { CommonOnChange } from "~/types";
+
 import { variables } from "~/variables";
 
 interface Props {
-  onChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onChange: CommonOnChange;
   value: unknown;
 }
 
@@ -16,7 +16,7 @@ const PhoneNumberInput: React.FC<Props> = ({ value, onChange }) => {
     <Input.Text
       autoComplete="tel-national"
       label={variables.other.helper.ELEMENT_LABELS.PHONE_NUMBER}
-      name={variables.other.helper.ELEMENT_NAMES.PHONE_NUMBER}
+      name={variables.other.helper.ELEMENT_NAMES.phoneNumber}
       onChange={onChange}
       required
       style={{ marginLeft: "5px" }}
