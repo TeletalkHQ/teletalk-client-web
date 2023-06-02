@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { arrayUtilities } from "utility-store";
-
 import { commonTasks } from "~/classes/CommonTasks";
 import { componentBuilder } from "~/classes/ComponentBuilder";
 import { stuffStore } from "~/classes/StuffStore";
@@ -86,10 +84,8 @@ const AddNewContact = componentBuilder
     };
 
     const selectCountryByCountryCodeInputChange = (value) => {
-      const country = arrayUtilities.findByPropValueEquality(
-        state.other.countries,
-        value,
-        variables.other.helper.PROPS.COUNTRY_CODE
+      const country = state.other.countries.find(
+        (i) => i.countryCode === value
       );
 
       selectedCountryDispatcher(country);
