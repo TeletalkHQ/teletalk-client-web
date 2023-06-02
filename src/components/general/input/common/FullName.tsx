@@ -1,6 +1,15 @@
 import { Input } from "~/components/general/input";
 
-const FullName = ({
+import { CommonOnChange } from "~/types";
+
+interface Props {
+  onFirstNameInputChange: CommonOnChange;
+  onLastNameInputChange: CommonOnChange;
+  firstName: string;
+  lastName: string;
+}
+
+const FullName: React.FC<Props> = ({
   firstName,
   lastName,
   onFirstNameInputChange,
