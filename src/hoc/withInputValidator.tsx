@@ -1,6 +1,8 @@
 import { validatorManager } from "~/classes/validator/ValidatorManager";
 
-const withInputValidator = (Component, validationKey) => {
+import { ValidatorName } from "~/types";
+
+const withInputValidator = (Component, validationKey: ValidatorName) => {
   return ({ inputValue, onInputChange }) => {
     const handleInputChange = (event) => {
       const { value } = event.target;

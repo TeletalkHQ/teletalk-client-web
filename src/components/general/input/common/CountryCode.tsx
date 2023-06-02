@@ -2,9 +2,13 @@ import { Input } from "~/components/general/input";
 
 import withInputValidator from "~/hoc/withInputValidator";
 
-import { variables } from "~/variables";
+import { CommonOnChange } from "~/types";
 
-const CountryCodeInput = ({ inputValue, onInputChange }) => {
+interface Props {
+  value: unknown;
+  onChange: CommonOnChange;
+}
+const CountryCodeInput: React.FC<Props> = ({ value, onChange }) => {
   return (
     <Input.Text
       autoComplete="off"
@@ -15,22 +19,19 @@ const CountryCodeInput = ({ inputValue, onInputChange }) => {
           </>
         ),
       }}
-      label={variables.other.helper.ELEMENT_LABELS.CODE}
-      name={variables.other.helper.ELEMENT_NAMES.COUNTRY_CODE}
-      onChange={onInputChange}
+      label="Code"
+      name="countryCode"
+      onChange={onChange}
       required
       style={{ width: "90px" }}
-      value={inputValue}
+      value={value}
     />
   );
 };
 
 const CountryCode = {
   Native: CountryCodeInput,
-  WithValidator: withInputValidator(
-    CountryCodeInput,
-    variables.other.helper.VALIDATION_KEYS.countryCode
-  ),
+  WithValidator: withInputValidator(CountryCodeInput, "countryCode"),
 };
 
 export default CountryCode;
