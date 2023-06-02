@@ -4,6 +4,7 @@ import { trier } from "simple-trier";
 import { commonTasks } from "~/classes/CommonTasks";
 
 import { errorChecker } from "~/helpers/errorChecker";
+import { ValidatorName } from "~/types";
 
 import { utilities } from "~/utilities";
 
@@ -21,7 +22,7 @@ class Validator {
     this.validationResult = [];
   }
 
-  inputValidator(validationKey, validationValue) {
+  inputValidator(validationKey: ValidatorName, validationValue) {
     const validationResult = this.compiledValidator({
       [validationKey]: validationValue,
     });

@@ -1,18 +1,21 @@
 import { AutocompleteRenderInputParams } from "@mui/material";
+
 import { Input } from "~/components/general/input";
 
-import { variables } from "~/variables";
+const SelectorInput = (props: AutocompleteRenderInputParams) => {
+  const { id, ...rest } = props;
 
-const SelectorInput = (params: AutocompleteRenderInputParams) => (
-  <Input.Text
-    {...params}
-    required
-    name={variables.other.helper.ELEMENT_NAMES.countryName}
-    label={variables.other.helper.ELEMENT_LABELS.CHOOSE_A_COUNTRY}
-    InputProps={{
-      ...params.InputProps,
-    }}
-  />
-);
+  return (
+    <Input.Text
+      {...rest}
+      required
+      name="countryName"
+      label="Choose a country"
+      InputProps={{
+        ...props.InputProps,
+      }}
+    />
+  );
+};
 
 export default SelectorInput;
