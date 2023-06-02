@@ -1,7 +1,7 @@
-import Backdrop from "src/components/general/other/Backdrop";
-import CircularProgress from "src/components/general/progress/CircularProgress";
+import Backdrop from "~/components/general/other/Backdrop";
+import CircularProgress from "~/components/general/progress/CircularProgress";
 
-import { stateStatics } from "src/store/stateStatics";
+import { stateStatics } from "~/store/stateStatics";
 
 const OverlayLoading = ({ loading, onGlobalLoadingClose }) => {
   return (

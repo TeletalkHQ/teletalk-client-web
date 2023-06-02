@@ -1,6 +1,6 @@
-import { windowUtilities } from "src/classes/WindowUtilities";
+import { windowUtilities } from "~/classes/WindowUtilities";
 
-import { actions } from "src/store/actions";
+import { actions } from "~/store/actions";
 
 const onlineStatusOnChangeEvent = (dispatch) => {
   const isOnline = windowUtilities.isOnline();

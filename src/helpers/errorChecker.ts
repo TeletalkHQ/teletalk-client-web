@@ -1,7 +1,7 @@
 import { customTypeof } from "custom-typeof";
 import { validationErrorBuilder } from "utility-store";
 
-import { stuffStore } from "src/classes/StuffStore";
+import { stuffStore } from "~/classes/StuffStore";
 
 const countryCodeErrorChecker = (validationResult, countryCode) => {
   const errorBuilder = validationErrorBuilder.create();

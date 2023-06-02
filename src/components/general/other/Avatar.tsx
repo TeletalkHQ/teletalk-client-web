@@ -1,6 +1,6 @@
-import { Avatar as MuiAvatar } from "@mui/material";
+import { AvatarProps, Avatar as MuiAvatar } from "@mui/material";
 
-const Avatar = (props) => {
+const Avatar: React.FC<AvatarProps> = (props) => {
   return <MuiAvatar {...props} />;
 };
 

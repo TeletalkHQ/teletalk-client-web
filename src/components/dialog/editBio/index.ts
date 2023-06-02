@@ -1,6 +1,6 @@
-import Actions from "src/components/dialog/editBio/Actions";
-import Content from "src/components/dialog/editBio/Content";
-import Title from "src/components/dialog/editBio/Title";
+import Actions from "~/components/dialog/editBio/Actions";
+import Content from "~/components/dialog/editBio/Content";
+import Title from "~/components/dialog/editBio/Title";
 
 const EditBioComponents = {
   Actions,

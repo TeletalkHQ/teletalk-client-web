@@ -1,4 +1,4 @@
-import ListItem from "src/components/dialog/contacts/ListItem";
+import ListItem from "~/components/dialog/contacts/ListItem";
 
 const ContactsContent = ({ contacts, onContactItemClicked }) =>
   contacts.map((contact, index) => (

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 
-import { controllers } from "src/controllers";
+import { controllers } from "~/controllers";
 
 const CheckCurrentUser = () => {
   const dispatch = useDispatch();

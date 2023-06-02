@@ -1,10 +1,10 @@
 import { createPortal } from "react-dom";
 
-import AppDrawer from "src/containers/portal/appDrawer";
-import FullPageLoading from "src/components/portal/FullPageLoading";
-import OverlayLoading from "src/components/portal/OverlayLoading";
+import AppDrawer from "~/containers/portal/appDrawer";
+import FullPageLoading from "~/components/portal/FullPageLoading";
+import OverlayLoading from "~/components/portal/OverlayLoading";
 
-import DialogContainer from "src/containers/dialog";
+import DialogContainer from "~/containers/dialog";
 
 import { useSelector } from "react-redux";
 

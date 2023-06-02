@@ -1,10 +1,10 @@
-import DialogTemplate from "src/components/dialog/Template";
-import LogoutComponents from "src/components/dialog/logout";
+import DialogTemplate from "~/components/dialog/Template";
+import LogoutComponents from "~/components/dialog/logout";
 
-import { controllers } from "src/controllers";
+import { controllers } from "~/controllers";
 
 import { useDispatch, useSelector } from "react-redux";
-import { eventManager } from "src/classes/websocket/EventManager";
+import { eventManager } from "~/classes/websocket/EventManager";
 
 const Logout = ({ onDialogClose }) => {
   const state = useSelector((state) => state);

@@ -1,4 +1,4 @@
-import { otherEvents } from "src/events/websocket/other";
+import { otherEvents } from "~/events/websocket/other";
 
 const websocketEvents = {
   otherEvents,

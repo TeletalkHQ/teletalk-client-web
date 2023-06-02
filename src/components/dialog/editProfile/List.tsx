@@ -3,7 +3,7 @@ import AlternateEmailTwoTone from "@mui/icons-material/AlternateEmailTwoTone";
 import CallTwoTone from "@mui/icons-material/CallTwoTone";
 import SettingsAccessibilityTwoToneIcon from "@mui/icons-material/SettingsAccessibilityTwoTone";
 
-import ListItem from "src/components/dialog/editProfile/ListItem";
+import ListItem from "~/components/dialog/editProfile/ListItem";
 
 const List = ({ bio, fullName, fullNumber, onItemClick, username }) =>
   [

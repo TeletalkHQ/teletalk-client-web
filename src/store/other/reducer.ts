@@ -1,8 +1,8 @@
-import { reducerBuilder } from "src/classes/ReducerBuilder";
+import { reducerBuilder } from "~/classes/ReducerBuilder";
 
-import { otherReducerHandlers } from "src/store/other/handlers";
-import { initialOtherState } from "src/store/other/initialState";
-import { OTHER_ACTION_TYPES } from "src/store/other/types";
+import { otherReducerHandlers } from "~/store/other/handlers";
+import { initialOtherState } from "~/store/other/initialState";
+import { OTHER_ACTION_TYPES } from "~/store/other/types";
 
 const otherReducerCases = {
   [OTHER_ACTION_TYPES.SET_WELCOME_MESSAGE]: (payload) => payload,

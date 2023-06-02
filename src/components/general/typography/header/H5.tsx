@@ -1,10 +1,25 @@
-import Typography from "src/components/general/typography/Typography";
+import { TypographyProps } from "@mui/material";
 
-const H5 = ({ fontWeight, fw, ta, textAlign, v, variant, ...restOfProps }) => {
+import Typography from "~/components/general/typography/Typography";
+
+interface Props extends TypographyProps {
+  v: TypographyProps["variant"];
+  ta: TypographyProps["textAlign"];
+  fw: TypographyProps["fontWeight"];
+}
+
+const H5: React.FC<Props> = ({
+  fontWeight,
+  fw,
+  ta,
+  textAlign,
+  v,
+  variant,
+  ...restOfProps
+}) => {
   return (
     <Typography
       {...restOfProps}
-      component="h5"
       variant={v || variant || "h5"}
       sx={{
         fontWeight: fw || fontWeight || "900",

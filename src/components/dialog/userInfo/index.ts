@@ -1,6 +1,6 @@
-import Actions from "src/components/dialog/userInfo/Actions";
-import Content from "src/components/dialog/userInfo/Content";
-import Title from "src/components/dialog/userInfo/Title";
+import Actions from "~/components/dialog/userInfo/Actions";
+import Content from "~/components/dialog/userInfo/Content";
+import Title from "~/components/dialog/userInfo/Title";
 
 const UserInfoComponents = {
   Actions,

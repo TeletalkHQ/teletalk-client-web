@@ -1,6 +1,6 @@
-import { addOnlineStatusEvents } from "src/events/onlineConnectionsChecker";
+import { addOnlineStatusEvents } from "~/events/onlineConnectionsChecker";
 
-import { websocketEvents } from "src/events/websocket";
+import { websocketEvents } from "~/events/websocket";
 
 const events = {
   addOnlineStatusEvents,

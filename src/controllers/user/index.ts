@@ -1,8 +1,8 @@
-import { addContact } from "src/controllers/user/addContact";
-import { getContacts } from "src/controllers/user/getContacts";
-import { getCurrentUserData } from "src/controllers/user/getCurrentUserData";
-import { getPublicUserData } from "src/controllers/user/getPublicUserData";
-import { updateProfile } from "src/controllers/user/updateProfile";
+import { addContact } from "~/controllers/user/addContact";
+import { getContacts } from "~/controllers/user/getContacts";
+import { getCurrentUserData } from "~/controllers/user/getCurrentUserData";
+import { getPublicUserData } from "~/controllers/user/getPublicUserData";
+import { updateProfile } from "~/controllers/user/updateProfile";
 
 const userControllers = {
   addContact,

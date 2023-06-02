@@ -1,6 +1,6 @@
-import ListItemIcon from "src/components/general/other/ListItemIcon";
-import { Box } from "src/components/general/box";
-import { Icons } from "src/components/other/Icons";
+import ListItemIcon from "~/components/general/other/ListItemIcon";
+import { Box } from "~/components/general/box";
+import { Icons } from "~/components/other/Icons";
 
 const drawerList = [
   Icons.Calls,

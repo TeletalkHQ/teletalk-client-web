@@ -1,6 +1,6 @@
-import { actionHandler } from "src/classes/ActionHandler";
+import { actionHandler } from "~/classes/ActionHandler";
 
-import { SETTINGS_TYPES } from "src/store/settings/types";
+import { SETTINGS_TYPES } from "~/store/settings/types";
 
 const resetSettingsState = (payload) =>
   actionHandler(SETTINGS_TYPES.RESET_SETTINGS_STATE, payload);

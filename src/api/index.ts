@@ -1,4 +1,4 @@
-import { stuff } from "src/api/stuff";
+import { stuff } from "~/api/stuff";
 
 const api = {
   ...stuff,

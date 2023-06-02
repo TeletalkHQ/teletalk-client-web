@@ -1,8 +1,8 @@
 import { Divider } from "@mui/material";
 
-import ProfileOverview from "src/components/dialog/settings/ProfileOverview";
-import List from "src/components/dialog/settings/List";
-import { Box } from "src/components/general/box";
+import ProfileOverview from "~/components/dialog/settings/ProfileOverview";
+import List from "~/components/dialog/settings/List";
+import { Box } from "~/components/general/box";
 
 const SettingsContent = ({
   fullName,

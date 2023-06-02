@@ -1,11 +1,11 @@
-import DialogTemplate from "src/components/dialog/Template";
-import UserInfoComponents from "src/components/dialog/userInfo";
+import DialogTemplate from "~/components/dialog/Template";
+import UserInfoComponents from "~/components/dialog/userInfo";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
-import { stateStatics } from "src/store/stateStatics";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
+import { stateStatics } from "~/store/stateStatics";
 
 const UserInfo = ({ onDialogClose }) => {
   const state = useSelector((state) => state);
