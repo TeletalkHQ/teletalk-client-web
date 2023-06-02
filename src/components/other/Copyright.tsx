@@ -1,7 +1,7 @@
-import { appConfigs } from "src/classes/AppConfigs";
+import { appConfigs } from "~/classes/AppConfigs";
 
-import Link from "src/components/general/other/Link";
-import Typography from "src/components/general/typography/Typography";
+import Link from "~/components/general/other/Link";
+import Typography from "~/components/general/typography/Typography";
 
 const Copyright = (props) => {
   const {

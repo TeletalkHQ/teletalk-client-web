@@ -1,6 +1,6 @@
-import { Box } from "src/components/general/box";
-import Avatar from "src/components/general/other/Avatar";
-import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
+import { Box } from "~/components/general/box";
+import Avatar from "~/components/general/other/Avatar";
+import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 
 const SettingsProfileOverview = ({ fullName, fullNumber, username }) => {
   return (

@@ -1,8 +1,8 @@
-import { reducerBuilder } from "src/classes/ReducerBuilder";
+import { reducerBuilder } from "~/classes/ReducerBuilder";
 
-import { initialMessageState } from "src/store/message/initialState";
-import { messageReducerHandlers } from "src/store/message/handlers";
-import { MESSAGE_ACTION_TYPES } from "src/store/message/types";
+import { initialMessageState } from "~/store/message/initialState";
+import { messageReducerHandlers } from "~/store/message/handlers";
+import { MESSAGE_ACTION_TYPES } from "~/store/message/types";
 
 const messageReducerCases = {
   [MESSAGE_ACTION_TYPES.ADD_NEW_MESSAGE]:

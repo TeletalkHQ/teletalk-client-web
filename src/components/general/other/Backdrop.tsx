@@ -1,6 +1,6 @@
-import { Backdrop as MuiBackdrop } from "@mui/material";
+import { BackdropProps, Backdrop as MuiBackdrop } from "@mui/material";
 
-const Backdrop = (props) => {
+const Backdrop: React.FC<BackdropProps> = (props) => {
   return <MuiBackdrop {...props} />;
 };
 

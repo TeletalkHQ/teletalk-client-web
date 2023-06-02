@@ -3,12 +3,12 @@ import { useMemo } from "react";
 import { arrayUtilities } from "utility-store";
 import { useDispatch, useSelector } from "react-redux";
 
-import ChatList from "src/components/leftSide/ChatList";
-import { Box } from "src/components/general/box";
-import SearchBar from "src/components/leftSide/SearchBar";
+import ChatList from "~/components/leftSide/ChatList";
+import { Box } from "~/components/general/box";
+import SearchBar from "~/components/leftSide/SearchBar";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
 
 const LeftSide = () => {
   const dispatch = useDispatch();

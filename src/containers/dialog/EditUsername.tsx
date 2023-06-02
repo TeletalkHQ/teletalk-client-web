@@ -1,14 +1,14 @@
-import { stuffStore } from "src/classes/StuffStore";
+import { stuffStore } from "~/classes/StuffStore";
 
-import DialogTemplate from "src/components/dialog/Template";
-import EditUsernameComponents from "src/components/dialog/editUsername";
+import DialogTemplate from "~/components/dialog/Template";
+import EditUsernameComponents from "~/components/dialog/editUsername";
 
-import { controllers } from "src/controllers";
+import { controllers } from "~/controllers";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { actions } from "src/store/actions";
-import { commonActions } from "src/store/commonActions";
+import { actions } from "~/store/actions";
+import { commonActions } from "~/store/commonActions";
 
 const EditUsername = ({ onDialogClose }) => {
   const state = useSelector((state) => state);

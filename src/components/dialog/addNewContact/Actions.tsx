@@ -1,7 +1,7 @@
-import { componentBuilder } from "src/classes/ComponentBuilder";
+import { componentBuilder } from "~/classes/ComponentBuilder";
 
-import { Box } from "src/components/general/box";
-import { Input } from "src/components/general/input";
+import { Box } from "~/components/general/box";
+import { Input } from "~/components/general/input";
 
 const AddNewContactActions = componentBuilder
   .create()

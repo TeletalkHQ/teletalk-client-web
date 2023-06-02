@@ -6,7 +6,7 @@ import LanguageIcon from "@mui/icons-material/LanguageTwoTone";
 import LockIcon from "@mui/icons-material/LockTwoTone";
 import PieChartIcon from "@mui/icons-material/PieChartTwoTone";
 
-import ListItem from "src/components/dialog/settings/ListItem";
+import ListItem from "~/components/dialog/settings/ListItem";
 
 const list = [
   {

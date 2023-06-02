@@ -1,6 +1,6 @@
-import { Box } from "src/components/general/box";
+import { Box } from "~/components/general/box";
 
-import { Icons } from "src/components/other/Icons";
+import { Icons } from "~/components/other/Icons";
 
 const sidebarList = [
   Icons.AllChatsOutlined,

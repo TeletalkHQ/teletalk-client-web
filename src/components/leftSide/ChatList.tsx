@@ -1,4 +1,4 @@
-import ChatListItem from "src/components/leftSide/ChatListItem";
+import ChatListItem from "~/components/leftSide/ChatListItem";
 
 const ChatList = ({ chatList, onChatListItemClick, selectedChat }) => {
   return chatList.map((item, i) => (

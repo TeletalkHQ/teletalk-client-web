@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { websocket } from "src/classes/websocket/Websocket";
+import { websocket } from "~/classes/websocket/Websocket";
 
 const PingPong = () => {
   const [isConnected, setIsConnected] = useState(websocket.client.connected);

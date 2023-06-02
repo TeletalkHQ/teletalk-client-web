@@ -1,11 +1,11 @@
 import { customTypeof } from "custom-typeof";
 import { trier } from "simple-trier";
 
-import { commonTasks } from "src/classes/CommonTasks";
+import { commonTasks } from "~/classes/CommonTasks";
 
-import { errorChecker } from "src/helpers/errorChecker";
+import { errorChecker } from "~/helpers/errorChecker";
 
-import { utilities } from "src/utilities";
+import { utilities } from "~/utilities";
 
 class Validator {
   #ignoredErrorTypesForInputValidator = [

@@ -1,6 +1,6 @@
-import { actionHandler } from "src/classes/ActionHandler";
+import { actionHandler } from "~/classes/ActionHandler";
 
-import { GLOBAL_ACTION_TYPES } from "src/store/global/types";
+import { GLOBAL_ACTION_TYPES } from "~/store/global/types";
 
 const addContact = (payload) =>
   actionHandler(GLOBAL_ACTION_TYPES.ADD_NEW_CONTACT, payload);

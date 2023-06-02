@@ -1,8 +1,8 @@
-import { Input } from "src/components/general/input";
+import { Input } from "~/components/general/input";
 
-import withInputValidator from "src/hoc/withInputValidator";
+import withInputValidator from "~/hoc/withInputValidator";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 const CountryCodeInput = ({ inputValue, onInputChange }) => {
   return (

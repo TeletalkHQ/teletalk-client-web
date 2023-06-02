@@ -1,7 +1,9 @@
 import { customTypeof } from "custom-typeof";
 
 class Storage {
-  storage = localStorage;
+  constructor() {
+    this.storage = typeof window !== "undefined" ? localStorage : {};
+  }
 
   #fixingCondition(value) {
     return customTypeof.isObject(value) || customTypeof.isArray(value);

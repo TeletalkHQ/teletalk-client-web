@@ -1,21 +1,21 @@
 import { trier } from "simple-trier";
-import { windowUtilities } from "src/classes/WindowUtilities";
+import { windowUtilities } from "~/classes/WindowUtilities";
 
-import { apiManager } from "src/classes/api/ApiManager";
-import { appConfigs } from "src/classes/AppConfigs";
-import { componentController } from "src/classes/ComponentController";
-import { envManager } from "src/classes/EnvironmentManager";
-import { eventEmitter } from "src/classes/EventEmitter";
-import { stuffStore } from "src/classes/StuffStore";
-import { validatorManager } from "src/classes/validator/ValidatorManager";
-import { websocket } from "src/classes/websocket/Websocket";
-import { eventManager } from "src/classes/websocket/EventManager";
+import { apiManager } from "~/classes/api/ApiManager";
+import { appConfigs } from "~/classes/AppConfigs";
+import { componentController } from "~/classes/ComponentController";
+import { envManager } from "~/classes/EnvironmentManager";
+import { eventEmitter } from "~/classes/EventEmitter";
+import { stuffStore } from "~/classes/StuffStore";
+import { validatorManager } from "~/classes/validator/ValidatorManager";
+import { websocket } from "~/classes/websocket/Websocket";
+import { eventManager } from "~/classes/websocket/EventManager";
 
-import { events } from "src/events";
+import { events } from "~/events";
 
-import { actions } from "src/store/actions";
-import { stateStatics } from "src/store/stateStatics";
-import { commonActions } from "src/store/commonActions";
+import { actions } from "~/store/actions";
+import { stateStatics } from "~/store/stateStatics";
+import { commonActions } from "~/store/commonActions";
 
 const initialSetup = () => async (dispatch) => {
   await trier(initialSetup.name)

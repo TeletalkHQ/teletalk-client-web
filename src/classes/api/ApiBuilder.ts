@@ -1,10 +1,10 @@
 import lodash from "lodash";
 
-import { apiHandler } from "src/classes/api/ApiHandler";
+import { apiHandler } from "~/classes/api/ApiHandler";
 
-import { utilities } from "src/utilities";
+import { utilities } from "~/utilities";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 class ApiBuilder {
   constructor() {

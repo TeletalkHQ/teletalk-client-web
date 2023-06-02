@@ -1,7 +1,10 @@
-import Typography from "src/components/general/typography/Typography";
+//REFACTOR: Change component name to base
+import { TypographyProps } from "@mui/material";
 
-const GreyTextParagraph = (props) => {
-  return <Typography {...props} component="p" variant="p" color="GrayText" />;
+import Typography from "~/components/general/typography/Typography";
+
+const GreyTextParagraph: React.FC<TypographyProps> = (props) => {
+  return <Typography {...props} variant="subtitle1" color="GrayText" />;
 };
 
 export default GreyTextParagraph;

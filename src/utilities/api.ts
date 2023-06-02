@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { appConfigs } from "src/classes/AppConfigs";
+import { appConfigs } from "~/classes/AppConfigs";
 
 const {
   apiConfigs: {

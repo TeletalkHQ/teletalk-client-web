@@ -1,6 +1,6 @@
-import { actionHandler } from "src/classes/ActionHandler";
+import { actionHandler } from "~/classes/ActionHandler";
 
-import { MESSAGE_ACTION_TYPES } from "src/store/message/types";
+import { MESSAGE_ACTION_TYPES } from "~/store/message/types";
 
 const addNewMessage = (payload) =>
   actionHandler(MESSAGE_ACTION_TYPES.ADD_NEW_MESSAGE, payload);
