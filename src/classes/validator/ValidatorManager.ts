@@ -8,17 +8,15 @@ const fastestValidatorCompiler = new FastestValidator();
 class ValidatorManager {
   #validatorTemplate = validator.create();
 
-  constructor() {
-    this.validators = {
-      countryCode: this.#validatorTemplate,
-      countryName: this.#validatorTemplate,
-      firstName: this.#validatorTemplate,
-      lastName: this.#validatorTemplate,
-      phoneNumber: this.#validatorTemplate,
-      username: this.#validatorTemplate,
-      verificationCode: this.#validatorTemplate,
-    };
-  }
+  validators = {
+    countryCode: this.#validatorTemplate,
+    countryName: this.#validatorTemplate,
+    firstName: this.#validatorTemplate,
+    lastName: this.#validatorTemplate,
+    phoneNumber: this.#validatorTemplate,
+    username: this.#validatorTemplate,
+    verificationCode: this.#validatorTemplate,
+  };
 
   compileValidators = (validationModels) => {
     trier(this.compileValidators.name)
