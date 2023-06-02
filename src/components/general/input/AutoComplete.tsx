@@ -6,10 +6,11 @@ import {
   ListItem,
   TextField,
   Tooltip,
+  Theme,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     width: "100%",
     maxWidth: 360,
@@ -39,12 +40,7 @@ const AutoComplete = ({
         style={{ width: 300 }}
         size="small"
         renderInput={(params) => (
-          <TextField
-            variant="outlined"
-            size="small"
-            {...params}
-            label={"activities"}
-          />
+          <TextField variant="outlined" {...params} label={"activities"} />
         )}
         renderOption={({ headerContent, ...props }, { inputValue }) => {
           const matches = match(headerContent, inputValue);
@@ -73,3 +69,9 @@ const AutoComplete = ({
 };
 
 export default AutoComplete;
+
+// import { matchSorter } from 'match-sorter';
+
+// const filterOptions = (options, { inputValue }) => matchSorter(options, inputValue);
+
+// <Autocomplete filterOptions={filterOptions} />;

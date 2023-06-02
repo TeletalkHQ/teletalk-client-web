@@ -47,3 +47,21 @@ export type ElementName =
   | "telegram"
   | "unread"
   | "verificationCode";
+
+export type ElementLabel =
+  | "Choose a country"
+  | "Code"
+  | "First Name"
+  | "Last Name"
+  | "Phone Number"
+  | "Verification Code";
+
+export type ElementId = ElementName;
+
+export type ValidatorName =
+  | "countryCode"
+  | "countryName"
+  | "firstName"
+  | "lastName"
+  | "phoneNumber"
+  | "verificationCode";

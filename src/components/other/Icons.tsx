@@ -27,11 +27,14 @@ import {
   VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
 
-import { variables } from "~/variables";
+import { ElementName } from "~/types";
 
-const ELEMENT_NAMES = variables.other.helper.ELEMENT_NAMES;
-
-const iconProperties = (text, elementName, Icon) => ({
+const iconProperties = (
+  //REFACTOR: Change `text` type to ElementContent
+  text: string,
+  elementName: ElementName,
+  Icon: any
+) => ({
   elementName,
   Icon,
   text,
@@ -40,96 +43,68 @@ const iconProperties = (text, elementName, Icon) => ({
 const Icons = {
   AccountCircleOutlined: iconProperties(
     "Account",
-    ELEMENT_NAMES.ACCOUNT,
+    "account",
     AccountCircleOutlinedIcon
   ),
-  AllChatsOutlined: iconProperties(
-    "All Chats",
-    ELEMENT_NAMES.ALL_CHATS,
-    ForumOutlinedIcon
-  ),
-  ArrowBack: iconProperties("Back", ELEMENT_NAMES.BACK, ArrowBackIcon),
-  AttachFile: iconProperties(
-    "Attach File",
-    ELEMENT_NAMES.ATTACH_FILE,
-    AttachFileIcon
-  ),
-  BotOutlined: iconProperties("Bot", ELEMENT_NAMES.BOT, SmartToyOutlinedIcon),
-  Calls: iconProperties("Calls", ELEMENT_NAMES.CALLS, PermIdentityIcon),
-  ChannelsOutlined: iconProperties(
-    "Channels",
-    ELEMENT_NAMES.CHANNELS,
-    CallOutlinedIcon
-  ),
-  Check: iconProperties("Check", ELEMENT_NAMES.CHECK, CheckIcon),
-  Close: iconProperties("Close", ELEMENT_NAMES.CLOSE, CloseIcon),
-  Contacts: iconProperties(
-    "Contacts",
-    ELEMENT_NAMES.CONTACTS,
-    PeopleOutlineIcon
-  ),
+  AllChatsOutlined: iconProperties("All Chats", "allChats", ForumOutlinedIcon),
+  ArrowBack: iconProperties("Back", "back", ArrowBackIcon),
+  AttachFile: iconProperties("Attach File", "attachFile", AttachFileIcon),
+  BotOutlined: iconProperties("Bot", "bot", SmartToyOutlinedIcon),
+  Calls: iconProperties("Calls", "calls", PermIdentityIcon),
+  ChannelsOutlined: iconProperties("Channels", "channels", CallOutlinedIcon),
+  Check: iconProperties("Check", "check", CheckIcon),
+  Close: iconProperties("Close", "close", CloseIcon),
+  Contacts: iconProperties("Contacts", "contacts", PeopleOutlineIcon),
   EditChatsOutlined: iconProperties(
     "Edit Chats",
-    ELEMENT_NAMES.EDIT_CHATS,
+    "editChats",
     SettingsInputComponentOutlinedIcon
   ),
   EmojiEmotions: iconProperties(
     "Emoji Emotions",
-    ELEMENT_NAMES.EMOJI_EMOTIONS,
+    "emojiEmotions",
     EmojiEmotionsIcon
   ),
-  Fingerprint: iconProperties(
-    "Fingerprint",
-    ELEMENT_NAMES.LOCK,
-    FingerprintIcon
-  ),
-  Groups: iconProperties("Groups", ELEMENT_NAMES.GROUPS, CampaignOutlinedIcon),
-  LockOutlined: iconProperties("Lock", ELEMENT_NAMES.LOCK, LockOutlinedIcon),
-  LogoutOutlined: iconProperties(
-    "Logout",
-    ELEMENT_NAMES.LOGOUT,
-    LogoutOutlinedIcon
-  ),
-  Menu: iconProperties("Menu", ELEMENT_NAMES.MENU, MenuIcon),
-  MicNone: iconProperties("MicNone", ELEMENT_NAMES.MIC_NONE, MicNoneIcon),
-  MoreVertical: iconProperties("More", ELEMENT_NAMES.MORE, MoreVertIcon),
+  Fingerprint: iconProperties("Fingerprint", "lock", FingerprintIcon),
+  Groups: iconProperties("Groups", "groups", CampaignOutlinedIcon),
+  LockOutlined: iconProperties("Lock", "lock", LockOutlinedIcon),
+  LogoutOutlined: iconProperties("Logout", "logout", LogoutOutlinedIcon),
+  Menu: iconProperties("Menu", "menu", MenuIcon),
+  MicNone: iconProperties("MicNone", "micNone", MicNoneIcon),
+  MoreVertical: iconProperties("More", "more", MoreVertIcon),
   NewChannelOutlined: iconProperties(
     "New Channel",
-    ELEMENT_NAMES.NEW_CHANNEL,
+    "newChannel",
     CallOutlinedIcon
   ),
   NewGroupOutlined: iconProperties(
     "New Group",
-    ELEMENT_NAMES.NEW_GROUP,
+    "newGroup",
     CampaignOutlinedIcon
   ),
   NightModeOutlined: iconProperties(
     "Night Mode",
-    ELEMENT_NAMES.NIGHT_MODE,
+    "nightMode",
     Brightness4OutlinedIcon
   ),
   PersonalOutlined: iconProperties(
     "Personal",
-    ELEMENT_NAMES.PERSONAL,
+    "personal",
     PersonOutlineOutlinedIcon
   ),
-  Search: iconProperties("Search", ELEMENT_NAMES.SEARCH, SearchIcon),
+  Search: iconProperties("Search", "search", SearchIcon),
   SettingsOutlined: iconProperties(
     "Settings",
-    ELEMENT_NAMES.SETTINGS,
+    "settings",
     SettingsOutlinedIcon
   ),
-  Telegram: iconProperties("Telegram", ELEMENT_NAMES.TELEGRAM, TelegramIcon),
+  Telegram: iconProperties("Telegram", "telegram", TelegramIcon),
   UnreadOutlined: iconProperties(
     "Unread Messages",
-    ELEMENT_NAMES.UNREAD,
+    "unread",
     AnnouncementOutlinedIcon
   ),
-  VerifiedUser: iconProperties(
-    "Verified User",
-    ELEMENT_NAMES.LOCK,
-    VerifiedUserIcon
-  ),
+  VerifiedUser: iconProperties("Verified User", "lock", VerifiedUserIcon),
 };
 
 export { Icons };

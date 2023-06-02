@@ -11,8 +11,6 @@ import { countries } from "~/data/countries";
 
 import { CountryItem, CountryName, HTMLProps } from "~/types";
 
-import { variables } from "~/variables";
-
 interface Props {
   countryName: CountryName;
   selectedCountry: CountryItem;
@@ -33,10 +31,7 @@ const CountrySelector: React.FC<Props> = ({
     newInputValue: string
   ) => {
     validatorManager.validators.countryName
-      .inputValidator(
-        variables.other.helper.VALIDATION_KEYS.countryName,
-        newInputValue
-      )
+      .inputValidator("countryName", newInputValue)
       .printInputValidatorError()
       .executeIfNoError(() => onInputChange(newInputValue));
   };

@@ -4,8 +4,6 @@ import withInputValidator from "~/hoc/withInputValidator";
 
 import { CommonOnChange } from "~/types";
 
-import { variables } from "~/variables";
-
 interface Props {
   onChange: CommonOnChange;
   value: unknown;
@@ -15,8 +13,8 @@ const PhoneNumberInput: React.FC<Props> = ({ value, onChange }) => {
   return (
     <Input.Text
       autoComplete="tel-national"
-      label={variables.other.helper.ELEMENT_LABELS.PHONE_NUMBER}
-      name={variables.other.helper.ELEMENT_NAMES.phoneNumber}
+      label="Phone Number"
+      name="phoneNumber"
       onChange={onChange}
       required
       style={{ marginLeft: "5px" }}
@@ -27,10 +25,7 @@ const PhoneNumberInput: React.FC<Props> = ({ value, onChange }) => {
 
 const PhoneNumber = {
   Native: PhoneNumberInput,
-  WithValidator: withInputValidator(
-    PhoneNumberInput,
-    variables.other.helper.VALIDATION_KEYS.phoneNumber
-  ),
+  WithValidator: withInputValidator(PhoneNumberInput, "phoneNumber"),
 };
 
 export default PhoneNumber;
