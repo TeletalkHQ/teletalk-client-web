@@ -1,10 +1,5 @@
 import { useEffect } from "react";
 
-import { arrayUtilities } from "utility-store";
-
-import { stuffStore } from "~/classes/StuffStore";
-import { commonTasks } from "~/classes/CommonTasks";
-
 import { Box } from "~/components/general/box";
 import { Icons } from "~/components/other/Icons";
 import { Input } from "~/components/general/input";
@@ -19,8 +14,6 @@ import { controllers } from "~/controllers";
 import { useDispatch, useSelector } from "react-redux";
 
 import { actions } from "~/store/actions";
-
-import { utilities } from "~/utilities";
 
 import { variables } from "~/variables";
 
@@ -51,11 +44,7 @@ const SignIn = () => {
   };
 
   const handleSelectedCountryByCountryCodeInput = (value) => {
-    const country = arrayUtilities.findByPropValueEquality(
-      state.other.countries,
-      value,
-      variables.other.helper.PROPS.COUNTRY_CODE
-    );
+    const country = state.other.countries.find((i) => i.countryCode === value);
 
     selectedCountryDispatcher(country);
   };

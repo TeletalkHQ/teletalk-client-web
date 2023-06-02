@@ -1,13 +1,18 @@
 import { TextField, TextFieldProps } from "@mui/material";
 
+import { ElementId, ElementLabel, ElementName } from "~/types";
+
 interface Props extends Omit<TextFieldProps, ""> {
+  label?: ElementLabel;
   m?: TextFieldProps["margin"];
+  name?: ElementName;
+  id?: ElementId;
 }
 
-const Text: React.FC<Props> = ({ m, ...rest }) => {
+const Text: React.FC<Props> = ({ m = "dense", ...rest }) => {
   return (
     <TextField
-      margin={m || rest.margin || "dense"}
+      margin={m || rest.margin}
       fullWidth
       {...rest}
       InputProps={{

@@ -43,7 +43,8 @@ const Verify = () => {
 
   const handleVerifyClick = () => {
     domUtilities()
-      .setElementByName(variables.other.helper.ELEMENT_NAMES.VERIFICATION_CODE)
+      //REFACTOR: Use ElementName type
+      .setElementByName("verificationCode")
       .focusElement()
       .selectAllValue();
     dispatch(controllers.verify());
@@ -54,10 +55,7 @@ const Verify = () => {
     const trimmedValue = value.trim();
 
     validatorManager.validators.verificationCode
-      .inputValidator(
-        variables.other.helper.VALIDATION_KEYS.verificationCode,
-        trimmedValue
-      )
+      .inputValidator("verificationCode", trimmedValue)
       .printInputValidatorError()
       .executeIfNoError(() =>
         dispatch(
@@ -98,8 +96,8 @@ const Verify = () => {
 
             <Input.Text
               required
-              label={variables.other.helper.ELEMENT_LABELS.VERIFICATION_CODE}
-              name={variables.other.helper.ELEMENT_NAMES.VERIFICATION_CODE}
+              label="Verification Code"
+              name="verificationCode"
               autoFocus
               value={state.auth.verificationCode}
               onChange={handleVerificationCodeInputChange}
