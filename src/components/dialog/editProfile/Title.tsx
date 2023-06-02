@@ -1,4 +1,4 @@
-import { Box } from "src/components/general/box";
+import { Box } from "~/components/general/box";
 
 const EditProfileTitle = () => <Box.Div>Info</Box.Div>;
 

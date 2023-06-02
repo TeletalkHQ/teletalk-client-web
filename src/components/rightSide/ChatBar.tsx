@@ -1,8 +1,8 @@
-import { Box } from "src/components/general/box";
+import { Box } from "~/components/general/box";
 
-import { Icons } from "src/components/other/Icons";
-import IconButton from "src/components/general/other/IconButton";
-import Typography from "src/components/general/typography/Typography";
+import { Icons } from "~/components/other/Icons";
+import IconButton from "~/components/general/other/IconButton";
+import Typography from "~/components/general/typography/Typography";
 
 const ChatBar = ({
   contactName,

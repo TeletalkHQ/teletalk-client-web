@@ -2,7 +2,14 @@
   "env": {
     "browser": true
   },
-  "extends": ["eslint:recommended", "next/core-web-vitals", "plugin:@cspell/recommended", "plugin:sonarjs/recommended", "react-app", "react-app/jest"],
+  "extends": [
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:@cspell/recommended",
+    "plugin:sonarjs/recommended",
+    "react-app",
+    "react-app/jest"
+  ],
   "globals": {
     "logger": true
   },
@@ -12,26 +19,35 @@
   },
   "plugins": ["sonarjs", "@cspell"],
   "rules": {
-    "@cspell/spellchecker": ["warn", {
-      "ignoreImportProperties": false,
-      "ignoreImports": false
-    }],
+    "@cspell/spellchecker": [
+      "warn",
+      {
+        "ignoreImportProperties": false,
+        "ignoreImports": false
+      }
+    ],
     "arrow-parens": "warn",
     // "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "no-unused-expressions": 0,
-    "no-unused-vars": ["warn", {
-      "args": "after-used",
-      "argsIgnorePattern": "^_",
-      "ignoreRestSiblings": true,
-      "vars": "all"
-    }],
-    "no-use-before-define": ["warn", {
-      "allowNamedExports": true,
-      "classes": true,
-      "functions": false,
-      "variables": false
-    }],
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+        "vars": "all"
+      }
+    ],
+    "no-use-before-define": [
+      "warn",
+      {
+        "allowNamedExports": true,
+        "classes": true,
+        "functions": false,
+        "variables": false
+      }
+    ],
     "object-shorthand": ["error", "always"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"]

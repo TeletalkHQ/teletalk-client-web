@@ -1,8 +1,8 @@
 import { trier } from "simple-trier";
 
-import { actions } from "src/store/actions";
-import { eventManager } from "src/classes/websocket/EventManager";
-import { apiManager } from "src/classes/api/ApiManager";
+import { actions } from "~/store/actions";
+import { eventManager } from "~/classes/websocket/EventManager";
+import { apiManager } from "~/classes/api/ApiManager";
 
 const getPrivateChats = () => {
   return async (dispatch, getState) => {

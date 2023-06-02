@@ -25,7 +25,7 @@ const fixErrorBuilderErrors = (error, extraData = {}) => {
 };
 
 const makeNonBreakSpace = (length) =>
-  Array.from({ length }).map((_, i) => <Fragment key={i}>&nbsp;</Fragment>);
+  Array.from({ length }).map((_) => "&nbsp;");
 
 const isIos = () => {
   return (

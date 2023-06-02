@@ -1,5 +1,5 @@
-import { DATA_TYPES } from "src/variables/common/dataTypes";
-import { commonObject } from "src/variables/common/object";
+import { DATA_TYPES } from "~/variables/common/dataTypes";
+import { commonObject } from "~/variables/common/object";
 
 const common = {
   object: commonObject,

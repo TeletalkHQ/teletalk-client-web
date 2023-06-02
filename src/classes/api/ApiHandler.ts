@@ -1,12 +1,12 @@
 import { ioFieldsChecker } from "utility-store";
 import { trier } from "simple-trier";
 
-import { appConfigs } from "src/classes/AppConfigs";
-import { commonTasks } from "src/classes/CommonTasks";
+import { appConfigs } from "~/classes/AppConfigs";
+import { commonTasks } from "~/classes/CommonTasks";
 
-import { utilities } from "src/utilities";
+import { utilities } from "~/utilities";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 class ApiHandler {
   #requestInterceptors = [];

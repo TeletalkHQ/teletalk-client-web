@@ -1,13 +1,13 @@
 import { trier } from "simple-trier";
 
-import { api } from "src/api";
+import { api } from "~/api";
 
-import { apiManager } from "src/classes/api/ApiManager";
-import { eventManager } from "src/classes/websocket/EventManager";
-import { stuffStore } from "src/classes/StuffStore";
-import { validatorManager } from "src/classes/validator/ValidatorManager";
+import { apiManager } from "~/classes/api/ApiManager";
+import { eventManager } from "~/classes/websocket/EventManager";
+import { stuffStore } from "~/classes/StuffStore";
+import { validatorManager } from "~/classes/validator/ValidatorManager";
 
-import { actions } from "src/store/actions";
+import { actions } from "~/store/actions";
 
 const getAllStuff = () => {
   return async (dispatch) => {

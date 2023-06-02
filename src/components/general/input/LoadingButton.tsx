@@ -1,27 +1,25 @@
-import { LoadingButton } from "@mui/lab";
+import {
+  LoadingButtonProps,
+  LoadingButton as MuiLoadingButton,
+} from "@mui/lab";
 
-const Button = ({
-  color,
-  style,
+const LoadingButton: React.FC<LoadingButtonProps> = ({
   size = "large",
   variant = "contained",
   ...props
 }) => {
   return (
-    <LoadingButton
+    <MuiLoadingButton
+      {...props}
       style={{
         borderRadius: "10px",
-        ...style,
+        ...props.style,
       }}
       fullWidth
       size={size}
       variant={variant}
-      {...{
-        color,
-        ...props,
-      }}
     />
   );
 };
 
-export default Button;
+export default LoadingButton;

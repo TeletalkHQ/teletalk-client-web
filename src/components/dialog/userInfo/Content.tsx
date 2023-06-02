@@ -1,5 +1,5 @@
-import { Box } from "src/components/general/box";
-import Avatar from "src/components/general/other/Avatar";
+import { Box } from "~/components/general/box";
+import Avatar from "~/components/general/other/Avatar";
 
 const UserInfoContent = ({ fullName, fullNumber }) => {
   return (

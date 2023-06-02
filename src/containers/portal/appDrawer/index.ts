@@ -1,17 +1,17 @@
 import { Divider, SwipeableDrawer } from "@mui/material";
 
-import { actions } from "src/store/actions";
+import { actions } from "~/store/actions";
 
-import { Box } from "src/components/general/box";
-import DrawerList from "src/components/portal/appDrawer/DrawerList";
-import PersonalData from "src/components/portal/appDrawer/PersonalData";
+import { Box } from "~/components/general/box";
+import DrawerList from "~/components/portal/appDrawer/DrawerList";
+import PersonalData from "~/components/portal/appDrawer/PersonalData";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { commonActions } from "src/store/commonActions";
+import { commonActions } from "~/store/commonActions";
 
-import { utilities } from "src/utilities";
-import { userUtilities } from "src/classes/UserUtilities";
+import { utilities } from "~/utilities";
+import { userUtilities } from "~/classes/UserUtilities";
 
 const AppDrawer = () => {
   const dispatch = useDispatch();

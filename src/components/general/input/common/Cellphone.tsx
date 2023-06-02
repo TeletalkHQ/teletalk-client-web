@@ -1,7 +1,7 @@
-import { Box } from "src/components/general/box";
-import { Input } from "src/components/general/input";
+import { Box } from "~/components/general/box";
+import { Input } from "~/components/general/input";
 
-import { utilities } from "src/utilities";
+import { utilities } from "~/utilities";
 
 const Cellphone = ({
   countries,

@@ -1,7 +1,7 @@
-import { Box } from "src/components/general/box";
-import { Input } from "src/components/general/input";
-import InputAdornment from "src/components/general/other/InputAdornment";
-import GreyTextParagraph from "src/components/general/typography/GreyTextParagraph";
+import { Box } from "~/components/general/box";
+import { Input } from "~/components/general/input";
+import InputAdornment from "~/components/general/other/InputAdornment";
+import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 
 const EditBioContent = ({ bio, bioModelLength, onInputChange }) => {
   return (

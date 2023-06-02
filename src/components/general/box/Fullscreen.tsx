@@ -1,4 +1,4 @@
-import Div from "src/components/general/box/Div";
+import Div from "~/components/general/box/Div";
 
 const Fullscreen = ({ style = {}, ...rest }) => {
   return (

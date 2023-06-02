@@ -1,8 +1,8 @@
 import { errorThrower } from "utility-store";
 
-import { componentController } from "src/classes/ComponentController";
+import { componentController } from "~/classes/ComponentController";
 
-import { variables } from "src/variables";
+import { variables } from "~/variables";
 
 class ComponentBuilder {
   constructor() {

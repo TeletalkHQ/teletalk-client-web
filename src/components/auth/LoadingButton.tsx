@@ -1,6 +1,6 @@
-import { Box } from "src/components/general/box";
-import CircularProgress from "src/components/general/progress/CircularProgress";
-import { Input } from "src/components/general/input";
+import { Box } from "~/components/general/box";
+import CircularProgress from "~/components/general/progress/CircularProgress";
+import { Input } from "~/components/general/input";
 
 const LoadingButton = ({
   disabled,

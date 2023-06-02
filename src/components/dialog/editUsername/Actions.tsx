@@ -1,4 +1,4 @@
-import { Input } from "src/components/general/input";
+import { Input } from "~/components/general/input";
 
 const EditUsernameActions = ({ onCancel, onSaveClick }) => (
   <>

@@ -1,4 +1,4 @@
-import { Box } from "src/components/general/box";
+import { Box } from "~/components/general/box";
 
 const EditBioTitle = () => <Box.Div>Edit Bio</Box.Div>;
 

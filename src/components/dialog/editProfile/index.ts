@@ -1,6 +1,6 @@
-import Actions from "src/components/dialog/editProfile/Actions";
-import Title from "src/components/dialog/editProfile/Title";
-import Content from "src/components/dialog/editProfile/Content";
+import Actions from "~/components/dialog/editProfile/Actions";
+import Title from "~/components/dialog/editProfile/Title";
+import Content from "~/components/dialog/editProfile/Content";
 
 const EditProfileComponents = {
   Actions,

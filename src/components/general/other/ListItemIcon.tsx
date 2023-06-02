@@ -1,6 +1,9 @@
-import { ListItemIcon as MuiListItemIcon } from "@mui/material";
+import {
+  ListItemIconProps,
+  ListItemIcon as MuiListItemIcon,
+} from "@mui/material";
 
-const ListItemIcon = (props) => {
+const ListItemIcon: React.FC<ListItemIconProps> = (props) => {
   return <MuiListItemIcon {...props} />;
 };
 
