@@ -1,6 +1,9 @@
-import { ListItemText as MuiListItemText } from "@mui/material";
+import {
+  ListItemTextProps,
+  ListItemText as MuiListItemText,
+} from "@mui/material";
 
-const ListItemText = (props) => {
+const ListItemText: React.FC<ListItemTextProps> = (props) => {
   return <MuiListItemText {...props} />;
 };
 
