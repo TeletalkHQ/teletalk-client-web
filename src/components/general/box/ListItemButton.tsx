@@ -1,7 +1,10 @@
-import { ListItemButton as MuiListItemButton } from "@mui/material";
+import {
+  ListItemButtonProps,
+  ListItemButton as MuiListItemButton,
+} from "@mui/material";
 
-const ListItemButton = ({ onClick, selected, ...rest }) => {
-  return <MuiListItemButton onClick={onClick} selected={selected} {...rest} />;
+const ListItemButton: React.FC<ListItemButtonProps> = (props) => {
+  return <MuiListItemButton {...props} />;
 };
 
 export default ListItemButton;
