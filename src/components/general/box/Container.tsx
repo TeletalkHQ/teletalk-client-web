@@ -1,9 +1,15 @@
-import { Container as MuiContainer } from "@mui/material";
+import {
+  Breakpoint,
+  ContainerProps,
+  Container as MuiContainer,
+} from "@mui/material";
 
-const Container = ({ mw, maxWidth, ...restOfProps }) => {
-  return (
-    <MuiContainer {...restOfProps} maxWidth={mw || maxWidth || undefined} />
-  );
+interface Props extends ContainerProps {
+  mw?: Breakpoint;
+}
+
+const Container: React.FC<Props> = ({ mw, ...rest }) => {
+  return <MuiContainer {...rest} maxWidth={mw || rest.maxWidth} />;
 };
 
 export default Container;
