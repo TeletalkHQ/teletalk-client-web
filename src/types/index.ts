@@ -1,67 +1,24 @@
-import { ChangeEventHandler, HTMLAttributes } from "react";
+import { FullName } from "utility-store/lib/types";
 
 import { countries } from "~/data/countries";
-
-export type CommonOnChange = ChangeEventHandler<
-  HTMLInputElement | HTMLTextAreaElement
->;
 
 export type CountryItem = (typeof countries)[number];
 export type CountryName = CountryItem["countryName"];
 export type CountryCode = CountryItem["countryCode"];
 export type CountryShortName = CountryItem["countryShortName"];
 
-export type HTMLProps = HTMLAttributes<HTMLLIElement>;
+export interface Contact extends FullName {
+  userId: string;
+}
 
-export type ElementName =
-  | "account"
-  | "addContacts"
-  | "allChats"
-  | "attachFile"
-  | "back"
-  | "bot"
-  | "calls"
-  | "channels"
-  | "check"
-  | "close"
-  | "contacts"
-  | "countryCode"
-  | "countryName"
-  | "editChats"
-  | "emojiEmotions"
-  | "firstName"
-  | "groups"
-  | "lastName"
-  | "lock"
-  | "logout"
-  | "menu"
-  | "micNone"
-  | "more"
-  | "newChannel"
-  | "newGroup"
-  | "nightMode"
-  | "personal"
-  | "phoneNumber"
-  | "search"
-  | "settings"
-  | "telegram"
-  | "unread"
-  | "verificationCode";
+export interface Cellphone {
+  countryCode: CountryCode;
+  countryName: CountryName;
+  phoneNumber: string;
+}
 
-export type ElementLabel =
-  | "Choose a country"
-  | "Code"
-  | "First Name"
-  | "Last Name"
-  | "Phone Number"
-  | "Verification Code";
+export type FullContact = Contact & Cellphone;
 
-export type ElementId = ElementName;
+export type VoidNoArgsFn = () => void;
 
-export type ValidatorName =
-  | "countryCode"
-  | "countryName"
-  | "firstName"
-  | "lastName"
-  | "phoneNumber"
-  | "verificationCode";
+export * from "~/types/components";
