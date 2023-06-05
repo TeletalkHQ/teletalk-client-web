@@ -1,6 +1,6 @@
-import { Dialog as MuiDialog } from "@mui/material";
+import { DialogProps, Dialog as MuiDialog } from "@mui/material";
 
-const Dialog = ({ ...props }) => {
+const Dialog: React.FC<DialogProps> = ({ ...props }) => {
   return <MuiDialog {...props} />;
 };
 
