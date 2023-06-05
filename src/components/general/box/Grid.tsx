@@ -1,6 +1,6 @@
-import { Grid as MuiGrid } from "@mui/material";
+import { GridProps, Grid as MuiGrid } from "@mui/material";
 
-const Grid = (props) => {
+const Grid: React.FC<GridProps> = (props) => {
   return <MuiGrid {...props} />;
 };
 
