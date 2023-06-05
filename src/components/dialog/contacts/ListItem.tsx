@@ -1,5 +1,5 @@
 import Avatar from "~/components/general/other/Avatar";
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
 
 const ListItem = ({ name, lastSeen, onContactClick }) => {
   return (
