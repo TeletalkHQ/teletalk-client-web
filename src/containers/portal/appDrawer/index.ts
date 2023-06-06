@@ -2,7 +2,8 @@ import { Divider, SwipeableDrawer } from "@mui/material";
 
 import { actions } from "~/store/actions";
 
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import DrawerList from "~/components/portal/appDrawer/DrawerList";
 import PersonalData from "~/components/portal/appDrawer/PersonalData";
 
