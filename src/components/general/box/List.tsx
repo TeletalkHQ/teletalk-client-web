@@ -1,6 +1,6 @@
-import { List as MuiList } from "@mui/material";
+import { ListProps, List as MuiList } from "@mui/material";
 
-const List = (props) => {
+const List: React.FC<ListProps> = (props) => {
   return <MuiList {...props} />;
 };
 

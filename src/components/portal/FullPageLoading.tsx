@@ -1,6 +1,6 @@
 import MoonLoader from "react-spinners/MoonLoader";
 
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
 
 import { stateStatics } from "~/store/stateStatics";
 

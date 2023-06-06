@@ -1,6 +1,9 @@
-import { DialogActions as MuiDialogActions } from "@mui/material";
+import {
+  DialogActionsProps,
+  DialogActions as MuiDialogActions,
+} from "@mui/material";
 
-const DialogActions = (props) => {
+const DialogActions: React.FC<DialogActionsProps> = (props) => {
   return <MuiDialogActions {...props} />;
 };
 

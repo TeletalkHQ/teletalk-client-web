@@ -1,6 +1,6 @@
-import { DialogTitle as MuiDialogTitle } from "@mui/material";
+import { DialogTitleProps, DialogTitle as MuiDialogTitle } from "@mui/material";
 
-const DialogTitle = (props) => {
+const DialogTitle: React.FC<DialogTitleProps> = (props) => {
   return <MuiDialogTitle {...props} />;
 };
 

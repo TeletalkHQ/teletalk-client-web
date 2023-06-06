@@ -1,10 +1,23 @@
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import { Input } from "~/components/general/input";
+
+import { CountryCode, CountryItem, CountryName, VoidNoArgsFn } from "~/types";
 
 import { utilities } from "~/utilities";
 
-const Cellphone = ({
-  countries,
+interface Props {
+  countryCode: CountryCode;
+  countryName: CountryName;
+  onCountryCodeInputChange: VoidNoArgsFn;
+  onCountryNameInputChange: VoidNoArgsFn;
+  onPhoneNumberInputChange: VoidNoArgsFn;
+  onSelectedCountryChange: VoidNoArgsFn;
+  phoneNumber: string;
+  selectedCountry: CountryItem;
+}
+
+const Cellphone: React.FC<Props> = ({
   countryCode,
   countryName,
   onCountryCodeInputChange,
@@ -17,10 +30,9 @@ const Cellphone = ({
   return (
     <>
       <Input.CountrySelector
-        countries={countries}
         countryName={countryName}
-        onSelectedCountryChange={onSelectedCountryChange}
-        onCountryNameInputChange={onCountryNameInputChange}
+        onSelectChange={onSelectedCountryChange}
+        onInputChange={onCountryNameInputChange}
         selectedCountry={
           utilities.isCountrySelected(selectedCountry) ? selectedCountry : null
         }

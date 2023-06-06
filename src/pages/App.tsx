@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { CssBaseline } from "@mui/material";
-import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@mui/material/styles";
+import { SnackbarProvider } from "notistack";
 import { useDispatch, useSelector } from "react-redux";
-import { windowUtilities } from "~/classes/WindowUtilities";
 
 import { appConfigs } from "~/classes/AppConfigs";
+import { windowUtilities } from "~/classes/WindowUtilities";
 
 import View from "~/containers/view";
 

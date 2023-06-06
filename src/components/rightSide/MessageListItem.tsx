@@ -1,6 +1,7 @@
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import Typography from "~/components/general/typography/Typography";
 import GreyTextParagraph from "../general/typography/GreyTextParagraph";
 

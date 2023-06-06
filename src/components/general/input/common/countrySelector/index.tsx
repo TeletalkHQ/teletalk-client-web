@@ -9,13 +9,13 @@ import SelectorInput from "~/components/general/input/common/countrySelector/Sel
 
 import { countries } from "~/data/countries";
 
-import { CountryItem, CountryName, HTMLProps } from "~/types";
+import { CountryItem, CountryName, HTMLProps, VoidNoArgsFn } from "~/types";
 
 interface Props {
   countryName: CountryName;
-  selectedCountry: CountryItem;
-  onInputChange: any;
-  onSelectChange: any;
+  selectedCountry: CountryItem | null;
+  onInputChange: VoidNoArgsFn;
+  onSelectChange: VoidNoArgsFn;
 }
 
 const CountrySelector: React.FC<Props> = ({
