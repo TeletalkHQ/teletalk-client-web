@@ -1,7 +1,7 @@
 import Container from "~/components/general/box/Container";
 import Div from "~/components/general/box/Div";
 import Flex from "~/components/general/box/Flex";
-import Fullscreen from "~/components/general/box/Fullscreen";
+import FullScreen from "~/components/general/box/FullScreen";
 import Grid from "~/components/general/box/Grid";
 import List from "~/components/general/box/List";
 import ListItem from "~/components/general/box/ListItem";
@@ -14,7 +14,7 @@ const Box = {
   Container,
   Div,
   Flex,
-  Fullscreen,
+  FullScreen,
   Grid,
   List,
   ListItem,
@@ -24,4 +24,4 @@ const Box = {
   Span,
 };
 
-export { Box };
+export default Box;

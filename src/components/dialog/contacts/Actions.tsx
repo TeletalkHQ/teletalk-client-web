@@ -1,4 +1,5 @@
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import { Input } from "~/components/general/input";
 
 const ContactsActions = ({ onClose, onAddContactClick }) => (

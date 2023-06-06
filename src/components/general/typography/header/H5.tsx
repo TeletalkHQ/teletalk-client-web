@@ -3,9 +3,9 @@ import { TypographyProps } from "@mui/material";
 import Typography from "~/components/general/typography/Typography";
 
 interface Props extends TypographyProps {
-  v: TypographyProps["variant"];
-  ta: TypographyProps["textAlign"];
-  fw: TypographyProps["fontWeight"];
+  v?: TypographyProps["variant"];
+  ta?: TypographyProps["textAlign"];
+  fw?: TypographyProps["fontWeight"];
 }
 
 const H5: React.FC<Props> = ({
@@ -15,11 +15,11 @@ const H5: React.FC<Props> = ({
   textAlign,
   v,
   variant,
-  ...restOfProps
+  ...rest
 }) => {
   return (
     <Typography
-      {...restOfProps}
+      {...rest}
       variant={v || variant || "h5"}
       sx={{
         fontWeight: fw || fontWeight || "900",
