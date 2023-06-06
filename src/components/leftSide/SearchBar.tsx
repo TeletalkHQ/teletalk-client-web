@@ -1,4 +1,5 @@
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import IconButton from "~/components/general/other/IconButton";
 import InputAdornment from "~/components/general/other/InputAdornment";
 import { Input } from "~/components/general/input";

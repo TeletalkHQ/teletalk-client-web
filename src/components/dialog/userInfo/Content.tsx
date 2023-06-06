@@ -1,7 +1,13 @@
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import Avatar from "~/components/general/other/Avatar";
 
-const UserInfoContent = ({ fullName, fullNumber }) => {
+interface Props {
+  fullName: string;
+  fullNumber: string;
+}
+
+const UserInfoContent: React.FC<Props> = ({ fullName, fullNumber }) => {
   return (
     <Box.Flex ai="center" gap={2}>
       <Box.Div>

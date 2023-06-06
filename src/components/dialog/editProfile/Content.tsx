@@ -1,10 +1,21 @@
 import { userUtilities } from "~/classes/UserUtilities";
 
-import { Box } from "~/components/general/box";
-import Header from "./Header";
-import List from "./List";
+import Header from "~/components/dialog/editProfile/Header";
+import List from "~/components/dialog/editProfile/List";
 
-const EditProfileContent = ({ onItemClick, profile }) => {
+import {
+  EditProfileListItemOnClick,
+  Profile,
+} from "~/components/dialog/editProfile/types";
+
+import Box from "~/components/general/box";
+
+interface Props {
+  onClick: EditProfileListItemOnClick;
+  profile: Profile;
+}
+
+const EditProfileContent: React.FC<Props> = ({ onClick, profile }) => {
   const fullName = userUtilities.makeFullName(profile);
   const fullNumber = userUtilities.makeFullNumber(profile);
 
@@ -24,7 +35,7 @@ const EditProfileContent = ({ onItemClick, profile }) => {
           fullName={fullName}
           fullNumber={fullNumber}
           username={profile.username}
-          onItemClick={onItemClick}
+          onClick={onClick}
         />
       </Box.Flex>
     </>

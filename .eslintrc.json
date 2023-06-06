@@ -17,7 +17,7 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-  "plugins": ["sonarjs", "@cspell"],
+  "plugins": ["sonarjs", "@cspell", "unused-imports"],
   "rules": {
     "@cspell/spellchecker": [
       "warn",
@@ -26,19 +26,12 @@
         "ignoreImports": false
       }
     ],
+    "@typescript-eslint/no-unused-vars": "off",
     "arrow-parens": "warn",
     // "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "no-unused-expressions": 0,
-    "no-unused-vars": [
-      "warn",
-      {
-        "args": "after-used",
-        "argsIgnorePattern": "^_",
-        "ignoreRestSiblings": true,
-        "vars": "all"
-      }
-    ],
+    "no-unused-vars": "off",
     "no-use-before-define": [
       "warn",
       {
@@ -50,6 +43,17 @@
     ],
     "object-shorthand": ["error", "always"],
     "quotes": ["error", "double"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+        "vars": "all",
+        "varsIgnorePattern": "^_"
+      }
+    ]
   }
 }

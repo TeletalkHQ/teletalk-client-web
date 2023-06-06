@@ -6,7 +6,8 @@ import { domUtilities } from "utility-store";
 import { eventEmitter } from "~/classes/EventEmitter";
 
 import ChatBar from "~/components/rightSide/ChatBar";
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import MessageInput from "~/components/rightSide/MessageInput";
 import MessageList from "~/components/rightSide/MessageList";
 

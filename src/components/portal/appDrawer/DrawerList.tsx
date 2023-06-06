@@ -1,5 +1,6 @@
 import ListItemIcon from "~/components/general/other/ListItemIcon";
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import { Icons } from "~/components/other/Icons";
 
 const drawerList = [

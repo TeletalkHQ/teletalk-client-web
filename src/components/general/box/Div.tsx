@@ -1,4 +1,6 @@
-const Div = (props) => {
+import { DivProps } from "~/types";
+
+const Div: React.FC<DivProps> = (props) => {
   return <div {...props} />;
 };
 

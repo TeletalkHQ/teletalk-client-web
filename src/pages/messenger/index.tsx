@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { websocket } from "~/classes/websocket/Websocket";
 
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
 
 import LeftSide from "~/containers/leftSide";
 import RightSide from "~/containers/rightSide";
