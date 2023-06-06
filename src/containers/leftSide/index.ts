@@ -4,7 +4,8 @@ import { arrayUtilities } from "utility-store";
 import { useDispatch, useSelector } from "react-redux";
 
 import ChatList from "~/components/leftSide/ChatList";
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import SearchBar from "~/components/leftSide/SearchBar";
 
 import { actions } from "~/store/actions";

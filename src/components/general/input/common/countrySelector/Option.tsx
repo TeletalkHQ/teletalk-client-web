@@ -1,4 +1,4 @@
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
 
 import Img from "~/components/general/other/Img";
 

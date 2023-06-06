@@ -2,7 +2,7 @@ import PushPinTwoToneIcon from "@mui/icons-material/PushPinTwoTone";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 
 import Avatar from "~/components/general/other/Avatar";
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
 
 import GreyTextParagraph from "../general/typography/GreyTextParagraph";
 
