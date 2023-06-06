@@ -1,4 +1,5 @@
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import H5 from "~/components/general/typography/header/H5";
 
 const ContactsTitle = () => (

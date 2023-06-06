@@ -1,6 +1,13 @@
 import { Input } from "~/components/general/input";
 
-const LogoutActions = ({ onClose, onLogout }) => (
+import { CommonOnClose, VoidNoArgsFn } from "~/types";
+
+interface Props {
+  onClose: CommonOnClose;
+  onLogout: VoidNoArgsFn;
+}
+
+const LogoutActions: React.FC<Props> = ({ onClose, onLogout }) => (
   <>
     <Input.Button onClick={onClose} variant="text" color="primary">
       Cancel

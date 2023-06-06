@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import FullPageLoading from "~/components/portal/FullPageLoading";
 
 import { controllers } from "~/controllers";
@@ -30,10 +31,10 @@ const InitialSetup = () => {
 
   return (
     <>
-      <Box.Fullscreen>
+      <Box.FullScreen>
         <p>server is not available</p>
         <button onClick={startInitialSetup}>try again</button>
-      </Box.Fullscreen>
+      </Box.FullScreen>
       <FullPageLoading loading={state.global.globalLoading} />
     </>
   );

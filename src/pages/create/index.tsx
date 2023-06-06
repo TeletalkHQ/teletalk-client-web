@@ -4,7 +4,8 @@ import { commonTasks } from "~/classes/CommonTasks";
 import { stuffStore } from "~/classes/StuffStore";
 import LoadingButton from "~/components/auth/LoadingButton";
 
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import { Icons } from "~/components/other/Icons";
 import { Input } from "~/components/general/input";
 import AuthFooter from "~/components/other/AuthFooter";

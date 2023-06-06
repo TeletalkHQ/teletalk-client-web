@@ -1,6 +1,6 @@
-import { ListItem as MuiListItem } from "@mui/material";
+import { ListItemProps, ListItem as MuiListItem } from "@mui/material";
 
-const ListItem = (props) => {
+const ListItem: React.FC<ListItemProps> = (props) => {
   return <MuiListItem {...props} />;
 };
 

@@ -1,6 +1,12 @@
 import { Input } from "~/components/general/input";
 
-const UserInfoActions = ({ onClose }) => (
+import { CommonOnClose } from "~/types";
+
+interface Props {
+  onClose: CommonOnClose;
+}
+
+const UserInfoActions: React.FC<Props> = ({ onClose }) => (
   <>
     <Input.Button
       variant="text"

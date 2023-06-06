@@ -1,6 +1,6 @@
-import { Paper as MuiPaper } from "@mui/material";
+import { Paper as MuiPaper, PaperProps } from "@mui/material";
 
-const Paper = (props) => {
+const Paper: React.FC<PaperProps> = (props) => {
   return <MuiPaper {...props} />;
 };
 

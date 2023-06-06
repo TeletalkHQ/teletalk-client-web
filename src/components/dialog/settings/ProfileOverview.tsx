@@ -1,4 +1,5 @@
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import Avatar from "~/components/general/other/Avatar";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 

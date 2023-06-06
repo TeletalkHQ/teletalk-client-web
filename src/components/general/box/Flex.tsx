@@ -1,6 +1,14 @@
-import { Box } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 
-const Flex = ({
+interface Props extends BoxProps {
+  row?: boolean;
+  col?: boolean;
+  jc?: BoxProps["justifyContent"];
+  ai?: BoxProps["alignItems"];
+  fd?: BoxProps["flexDirection"];
+}
+
+const Flex: React.FC<Props> = ({
   row,
   col,
   jc,

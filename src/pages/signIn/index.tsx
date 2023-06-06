@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
-import { Box } from "~/components/general/box";
+import Box from "~/components/general/box";
+
 import { Icons } from "~/components/other/Icons";
 import { Input } from "~/components/general/input";
 import AuthFooter from "~/components/other/AuthFooter";

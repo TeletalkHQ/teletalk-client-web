@@ -1,9 +1,29 @@
-import { Box } from "~/components/general/box";
+import { ListItemButtonProps } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
-const ListItem = ({ disabled, displayName, onItemClick, value, Icon }) => (
+import Box from "~/components/general/box";
+
+import { ElementLabel, VoidNoArgsFn } from "~/types";
+
+interface Props extends ListItemButtonProps {
+  label: ElementLabel;
+  onClick: VoidNoArgsFn;
+  value: string;
+  Icon: OverridableComponent<any>;
+}
+
+const ListItem: React.FC<Props> = ({
+  disabled,
+  Icon,
+  label,
+  onClick,
+  value,
+  ...rest
+}) => (
   <Box.ListItemButton
+    {...rest}
     disabled={disabled}
-    onClick={onItemClick}
+    onClick={onClick}
     style={{
       alignItems: "center",
       borderRadius: "10px",
@@ -16,19 +36,19 @@ const ListItem = ({ disabled, displayName, onItemClick, value, Icon }) => (
     <Icon style={{ fontSize: 30 }} />
     <Box.Flex
       style={{
-        width: "90%",
-        minWidth: 0,
         gap: 10,
+        minWidth: 0,
+        width: "90%",
       }}
       jc="space-between"
     >
-      <Box.Span style={{ minWidth: "50px" }}>{displayName}</Box.Span>
+      <Box.Span style={{ minWidth: "50px" }}>{label}</Box.Span>
       <Box.Span
         style={{
+          color: "#1976d2",
+          overflow: "hidden",
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
-          overflow: "hidden",
-          color: "#1976d2",
         }}
       >
         {value}
