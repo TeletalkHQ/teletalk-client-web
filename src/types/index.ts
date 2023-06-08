@@ -30,6 +30,8 @@ export interface UiConfig {
   maxNotification: number;
 }
 
+export type Contacts = Contact[];
+
 export type Style = CSSProperties;
 
 export type FullContact = Contact & Cellphone;
