@@ -4,7 +4,14 @@ import { Icons } from "~/components/other/Icons";
 import IconButton from "~/components/general/other/IconButton";
 import Typography from "~/components/general/typography/Typography";
 
-const ChatBar = ({
+import { VoidNoArgsFn } from "~/types";
+
+interface Props {
+  contactName: string;
+  onMessageContainerCloseClick: VoidNoArgsFn;
+}
+
+const ChatBar: React.FC<Props> = ({
   contactName,
   // onChatBarClick,
   onMessageContainerCloseClick,
