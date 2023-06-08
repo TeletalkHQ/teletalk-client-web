@@ -1,8 +1,7 @@
 import lodash from "lodash";
+import { errorThrower } from "utility-store";
 
 import { eventHandler } from "~/classes/websocket/EventHandler";
-
-import { utilities } from "~/utilities";
 
 import { variables } from "~/variables";
 
@@ -45,7 +44,7 @@ class EventBuilder {
   }
 
   checkMinimumRequirements() {
-    utilities.errorThrower(!this.requirements.route.name, {
+    errorThrower(!this.requirements.route.name, {
       ...variables.notification.error.EVENT_IS_BROKEN,
       requirements: this.requirements,
     });
