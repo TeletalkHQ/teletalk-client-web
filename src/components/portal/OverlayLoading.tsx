@@ -1,9 +1,14 @@
 import Backdrop from "~/components/general/other/Backdrop";
 import CircularProgress from "~/components/general/progress/CircularProgress";
 
-import { stateStatics } from "~/store/stateStatics";
+import { LoadingState, VoidNoArgsFn } from "~/types";
 
-const OverlayLoading = ({ loading, onGlobalLoadingClose }) => {
+interface Props {
+  loading: LoadingState;
+  onGlobalLoadingClose: VoidNoArgsFn;
+}
+
+const OverlayLoading: React.FC<Props> = ({ loading, onGlobalLoadingClose }) => {
   return (
     <>
       <Backdrop
@@ -11,10 +16,7 @@ const OverlayLoading = ({ loading, onGlobalLoadingClose }) => {
           color: loading.color,
           // zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
-        open={
-          loading.open &&
-          loading.type === stateStatics.GLOBAL_LOADING_TYPES.OVERLAY
-        }
+        open={loading.open && loading.type === "OVERLAY"}
         onClick={onGlobalLoadingClose}
       >
         <CircularProgress color={loading.progressColor} />

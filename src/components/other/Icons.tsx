@@ -27,13 +27,13 @@ import {
   VerifiedUser as VerifiedUserIcon,
 } from "@mui/icons-material";
 
-import { ElementName } from "~/types";
+import { ElementName, IconType } from "~/types";
 
 const iconProperties = (
   //REFACTOR: Change `text` type to ElementContent
   text: string,
   elementName: ElementName,
-  Icon: any
+  Icon: IconType
 ) => ({
   elementName,
   Icon,

@@ -1,11 +1,9 @@
-import { ioFieldsChecker } from "utility-store";
+import { errorThrower, ioFieldsChecker } from "utility-store";
 import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { commonTasks } from "~/classes/CommonTasks";
 import { websocket } from "~/classes/websocket/Websocket";
-
-import { utilities } from "~/utilities";
 
 import { variables } from "~/variables";
 
@@ -209,7 +207,7 @@ class EventHandler {
       ioErrors
     );
 
-    utilities.errorThrower(!ioDataFieldsCheckResult.ok, {
+    errorThrower(!ioDataFieldsCheckResult.ok, {
       ...ioDataFieldsCheckResult.error,
       inputFields,
       ioData,
