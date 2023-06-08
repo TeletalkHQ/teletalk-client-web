@@ -1,12 +1,28 @@
 import ListItem from "~/components/dialog/contacts/ListItem";
 
-const ContactsContent = ({ contacts, onContactItemClicked }) =>
-  contacts.map((contact, index) => (
-    <ListItem
-      onContactClick={() => onContactItemClicked(contact)}
-      key={index}
-      name={`${contact.firstName} ${contact.lastName}`}
-    />
-  ));
+import { Contact, Contacts } from "~/types";
+
+interface Props {
+  contacts: Contacts;
+  onContactItemClicked: (contact: Contact) => void;
+}
+
+const ContactsContent: React.FC<Props> = ({
+  contacts,
+  onContactItemClicked,
+}) => {
+  return (
+    <>
+      {contacts.map((contact, index) => (
+        <ListItem
+          onContactClick={() => onContactItemClicked(contact)}
+          key={index}
+          fullName={`${contact.firstName} ${contact.lastName}`}
+          lastSeen=""
+        />
+      ))}
+    </>
+  );
+};
 
 export default ContactsContent;

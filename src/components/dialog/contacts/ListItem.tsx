@@ -1,7 +1,16 @@
 import Avatar from "~/components/general/other/Avatar";
 import Box from "~/components/general/box";
 
-const ListItem = ({ name, lastSeen, onContactClick }) => {
+import { VoidNoArgsFn } from "~/types";
+
+interface Props {
+  fullName: string;
+  //REFACTOR: To template string
+  lastSeen: string;
+  onContactClick: VoidNoArgsFn;
+}
+
+const ListItem: React.FC<Props> = ({ fullName, lastSeen, onContactClick }) => {
   return (
     <Box.ListItemButton
       style={{
@@ -18,7 +27,9 @@ const ListItem = ({ name, lastSeen, onContactClick }) => {
 
       <Box.Div style={{ width: "100%" }}>
         <Box.Flex jc="space-between" ai="center">
-          <Box.Div style={{ fontWeight: 500, fontSize: 18 }}>{name}</Box.Div>
+          <Box.Div style={{ fontWeight: 500, fontSize: 18 }}>
+            {fullName}
+          </Box.Div>
           {/* <Box.Div>time</Box.Div> */}
         </Box.Flex>
 
