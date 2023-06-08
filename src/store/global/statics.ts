@@ -5,11 +5,6 @@ const DIALOG_NAMES = {
   USER_INFO: "userInfo",
 };
 
-const GLOBAL_LOADING_TYPES = {
-  FULL_PAGE: "FULL_PAGE",
-  OVERLAY: "OVERLAY",
-};
-
 const INITIAL_SETUP_STATUS = {
   DONE: "DONE",
   FAILED: "FAILED",
@@ -29,7 +24,6 @@ const VIEW_MODES = {
 
 const globalStatics = {
   DIALOG_NAMES,
-  GLOBAL_LOADING_TYPES,
   INITIAL_SETUP_STATUS,
   VIEW_MODES,
 };
