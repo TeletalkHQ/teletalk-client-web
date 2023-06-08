@@ -1,7 +1,8 @@
 import ListItemIcon from "~/components/general/other/ListItemIcon";
 import Box from "~/components/general/box";
-
 import { Icons } from "~/components/other/Icons";
+
+import { ElementName, HTMLDivMouseEvent } from "~/types";
 
 const drawerList = [
   Icons.Calls,
@@ -13,7 +14,12 @@ const drawerList = [
   Icons.SettingsOutlined,
 ];
 
-const DrawerList = ({ toggleDrawer, onDrawerItemClick }) => (
+interface Props {
+  toggleDrawer: (event: HTMLDivMouseEvent, open: boolean) => void;
+  onClick: (elName: ElementName) => void;
+}
+
+const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
   <Box.List style={{ padding: 10 }}>
     {drawerList.map(({ elementName, Icon, text }, index) => (
       <Box.ListItemButton
@@ -25,7 +31,7 @@ const DrawerList = ({ toggleDrawer, onDrawerItemClick }) => (
         key={index}
         onClick={(event) => {
           toggleDrawer(event, false);
-          onDrawerItemClick(elementName);
+          onClick(elementName);
         }}
       >
         <ListItemIcon>
