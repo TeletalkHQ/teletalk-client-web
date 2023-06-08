@@ -1,5 +1,4 @@
 import Box from "~/components/general/box";
-
 import { Icons } from "~/components/other/Icons";
 
 const sidebarList = [
@@ -19,8 +18,7 @@ const SideBarList = () => {
         {sidebarList.map(({ Icon }, index) => {
           return (
             //TODO: Flex list Item
-            <Box.ListItem
-              button
+            <Box.ListItemButton
               key={index}
               selected={index === 4}
               sx={{
@@ -32,7 +30,7 @@ const SideBarList = () => {
               }}
             >
               <Icon />
-            </Box.ListItem>
+            </Box.ListItemButton>
           );
         })}
       </Box.List>
