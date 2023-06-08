@@ -1,11 +1,9 @@
-import { CSSProperties } from "react";
-
 import Div from "~/components/general/box/Div";
 
-import { DivProps } from "~/types";
+import { DivProps, Style } from "~/types";
 
 interface Props extends DivProps {
-  overrideStyle?: CSSProperties;
+  overrideStyle?: Style;
 }
 
 const FullScreen: React.FC<Props> = ({ overrideStyle = {}, ...rest }) => {

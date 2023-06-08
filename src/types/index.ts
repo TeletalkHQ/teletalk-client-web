@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 import { FullName } from "utility-store/lib/types";
 
 import { countries } from "~/data/countries";
@@ -16,6 +18,8 @@ export interface Cellphone {
   countryName: CountryName;
   phoneNumber: string;
 }
+
+export type Style = CSSProperties;
 
 export type FullContact = Contact & Cellphone;
 
