@@ -1,4 +1,4 @@
-import { ioFieldsChecker } from "utility-store";
+import { errorThrower, ioFieldsChecker } from "utility-store";
 import { trier } from "simple-trier";
 
 import { utilities } from "~/utilities";
@@ -50,7 +50,7 @@ class ActionHandler {
         ioFieldsCheckerErrors
       );
 
-      utilities.errorThrower(checkResult.ok === false, {
+      errorThrower(checkResult.ok === false, {
         ...checkResult.error,
         type: this.type,
       });

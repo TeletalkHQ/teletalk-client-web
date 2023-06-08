@@ -1,4 +1,4 @@
-import { ioFieldsChecker } from "utility-store";
+import { errorThrower, ioFieldsChecker } from "utility-store";
 import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
@@ -231,7 +231,7 @@ class ApiHandler {
       ioErrors
     );
 
-    utilities.errorThrower(!ioDataFieldsCheckResult.ok, {
+    errorThrower(!ioDataFieldsCheckResult.ok, {
       ...ioDataFieldsCheckResult.error,
       inputFields,
       ioData,
