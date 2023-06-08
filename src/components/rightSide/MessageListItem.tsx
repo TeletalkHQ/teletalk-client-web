@@ -1,32 +1,38 @@
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+// import { SlideProps } from "@mui/material";
 
 import Box from "~/components/general/box";
-
 import Typography from "~/components/general/typography/Typography";
-import GreyTextParagraph from "../general/typography/GreyTextParagraph";
+import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 
-// import { Transitions } from "~/components/others/Transitions";
+import { Style } from "~/types";
 
-const MessageListItem = ({
+interface Props {
+  chatDate: string;
+  justify: Style["justifyContent"];
+  message: string;
+  messageTime: string;
+  // transitionDirection: SlideProps["direction"];
+}
+
+const MessageListItem: React.FC<Props> = ({
   chatDate,
-  // direction,
+  // transitionDirection,
   justify,
   message,
-  messageItemClassName,
   messageTime,
 }) => {
   return (
     <>
       <Box.Flex style={{ padding: 3 }} justifyContent={justify}>
         {/* <Transitions.Slide
-          direction={direction}
+          direction={transitionDirection}
           in={true}
           mountOnEnter
           unmountOnExit
         > */}
         <Box.Paper
           style={{ padding: 5, borderRadius: 10 }}
-          className={`${messageItemClassName}`}
           elevation={0}
           // onContextMenu={(e) => onOtherStateChange(e)}
         >
@@ -41,7 +47,7 @@ const MessageListItem = ({
             <GreyTextParagraph>{messageTime || "12:24"}</GreyTextParagraph>
             <GreyTextParagraph>{chatDate}</GreyTextParagraph>
             <GreyTextParagraph>
-              <DoneAllIcon fontSize="12" />
+              <DoneAllIcon fontSize="small" />
             </GreyTextParagraph>
           </Box.Flex>
         </Box.Paper>

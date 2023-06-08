@@ -1,4 +1,5 @@
 import lodash from "lodash";
+import { errorThrower } from "utility-store";
 
 import { apiHandler } from "~/classes/api/ApiHandler";
 
@@ -45,7 +46,7 @@ class ApiBuilder {
   }
 
   checkMinimumRequirements() {
-    utilities.errorThrower(!this.requirements.route.fullUrl, {
+    errorThrower(!this.requirements.route.fullUrl, {
       ...variables.notification.error.URL_IS_BROKEN,
       requirements: this.requirements,
     });

@@ -3,7 +3,18 @@ import Box from "~/components/general/box";
 import CircularProgress from "~/components/general/progress/CircularProgress";
 import { Input } from "~/components/general/input";
 
-const LoadingButton = ({
+import { VoidNoArgsFn, Style } from "~/types";
+
+interface Props {
+  disabled: boolean;
+  loading: boolean;
+  onClick: VoidNoArgsFn;
+  style: Style;
+  indicatorValue: string;
+  buttonValue: string;
+}
+
+const LoadingButton: React.FC<Props> = ({
   disabled,
   loading,
   onClick,

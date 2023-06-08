@@ -1,13 +1,17 @@
-import { OverridableComponent } from "@mui/material/OverridableComponent";
-
-import { CountryCode, CountryName, ElementLabel, ListItemName } from "~/types";
+import {
+  CountryCode,
+  CountryName,
+  ElementLabel,
+  IconType,
+  ListItemName,
+} from "~/types";
 
 export interface EditProfileListItemProps {
   name: ListItemName;
   label: ElementLabel;
   disabled: boolean;
   value: string;
-  Icon: OverridableComponent<any>;
+  Icon: IconType;
 }
 
 export type EditProfileListItemOnClick = (

@@ -2,7 +2,12 @@ import Box from "~/components/general/box";
 
 import Avatar from "~/components/general/other/Avatar";
 
-const PersonalData = ({ fullNumber, fullName }) => (
+interface Props {
+  fullNumber: string;
+  fullName: string;
+}
+
+const PersonalData: React.FC<Props> = ({ fullNumber, fullName }) => (
   <Box.Flex col ai="center" jc="center" style={{ padding: 10 }} gap={1}>
     <Box.Div>
       <Avatar />
