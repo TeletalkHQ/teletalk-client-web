@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 
 import { FullName } from "utility-store/lib/types";
+import { Transitions } from "~/components/other/Transitions";
 
 import { countries } from "~/data/countries";
 
@@ -17,6 +18,16 @@ export interface Cellphone {
   countryCode: CountryCode;
   countryName: CountryName;
   phoneNumber: string;
+}
+
+export type AppDrawerAnchor = "botton" | "left" | "right" | "top";
+
+export type TransitionName = keyof typeof Transitions;
+
+export interface UiConfig {
+  appDrawerCurrentAnchor: AppDrawerAnchor;
+  dialogDefaultTransition: TransitionName;
+  maxNotification: number;
 }
 
 export type Style = CSSProperties;
