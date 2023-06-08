@@ -2,14 +2,8 @@ import { Fragment } from "react";
 
 import { customTypeof } from "custom-typeof";
 
-const checkErrorCodeIsConnAborted = (errorCode) => errorCode === "ECONNABORTED";
-
-const errorThrower = (condition, error) => {
-  if (condition) {
-    if (customTypeof.isFunction(error)) throw error();
-    throw error;
-  }
-};
+const checkErrorCodeIsConnAborted = (errorCode: string) =>
+  errorCode === "ECONNABORTED";
 
 const printCatchError = (error, functionName) => {
   logger.error(`${functionName} catch, error: `);
@@ -46,7 +40,6 @@ const isCountrySelected = (selectedCountry) => {
 
 const otherUtilities = {
   checkErrorCodeIsConnAborted,
-  errorThrower,
   fixErrorBuilderErrors,
   isCountrySelected,
   isIos,

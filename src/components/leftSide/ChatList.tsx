@@ -1,12 +1,12 @@
-import ChatListItem from "~/components/leftSide/ChatListItem";
+import ChatListItem from "~/components/leftSide/chatListItem";
 
 const ChatList = ({ chatList, onChatListItemClick, selectedChat }) => {
   return chatList.map((item, i) => (
     <ChatListItem
-      onChatListItemClick={() => onChatListItemClick(item)}
+      onClick={() => onChatListItemClick(item)}
       key={i}
       message={item.message}
-      name={item.name}
+      fullName={item.name}
       selected={selectedChat.id === item.id}
     />
   ));

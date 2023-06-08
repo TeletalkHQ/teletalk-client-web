@@ -1,8 +1,16 @@
-import Box from "~/components/general/box";
+import React from "react";
 
+import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
 
-const ContactsActions = ({ onClose, onAddContactClick }) => (
+import { VoidNoArgsFn } from "~/types";
+
+interface Props {
+  onClose: VoidNoArgsFn;
+  onAddContactClick: VoidNoArgsFn;
+}
+
+const ContactsActions: React.FC<Props> = ({ onClose, onAddContactClick }) => (
   <>
     <Box.Flex sx={{ width: "100%" }} jc="space-between" ai="center">
       <Box.Div>

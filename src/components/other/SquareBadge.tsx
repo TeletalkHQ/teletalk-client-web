@@ -1,4 +1,11 @@
-const SquareBadge = ({ children, customStyle = {} }) => {
+import { Style } from "~/types";
+
+interface Props {
+  children: JSX.Element;
+  overrideStyle?: Style;
+}
+
+const SquareBadge: React.FC<Props> = ({ children, overrideStyle = {} }) => {
   return (
     <span
       style={{
@@ -7,7 +14,7 @@ const SquareBadge = ({ children, customStyle = {} }) => {
         borderRadius: "3px",
         padding: "3px 5px",
         textAlign: "center",
-        ...customStyle,
+        ...overrideStyle,
       }}
     >
       {children}
