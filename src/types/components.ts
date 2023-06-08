@@ -21,6 +21,7 @@ export type HTMLProps = HTMLAttributes<HTMLLIElement>;
 
 export type ElementName =
   | "account"
+  | "bio"
   | "addContacts"
   | "allChats"
   | "attachFile"

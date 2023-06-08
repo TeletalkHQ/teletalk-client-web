@@ -4,7 +4,15 @@ import { Input } from "~/components/general/input";
 import InputAdornment from "~/components/general/other/InputAdornment";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 
-const EditBioContent = ({ bio, bioModelLength, onInputChange }) => {
+import { VoidNoArgsFn } from "~/types";
+
+interface Props {
+  bio: string;
+  bioLength: number;
+  onChange: VoidNoArgsFn;
+}
+
+const EditBioContent: React.FC<Props> = ({ bio, bioLength, onChange }) => {
   return (
     <Box.Flex style={{ maxWidth: 400 }} col>
       <Input.Text
@@ -12,12 +20,12 @@ const EditBioContent = ({ bio, bioModelLength, onInputChange }) => {
         multiline
         maxRows={3}
         label="Bio"
-        onChange={onInputChange}
+        onChange={onChange}
         value={bio}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              {bioModelLength - bio.length}
+              {bioLength - bio.length}
             </InputAdornment>
           ),
         }}
