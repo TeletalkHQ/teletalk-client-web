@@ -1,6 +1,16 @@
 import Box from "~/components/general/box";
 
-const ListItem = ({ onSettingItemClick, displayName, Icon }) => (
+import { IconType, VoidNoArgsFn } from "~/types";
+
+import { SettingDisplayName } from "./types";
+
+interface Props {
+  onClick: VoidNoArgsFn;
+  displayName: SettingDisplayName;
+  Icon: IconType;
+}
+
+const ListItem: React.FC<Props> = ({ onClick, displayName, Icon }) => (
   <Box.ListItemButton
     style={{
       display: "flex",
@@ -9,7 +19,7 @@ const ListItem = ({ onSettingItemClick, displayName, Icon }) => (
       gap: 10,
       alignItems: "center",
     }}
-    onClick={onSettingItemClick}
+    onClick={onClick}
   >
     <Icon style={{ fontSize: 30 }} />
     <Box.Div> {displayName}</Box.Div>

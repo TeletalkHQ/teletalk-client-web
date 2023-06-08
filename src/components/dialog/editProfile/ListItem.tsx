@@ -1,15 +1,14 @@
 import { ListItemButtonProps } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 import Box from "~/components/general/box";
 
-import { ElementLabel, VoidNoArgsFn } from "~/types";
+import { ElementLabel, IconType, VoidNoArgsFn } from "~/types";
 
 interface Props extends ListItemButtonProps {
   label: ElementLabel;
   onClick: VoidNoArgsFn;
   value: string;
-  Icon: OverridableComponent<any>;
+  Icon: IconType;
 }
 
 const ListItem: React.FC<Props> = ({

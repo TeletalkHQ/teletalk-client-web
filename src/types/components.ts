@@ -1,3 +1,5 @@
+import { SvgIconTypeMap } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { ChangeEventHandler, DetailedHTMLProps, HTMLAttributes } from "react";
 
 export type DivProps = DetailedHTMLProps<
@@ -83,3 +85,7 @@ export type ValidatorName =
   | "lastName"
   | "phoneNumber"
   | "verificationCode";
+
+export type IconType = OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
+  muiName: string;
+};
