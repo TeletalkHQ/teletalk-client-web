@@ -8,7 +8,7 @@ import PieChartIcon from "@mui/icons-material/PieChartTwoTone";
 
 import ListItem from "~/components/dialog/settings/ListItem";
 
-const list = [
+export const settingsList = [
   {
     Icon: AccountBoxIcon,
     displayName: "Edit Profile",
@@ -17,21 +17,47 @@ const list = [
     displayName: "Notifications and Sounds",
     Icon: CircleNotificationsIcon,
   },
-  { displayName: "Privacy and Security", Icon: LockIcon },
-  { displayName: "Chat Settings", Icon: ChatIcon },
-  { displayName: "Advanced", Icon: PieChartIcon },
-  { displayName: "Call Settings", Icon: CallIcon },
-  { displayName: "Language", Icon: LanguageIcon },
-];
+  {
+    displayName: "Privacy and Security",
+    Icon: LockIcon,
+  },
+  {
+    displayName: "Chat Settings",
+    Icon: ChatIcon,
+  },
+  {
+    displayName: "Advanced",
+    Icon: PieChartIcon,
+  },
+  {
+    displayName: "Call Settings",
+    Icon: CallIcon,
+  },
+  {
+    displayName: "Language",
+    Icon: LanguageIcon,
+  },
+] as const;
 
-const SettingsList = ({ onSettingItemClick }) =>
-  list.map((item, i) => (
-    <ListItem
-      key={i}
-      displayName={item.displayName}
-      Icon={item.Icon}
-      onSettingItemClick={() => onSettingItemClick(item)}
-    />
-  ));
+type ListItem = (typeof settingsList)[number];
+
+interface Props {
+  onSettingItemClick: (item: ListItem) => void;
+}
+
+const SettingsList: React.FC<Props> = ({ onSettingItemClick }) => {
+  return (
+    <>
+      {settingsList.map((item, i) => (
+        <ListItem
+          key={i}
+          displayName={item.displayName}
+          Icon={item.Icon}
+          onClick={() => onSettingItemClick(item)}
+        />
+      ))}
+    </>
+  );
+};
 
 export default SettingsList;
