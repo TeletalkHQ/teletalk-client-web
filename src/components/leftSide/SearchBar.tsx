@@ -1,12 +1,16 @@
 import Box from "~/components/general/box";
-
 import IconButton from "~/components/general/other/IconButton";
 import InputAdornment from "~/components/general/other/InputAdornment";
 import { Input } from "~/components/general/input";
-
 import { Icons } from "~/components/other/Icons";
 
-const SearchBar = ({ onDrawerIconClick }) => {
+import { VoidNoArgsFn } from "~/types";
+
+interface Props {
+  onDrawerIconClick: VoidNoArgsFn;
+}
+
+const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
   return (
     <>
       <Box.Flex

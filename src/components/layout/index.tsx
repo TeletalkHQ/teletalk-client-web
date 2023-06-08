@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { CssBaseline } from "@mui/material";
 import { SnackbarProvider } from "notistack";
@@ -16,7 +16,10 @@ import { assignDispatch } from "~/helpers/extractedDispatch";
 
 import { baseTheme } from "~/theme/baseTheme";
 
-const Layout = ({ children }) => {
+interface Props {
+  children: JSX.Element;
+}
+const Layout: React.FC<Props> = ({ children }) => {
   const [forceUpdate, setForceUpdate] = useState(false);
   const state = useSelector((state) => state);
   const dispatch = useDispatch();

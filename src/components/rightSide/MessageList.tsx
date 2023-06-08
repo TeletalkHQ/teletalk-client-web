@@ -1,19 +1,31 @@
 import MessageListItem from "~/components/rightSide/MessageListItem";
 
-const MessageList = ({ messages, currentUserId }) =>
-  messages.map((messageItem, index) => (
-    <MessageListItem
-      key={index}
-      message={messageItem.message}
-      justify={
-        currentUserId === messageItem.sender.senderId
-          ? "flex-end"
-          : "flex-start"
-      }
-      direction={
-        currentUserId === messageItem.sender.senderId ? "left" : "right"
-      }
-    />
-  ));
+interface Props {
+  currentUserId: string;
+}
+
+const MessageList: React.FC<Props> = ({ messages, currentUserId }) =>
+  messages.map((messageItem, index: number) => {
+    return (
+      <>
+        {
+          <MessageListItem
+            key={index}
+            messageTime=""
+            chatDate=""
+            message={messageItem.message}
+            justify={
+              currentUserId === messageItem.sender.senderId
+                ? "flex-end"
+                : "flex-start"
+            }
+            // transitionDirection={
+            //   currentUserId === messageItem.sender.senderId ? "left" : "right"
+            // }
+          />
+        }
+      </>
+    );
+  });
 
 export default MessageList;

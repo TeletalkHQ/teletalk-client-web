@@ -4,7 +4,16 @@ import ProfileOverview from "~/components/dialog/settings/ProfileOverview";
 import List from "~/components/dialog/settings/List";
 import Box from "~/components/general/box";
 
-const SettingsContent = ({
+import { VoidNoArgsFn } from "~/types";
+
+interface Props {
+  fullName: string;
+  fullNumber: string;
+  username: string;
+  onSettingItemClick: VoidNoArgsFn;
+}
+
+const SettingsContent: React.FC<Props> = ({
   fullName,
   fullNumber,
   onSettingItemClick,
@@ -21,7 +30,7 @@ const SettingsContent = ({
       <Divider style={{ margin: "20px 0px 20px 0px" }} />
 
       <Box.List>
-        <List onSettingItemClick={onSettingItemClick} />{" "}
+        <List onSettingItemClick={onSettingItemClick} />
       </Box.List>
     </>
   );

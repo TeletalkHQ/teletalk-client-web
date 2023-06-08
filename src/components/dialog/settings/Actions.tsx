@@ -1,6 +1,12 @@
 import { Input } from "~/components/general/input";
 
-const SettingsActions = ({ onClose }) => (
+import { VoidNoArgsFn } from "~/types";
+
+interface Props {
+  onClose: VoidNoArgsFn;
+}
+
+const SettingsActions: React.FC<Props> = ({ onClose }) => (
   <>
     <Input.Button
       variant="text"
