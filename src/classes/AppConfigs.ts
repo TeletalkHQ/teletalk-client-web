@@ -1,11 +1,9 @@
 import { envManager } from "~/classes/EnvironmentManager";
 
-import { stateStatics } from "~/store/stateStatics";
+import { UiConfig } from "~/types";
 
 class AppConfigs {
   #env = envManager.getAllLocalEnvironments();
-
-  constructor() {}
 
   #RUNTIME_MODE = this.#env.NEXT_PUBLIC_RUNTIME_MODE;
 
@@ -46,6 +44,12 @@ class AppConfigs {
   }
 
   #getDefaultConfigs() {
+    const uiConfig: UiConfig = {
+      appDrawerCurrentAnchor: "left",
+      dialogDefaultTransition: "Grow",
+      maxNotification: 10,
+    };
+
     return {
       apiConfigs: {
         checkResponseStatus: true,
@@ -67,12 +71,7 @@ class AppConfigs {
         logPerformanceMeasuring: false,
         RUNTIME_MODE: process.env.NEXT_PUBLIC_RUNTIME_MODE,
       },
-      ui: {
-        appDrawerCurrentAnchor: stateStatics.APP_DRAWER_ANCHORS.left,
-        defaultDialogTransitionalComponentType: "Grow",
-        dialogTransitionalComponentType: "Grow",
-        maxNotification: 10,
-      },
+      ui: uiConfig,
       stateManagement: {
         logActions: false,
       },
