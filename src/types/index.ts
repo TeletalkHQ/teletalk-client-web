@@ -14,6 +14,17 @@ export interface Contact extends FullName {
   userId: string;
 }
 
+export type GlobalLoadingType = "FULL_PAGE" | "OVERLAY";
+
+export interface LoadingState {
+  color: "blue";
+  open: false;
+  progressColor: "inherit";
+  size: number;
+  speedMultiplier: number;
+  type: GlobalLoadingType;
+}
+
 export interface Cellphone {
   countryCode: CountryCode;
   countryName: CountryName;
