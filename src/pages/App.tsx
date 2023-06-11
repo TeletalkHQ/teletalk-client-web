@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { SnackbarProvider } from "notistack";
-import { useDispatch, useSelector } from "react-redux";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { windowUtilities } from "~/classes/WindowUtilities";
@@ -20,8 +19,6 @@ import { baseTheme } from "~/theme/baseTheme";
 
 const App = () => {
   const [forceUpdate, setForceUpdate] = useState(false);
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const updater = () => {

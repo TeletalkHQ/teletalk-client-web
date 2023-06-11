@@ -6,15 +6,11 @@ import OverlayLoading from "~/components/portal/OverlayLoading";
 
 import DialogContainer from "~/containers/dialog";
 
-import { useSelector } from "react-redux";
-
 const PortalProvider = ({ children }) => {
   return createPortal(children, document.querySelector("#portalContainer"));
 };
 
 const Portal = ({ onGlobalLoadingClose }) => {
-  const state = useSelector((state) => state);
-
   return (
     <PortalProvider>
       <FullPageLoading loading={state.global.globalLoading} />

@@ -9,8 +9,6 @@ import DialogTemplate from "~/components/dialog/Template";
 
 import { controllers } from "~/controllers";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { commonActions } from "~/store/commonActions";
 import { stateStatics } from "~/store/stateStatics";
 
@@ -21,9 +19,6 @@ import { variables } from "~/variables";
 const AddNewContact = componentBuilder
   .create()
   .registerComponent("AddNewContact", ({ onDialogClose }) => {
-    const dispatch = useDispatch();
-    const state = useSelector((state) => state);
-
     useEffect(() => {
       const fn = async () => {
         dispatch(controllers.getCountries());

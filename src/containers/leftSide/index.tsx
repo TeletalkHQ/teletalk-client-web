@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 
 import { arrayUtilities } from "utility-store";
-import { useDispatch, useSelector } from "react-redux";
 
 import ChatList from "~/components/leftSide/ChatList";
 import Box from "~/components/general/box";
@@ -12,9 +11,6 @@ import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 
 const LeftSide = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
   const chatList = useMemo(() => {
     return state.message.privateChats.map((chat) => {
       const lastMessage = getChatLastMessage(chat);

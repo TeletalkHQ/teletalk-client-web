@@ -7,17 +7,12 @@ import Box from "~/components/general/box";
 import DrawerList from "~/components/portal/appDrawer/DrawerList";
 import PersonalData from "~/components/portal/appDrawer/PersonalData";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { commonActions } from "~/store/commonActions";
 
 import { utilities } from "~/utilities";
 import { userUtilities } from "~/classes/UserUtilities";
 
 const AppDrawer = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
   const toggleDrawer = (event, open) => {
     if (
       event?.type === "keydown" &&

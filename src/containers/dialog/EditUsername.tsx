@@ -5,15 +5,10 @@ import EditUsernameComponents from "~/components/dialog/editUsername";
 
 import { controllers } from "~/controllers";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 
 const EditUsername = ({ onDialogClose }) => {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   const handleInputChange = (event) => {
     dispatch(
       actions.updateProfile({
