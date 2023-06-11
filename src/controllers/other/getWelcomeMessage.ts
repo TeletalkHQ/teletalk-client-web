@@ -2,8 +2,6 @@ import { trier } from "simple-trier";
 
 import { actions } from "~/store/actions";
 
-import { apiManager } from "~/classes/api/ApiManager";
-
 const getWelcomeMessage = () => {
   return async (dispatch) => {
     await trier(getWelcomeMessage.name)
