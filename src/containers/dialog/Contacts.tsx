@@ -1,16 +1,11 @@
 import ContactsComponents from "~/components/dialog/contacts";
 import DialogTemplate from "~/components/dialog/Template";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 import { stateStatics } from "~/store/stateStatics";
 
 const Contacts = ({ onDialogClose }) => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
   const handleAddContactClick = () => {
     dispatch(commonActions.closeDialog(stateStatics.DIALOG_NAMES.CONTACTS));
     dispatch(commonActions.openDialog(stateStatics.DIALOG_NAMES.ADD_CONTACT));

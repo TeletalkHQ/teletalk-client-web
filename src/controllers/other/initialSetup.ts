@@ -9,7 +9,7 @@ import { eventEmitter } from "~/classes/EventEmitter";
 import { stuffStore } from "~/classes/StuffStore";
 import { validatorManager } from "~/classes/validator/ValidatorManager";
 import { websocket } from "~/classes/websocket/Websocket";
-import { eventManager } from "~/classes/websocket/EventManager";
+import { socketEmitterStore } from "~/classes/websocket/EventManager";
 
 import { events } from "~/events";
 
@@ -60,7 +60,7 @@ const addWindowProperties = (dispatch) => {
     .addProperty("dispatch", dispatch)
     .addProperty("envManager", envManager)
     .addProperty("eventEmitter", eventEmitter)
-    .addProperty("eventManager", eventManager)
+    .addProperty("socketEmitterStore", socketEmitterStore)
     .addProperty("stuffs", stuffStore.getStore())
     .addProperty("validatorManager", validatorManager)
     .addProperty("websocket", websocket);

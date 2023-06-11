@@ -17,17 +17,12 @@ import LoadingButton from "~/components/auth/LoadingButton";
 
 import { controllers } from "~/controllers";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 
 import { variables } from "~/variables";
 
 const Verify = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
   const isVerificationSubmitButtonDisabled = () => {
     // return !commonTasks.validateInputValueLengthByModelLength(
     //   stuffStore.models.verificationCode,

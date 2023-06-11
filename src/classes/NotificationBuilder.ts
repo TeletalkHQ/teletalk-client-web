@@ -1,33 +1,26 @@
-class NotificationBuilder {
-  #notificationObject = {
-    description: "Default notification description",
-    message: "Unknown notification message",
-    notificationCode: 4000,
-    notificationReason: "UNKNOWN_ERROR_REASON",
-  };
+import { Notification } from "~/types";
 
-  #addProperty(key, value) {
-    this.#notificationObject[key] = value;
-  }
+class NotificationBuilder {
+  private notification: Notification;
 
   build() {
-    return this.#notificationObject;
+    return this.notification;
   }
 
-  description(description) {
-    this.#addProperty("description", description);
+  description(description: string) {
+    this.notification.description = description;
     return this;
   }
-  message(message) {
-    this.#addProperty("message", message);
+  message(message: string) {
+    this.notification.message = message;
     return this;
   }
-  notificationCode(notificationCode) {
-    this.#addProperty("notificationCode", notificationCode);
+  code(code: number) {
+    this.notification.code = code;
     return this;
   }
-  notificationReason(notificationReason) {
-    this.#addProperty("notificationReason", notificationReason);
+  reason(reason: string) {
+    this.notification.reason = reason;
     return this;
   }
 }

@@ -1,7 +1,7 @@
 import { trier } from "simple-trier";
 
 import { actions } from "~/store/actions";
-import { eventManager } from "~/classes/websocket/EventManager";
+import { socketEmitterStore } from "~/classes/websocket/EventManager";
 import { apiManager } from "~/classes/api/ApiManager";
 
 const getPrivateChats = () => {
@@ -17,7 +17,7 @@ const tryBlock = async (dispatch, getState) => {
     global: { users },
     user: { userId },
   } = getState();
-  eventManager.events.getPrivateChats.emitFull(
+  socketEmitterStore.events.getPrivateChats.emitFull(
     undefined,
     async ({ data: { privateChats } }) => {
       for (const item of privateChats) {

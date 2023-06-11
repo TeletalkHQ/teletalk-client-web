@@ -3,7 +3,7 @@ import { trier } from "simple-trier";
 import { api } from "~/api";
 
 import { apiManager } from "~/classes/api/ApiManager";
-import { eventManager } from "~/classes/websocket/EventManager";
+import { socketEmitterStore } from "~/classes/websocket/EventManager";
 import { stuffStore } from "~/classes/StuffStore";
 import { validatorManager } from "~/classes/validator/ValidatorManager";
 
@@ -31,7 +31,7 @@ const executeIfNoError = (data, dispatch) => {
   stuffStore.updateStore(data);
 
   apiManager.build();
-  eventManager.build();
+  socketEmitterStore.build();
   validatorManager.compileValidators(stuffStore.validationModels);
 
   dispatch(actions.isStuffImported({ isStuffImported: true }));

@@ -4,7 +4,7 @@ import { variables } from "~/variables";
 
 class CommonNotificationManager extends NotificationManager {
   submitAbortedConnectionNotification() {
-    this.submitErrorNotification(variables.notification.error.ECONNABORTED);
+    this.submitErrorNotification(variables.notification.errors.econnAborted);
   }
 }
 

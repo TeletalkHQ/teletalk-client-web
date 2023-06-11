@@ -4,15 +4,10 @@ import EditBioComponents from "~/components/dialog/editBio";
 import DialogTemplate from "~/components/dialog/Template";
 import { controllers } from "~/controllers";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 
 const EditBio = ({ onDialogClose }) => {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   const handleInputChange = (event) => {
     dispatch(
       actions.updateProfile({
