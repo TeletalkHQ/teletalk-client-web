@@ -1,5 +1,3 @@
-import { apiManager } from "~/classes/api/ApiManager";
-
 const getPublicUserData = async (userId) => {
   const response =
     await apiManager.apis.getPublicUserData.sendFullFeaturedRequest({

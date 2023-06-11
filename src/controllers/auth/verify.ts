@@ -1,7 +1,5 @@
 import { trier } from "simple-trier";
 
-import { apiManager } from "~/classes/api/ApiManager";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 import { store } from "~/store/store";

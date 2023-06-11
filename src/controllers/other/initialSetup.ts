@@ -1,13 +1,7 @@
 import { trier } from "simple-trier";
-import { windowUtilities } from "~/classes/WindowUtilities";
 
-import { apiManager } from "~/classes/api/ApiManager";
 import { appConfigs } from "~/classes/AppConfigs";
-import { componentController } from "~/classes/ComponentController";
 import { envManager } from "~/classes/EnvironmentManager";
-import { eventEmitter } from "~/classes/EventEmitter";
-import { stuffStore } from "~/classes/StuffStore";
-import { validatorManager } from "~/classes/validator/ValidatorManager";
 import { websocket } from "~/classes/websocket/Websocket";
 import { socketEmitterStore } from "~/classes/websocket/EventManager";
 
@@ -29,7 +23,7 @@ const tryBlock = async (dispatch) => {
   events.addOnlineStatusEvents(dispatch);
   dispatch(commonActions.openGlobalLoading());
 
-  addWindowProperties(dispatch);
+  addWindowProperties();
 
   dispatch(commonActions.changeViewMode.checkCurrentUser());
 
@@ -51,19 +45,11 @@ const catchBlock = (_error, dispatch) => {
 const finallyBlock = (_, dispatch) =>
   dispatch(commonActions.closeGlobalLoading());
 
-const addWindowProperties = (dispatch) => {
-  windowUtilities
-    .addProperty("actions", actions)
-    .addProperty("apiManager", apiManager)
-    .addProperty("appConfigs", appConfigs)
-    .addProperty("componentController", componentController)
-    .addProperty("dispatch", dispatch)
-    .addProperty("envManager", envManager)
-    .addProperty("eventEmitter", eventEmitter)
-    .addProperty("socketEmitterStore", socketEmitterStore)
-    .addProperty("stuffs", stuffStore.getStore())
-    .addProperty("validatorManager", validatorManager)
-    .addProperty("websocket", websocket);
+const addWindowProperties = () => {
+  window.appConfigs = appConfigs;
+  window.envManager = envManager;
+  window.socketEmitterStore = socketEmitterStore;
+  window.websocket = websocket;
 };
 
 export { initialSetup };

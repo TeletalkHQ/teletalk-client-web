@@ -2,29 +2,17 @@ import axios from "axios";
 
 import { appConfigs } from "~/classes/AppConfigs";
 
-const {
-  apiConfigs: {
-    defaultHeaders,
-    requestTimeout,
-    shouldValidateStatus: validateStatus,
-    SERVER_BASE_URL,
-  },
-} = appConfigs.getConfigs();
+const { api } = appConfigs.getConfigs();
 
 const customAxios = axios.create({
-  baseURL: SERVER_BASE_URL,
-  headers: defaultHeaders,
-  timeout: requestTimeout,
-  validateStatus,
+  baseURL: api.serverBaseUrl,
+  headers: api.defaultHeaders,
+  timeout: api.requestTimeout,
 });
 
 customAxios.defaults.withCredentials = true;
 
-const requester = async (options) => {
-  return await customAxios(options);
-};
-
-const apiUtilities = { requester, customAxios };
+const apiUtilities = { customAxios };
 
 export { apiUtilities };
 
