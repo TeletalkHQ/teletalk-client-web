@@ -1,146 +1,148 @@
-import { errorThrower, ioFieldsChecker } from "utility-store";
+import { checkFields } from "check-fields";
 import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { commonTasks } from "~/classes/CommonTasks";
 import { websocket } from "~/classes/websocket/Websocket";
 
-import { variables } from "~/variables";
+import type {
+  Interceptors,
+  NativeError,
+  RequestData,
+  RequestTransformer,
+  ResponseCallback,
+  ResponseData,
+  ResponseTransformer,
+  SocketResponse,
+  SocketRoute,
+} from "~/types";
+import { AutoBind } from "~/types/utils";
+
+import { checkFieldErrors } from "~/variables/notification/error";
 
 class EventHandler {
-  constructor({
-    requestInterceptors = [],
-    requestTransformer = () => {},
-    responseInterceptors = [],
-    responseTransformer = () => {},
-    route = {},
-  }) {
-    this.requestTransformer = requestTransformer;
-    this.requestInterceptors = requestInterceptors;
-    this.responseTransformer = responseTransformer;
-    this.responseInterceptors = responseInterceptors;
-    this.requestData = {};
-    this.requestArgs = [];
-    this.response = {
-      data: {},
-    };
-    this.route = Object.freeze(route);
-  }
+  requestData: RequestData = {};
+  requestInterceptors: Interceptors = [];
+  requestTransformer: RequestTransformer = (requestData: RequestData) =>
+    requestData;
+  response: SocketResponse;
+  responseCallback: ResponseCallback;
+  responseInterceptors: Interceptors = [];
+  responseTransformer: ResponseTransformer = (response) => response;
+  route: SocketRoute;
 
   getRequestData() {
     return this.requestData;
   }
-  setRequestData(requestData) {
+  setRequestData(requestData: RequestData) {
     this.requestData = requestData;
     return this;
   }
-  getRequestArgs() {
-    return this.requestArgs;
-  }
-  setRequestArgs(...args) {
-    this.requestArgs = args;
+
+  setRoute(route: SocketRoute) {
+    this.route = route;
     return this;
   }
 
   getResponse() {
     return this.response;
   }
-  setResponse(response) {
+  setResponse(response: SocketResponse) {
     this.response = response;
     return this;
   }
+
   getResponseData() {
     return this.getResponse().data;
   }
-  setResponseData(responseData) {
+  setResponseData(responseData: ResponseData) {
     this.response.data = responseData;
     return this;
   }
 
-  async emit(data = {}, callback = () => {}, ...rest) {
-    const promise = new Promise((resolve, _reject) => {
+  async emit(
+    data: ResponseData = {},
+    callback: ResponseCallback = async () => {}
+  ) {
+    const response: SocketResponse = await new Promise((resolve) => {
       websocket.client.emit(
         this.route.name,
         data,
-        (...args) => {
-          resolve(...args);
-          callback(...args);
-        },
-        ...rest
+        (response: SocketResponse) => {
+          resolve(response);
+          callback(response);
+        }
       );
     });
 
-    const response = await promise;
     this.setResponse(response).setResponseData(response.data);
 
     return this;
   }
 
-  async emitFull(data, callback, ...rest) {
-    this.setRequestArgs(data, callback, ...rest);
+  async emitFull(data: RequestData, responseCallback: ResponseCallback) {
+    this.requestData = data;
+    this.responseCallback = responseCallback;
 
     return await trier(this.emitFull.name)
-      .tryAsync(this.#tryToEmitFull.bind(this))
-      .catch(this.#catchEmitFull.bind(this))
-      .runAsync();
+      .async()
+      .try(this.tryToEmitFull)
+      .catch(this.catchEmitFull)
+      .run();
   }
-  async #tryToEmitFull() {
+
+  @AutoBind
+  async tryToEmitFull() {
     return (
-      await this.#requestTransformerExecutor()
-        .#executeRequestInterceptors()
-        .#inputDataFieldsCheck()
-        .emit(...this.getRequestArgs())
+      await this.executeRequestTransformer()
+        .executeRequestInterceptors()
+        .inputDataFieldsCheck()
+        .emit(this.requestData, this.responseCallback)
     )
-      .#responseErrorsHandler()
-      .#outputDataFieldsCheck()
-      .#responseTransformerExecutor()
-      .#executeResponseInterceptors()
-      .#logSuccessfulResponse()
+      .responseErrorsHandler()
+      .outputDataFieldsCheck()
+      .executeResponseTransformer()
+      .executeResponseInterceptors()
+      .logSuccessfulResponse()
       .getResponse();
   }
-  #catchEmitFull(error) {
+
+  @AutoBind
+  private catchEmitFull(error: NativeError) {
     this.logFailureResponse(error);
-    commonTasks.checkConnAbortNotification();
+    commonTasks.checkConnAbortNotification(error);
     throw error;
   }
 
-  #requestTransformerExecutor() {
-    this.requestTransformer(this.getRequestData());
+  private executeRequestTransformer() {
+    this.requestData = this.requestTransformer(this.getRequestData());
     return this;
   }
-  #executeRequestInterceptors(requestData = this.getRequestData()) {
-    const newData = this.#executeInterceptors(
+
+  private executeRequestInterceptors(requestData = this.getRequestData()) {
+    const newData = this.executeInterceptors(
       this.requestInterceptors,
       requestData
     );
     this.setRequestData(newData);
     return this;
   }
-  #inputDataFieldsCheck(inputData = this.getRequestData()) {
-    const { apiConfigs } = appConfigs.getConfigs();
 
-    commonTasks.checkAndExecute(apiConfigs.inputDataFieldsCheck, () => {
-      this.#ioDataFieldsCheck(
-        inputData,
-        this.route.inputFields,
-        variables.notification.error.IO.INPUT
-      );
-    });
+  private inputDataFieldsCheck(inputData = this.getRequestData()) {
+    if (appConfigs.getConfigs().apiConfigs.shouldCheckInputDataFields)
+      checkFields(inputData, this.route.inputFields, checkFieldErrors.input);
 
     return this;
   }
 
-  #responseErrorsHandler(response = this.getResponse()) {
+  private responseErrorsHandler(response = this.getResponse()) {
     const {
       data: { errors },
-      status,
-      statusCode,
+      ok,
     } = response;
 
-    const responseCode = statusCode || status;
-
-    if (responseCode >= 400) {
-      if (responseCode === 401) commonTasks.resetEverything();
+    if (!ok) {
+      //TODO: Reset everything if there is a auth error
 
       commonTasks.correctErrorsAndPrint(errors);
 
@@ -149,84 +151,54 @@ class EventHandler {
 
     return this;
   }
-  #outputDataFieldsCheck(outputData = this.getResponseData()) {
-    const {
-      apiConfigs: { outputDataPropertiesCheck },
-    } = appConfigs.getConfigs();
 
-    commonTasks.checkAndExecute(outputDataPropertiesCheck, () => {
-      this.#ioDataFieldsCheck(
-        outputData,
-        this.route.outputFields[0],
-        variables.notification.error.IO.OUTPUT
-      );
-    });
+  private outputDataFieldsCheck(outputData = this.getResponseData()) {
+    if (appConfigs.getConfigs().apiConfigs.shouldCheckOutputDataFields)
+      checkFields(outputData, this.route.outputFields, checkFieldErrors.output);
 
     return this;
   }
-  #responseTransformerExecutor() {
-    const transformedData = this.responseTransformer(this.getResponseData());
-    this.setResponseData(transformedData);
+
+  private executeResponseTransformer() {
+    const transformedResponse = this.responseTransformer(this.getResponse());
+    this.setResponse(transformedResponse);
     return this;
   }
-  #executeResponseInterceptors(response = this.getResponse()) {
-    const newResponse = this.#executeInterceptors(
+
+  private executeResponseInterceptors(response = this.getResponse()) {
+    const newData = this.executeInterceptors(
       this.responseInterceptors,
       response
     );
-    this.setResponse(newResponse);
+    this.setResponseData(newData);
     return this;
   }
 
-  #logSuccessfulResponse(response = this.getResponse()) {
-    const {
-      apiConfigs: { logSuccessfulResponse },
-    } = appConfigs.getConfigs();
-
-    commonTasks.checkAndExecute(logSuccessfulResponse, () =>
-      logger.debug("response:", response)
-    );
+  private logSuccessfulResponse(response = this.getResponse()) {
+    if (appConfigs.getConfigs().apiConfigs.shouldLogSuccessfulResponse)
+      logger.debug("response:", response);
 
     return this;
   }
 
-  logFailureResponse(error) {
-    const {
-      apiConfigs: { logFailureResponse },
-    } = appConfigs.getConfigs();
-
-    commonTasks.checkAndExecute(logFailureResponse, () =>
-      logger.error(`Api:${this.route.fullUrl} Api catch, error:`, error)
-    );
+  logFailureResponse(error: NativeError) {
+    if (appConfigs.getConfigs().apiConfigs.shouldLogFailureResponse)
+      logger.error(`Api:${this.route.name} Api catch, error:`, error);
   }
 
-  #ioDataFieldsCheck(ioData, inputFields, ioErrors) {
-    const ioDataFieldsCheckResult = ioFieldsChecker(
-      ioData,
-      inputFields,
-      ioErrors
-    );
-
-    errorThrower(!ioDataFieldsCheckResult.ok, {
-      ...ioDataFieldsCheckResult.error,
-      inputFields,
-      ioData,
-    });
-  }
-
-  #executeInterceptors(interceptors, data) {
-    let dataEnhancedWithInterceptors = data;
+  private executeInterceptors(interceptors: Interceptors, data: RequestData) {
+    let newData = data;
 
     interceptors.forEach((interceptor) => {
-      dataEnhancedWithInterceptors = interceptor(dataEnhancedWithInterceptors);
+      newData = interceptor(newData);
     });
 
-    return dataEnhancedWithInterceptors;
+    return newData;
   }
 }
 
 const eventHandler = {
-  create: (requirements) => new EventHandler(requirements),
+  create: () => new EventHandler(),
 };
 
 export { eventHandler, EventHandler };
