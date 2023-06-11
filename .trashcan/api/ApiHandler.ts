@@ -121,11 +121,11 @@ class ApiHandler {
   #inputDataFieldsCheck(inputData = this.getData()) {
     const { apiConfigs } = appConfigs.getConfigs();
 
-    commonTasks.checkAndExecute(apiConfigs.inputDataFieldsCheck, () => {
+    commonTasks.checkAndExecute(apiConfigs.shouldCheckInputDataFields, () => {
       this.#ioDataFieldsCheck(
         inputData,
         this.#route.inputFields,
-        variables.notification.error.IO.INPUT
+        variables.notification.errors.IO.INPUT
       );
     });
 
@@ -171,14 +171,14 @@ class ApiHandler {
   }
   #outputDataFieldsCheck(outputData = this.getData()) {
     const {
-      apiConfigs: { outputDataPropertiesCheck },
+      apiConfigs: { shouldCheckOutputDataFields: outputDataPropertiesCheck },
     } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(outputDataPropertiesCheck, () => {
       this.#ioDataFieldsCheck(
         outputData,
         this.#route.outputFields[0],
-        variables.notification.error.IO.OUTPUT
+        variables.notification.errors.IO.OUTPUT
       );
     });
 
@@ -199,7 +199,7 @@ class ApiHandler {
   }
   #logSuccessfulResponse(response = this.getResponse()) {
     const {
-      apiConfigs: { logSuccessfulResponse },
+      apiConfigs: { shouldLogSuccessfulResponse: logSuccessfulResponse },
     } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(logSuccessfulResponse, () =>
@@ -216,7 +216,7 @@ class ApiHandler {
   }
   logFailureResponse(error) {
     const {
-      apiConfigs: { logFailureResponse },
+      apiConfigs: { shouldLogFailureResponse: logFailureResponse },
     } = appConfigs.getConfigs();
 
     commonTasks.checkAndExecute(logFailureResponse, () =>

@@ -6,12 +6,7 @@ import FullPageLoading from "~/components/portal/FullPageLoading";
 
 import { controllers } from "~/controllers";
 
-import { useDispatch, useSelector } from "react-redux";
-
 const InitialSetup = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
   useEffect(() => {
     startInitialSetup();
 

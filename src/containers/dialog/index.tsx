@@ -8,15 +8,10 @@ import Logout from "~/containers/dialog/Logout";
 import Settings from "~/containers/dialog/Settings";
 import UserInfo from "~/containers/dialog/UserInfo";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { commonActions } from "~/store/commonActions";
 import { stateStatics } from "~/store/stateStatics";
 
 const Dialog = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
   const handleDialogClose = (dialogName) => {
     dispatch(commonActions.closeDialog(dialogName));
   };

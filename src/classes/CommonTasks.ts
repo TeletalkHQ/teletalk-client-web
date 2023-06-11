@@ -12,6 +12,7 @@ import { utilities } from "~/utilities";
 import { actions } from "~/store/actions";
 
 import { variables } from "~/variables";
+import { NativeError } from "~/types";
 
 class CommonTasks {
   resetEverything() {
@@ -28,18 +29,13 @@ class CommonTasks {
     });
   }
 
-  checkAndExecute(condition, callback) {
-    if (condition) return callback();
-  }
-
-  checkConnAbortNotification(error) {
+  checkConnAbortNotification(error: NativeError) {
     const isConnectionInterrupted =
       !windowUtilities.isOnline() ||
-      utilities.checkErrorCodeIsConnAborted(error?.code);
+      utilities.checkErrorCodeIsConnAborted(error?.name);
 
-    this.checkAndExecute(isConnectionInterrupted, () => {
-      commonNotificationManager.submitAbortedConnectionNotification(error);
-    });
+    if (isConnectionInterrupted)
+      commonNotificationManager.submitAbortedConnectionNotification();
   }
 
   correctErrorsAndPrint(errors) {
@@ -92,7 +88,7 @@ class CommonTasks {
       if (!item) {
         // eslint-disable-next-line no-throw-literal
         throw {
-          ...variables.notification.error.REQUIREMENT_ITEM_MISSING,
+          ...variables.notification.errors.requirementItemMissing,
           allItems: items,
         };
       }

@@ -1,14 +1,15 @@
-import { Provider } from "react-redux";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import Layout from "~/components/layout";
 
-import { store } from "~/store/store";
+const queryClient = new QueryClient();
 
-export default function App({ Component, pageProps }) {
+export default function _app({ Component, pageProps }) {
   return (
-    <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </Provider>
+    </QueryClientProvider>
   );
 }

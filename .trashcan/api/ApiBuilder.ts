@@ -47,7 +47,7 @@ class ApiBuilder {
 
   checkMinimumRequirements() {
     errorThrower(!this.requirements.route.fullUrl, {
-      ...variables.notification.error.URL_IS_BROKEN,
+      ...variables.notification.errors.urlIsBroken,
       requirements: this.requirements,
     });
   }
