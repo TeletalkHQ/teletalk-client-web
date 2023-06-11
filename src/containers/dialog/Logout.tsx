@@ -3,7 +3,7 @@ import LogoutComponents from "~/components/dialog/logout";
 
 import { controllers } from "~/controllers";
 
-import { eventManager } from "~/classes/websocket/EventManager";
+import { socketEmitterStore } from "~/classes/websocket/EventManager";
 
 const Logout = ({ onDialogClose }) => {
   const handleClose = () => {
@@ -12,7 +12,7 @@ const Logout = ({ onDialogClose }) => {
 
   const handleLogout = () => {
     dispatch(controllers.logout());
-    eventManager.events.logout.emitFull();
+    socketEmitterStore.events.logout.emitFull();
   };
 
   return (

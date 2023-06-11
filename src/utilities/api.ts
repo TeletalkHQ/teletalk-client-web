@@ -6,7 +6,7 @@ const {
   apiConfigs: {
     defaultHeaders,
     requestTimeout,
-    validateStatus,
+    shouldValidateStatus: validateStatus,
     SERVER_BASE_URL,
   },
 } = appConfigs.getConfigs();

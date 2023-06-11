@@ -14,7 +14,7 @@ class ComponentBuilder {
 
     errorThrower(
       !componentName,
-      variables.notification.error.COMPONENT_NAME_REQUIRED
+      variables.notification.errors.COMPONENT_NAME_REQUIRED
     );
 
     this.componentName = componentName;
