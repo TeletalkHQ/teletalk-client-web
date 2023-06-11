@@ -129,7 +129,7 @@ class EventHandler {
   }
 
   private inputDataFieldsCheck(inputData = this.getRequestData()) {
-    if (appConfigs.getConfigs().apiConfigs.shouldCheckInputDataFields)
+    if (appConfigs.getConfigs().api.shouldCheckInputDataFields)
       checkFields(inputData, this.route.inputFields, checkFieldErrors.input);
 
     return this;
@@ -153,7 +153,7 @@ class EventHandler {
   }
 
   private outputDataFieldsCheck(outputData = this.getResponseData()) {
-    if (appConfigs.getConfigs().apiConfigs.shouldCheckOutputDataFields)
+    if (appConfigs.getConfigs().api.shouldCheckOutputDataFields)
       checkFields(outputData, this.route.outputFields, checkFieldErrors.output);
 
     return this;
@@ -175,14 +175,14 @@ class EventHandler {
   }
 
   private logSuccessfulResponse(response = this.getResponse()) {
-    if (appConfigs.getConfigs().apiConfigs.shouldLogSuccessfulResponse)
+    if (appConfigs.getConfigs().api.shouldLogSuccessfulResponse)
       logger.debug("response:", response);
 
     return this;
   }
 
   logFailureResponse(error: NativeError) {
-    if (appConfigs.getConfigs().apiConfigs.shouldLogFailureResponse)
+    if (appConfigs.getConfigs().api.shouldLogFailureResponse)
       logger.error(`Api:${this.route.name} Api catch, error:`, error);
   }
 

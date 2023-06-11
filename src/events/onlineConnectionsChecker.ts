@@ -8,14 +8,10 @@ const onlineStatusOnChangeEvent = (dispatch) => {
 };
 
 const addOnlineStatusOnChangeListener = (type, dispatch) =>
-  windowUtilities.addEventListener(type, () =>
-    onlineStatusOnChangeEvent(dispatch)
-  );
+  window.addEventListener(type, () => onlineStatusOnChangeEvent(dispatch));
 
 const removeOnlineStatusOnChangeListener = (type, dispatch) =>
-  windowUtilities.removeEventListener(type, () =>
-    onlineStatusOnChangeEvent(dispatch)
-  );
+  window.removeEventListener(type, () => onlineStatusOnChangeEvent(dispatch));
 
 const addOnlineStatusEvents = (dispatch) => {
   removeOnlineStatusOnChangeListener("offline", dispatch);

@@ -106,3 +106,16 @@ export type ResponseTransformer = (response: SocketResponse) => SocketResponse;
 export type Interceptor = (data: Data) => Data;
 
 export type Interceptors = Interceptor[];
+
+export interface Environments {
+  NEXT_PUBLIC_CLIENT_BASE_URL: string;
+  NEXT_PUBLIC_SERVER_BASE_URL: string;
+  NEXT_PUBLIC_PRODUCTION_CLIENT_BASE_URL: string;
+  NEXT_PUBLIC_RUNTIME_MODE: "development" | "production";
+}
+
+export type EnvName = keyof Environments;
+
+export type RuntimeMode = Environments["NEXT_PUBLIC_RUNTIME_MODE"];
+
+export type Stuff = typeof stuff;

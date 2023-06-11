@@ -28,8 +28,8 @@ const AppDrawer = () => {
     dispatch(commonActions.openDialog(elementName));
   };
 
-  const fullName = userUtilities.makeFullName(state.user);
-  const fullNumber = userUtilities.makeFullNumber(state.user);
+  const fullName = userUtilities.concatFirstNameWithLastName(state.user);
+  const fullNumber = userUtilities.concatCountryCodeWithPhoneNumber(state.user);
 
   return (
     <SwipeableDrawer

@@ -1,5 +1,6 @@
 import { websocket } from "~/classes/websocket/Websocket";
-import { windowUtilities } from "~/classes/WindowUtilities";
+
+import { StringMap } from "~/types";
 
 const otherEvents = () => {
   websocket.client.onAny((event, ...args) => {
@@ -7,9 +8,7 @@ const otherEvents = () => {
   });
 
   websocket.client.on("pong", (...args) => logger.debug(...args));
-  windowUtilities.addProperty("ping", (...args) =>
-    websocket.client.emit("ping", ...args)
-  );
+  window.ping = (data: StringMap) => websocket.client.emit("ping", data);
 };
 
 export { otherEvents };

@@ -1,4 +1,5 @@
 import { stuff } from "~/data/stuff";
+import { Stuff } from "~/types";
 
 class StuffStore {
   errors = stuff.errors;
@@ -15,19 +16,19 @@ class StuffStore {
     };
   }
 
-  updateModels(models) {
+  updateModels(models: Stuff["models"]) {
     this.models = models;
     return this;
   }
-  updateErrors(errors) {
+  updateErrors(errors: Stuff["errors"]) {
     this.errors = errors;
     return this;
   }
-  updateEvents(events) {
+  updateEvents(events: Stuff["routes"]) {
     this.events = events;
     return this;
   }
-  updateValidationModels(validationModels) {
+  updateValidationModels(validationModels: Stuff["validationModels"]) {
     this.validationModels = validationModels;
     return this;
   }

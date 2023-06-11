@@ -8,10 +8,6 @@ import Typography from "~/components/general/typography/Typography";
 type Props = TypographyProps;
 
 const Copyright: React.FC<Props> = (props) => {
-  const {
-    apiConfigs: { CLIENT_BASE_URL: APPLICATION_URL },
-  } = appConfigs.getConfigs();
-
   return (
     <Typography
       variant="body2"
@@ -20,7 +16,7 @@ const Copyright: React.FC<Props> = (props) => {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href={APPLICATION_URL}>
+      <Link color="inherit" href={appConfigs.getConfigs().api.clientBaseUrl}>
         teletalk
       </Link>
 

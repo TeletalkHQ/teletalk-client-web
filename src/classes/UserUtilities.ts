@@ -1,15 +1,11 @@
 import { UserUtilities as UserUtilitiesMain } from "utility-store";
+import { ExtendedCellphone, ExtendedFullName } from "utility-store/lib/types";
 
 class UserUtilities extends UserUtilitiesMain {
-  constructor(id) {
-    super();
-    this.id = id;
-  }
-
-  makeFullName(data) {
+  concatFirstNameWithLastName(data: ExtendedFullName) {
     return `${data.firstName} ${data.lastName}`;
   }
-  makeFullNumber(data) {
+  concatCountryCodeWithPhoneNumber(data: ExtendedCellphone) {
     return `+${data.countryCode} ${data.phoneNumber}`;
   }
 }
