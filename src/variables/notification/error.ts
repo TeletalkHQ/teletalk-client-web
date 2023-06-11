@@ -78,42 +78,31 @@ const customErrors = {
     .build(),
 };
 
-const INPUT = {
-  ioDataFieldTypeWrongError: INPUT_FILED_TYPE_WRONG,
-  missingFieldsError: INPUT_FIELDS_MISSING,
-  overloadFieldsError: INPUT_FIELDS_OVERLOAD,
-  requiredFieldsNotDefinedError: REQUIRED_FIELDS_NOT_DEFINED,
-  requiredFieldTypeWrongError: REQUIRED_FIELD_TYPE_WRONG,
+const errors = {
+  ...customErrors,
 };
 
-const OUTPUT = {
-  ioDataFieldTypeWrongError: INPUT_FILED_TYPE_WRONG,
-  missingFieldsError: OUTPUT_FIELDS_MISSING,
-  overloadFieldsError: OUTPUT_FIELDS_OVERLOAD,
-  requiredFieldsNotDefinedError: REQUIRED_FIELDS_NOT_DEFINED,
-  requiredFieldTypeWrongError: REQUIRED_FIELD_TYPE_WRONG,
+const requiredFieldErrors = {
+  schemaInvalid: errors.requiredFieldInvalid,
+  schemaInvalidType: errors.requiredFieldInvalidType,
+  schemaNotDefined: errors.requiredFieldsNotDefined,
 };
 
-const error = {
-  COMPONENT_NAME_REQUIRED,
-  ECONNABORTED,
-  EVENT_IS_BROKEN,
-  INPUT_FIELDS_MISSING,
-  INPUT_FIELDS_NOT_DEFINED_ERROR,
-  INPUT_FIELDS_OVERLOAD,
-  INPUT_FILED_TYPE_WRONG,
-  OUTPUT_FIELDS_MISSING,
-  OUTPUT_FIELDS_OVERLOAD,
-  OUTPUT_FILED_TYPE_WRONG,
-  REQUIRED_FIELD_TYPE_WRONG,
-  REQUIRED_FIELDS_NOT_DEFINED,
-  REQUIREMENT_ITEM_MISSING,
-  URL_IS_BROKEN,
-  URL_NOT_FOUND,
-  IO: {
-    INPUT,
-    OUTPUT,
+const checkFieldErrors = {
+  input: {
+    ...requiredFieldErrors,
+    dataFieldInvalidType: errors.inputFieldInvalidType,
+    dataFieldsMissing: errors.inputFieldsMissing,
+    dataFieldsOverload: errors.inputFieldsOverload,
+    dataNotDefined: errors.inputDataNotDefined,
+  },
+  output: {
+    ...requiredFieldErrors,
+    dataFieldInvalidType: errors.outputFieldInvalidType,
+    dataFieldsMissing: errors.outputFieldsMissing,
+    dataFieldsOverload: errors.outputFieldsOverload,
+    dataNotDefined: errors.outputDataNotDefined,
   },
 };
 
-export { error };
+export { errors, checkFieldErrors };
