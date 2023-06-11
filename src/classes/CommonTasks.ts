@@ -2,33 +2,15 @@ import { windowUtilities } from "~/classes/WindowUtilities";
 
 import { commonNotificationManager } from "~/classes/CommonNotificationManager";
 import { notificationManager } from "~/classes/NotificationManager";
-import { persistentStorage } from "~/classes/PersistentStorage";
 import { stuffStore } from "~/classes/StuffStore";
-
-import { extractedDispatch } from "~/helpers/extractedDispatch";
 
 import { utilities } from "~/utilities";
 
-import { actions } from "~/store/actions";
-
 import { variables } from "~/variables";
+
 import { NativeError } from "~/types";
 
 class CommonTasks {
-  resetEverything() {
-    persistentStorage.setDefaultStorage();
-
-    [
-      actions.resetAuthState,
-      actions.resetGlobalState,
-      actions.resetMessageState,
-      actions.resetSettingsState,
-      actions.resetUserState,
-    ].forEach((action) => {
-      extractedDispatch(action());
-    });
-  }
-
   checkConnAbortNotification(error: NativeError) {
     const isConnectionInterrupted =
       !windowUtilities.isOnline() ||

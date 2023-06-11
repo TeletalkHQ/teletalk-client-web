@@ -16,8 +16,8 @@ interface Props {
 }
 
 const EditProfileContent: React.FC<Props> = ({ onClick, profile }) => {
-  const fullName = userUtilities.makeFullName(profile);
-  const fullNumber = userUtilities.makeFullNumber(profile);
+  const fullName = userUtilities.concatFirstNameWithLastName(profile);
+  const fullNumber = userUtilities.concatCountryCodeWithPhoneNumber(profile);
 
   return (
     <>

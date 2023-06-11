@@ -1,7 +1,12 @@
 import dotenv from "dotenv";
 
 dotenv.config({
-  path: "./configs/env/global.env",
+  path: "./configs/env/base.env",
+  override: true,
+});
+dotenv.config({
+  path: `./configs/env/${process.env.NODE_ENV}.env`,
+  override: true,
 });
 
 const env = Object.keys(process.env).reduce((prev, curr) => {
