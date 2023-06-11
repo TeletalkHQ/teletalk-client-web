@@ -2,8 +2,6 @@ import { trier } from "simple-trier";
 
 import { actions } from "~/store/actions";
 
-import { apiManager } from "~/classes/api/ApiManager";
-
 import { utilities } from "~/utilities";
 
 const addContact = (contact) => {

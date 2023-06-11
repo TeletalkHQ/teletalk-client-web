@@ -1,34 +1,19 @@
-import { enqueueSnackbar, closeSnackbar } from "notistack";
+import { enqueueSnackbar } from "notistack";
+
+import { Notification } from "~/types";
 
 class NotificationManager {
-  constructor(notificationCreator, notificationEliminator) {
-    this.notificationCreator = notificationCreator;
-    this.notificationEliminator = notificationEliminator;
-    this.notifications = [];
-    this.defaultNotificationObject = {
-      description: "",
-      notificationCode: "",
-      notificationReason: "",
-      message: "",
-    };
+  submitErrorNotification(notification: Notification) {
+    const { message, reason } = notification;
+    enqueueSnackbar(message || reason, { variant: "error" });
   }
 
-  submitErrorNotification(notificationObject = this.defaultNotificationObject) {
-    const { message, notificationReason } = notificationObject;
-    enqueueSnackbar(message || notificationReason, { variant: "error" });
-  }
-
-  submitSuccessNotification(
-    notificationObject = this.defaultNotificationObject
-  ) {
-    const { message, notificationReason } = notificationObject;
-    enqueueSnackbar(message || notificationReason, { variant: "success" });
+  submitSuccessNotification(notification: Notification) {
+    const { message, reason } = notification;
+    enqueueSnackbar(message || reason, { variant: "success" });
   }
 }
 
-const notificationManager = new NotificationManager(
-  enqueueSnackbar,
-  closeSnackbar
-);
+const notificationManager = new NotificationManager();
 
 export { notificationManager, NotificationManager };

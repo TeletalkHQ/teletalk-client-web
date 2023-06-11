@@ -2,7 +2,6 @@ import { trier } from "simple-trier";
 
 import { api } from "~/api";
 
-import { apiManager } from "~/classes/api/ApiManager";
 import { socketEmitterStore } from "~/classes/websocket/EventManager";
 import { stuffStore } from "~/classes/StuffStore";
 import { validatorManager } from "~/classes/validator/ValidatorManager";

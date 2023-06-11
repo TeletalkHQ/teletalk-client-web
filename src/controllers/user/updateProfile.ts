@@ -1,5 +1,3 @@
-import { apiManager } from "~/classes/api/ApiManager";
-
 import { actions } from "~/store/actions";
 
 const updateProfile = () => {

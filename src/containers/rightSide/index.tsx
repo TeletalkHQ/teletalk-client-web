@@ -2,8 +2,6 @@ import { useEffect, useMemo, useRef } from "react";
 
 import { domUtilities } from "utility-store";
 
-import { eventEmitter } from "~/classes/EventEmitter";
-
 import ChatBar from "~/components/rightSide/ChatBar";
 import Box from "~/components/general/box";
 
@@ -44,14 +42,6 @@ const RightSide = () => {
 
     oldMessages.current = selectedChatMessages;
   }, [selectedChatMessages]);
-
-  useEffect(() => {
-    const eventName = eventEmitter.EVENT_EMITTER_EVENTS.MESSAGE_SENT;
-    eventEmitter.addListener(eventName, () => {
-      dispatch(actions.messageInputOnChange({ messageInputTextValue: "" }));
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const selectedParticipantToChat = state.global.users.find(
     (p) => p.userId === state.message.selectedChat.id

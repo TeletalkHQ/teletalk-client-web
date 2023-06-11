@@ -19,8 +19,8 @@ const Settings = ({ onDialogClose }) => {
     dispatch(commonActions.openDialog(name, { zIndex: 1500 }));
   };
 
-  const fullName = userUtilities.makeFullName(state.user);
-  const fullNumber = userUtilities.makeFullNumber(state.user);
+  const fullName = userUtilities.concatFirstNameWithLastName(state.user);
+  const fullNumber = userUtilities.concatCountryCodeWithPhoneNumber(state.user);
 
   return (
     <DialogTemplate
