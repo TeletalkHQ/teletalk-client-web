@@ -22,6 +22,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "target": "ES2017"
   },
   "exclude": ["node_modules"],
@@ -32,7 +33,6 @@
     ".next/types/**/*.ts",
     "next.config.mjs"
   ],
-  "strictPropertyInitialization": false,
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node",
