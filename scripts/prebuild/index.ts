@@ -14,7 +14,12 @@ const saveStuff = () => {
     .emit("getStuff", undefined, (response: any) => {
       console.log("saving stuff...");
 
-      fs.writeFileSync("./src/data/stuff.json", JSON.stringify(response.data));
+      fs.writeFileSync(
+        "./src/data/stuff.ts",
+        JSON.stringify(`
+          export const stuff = ${response.data} as const;
+          `)
+      );
 
       console.log("done!");
 
