@@ -1,36 +1,25 @@
-import { eventBuilder } from "~/classes/websocket/EventBuilder";
-import { eventHandler } from "~/classes/websocket/EventHandler";
+import { EventHandler, eventHandler } from "~/classes/websocket/EventHandler";
 import { stuffStore } from "~/classes/StuffStore";
 
-class EventManager {
-  #eventTemplate = eventHandler.create({});
+import { EventName, SocketRoute } from "~/types";
 
-  constructor() {
-    this.events = {
-      getChatInfo: this.#eventTemplate,
-      getPrivateChats: this.#eventTemplate,
-      joinRoom: this.#eventTemplate,
-      logout: this.#eventTemplate,
-      ping: this.#eventTemplate,
-      sendPrivateMessage: this.#eventTemplate,
-    };
-  }
+type Events = {
+  [key in EventName]: EventHandler;
+};
 
-  #buildWithRoute() {
-    const events = stuffStore.events;
-    Object.entries(events).forEach(([name, route]) => {
-      this.events[name] = eventBuilder
-        .create()
-        .setRequirements({ route })
-        .build();
-    });
-  }
+class SocketEmitterStore {
+  events: Events;
 
   build() {
-    this.#buildWithRoute();
+    const events = stuffStore.events;
+    Object.entries(events).forEach(([name, route]) => {
+      this.events[name as EventName] = eventHandler
+        .create()
+        .setRoute(route as SocketRoute);
+    });
   }
 }
 
-const eventManager = new EventManager();
+const socketEmitterStore = new SocketEmitterStore();
 
-export { eventManager, EventManager };
+export { socketEmitterStore, SocketEmitterStore };

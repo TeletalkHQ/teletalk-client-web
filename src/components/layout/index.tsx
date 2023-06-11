@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CssBaseline } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import { ThemeProvider } from "@mui/material/styles";
-import { useDispatch, useSelector } from "react-redux";
+
 import { windowUtilities } from "~/classes/WindowUtilities";
 
 import { appConfigs } from "~/classes/AppConfigs";
@@ -21,8 +21,6 @@ interface Props {
 }
 const Layout: React.FC<Props> = ({ children }) => {
   const [forceUpdate, setForceUpdate] = useState(false);
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const updater = () => {

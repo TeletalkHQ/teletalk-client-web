@@ -2,8 +2,6 @@ import Messenger from "~/containers/messenger";
 import Portal from "~/containers/portal";
 import InitialSetup from "~/containers/InitialSetup";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { stateStatics } from "~/store/stateStatics";
 import { commonActions } from "~/store/commonActions";
 import CheckCurrentUser from "~/containers/checkCurrentUser";
@@ -12,9 +10,6 @@ import SignIn from "~/containers/signIn";
 import Verify from "~/containers/verify";
 
 const View = () => {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   const handleGlobalLoadingClose = () => {
     dispatch(commonActions.closeGlobalLoading());
   };

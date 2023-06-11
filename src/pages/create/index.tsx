@@ -1,5 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
-
 import { commonTasks } from "~/classes/CommonTasks";
 import { stuffStore } from "~/classes/StuffStore";
 import LoadingButton from "~/components/auth/LoadingButton";
@@ -18,9 +16,6 @@ import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 
 const CreateNewUser = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
   const handleFirstNameInputChange = (e) => {
     dispatch(actions.firstNameOnChange({ firstName: e.target.value }));
   };
