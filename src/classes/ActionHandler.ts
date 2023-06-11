@@ -12,15 +12,15 @@ import { variables } from "~/variables";
 
 const ioFieldsCheckerErrors = {
   ioDataFieldTypeWrongError:
-    variables.notification.error.INPUT_FILED_TYPE_WRONG,
+    variables.notification.errors.INPUT_FILED_TYPE_WRONG,
   ioDataNotDefinedError:
-    variables.notification.error.INPUT_FIELDS_NOT_DEFINED_ERROR,
-  missingFieldsError: variables.notification.error.INPUT_FIELDS_MISSING,
-  overloadFieldsError: variables.notification.error.INPUT_FIELDS_OVERLOAD,
+    variables.notification.errors.INPUT_FIELDS_NOT_DEFINED_ERROR,
+  missingFieldsError: variables.notification.errors.INPUT_FIELDS_MISSING,
+  overloadFieldsError: variables.notification.errors.INPUT_FIELDS_OVERLOAD,
   requiredFieldsNotDefinedError:
-    variables.notification.error.REQUIRED_FIELDS_NOT_DEFINED,
+    variables.notification.errors.REQUIRED_FIELDS_NOT_DEFINED,
   requiredFieldTypeWrongError:
-    variables.notification.error.REQUIRED_FIELD_TYPE_WRONG,
+    variables.notification.errors.REQUIRED_FIELD_TYPE_WRONG,
 };
 
 const allPayloads = {
@@ -59,7 +59,7 @@ class ActionHandler {
   tryToHandleAction() {
     this.checkPayload();
     const action = this.createAction();
-    this.handleLogAction(action);
+    this.logAction(action);
     return action;
   }
 
@@ -83,12 +83,9 @@ class ActionHandler {
     };
   }
 
-  handleLogAction(action) {
-    const canLogActions = appConfigs.getConfigs().stateManagement.logActions;
-    commonTasks.checkAndExecute(canLogActions, () => this.logAction(action));
-  }
   logAction(action) {
-    logger.debug(action);
+    if (appConfigs.getConfigs().stateManagement.shouldLogActions)
+      logger.debug(action);
   }
 
   logHandleError(error) {

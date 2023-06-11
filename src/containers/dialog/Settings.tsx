@@ -5,14 +5,9 @@ import { userUtilities } from "~/classes/UserUtilities";
 import DialogTemplate from "~/components/dialog/Template";
 import SettingsComponents from "~/components/dialog/settings";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { commonActions } from "~/store/commonActions";
 
 const Settings = ({ onDialogClose }) => {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   const handleCloseDialog = () => {
     onDialogClose("settings");
   };

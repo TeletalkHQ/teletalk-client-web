@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
 import { domUtilities } from "utility-store";
 
 import { eventEmitter } from "~/classes/EventEmitter";
@@ -18,8 +17,6 @@ import { commonActions } from "~/store/commonActions";
 import { stateStatics } from "~/store/stateStatics";
 
 const RightSide = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
   const oldMessages = useRef([]);
 
   const selectedChatMessages = useMemo(() => {
