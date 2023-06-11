@@ -9,14 +9,9 @@ import RightSide from "~/containers/rightSide";
 
 import { controllers } from "~/controllers";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { stateStatics } from "~/store/stateStatics";
 
 const Messenger = () => {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   useEffect(() => {
     const fn = async () => {
       websocket.client.connect();

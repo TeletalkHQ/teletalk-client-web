@@ -5,15 +5,10 @@ import { userUtilities } from "~/classes/UserUtilities";
 import DialogTemplate from "~/components/dialog/Template";
 import EditProfileComponents from "~/components/dialog/editProfile";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 
 const EditProfile = ({ onDialogClose }) => {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   useEffect(() => {
     if (state.global.dialogState.editProfile.open)
       dispatch(

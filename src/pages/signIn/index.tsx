@@ -12,16 +12,11 @@ import LoadingButton from "~/components/auth/LoadingButton";
 
 import { controllers } from "~/controllers";
 
-import { useDispatch, useSelector } from "react-redux";
-
 import { actions } from "~/store/actions";
 
 import { variables } from "~/variables";
 
 const SignIn = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-
   useEffect(() => {
     const fn = async () => {
       dispatch(controllers.getCountries());
