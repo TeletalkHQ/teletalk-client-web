@@ -24,11 +24,6 @@
     "strict": true,
     "target": "ES2017"
   },
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node",
-    "files": true
-  },
   "exclude": ["node_modules"],
   "include": [
     "next-env.d.ts",
@@ -36,5 +31,11 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.mjs"
-  ]
+  ],
+  "strictPropertyInitialization": false,
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "files": true
+  }
 }
