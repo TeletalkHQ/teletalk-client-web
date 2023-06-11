@@ -9,6 +9,8 @@ const addUniqueIdToEachCountry = (responseData) => {
   };
 };
 
-const transformers = { addUniqueIdToEachCountry };
+const transformers = {
+  addUniqueIdToEachCountry,
+};
 
 export { transformers };
