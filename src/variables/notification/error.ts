@@ -1,88 +1,82 @@
 import { notificationBuilder } from "~/classes/NotificationBuilder";
 
-const COMPONENT_NAME_REQUIRED = notificationBuilder
-  .create()
-  .message("COMPONENT_NAME_REQUIRED")
-  .notificationReason("COMPONENT_NAME_REQUIRED")
-  .build();
-
-const ECONNABORTED = notificationBuilder
-  .create()
-  .notificationReason("ECONNABORTED")
-  .message("Connection interrupted!")
-  .build();
-
-const EVENT_IS_BROKEN = notificationBuilder
-  .create()
-  .message("EVENT_IS_BROKEN")
-  .notificationReason("EVENT_IS_BROKEN")
-  .build();
-
-const INPUT_FIELDS_MISSING = notificationBuilder
-  .create()
-  .message("INPUT_FIELDS_MISSING")
-  .notificationReason("INPUT_FIELDS_MISSING")
-  .build();
-const INPUT_FIELDS_OVERLOAD = notificationBuilder
-  .create()
-  .message("INPUT_FIELDS_OVERLOAD")
-  .notificationReason("INPUT_FIELDS_OVERLOAD")
-  .build();
-const INPUT_FIELDS_NOT_DEFINED_ERROR = notificationBuilder
-  .create()
-  .message("INPUT_FIELDS_NOT_DEFINED_ERROR")
-  .notificationReason("INPUT_FIELDS_NOT_DEFINED_ERROR")
-  .build();
-const INPUT_FILED_TYPE_WRONG = notificationBuilder
-  .create()
-  .notificationReason("INPUT_FILED_TYPE_WRONG");
-
-const OUTPUT_FIELDS_MISSING = notificationBuilder
-  .create()
-  .message("OUTPUT_FIELDS_MISSING")
-  .notificationReason("OUTPUT_FIELDS_MISSING")
-  .build();
-const OUTPUT_FIELDS_OVERLOAD = notificationBuilder
-  .create()
-  .message("OUTPUT_FIELDS_OVERLOAD")
-  .notificationReason("OUTPUT_FIELDS_OVERLOAD")
-  .build();
-const OUTPUT_FILED_TYPE_WRONG = notificationBuilder
-  .create()
-  .message("OUTPUT_FILED_TYPE_WRONG")
-  .notificationReason("OUTPUT_FILED_TYPE_WRONG")
-  .build();
-
-const REQUIRED_FIELDS_NOT_DEFINED = notificationBuilder
-  .create()
-  .message(
-    "Required fields is not defined, If you want to check io fields you need to provide required fields."
-  )
-  .notificationReason("REQUIRED_FIELDS_NOT_DEFINED")
-  .build();
-const REQUIRED_FIELD_TYPE_WRONG = notificationBuilder
-  .create()
-  .message("REQUIRED_FIELD_TYPE_WRONG")
-  .notificationReason("REQUIRED_FIELD_TYPE_WRONG")
-  .build();
-
-const REQUIREMENT_ITEM_MISSING = notificationBuilder
-  .create()
-  .message("REQUIREMENT_ITEM_MISSING")
-  .notificationReason("REQUIREMENT_ITEM_MISSING")
-  .build();
-
-const URL_IS_BROKEN = notificationBuilder
-  .create()
-  .message("URL_IS_BROKEN")
-  .notificationReason("URL_IS_BROKEN")
-  .build();
-
-const URL_NOT_FOUND = notificationBuilder
-  .create()
-  .message("URL_NOT_FOUND")
-  .notificationReason("URL_NOT_FOUND")
-  .build();
+const customErrors = {
+  econnAborted: notificationBuilder
+    .create()
+    .reason("ECONNABORTED")
+    .message("Connection interrupted!")
+    .build(),
+  eventIsBroken: notificationBuilder
+    .create()
+    .message("EVENT_IS_BROKEN")
+    .reason("EVENT_IS_BROKEN")
+    .build(),
+  inputDataNotDefined: notificationBuilder
+    .create()
+    .message("inputDataNotDefined")
+    .build(),
+  inputFieldInvalidType: notificationBuilder
+    .create()
+    .message("inputFieldInvalidType")
+    .build(),
+  inputFieldsMissing: notificationBuilder
+    .create()
+    .message("inputFieldsMissing")
+    .build(),
+  inputFieldsOverload: notificationBuilder
+    .create()
+    .message("inputFieldsOverload")
+    .build(),
+  isNotACallback: notificationBuilder
+    .create()
+    .message("isNotACallback")
+    .build(),
+  outputDataNotDefined: notificationBuilder
+    .create()
+    .message("outputDataNotDefined")
+    .build(),
+  outputFieldInvalidType: notificationBuilder
+    .create()
+    .message("outputFieldInvalidType")
+    .build(),
+  outputFieldsMissing: notificationBuilder
+    .create()
+    .message("outputFieldsMissing")
+    .build(),
+  outputFieldsOverload: notificationBuilder
+    .create()
+    .message("outputFieldsOverload")
+    .build(),
+  outputFieldTypeWrong: notificationBuilder
+    .create()
+    .message("outputFieldTypeWrong")
+    .build(),
+  requiredFieldInvalid: notificationBuilder
+    .create()
+    .message("requiredFieldInvalid")
+    .build(),
+  requiredFieldInvalidType: notificationBuilder
+    .create()
+    .message("requiredFieldInvalidType")
+    .build(),
+  requiredFieldsNotDefined: notificationBuilder
+    .create()
+    .message("requiredFieldsNotDefined")
+    .build(),
+  requiredIoFieldIsNotArray: notificationBuilder
+    .create()
+    .message("requiredIoFieldIsNotArray")
+    .build(),
+  requiredIoFieldIsNotObject: notificationBuilder
+    .create()
+    .message("requiredIoFieldIsNotObject")
+    .build(),
+  requirementItemMissing: notificationBuilder
+    .create()
+    .message("REQUIREMENT_ITEM_MISSING")
+    .reason("REQUIREMENT_ITEM_MISSING")
+    .build(),
+};
 
 const INPUT = {
   ioDataFieldTypeWrongError: INPUT_FILED_TYPE_WRONG,
