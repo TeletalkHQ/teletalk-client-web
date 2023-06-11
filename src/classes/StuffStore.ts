@@ -1,4 +1,4 @@
-import stuff from "~/data/stuff.json";
+import { stuff } from "~/data/stuff";
 
 class StuffStore {
   errors = stuff.errors;

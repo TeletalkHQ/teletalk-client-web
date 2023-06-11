@@ -1,16 +1,14 @@
-import { Fragment } from "react";
-
 import { customTypeof } from "custom-typeof";
 
 const checkErrorCodeIsConnAborted = (errorCode: string) =>
   errorCode === "ECONNABORTED";
 
-const printCatchError = (error, functionName) => {
+const printCatchError = (error: Error, functionName: string) => {
   logger.error(`${functionName} catch, error: `);
   logger.error(error);
 };
 
-const fixErrorBuilderErrors = (error, extraData = {}) => {
+const fixErrorBuilderErrors = (error: Error, extraData = {}) => {
   const { errorKey, ...rest } = error;
 
   return {
@@ -18,7 +16,7 @@ const fixErrorBuilderErrors = (error, extraData = {}) => {
   };
 };
 
-const makeNonBreakSpace = (length) =>
+const makeNonBreakSpace = (length: number) =>
   Array.from({ length }).map((_) => "&nbsp;");
 
 const isIos = () => {

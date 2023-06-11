@@ -52,28 +52,28 @@ class AppConfigs {
 
     return {
       apiConfigs: {
-        checkResponseStatus: true,
+        shouldCheckResponseStatus: true,
         CLIENT_BASE_URL:
           this.#CLIENT_BASE_URLS[process.env.NEXT_PUBLIC_RUNTIME_MODE],
         defaultHeaders: {
           Authorization: "",
           "Content-Type": "application/json",
         },
-        inputDataFieldsCheck: true,
-        logFailureResponse: false,
-        logSuccessfulResponse: false,
-        outputDataPropertiesCheck: false,
+        shouldCheckInputDataFields: true,
+        shouldLogFailureResponse: false,
+        shouldLogSuccessfulResponse: false,
+        shouldCheckOutputDataFields: false,
         requestTimeout: 60000,
         SERVER_BASE_URL: this.#getServerBaseUrl(),
-        validateStatus: false,
+        shouldValidateStatus: false,
       },
       others: {
-        logPerformanceMeasuring: false,
+        shouldLogPerformanceMeasuring: false,
         RUNTIME_MODE: process.env.NEXT_PUBLIC_RUNTIME_MODE,
       },
       ui: uiConfig,
       stateManagement: {
-        logActions: false,
+        shouldLogActions: false,
       },
     };
   }

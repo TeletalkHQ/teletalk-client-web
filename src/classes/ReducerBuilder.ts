@@ -38,7 +38,7 @@ class ReducerBuilder {
       if (!item) {
         // eslint-disable-next-line no-throw-literal
         throw {
-          ...variables.notification.error.REQUIREMENT_ITEM_MISSING,
+          ...variables.notification.errors.requirementItemMissing,
           allItems: items,
         };
       }
