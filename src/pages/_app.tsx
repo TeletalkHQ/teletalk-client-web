@@ -1,8 +1,8 @@
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
 import { AppProps } from "next/app";
+
 import { SnackbarProvider } from "notistack";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { EmotionCache } from "@emotion/react";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { appConfigs } from "~/classes/AppConfigs";
 
@@ -10,23 +10,32 @@ import Layout from "~/components/layout";
 
 import { MainContext } from "~/context/MainContext";
 
-import { baseTheme } from "~/theme/baseTheme";
+import MUIThemeProvider from "~/providers/MUIThemeProvider";
+import ReactQueryProvider from "~/providers/ReactQueryProvider";
 
-const queryClient = new QueryClient();
+import createEmotionCache from "~/styles/createEmotionCache";
 
-export default function _app({ Component, pageProps }: AppProps) {
+export interface CustomAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+const clientSideEmotionCache = createEmotionCache();
+
+export default function _app(props: CustomAppProps) {
+  const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <SnackbarProvider maxSnack={appConfigs.getConfigs().ui.maxNotification}>
-        <MainContext.Provider value={{}}>
-          <ThemeProvider theme={baseTheme}>
-            <CssBaseline enableColorScheme />
+    <SnackbarProvider maxSnack={appConfigs.getConfigs().ui.maxNotification}>
+      <ReactQueryProvider>
+        <MUIThemeProvider emotionCache={emotionCache}>
+          <MainContext.Provider value={{}}>
             <Layout>
               <Component {...pageProps} />
             </Layout>
-          </ThemeProvider>
-        </MainContext.Provider>
-      </SnackbarProvider>
-    </QueryClientProvider>
+          </MainContext.Provider>
+        </MUIThemeProvider>
+        <ReactQueryDevtools />
+      </ReactQueryProvider>
+    </SnackbarProvider>
   );
 }

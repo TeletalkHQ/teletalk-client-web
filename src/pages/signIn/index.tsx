@@ -10,13 +10,17 @@ import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph
 import H5 from "~/components/general/typography/header/H5";
 import LoadingButton from "~/components/auth/LoadingButton";
 
-import { controllers } from "~/controllers";
+// import { controllers } from "~/controllers";
 
-import { actions } from "~/store/actions";
+// import { actions } from "~/store/actions";
 
 import { variables } from "~/variables";
 
 const SignIn = () => {
+  const dispatch = () => {};
+  const actions = {};
+  const controllers = {};
+
   useEffect(() => {
     const fn = async () => {
       dispatch(controllers.getCountries());
