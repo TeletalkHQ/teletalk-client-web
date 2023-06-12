@@ -1,5 +1,3 @@
-import { actionHandler } from "~/classes/ActionHandler";
-
 import { OTHER_ACTION_TYPES } from "~/store/other/types";
 
 const getCountries = (payload) =>

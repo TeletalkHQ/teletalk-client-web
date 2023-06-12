@@ -1,5 +1,3 @@
-import { actionHandler } from "~/classes/ActionHandler";
-
 import { NOTIFICATION_ACTION_TYPES } from "~/store/notification/types";
 
 const newNotification = (payload) =>

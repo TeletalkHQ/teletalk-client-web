@@ -1,5 +1,3 @@
-import { actionHandler } from "~/classes/ActionHandler";
-
 import { SETTINGS_TYPES } from "~/store/settings/types";
 
 const resetSettingsState = (payload) =>
