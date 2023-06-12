@@ -4,13 +4,12 @@ import { appConfigs } from "~/classes/AppConfigs";
 
 const { api } = appConfigs.getConfigs();
 
-const customAxios = axios.create({
+export const customAxios = axios.create({
   baseURL: api.serverBaseUrl,
   headers: api.defaultHeaders,
   timeout: api.requestTimeout,
+  withCredentials: true,
 });
-
-customAxios.defaults.withCredentials = true;
 
 const apiUtilities = { customAxios };
 
