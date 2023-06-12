@@ -1,25 +1,9 @@
-import { windowUtilities } from "~/classes/WindowUtilities";
-
-import { commonNotificationManager } from "~/classes/CommonNotificationManager";
 import { notificationManager } from "~/classes/NotificationManager";
 import { stuffStore } from "~/classes/StuffStore";
 
-import { utilities } from "~/utilities";
-
 import { variables } from "~/variables";
 
-import { NativeError } from "~/types";
-
 class CommonTasks {
-  checkConnAbortNotification(error: NativeError) {
-    const isConnectionInterrupted =
-      !windowUtilities.isOnline() ||
-      utilities.checkErrorCodeIsConnAborted(error?.name);
-
-    if (isConnectionInterrupted)
-      commonNotificationManager.submitAbortedConnectionNotification();
-  }
-
   correctErrorsAndPrint(errors) {
     const correctedErrors = this.convertServerFormatErrors(errors);
     this.errorsPrinter(correctedErrors);

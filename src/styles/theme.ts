@@ -1,8 +1,6 @@
 import darkScrollbar from "@mui/material/darkScrollbar";
 import { createTheme } from "@mui/material/styles";
 
-import { cormorant, raleway } from "~/assets/font";
-
 let theme = createTheme({
   palette: {
     background: {
@@ -157,24 +155,24 @@ theme = createTheme(theme, {
   },
 
   typography: {
-    fontFamily: raleway.style.fontFamily,
+    // fontFamily: raleway.style.fontFamily,
     h1: {
-      fontFamily: cormorant.style.fontFamily,
+      // fontFamily: cormorant.style.fontFamily,
     },
     h2: {
-      fontFamily: cormorant.style.fontFamily,
+      // fontFamily: cormorant.style.fontFamily,
     },
     h3: {
-      fontFamily: cormorant.style.fontFamily,
+      // fontFamily: cormorant.style.fontFamily,
     },
     h4: {
-      fontFamily: cormorant.style.fontFamily,
+      // fontFamily: cormorant.style.fontFamily,
     },
     h5: {
-      fontFamily: cormorant.style.fontFamily,
+      // fontFamily: cormorant.style.fontFamily,
     },
     h6: {
-      fontFamily: cormorant.style.fontFamily,
+      // fontFamily: cormorant.style.fontFamily,
     },
   },
 });
