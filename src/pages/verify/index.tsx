@@ -1,7 +1,5 @@
 import { domUtilities } from "utility-store";
 
-import { commonTasks } from "~/classes/CommonTasks";
-import { stuffStore } from "~/classes/StuffStore";
 import { validatorManager } from "~/classes/validator/ValidatorManager";
 
 import Box from "~/components/general/box";
@@ -19,8 +17,6 @@ import { controllers } from "~/controllers";
 
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
-
-import { variables } from "~/variables";
 
 const Verify = () => {
   const isVerificationSubmitButtonDisabled = () => {

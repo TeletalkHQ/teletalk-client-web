@@ -1,5 +1,3 @@
-import { actionHandler } from "~/classes/ActionHandler";
-
 import { GLOBAL_ACTION_TYPES } from "~/store/global/types";
 
 const addContact = (payload) =>
