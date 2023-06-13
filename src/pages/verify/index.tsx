@@ -48,7 +48,7 @@ const Verify = () => {
 
     validatorManager.validators.verificationCode
       .inputValidator("verificationCode", trimmedValue)
-      .printInputValidatorError()
+      .checkErrors()
       .executeIfNoError(() =>
         dispatch(
           actions.verificationCodeOnChange({

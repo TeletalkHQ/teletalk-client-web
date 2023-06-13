@@ -2,19 +2,24 @@ import Box from "~/components/general/box";
 
 import { Input } from "~/components/general/input";
 
-import { CountryCode, CountryItem, CountryName, VoidNoArgsFn } from "~/types";
+import type {
+  CountrySelectInputChange,
+  OnCountryNameInputChange,
+} from "~/components/general/input/common/countrySelector";
+
+import { CommonOnChange, CountryItem } from "~/types";
 
 import { utilities } from "~/utilities";
 
 interface Props {
-  countryCode: CountryCode;
-  countryName: CountryName;
-  onCountryCodeInputChange: VoidNoArgsFn;
-  onCountryNameInputChange: VoidNoArgsFn;
-  onPhoneNumberInputChange: VoidNoArgsFn;
-  onSelectedCountryChange: VoidNoArgsFn;
+  countryCode: string;
+  countryName: string;
+  onCountryCodeInputChange: CommonOnChange;
+  onCountryNameInputChange: OnCountryNameInputChange;
+  onPhoneNumberInputChange: CommonOnChange;
+  onSelectedCountryChange: CountrySelectInputChange;
   phoneNumber: string;
-  selectedCountry: CountryItem;
+  selectedCountry: CountryItem | null;
 }
 
 const Cellphone: React.FC<Props> = ({
@@ -32,19 +37,19 @@ const Cellphone: React.FC<Props> = ({
       <Input.CountrySelector
         countryName={countryName}
         onSelectChange={onSelectedCountryChange}
-        onInputChange={onCountryNameInputChange}
+        onCountryNameInputChange={onCountryNameInputChange}
         selectedCountry={
           utilities.isCountrySelected(selectedCountry) ? selectedCountry : null
         }
       />
       <Box.Flex jc="space-between" style={{ width: "100%" }}>
-        <Input.CountryCode.WithValidator
-          inputValue={countryCode}
-          onInputChange={onCountryCodeInputChange}
+        <Input.CountryCode
+          value={countryCode}
+          onChange={onCountryCodeInputChange}
         />
-        <Input.PhoneNumber.WithValidator
-          onInputChange={onPhoneNumberInputChange}
-          inputValue={phoneNumber}
+        <Input.PhoneNumber
+          onChange={onPhoneNumberInputChange}
+          value={phoneNumber}
         />
       </Box.Flex>
     </>

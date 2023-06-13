@@ -1,5 +1,6 @@
 import { SyntheticEvent } from "react";
 
+import { ListItemProps } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 
 import { validatorManager } from "~/classes/validator/ValidatorManager";
@@ -9,18 +10,22 @@ import SelectorInput from "~/components/general/input/common/countrySelector/Sel
 
 import { countries } from "~/data/countries";
 
-import { CountryItem, CountryName, HTMLProps, VoidNoArgsFn } from "~/types";
+import { CountryItem } from "~/types";
+
+export type CountrySelectInputChange = (value: CountryItem | null) => void;
+
+export type OnCountryNameInputChange = (value: string) => void;
 
 interface Props {
-  countryName: CountryName;
+  countryName: string;
   selectedCountry: CountryItem | null;
-  onInputChange: VoidNoArgsFn;
-  onSelectChange: VoidNoArgsFn;
+  onCountryNameInputChange: OnCountryNameInputChange;
+  onSelectChange: CountrySelectInputChange;
 }
 
 const CountrySelector: React.FC<Props> = ({
   countryName,
-  onInputChange,
+  onCountryNameInputChange,
   onSelectChange,
   selectedCountry,
 }) => {
@@ -28,12 +33,9 @@ const CountrySelector: React.FC<Props> = ({
 
   const handleCountryNameInputChange = (
     _event: SyntheticEvent,
-    newInputValue: string
+    value: string
   ) => {
-    validatorManager.validators.countryName
-      .inputValidator("countryName", newInputValue)
-      .printInputValidatorError()
-      .executeIfNoError(() => onInputChange(newInputValue));
+    onCountryNameInputChange(value);
   };
 
   const handleSelectedCountryChange = (
@@ -43,7 +45,7 @@ const CountrySelector: React.FC<Props> = ({
     onSelectChange(newValue);
   };
 
-  const renderOption = (props: HTMLProps, option: CountryItem) => (
+  const renderOption = (props: ListItemProps, option: CountryItem) => (
     <Option props={props} option={option} />
   );
 
