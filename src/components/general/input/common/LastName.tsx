@@ -1,7 +1,5 @@
 import { Input } from "~/components/general/input";
 
-import withInputValidator from "~/hoc/withInputValidator";
-
 import { CommonOnChange } from "~/types";
 
 interface Props {
@@ -10,11 +8,7 @@ interface Props {
   required?: boolean;
 }
 
-const LastNameInput: React.FC<Props> = ({
-  value,
-  onChange,
-  required = true,
-}) => {
+const LastName: React.FC<Props> = ({ value, onChange, required = true }) => {
   return (
     <Input.Text
       id="lastName"
@@ -25,11 +19,6 @@ const LastNameInput: React.FC<Props> = ({
       value={value}
     />
   );
-};
-
-const LastName = {
-  Native: LastNameInput,
-  WithValidator: withInputValidator(LastNameInput, "lastName"),
 };
 
 export default LastName;
