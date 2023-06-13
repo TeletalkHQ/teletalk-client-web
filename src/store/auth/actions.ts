@@ -1,5 +1,3 @@
-import { actionHandler } from "~/classes/ActionHandler";
-
 import { AUTH_ACTION_TYPES } from "~/store/auth/types";
 
 const selectedCountry = (payload) =>

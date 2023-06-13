@@ -1,5 +1,3 @@
-import { actionHandler } from "~/classes/ActionHandler";
-
 import { USER_ACTION_TYPES } from "~/store/user/types";
 
 const updateAllUserData = (payload) =>

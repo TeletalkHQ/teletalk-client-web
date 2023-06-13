@@ -1,56 +1,70 @@
-import FastestValidator from "fastest-validator";
+import FastestValidator, { ValidationSchema } from "fastest-validator";
 import { trier } from "simple-trier";
 
-import { validator } from "~/classes/validator/Validator";
+import { Validator, validator } from "~/classes/validator/Validator";
+
+import { stuff } from "~/data/stuff";
+
+import { ValidatorName, ValidatorType } from "~/types";
 
 const fastestValidatorCompiler = new FastestValidator();
 
+type Validators = {
+  [key in ValidatorName]: Validator;
+};
+
 class ValidatorManager {
-  #validatorTemplate = validator.create();
+  //@ts-ignore
+  validators: Validators = {};
 
-  validators = {
-    countryCode: this.#validatorTemplate,
-    countryName: this.#validatorTemplate,
-    firstName: this.#validatorTemplate,
-    lastName: this.#validatorTemplate,
-    phoneNumber: this.#validatorTemplate,
-    username: this.#validatorTemplate,
-    verificationCode: this.#validatorTemplate,
-  };
-
-  compileValidators = (validationModels) => {
+  compileValidators() {
     trier(this.compileValidators.name)
-      .try(this.#tryToCompileValidators.bind(this), validationModels)
+      .sync()
+      .try(this.tryToCompileValidators.bind(this))
       .throw()
       .run();
-  };
-  #tryToCompileValidators(validationModels) {
-    Object.entries(validationModels).forEach(
-      this.#processValidationModel.bind(this)
+  }
+
+  private tryToCompileValidators() {
+    Object.entries(stuff.validationModels).forEach(
+      ([validationModelKey, validationModelValue]) => {
+        const compiledValidator = this.validationModelCompiler({
+          [validationModelKey]: validationModelValue,
+        });
+
+        this.createAndSetValidator(
+          validationModelKey as ValidatorName,
+          compiledValidator
+        );
+      }
     );
   }
-  #processValidationModel([validationModelKey, validationModelValue]) {
-    const compiledValidator =
-      this.#validationModelCompiler(validationModelValue);
 
-    this.#createAndSetValidator(validationModelKey, compiledValidator);
+  private validationModelCompiler(model: ValidationSchema) {
+    return fastestValidatorCompiler.compile(model);
   }
 
-  #validationModelCompiler(validationModel) {
-    return fastestValidatorCompiler.compile(validationModel);
-  }
-  #createAndSetValidator(validatorName, compiledValidator) {
-    this.validators[validatorName] = this.#createValidator(
-      compiledValidator,
-      validatorName
+  private createAndSetValidator(
+    validatorName: ValidatorName,
+    compiledValidator: ValidatorType
+  ) {
+    this.validators[validatorName] = this.createValidator(
+      validatorName,
+      compiledValidator
     );
     return this;
   }
-  #createValidator(compiledValidator, validatorName) {
-    return validator.create(compiledValidator, validatorName);
+
+  private createValidator(
+    validatorName: ValidatorName,
+    compiledValidator: ValidatorType
+  ) {
+    return validator.create(validatorName, compiledValidator);
   }
 }
 
 const validatorManager = new ValidatorManager();
+
+validatorManager.compileValidators();
 
 export { validatorManager, ValidatorManager };
