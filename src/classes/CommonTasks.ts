@@ -1,5 +1,6 @@
 import { notificationManager } from "~/classes/NotificationManager";
-import { stuffStore } from "~/classes/StuffStore";
+
+import { enErrorMessages } from "~/data/enErrorMessages";
 
 import { variables } from "~/variables";
 
@@ -22,9 +23,9 @@ class CommonTasks {
   }
   errorsPrinter(errors) {
     errors.forEach((errorItem) => {
-      const { errorMessages } = stuffStore.languageData;
-      const errorUniqueId = errorItem.notificationReason;
-      const message = errorMessages[errorUniqueId];
+      const errorUniqueId =
+        errorItem.notificationReason as keyof typeof enErrorMessages;
+      const message = enErrorMessages[errorUniqueId];
 
       const notificationObject = { ...errorItem, message };
       notificationManager.submitErrorNotification(notificationObject);

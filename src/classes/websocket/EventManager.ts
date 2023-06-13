@@ -22,4 +22,6 @@ class SocketEmitterStore {
 
 const socketEmitterStore = new SocketEmitterStore();
 
+socketEmitterStore.build();
+
 export { socketEmitterStore, SocketEmitterStore };

@@ -5,7 +5,8 @@ import { Notification } from "~/types";
 class NotificationManager {
   submitErrorNotification(notification: Notification) {
     const { message, reason } = notification;
-    enqueueSnackbar(message || reason, { variant: "error" });
+
+    enqueueSnackbar(message || reason || "UNKNOWN_ERROR", { variant: "error" });
   }
 
   submitSuccessNotification(notification: Notification) {
