@@ -17,6 +17,13 @@ const env = Object.keys(process.env).reduce((prev, curr) => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        hostname: "flagcdn.com",
+      },
+    ],
+  },
   env,
   experimental: {
     appDir: false,
