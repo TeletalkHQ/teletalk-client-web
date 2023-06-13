@@ -8,19 +8,19 @@ class NotificationBuilder {
   }
 
   description(description: string) {
-    this.notification.description = description;
+    (this.notification || {}).description = description;
     return this;
   }
   message(message: string) {
-    this.notification.message = message;
+    (this.notification || {}).message = message;
     return this;
   }
   code(code: number) {
-    this.notification.code = code;
+    (this.notification || {}).code = code;
     return this;
   }
   reason(reason: string) {
-    this.notification.reason = reason;
+    (this.notification || {}).reason = reason;
     return this;
   }
 }

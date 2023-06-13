@@ -110,7 +110,7 @@ class EventHandler {
   @AutoBind
   private catchEmitFull(error: NativeError) {
     this.logFailureResponse(error);
-    commonTasks.checkConnAbortNotification(error);
+    //TODO: Check connection abort error
     throw error;
   }
 

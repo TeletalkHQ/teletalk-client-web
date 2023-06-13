@@ -1,7 +1,5 @@
 import { Input } from "~/components/general/input";
 
-import withInputValidator from "~/hoc/withInputValidator";
-
 import { CommonOnChange } from "~/types";
 
 interface Props {
@@ -9,7 +7,7 @@ interface Props {
   value: unknown;
 }
 
-const PhoneNumberInput: React.FC<Props> = ({ value, onChange }) => {
+const PhoneNumber: React.FC<Props> = ({ value, onChange }) => {
   return (
     <Input.Text
       autoComplete="tel-national"
@@ -21,11 +19,6 @@ const PhoneNumberInput: React.FC<Props> = ({ value, onChange }) => {
       value={value}
     />
   );
-};
-
-const PhoneNumber = {
-  Native: PhoneNumberInput,
-  WithValidator: withInputValidator(PhoneNumberInput, "phoneNumber"),
 };
 
 export default PhoneNumber;

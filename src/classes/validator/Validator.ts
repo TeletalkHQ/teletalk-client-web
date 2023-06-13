@@ -1,40 +1,53 @@
-import { customTypeof } from "custom-typeof";
 import { trier } from "simple-trier";
 
 import { commonTasks } from "~/classes/CommonTasks";
 
-import { errorChecker } from "~/helpers/errorChecker";
-import { ValidatorName } from "~/types";
+import { errorCheckerCollection } from "~/helpers/errorCheckerCollection";
+
+import {
+  ErrorChecker,
+  ValidationResult,
+  ValidatorName,
+  ValidatorType,
+} from "~/types";
 
 import { utilities } from "~/utilities";
 
 class Validator {
-  #ignoredErrorTypesForInputValidator = [
+  private errorChecker: ErrorChecker;
+  //TODO: Change Result name
+  private validationResult: ValidationResult;
+  private value: any;
+
+  private ignoredErrorTypesForInputValidator = [
     "required",
     "stringEmpty",
     "stringLength",
     "stringMin",
   ];
 
-  constructor(compiledValidator, validatorName) {
-    this.compiledValidator = compiledValidator;
-    this.validatorErrorBuilder = errorChecker[`${validatorName}`];
-    this.validationResult = [];
+  constructor(
+    private validatorName: ValidatorName,
+    private compiledValidator: ValidatorType
+  ) {
+    this.errorChecker = errorCheckerCollection[validatorName];
   }
 
-  inputValidator(validationKey: ValidatorName, validationValue) {
+  inputValidator(value: any) {
+    this.value = value;
+
     const validationResult = this.compiledValidator({
-      [validationKey]: validationValue,
+      [this.validatorName]: value,
     });
 
-    if (customTypeof.isArray(validationResult)) {
-      const extraIgnoreTypes = [];
-      if (validationValue === "") extraIgnoreTypes.push("stringNumeric");
+    if (Array.isArray(validationResult)) {
+      const extraIgnoreTypes: string[] = [];
+      if (value === "") extraIgnoreTypes.push("stringNumeric");
 
       const filteredValidationResult = validationResult.filter(
         (errorItem) =>
           ![
-            ...this.#ignoredErrorTypesForInputValidator,
+            ...this.ignoredErrorTypesForInputValidator,
             ...extraIgnoreTypes,
           ].includes(errorItem.type)
       );
@@ -47,8 +60,8 @@ class Validator {
     return this;
   }
 
-  submitValidator(validatorParam) {
-    const validationResult = this.compiledValidator(validatorParam);
+  submitValidator(value: any) {
+    const validationResult = this.compiledValidator(value);
 
     if (validationResult === true) this.validationResult = [];
 
@@ -57,32 +70,38 @@ class Validator {
     return this;
   }
 
-  printInputValidatorError() {
-    return trier(this.correctErrorsAndPrint)
-      .try(this.#tryToCheckErrors.bind(this))
-
-      .catch(this.#catchCheckErrors.bind(this))
+  checkErrors() {
+    trier(commonTasks.correctErrorsAndPrint.name)
+      .sync()
+      .try(this.tryToCheckErrors.bind(this))
+      .catch(this.printErrors.bind(this))
       .run();
-  }
-  #tryToCheckErrors() {
-    if (this.validationResult.length)
-      //FIXME validatedXXX is undefined
-      this.validatorErrorBuilder(this.validationResult);
+
     return this;
   }
-  #catchCheckErrors(error) {
+
+  private tryToCheckErrors() {
+    if (this.validationResult.length)
+      this.errorChecker(this.validationResult, this.value);
+    return this;
+  }
+
+  private printErrors(error: any) {
     const fixedErrors = utilities.fixErrorBuilderErrors(error);
     commonTasks.correctErrorsAndPrint(fixedErrors);
     return this;
   }
 
-  executeIfNoError(cb) {
+  executeIfNoError(cb: () => void) {
     if (this.validationResult.length === 0) {
       cb();
     }
   }
 }
 
-const validator = { create: (...args) => new Validator(...args) };
+const validator = {
+  create: (validatorName: ValidatorName, compiledValidator: ValidatorType) =>
+    new Validator(validatorName, compiledValidator),
+};
 
 export { Validator, validator };

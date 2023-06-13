@@ -1,25 +1,10 @@
-import { windowUtilities } from "~/classes/WindowUtilities";
-
-import { commonNotificationManager } from "~/classes/CommonNotificationManager";
 import { notificationManager } from "~/classes/NotificationManager";
-import { stuffStore } from "~/classes/StuffStore";
 
-import { utilities } from "~/utilities";
+import { enErrorMessages } from "~/data/enErrorMessages";
 
 import { variables } from "~/variables";
 
-import { NativeError } from "~/types";
-
 class CommonTasks {
-  checkConnAbortNotification(error: NativeError) {
-    const isConnectionInterrupted =
-      !windowUtilities.isOnline() ||
-      utilities.checkErrorCodeIsConnAborted(error?.name);
-
-    if (isConnectionInterrupted)
-      commonNotificationManager.submitAbortedConnectionNotification();
-  }
-
   correctErrorsAndPrint(errors) {
     const correctedErrors = this.convertServerFormatErrors(errors);
     this.errorsPrinter(correctedErrors);
@@ -38,9 +23,9 @@ class CommonTasks {
   }
   errorsPrinter(errors) {
     errors.forEach((errorItem) => {
-      const { errorMessages } = stuffStore.languageData;
-      const errorUniqueId = errorItem.notificationReason;
-      const message = errorMessages[errorUniqueId];
+      const errorUniqueId =
+        errorItem.notificationReason as keyof typeof enErrorMessages;
+      const message = enErrorMessages[errorUniqueId];
 
       const notificationObject = { ...errorItem, message };
       notificationManager.submitErrorNotification(notificationObject);

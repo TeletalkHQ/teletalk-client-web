@@ -17,14 +17,8 @@ const FullName: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <Input.FirstName.WithValidator
-        inputValue={firstName}
-        onInputChange={onFirstNameInputChange}
-      />
-      <Input.LastName.WithValidator
-        inputValue={lastName}
-        onInputChange={onLastNameInputChange}
-      />
+      <Input.FirstName value={firstName} onChange={onFirstNameInputChange} />
+      <Input.LastName value={lastName} onChange={onLastNameInputChange} />
     </>
   );
 };

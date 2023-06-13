@@ -50,6 +50,7 @@
     "esbenp",
     "esbuild",
     "favicon",
+    "flagcdn",
     "flowtype",
     "fontawesome",
     "fortawesome",
@@ -100,6 +101,7 @@
     "parens",
     "predeploy",
     "quatro",
+    "raleway",
     "redis",
     "renderer",
     "responser",
@@ -134,7 +136,8 @@
     "webpack",
     "zadd",
     "zoot",
-    "zrange"
+    "zrange",
+    "zustand"
   ],
   "import": []
 }
