@@ -1,7 +1,5 @@
 import { Input } from "~/components/general/input";
 
-import withInputValidator from "~/hoc/withInputValidator";
-
 import { CommonOnChange } from "~/types";
 
 interface Props {
@@ -10,11 +8,7 @@ interface Props {
   required?: boolean;
 }
 
-const FirstNameInput: React.FC<Props> = ({
-  value,
-  onChange,
-  required = true,
-}) => {
+const FirstName: React.FC<Props> = ({ value, onChange, required = true }) => {
   return (
     <Input.Text
       autoFocus
@@ -26,11 +20,6 @@ const FirstNameInput: React.FC<Props> = ({
       value={value}
     />
   );
-};
-
-const FirstName = {
-  Native: FirstNameInput,
-  WithValidator: withInputValidator(FirstNameInput, "firstName"),
 };
 
 export default FirstName;

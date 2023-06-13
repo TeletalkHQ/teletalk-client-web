@@ -1,31 +1,46 @@
+import { ListItemProps } from "@mui/material";
 import Box from "~/components/general/box";
-
+import ListItem from "~/components/general/box/ListItem";
 import Img from "~/components/general/other/Img";
 
-import { CountryItem, HTMLProps } from "~/types";
+import { CountryItem } from "~/types";
 
 interface Props {
   option: CountryItem;
-  props: HTMLProps;
+  props: ListItemProps;
 }
 
 const Option: React.FC<Props> = ({ props, option }) => (
-  <Box.Flex {...props}>
-    <Box.Div style={{ width: "90%" }}>
-      <Box.Span style={{ marginRight: "5px" }}>
+  <ListItem {...props}>
+    <Box.Div
+      style={{
+        width: "90%",
+      }}
+    >
+      <Box.Span
+        style={{
+          marginRight: "5px",
+        }}
+      >
         <Img
           loading="lazy"
           alt={`${option.countryName}`}
           src={`https://flagcdn.com/w20/${option.countryShortName.toLowerCase()}.png`}
-          // srcSet={`https://flagcdn.com/w40/${option.countryShortName.toLowerCase()}.png 2x`}
-          width="20"
+          height={20}
+          width={20}
         />
       </Box.Span>
       {option.countryName}
     </Box.Div>
 
-    <Box.Div style={{ width: "10%" }}>+{option.countryCode}</Box.Div>
-  </Box.Flex>
+    <Box.Div
+      style={{
+        width: "10%",
+      }}
+    >
+      +{option.countryCode}
+    </Box.Div>
+  </ListItem>
 );
 
 export default Option;
