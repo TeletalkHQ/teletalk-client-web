@@ -1,66 +1,67 @@
+import { useRouter } from "next/router";
+
 import { domUtilities } from "utility-store";
 
-import { validatorManager } from "~/classes/validator/ValidatorManager";
-
-import Box from "~/components/general/box";
+import { commonTasks } from "~/classes/CommonTasks";
+import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 
 import { Icons } from "~/components/other/Icons";
 import { Input } from "~/components/general/input";
 import AuthFooter from "~/components/other/AuthFooter";
 import Avatar from "~/components/general/other/Avatar";
+import Box from "~/components/general/box";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 import H5 from "~/components/general/typography/header/H5";
 import IconButton from "~/components/general/other/IconButton";
 import LoadingButton from "~/components/auth/LoadingButton";
 
-import { controllers } from "~/controllers";
+import { createInputValidator } from "~/helpers/createInputValidator";
 
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
+import { useAuthStore } from "~/store/zustand";
 
 const Verify = () => {
-  const isVerificationSubmitButtonDisabled = () => {
-    // return !commonTasks.validateInputValueLengthByModelLength(
-    //   stuffStore.models.verificationCode,
-    //   state.auth.verificationCode
-    // );
+  const state = useAuthStore();
+  const router = useRouter();
 
-    return false;
+  const isVerificationSubmitButtonDisabled = () => {
+    return !commonTasks.isValueLengthEqualToLength(
+      "verificationCode",
+      state.verificationCode
+    );
   };
 
   const handleBackToSignInClick = () => {
-    dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
-    dispatch(commonActions.changeViewMode.signIn());
+    state.updateVerificationCode("");
+    router.back();
   };
 
-  const handleVerifyClick = () => {
+  const handleVerifyClick = async () => {
     domUtilities()
       //REFACTOR: Use ElementName type
       .setElementByName("verificationCode")
       .focusElement()
       .selectAllValue();
-    dispatch(controllers.verify());
+
+    await socketEmitterStore.events.verify.emitFull(
+      {
+        verificationCode: state.verificationCode,
+      },
+      async () => {
+        console.log("verify Done!");
+      }
+    );
   };
 
-  const handleVerificationCodeInputChange = (event) => {
-    const { value } = event.target;
-    const trimmedValue = value.trim();
-
-    validatorManager.validators.verificationCode
-      .inputValidator("verificationCode", trimmedValue)
-      .checkErrors()
-      .executeIfNoError(() =>
-        dispatch(
-          actions.verificationCodeOnChange({
-            verificationCode: trimmedValue,
-          })
-        )
-      );
-  };
+  const handleVerificationCodeInputChange = createInputValidator(
+    "verificationCode",
+    (value: string) => {
+      state.updateVerificationCode(value);
+    }
+  );
 
   return (
     <Box.Container maxWidth="xl">
-      <Box.Div style={{ mt: 1 }}>
+      <Box.Div style={{ marginTop: 1 }}>
         <IconButton onClick={handleBackToSignInClick}>
           <Icons.ArrowBack.Icon />
         </IconButton>
@@ -73,17 +74,22 @@ const Verify = () => {
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.secondary" }}>
+        <Avatar
+          sx={(theme) => ({
+            m: 1,
+            backgroundColor: theme.palette.secondary.dark,
+          })}
+        >
           <Icons.VerifiedUser.Icon />
         </Avatar>
         <Box.Container maxWidth="xs">
-          <Box.Div style={{ mt: 1 }}>
+          <Box.Div style={{ marginTop: 1 }}>
             <H5>
-              +{state.auth.countryCode} {state.auth.phoneNumber}
+              +{state.countryCode} {state.phoneNumber}
             </H5>
 
             <GreyTextParagraph>
-              We've sent the code to the Teletalk app to your phone number.
+              We have sent the code to the Teletalk app to your phone number.
             </GreyTextParagraph>
 
             <Input.Text
@@ -91,17 +97,19 @@ const Verify = () => {
               label="Verification Code"
               name="verificationCode"
               autoFocus
-              value={state.auth.verificationCode}
-              onChange={handleVerificationCodeInputChange}
+              value={state.verificationCode}
+              onChange={({ target: { value } }) =>
+                handleVerificationCodeInputChange(value)
+              }
             />
 
             <LoadingButton
               disabled={isVerificationSubmitButtonDisabled()}
-              loading={state.global.appProgressions.authenticationProgress}
+              loading={state.authenticationProgress}
               onClick={handleVerifyClick}
               sx={{ mt: 2, mb: 2 }}
-              buttonValue={"Verify"}
-              indicatorValue={"Verifying..."}
+              buttonValue="Verify"
+              indicatorValue="Verifying..."
             />
           </Box.Div>
         </Box.Container>

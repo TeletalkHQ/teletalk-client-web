@@ -44,7 +44,7 @@ const MessageInput = ({
             <>
               <IconButton
                 onClick={() => {
-                  logger.debug("Mic clicked");
+                  console.debug("Mic clicked");
                 }}
               >
                 <Icons.MicNone.Icon />

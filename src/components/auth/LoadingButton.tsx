@@ -1,17 +1,20 @@
+import { SxProps } from "@mui/material";
+
 import Box from "~/components/general/box";
 
 import CircularProgress from "~/components/general/progress/CircularProgress";
 import { Input } from "~/components/general/input";
 
-import { VoidNoArgsFn, Style } from "~/types";
+import { VoidNoArgsFn, Style, ElementLabel } from "~/types";
 
 interface Props {
   disabled: boolean;
   loading: boolean;
   onClick: VoidNoArgsFn;
-  style: Style;
-  indicatorValue: string;
-  buttonValue: string;
+  style?: Style;
+  indicatorValue: ElementLabel;
+  buttonValue: ElementLabel;
+  sx: SxProps;
 }
 
 const LoadingButton: React.FC<Props> = ({

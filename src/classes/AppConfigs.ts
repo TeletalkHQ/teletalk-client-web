@@ -1,5 +1,3 @@
-import { envManager } from "~/classes/EnvironmentManager";
-
 import { RuntimeMode } from "~/types";
 
 type BaseUrl = {
@@ -7,16 +5,15 @@ type BaseUrl = {
 };
 
 class AppConfigs {
-  private env = envManager.getEnv();
-  private RUNTIME_MODE = this.env.NEXT_PUBLIC_RUNTIME_MODE;
+  private RUNTIME_MODE = process.env.NEXT_PUBLIC_RUNTIME_MODE;
 
   private CLIENT_BASE_URLS: BaseUrl = {
-    development: this.env.NEXT_PUBLIC_CLIENT_BASE_URL,
-    production: this.env.NEXT_PUBLIC_CLIENT_BASE_URL,
+    development: process.env.NEXT_PUBLIC_CLIENT_BASE_URL,
+    production: process.env.NEXT_PUBLIC_CLIENT_BASE_URL,
   };
   private SERVER_BASE_URLS: BaseUrl = {
-    development: this.env.NEXT_PUBLIC_SERVER_BASE_URL,
-    production: this.env.NEXT_PUBLIC_SERVER_BASE_URL,
+    development: process.env.NEXT_PUBLIC_SERVER_BASE_URL,
+    production: process.env.NEXT_PUBLIC_SERVER_BASE_URL,
   };
 
   private configs = {
@@ -61,7 +58,7 @@ class AppConfigs {
   }
 
   setDebugLevel() {
-    logger.onAll();
+    // console.onAll();
   }
 }
 

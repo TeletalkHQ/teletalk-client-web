@@ -10,8 +10,7 @@ import {
   ValidatorName,
   ValidatorType,
 } from "~/types";
-
-import { utilities } from "~/utilities";
+import { AutoBind } from "~/types/utils";
 
 class Validator {
   private errorChecker: ErrorChecker;
@@ -71,30 +70,31 @@ class Validator {
   }
 
   checkErrors() {
-    trier(commonTasks.correctErrorsAndPrint.name)
+    trier(this.checkErrors.name)
       .sync()
-      .try(this.tryToCheckErrors.bind(this))
-      .catch(this.printErrors.bind(this))
+      .try(this.tryToCheckErrors)
+      .catch(this.printErrors)
       .run();
 
     return this;
   }
 
+  @AutoBind
   private tryToCheckErrors() {
     if (this.validationResult.length)
       this.errorChecker(this.validationResult, this.value);
     return this;
   }
 
-  private printErrors(error: any) {
-    const fixedErrors = utilities.fixErrorBuilderErrors(error);
-    commonTasks.correctErrorsAndPrint(fixedErrors);
+  @AutoBind
+  private printErrors(errors: any) {
+    commonTasks.correctErrorsAndPrint(errors);
     return this;
   }
 
-  executeIfNoError(cb: () => void) {
+  executeIfNoError(cb: (value: any) => void) {
     if (this.validationResult.length === 0) {
-      cb();
+      cb(this.value);
     }
   }
 }

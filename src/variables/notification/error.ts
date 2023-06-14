@@ -1,4 +1,5 @@
 import { notificationBuilder } from "~/classes/NotificationBuilder";
+import { stuffStore } from "~/classes/StuffStore";
 
 const customErrors = {
   econnAborted: notificationBuilder
@@ -80,6 +81,7 @@ const customErrors = {
 
 const errors = {
   ...customErrors,
+  ...stuffStore.errors,
 };
 
 const requiredFieldErrors = {

@@ -3,7 +3,7 @@ import { trier } from "simple-trier";
 import { appConfigs } from "~/classes/AppConfigs";
 import { envManager } from "~/classes/EnvironmentManager";
 import { websocket } from "~/classes/websocket/Websocket";
-import { socketEmitterStore } from "~/classes/websocket/EventManager";
+import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 
 import { events } from "~/events";
 
