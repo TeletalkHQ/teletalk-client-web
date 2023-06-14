@@ -60,17 +60,15 @@ class EventHandler {
     return this;
   }
 
-  async emit(
-    data: ResponseData = {},
-    callback: ResponseCallback = async () => {}
-  ) {
-    const response: SocketResponse = await new Promise((resolve) => {
+  async emit(data: ResponseData = {}) {
+    const response: SocketResponse = await new Promise((resolve, reject) => {
       websocket.client.emit(
         this.route.name,
         data,
         (response: SocketResponse) => {
-          resolve(response);
-          callback(response);
+          if (response.ok) resolve(response);
+
+          reject(response);
         }
       );
     });
@@ -96,25 +94,24 @@ class EventHandler {
 
   @AutoBind
   async tryToEmitFull() {
-    return (
-      await this.executeRequestTransformer()
-        .executeRequestInterceptors()
-        .inputDataFieldsCheck()
-        .emit(this.requestData, this.responseCallback)
-    )
-      .responseErrorsHandler()
-      .outputDataFieldsCheck()
+    await this.executeRequestTransformer()
+      .executeRequestInterceptors()
+      .inputDataFieldsCheck()
+      .emit(this.requestData);
+
+    await this.outputDataFieldsCheck()
       .executeResponseTransformer()
       .executeResponseInterceptors()
       .logSuccessfulResponse()
-      .getResponse();
+      .executeResponseCallback();
+
+    return this.getResponse();
   }
 
   @AutoBind
-  private catchEmitFull(error: NativeError) {
-    this.logFailureResponse(error);
-    //TODO: Check connection abort error
-    throw error;
+  private catchEmitFull(response: SocketResponse) {
+    commonTasks.correctErrorsAndPrint(response.errors);
+    this.logFailureResponse(Object.values(response.errors!)[0]);
   }
 
   private executeRequestTransformer() {
@@ -134,23 +131,6 @@ class EventHandler {
   private inputDataFieldsCheck(inputData = this.getRequestData()) {
     if (appConfigs.getConfigs().api.shouldCheckInputDataFields)
       checkFields(inputData, this.route.inputFields, checkFieldErrors.input);
-
-    return this;
-  }
-
-  private responseErrorsHandler(response = this.getResponse()) {
-    const {
-      data: { errors },
-      ok,
-    } = response;
-
-    if (!ok) {
-      //TODO: Reset everything if there is a auth error
-
-      commonTasks.correctErrorsAndPrint(errors);
-
-      throw errors;
-    }
 
     return this;
   }
@@ -184,7 +164,7 @@ class EventHandler {
     return this;
   }
 
-  logFailureResponse(error: NativeError) {
+  private logFailureResponse(error: NativeError) {
     if (appConfigs.getConfigs().api.shouldLogFailureResponse)
       console.error(`Api:${this.route.name} Api catch, error:`, error);
   }
@@ -197,6 +177,11 @@ class EventHandler {
     });
 
     return newData;
+  }
+
+  private async executeResponseCallback() {
+    await this.responseCallback(this.response);
+    return this;
   }
 }
 
