@@ -46,7 +46,7 @@ const Verify = () => {
         verificationCode: state.verificationCode,
       },
       async () => {
-        router.push("create");
+        router.replace("create");
       }
     );
   };
