@@ -1,59 +1,62 @@
-import { commonTasks } from "~/classes/CommonTasks";
-import { stuffStore } from "~/classes/StuffStore";
-import LoadingButton from "~/components/auth/LoadingButton";
+import { useRouter } from "next/router";
 
-import Box from "~/components/general/box";
+import { commonTasks } from "~/classes/CommonTasks";
 
 import { Icons } from "~/components/other/Icons";
 import { Input } from "~/components/general/input";
 import AuthFooter from "~/components/other/AuthFooter";
+import Box from "~/components/general/box";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 import IconButton from "~/components/general/other/IconButton";
+import LoadingButton from "~/components/auth/LoadingButton";
 
-import { controllers } from "~/controllers";
+import { createInputValidator } from "~/helpers/createInputValidator";
 
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
+import { useAuthStore } from "~/store/zustand";
 
 const CreateNewUser = () => {
-  const handleFirstNameInputChange = (e) => {
-    dispatch(actions.firstNameOnChange({ firstName: e.target.value }));
+  const state = useAuthStore();
+  const router = useRouter();
+
+  const handleFirstNameInputChange = createInputValidator(
+    "firstName",
+    (value: string) => {
+      state.updateFirstName(value);
+    }
+  );
+  const handleLastNameInputChange = (value: string) => {
+    state.updateLastName(value);
   };
 
   const handleBackToSignInClick = () => {
-    dispatch(actions.verificationCodeOnChange({ verificationCode: "" }));
-    dispatch(commonActions.changeViewMode.signIn());
-  };
-
-  const handleLastNameInputChange = (e) => {
-    dispatch(actions.lastNameOnChange({ lastName: e.target.value }));
+    state.updateVerificationCode("");
+    router.back();
+    router.back();
   };
 
   const handleCreateNewUserConfirmClick = () => {
-    dispatch(controllers.createNewUser());
+    console.log("create clicked!");
   };
 
   const isCreateNewUserConfirmButtonDisabled = () => {
-    // const firstNameValidateResult = commonTasks.validateInputValueLengthByModel(
-    //   stuffStore.models.firstName,
-    //   state.auth.firstName
-    // );
+    const firstNameValidateResult = commonTasks.isValueLengthInBetweenMinMax(
+      "firstName",
+      state.firstName
+    );
 
-    // const lastNameValidateResult = commonTasks.validateInputValueLengthByModel(
-    //   stuffStore.models.lastName,
-    //   state.auth.lastName
-    // );
+    const lastNameValidateResult = commonTasks.isValueLengthInBetweenMinMax(
+      "lastName",
+      state.lastName
+    );
 
-    // return !firstNameValidateResult || !lastNameValidateResult;
-
-    return false;
+    return !firstNameValidateResult || !lastNameValidateResult;
   };
 
   return (
     <Box.Container mw="xl">
       <Box.Div
         style={{
-          mt: 1,
+          marginTop: 1,
         }}
       >
         <IconButton onClick={handleBackToSignInClick}>
@@ -70,17 +73,21 @@ const CreateNewUser = () => {
           </GreyTextParagraph>
 
           <Input.FullName
-            firstName={state.auth.firstName}
-            lastName={state.auth.lastName}
-            onFirstNameInputChange={handleFirstNameInputChange}
-            onLastNameInputChange={handleLastNameInputChange}
+            firstName={state.firstName}
+            lastName={state.lastName}
+            onFirstNameInputChange={({ target: { value } }) => {
+              handleFirstNameInputChange(value);
+            }}
+            onLastNameInputChange={({ target: { value } }) => {
+              handleLastNameInputChange(value);
+            }}
           />
 
           <LoadingButton
-            loading={state.global.appProgressions.authenticationProgress}
+            loading={state.authenticationProgress}
             onClick={handleCreateNewUserConfirmClick}
-            buttonValue={"Create"}
-            indicatorValue={"Creating..."}
+            buttonValue="Create"
+            indicatorValue="Creating..."
             disabled={isCreateNewUserConfirmButtonDisabled()}
             sx={{ mt: 1 }}
           />
