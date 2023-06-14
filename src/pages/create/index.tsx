@@ -31,7 +31,6 @@ const CreateNewUser = () => {
   const handleBackToSignInClick = () => {
     state.updateVerificationCode("");
     router.back();
-    router.back();
   };
 
   const handleCreateNewUserConfirmClick = () => {
