@@ -2,7 +2,7 @@ import { LoggerBrowser } from "logger-browser";
 
 import { appConfigs as appConfigsInstance } from "~/classes/AppConfigs";
 import { envManager as envManagerInstance } from "~/classes/EnvironmentManager";
-import { socketEmitterStore as socketEmitterStoreInstance } from "~/classes/websocket/EventManager";
+import { socketEmitterStore as socketEmitterStoreInstance } from "~/classes/websocket/SocketEmitterStore";
 import { websocket as websocketInstance } from "~/classes/websocket/Websocket";
 
 import { Environments, StringMap } from "~/types";

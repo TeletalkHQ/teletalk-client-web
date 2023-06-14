@@ -1,11 +1,13 @@
-import { SvgIconTypeMap } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
 import {
+  ChangeEvent,
   ChangeEventHandler,
   DetailedHTMLProps,
   HTMLAttributes,
   MouseEvent,
 } from "react";
+
+import { SvgIconTypeMap } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 export type DivProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -24,6 +26,11 @@ export type CommonOnClose = VoidNoArgsFn;
 export type CommonOnChange = ChangeEventHandler<
   HTMLInputElement | HTMLTextAreaElement
 >;
+
+export type CommonChangeEvent = ChangeEvent<
+  HTMLInputElement | HTMLTextAreaElement
+>;
+
 export type HTMLProps = HTMLAttributes<HTMLLIElement>;
 
 export type ElementName =
@@ -70,9 +77,12 @@ export type ElementLabel =
   | "First Name"
   | "Last Name"
   | "Name"
+  | "Next"
+  | "Verify"
+  | "Verifying..."
   | "Phone Number"
   | "Username"
-  | "Username"
+  | "Sign in..."
   | "Verification Code";
 
 export type ListItemName =
