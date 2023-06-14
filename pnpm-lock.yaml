@@ -66,8 +66,8 @@ dependencies:
     specifier: ^4.17.21
     version: 4.17.21
   logger-browser:
-    specifier: ^2.0.0
-    version: 2.0.0
+    specifier: ^2.0.2
+    version: 2.0.2
   next:
     specifier: 13.4.4
     version: 13.4.4(@babel/core@7.22.5)(react-dom@18.2.0)(react@18.2.0)
@@ -8434,17 +8434,17 @@ packages:
       wrap-ansi: 6.2.0
     dev: true
 
-  /logestige@5.3.0:
-    resolution: {integrity: sha512-0E0UETESZ3rEp9DxdaEyWWSAbipGeb0Ab45CNdko0CURZklHKeL7fha2YhxlWCvKvGIEYtDXU6CkwTVlBMIyGw==}
+  /logestige@5.3.2:
+    resolution: {integrity: sha512-G5qtKvd/mo3WC2GXj4g0HSXYZJS0IpV0Zzjz8suNIFBS6uelpHo0y8LOaMALVfyqK+L1RGmIOBNrauSuRMJVTg==}
     engines: {node: '>=10'}
     dependencies:
       custom-typeof: 3.0.4
     dev: false
 
-  /logger-browser@2.0.0:
-    resolution: {integrity: sha512-A6XcvwOMVlCINeCAI3Zj8J/7Mlu8VPfTEdDn5CQSrt+ZGNvhAyFs+uLS04csFHCb28NFxpYHUcHm5Hplq0XEcQ==}
+  /logger-browser@2.0.2:
+    resolution: {integrity: sha512-C6s23IxPIMmsXN0rTofG82ppTUpT65cYzP4kb2oSbAEpYcXAcYPA3KFySkO8TXh5dNg22dQWynY/uv2OmgHpUA==}
     dependencies:
-      logestige: 5.3.0
+      logestige: 5.3.2
     dev: false
 
   /loose-envify@1.4.0:
