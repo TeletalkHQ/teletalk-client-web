@@ -4,10 +4,10 @@ import { StringMap } from "~/types";
 
 const otherEvents = () => {
   websocket.client.onAny((event, ...args) => {
-    logger.debug(`socket event:${event}`, ...args);
+    console.debug(`socket event:${event}`, ...args);
   });
 
-  websocket.client.on("pong", (...args) => logger.debug(...args));
+  websocket.client.on("pong", (...args) => console.debug(...args));
   window.ping = (data: StringMap) => websocket.client.emit("ping", data);
 };
 

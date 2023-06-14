@@ -80,7 +80,10 @@ class EventHandler {
     return this;
   }
 
-  async emitFull(data: RequestData, responseCallback: ResponseCallback) {
+  async emitFull(
+    data: RequestData,
+    responseCallback: ResponseCallback = async () => {}
+  ) {
     this.requestData = data;
     this.responseCallback = responseCallback;
 
@@ -176,14 +179,14 @@ class EventHandler {
 
   private logSuccessfulResponse(response = this.getResponse()) {
     if (appConfigs.getConfigs().api.shouldLogSuccessfulResponse)
-      logger.debug("response:", response);
+      console.debug("response:", response);
 
     return this;
   }
 
   logFailureResponse(error: NativeError) {
     if (appConfigs.getConfigs().api.shouldLogFailureResponse)
-      logger.error(`Api:${this.route.name} Api catch, error:`, error);
+      console.error(`Api:${this.route.name} Api catch, error:`, error);
   }
 
   private executeInterceptors(interceptors: Interceptors, data: RequestData) {

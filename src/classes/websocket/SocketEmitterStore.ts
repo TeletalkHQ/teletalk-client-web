@@ -8,7 +8,8 @@ type Events = {
 };
 
 class SocketEmitterStore {
-  events: Events;
+  //@ts-ignore
+  events: Events = {};
 
   build() {
     const events = stuffStore.events;

@@ -87,20 +87,18 @@ const AddNewContact = componentBuilder
     };
 
     const isAddNewContactButtonDisabled = () => {
-      const firstNameValidateResult =
-        commonTasks.validateInputValueLengthByModel(
-          stuffStore.models.firstName,
-          contact.firstName
-        );
+      const firstNameValidateResult = commonTasks.isValueLengthInBetweenMinMax(
+        stuffStore.models.firstName,
+        contact.firstName
+      );
 
-      const lastNameValidateResult =
-        commonTasks.validateInputValueLengthByModel(
-          stuffStore.models.lastName,
-          contact.lastName
-        );
+      const lastNameValidateResult = commonTasks.isValueLengthInBetweenMinMax(
+        stuffStore.models.lastName,
+        contact.lastName
+      );
 
       const phoneNumberValidateResult =
-        commonTasks.validateInputValueLengthByModel(
+        commonTasks.isValueLengthInBetweenMinMax(
           stuffStore.models.phoneNumber,
           contact.phoneNumber
         );
