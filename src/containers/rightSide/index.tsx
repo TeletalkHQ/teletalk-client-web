@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 
-import { domUtilities } from "utility-store";
+import { domUtils } from "~/classes/DomUtils";
 
 import ChatBar from "~/components/rightSide/ChatBar";
 import Box from "~/components/general/box";
@@ -34,7 +34,7 @@ const RightSide = () => {
 
   useEffect(() => {
     if (oldMessages.current.length < selectedChatMessages.length) {
-      const messageBox = domUtilities().getElementById("messageBox");
+      const messageBox = domUtils().getElementById("messageBox");
       messageBox.scrollTo({
         top: messageBox.scrollHeight,
       });

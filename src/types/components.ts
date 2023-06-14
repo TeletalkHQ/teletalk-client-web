@@ -35,11 +35,11 @@ export type HTMLProps = HTMLAttributes<HTMLLIElement>;
 
 export type ElementName =
   | "account"
-  | "bio"
   | "addContacts"
   | "allChats"
   | "attachFile"
   | "back"
+  | "bio"
   | "bot"
   | "calls"
   | "channels"
@@ -56,6 +56,7 @@ export type ElementName =
   | "lock"
   | "logout"
   | "menu"
+  | "messageBox"
   | "micNone"
   | "more"
   | "newChannel"
@@ -74,15 +75,17 @@ export type ElementLabel =
   | "Bio"
   | "Choose a country"
   | "Code"
+  | "Create"
+  | "Creating..."
   | "First Name"
   | "Last Name"
   | "Name"
   | "Next"
+  | "Phone Number"
+  | "Sign in..."
+  | "Username"
   | "Verify"
   | "Verifying..."
-  | "Phone Number"
-  | "Username"
-  | "Sign in..."
   | "Verification Code";
 
 export type ListItemName =

@@ -1,9 +1,8 @@
 import { useRouter } from "next/router";
 
-import { domUtilities } from "utility-store";
-
 import { commonTasks } from "~/classes/CommonTasks";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
+import { domUtils } from "~/classes/DomUtils";
 
 import { Icons } from "~/components/other/Icons";
 import { Input } from "~/components/general/input";
@@ -36,7 +35,7 @@ const Verify = () => {
   };
 
   const handleVerifyClick = async () => {
-    domUtilities()
+    domUtils()
       //REFACTOR: Use ElementName type
       .setElementByName("verificationCode")
       .focusElement()
@@ -47,7 +46,7 @@ const Verify = () => {
         verificationCode: state.verificationCode,
       },
       async () => {
-        console.log("verify Done!");
+        router.push("create");
       }
     );
   };
