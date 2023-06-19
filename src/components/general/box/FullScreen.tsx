@@ -1,5 +1,4 @@
 import Div from "~/components/general/box/Div";
-
 import { DivProps, Style } from "~/types";
 
 interface Props extends DivProps {

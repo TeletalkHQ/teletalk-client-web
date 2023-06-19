@@ -1,5 +1,5 @@
-import { GLOBAL_ACTION_TYPES } from "~/store/global/types";
 import { fields } from "~/store/fields";
+import { GLOBAL_ACTION_TYPES } from "~/store/global/types";
 
 const globalActionPayloads = {
   [GLOBAL_ACTION_TYPES.APP_DRAWER_OPEN_CHANGE]: {

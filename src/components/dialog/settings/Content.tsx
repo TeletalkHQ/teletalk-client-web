@@ -1,9 +1,8 @@
 import { Divider } from "@mui/material";
 
-import ProfileOverview from "~/components/dialog/settings/ProfileOverview";
 import List from "~/components/dialog/settings/List";
+import ProfileOverview from "~/components/dialog/settings/ProfileOverview";
 import Box from "~/components/general/box";
-
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {

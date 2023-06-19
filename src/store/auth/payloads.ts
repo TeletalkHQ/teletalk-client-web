@@ -1,5 +1,4 @@
 import { AUTH_ACTION_TYPES } from "~/store/auth/types";
-
 import { fields } from "~/store/fields";
 
 const authActionPayloads = {

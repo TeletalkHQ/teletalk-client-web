@@ -1,17 +1,14 @@
 import { useRouter } from "next/router";
 
 import { commonTasks } from "~/classes/CommonTasks";
-
-import { Icons } from "~/components/other/Icons";
-import { Input } from "~/components/general/input";
-import AuthFooter from "~/components/other/AuthFooter";
-import Box from "~/components/general/box";
-import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
-import IconButton from "~/components/general/other/IconButton";
 import LoadingButton from "~/components/auth/LoadingButton";
-
+import Box from "~/components/general/box";
+import { Input } from "~/components/general/input";
+import IconButton from "~/components/general/other/IconButton";
+import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
+import AuthFooter from "~/components/other/AuthFooter";
+import { Icons } from "~/components/other/Icons";
 import { createInputValidator } from "~/helpers/createInputValidator";
-
 import { useAuthStore } from "~/store/zustand";
 
 const CreateNewUser = () => {

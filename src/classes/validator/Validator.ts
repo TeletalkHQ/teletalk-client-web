@@ -1,9 +1,7 @@
 import { trier } from "simple-trier";
 
 import { commonTasks } from "~/classes/CommonTasks";
-
 import { errorCheckerCollection } from "~/helpers/errorCheckerCollection";
-
 import {
   ErrorChecker,
   ValidationResult,
@@ -81,7 +79,7 @@ class Validator {
 
   @AutoBind
   private tryToCheckErrors() {
-    if (this.validationResult.length)
+    if (Array.isArray(this.validationResult) && this.validationResult.length)
       this.errorChecker(this.validationResult, this.value);
     return this;
   }
@@ -93,7 +91,10 @@ class Validator {
   }
 
   executeIfNoError(cb: (value: any) => void) {
-    if (this.validationResult.length === 0) {
+    if (
+      Array.isArray(this.validationResult) &&
+      this.validationResult.length === 0
+    ) {
       cb(this.value);
     }
   }

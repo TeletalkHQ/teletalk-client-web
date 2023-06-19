@@ -1,14 +1,10 @@
 import Box from "~/components/general/box";
-
 import { Input } from "~/components/general/input";
-
 import type {
   CountrySelectInputChange,
   OnCountryNameInputChange,
 } from "~/components/general/input/common/countrySelector";
-
 import { CommonOnChange, CountryItem } from "~/types";
-
 import { utilities } from "~/utilities";
 
 interface Props {

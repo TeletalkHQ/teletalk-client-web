@@ -1,7 +1,7 @@
 import { trier } from "simple-trier";
 
-import { actions } from "~/store/actions";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
+import { actions } from "~/store/actions";
 
 const getPrivateChats = () => {
   return async (dispatch, getState) => {

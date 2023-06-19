@@ -1,10 +1,9 @@
 import DoneAllIcon from "@mui/icons-material/DoneAll";
+
 // import { SlideProps } from "@mui/material";
-
 import Box from "~/components/general/box";
-import Typography from "~/components/general/typography/Typography";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
-
+import Typography from "~/components/general/typography/Typography";
 import { Style } from "~/types";
 
 interface Props {

@@ -1,8 +1,7 @@
 import { reducerBuilder } from "~/classes/ReducerBuilder";
-
+import { notificationReducerHandlers } from "~/store/notification/handlers";
 import { initialNotificationState } from "~/store/notification/initialState";
 import { NOTIFICATION_ACTION_TYPES } from "~/store/notification/types";
-import { notificationReducerHandlers } from "~/store/notification/handlers";
 
 const notificationReducerCases = {
   [NOTIFICATION_ACTION_TYPES.NEW_NOTIFICATION]: (payload, state) =>

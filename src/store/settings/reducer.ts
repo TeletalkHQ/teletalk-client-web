@@ -1,7 +1,6 @@
 import { reducerBuilder } from "~/classes/ReducerBuilder";
-
-import { initialSettingsState } from "~/store/settings/initialState";
 import { settingsReducerHandlers } from "~/store/settings/handlers";
+import { initialSettingsState } from "~/store/settings/initialState";
 import { SETTINGS_TYPES } from "~/store/settings/types";
 
 const settingsReducerCases = {

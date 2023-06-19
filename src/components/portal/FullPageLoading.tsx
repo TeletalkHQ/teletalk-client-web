@@ -1,7 +1,6 @@
 import MoonLoader from "react-spinners/MoonLoader";
 
 import Box from "~/components/general/box";
-
 import { LoadingState } from "~/types";
 
 interface Props {

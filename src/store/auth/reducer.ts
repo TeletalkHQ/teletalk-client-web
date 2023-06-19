@@ -1,7 +1,6 @@
 import { reducerBuilder } from "~/classes/ReducerBuilder";
-
-import { AUTH_ACTION_TYPES } from "~/store/auth/types";
 import { initialAuthState } from "~/store/auth/initialState";
+import { AUTH_ACTION_TYPES } from "~/store/auth/types";
 
 const authReducerCases = {
   [AUTH_ACTION_TYPES.COUNTRY_CODE_ONCHANGE]: (payload) => payload,

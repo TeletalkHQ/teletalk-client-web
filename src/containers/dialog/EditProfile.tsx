@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 
 import { userUtilities } from "~/classes/UserUtilities";
-
 import DialogTemplate from "~/components/dialog/Template";
 import EditProfileComponents from "~/components/dialog/editProfile";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 

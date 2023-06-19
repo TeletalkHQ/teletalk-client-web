@@ -1,3 +1,5 @@
+import { SvgIconTypeMap } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 import {
   ChangeEvent,
   ChangeEventHandler,
@@ -5,9 +7,6 @@ import {
   HTMLAttributes,
   MouseEvent,
 } from "react";
-
-import { SvgIconTypeMap } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
 
 export type DivProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,

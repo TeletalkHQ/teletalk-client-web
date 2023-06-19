@@ -1,7 +1,6 @@
 import { TypographyProps } from "@mui/material";
 
 import { appConfigs } from "~/classes/AppConfigs";
-
 import Link from "~/components/general/other/Link";
 import Typography from "~/components/general/typography/Typography";
 

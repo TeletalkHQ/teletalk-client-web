@@ -1,6 +1,5 @@
-import { OTHER_ACTION_TYPES } from "~/store/other/types";
-
 import { fields } from "~/store/fields";
+import { OTHER_ACTION_TYPES } from "~/store/other/types";
 
 const otherActionPayloads = {
   [OTHER_ACTION_TYPES.SET_COUNTRIES]: {

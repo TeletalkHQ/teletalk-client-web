@@ -1,5 +1,4 @@
 import ListItem from "~/components/dialog/contacts/ListItem";
-
 import { Contact, Contacts } from "~/types";
 
 interface Props {

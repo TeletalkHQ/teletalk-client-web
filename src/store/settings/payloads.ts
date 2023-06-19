@@ -1,5 +1,5 @@
-import { SETTINGS_TYPES } from "~/store/settings/types";
 import { fields } from "~/store/fields";
+import { SETTINGS_TYPES } from "~/store/settings/types";
 
 const settingsActionPayload = {
   [SETTINGS_TYPES.UPDATE_PROFILE]: {

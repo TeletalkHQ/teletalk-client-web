@@ -1,5 +1,4 @@
 import Box from "~/components/general/box";
-
 import { IconType, VoidNoArgsFn } from "~/types";
 
 import { SettingDisplayName } from "./types";

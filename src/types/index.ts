@@ -1,15 +1,13 @@
-import { CSSProperties } from "react";
-
 import { IoFields } from "check-fields";
 import {
   AsyncCheckFunction,
   SyncCheckFunction,
   ValidationError,
 } from "fastest-validator";
+import { CSSProperties } from "react";
 import { FullName } from "utility-store/lib/types";
 
 import { Transitions } from "~/components/other/Transitions";
-
 import { countries } from "~/data/countries";
 import { stuff } from "~/data/stuff";
 

@@ -4,7 +4,6 @@ import { trier } from "simple-trier";
 import { appConfigs } from "~/classes/AppConfigs";
 import { commonTasks } from "~/classes/CommonTasks";
 import { websocket } from "~/classes/websocket/Websocket";
-
 import type {
   Interceptors,
   NativeError,
@@ -17,7 +16,6 @@ import type {
   SocketRoute,
 } from "~/types";
 import { AutoBind } from "~/types/utils";
-
 import { checkFieldErrors } from "~/variables/notification/error";
 
 class EventHandler {

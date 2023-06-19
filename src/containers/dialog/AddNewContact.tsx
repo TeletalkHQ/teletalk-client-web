@@ -3,17 +3,12 @@ import { useEffect, useState } from "react";
 import { commonTasks } from "~/classes/CommonTasks";
 import { componentBuilder } from "~/classes/ComponentBuilder";
 import { stuffStore } from "~/classes/StuffStore";
-
-import AddNewContactComponents from "~/components/dialog/addNewContact";
 import DialogTemplate from "~/components/dialog/Template";
-
+import AddNewContactComponents from "~/components/dialog/addNewContact";
 import { controllers } from "~/controllers";
-
 import { commonActions } from "~/store/commonActions";
 import { stateStatics } from "~/store/stateStatics";
-
 import { utilities } from "~/utilities";
-
 import { variables } from "~/variables";
 
 const AddNewContact = componentBuilder

@@ -1,13 +1,12 @@
 import AddNewContact from "~/containers/dialog/AddNewContact";
 import Contacts from "~/containers/dialog/Contacts";
-import EditFullName from "~/containers/dialog/EditFullName";
 import EditBio from "~/containers/dialog/EditBio";
+import EditFullName from "~/containers/dialog/EditFullName";
 import EditProfile from "~/containers/dialog/EditProfile";
 import EditUsername from "~/containers/dialog/EditUsername";
 import Logout from "~/containers/dialog/Logout";
 import Settings from "~/containers/dialog/Settings";
 import UserInfo from "~/containers/dialog/UserInfo";
-
 import { commonActions } from "~/store/commonActions";
 import { stateStatics } from "~/store/stateStatics";
 

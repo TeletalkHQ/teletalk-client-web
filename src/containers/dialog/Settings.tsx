@@ -1,10 +1,8 @@
 import lodash from "lodash";
 
 import { userUtilities } from "~/classes/UserUtilities";
-
 import DialogTemplate from "~/components/dialog/Template";
 import SettingsComponents from "~/components/dialog/settings";
-
 import { commonActions } from "~/store/commonActions";
 
 const Settings = ({ onDialogClose }) => {

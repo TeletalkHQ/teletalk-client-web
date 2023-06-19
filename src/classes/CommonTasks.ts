@@ -1,9 +1,8 @@
 import { notificationManager } from "~/classes/NotificationManager";
-
 import { enErrorMessages } from "~/data/enErrorMessages";
 import { ModelName } from "~/types/models";
-
 import { variables } from "~/variables";
+
 import { stuffStore } from "./StuffStore";
 
 class CommonTasks {
