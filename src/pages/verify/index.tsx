@@ -1,21 +1,18 @@
 import { useRouter } from "next/router";
 
 import { commonTasks } from "~/classes/CommonTasks";
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { domUtils } from "~/classes/DomUtils";
-
-import { Icons } from "~/components/other/Icons";
-import { Input } from "~/components/general/input";
-import AuthFooter from "~/components/other/AuthFooter";
-import Avatar from "~/components/general/other/Avatar";
+import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
+import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
+import { Input } from "~/components/general/input";
+import Avatar from "~/components/general/other/Avatar";
+import IconButton from "~/components/general/other/IconButton";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 import H5 from "~/components/general/typography/header/H5";
-import IconButton from "~/components/general/other/IconButton";
-import LoadingButton from "~/components/auth/LoadingButton";
-
+import AuthFooter from "~/components/other/AuthFooter";
+import { Icons } from "~/components/other/Icons";
 import { createInputValidator } from "~/helpers/createInputValidator";
-
 import { useAuthStore } from "~/store/zustand";
 
 const Verify = () => {

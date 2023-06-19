@@ -1,7 +1,6 @@
 import { reducerBuilder } from "~/classes/ReducerBuilder";
-
-import { initialMessageState } from "~/store/message/initialState";
 import { messageReducerHandlers } from "~/store/message/handlers";
+import { initialMessageState } from "~/store/message/initialState";
 import { MESSAGE_ACTION_TYPES } from "~/store/message/types";
 
 const messageReducerCases = {

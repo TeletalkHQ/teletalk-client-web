@@ -1,5 +1,4 @@
 import { reducerBuilder } from "~/classes/ReducerBuilder";
-
 import { otherReducerHandlers } from "~/store/other/handlers";
 import { initialOtherState } from "~/store/other/initialState";
 import { OTHER_ACTION_TYPES } from "~/store/other/types";

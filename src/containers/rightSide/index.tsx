@@ -1,15 +1,11 @@
 import { useEffect, useMemo, useRef } from "react";
 
 import { domUtils } from "~/classes/DomUtils";
-
-import ChatBar from "~/components/rightSide/ChatBar";
 import Box from "~/components/general/box";
-
+import ChatBar from "~/components/rightSide/ChatBar";
 import MessageInput from "~/components/rightSide/MessageInput";
 import MessageList from "~/components/rightSide/MessageList";
-
 import { controllers } from "~/controllers";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 import { stateStatics } from "~/store/stateStatics";

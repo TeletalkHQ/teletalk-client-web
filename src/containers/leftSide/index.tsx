@@ -1,12 +1,9 @@
 import { useMemo } from "react";
-
 import { arrayUtilities } from "utility-store";
 
-import ChatList from "~/components/leftSide/ChatList";
 import Box from "~/components/general/box";
-
+import ChatList from "~/components/leftSide/ChatList";
 import SearchBar from "~/components/leftSide/SearchBar";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 

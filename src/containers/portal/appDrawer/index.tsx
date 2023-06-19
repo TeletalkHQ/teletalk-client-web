@@ -1,16 +1,12 @@
 import { Divider, SwipeableDrawer } from "@mui/material";
 
-import { actions } from "~/store/actions";
-
+import { userUtilities } from "~/classes/UserUtilities";
 import Box from "~/components/general/box";
-
 import DrawerList from "~/components/portal/appDrawer/DrawerList";
 import PersonalData from "~/components/portal/appDrawer/PersonalData";
-
+import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
-
 import { utilities } from "~/utilities";
-import { userUtilities } from "~/classes/UserUtilities";
 
 const AppDrawer = () => {
   const toggleDrawer = (event, open) => {

@@ -1,26 +1,19 @@
 import { useRouter } from "next/router";
 
-import Box from "~/components/general/box";
-
 import { commonTasks } from "~/classes/CommonTasks";
 import { websocket } from "~/classes/websocket/Websocket";
-
-import { Icons } from "~/components/other/Icons";
+import LoadingButton from "~/components/auth/LoadingButton";
+import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
-import AuthFooter from "~/components/other/AuthFooter";
 import Avatar from "~/components/general/other/Avatar";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 import H5 from "~/components/general/typography/header/H5";
-import LoadingButton from "~/components/auth/LoadingButton";
-
+import AuthFooter from "~/components/other/AuthFooter";
+import { Icons } from "~/components/other/Icons";
 import { countries } from "~/data/countries";
-
 import { createInputValidator } from "~/helpers/createInputValidator";
-
 import { useAuthStore } from "~/store/zustand";
-
 import { CountryItem } from "~/types";
-
 import { utilities } from "~/utilities";
 
 const SignIn = () => {
@@ -28,7 +21,6 @@ const SignIn = () => {
   const router = useRouter();
 
   const handleSignInClick = () => {
-    websocket.client.connect();
     websocket.client.emit(
       "signIn",
       {

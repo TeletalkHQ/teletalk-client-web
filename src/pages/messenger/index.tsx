@@ -1,14 +1,10 @@
 import { useEffect } from "react";
 
 import { websocket } from "~/classes/websocket/Websocket";
-
 import Box from "~/components/general/box";
-
 import LeftSide from "~/containers/leftSide";
 import RightSide from "~/containers/rightSide";
-
 import { controllers } from "~/controllers";
-
 import { stateStatics } from "~/store/stateStatics";
 
 const Messenger = () => {

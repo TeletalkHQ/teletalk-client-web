@@ -1,7 +1,6 @@
 import Box from "~/components/general/box";
-
-import IconButton from "~/components/general/other/IconButton";
 import { Input } from "~/components/general/input";
+import IconButton from "~/components/general/other/IconButton";
 import { Icons } from "~/components/other/Icons";
 
 const MessageInput = ({

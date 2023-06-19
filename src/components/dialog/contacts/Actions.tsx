@@ -2,7 +2,6 @@ import React from "react";
 
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
-
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {

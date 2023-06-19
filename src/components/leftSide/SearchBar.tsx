@@ -1,9 +1,8 @@
 import Box from "~/components/general/box";
+import { Input } from "~/components/general/input";
 import IconButton from "~/components/general/other/IconButton";
 import InputAdornment from "~/components/general/other/InputAdornment";
-import { Input } from "~/components/general/input";
 import { Icons } from "~/components/other/Icons";
-
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {

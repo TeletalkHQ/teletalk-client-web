@@ -2,9 +2,7 @@ import { customTypeof } from "custom-typeof";
 
 import { stuffStore } from "~/classes/StuffStore";
 import { validationChecker } from "~/classes/ValidationChecker";
-
 import { countries } from "~/data/countries";
-
 import { ErrorChecker, ErrorCheckerCollection } from "~/types";
 
 const countryCodeErrorChecker: ErrorChecker = (

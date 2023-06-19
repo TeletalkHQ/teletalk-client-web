@@ -1,5 +1,4 @@
 import { websocket } from "~/classes/websocket/Websocket";
-
 import { StringMap } from "~/types";
 
 const otherEvents = () => {

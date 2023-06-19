@@ -1,6 +1,5 @@
-import { EventHandler, eventHandler } from "~/classes/websocket/EventHandler";
 import { stuffStore } from "~/classes/StuffStore";
-
+import { EventHandler, eventHandler } from "~/classes/websocket/EventHandler";
 import { EventName, SocketRoute } from "~/types";
 
 type Events = {

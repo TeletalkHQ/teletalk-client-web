@@ -1,6 +1,5 @@
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
-
 import { CountryItem, CountryName, FullContact, VoidNoArgsFn } from "~/types";
 
 interface Props {

@@ -1,11 +1,9 @@
 import { SxProps } from "@mui/material";
 
 import Box from "~/components/general/box";
-
-import CircularProgress from "~/components/general/progress/CircularProgress";
 import { Input } from "~/components/general/input";
-
-import { VoidNoArgsFn, Style, ElementLabel } from "~/types";
+import CircularProgress from "~/components/general/progress/CircularProgress";
+import { ElementLabel, Style, VoidNoArgsFn } from "~/types";
 
 interface Props {
   disabled: boolean;

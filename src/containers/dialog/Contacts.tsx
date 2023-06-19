@@ -1,6 +1,5 @@
-import ContactsComponents from "~/components/dialog/contacts";
 import DialogTemplate from "~/components/dialog/Template";
-
+import ContactsComponents from "~/components/dialog/contacts";
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 import { stateStatics } from "~/store/stateStatics";

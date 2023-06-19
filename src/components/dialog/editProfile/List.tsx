@@ -4,7 +4,6 @@ import CallTwoTone from "@mui/icons-material/CallTwoTone";
 import SettingsAccessibilityTwoToneIcon from "@mui/icons-material/SettingsAccessibilityTwoTone";
 
 import ListItem from "~/components/dialog/editProfile/ListItem";
-
 import {
   EditProfileListItemOnClick,
   EditProfileListItemProps,

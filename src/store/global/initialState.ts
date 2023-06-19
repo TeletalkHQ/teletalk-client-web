@@ -1,5 +1,4 @@
 import { appConfigs } from "~/classes/AppConfigs";
-
 import { stateStatics } from "~/store/stateStatics";
 
 const defaultDialogStateItemProps = () => ({
