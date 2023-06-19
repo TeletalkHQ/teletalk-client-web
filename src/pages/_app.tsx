@@ -1,10 +1,12 @@
 import { EmotionCache } from "@emotion/react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { AppProps } from "next/app";
+import { useRouter } from "next/router";
 import { SnackbarProvider } from "notistack";
 import { useEffect } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
+import { websocket } from "~/classes/websocket/Websocket";
 import Layout from "~/components/layout";
 import { MainContext } from "~/context/MainContext";
 import MUIThemeProvider from "~/providers/MUIThemeProvider";
@@ -18,11 +20,29 @@ export interface CustomAppProps extends AppProps {
 const clientSideEmotionCache = createEmotionCache();
 
 export default function _app(props: CustomAppProps) {
+  const router = useRouter();
+
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
 
   useEffect(() => {
-    websocket.client.connect();
+    async function fn() {
+      await setClientId();
+
+      websocket.client.connect();
+
+      router.push("signIn");
+    }
+
+    fn();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const setClientId = async () => {
+    await fetch("http://localhost:8090/setClientId", {
+      method: "GET",
+      credentials: "include",
+    });
+  };
 
   return (
     <SnackbarProvider maxSnack={appConfigs.getConfigs().ui.maxNotification}>
