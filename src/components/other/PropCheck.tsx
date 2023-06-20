@@ -6,7 +6,7 @@ interface Props {
 }
 
 const PropCheck: React.FC<Props> = ({ children, childrenProps }) => {
-  logger.debug(childrenProps);
+  console.debug(childrenProps);
 
   return children(childrenProps);
 };

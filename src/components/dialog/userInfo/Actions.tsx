@@ -1,5 +1,4 @@
 import { Input } from "~/components/general/input";
-
 import { CommonOnClose } from "~/types";
 
 interface Props {

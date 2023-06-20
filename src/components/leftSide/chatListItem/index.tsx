@@ -1,8 +1,7 @@
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 
-import Avatar from "~/components/general/other/Avatar";
 import Box from "~/components/general/box";
-
+import Avatar from "~/components/general/other/Avatar";
 import { VoidNoArgsFn } from "~/types";
 
 import Lower from "./Lower";

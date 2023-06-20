@@ -2,152 +2,144 @@ import { customTypeof } from "custom-typeof";
 
 import { stuffStore } from "~/classes/StuffStore";
 import { validationChecker } from "~/classes/ValidationChecker";
-
 import { countries } from "~/data/countries";
-
 import { ErrorChecker, ErrorCheckerCollection } from "~/types";
-
-import { errors } from "~/variables/notification/error";
 
 const countryCodeErrorChecker: ErrorChecker = (
   validationResult,
   countryCode
 ) => {
-  const errorBuilder = validationChecker(validationResult, "countryCode", {
+  if (validationResult === true) {
+    const country = countries.find((c) => c.countryCode === countryCode);
+    if (customTypeof.isUndefined(country))
+      throw stuffStore.errors.countryCodeNotSupported;
+  }
+
+  const errorChecker = validationChecker(validationResult, {
     extraErrorFields: {
       validatedCountryCode: countryCode,
     },
   });
-  errorBuilder
-    .stringEmpty()
-    .required()
-    .string()
-    .stringNumeric()
-    .stringMin()
-    .stringMax()
-    .throwAnyway(errors.isNotACallback)
-    .execute();
+
+  errorChecker.check(function () {
+    this.stringEmpty()
+      .required()
+      .string()
+      .stringMin()
+      .stringMax()
+      .stringNumeric()
+      .throwAnyway();
+  });
 };
 
 const countryNameErrorChecker: ErrorChecker = (
   validationResult,
   countryName
 ) => {
-  const { countryNameNotSupported } = stuffStore.errors;
+  if (validationResult === true) {
+    const country = countries.find((c) => c.countryName === countryName);
+    if (customTypeof.isUndefined(country))
+      throw stuffStore.errors.countryNameNotSupported;
+  }
 
-  const errorBuilder = validationChecker(validationResult, "countryName", {
+  const errorChecker = validationChecker(validationResult, {
     extraErrorFields: {
       validatedCountryName: countryName,
     },
   });
 
-  if (validationResult === true) {
-    const country = countries.find((c) => c.countryName === countryName);
-
-    errorBuilder.addErrorChecker(
-      customTypeof.isUndefined(country),
-      countryNameNotSupported
-    );
-  }
-
-  errorBuilder
-    .required()
-    .stringEmpty()
-    .string()
-    .stringMax()
-    .stringMin()
-    .throwAnyway(errors.isNotACallback)
-    .execute();
+  errorChecker.check(function () {
+    this.required()
+      .stringEmpty()
+      .string()
+      .stringMax()
+      .stringMin()
+      .throwAnyway();
+  });
 };
 
 const firstNameErrorChecker: ErrorChecker = (validationResult, firstName) => {
-  validationChecker(validationResult, "firstName", {
+  validationChecker(validationResult, {
     extraErrorFields: {
       validatedFirstName: firstName,
     },
-  })
-    .required()
-    .stringEmpty()
-    .string()
-    .stringMin()
-    .stringMax()
-    .execute();
+  }).check(function () {
+    this.required().stringEmpty().string().stringMin().stringMax();
+  });
 };
 
 const lastNameErrorChecker: ErrorChecker = (validationResult, lastName) => {
-  validationChecker(validationResult, "lastName", {
+  validationChecker(validationResult, {
     extraErrorFields: { validatedLastName: lastName },
-  })
-    .string()
-    .stringMax()
-    .throwAnyway(errors.isNotACallback)
-    .execute();
+  }).check(function () {
+    this.string().stringMax().throwAnyway();
+  });
 };
 
 const phoneNumberErrorChecker: ErrorChecker = (
   validationResult,
   phoneNumber
 ) => {
-  validationChecker(validationResult, "phoneNumber", {
+  validationChecker(validationResult, {
     extraErrorFields: {
       validatedPhoneNumber: phoneNumber,
     },
-  })
-    .required()
-    .stringEmpty()
-    .string()
-    .stringMax()
-    .stringMin()
-    .stringNumeric()
-    .throwAnyway(errors.isNotACallback)
-    .execute();
+  }).check(function () {
+    this.required()
+      .stringEmpty()
+      .string()
+      .stringMax()
+      .stringMin()
+      .stringNumeric()
+      .throwAnyway();
+  });
 };
 
 const userIdErrorChecker: ErrorChecker = (validationResult, userId) => {
-  validationChecker(validationResult, "userId", {
+  validationChecker(validationResult, {
     extraErrorFields: {
       validatedUserId: userId,
     },
-  })
-    .required()
-    .stringEmpty()
-    .string()
-    .stringMin()
-    .stringMax()
-    .throwAnyway(errors.isNotACallback)
-    .execute();
+  }).check(function () {
+    this.required()
+      .stringEmpty()
+      .string()
+      .stringMin()
+      .stringMax()
+      .throwAnyway();
+  });
 };
 
 const usernameErrorChecker: ErrorChecker = (validationResult, username) => {
-  validationChecker(validationResult, "username", {
+  validationChecker(validationResult, {
     extraErrorFields: { validatedUsername: username },
-  })
-    .required()
-    .stringEmpty()
-    .string()
-    .stringMin()
-    .stringMax()
-    .throwAnyway(errors.isNotACallback)
-    .execute();
+  }).check(function () {
+    this.required()
+      .stringEmpty()
+      .string()
+      .stringMin()
+      .stringMax()
+      .throwAnyway();
+  });
 };
 
 const verificationCodeErrorChecker: ErrorChecker = (
   validationResult,
   verificationCode
 ) => {
-  validationChecker(validationResult, "verificationCode", {
+  validationChecker(validationResult, {
     extraErrorFields: {
       validatedVerificationCode: verificationCode,
     },
-  })
-    .required()
-    .stringEmpty()
-    .string()
-    .stringMax()
-    .stringLength()
-    .stringNumeric()
-    .throwAnyway(errors.isNotACallback)
-    .execute();
+  }).check(function () {
+    this.required()
+      .stringEmpty()
+      .string()
+      .stringMax()
+      .stringLength()
+      .stringNumeric()
+      .throwAnyway();
+  });
 };
 
 const errorCheckerCollection: ErrorCheckerCollection = {

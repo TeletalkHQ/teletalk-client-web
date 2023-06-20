@@ -1,5 +1,4 @@
 import { validatorManager } from "~/classes/validator/ValidatorManager";
-
 import { ValidatorName } from "~/types";
 
 export const createInputValidator =

@@ -2,9 +2,7 @@ import lodash from "lodash";
 import { errorThrower } from "utility-store";
 
 import { apiHandler } from "~/classes/api/ApiHandler";
-
 import { utilities } from "~/utilities";
-
 import { variables } from "~/variables";
 
 class ApiBuilder {

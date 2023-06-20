@@ -1,7 +1,6 @@
-import ListItemIcon from "~/components/general/other/ListItemIcon";
 import Box from "~/components/general/box";
+import ListItemIcon from "~/components/general/other/ListItemIcon";
 import { Icons } from "~/components/other/Icons";
-
 import { ElementName, HTMLDivMouseEvent } from "~/types";
 
 const drawerList = [

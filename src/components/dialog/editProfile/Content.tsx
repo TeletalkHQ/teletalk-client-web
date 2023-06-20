@@ -1,13 +1,10 @@
-import { userUtilities } from "~/classes/UserUtilities";
-
+import { userUtils } from "~/classes/UserUtils";
 import Header from "~/components/dialog/editProfile/Header";
 import List from "~/components/dialog/editProfile/List";
-
 import {
   EditProfileListItemOnClick,
   Profile,
 } from "~/components/dialog/editProfile/types";
-
 import Box from "~/components/general/box";
 
 interface Props {
@@ -16,8 +13,8 @@ interface Props {
 }
 
 const EditProfileContent: React.FC<Props> = ({ onClick, profile }) => {
-  const fullName = userUtilities.concatFirstNameWithLastName(profile);
-  const fullNumber = userUtilities.concatCountryCodeWithPhoneNumber(profile);
+  const fullName = userUtils.concatFirstNameWithLastName(profile);
+  const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(profile);
 
   return (
     <>

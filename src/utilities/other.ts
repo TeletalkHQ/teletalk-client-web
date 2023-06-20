@@ -1,19 +1,13 @@
 import { customTypeof } from "custom-typeof";
 
+import { CountryItem } from "~/types";
+
 const checkErrorCodeIsConnAborted = (errorCode: string) =>
   errorCode === "ECONNABORTED";
 
 const printCatchError = (error: Error, functionName: string) => {
-  logger.error(`${functionName} catch, error: `);
-  logger.error(error);
-};
-
-const fixErrorBuilderErrors = (error: Error, extraData = {}) => {
-  const { errorKey, ...rest } = error;
-
-  return {
-    [errorKey]: { ...rest, ...extraData },
-  };
+  console.error(`${functionName} catch, error: `);
+  console.error(error);
 };
 
 const makeNonBreakSpace = (length: number) =>
@@ -26,19 +20,12 @@ const isIos = () => {
   );
 };
 
-const isCountrySelected = (selectedCountry) => {
-  const country = selectedCountry;
-
-  return !!(
-    country?.countryCode &&
-    country?.countryName &&
-    country?.countryShortName
-  );
+const isCountrySelected = (c: CountryItem | null) => {
+  return !!(c?.countryCode && c?.countryName && c?.countryShortName);
 };
 
 const otherUtilities = {
   checkErrorCodeIsConnAborted,
-  fixErrorBuilderErrors,
   isCountrySelected,
   isIos,
   makeNonBreakSpace,

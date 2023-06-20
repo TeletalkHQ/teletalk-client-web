@@ -1,6 +1,5 @@
-import Avatar from "~/components/general/other/Avatar";
 import Box from "~/components/general/box";
-
+import Avatar from "~/components/general/other/Avatar";
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {

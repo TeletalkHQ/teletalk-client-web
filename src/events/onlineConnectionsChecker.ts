@@ -1,5 +1,4 @@
 import { windowUtilities } from "~/classes/WindowUtilities";
-
 import { actions } from "~/store/actions";
 
 const onlineStatusOnChangeEvent = (dispatch) => {
