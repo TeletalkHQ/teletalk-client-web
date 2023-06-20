@@ -3,41 +3,41 @@ import { AuthHandlers, AuthSetState } from "~/types";
 export const handlers = (set: AuthSetState) =>
   ({
     updateCountryCode(countryCode) {
-      return set({
+      set({
         countryCode,
       });
     },
     updateAuthenticationProgress(authenticationProgress) {
-      return set({
+      set({
         authenticationProgress,
       });
     },
     updateCountryName(countryName) {
-      return set({
+      set({
         countryName,
       });
     },
     updatePhoneNumber(phoneNumber) {
-      return set({
+      set({
         phoneNumber,
       });
     },
     updateVerificationCode(verificationCode) {
-      return set({
+      set({
         verificationCode,
       });
     },
     updateFirstName(firstName) {
-      return set({
+      set({
         firstName,
       });
     },
     updateLastName(lastName) {
-      return set({
+      set({
         lastName,
       });
     },
     updateSelectedCountry(selectedCountry) {
-      return set({ selectedCountry });
+      set({ selectedCountry });
     },
   } as AuthHandlers);

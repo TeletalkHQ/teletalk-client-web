@@ -10,12 +10,20 @@ import { stateStatics } from "~/store/stateStatics";
 const Messenger = () => {
   useEffect(() => {
     const fn = async () => {
-      websocket.client.connect();
       //TODO: Update in/out events with events from server
-      websocket.client.emit("joinRoom");
+      socketEmitterStore.events.joinRoom.emit();
 
-      if (state.global.viewMode === stateStatics.VIEW_MODES.MESSENGER)
-        dispatch(controllers.getPrivateChats());
+      dispatch(controllers.getPrivateChats());
+
+      socketEmitterStore.events.getUserData.emitFull({}, async () => {
+        //TODO: Update user data
+        //TODO: Update users with contacts
+        // const fixContacts = (contacts) =>
+        //   contacts.map((item) => ({
+        //     ...item,
+        //     isContact: true,
+        //   }));
+      });
 
       websocket.client.on("newPrivateChatMessage", (data) => {
         dispatch(controllers.newPrivateChatMessage(data));
@@ -23,8 +31,6 @@ const Messenger = () => {
     };
 
     fn();
-
-    return () => websocket.client.disconnect();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -36,8 +42,8 @@ const Messenger = () => {
         height: "100vh",
       }}
     >
-      <LeftSide />
-      <RightSide />
+      {/* <LeftSide />
+      <RightSide /> */}
     </Box.Grid>
   );
 };
