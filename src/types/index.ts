@@ -191,6 +191,8 @@ export interface NativeModel {
 
 export type NativeModelKey = keyof NativeModel;
 
+export type Id = string;
+
 export type * from "./store";
 export type * from "./models";
 export type * from "./components";
