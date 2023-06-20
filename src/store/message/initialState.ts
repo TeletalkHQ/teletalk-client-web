@@ -1,9 +1,7 @@
-const initialMessageState = () => ({
+export const initialState = {
   privateChats: [],
   selectedChat: {
     id: "",
     type: "",
   },
-});
-
-export { initialMessageState };
+};

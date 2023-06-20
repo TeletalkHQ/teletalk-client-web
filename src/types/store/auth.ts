@@ -1,12 +1,4 @@
-import { CountryItem } from "..";
-
-export type StoreSetFn<StoreType> = (
-  partial:
-    | StoreType
-    | Partial<StoreType>
-    | ((state: StoreType) => StoreType | Partial<StoreType>),
-  replace?: boolean | undefined
-) => void;
+import { CountryItem, StoreSetFn } from "..";
 
 export interface AuthHandlers {
   updateAuthenticationProgress: (value: boolean) => void;
