@@ -1,4 +1,4 @@
-const initialUserState = () => ({
+const initialState = {
   bio: "",
   blacklist: [],
   countryCode: "",
@@ -8,6 +8,6 @@ const initialUserState = () => ({
   phoneNumber: "",
   userId: "",
   username: "",
-});
+};
 
-export { initialUserState };
+export { initialState };

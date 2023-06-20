@@ -22,12 +22,23 @@ export const handlers = (set: GlobalSetState) =>
       });
     },
 
-    changeGlobalLoadingOpen(open) {
+    openGlobalLoading() {
       set((prevState) => {
         return {
           globalLoading: {
             ...prevState.globalLoading,
-            open,
+            open: true,
+          },
+        };
+      });
+    },
+
+    closeGlobalLoading() {
+      set((prevState) => {
+        return {
+          globalLoading: {
+            ...prevState.globalLoading,
+            open: false,
           },
         };
       });
@@ -63,5 +74,29 @@ export const handlers = (set: GlobalSetState) =>
       set({
         isOnline,
       });
+    },
+
+    openDialog(dialogName, props) {
+      set((prevState) => ({
+        dialogState: {
+          ...prevState.dialogState,
+          [dialogName]: {
+            open: true,
+            props,
+          },
+        },
+      }));
+    },
+
+    closeDialog(dialogName, props) {
+      set((prevState) => ({
+        dialogState: {
+          ...prevState.dialogState,
+          [dialogName]: {
+            open: false,
+            props,
+          },
+        },
+      }));
     },
   } as GlobalHandlers);
