@@ -17,12 +17,13 @@ export type DialogName =
   | "settings"
   | "userInfo";
 
+export interface DialogProps {
+  zIndex: number;
+}
+
 export interface DialogState {
   open: boolean;
-  //TODO: read default value from mui
-  props: {
-    zIndex: number;
-  };
+  props: DialogProps;
 }
 
 export type ContactItem = Cellphone & FullName;
@@ -37,10 +38,12 @@ export interface GlobalHandlers {
   addUserWithContact: (c: ContactItem) => void;
   addUser: (u: UserItem) => void;
   setUsers: (u: Users) => void;
-  changeGlobalLoadingOpen: (o: boolean) => void;
+  openGlobalLoading: () => void;
   changeDrawerOpen: (o: boolean) => void;
   updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
   updateOnlineStatus: (isOnline: boolean) => void;
+  openDialog: (dialogName: DialogName, props: DialogProps) => void;
+  closeDialog: (dialogName: DialogName, props: DialogProps) => void;
 }
 
 export interface GlobalState {
