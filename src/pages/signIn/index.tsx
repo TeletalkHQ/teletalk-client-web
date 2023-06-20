@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 
 import { commonTasks } from "~/classes/CommonTasks";
-import { websocket } from "~/classes/websocket/Websocket";
 import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
@@ -12,7 +11,7 @@ import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
 import { countries } from "~/data/countries";
 import { createInputValidator } from "~/helpers/createInputValidator";
-import { useAuthStore } from "~/store/zustand";
+import { useAuthStore } from "~/store";
 import { CountryItem } from "~/types";
 import { utilities } from "~/utilities";
 
@@ -20,15 +19,17 @@ const SignIn = () => {
   const state = useAuthStore();
   const router = useRouter();
 
-  const handleSignInClick = () => {
-    websocket.client.emit(
-      "signIn",
+  const handleSignInClick = async () => {
+    state.updateAuthenticationProgress(true);
+
+    socketEmitterStore.events.signIn.emitFull(
       {
         countryCode: state.countryCode,
         countryName: state.countryName,
         phoneNumber: state.phoneNumber,
       },
-      () => {
+      async () => {
+        state.updateAuthenticationProgress(false);
         router.push("verify");
       }
     );

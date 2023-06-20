@@ -49,7 +49,6 @@ const initialGlobalState = () => ({
     ping: 0,
   },
   users: [],
-  viewMode: stateStatics.VIEW_MODES.INITIAL_SETUP,
 });
 
 export { initialGlobalState, defaultDialogStateItemProps };
