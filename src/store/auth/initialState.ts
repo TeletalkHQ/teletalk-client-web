@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   authenticationProgress: false,
   countryCode: "",
   countryName: "",
@@ -8,5 +8,3 @@ const initialState = {
   selectedCountry: null,
   verificationCode: "",
 };
-
-export { initialState };

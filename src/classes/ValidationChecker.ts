@@ -169,13 +169,13 @@ class ValidationChecker {
   }
 
   private extractNativeErrorsFromValidationResult() {
-    return this.validationResult.reduce((prev, curr) => {
+    return (this.validationResult as ValidationErrors).reduce((prev, curr) => {
       prev.push({
         ...errors[curr.message],
         ...this.getOptions().extraErrorFields,
       });
       return prev;
-    }, []);
+    }, [] as ValidationErrors[]);
   }
 
   checkOccurredErrors = (errors: ValidationErrors) => {
