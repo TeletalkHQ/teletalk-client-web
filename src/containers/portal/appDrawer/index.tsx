@@ -1,6 +1,6 @@
 import { Divider, SwipeableDrawer } from "@mui/material";
 
-import { userUtilities } from "~/classes/UserUtilities";
+import { userUtils } from "~/classes/UserUtils";
 import Box from "~/components/general/box";
 import DrawerList from "~/components/portal/appDrawer/DrawerList";
 import PersonalData from "~/components/portal/appDrawer/PersonalData";
@@ -24,8 +24,8 @@ const AppDrawer = () => {
     dispatch(commonActions.openDialog(elementName));
   };
 
-  const fullName = userUtilities.concatFirstNameWithLastName(state.user);
-  const fullNumber = userUtilities.concatCountryCodeWithPhoneNumber(state.user);
+  const fullName = userUtils.concatFirstNameWithLastName(state.user);
+  const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(state.user);
 
   return (
     <SwipeableDrawer

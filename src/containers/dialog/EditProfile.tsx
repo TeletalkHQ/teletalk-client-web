@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { userUtilities } from "~/classes/UserUtilities";
+import { userUtils } from "~/classes/UserUtils";
 import DialogTemplate from "~/components/dialog/Template";
 import EditProfileComponents from "~/components/dialog/editProfile";
 import { actions } from "~/store/actions";
@@ -12,8 +12,8 @@ const EditProfile = ({ onDialogClose }) => {
       dispatch(
         actions.updateProfile({
           profile: {
-            ...userUtilities.extractCellphone(state.user),
-            ...userUtilities.extractFullName(state.user),
+            ...userUtils.extractCellphone(state.user),
+            ...userUtils.extractFullName(state.user),
             bio: state.user.bio,
             username: state.user.username,
           },
