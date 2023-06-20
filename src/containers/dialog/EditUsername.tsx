@@ -1,10 +1,7 @@
 import { stuffStore } from "~/classes/StuffStore";
-
 import DialogTemplate from "~/components/dialog/Template";
 import EditUsernameComponents from "~/components/dialog/editUsername";
-
 import { controllers } from "~/controllers";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 

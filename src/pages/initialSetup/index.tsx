@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 
 import Box from "~/components/general/box";
-
 import FullPageLoading from "~/components/portal/FullPageLoading";
-
 import { controllers } from "~/controllers";
 
 const InitialSetup = () => {

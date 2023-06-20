@@ -1,9 +1,7 @@
 import Box from "~/components/general/box";
-
 import { Input } from "~/components/general/input";
 import InputAdornment from "~/components/general/other/InputAdornment";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
-
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {

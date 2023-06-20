@@ -1,9 +1,7 @@
 import { stuffStore } from "~/classes/StuffStore";
-import EditBioComponents from "~/components/dialog/editBio";
-
 import DialogTemplate from "~/components/dialog/Template";
+import EditBioComponents from "~/components/dialog/editBio";
 import { controllers } from "~/controllers";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 

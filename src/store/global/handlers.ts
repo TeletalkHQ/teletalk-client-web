@@ -1,93 +1,104 @@
-import { initialGlobalState } from "~/store/global/initialState";
+import { GlobalHandlers, GlobalSetState } from "~/types";
 
-const handleAddNewContact = (payload, prevState) => {
-  return {
-    users: [...prevState.users, { ...payload.newContact, isContact: true }],
-  };
-};
+import { defaultDialogState } from "./initialState";
 
-const handleAddNewUser = (payload, prevState) => {
-  return { users: [...prevState.users, payload.user] };
-};
-
-const handleAddUsers = (payload, prevState) => {
-  return { users: [...prevState.users, ...payload.users] };
-};
-
-const handleGlobalLoadingStateOpenChange = (payload, prevState) => {
-  return {
-    globalLoading: {
-      ...prevState.globalLoading,
-      open: payload.open,
+export const handlers = (set: GlobalSetState) =>
+  ({
+    addUserWithContact(c) {
+      set((prevState) => {
+        return {
+          users: [...prevState.users, { ...c, isContact: true }],
+        };
+      });
     },
-  };
-};
 
-const handleAppDrawerStateOpenChange = (payload, prevState) => {
-  return {
-    appDrawer: {
-      ...prevState.appDrawer,
-      anchor: {
-        ...prevState.appDrawer.anchor,
-        [prevState.appDrawer.currentAnchor]: payload.open,
-      },
+    addUser(user) {
+      set((prevState) => {
+        return { users: [...prevState.users, user] };
+      });
     },
-  };
-};
 
-const handleDialogOpenChange = (payload, prevState) => ({
-  dialogState: {
-    ...prevState.dialogState,
-    [payload.dialogName]: {
-      ...prevState.dialogState[payload.dialogName],
-      open: payload.open,
-      props: payload.props,
+    setUsers(users) {
+      set((prevState) => {
+        return { users: [...prevState.users, ...users] };
+      });
     },
-  },
-});
 
-const handleOnlineStatusStateChange = (payload, prevState) => ({
-  onlineStatus: {
-    ...prevState.onlineStatus,
-    ...payload,
-  },
-});
+    openGlobalLoading() {
+      set((prevState) => {
+        return {
+          globalLoading: {
+            ...prevState.globalLoading,
+            open: true,
+          },
+        };
+      });
+    },
 
-const handleAppProgressionChange = (payload, prevState) => ({
-  appProgressions: {
-    ...prevState.appProgressions,
-    ...payload,
-  },
-});
+    closeGlobalLoading() {
+      set((prevState) => {
+        return {
+          globalLoading: {
+            ...prevState.globalLoading,
+            open: false,
+          },
+        };
+      });
+    },
 
-const handleResetGlobalState = () => {
-  const { initialSetupDetails, ...state } = initialGlobalState();
-  return state;
-};
+    changeDrawerOpen(open) {
+      set((prevState) => {
+        return {
+          drawer: {
+            ...prevState.drawer,
+            open,
+          },
+        };
+      });
+    },
 
-const handleUpdateViewMode = (payload) => ({
-  viewMode: payload.viewMode,
-});
+    updateDialog(payload) {
+      set((prevState) => {
+        return {
+          dialogState: {
+            ...prevState.dialogState,
+            [payload.dialogName]: {
+              ...prevState.dialogState[payload.dialogName],
+              open: payload.open,
+              props: payload.props,
+            },
+          },
+        };
+      });
+    },
 
-const changeInitialSetupStatus = (payload, prevState) => ({
-  initialSetupDetails: {
-    ...prevState.initialSetupDetails,
-    status: payload.status,
-  },
-});
+    updateOnlineStatus(isOnline) {
+      set({
+        isOnline,
+      });
+    },
 
-const globalReducerHandlers = {
-  changeInitialSetupStatus,
-  handleAddNewContact,
-  handleAddNewUser,
-  handleAddUsers,
-  handleAppDrawerStateOpenChange,
-  handleAppProgressionChange,
-  handleDialogOpenChange,
-  handleGlobalLoadingStateOpenChange,
-  handleOnlineStatusStateChange,
-  handleResetGlobalState,
-  handleUpdateViewMode,
-};
+    openDialog(dialogName, props = defaultDialogState.props) {
+      set((prevState) => ({
+        dialogState: {
+          ...prevState.dialogState,
+          [dialogName]: {
+            open: true,
+            props,
+          },
+        },
+      }));
+    },
 
-export { globalReducerHandlers };
+    closeDialog(dialogName, props = defaultDialogState.props) {
+      set((prevState) => ({
+        dialogState: {
+          ...prevState.dialogState,
+          [dialogName]: {
+            open: false,
+            props,
+          },
+        },
+      }));
+    },
+  } as GlobalHandlers);

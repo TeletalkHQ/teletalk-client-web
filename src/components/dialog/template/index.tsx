@@ -1,29 +1,26 @@
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { customTypeof } from "custom-typeof";
 
-import { useTheme } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
-
 import { appConfigs } from "~/classes/AppConfigs";
-
 import Dialog from "~/components/dialog/template/Dialog";
 import DialogActions from "~/components/dialog/template/DialogActions";
 import DialogContent from "~/components/dialog/template/DialogContent";
 import DialogTitle from "~/components/dialog/template/DialogTitle";
 import { Transitions } from "~/components/other/Transitions";
-
 import { Style, TransitionName, VoidNoArgsFn } from "~/types";
 
 interface Props {
   actions: JSX.Element;
   content: JSX.Element;
-  dialogStyle: Style;
+  dialogStyle?: Style;
   onClose: VoidNoArgsFn;
-  onKeyDown: VoidNoArgsFn;
+  onKeyDown?: VoidNoArgsFn;
   open: boolean;
   paperStyle: Style;
-  title: string;
-  transition: TransitionName;
-  transitionDuration: number;
+  title: string | JSX.Element;
+  transition?: TransitionName;
+  transitionDuration?: number;
 }
 
 const DialogTemplate: React.FC<Props> = ({
@@ -35,7 +32,7 @@ const DialogTemplate: React.FC<Props> = ({
   open,
   paperStyle,
   title,
-  transition,
+  transition = appConfigs.getConfigs().ui.dialogDefaultTransition,
   transitionDuration,
 }) => {
   const theme = useTheme();

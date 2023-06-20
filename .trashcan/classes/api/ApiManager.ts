@@ -1,8 +1,7 @@
 import { transformers } from "~/api/transformers";
-
+import { stuffStore } from "~/classes/StuffStore";
 import { apiBuilder } from "~/classes/api/ApiBuilder";
 import { apiHandler } from "~/classes/api/ApiHandler";
-import { stuffStore } from "~/classes/StuffStore";
 
 class ApiManager {
   #apiTemplate = apiHandler.create({});

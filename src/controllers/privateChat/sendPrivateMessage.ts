@@ -1,7 +1,6 @@
 import { trier } from "simple-trier";
 
 import { websocket } from "~/classes/websocket/Websocket";
-
 import { store } from "~/store/store";
 
 const sendPrivateMessage = () => {

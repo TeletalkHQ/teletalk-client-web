@@ -1,3 +1,5 @@
+import createEmotionServer from "@emotion/server/create-instance";
+import { useTheme } from "@mui/material";
 import { AppType } from "next/app";
 import Document, {
   DocumentContext,
@@ -8,11 +10,7 @@ import Document, {
   NextScript,
 } from "next/document";
 
-import createEmotionServer from "@emotion/server/create-instance";
-import { useTheme } from "@mui/material";
-
 import { CustomAppProps } from "~/pages/_app";
-
 import createEmotionCache from "~/styles/createEmotionCache";
 
 interface MyDocumentProps extends DocumentProps {

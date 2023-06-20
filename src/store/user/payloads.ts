@@ -1,6 +1,5 @@
-import { USER_ACTION_TYPES } from "~/store/user/types";
-
 import { fields } from "~/store/fields";
+import { USER_ACTION_TYPES } from "~/store/user/types";
 
 const userActionPayloads = {
   [USER_ACTION_TYPES.RESET_USER_STATE]: undefined,

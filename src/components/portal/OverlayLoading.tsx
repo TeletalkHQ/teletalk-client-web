@@ -1,6 +1,5 @@
 import Backdrop from "~/components/general/other/Backdrop";
 import CircularProgress from "~/components/general/progress/CircularProgress";
-
 import { LoadingState, VoidNoArgsFn } from "~/types";
 
 interface Props {

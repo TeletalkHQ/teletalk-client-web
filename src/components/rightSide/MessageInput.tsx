@@ -1,7 +1,6 @@
 import Box from "~/components/general/box";
-
-import IconButton from "~/components/general/other/IconButton";
 import { Input } from "~/components/general/input";
+import IconButton from "~/components/general/other/IconButton";
 import { Icons } from "~/components/other/Icons";
 
 const MessageInput = ({
@@ -44,7 +43,7 @@ const MessageInput = ({
             <>
               <IconButton
                 onClick={() => {
-                  logger.debug("Mic clicked");
+                  console.debug("Mic clicked");
                 }}
               >
                 <Icons.MicNone.Icon />

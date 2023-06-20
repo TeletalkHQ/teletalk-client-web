@@ -7,8 +7,6 @@ const PingPong = () => {
   const [lastPong, setLastPong] = useState(null);
 
   useEffect(() => {
-    websocket.client.connect();
-
     websocket.client.on("connect", () => {
       setIsConnected(true);
     });

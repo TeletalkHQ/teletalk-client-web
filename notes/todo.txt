@@ -3,12 +3,8 @@ Wrap external/builtin components to general components
 Add server-side translation
 Add validators to auth components
 Add Class for completed tasks logs
-Read state from useSelector instead of useMyContext
-Do not destructure state;
-If it receives a 404 response request, the program will crash
-Update try|catch with Trier
-Review reducer handlers
-Replace withValidator hoc with custom hook
-Separate controllers
 index general components
 index mui icons
+rename utilities to utils
+
+Reset auth state after verify|create
