@@ -11,6 +11,8 @@ import { Transitions } from "~/components/other/Transitions";
 import { countries } from "~/data/countries";
 import { stuff } from "~/data/stuff";
 
+import { DrawerAnchor } from "./store/global";
+
 export type CountryItem = (typeof countries)[number];
 export type CountryName = CountryItem["countryName"];
 export type CountryCode = CountryItem["countryCode"];
@@ -41,12 +43,10 @@ export interface Cellphone {
   phoneNumber: string;
 }
 
-export type AppDrawerAnchor = "bottom" | "left" | "right" | "top";
-
 export type TransitionName = keyof typeof Transitions;
 
 export interface UiConfig {
-  appDrawerCurrentAnchor: AppDrawerAnchor;
+  drawerDefaultAnchor: DrawerAnchor;
   dialogDefaultTransition: TransitionName;
   maxNotification: number;
 }
@@ -193,6 +193,10 @@ export type NativeModelKey = keyof NativeModel;
 
 export type Id = string;
 
+//
+//
+
+//
 export type * from "./store";
 export type * from "./models";
 export type * from "./components";

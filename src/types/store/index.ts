@@ -7,4 +7,5 @@ export type StoreSetFn<StoreType> = (
 ) => void;
 
 export * from "./auth";
+export * from "./global";
 export * from "./message";
