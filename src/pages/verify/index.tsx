@@ -45,6 +45,7 @@ const Verify = () => {
         verificationCode: state.verificationCode,
       },
       async ({ data: { newUser } }) => {
+        state.updateVerificationCode("");
         state.updateAuthenticationProgress(false);
 
         if (newUser) router.replace("create");
