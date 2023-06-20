@@ -1,5 +1,4 @@
 import { NotificationManager } from "~/classes/NotificationManager";
-
 import { variables } from "~/variables";
 
 class CommonNotificationManager extends NotificationManager {

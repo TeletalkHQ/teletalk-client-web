@@ -1,38 +1,29 @@
 import { appConfigs } from "~/classes/AppConfigs";
+import { GlobalState } from "~/types";
 
-import { stateStatics } from "~/store/stateStatics";
-
-const defaultDialogStateItemProps = () => ({
+const defaultDialogState = {
   open: false,
   //TODO: read default value from mui
   props: {
     zIndex: 1300,
   },
-});
+};
 
-const initialGlobalState = () => ({
-  appDrawer: {
-    anchor: {
-      bottom: false,
-      left: false,
-      right: false,
-      top: false,
-    },
-    currentAnchor: appConfigs.getConfigs().ui.appDrawerCurrentAnchor,
-  },
-  appProgressions: {
-    authenticationProgress: false,
+const initialState: GlobalState = {
+  drawer: {
+    anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
+    open: false,
   },
   dialogState: {
-    addContact: defaultDialogStateItemProps(),
-    contacts: defaultDialogStateItemProps(),
-    editBio: defaultDialogStateItemProps(),
-    editFullName: defaultDialogStateItemProps(),
-    editProfile: defaultDialogStateItemProps(),
-    editUsername: defaultDialogStateItemProps(),
-    logout: defaultDialogStateItemProps(),
-    settings: defaultDialogStateItemProps(),
-    userInfo: defaultDialogStateItemProps(),
+    addContact: defaultDialogState,
+    contacts: defaultDialogState,
+    editBio: defaultDialogState,
+    editFullName: defaultDialogState,
+    editProfile: defaultDialogState,
+    editUsername: defaultDialogState,
+    logout: defaultDialogState,
+    settings: defaultDialogState,
+    userInfo: defaultDialogState,
   },
   globalLoading: {
     color: "blue",
@@ -40,17 +31,10 @@ const initialGlobalState = () => ({
     progressColor: "inherit",
     size: 80,
     speedMultiplier: 1,
-    type: stateStatics.GLOBAL_LOADING_TYPES.FULL_PAGE,
+    type: "FULL_PAGE",
   },
-  initialSetupDetails: {
-    status: stateStatics.INITIAL_SETUP_STATUS.NEVER,
-  },
-  onlineStatus: {
-    isOnline: false,
-    ping: 0,
-  },
+  isOnline: false,
   users: [],
-  viewMode: stateStatics.VIEW_MODES.INITIAL_SETUP,
-});
+};
 
-export { initialGlobalState, defaultDialogStateItemProps };
+export { initialState, defaultDialogState };

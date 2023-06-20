@@ -1,8 +1,6 @@
 import DialogTemplate from "~/components/dialog/Template";
 import EditFullNameComponents from "~/components/dialog/editFullName";
-
 import { controllers } from "~/controllers";
-
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 

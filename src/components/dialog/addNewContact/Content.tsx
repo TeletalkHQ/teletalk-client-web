@@ -1,18 +1,20 @@
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
-
-import { CountryItem, CountryName, FullContact, VoidNoArgsFn } from "~/types";
+import {
+  CountrySelectInputChange,
+  OnCountryNameInputChange,
+} from "~/components/general/input/common/countrySelector";
+import { CommonOnChange, ContactItem, CountryItem } from "~/types";
 
 interface Props {
-  contact: FullContact;
-  countryName: CountryName;
-  onCountryCodeInputChange: VoidNoArgsFn;
-  onCountryNameInputChange: VoidNoArgsFn;
-  onInputChange: VoidNoArgsFn;
-  onSelectedCountryChange: VoidNoArgsFn;
-  selectedCountry: CountryItem;
+  contact: ContactItem;
+  countryName: string;
+  onCountryCodeInputChange: CommonOnChange;
+  onCountryNameInputChange: OnCountryNameInputChange;
+  onInputChange: CommonOnChange;
+  onSelectedCountryChange: CountrySelectInputChange;
+  selectedCountry: CountryItem | null;
 }
-
 const AddNewContactContent: React.FC<Props> = ({
   contact,
   countryName,

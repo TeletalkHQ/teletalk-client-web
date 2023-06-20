@@ -1,63 +1,52 @@
-const handleUpdateAllPrivateChats = (payload) => {
-  return {
-    privateChats: payload.privateChats,
-  };
-};
+import { MessageHandlers, MessageSetState } from "~/types";
 
-// const handleUpdateOnePrivateChat = (payload, prevState) => {
-//   return {
-//     privateChats: [...prevState.privateChats, payload],
-//   };
-// };
-
-const handleCloseRightSide = () => {
-  return {
-    selectedChat: {
-      id: "",
-      type: "",
+export const handlers = (set: MessageSetState) =>
+  ({
+    setPrivateChats(privateChats) {
+      set({
+        privateChats,
+      });
     },
-  };
-};
 
-const handleAddNewMessage = (payload, prevState) => {
-  const { chatId, newMessage } = payload;
-
-  const copyPrivateChats = [...prevState.privateChats];
-  const index = copyPrivateChats.findIndex((item) => item.chatId === chatId);
-  const chat = copyPrivateChats[index];
-  const newChat = {
-    ...chat,
-    messages: [...chat.messages, newMessage],
-  };
-
-  copyPrivateChats.splice(index, 1, newChat);
-  return {
-    privateChats: copyPrivateChats,
-  };
-};
-
-const handleSetSelectedChat = (payload) => {
-  return {
-    selectedChat: {
-      type: payload.type,
-      id: payload.id,
+    closeRightSide() {
+      set({
+        selectedChat: {
+          id: "",
+        },
+      });
     },
-  };
-};
 
-const handleCreateNewPrivateChat = (payload, prevState) => {
-  return {
-    privateChats: [...prevState.privateChats, payload.privateChat],
-  };
-};
+    addMessage(payload) {
+      set((prevState) => {
+        const { chatId, addedMessage } = payload;
+        const copyPrivateChats = [...prevState.privateChats];
+        const index = copyPrivateChats.findIndex(
+          (item) => item.chatId === chatId
+        );
+        const chat = copyPrivateChats[index];
+        const newChat = {
+          ...chat,
+          messages: [...chat.messages, addedMessage],
+        };
 
-const messageReducerHandlers = {
-  handleAddNewMessage,
-  handleCloseRightSide,
-  handleCreateNewPrivateChat,
-  handleSetSelectedChat,
-  handleUpdateAllPrivateChats,
-  // handleUpdateOnePrivateChat,
-};
+        copyPrivateChats.splice(index, 1, newChat);
+        return {
+          privateChats: copyPrivateChats,
+        };
+      });
+    },
 
-export { messageReducerHandlers };
+    selectChat(id) {
+      set({
+        selectedChat: {
+          id,
+        },
+      });
+    },
+
+    createNewPrivateChat(privateChat) {
+      set((prevState) => ({
+        privateChats: [...prevState.privateChats, privateChat],
+      }));
+    },
+  } as MessageHandlers);

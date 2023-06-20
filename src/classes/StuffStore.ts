@@ -1,5 +1,4 @@
 import { stuff } from "~/data/stuff";
-
 import { Stuff } from "~/types";
 
 class StuffStore {

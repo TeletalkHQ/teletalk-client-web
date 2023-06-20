@@ -1,7 +1,6 @@
 import { errorThrower } from "utility-store";
 
 import { componentController } from "~/classes/ComponentController";
-
 import { variables } from "~/variables";
 
 class ComponentBuilder {

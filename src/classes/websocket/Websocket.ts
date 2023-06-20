@@ -10,9 +10,7 @@ class Websocket {
   }
 
   initializeClient(options = {}) {
-    const serverUrl = appConfigs.getConfigs().api.serverBaseUrl;
-
-    return io(serverUrl, {
+    return io(appConfigs.getConfigs().api.serverBaseUrl, {
       autoConnect: false,
       withCredentials: true,
       ...options,

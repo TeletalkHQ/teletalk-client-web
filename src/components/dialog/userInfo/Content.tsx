@@ -1,5 +1,4 @@
 import Box from "~/components/general/box";
-
 import Avatar from "~/components/general/other/Avatar";
 
 interface Props {
