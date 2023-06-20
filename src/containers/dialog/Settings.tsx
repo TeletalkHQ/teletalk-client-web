@@ -1,6 +1,6 @@
 import lodash from "lodash";
 
-import { userUtilities } from "~/classes/UserUtilities";
+import { userUtils } from "~/classes/UserUtils";
 import DialogTemplate from "~/components/dialog/Template";
 import SettingsComponents from "~/components/dialog/settings";
 import { commonActions } from "~/store/commonActions";
@@ -17,8 +17,8 @@ const Settings = ({ onDialogClose }) => {
     dispatch(commonActions.openDialog(name, { zIndex: 1500 }));
   };
 
-  const fullName = userUtilities.concatFirstNameWithLastName(state.user);
-  const fullNumber = userUtilities.concatCountryCodeWithPhoneNumber(state.user);
+  const fullName = userUtils.concatFirstNameWithLastName(state.user);
+  const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(state.user);
 
   return (
     <DialogTemplate

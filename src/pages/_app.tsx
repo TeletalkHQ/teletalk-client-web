@@ -3,12 +3,14 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { SnackbarProvider } from "notistack";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
 import Layout from "~/components/layout";
 import { MainContext } from "~/context/MainContext";
+import { events } from "~/events";
+import { registerWindowCustomProperties } from "~/helpers/registerWindowCustomProperties";
 import MUIThemeProvider from "~/providers/MUIThemeProvider";
 import ReactQueryProvider from "~/providers/ReactQueryProvider";
 import createEmotionCache from "~/styles/createEmotionCache";
@@ -29,6 +31,9 @@ export default function _app(props: CustomAppProps) {
       await setClientId();
 
       websocket.client.connect();
+
+      registerWindowCustomProperties();
+      events.websocket.otherEvents();
 
       router.push("signIn");
     }

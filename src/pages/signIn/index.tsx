@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 
 import { commonTasks } from "~/classes/CommonTasks";
+import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
