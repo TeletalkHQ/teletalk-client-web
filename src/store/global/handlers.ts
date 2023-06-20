@@ -1,5 +1,7 @@
 import { GlobalHandlers, GlobalSetState } from "~/types";
 
+import { defaultDialogState } from "./initialState";
+
 export const handlers = (set: GlobalSetState) =>
   ({
     addUserWithContact(c) {
@@ -76,7 +78,7 @@ export const handlers = (set: GlobalSetState) =>
       });
     },
 
-    openDialog(dialogName, props) {
+    openDialog(dialogName, props = defaultDialogState.props) {
       set((prevState) => ({
         dialogState: {
           ...prevState.dialogState,
@@ -88,7 +90,7 @@ export const handlers = (set: GlobalSetState) =>
       }));
     },
 
-    closeDialog(dialogName, props) {
+    closeDialog(dialogName, props = defaultDialogState.props) {
       set((prevState) => ({
         dialogState: {
           ...prevState.dialogState,

@@ -1,7 +1,7 @@
-import { UserUtilities as UserUtilitiesMain } from "utility-store";
+import { UserUtilities } from "utility-store";
 import { ExtendedCellphone, ExtendedFullName } from "utility-store/lib/types";
 
-class UserUtilities extends UserUtilitiesMain {
+class UserUtils extends UserUtilities {
   concatFirstNameWithLastName(data: ExtendedFullName) {
     return `${data.firstName} ${data.lastName}`;
   }
@@ -10,6 +10,6 @@ class UserUtilities extends UserUtilitiesMain {
   }
 }
 
-const userUtilities = new UserUtilities();
+const userUtils = new UserUtils();
 
-export { userUtilities };
+export { userUtils };

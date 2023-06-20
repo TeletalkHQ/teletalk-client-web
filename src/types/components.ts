@@ -8,6 +8,8 @@ import {
   MouseEvent,
 } from "react";
 
+import { DialogName } from "./store";
+
 export type DivProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
@@ -111,3 +113,5 @@ export type HTMLDivMouseEvent = MouseEvent<
   HTMLDivElement,
   globalThis.MouseEvent
 >;
+
+export type OnDialogClose = (n: DialogName) => void;

@@ -38,8 +38,8 @@ export interface LoadingState {
 }
 
 export interface Cellphone {
-  countryCode: CountryCode;
-  countryName: CountryName;
+  countryCode: string;
+  countryName: string;
   phoneNumber: string;
 }
 
