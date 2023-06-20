@@ -9,7 +9,7 @@ import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
 import { createInputValidator } from "~/helpers/createInputValidator";
-import { useAuthStore } from "~/store/zustand";
+import { useAuthStore } from "~/store";
 
 const CreateNewUser = () => {
   const state = useAuthStore();

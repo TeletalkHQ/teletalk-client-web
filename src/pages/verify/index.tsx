@@ -13,7 +13,7 @@ import H5 from "~/components/general/typography/header/H5";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
 import { createInputValidator } from "~/helpers/createInputValidator";
-import { useAuthStore } from "~/store/zustand";
+import { useAuthStore } from "~/store";
 
 const Verify = () => {
   const state = useAuthStore();
@@ -38,12 +38,17 @@ const Verify = () => {
       .focusElement()
       .selectAllValue();
 
+    state.updateAuthenticationProgress(true);
+
     await socketEmitterStore.events.verify.emitFull(
       {
         verificationCode: state.verificationCode,
       },
-      async () => {
-        router.replace("create");
+      async ({ data: { newUser } }) => {
+        state.updateAuthenticationProgress(false);
+
+        if (newUser) router.replace("create");
+        else router.push("messenger");
       }
     );
   };

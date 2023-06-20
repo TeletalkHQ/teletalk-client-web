@@ -1,13 +1,12 @@
-import { variables } from "~/variables";
-
-const initialAuthState = () => ({
+const initialState = {
+  authenticationProgress: false,
   countryCode: "",
   countryName: "",
   firstName: "",
   lastName: "",
   phoneNumber: "",
-  selectedCountry: variables.common.object.country(),
+  selectedCountry: null,
   verificationCode: "",
-});
+};
 
-export { initialAuthState };
+export { initialState };
