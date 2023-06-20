@@ -9,3 +9,4 @@ export type StoreSetFn<StoreType> = (
 export * from "./auth";
 export * from "./global";
 export * from "./message";
+export * from "./settings";

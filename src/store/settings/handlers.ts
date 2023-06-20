@@ -1,9 +1,10 @@
-const updateProfile = (payload, prevState) => {
-  return {
-    profile: { ...prevState.profile, ...payload.profile },
-  };
-};
+import { SettingsHandlers, SettingsSetState } from "~/types";
 
-const settingsReducerHandlers = { updateProfile };
-
-export { settingsReducerHandlers };
+export const handlers = (set: SettingsSetState) =>
+  ({
+    updateProfile(profile) {
+      set((prevState) => ({
+        profile: { ...prevState.profile, ...profile },
+      }));
+    },
+  } as SettingsHandlers);

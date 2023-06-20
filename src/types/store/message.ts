@@ -38,11 +38,6 @@ interface SelectedChat {
   id: PrivateChatId;
 }
 
-export interface MessageState {
-  privateChats: PrivateChats;
-  selectedChat: SelectedChat;
-}
-
 export interface AddMessagePayload {
   chatId: PrivateChatId;
   addedMessage: {
@@ -51,6 +46,11 @@ export interface AddMessagePayload {
     messageId: MessageId;
     sender: Sender;
   };
+}
+
+export interface MessageState {
+  privateChats: PrivateChats;
+  selectedChat: SelectedChat;
 }
 
 export interface MessageHandlers {

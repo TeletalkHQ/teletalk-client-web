@@ -1,4 +1,4 @@
-const initialSettingsState = () => ({
+export const initialState = {
   profile: {
     bio: "",
     countryCode: "",
@@ -8,6 +8,4 @@ const initialSettingsState = () => ({
     phoneNumber: "",
     username: "",
   },
-});
-
-export { initialSettingsState };
+};
