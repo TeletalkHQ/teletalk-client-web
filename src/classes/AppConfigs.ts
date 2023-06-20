@@ -1,7 +1,12 @@
-import { RuntimeMode } from "~/types";
+import { RuntimeMode, StringMap, UiConfig } from "~/types";
 
 type BaseUrl = {
   [key in RuntimeMode]: string;
+};
+
+type Configs = {
+  [key: string]: StringMap;
+  ui: UiConfig;
 };
 
 class AppConfigs {
@@ -16,7 +21,7 @@ class AppConfigs {
     production: process.env.NEXT_PUBLIC_SERVER_BASE_URL,
   };
 
-  private configs = {
+  private configs: Configs = {
     api: {
       clientBaseUrl: this.CLIENT_BASE_URLS[this.RUNTIME_MODE],
       defaultHeaders: {
@@ -40,7 +45,7 @@ class AppConfigs {
       shouldLogActions: false,
     },
     ui: {
-      appDrawerCurrentAnchor: "left",
+      drawerDefaultAnchor: "left",
       dialogDefaultTransition: "Grow",
       maxNotification: 10,
     },
