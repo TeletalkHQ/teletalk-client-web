@@ -1,7 +1,7 @@
 import { appConfigs } from "~/classes/AppConfigs";
 import { GlobalState } from "~/types";
 
-const defaultDialogStateItemProps = {
+const defaultDialogState = {
   open: false,
   //TODO: read default value from mui
   props: {
@@ -15,15 +15,15 @@ const initialState: GlobalState = {
     open: false,
   },
   dialogState: {
-    addContact: defaultDialogStateItemProps,
-    contacts: defaultDialogStateItemProps,
-    editBio: defaultDialogStateItemProps,
-    editFullName: defaultDialogStateItemProps,
-    editProfile: defaultDialogStateItemProps,
-    editUsername: defaultDialogStateItemProps,
-    logout: defaultDialogStateItemProps,
-    settings: defaultDialogStateItemProps,
-    userInfo: defaultDialogStateItemProps,
+    addContact: defaultDialogState,
+    contacts: defaultDialogState,
+    editBio: defaultDialogState,
+    editFullName: defaultDialogState,
+    editProfile: defaultDialogState,
+    editUsername: defaultDialogState,
+    logout: defaultDialogState,
+    settings: defaultDialogState,
+    userInfo: defaultDialogState,
   },
   globalLoading: {
     color: "blue",
@@ -37,4 +37,4 @@ const initialState: GlobalState = {
   users: [],
 };
 
-export { initialState };
+export { initialState, defaultDialogState };

@@ -13,14 +13,14 @@ import { Style, TransitionName, VoidNoArgsFn } from "~/types";
 interface Props {
   actions: JSX.Element;
   content: JSX.Element;
-  dialogStyle: Style;
+  dialogStyle?: Style;
   onClose: VoidNoArgsFn;
-  onKeyDown: VoidNoArgsFn;
+  onKeyDown?: VoidNoArgsFn;
   open: boolean;
   paperStyle: Style;
-  title: string;
-  transition: TransitionName;
-  transitionDuration: number;
+  title: string | JSX.Element;
+  transition?: TransitionName;
+  transitionDuration?: number;
 }
 
 const DialogTemplate: React.FC<Props> = ({
@@ -32,7 +32,7 @@ const DialogTemplate: React.FC<Props> = ({
   open,
   paperStyle,
   title,
-  transition,
+  transition = appConfigs.getConfigs().ui.dialogDefaultTransition,
   transitionDuration,
 }) => {
   const theme = useTheme();
