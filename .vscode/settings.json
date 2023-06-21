@@ -59,7 +59,8 @@
     ".next": true,
     "configs": true,
     "scripts": true,
-    "pnpm-lock.yaml": true
+    "pnpm-lock.yaml": true,
+    ".eslintrc.cjs": true
   },
   "marquee.widgets.npm-stats.packageNames": ["teletalk-client"],
   "prettier.configPath": ".prettierrc.json",
