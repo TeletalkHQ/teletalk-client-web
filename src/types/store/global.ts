@@ -1,3 +1,4 @@
+import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
 import { FullName } from "utility-store/lib/types";
 
@@ -47,6 +48,7 @@ export interface GlobalHandlers {
   addUser: (u: UserItem) => void;
   setUsers: (u: Users) => void;
   openGlobalLoading: () => void;
+  closeGlobalLoading: () => void;
   changeDrawerOpen: (o: boolean) => void;
   // updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
   updateOnlineStatus: (isOnline: boolean) => void;
@@ -84,7 +86,7 @@ export interface GlobalState {
   globalLoading: {
     color: CSSProperties["color"];
     open: boolean;
-    progressColor: CSSProperties["color"];
+    progressColor: CircularProgressProps["color"];
     size: 80;
     speedMultiplier: number;
     type: GlobalLoadingType;

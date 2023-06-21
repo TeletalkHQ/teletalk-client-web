@@ -3,28 +3,78 @@ import { useEffect } from "react";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import Box from "~/components/general/box";
-import { controllers } from "~/controllers";
+import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
+import { ContactItem, ParticipantItem, UserItem } from "~/types";
 
 const Messenger = () => {
+  const messageStore = useMessageStore();
+  const globalState = useGlobalStore();
+  const userState = useUserStore();
+
   useEffect(() => {
     const fn = async () => {
       //TODO: Update in/out events with events from server
       socketEmitterStore.events.joinRoom.emit();
 
-      dispatch(controllers.getPrivateChats());
+      await socketEmitterStore.events.getPrivateChats.emitFull(
+        undefined,
+        async ({ data }) => {
+          for (const item of data.privateChats) {
+            const participant = item.participants.find(
+              (i: ParticipantItem) => i.participantId !== userState.userId
+            );
 
-      socketEmitterStore.events.getUserData.emitFull({}, async () => {
+            const isUserExist = globalState.users.some(
+              (i) => i.userId === participant.participantId
+            );
+            if (isUserExist) continue;
+
+            const {
+              data: { publicUserData },
+            } = await socketEmitterStore.events.getPublicUserData.emitFull({
+              userId: participant.participantId,
+            });
+
+            globalState.addUser(publicUserData);
+          }
+
+          messageStore.setPrivateChats(data.privateChats);
+        }
+      );
+
+      socketEmitterStore.events.getUserData.emitFull({}, async ({ data }) => {
         //TODO: Update user data
         //TODO: Update users with contacts
-        // const fixContacts = (contacts) =>
-        //   contacts.map((item) => ({
-        //     ...item,
-        //     isContact: true,
-        //   }));
+        const users: UserItem[] = data.user.contacts.map(
+          (item: ContactItem) => ({
+            ...item,
+            isContact: true,
+          })
+        );
+
+        globalState.setUsers(users);
       });
 
       websocket.client.on("newPrivateChatMessage", (data) => {
-        dispatch(controllers.newPrivateChatMessage(data));
+        // const newPrivateChatMessage = ({ chatId, newMessage }) => {
+        //   return (dispatch, getState) => {
+        //     const state = getState();
+        //     if (isChatExist(state, chatId))
+        //       return dispatch(actions.addNewMessage({ chatId, newMessage }));
+        //     websocket.client.emit("getChatInfo", { chatId }, (response) => {
+        //       dispatch(
+        //         actions.createNewPrivateChat({
+        //           privateChat: {
+        //             ...response.data.chatInfo,
+        //             messages: [newMessage],
+        //           },
+        //         })
+        //       );
+        //     });
+        //   };
+        // };
+        // const isChatExist = (state, chatId) =>
+        //   messageState.privateChats.some((item) => item.chatId === chatId);
       });
     };
 

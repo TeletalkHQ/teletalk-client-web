@@ -1,27 +1,36 @@
 import { Divider, SwipeableDrawer } from "@mui/material";
+import { KeyboardEvent, SyntheticEvent } from "react";
 
 import { userUtils } from "~/classes/UserUtils";
+import DrawerList from "~/components/drawer/DrawerList";
+import PersonalData from "~/components/drawer/PersonalData";
 import Box from "~/components/general/box";
-import DrawerList from "~/components/portal/appDrawer/DrawerList";
-import PersonalData from "~/components/portal/appDrawer/PersonalData";
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
+import { useGlobalStore, useUserStore } from "~/store";
+import { DialogName, ElementName } from "~/types";
 import { utilities } from "~/utilities";
 
 const AppDrawer = () => {
-  const toggleDrawer = (event, open) => {
+  const globalState = useGlobalStore();
+  const userState = useUserStore();
+
+  const toggleDrawer = (
+    event: SyntheticEvent<{}, Event> | KeyboardEvent<HTMLDivElement>,
+    open: boolean
+  ) => {
     if (
       event?.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
+      (("key" in event && event.key === "Tab") ||
+        ("key" in event && event.key === "Shift"))
     ) {
       return;
     }
 
-    dispatch(actions.appDrawerOpenChange({ open }));
+    globalState.changeDrawerOpen(open);
   };
 
-  const handleDrawerItemClick = (elementName) => {
-    dispatch(commonActions.openDialog(elementName));
+  const handleDrawerItemClick = (elementName: ElementName) => {
+    if (elementName in globalState.dialogState)
+      globalState.openDialog(elementName as DialogName);
   };
 
   const fullName = userUtils.concatFirstNameWithLastName(userState);
@@ -31,16 +40,16 @@ const AppDrawer = () => {
     <SwipeableDrawer
       disableBackdropTransition={!utilities.isIos()}
       disableDiscovery={utilities.isIos()}
-      anchor={globalState.appDrawer.currentAnchor}
-      open={globalState.appDrawer.anchor[globalState.appDrawer.currentAnchor]}
+      anchor={globalState.drawer.anchor}
+      open={globalState.drawer.open}
       onClose={(event) => toggleDrawer(event, false)}
       onOpen={(event) => toggleDrawer(event, true)}
     >
       <Box.Div
         style={{
           width:
-            globalState.appDrawer.currentAnchor === "top" ||
-            globalState.appDrawer.currentAnchor === "bottom"
+            globalState.drawer.anchor === "top" ||
+            globalState.drawer.anchor === "bottom"
               ? "auto"
               : 250,
         }}
@@ -52,7 +61,7 @@ const AppDrawer = () => {
         <Divider />
 
         <DrawerList
-          onDrawerItemClick={handleDrawerItemClick}
+          onClick={handleDrawerItemClick}
           toggleDrawer={toggleDrawer}
         />
       </Box.Div>

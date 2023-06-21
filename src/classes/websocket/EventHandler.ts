@@ -83,11 +83,11 @@ class EventHandler {
     this.requestData = data;
     this.responseCallback = responseCallback;
 
-    return await trier(this.emitFull.name)
+    return (await trier(this.emitFull.name)
       .async()
       .try(this.tryToEmitFull)
       .catch(this.catchEmitFull)
-      .run();
+      .run()) as SocketResponse;
   }
 
   @AutoBind

@@ -13,6 +13,7 @@ import { stuff } from "~/data/stuff";
 import { ContactItem, DrawerAnchor, UserItem } from "./store/global";
 
 export type CountryItem = (typeof countries)[number];
+export type Countries = CountryItem[];
 export type CountryName = CountryItem["countryName"];
 export type CountryCode = CountryItem["countryCode"];
 export type CountryShortName = CountryItem["countryShortName"];

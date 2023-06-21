@@ -2,7 +2,17 @@ import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 
-const SettingsProfileOverview = ({ fullName, fullNumber, username }) => {
+interface Props {
+  fullName: string;
+  fullNumber: string;
+  username: string;
+}
+
+const SettingsProfileOverview: React.FC<Props> = ({
+  fullName,
+  fullNumber,
+  username,
+}) => {
   return (
     <Box.Flex ai="center" gap={2}>
       <Box.Div>
