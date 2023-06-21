@@ -28,6 +28,10 @@ const nextConfig = {
   experimental: {
     appDir: false,
   },
+
+  async redirects() {
+    return [{ source: "/", destination: "signIn", permanent: true }];
+  },
 };
 
 export default nextConfig;
