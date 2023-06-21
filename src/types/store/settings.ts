@@ -1,9 +1,10 @@
 import { StoreSetFn } from ".";
+import { CountryCode, CountryName } from "..";
 
 export interface Profile {
   bio: string;
-  countryCode: string;
-  countryName: string;
+  countryCode: CountryCode;
+  countryName: CountryName;
   firstName: string;
   lastName: string;
   phoneNumber: string;

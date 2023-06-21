@@ -1,13 +1,13 @@
 import {
   CountryCode,
   CountryName,
+  DialogName,
   ElementLabel,
   IconType,
-  ListItemName,
 } from "~/types";
 
 export interface EditProfileListItemProps {
-  name: ListItemName;
+  name: DialogName;
   label: ElementLabel;
   disabled: boolean;
   value: string;
