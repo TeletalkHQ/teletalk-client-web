@@ -170,8 +170,9 @@ class ValidationChecker {
 
   private extractNativeErrorsFromValidationResult() {
     return (this.validationResult as ValidationErrors).reduce((prev, curr) => {
+      const error = errors[curr.message as keyof typeof errors] as any;
       prev.push({
-        ...errors[curr.message],
+        ...error,
         ...this.getOptions().extraErrorFields,
       });
       return prev;
