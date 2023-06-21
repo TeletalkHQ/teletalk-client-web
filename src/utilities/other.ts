@@ -1,5 +1,3 @@
-import { customTypeof } from "custom-typeof";
-
 import { CountryItem } from "~/types";
 
 const checkErrorCodeIsConnAborted = (errorCode: string) =>
@@ -15,7 +13,7 @@ const makeNonBreakSpace = (length: number) =>
 
 const isIos = () => {
   return (
-    !customTypeof.isUndefined(navigator) &&
+    typeof navigator !== "undefined" &&
     /iPad|iPhone|iPod/.test(navigator.userAgent)
   );
 };
