@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import Box from "~/components/general/box";
 import { controllers } from "~/controllers";

@@ -14,11 +14,11 @@ const RightSide = () => {
   const oldMessages = useRef([]);
 
   const selectedChatMessages = useMemo(() => {
-    if (state.message.selectedChat.type === "private") {
+    if (messageState.selectedChat.type === "private") {
       return (
-        state.message.privateChats.find((pc) => {
+        messageState.privateChats.find((pc) => {
           return pc.participants.find(
-            (p) => p.participantId === state.message.selectedChat.id
+            (p) => p.participantId === messageState.selectedChat.id
           );
         })?.messages || []
       );
@@ -26,7 +26,7 @@ const RightSide = () => {
 
     return [];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message.selectedChat.id, state.message.privateChats]);
+  }, [messageState.selectedChat.id, messageState.privateChats]);
 
   useEffect(() => {
     if (oldMessages.current.length < selectedChatMessages.length) {
@@ -39,8 +39,8 @@ const RightSide = () => {
     oldMessages.current = selectedChatMessages;
   }, [selectedChatMessages]);
 
-  const selectedParticipantToChat = state.global.users.find(
-    (p) => p.userId === state.message.selectedChat.id
+  const selectedParticipantToChat = globalState.users.find(
+    (p) => p.userId === messageState.selectedChat.id
   );
 
   const handleInputChange = ({ target: { value } }) => {
@@ -70,7 +70,7 @@ const RightSide = () => {
       lg={9}
       md={8}
     >
-      {state.message.selectedChat.id && (
+      {messageState.selectedChat.id && (
         <Box.Flex
           col
           sx={{
@@ -103,7 +103,7 @@ const RightSide = () => {
             }}
           >
             <MessageList
-              currentUserId={state.user.userId}
+              currentUserId={userState.userId}
               messages={selectedChatMessages}
             />
           </Box.Div>
@@ -114,7 +114,7 @@ const RightSide = () => {
             }}
           >
             <MessageInput
-              messageInputTextValue={state.message.messageInputTextValue}
+              messageInputTextValue={messageState.messageInputTextValue}
               onSendMessage={handleSendMessage}
               onInputChange={handleInputChange}
             />

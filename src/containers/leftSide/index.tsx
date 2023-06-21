@@ -9,15 +9,15 @@ import { commonActions } from "~/store/commonActions";
 
 const LeftSide = () => {
   const chatList = useMemo(() => {
-    return state.message.privateChats.map((chat) => {
+    return messageState.privateChats.map((chat) => {
       const lastMessage = getChatLastMessage(chat);
-      const participantId = findParticipantId(chat, state.user.userId);
-      const user = findUser(state.global.users, participantId);
+      const participantId = findParticipantId(chat, userState.userId);
+      const user = findUser(globalState.users, participantId);
 
       return createChatListItem(lastMessage, user);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message.privateChats, state.global.users]);
+  }, [messageState.privateChats, globalState.users]);
 
   const handleDrawerIconClick = () => {
     dispatch(commonActions.openAppDrawer());
@@ -56,7 +56,7 @@ const LeftSide = () => {
             }}
           >
             <ChatList
-              selectedChat={state.message.selectedChat}
+              selectedChat={messageState.selectedChat}
               onChatListItemClick={handleChatClick}
               chatList={chatList}
             />

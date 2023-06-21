@@ -12,11 +12,11 @@ const PortalProvider = ({ children }) => {
 const Portal = ({ onGlobalLoadingClose }) => {
   return (
     <PortalProvider>
-      <FullPageLoading loading={state.global.globalLoading} />
+      <FullPageLoading loading={globalState.globalLoading} />
       <AppDrawer />
       <OverlayLoading
         onGlobalLoadingClose={onGlobalLoadingClose}
-        loading={state.global.globalLoading}
+        loading={globalState.globalLoading}
       />
       <DialogContainer />
     </PortalProvider>

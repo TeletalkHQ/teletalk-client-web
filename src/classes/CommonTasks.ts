@@ -1,7 +1,7 @@
 import { notificationManager } from "~/classes/NotificationManager";
 import { enErrorMessages } from "~/data/enErrorMessages";
+import { NativeModel } from "~/types";
 import { ModelName } from "~/types/models";
-import { variables } from "~/variables";
 
 import { stuffStore } from "./StuffStore";
 
@@ -10,13 +10,16 @@ class CommonTasks {
     errors.forEach((errorItem: any) => {
       notificationManager.submitErrorNotification({
         ...errorItem,
-        message: enErrorMessages[errorItem.reason],
+        message:
+          enErrorMessages[errorItem.reason as keyof typeof enErrorMessages],
       });
     });
   }
 
   isValueLengthInBetweenMinMax(modelName: ModelName, value: string) {
-    const { maxLength, minLength } = stuffStore.models[modelName];
+    const { maxLength, minLength } = stuffStore.models[
+      modelName
+    ] as NativeModel;
 
     const inputValueLength = value.length;
 
@@ -24,19 +27,9 @@ class CommonTasks {
   }
 
   isValueLengthEqualToLength(modelName: ModelName, value: string) {
-    return value.length === stuffStore.models[modelName].length;
-  }
-
-  checkRequirements(...items) {
-    items.forEach((item) => {
-      if (!item) {
-        // eslint-disable-next-line no-throw-literal
-        throw {
-          ...variables.notification.errors.requirementItemMissing,
-          allItems: items,
-        };
-      }
-    });
+    return (
+      value.length === (stuffStore.models[modelName] as NativeModel).length
+    );
   }
 }
 

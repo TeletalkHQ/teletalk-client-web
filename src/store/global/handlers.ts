@@ -57,20 +57,20 @@ export const handlers = (set: GlobalSetState) =>
       });
     },
 
-    updateDialog(payload) {
-      set((prevState) => {
-        return {
-          dialogState: {
-            ...prevState.dialogState,
-            [payload.dialogName]: {
-              ...prevState.dialogState[payload.dialogName],
-              open: payload.open,
-              props: payload.props,
-            },
-          },
-        };
-      });
-    },
+    // updateDialog(payload) {
+    //   set((prevState) => {
+    //     return {
+    //       dialogState: {
+    //         ...prevState.dialogState,
+    //         [payload.dialogName]: {
+    //           ...prevState.dialogState[payload.dialogName],
+    //           open: payload.open,
+    //           props: payload.props,
+    //         },
+    //       },
+    //     };
+    //   });
+    // },
 
     updateOnlineStatus(isOnline) {
       set({
