@@ -1,22 +1,25 @@
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import LogoutComponents from "~/components/dialog/logout";
 import DialogTemplate from "~/components/dialog/template";
-import { controllers } from "~/controllers";
+import { useGlobalStore } from "~/store";
 
 const Logout = () => {
+  const globalState = useGlobalStore();
+
   const handleClose = () => {
-    onDialogClose("logout");
+    globalState.closeDialog("logout");
   };
 
   const handleLogout = () => {
-    dispatch(controllers.logout());
-    socketEmitterStore.events.logout.emitFull();
+    socketEmitterStore.events.logout.emitFull(undefined, async () => {
+      handleClose();
+    });
   };
 
   return (
     <>
       <DialogTemplate
-        open={state.global.dialogState.logout.open}
+        open={globalState.dialogState.logout.open}
         actions={
           <LogoutComponents.Actions
             onClose={handleClose}
