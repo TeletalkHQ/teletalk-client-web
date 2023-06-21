@@ -33,11 +33,6 @@ const Verify = () => {
   };
 
   const handleVerifyClick = async () => {
-    domUtils()
-      .setElementByName("verificationCode")
-      .focusElement()
-      .selectAllValue();
-
     state.updateAuthenticationProgress(true);
 
     await socketEmitterStore.events.verify.emitFull<VerifyIO>(
@@ -52,6 +47,13 @@ const Verify = () => {
         else router.push("messenger");
 
         return data;
+      },
+      () => {
+        state.updateAuthenticationProgress(false);
+        domUtils()
+          .setElementByName("verificationCode")
+          .focusElement()
+          .selectAllValue();
       }
     );
   };
