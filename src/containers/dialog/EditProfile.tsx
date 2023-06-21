@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { userUtils } from "~/classes/UserUtils";
 import EditProfileComponents from "~/components/dialog/editProfile";
-import { EditProfileListItemProps } from "~/components/dialog/editProfile/types";
+import { EditProfileListItem } from "~/components/dialog/editProfile/types";
 import DialogTemplate from "~/components/dialog/template";
 import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
 import { Profile } from "~/types";
@@ -23,7 +23,7 @@ const EditProfile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalState.dialogState.editProfile.open]);
 
-  const handleItemClick = (item: EditProfileListItemProps) => {
+  const handleItemClick = (item: EditProfileListItem) => {
     handleClose();
     globalState.openDialog(item.name, { zIndex: 1500 });
   };

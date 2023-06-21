@@ -8,12 +8,19 @@ export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
 export type DialogName =
   | "addContact"
+  | "advanced"
+  | "callSettings"
+  | "chatSettings"
   | "contacts"
   | "editBio"
   | "editFullName"
   | "editProfile"
+  | "editProfile"
   | "editUsername"
+  | "language"
   | "logout"
+  | "notificationsAndSounds"
+  | "privacyAndSecurity"
   | "settings"
   | "userInfo";
 

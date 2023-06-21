@@ -6,7 +6,7 @@ import {
   IconType,
 } from "~/types";
 
-export interface EditProfileListItemProps {
+export interface EditProfileListItem {
   name: DialogName;
   label: ElementLabel;
   disabled: boolean;
@@ -14,9 +14,7 @@ export interface EditProfileListItemProps {
   Icon: IconType;
 }
 
-export type EditProfileListItemOnClick = (
-  item: EditProfileListItemProps
-) => void;
+export type EditProfileListItemOnClick = (item: EditProfileListItem) => void;
 
 export interface Profile {
   bio: string;
