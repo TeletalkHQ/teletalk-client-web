@@ -30,7 +30,7 @@ const nextConfig = {
   },
 
   async redirects() {
-    return [{ source: "/", destination: "signIn", permanent: true }];
+    return [{ source: "/", destination: "/signIn", permanent: true }];
   },
 };
 
