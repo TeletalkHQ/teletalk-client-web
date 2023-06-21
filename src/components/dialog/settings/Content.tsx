@@ -3,13 +3,14 @@ import { Divider } from "@mui/material";
 import List from "~/components/dialog/settings/List";
 import ProfileOverview from "~/components/dialog/settings/ProfileOverview";
 import Box from "~/components/general/box";
-import { VoidNoArgsFn } from "~/types";
+
+import { OnSettingItemClick } from "./types";
 
 interface Props {
   fullName: string;
   fullNumber: string;
   username: string;
-  onSettingItemClick: VoidNoArgsFn;
+  onSettingItemClick: OnSettingItemClick;
 }
 
 const SettingsContent: React.FC<Props> = ({

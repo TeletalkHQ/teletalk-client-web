@@ -8,6 +8,8 @@ import PieChartIcon from "@mui/icons-material/PieChartTwoTone";
 
 import ListItem from "~/components/dialog/settings/ListItem";
 
+import { OnSettingItemClick } from "./types";
+
 export const settingsList = [
   {
     Icon: AccountBoxIcon,
@@ -39,10 +41,8 @@ export const settingsList = [
   },
 ] as const;
 
-type ListItem = (typeof settingsList)[number];
-
 interface Props {
-  onSettingItemClick: (item: ListItem) => void;
+  onSettingItemClick: OnSettingItemClick;
 }
 
 const SettingsList: React.FC<Props> = ({ onSettingItemClick }) => {
