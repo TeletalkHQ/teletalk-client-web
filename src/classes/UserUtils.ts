@@ -5,8 +5,17 @@ class UserUtils extends UserUtilities {
   concatFirstNameWithLastName(data: ExtendedFullName) {
     return `${data.firstName} ${data.lastName}`;
   }
+
   concatCountryCodeWithPhoneNumber(data: ExtendedCellphone) {
     return `+${data.countryCode} ${data.phoneNumber}`;
+  }
+
+  makeEmptyContactWithCellphone() {
+    return {
+      ...super.makeEmptyContactWithCellphone(),
+      isContact: false,
+      userId: "",
+    };
   }
 }
 

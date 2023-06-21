@@ -15,7 +15,7 @@ interface Props {
   onSelectedCountryChange: CountrySelectInputChange;
   selectedCountry: CountryItem | null;
 }
-const AddNewContactContent: React.FC<Props> = ({
+const AddContactContent: React.FC<Props> = ({
   contact,
   countryName,
   onCountryCodeInputChange,
@@ -53,4 +53,4 @@ const AddNewContactContent: React.FC<Props> = ({
   );
 };
 
-export default AddNewContactContent;
+export default AddContactContent;
