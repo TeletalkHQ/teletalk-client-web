@@ -11,11 +11,12 @@ import type {
   RequestTransformer,
   ResponseCallback,
   ResponseTransformer,
+  SocketErrorCallback,
   SocketResponse,
   SocketRoute,
 } from "~/types";
 import { AutoBind } from "~/types/utils";
-import { checkFieldErrors } from "~/variables/notification/error";
+import { checkFieldErrors, errors } from "~/variables/notification/error";
 
 class EventHandler {
   requestData: IO["input"];
@@ -24,6 +25,7 @@ class EventHandler {
     requestData;
   response: SocketResponse;
   responseCallback: ResponseCallback;
+  errorCallback: SocketErrorCallback;
   responseInterceptors: Interceptors = [];
   responseTransformer: ResponseTransformer = (response) => response;
   route: SocketRoute;
@@ -77,11 +79,13 @@ class EventHandler {
 
   async emitFull<T extends IO>(
     data: T["input"] = {},
-    responseCallback?: ResponseCallback<T["output"]>
+    responseCallback: ResponseCallback<T["output"]> = async (response) =>
+      response.data,
+    errorCallback: SocketErrorCallback = (_errors) => {}
   ): Promise<T["output"]> {
     this.requestData = data;
-    this.responseCallback =
-      responseCallback || (async (response) => response.data);
+    this.responseCallback = responseCallback;
+    this.errorCallback = errorCallback;
 
     return await trier<T["output"]>(this.emitFull.name)
       .async()
@@ -92,14 +96,15 @@ class EventHandler {
 
   @AutoBind
   private async tryToEmitFull() {
-    await this.executeRequestTransformer()
-      .executeRequestInterceptors()
+    await this
+      // .executeRequestTransformer()
+      // .executeRequestInterceptors()
       .inputDataFieldsCheck()
       .emit(this.requestData);
 
     await this.outputDataFieldsCheck()
-      .executeResponseTransformer()
-      .executeResponseInterceptors()
+      // .executeResponseTransformer()
+      // .executeResponseInterceptors()
       .logSuccessfulResponse()
       .executeResponseCallback();
 
@@ -108,8 +113,9 @@ class EventHandler {
 
   @AutoBind
   private catchEmitFull(response: SocketResponse) {
-    commonTasks.correctErrorsAndPrint(response.errors!);
-    this.logFailureResponse(Object.values(response.errors!)[0]);
+    this.errorCallback(response.errors);
+    commonTasks.correctErrorsAndPrint(response.errors || []);
+    this.logFailureResponse(Object.values(response.errors || [])[0]);
   }
 
   private executeRequestTransformer() {
@@ -162,7 +168,7 @@ class EventHandler {
     return this;
   }
 
-  private logFailureResponse(error: NativeError) {
+  private logFailureResponse(error: NativeError = errors.unknownError) {
     if (appConfigs.getConfigs().api.shouldLogFailureResponse)
       console.error(`Api:${this.route.name} Api catch, error:`, error);
   }
