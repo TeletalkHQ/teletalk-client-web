@@ -77,7 +77,7 @@ class EventHandler {
   }
 
   async emitFull(
-    data: RequestData,
+    data: RequestData = {},
     responseCallback: ResponseCallback = async () => {}
   ) {
     this.requestData = data;
