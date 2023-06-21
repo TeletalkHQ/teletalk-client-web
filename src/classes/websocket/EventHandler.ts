@@ -5,12 +5,11 @@ import { appConfigs } from "~/classes/AppConfigs";
 import { commonTasks } from "~/classes/CommonTasks";
 import { websocket } from "~/classes/websocket/Websocket";
 import type {
+  IO,
   Interceptors,
   NativeError,
-  RequestData,
   RequestTransformer,
   ResponseCallback,
-  ResponseData,
   ResponseTransformer,
   SocketResponse,
   SocketRoute,
@@ -19,9 +18,9 @@ import { AutoBind } from "~/types/utils";
 import { checkFieldErrors } from "~/variables/notification/error";
 
 class EventHandler {
-  requestData: RequestData = {};
+  requestData: IO["input"];
   requestInterceptors: Interceptors = [];
-  requestTransformer: RequestTransformer = (requestData: RequestData) =>
+  requestTransformer: RequestTransformer<IO["input"]> = (requestData) =>
     requestData;
   response: SocketResponse;
   responseCallback: ResponseCallback;
@@ -32,7 +31,7 @@ class EventHandler {
   getRequestData() {
     return this.requestData;
   }
-  setRequestData(requestData: RequestData) {
+  setRequestData(requestData: IO["input"]) {
     this.requestData = requestData;
     return this;
   }
@@ -53,16 +52,16 @@ class EventHandler {
   getResponseData() {
     return this.getResponse().data;
   }
-  setResponseData(responseData: ResponseData) {
+  setResponseData(responseData: IO["output"]) {
     this.response.data = responseData;
     return this;
   }
 
-  async emit(data: ResponseData = {}) {
+  async emit(data?: IO["output"]) {
     const response: SocketResponse = await new Promise((resolve, reject) => {
       websocket.client.emit(
         this.route.name,
-        data,
+        data || {},
         (response: SocketResponse) => {
           if (response.ok) resolve(response);
 
@@ -76,18 +75,19 @@ class EventHandler {
     return this;
   }
 
-  async emitFull(
-    data: RequestData = {},
-    responseCallback: ResponseCallback = async () => {}
-  ) {
+  async emitFull<T extends IO>(
+    data: T["input"] = {},
+    responseCallback?: ResponseCallback<T["output"]>
+  ): Promise<T["output"]> {
     this.requestData = data;
-    this.responseCallback = responseCallback;
+    this.responseCallback =
+      responseCallback || (async (response) => response.data);
 
-    return (await trier(this.emitFull.name)
+    return await trier<T["output"]>(this.emitFull.name)
       .async()
       .try(this.tryToEmitFull)
       .catch(this.catchEmitFull)
-      .run()) as SocketResponse;
+      .run();
   }
 
   @AutoBind
@@ -167,7 +167,10 @@ class EventHandler {
       console.error(`Api:${this.route.name} Api catch, error:`, error);
   }
 
-  private executeInterceptors(interceptors: Interceptors, data: RequestData) {
+  private executeInterceptors(
+    interceptors: Interceptors,
+    data: IO["input"] | IO["output"]
+  ) {
     let newData = data;
 
     interceptors.forEach((interceptor) => {

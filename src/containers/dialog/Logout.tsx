@@ -2,6 +2,7 @@ import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import LogoutComponents from "~/components/dialog/logout";
 import DialogTemplate from "~/components/dialog/template";
 import { useGlobalStore } from "~/store";
+import { LogoutIO } from "~/types";
 
 const Logout = () => {
   const globalState = useGlobalStore();
@@ -11,9 +12,13 @@ const Logout = () => {
   };
 
   const handleLogout = () => {
-    socketEmitterStore.events.logout.emitFull(undefined, async () => {
-      handleClose();
-    });
+    socketEmitterStore.events.logout.emitFull<LogoutIO>(
+      undefined,
+      async ({ data }) => {
+        handleClose();
+        return data;
+      }
+    );
   };
 
   return (

@@ -7,7 +7,7 @@ import ChatBar from "~/components/rightSide/ChatBar";
 import MessageInput from "~/components/rightSide/MessageInput";
 import MessageList from "~/components/rightSide/MessageList";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
-import { CommonChangeEvent, Messages } from "~/types";
+import { CommonChangeEvent, Messages, SendPrivateMessageIO } from "~/types";
 
 const RightSide = () => {
   const globalState = useGlobalStore();
@@ -48,13 +48,14 @@ const RightSide = () => {
   };
 
   const handleSendMessage = async () => {
-    socketEmitterStore.events.sendPrivateMessage.emitFull(
+    socketEmitterStore.events.sendPrivateMessage.emitFull<SendPrivateMessageIO>(
       {
-        message: messageState.messageInputTextValue,
+        messageText: messageState.messageInputTextValue,
         participantId: messageState.selectedChat.id,
       },
-      async () => {
+      async ({ data }) => {
         messageState.messageInputOnChange("");
+        return data;
       }
     );
   };

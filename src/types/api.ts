@@ -5,56 +5,92 @@ import {
   CountryCode,
   CountryName,
   MessageItem,
+  NativeError,
   Participants,
   PrivateChatItem,
   PrivateChats,
+  StringMap,
   UserState,
 } from ".";
 
-export interface CreateNewUser {
+export interface SocketResponseErrors {
+  [prop: string]: NativeError & StringMap;
+}
+
+export type IO = {
+  input: {};
+  output: {};
+};
+
+export interface SocketResponse<Data = IO["output"]> {
+  data: Data;
+  errors?: SocketResponseErrors;
+  ok: boolean;
+}
+
+export type ResponseCallback<Data = IO["output"]> = (
+  response: SocketResponse<Data>
+) => Promise<Data>;
+
+export type RequestTransformer<Data = IO["input"]> = (
+  requestData: Data
+) => Data;
+
+export type ResponseTransformer<DataType = IO["output"]> = (
+  response: SocketResponse<DataType>
+) => SocketResponse<DataType>;
+
+export type Interceptor<Data> = (data: Data) => Data;
+
+export type Interceptors<Data = IO["input"] | IO["output"]> =
+  Interceptor<Data>[];
+
+export interface CreateNewUserIO {
   input: { firstName: string; lastName: string };
   output: {};
 }
 
-export interface Logout {
+export interface LogoutIO {
   input: {};
   output: {};
 }
 
-export interface SignIn {
+export interface SignInIO {
   input: {
     countryCode: string;
     countryName: string;
     phoneNumber: string;
   };
-  output: {};
+  output: {
+    mmd: number;
+  };
 }
 
-export interface Verify {
+export interface VerifyIO {
   input: { verificationCode: string };
   output: { newUser: boolean };
 }
 
-export interface GetCountries {
+export interface GetCountriesIO {
   input: {};
   output: { countries: Countries };
 }
 
-export interface GetStuff {
+export interface GetStuffIO {
   input: {};
   output: {};
 }
 
-export interface GetWelcomeMessage {
+export interface GetWelcomeMessageIO {
   input: {};
   output: { welcomeMessage: string };
 }
-export interface Ping {
+export interface PingIO {
   input: {};
   output: {};
 }
 
-export interface GetChatInfo {
+export interface GetChatInfoIO {
   input: { chatId: string };
   output: {
     chatId: string;
@@ -63,22 +99,22 @@ export interface GetChatInfo {
   };
 }
 
-export interface GetPrivateChat {
+export interface GetPrivateChatIO {
   input: { chatId: string };
   output: { privateChat: PrivateChatItem };
 }
 
-export interface GetPrivateChats {
+export interface GetPrivateChatsIO {
   input: {};
   output: { privateChats: PrivateChats };
 }
 
-export interface JoinRoom {
+export interface JoinRoomIO {
   input: {};
   output: {};
 }
 
-export interface SendPrivateMessage {
+export interface SendPrivateMessageIO {
   input: { messageText: string; participantId: string };
   output: {
     chatId: string;
@@ -86,19 +122,19 @@ export interface SendPrivateMessage {
   };
 }
 
-export interface AddBlock {
+export interface AddBlockIO {
   input: { userId: string };
   output: { blockedUser: BlacklistItem };
 }
 
-export interface AddContact {
+export interface AddContactIO {
   input: { firstName: string; lastName: string; userId: string };
   output: {
     addedContact: { firstName: string; lastName: string; userId: string };
   };
 }
 
-export interface AddContactWithCellphone {
+export interface AddContactWithCellphoneIO {
   input: {
     countryCode: CountryCode;
     countryName: CountryName;
@@ -119,7 +155,7 @@ export interface AddContactWithCellphone {
   };
 }
 
-export interface EditContact {
+export interface EditContactIO {
   input: {
     firstName: string;
     lastName: string;
@@ -134,21 +170,25 @@ export interface EditContact {
   };
 }
 
-export interface GetContacts {
+export interface GetContactsIO {
   input: {};
   output: {
     contacts: Contacts;
   };
 }
 
-export interface GetUserData {
+export interface UserDataOutput extends UserState {
+  contacts: Contacts;
+}
+
+export interface GetUserDataIO {
   input: {};
   output: {
-    user: UserState;
+    user: UserDataOutput;
   };
 }
 
-export interface GetPublicUserData {
+export interface GetPublicUserDataIO {
   input: { userId: string };
   output: {
     publicUserData: {
@@ -161,17 +201,17 @@ export interface GetPublicUserData {
   };
 }
 
-export interface RemoveBlock {
+export interface RemoveBlockIO {
   input: { userId: string };
   output: { removedBlock: { userId: string } };
 }
 
-export interface RemoveContact {
+export interface RemoveContactIO {
   input: { userId: string };
   output: { removedContact: { userId: string } };
 }
 
-export interface UpdatePublicUserData {
+export interface UpdatePublicUserDataIO {
   input: {
     firstName: string;
     lastName: string;
