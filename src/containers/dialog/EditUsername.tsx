@@ -1,41 +1,40 @@
 import { stuffStore } from "~/classes/StuffStore";
 import EditUsernameComponents from "~/components/dialog/editUsername";
 import DialogTemplate from "~/components/dialog/template";
-import { controllers } from "~/controllers";
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
+import { helpers } from "~/helpers";
+import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
+import { CommonChangeEvent } from "~/types";
 
 const EditUsername = () => {
-  const handleInputChange = (event) => {
-    dispatch(
-      actions.updateProfile({
-        profile: { [event.target.name]: event.target.value },
-      })
-    );
+  const globalState = useGlobalStore();
+  const settingsState = useSettingsStore();
+  const userState = useUserStore();
+
+  const handleInputChange = (event: CommonChangeEvent) => {
+    settingsState.updateProfile({ [event.target.name]: event.target.value });
   };
 
   const handleSaveClick = async () => {
-    dispatch(controllers.updateProfile());
-    handleBack();
+    helpers.updateProfile(settingsState, userState, handleBack);
   };
   const handleClose = () => {
-    onDialogClose("editUsername");
+    globalState.closeDialog("editUsername");
   };
   const handleBack = () => {
     handleClose();
-    dispatch(commonActions.openDialog("editProfile"));
+    globalState.openDialog("editProfile");
   };
 
   return (
     <>
       <DialogTemplate
         title={<EditUsernameComponents.Title />}
-        open={state.global.dialogState.editUsername.open}
+        open={globalState.dialogState.editUsername.open}
         content={
           <EditUsernameComponents.Content
-            usernameModelLength={stuffStore.models.username.minlength.value}
-            username={state.settings.profile.username}
-            onInputChange={handleInputChange}
+            usernameLength={stuffStore.models.username.minLength}
+            username={settingsState.profile.username}
+            onChange={handleInputChange}
           />
         }
         onClose={handleClose}

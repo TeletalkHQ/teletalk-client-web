@@ -15,7 +15,6 @@ const EditFullName = () => {
 
   const handleSaveClick = async () => {
     helpers.updateProfile(settingsState, userState, handleBack);
-    handleBack();
   };
   const handleClose = () => {
     globalState.closeDialog("editFullName");
