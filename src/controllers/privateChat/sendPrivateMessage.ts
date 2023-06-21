@@ -13,8 +13,8 @@ const sendPrivateMessage = () => {
 
 const tryBlock = async (state) => {
   websocket.client.emit("sendPrivateMessage", {
-    message: state.message.messageInputTextValue,
-    participantId: state.message.selectedChat.id,
+    message: messageState.messageInputTextValue,
+    participantId: messageState.selectedChat.id,
   });
 };
 

@@ -28,7 +28,7 @@ const InitialSetup = () => {
         <p>server is not available</p>
         <button onClick={startInitialSetup}>try again</button>
       </Box.FullScreen>
-      <FullPageLoading loading={state.global.globalLoading} />
+      <FullPageLoading loading={globalState.globalLoading} />
     </>
   );
 };

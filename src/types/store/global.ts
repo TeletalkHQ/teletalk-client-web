@@ -48,7 +48,7 @@ export interface GlobalHandlers {
   setUsers: (u: Users) => void;
   openGlobalLoading: () => void;
   changeDrawerOpen: (o: boolean) => void;
-  updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
+  // updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
   updateOnlineStatus: (isOnline: boolean) => void;
   openDialog: (dialogName: DialogName, props?: DialogProps) => void;
   closeDialog: (dialogName: DialogName, props?: DialogProps) => void;

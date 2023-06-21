@@ -24,23 +24,23 @@ const AppDrawer = () => {
     dispatch(commonActions.openDialog(elementName));
   };
 
-  const fullName = userUtils.concatFirstNameWithLastName(state.user);
-  const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(state.user);
+  const fullName = userUtils.concatFirstNameWithLastName(userState);
+  const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(userState);
 
   return (
     <SwipeableDrawer
       disableBackdropTransition={!utilities.isIos()}
       disableDiscovery={utilities.isIos()}
-      anchor={state.global.appDrawer.currentAnchor}
-      open={state.global.appDrawer.anchor[state.global.appDrawer.currentAnchor]}
+      anchor={globalState.appDrawer.currentAnchor}
+      open={globalState.appDrawer.anchor[globalState.appDrawer.currentAnchor]}
       onClose={(event) => toggleDrawer(event, false)}
       onOpen={(event) => toggleDrawer(event, true)}
     >
       <Box.Div
         style={{
           width:
-            state.global.appDrawer.currentAnchor === "top" ||
-            state.global.appDrawer.currentAnchor === "bottom"
+            globalState.appDrawer.currentAnchor === "top" ||
+            globalState.appDrawer.currentAnchor === "bottom"
               ? "auto"
               : 250,
         }}

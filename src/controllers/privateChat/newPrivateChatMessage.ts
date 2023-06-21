@@ -22,6 +22,6 @@ const newPrivateChatMessage = ({ chatId, newMessage }) => {
 };
 
 const isChatExist = (state, chatId) =>
-  state.message.privateChats.some((item) => item.chatId === chatId);
+  messageState.privateChats.some((item) => item.chatId === chatId);
 
 export { newPrivateChatMessage };
