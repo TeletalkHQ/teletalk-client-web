@@ -21,6 +21,14 @@ export interface ParticipantItem {
   participantId: Id;
 }
 
+export interface ChatListItem {
+  messageText: string;
+  name: string;
+  userId: string;
+}
+
+export type Chats = ChatListItem[];
+
 export type Messages = MessageItem[];
 
 export type Participants = ParticipantItem[];
@@ -35,7 +43,7 @@ export type PrivateChats = PrivateChatItem[];
 
 export type PrivateChatId = PrivateChatItem["chatId"];
 
-interface SelectedChat {
+export interface SelectedChat {
   id: PrivateChatId;
 }
 
