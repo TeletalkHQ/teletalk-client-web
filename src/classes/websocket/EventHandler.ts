@@ -91,7 +91,7 @@ class EventHandler {
   }
 
   @AutoBind
-  async tryToEmitFull() {
+  private async tryToEmitFull() {
     await this.executeRequestTransformer()
       .executeRequestInterceptors()
       .inputDataFieldsCheck()

@@ -1,7 +1,9 @@
 import MessageListItem from "~/components/rightSide/MessageListItem";
+import { Messages } from "~/types";
 
 interface Props {
   currentUserId: string;
+  messages: Messages;
 }
 
 const MessageList: React.FC<Props> = ({ messages, currentUserId }) =>
@@ -13,7 +15,7 @@ const MessageList: React.FC<Props> = ({ messages, currentUserId }) =>
             key={index}
             messageTime=""
             chatDate=""
-            message={messageItem.message}
+            message={messageItem.messageText}
             justify={
               currentUserId === messageItem.sender.senderId
                 ? "flex-end"
