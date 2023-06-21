@@ -9,13 +9,10 @@ import {
   Participants,
   PrivateChatItem,
   PrivateChats,
-  StringMap,
   UserState,
 } from ".";
 
-export interface SocketResponseErrors {
-  [prop: string]: NativeError & StringMap;
-}
+export type SocketResponseErrors = NativeError[];
 
 export type IO = {
   input: {};

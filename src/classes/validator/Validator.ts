@@ -4,6 +4,7 @@ import { commonTasks } from "~/classes/CommonTasks";
 import { errorCheckerCollection } from "~/helpers/errorCheckerCollection";
 import {
   ErrorChecker,
+  NativeError,
   ValidationResult,
   ValidatorName,
   ValidatorType,
@@ -85,7 +86,7 @@ class Validator {
   }
 
   @AutoBind
-  private printErrors(errors: any) {
+  private printErrors(errors: NativeError[]) {
     commonTasks.correctErrorsAndPrint(errors);
     return this;
   }

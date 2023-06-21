@@ -108,7 +108,7 @@ class EventHandler {
 
   @AutoBind
   private catchEmitFull(response: SocketResponse) {
-    commonTasks.correctErrorsAndPrint(response.errors);
+    commonTasks.correctErrorsAndPrint(response.errors!);
     this.logFailureResponse(Object.values(response.errors!)[0]);
   }
 
