@@ -5,26 +5,27 @@ export type CreatedAt = number;
 export type MessageText = string;
 
 export type MessageId = Id;
-interface Sender {
+
+export interface Sender {
   senderId: Id;
 }
 
-interface MessageItem {
+export interface MessageItem {
   createdAt: CreatedAt;
   messageId: Id;
   messageText: MessageText;
   sender: Sender;
 }
 
-interface ParticipantItem {
+export interface ParticipantItem {
   participantId: Id;
 }
 
-type Messages = MessageItem[];
+export type Messages = MessageItem[];
 
-type Participants = ParticipantItem[];
+export type Participants = ParticipantItem[];
 
-interface PrivateChatItem {
+export interface PrivateChatItem {
   chatId: Id;
   createdAt: CreatedAt;
   messages: Messages;
