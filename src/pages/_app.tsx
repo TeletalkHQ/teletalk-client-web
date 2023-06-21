@@ -1,7 +1,6 @@
 import { EmotionCache } from "@emotion/react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { AppProps } from "next/app";
-import { useRouter } from "next/router";
 import { SnackbarProvider } from "notistack";
 import { useEffect } from "react";
 
@@ -21,8 +20,6 @@ export interface CustomAppProps extends AppProps {
 const clientSideEmotionCache = createEmotionCache();
 
 export default function _app(props: CustomAppProps) {
-  const router = useRouter();
-
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
 
   useEffect(() => {
@@ -33,8 +30,6 @@ export default function _app(props: CustomAppProps) {
 
       registerWindowCustomProperties();
       events.websocket.otherEvents();
-
-      router.push("signIn");
     }
 
     fn();
