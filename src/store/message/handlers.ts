@@ -8,7 +8,7 @@ export const handlers = (set: MessageSetState) =>
       });
     },
 
-    closeRightSide() {
+    deselectChat() {
       set({
         selectedChat: {
           id: "",
@@ -48,5 +48,11 @@ export const handlers = (set: MessageSetState) =>
       set((prevState) => ({
         privateChats: [...prevState.privateChats, privateChat],
       }));
+    },
+
+    messageInputOnChange(value) {
+      set({
+        messageInputTextValue: value,
+      });
     },
   } as MessageHandlers);

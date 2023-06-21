@@ -52,14 +52,16 @@ export interface AddMessagePayload {
 export interface MessageState {
   privateChats: PrivateChats;
   selectedChat: SelectedChat;
+  messageInputTextValue: string;
 }
 
 export interface MessageHandlers {
-  setPrivateChats: (p: PrivateChats) => void;
-  closeRightSide: () => void;
   addMessage: (m: AddMessagePayload) => void;
-  selectChat: (id: PrivateChatId) => void;
+  deselectChat: () => void;
   createNewPrivateChat: (p: PrivateChatItem) => void;
+  messageInputOnChange: (v: string) => void;
+  selectChat: (id: PrivateChatId) => void;
+  setPrivateChats: (p: PrivateChats) => void;
 }
 
 export type MessageSetState = StoreSetFn<MessageState>;

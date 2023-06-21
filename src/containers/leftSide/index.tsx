@@ -7,7 +7,7 @@ import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import { MessageItem, PrivateChatItem, UserItem, Users } from "~/types";
 
 interface ChatListItem {
-  text: string;
+  messageText: string;
   name: string;
   userId: string;
 }
@@ -91,7 +91,7 @@ const createChatListItem = (
   user: UserItem
 ): ChatListItem => {
   return {
-    text: lastMessage.messageText,
+    messageText: lastMessage.messageText,
     name: `${user.firstName} ${user.lastName}`,
     userId: user.userId,
   };
