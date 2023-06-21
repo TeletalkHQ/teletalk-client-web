@@ -1,5 +1,11 @@
 import { UserUtilities } from "utility-store";
-import { ExtendedCellphone, ExtendedFullName } from "utility-store/lib/types";
+import {
+  ExtendedCellphone,
+  ExtendedFullName,
+  UserData,
+} from "utility-store/lib/types";
+
+import { UserState } from "~/types";
 
 class UserUtils extends UserUtilities {
   concatFirstNameWithLastName(data: ExtendedFullName) {
@@ -16,6 +22,10 @@ class UserUtils extends UserUtilities {
       isContact: false,
       userId: "",
     };
+  }
+
+  extractUserData(data: UserState) {
+    return super.extractUserData(data as UserData);
   }
 }
 

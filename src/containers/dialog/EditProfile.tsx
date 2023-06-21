@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
 import { userUtils } from "~/classes/UserUtils";
-import DialogTemplate from "~/components/dialog/Template";
 import EditProfileComponents from "~/components/dialog/editProfile";
+import DialogTemplate from "~/components/dialog/template";
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 
-const EditProfile = ({ onDialogClose }) => {
+const EditProfile = () => {
   useEffect(() => {
     if (state.global.dialogState.editProfile.open)
       dispatch(

@@ -1,9 +1,9 @@
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
-import DialogTemplate from "~/components/dialog/Template";
 import LogoutComponents from "~/components/dialog/logout";
+import DialogTemplate from "~/components/dialog/template";
 import { controllers } from "~/controllers";
 
-const Logout = ({ onDialogClose }) => {
+const Logout = () => {
   const handleClose = () => {
     onDialogClose("logout");
   };

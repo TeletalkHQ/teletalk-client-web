@@ -1,30 +1,27 @@
-import DialogTemplate from "~/components/dialog/Template";
 import ContactsComponents from "~/components/dialog/contacts";
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
-import { stateStatics } from "~/store/stateStatics";
+import DialogTemplate from "~/components/dialog/template";
+import { useGlobalStore, useMessageStore } from "~/store";
+import { UserItem } from "~/types";
 
-const Contacts = ({ onDialogClose }) => {
+const Contacts = () => {
+  const globalState = useGlobalStore();
+  const messageState = useMessageStore();
+
   const handleAddContactClick = () => {
-    dispatch(commonActions.closeDialog(stateStatics.DIALOG_NAMES.CONTACTS));
-    dispatch(commonActions.openDialog(stateStatics.DIALOG_NAMES.ADD_CONTACT));
+    globalState.closeDialog("contacts");
+    globalState.openDialog("addContact");
   };
 
   const handleCloseContactDialog = () => {
-    onDialogClose("contacts");
+    globalState.closeDialog("contacts");
   };
 
-  const handleContactItemClicked = (contact) => {
+  const handleContactItemClicked = (contact: UserItem) => {
     handleCloseContactDialog();
-    dispatch(
-      actions.selectedChat({
-        id: contact.userId,
-        type: "private",
-      })
-    );
+    messageState.selectChat(contact.userId);
   };
 
-  const contacts = state.global.users.filter((item) => item.isContact);
+  const contacts = globalState.users.filter((item) => item.isContact);
 
   return (
     <DialogTemplate
@@ -41,7 +38,7 @@ const Contacts = ({ onDialogClose }) => {
           onAddContactClick={handleAddContactClick}
         />
       }
-      open={state.global.dialogState.contacts.open}
+      open={globalState.dialogState.contacts.open}
       paperStyle={{
         height: "90vh",
       }}
