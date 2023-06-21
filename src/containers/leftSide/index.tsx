@@ -4,13 +4,13 @@ import Box from "~/components/general/box";
 import ChatList from "~/components/leftSide/ChatList";
 import SearchBar from "~/components/leftSide/SearchBar";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
-import { MessageItem, PrivateChatItem, UserItem, Users } from "~/types";
-
-interface ChatListItem {
-  messageText: string;
-  name: string;
-  userId: string;
-}
+import {
+  ChatListItem,
+  MessageItem,
+  PrivateChatItem,
+  UserItem,
+  Users,
+} from "~/types";
 
 const LeftSide = () => {
   const globalState = useGlobalStore();
