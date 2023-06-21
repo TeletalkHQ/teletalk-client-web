@@ -2,7 +2,7 @@ import { CSSProperties } from "react";
 import { FullName } from "utility-store/lib/types";
 
 import { StoreSetFn } from ".";
-import { Cellphone, GlobalLoadingType } from "..";
+import { Cellphone } from "..";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -26,11 +26,12 @@ export interface DialogState {
   props: DialogProps;
 }
 
-export type ContactItem = Cellphone & FullName;
-
-export interface UserItem extends ContactItem {
+export interface ContactItem extends FullName, Cellphone {
+  userId: string;
   isContact: boolean;
 }
+
+export interface UserItem extends ContactItem {}
 
 export type Users = UserItem[];
 
@@ -44,6 +45,17 @@ export interface GlobalHandlers {
   updateOnlineStatus: (isOnline: boolean) => void;
   openDialog: (dialogName: DialogName, props?: DialogProps) => void;
   closeDialog: (dialogName: DialogName, props?: DialogProps) => void;
+}
+
+export type GlobalLoadingType = "FULL_PAGE" | "OVERLAY";
+
+export interface LoadingState {
+  color: "blue";
+  open: false;
+  progressColor: "inherit";
+  size: number;
+  speedMultiplier: number;
+  type: GlobalLoadingType;
 }
 
 export interface GlobalState {

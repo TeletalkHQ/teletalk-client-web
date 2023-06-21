@@ -3,13 +3,13 @@ import { Input } from "~/components/general/input";
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {
-  isAddNewContactButtonDisabled: boolean;
-  onAddNewContactClick: VoidNoArgsFn;
+  isAddContactButtonDisabled: boolean;
+  onAddContactClick: VoidNoArgsFn;
   onContactDialogCancelClick: VoidNoArgsFn;
 }
-const AddNewContactActions: React.FC<Props> = ({
-  isAddNewContactButtonDisabled,
-  onAddNewContactClick,
+const AddContactActions: React.FC<Props> = ({
+  isAddContactButtonDisabled,
+  onAddContactClick,
   onContactDialogCancelClick,
 }) => {
   return (
@@ -22,9 +22,9 @@ const AddNewContactActions: React.FC<Props> = ({
         </Box.Div>
         <Box.Div>
           <Input.Button
-            disabled={isAddNewContactButtonDisabled}
+            disabled={isAddContactButtonDisabled}
             variant="text"
-            onClick={onAddNewContactClick}
+            onClick={onAddContactClick}
           >
             Create
           </Input.Button>
@@ -34,4 +34,4 @@ const AddNewContactActions: React.FC<Props> = ({
   );
 };
 
-export default AddNewContactActions;
+export default AddContactActions;
