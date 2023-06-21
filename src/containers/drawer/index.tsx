@@ -9,7 +9,7 @@ import { useGlobalStore, useUserStore } from "~/store";
 import { DialogName, ElementName } from "~/types";
 import { utilities } from "~/utilities";
 
-const AppDrawer = () => {
+const Drawer = () => {
   const globalState = useGlobalStore();
   const userState = useUserStore();
 
@@ -69,4 +69,4 @@ const AppDrawer = () => {
   );
 };
 
-export default AppDrawer;
+export default Drawer;
