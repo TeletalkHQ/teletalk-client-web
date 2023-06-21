@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import Box from "~/components/general/box";
+import LeftSide from "~/containers/leftSide";
+import Portal from "~/containers/portal";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import {
   GetPrivateChatsIO,
@@ -104,7 +106,9 @@ const Messenger = () => {
         height: "100vh",
       }}
     >
-      {/* <LeftSide />
+      <Portal />
+      <LeftSide />
+      {/* 
       <RightSide /> */}
     </Box.Grid>
   );
