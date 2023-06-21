@@ -78,7 +78,6 @@ type ErrorReason = string;
 
 export interface NativeError {
   description?: string;
-  code: number;
   message?: string;
   reason: ErrorReason;
 }

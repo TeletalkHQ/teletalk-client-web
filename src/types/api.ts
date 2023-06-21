@@ -21,13 +21,15 @@ export type IO = {
 
 export interface SocketResponse<Data = IO["output"]> {
   data: Data;
-  errors?: SocketResponseErrors;
+  errors: SocketResponseErrors;
   ok: boolean;
 }
 
 export type ResponseCallback<Data = IO["output"]> = (
   response: SocketResponse<Data>
 ) => Promise<Data>;
+
+export type SocketErrorCallback = (errors: SocketResponseErrors) => void;
 
 export type RequestTransformer<Data = IO["input"]> = (
   requestData: Data
