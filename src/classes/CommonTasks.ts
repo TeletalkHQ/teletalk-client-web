@@ -1,17 +1,16 @@
 import { notificationManager } from "~/classes/NotificationManager";
 import { enErrorMessages } from "~/data/enErrorMessages";
-import { NativeModel } from "~/types";
+import { NativeError, NativeModel } from "~/types";
 import { ModelName } from "~/types/models";
 
 import { stuffStore } from "./StuffStore";
 
 class CommonTasks {
-  correctErrorsAndPrint(errors: any) {
-    errors.forEach((errorItem: any) => {
+  correctErrorsAndPrint(errors: NativeError[]) {
+    errors.forEach((item) => {
       notificationManager.submitErrorNotification({
-        ...errorItem,
-        message:
-          enErrorMessages[errorItem.reason as keyof typeof enErrorMessages],
+        ...item,
+        message: enErrorMessages[item.reason as keyof typeof enErrorMessages],
       });
     });
   }
