@@ -2,11 +2,11 @@ import { FullName } from "utility-store/lib/types";
 
 import Box from "~/components/general/box";
 import { CommonInput } from "~/components/general/input/common";
-import { VoidNoArgsFn } from "~/types";
+import { CommonOnChange } from "~/types";
 
 interface Props {
   fullName: FullName;
-  onChange: VoidNoArgsFn;
+  onChange: CommonOnChange;
 }
 
 const EditFullNameContent: React.FC<Props> = ({ fullName, onChange }) => {

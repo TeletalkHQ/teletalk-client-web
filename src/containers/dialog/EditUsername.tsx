@@ -1,11 +1,11 @@
 import { stuffStore } from "~/classes/StuffStore";
-import DialogTemplate from "~/components/dialog/Template";
 import EditUsernameComponents from "~/components/dialog/editUsername";
+import DialogTemplate from "~/components/dialog/template";
 import { controllers } from "~/controllers";
 import { actions } from "~/store/actions";
 import { commonActions } from "~/store/commonActions";
 
-const EditUsername = ({ onDialogClose }) => {
+const EditUsername = () => {
   const handleInputChange = (event) => {
     dispatch(
       actions.updateProfile({

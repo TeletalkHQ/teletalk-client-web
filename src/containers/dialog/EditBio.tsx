@@ -1,30 +1,30 @@
 import { stuffStore } from "~/classes/StuffStore";
 import EditBioComponents from "~/components/dialog/editBio";
 import DialogTemplate from "~/components/dialog/template";
-import { controllers } from "~/controllers";
-import { useGlobalStore, useSettingsStore } from "~/store";
-import { CommonChangeEvent, Profile } from "~/types";
+import { helpers } from "~/helpers";
+import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
+import { CommonChangeEvent } from "~/types";
 
 const EditBio = () => {
   const globalState = useGlobalStore();
   const settingsState = useSettingsStore();
+  const userState = useUserStore();
 
   const handleInputChange = (event: CommonChangeEvent) => {
-    const key = event.target.name as keyof Profile;
-
-    settingsState.updateProfile({ [key]: event.target.value });
+    settingsState.updateProfile({ [event.target.name]: event.target.value });
   };
 
   const handleSaveClick = async () => {
-    controllers.updateProfile();
-    handleBack();
+    helpers.updateProfile(settingsState, userState, handleBack);
   };
-  const handleClose = () => {
-    globalState.closeDialog("editBio");
-  };
+
   const handleBack = () => {
     handleClose();
     globalState.openDialog("editProfile");
+  };
+
+  const handleClose = () => {
+    globalState.closeDialog("editBio");
   };
 
   return (

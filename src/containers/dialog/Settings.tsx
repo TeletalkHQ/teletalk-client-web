@@ -1,11 +1,11 @@
 import lodash from "lodash";
 
 import { userUtils } from "~/classes/UserUtils";
-import DialogTemplate from "~/components/dialog/Template";
 import SettingsComponents from "~/components/dialog/settings";
+import DialogTemplate from "~/components/dialog/template";
 import { commonActions } from "~/store/commonActions";
 
-const Settings = ({ onDialogClose }) => {
+const Settings = () => {
   const handleCloseDialog = () => {
     onDialogClose("settings");
   };
