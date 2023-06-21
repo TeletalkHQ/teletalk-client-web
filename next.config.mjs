@@ -30,7 +30,10 @@ const nextConfig = {
   },
 
   async redirects() {
-    return [{ source: "/", destination: "/signIn", permanent: true }];
+    return [
+      { source: "/verify", destination: "/signIn", permanent: true },
+      { source: "/create", destination: "/signIn", permanent: true },
+    ];
   },
 };
 
