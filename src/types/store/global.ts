@@ -36,15 +36,20 @@ export interface DialogState {
 
 export interface ContactItem extends FullName, Cellphone {
   userId: string;
-  isContact: boolean;
 }
 
-export interface UserItem extends ContactItem {}
+export interface UserItem extends FullName {
+  countryCode?: string;
+  countryName?: string;
+  phoneNumber?: string;
+  isContact: boolean;
+  userId: string;
+}
 
 export type Users = UserItem[];
 
 export interface GlobalHandlers {
-  addUserWithContact: (c: ContactItem) => void;
+  addUserWithContact: (c: UserItem) => void;
   addUser: (u: UserItem) => void;
   setUsers: (u: Users) => void;
   openGlobalLoading: () => void;

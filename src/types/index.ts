@@ -10,13 +10,13 @@ import { Transitions } from "~/components/other/Transitions";
 import { countries } from "~/data/countries";
 import { stuff } from "~/data/stuff";
 
-import { ContactItem, DrawerAnchor, UserItem } from "./store/global";
+import { ContactItem, DrawerAnchor } from "./store/global";
 
 export type CountryItem = (typeof countries)[number];
 export type Countries = CountryItem[];
-export type CountryName = CountryItem["countryName"];
-export type CountryCode = CountryItem["countryCode"];
-export type CountryShortName = CountryItem["countryShortName"];
+export type CountryName = CountryItem["countryName"] | string;
+export type CountryCode = CountryItem["countryCode"] | string;
+export type CountryShortName = CountryItem["countryShortName"] | string;
 
 export interface StringMap {
   [prop: string]: any;
@@ -36,7 +36,7 @@ export interface UiConfig {
   maxNotification: number;
 }
 
-export type Contacts = UserItem[];
+export type Contacts = ContactItem[];
 
 export type Style = CSSProperties;
 
@@ -84,32 +84,6 @@ export interface NativeError {
 }
 
 export type Notification = NativeError;
-
-export interface SocketResponseErrors {
-  [prop: string]: NativeError & StringMap;
-}
-
-export interface SocketResponse<Data = StringMap> {
-  data: Data;
-  errors?: SocketResponseErrors;
-  ok: boolean;
-}
-
-export type RequestData = StringMap;
-
-export type Data = StringMap;
-
-export type ResponseData = StringMap;
-
-export type ResponseCallback = (response: SocketResponse) => Promise<void>;
-
-export type RequestTransformer = (requestData: RequestData) => RequestData;
-
-export type ResponseTransformer = (response: SocketResponse) => SocketResponse;
-
-export type Interceptor = (data: Data) => Data;
-
-export type Interceptors = Interceptor[];
 
 export interface Environments {
   NEXT_PUBLIC_CLIENT_BASE_URL: string;
@@ -181,7 +155,7 @@ export type Id = string;
 //
 //
 
-//
+export type * from "./api";
 export type * from "./store";
 export type * from "./models";
 export type * from "./components";

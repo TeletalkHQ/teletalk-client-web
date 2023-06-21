@@ -4,7 +4,12 @@ import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import Box from "~/components/general/box";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
-import { ContactItem, ParticipantItem, UserItem } from "~/types";
+import {
+  GetPrivateChatsIO,
+  GetPublicUserDataIO,
+  GetUserDataIO,
+  ParticipantItem,
+} from "~/types";
 
 const Messenger = () => {
   const messageStore = useMessageStore();
@@ -16,46 +21,55 @@ const Messenger = () => {
       //TODO: Update in/out events with events from server
       socketEmitterStore.events.joinRoom.emit();
 
-      await socketEmitterStore.events.getPrivateChats.emitFull(
-        undefined,
+      await socketEmitterStore.events.getPrivateChats.emitFull<GetPrivateChatsIO>(
+        {},
         async ({ data }) => {
           for (const item of data.privateChats) {
             const participant = item.participants.find(
               (i: ParticipantItem) => i.participantId !== userState.userId
-            );
+            )!;
 
             const isUserExist = globalState.users.some(
               (i) => i.userId === participant.participantId
             );
             if (isUserExist) continue;
 
-            const {
-              data: { publicUserData },
-            } = await socketEmitterStore.events.getPublicUserData.emitFull({
-              userId: participant.participantId,
+            const { publicUserData } =
+              await socketEmitterStore.events.getPublicUserData.emitFull<GetPublicUserDataIO>(
+                {
+                  userId: participant.participantId,
+                }
+              );
+
+            globalState.addUser({
+              ...publicUserData,
+              isContact: false,
             });
 
-            globalState.addUser(publicUserData);
+            return data;
           }
 
           messageStore.setPrivateChats(data.privateChats);
+
+          return data;
         }
       );
 
-      socketEmitterStore.events.getUserData.emitFull({}, async ({ data }) => {
-        //TODO: Update user data
-        //TODO: Update users with contacts
-        const users: UserItem[] = data.user.contacts.map(
-          (item: ContactItem) => ({
+      socketEmitterStore.events.getUserData.emitFull<GetUserDataIO>(
+        {},
+        async ({ data }) => {
+          const users = data.user.contacts.map((item) => ({
             ...item,
             isContact: true,
-          })
-        );
+          }));
 
-        globalState.setUsers(users);
-      });
+          globalState.setUsers(users);
 
-      websocket.client.on("newPrivateChatMessage", (data) => {
+          return data;
+        }
+      );
+
+      websocket.client.on("newPrivateChatMessage", (_data) => {
         // const newPrivateChatMessage = ({ chatId, newMessage }) => {
         //   return (dispatch, getState) => {
         //     const state = getState();

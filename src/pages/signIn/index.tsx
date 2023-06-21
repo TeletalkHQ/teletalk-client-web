@@ -13,7 +13,7 @@ import { Icons } from "~/components/other/Icons";
 import { countries } from "~/data/countries";
 import { createInputValidator } from "~/helpers/createInputValidator";
 import { useAuthStore } from "~/store";
-import { CountryItem } from "~/types";
+import { CountryItem, SignInIO } from "~/types";
 import { utilities } from "~/utilities";
 
 const SignIn = () => {
@@ -23,15 +23,16 @@ const SignIn = () => {
   const handleSignInClick = async () => {
     state.updateAuthenticationProgress(true);
 
-    socketEmitterStore.events.signIn.emitFull(
+    await socketEmitterStore.events.signIn.emitFull<SignInIO>(
       {
         countryCode: state.countryCode,
         countryName: state.countryName,
         phoneNumber: state.phoneNumber,
       },
-      async () => {
+      async ({ data }) => {
         state.updateAuthenticationProgress(false);
         router.push("verify");
+        return data;
       }
     );
   };

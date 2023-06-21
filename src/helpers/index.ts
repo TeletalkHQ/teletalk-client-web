@@ -1,6 +1,11 @@
 import { userUtils } from "~/classes/UserUtils";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
-import { SettingsState, UserStore, VoidNoArgsFn } from "~/types";
+import {
+  SettingsState,
+  UpdatePublicUserDataIO,
+  UserStore,
+  VoidNoArgsFn,
+} from "~/types";
 
 const updateProfile = (
   settingsState: SettingsState,
@@ -9,7 +14,7 @@ const updateProfile = (
 ) => {
   const { countryCode, countryName, phoneNumber, ...profile } =
     settingsState.profile;
-  socketEmitterStore.events.updatePublicUserData.emitFull(
+  socketEmitterStore.events.updatePublicUserData.emitFull<UpdatePublicUserDataIO>(
     profile,
     async ({ data }) => {
       userState.setUserData({
@@ -18,6 +23,8 @@ const updateProfile = (
       });
 
       cb();
+
+      return data;
     }
   );
 };

@@ -7,7 +7,12 @@ import AddContactComponents from "~/components/dialog/addContact";
 import DialogTemplate from "~/components/dialog/template";
 import { countries } from "~/data/countries";
 import { useGlobalStore } from "~/store";
-import { CommonChangeEvent, ContactItem, CountryItem } from "~/types";
+import {
+  AddContactWithCellphoneIO,
+  CommonChangeEvent,
+  ContactItem,
+  CountryItem,
+} from "~/types";
 import { utilities } from "~/utilities";
 
 const AddContact = () => {
@@ -25,11 +30,15 @@ const AddContact = () => {
   };
 
   const handleAddContactClick = async () => {
-    socketEmitterStore.events.addContactWithCellphone.emitFull(
+    socketEmitterStore.events.addContactWithCellphone.emitFull<AddContactWithCellphoneIO>(
       contact,
       async (response) => {
-        state.addUserWithContact(response.data.addedContact);
+        state.addUserWithContact({
+          ...response.data.addedContact,
+          isContact: true,
+        });
         returnToContactsDialog();
+        return response.data;
       }
     );
   };
