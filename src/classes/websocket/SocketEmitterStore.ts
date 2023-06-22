@@ -9,19 +9,15 @@ type Events = {
 class SocketEmitterStore {
   //@ts-ignore
   events: Events = {};
-
-  build() {
-    const events = stuffStore.events;
-    Object.entries(events).forEach(([name, route]) => {
-      this.events[name as EventName] = eventHandler
-        .create()
-        .setRoute(route as SocketRoute);
-    });
-  }
 }
 
 const socketEmitterStore = new SocketEmitterStore();
 
-socketEmitterStore.build();
+const events = stuffStore.events;
+Object.entries(events).forEach(([name, route]) => {
+  socketEmitterStore.events[name as EventName] = eventHandler
+    .create()
+    .setRoute(route as SocketRoute);
+});
 
 export { socketEmitterStore, SocketEmitterStore };

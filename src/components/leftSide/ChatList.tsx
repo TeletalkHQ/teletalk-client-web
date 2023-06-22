@@ -1,15 +1,28 @@
 import ChatListItem from "~/components/leftSide/chatListItem";
+import { ChatListItem as ChatListItemType, Chats, SelectedChat } from "~/types";
 
-const ChatList = ({ chatList, onChatListItemClick, selectedChat }) => {
-  return chatList.map((item, i) => (
-    <ChatListItem
-      onClick={() => onChatListItemClick(item)}
-      key={i}
-      message={item.message}
-      fullName={item.name}
-      selected={selectedChat.id === item.id}
-    />
-  ));
-};
+interface Props {
+  chatList: Chats;
+  onChatListItemClick: (c: ChatListItemType) => void;
+  selectedChat: SelectedChat;
+}
+
+const ChatList: React.FC<Props> = ({
+  chatList,
+  onChatListItemClick,
+  selectedChat,
+}) => (
+  <>
+    {chatList.map((item, i) => (
+      <ChatListItem
+        onClick={() => onChatListItemClick(item)}
+        key={i}
+        message={item.messageText}
+        fullName={item.name}
+        selected={selectedChat.id === item.userId}
+      />
+    ))}
+  </>
+);
 
 export default ChatList;

@@ -17,8 +17,8 @@ interface Props {
   onClose: VoidNoArgsFn;
   onKeyDown?: VoidNoArgsFn;
   open: boolean;
-  paperStyle: Style;
-  title: string | JSX.Element;
+  paperStyle?: Style;
+  title?: string | JSX.Element;
   transition?: TransitionName;
   transitionDuration?: number;
 }

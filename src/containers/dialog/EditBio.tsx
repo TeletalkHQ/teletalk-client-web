@@ -1,41 +1,42 @@
 import { stuffStore } from "~/classes/StuffStore";
-import DialogTemplate from "~/components/dialog/Template";
 import EditBioComponents from "~/components/dialog/editBio";
-import { controllers } from "~/controllers";
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
+import DialogTemplate from "~/components/dialog/template";
+import { helpers } from "~/helpers";
+import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
+import { CommonChangeEvent } from "~/types";
 
-const EditBio = ({ onDialogClose }) => {
-  const handleInputChange = (event) => {
-    dispatch(
-      actions.updateProfile({
-        profile: { [event.target.name]: event.target.value },
-      })
-    );
+const EditBio = () => {
+  const globalState = useGlobalStore();
+  const settingsState = useSettingsStore();
+  const userState = useUserStore();
+
+  const handleInputChange = (event: CommonChangeEvent) => {
+    settingsState.updateProfile({ [event.target.name]: event.target.value });
   };
 
   const handleSaveClick = async () => {
-    dispatch(controllers.updateProfile());
-    handleBack();
+    helpers.updateProfile(settingsState, userState, handleBack);
   };
-  const handleClose = () => {
-    onDialogClose("editBio");
-  };
+
   const handleBack = () => {
     handleClose();
-    dispatch(commonActions.openDialog("editProfile"));
+    globalState.openDialog("editProfile");
+  };
+
+  const handleClose = () => {
+    globalState.closeDialog("editBio");
   };
 
   return (
     <>
       <DialogTemplate
         title={<EditBioComponents.Title />}
-        open={state.global.dialogState.editBio.open}
+        open={globalState.dialogState.editBio.open}
         content={
           <EditBioComponents.Content
-            bioModelLength={stuffStore.models.bio.maxlength.value}
-            bio={state.settings.profile.bio}
-            onInputChange={handleInputChange}
+            bioLength={stuffStore.models.bio.maxLength}
+            bio={settingsState.profile.bio}
+            onChange={handleInputChange}
           />
         }
         onClose={handleClose}

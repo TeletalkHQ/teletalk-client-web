@@ -14,6 +14,7 @@ import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
 import { createInputValidator } from "~/helpers/createInputValidator";
 import { useAuthStore } from "~/store";
+import { VerifyIO } from "~/types";
 
 const Verify = () => {
   const state = useAuthStore();
@@ -32,24 +33,27 @@ const Verify = () => {
   };
 
   const handleVerifyClick = async () => {
-    domUtils()
-      //REFACTOR: Use ElementName type
-      .setElementByName("verificationCode")
-      .focusElement()
-      .selectAllValue();
-
     state.updateAuthenticationProgress(true);
 
-    await socketEmitterStore.events.verify.emitFull(
+    await socketEmitterStore.events.verify.emitFull<VerifyIO>(
       {
         verificationCode: state.verificationCode,
       },
-      async ({ data: { newUser } }) => {
+      async ({ data }) => {
         state.updateVerificationCode("");
         state.updateAuthenticationProgress(false);
 
-        if (newUser) router.replace("create");
+        if (data.newUser) router.replace("create");
         else router.push("messenger");
+
+        return data;
+      },
+      () => {
+        state.updateAuthenticationProgress(false);
+        domUtils()
+          .setElementByName("verificationCode")
+          .focusElement()
+          .selectAllValue();
       }
     );
   };

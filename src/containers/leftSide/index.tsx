@@ -1,35 +1,39 @@
 import { useMemo } from "react";
-import { arrayUtilities } from "utility-store";
 
 import Box from "~/components/general/box";
 import ChatList from "~/components/leftSide/ChatList";
 import SearchBar from "~/components/leftSide/SearchBar";
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
+import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
+import {
+  ChatListItem,
+  MessageItem,
+  PrivateChatItem,
+  UserItem,
+  Users,
+} from "~/types";
 
 const LeftSide = () => {
+  const globalState = useGlobalStore();
+  const messageState = useMessageStore();
+  const userState = useUserStore();
+
   const chatList = useMemo(() => {
-    return state.message.privateChats.map((chat) => {
+    return messageState.privateChats.map((chat) => {
       const lastMessage = getChatLastMessage(chat);
-      const participantId = findParticipantId(chat, state.user.userId);
-      const user = findUser(state.global.users, participantId);
+      const participantId = findParticipantId(chat, userState.userId);
+      const user = findUser(globalState.users, participantId);
 
       return createChatListItem(lastMessage, user);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message.privateChats, state.global.users]);
+  }, [messageState.privateChats, globalState.users]);
 
   const handleDrawerIconClick = () => {
-    dispatch(commonActions.openAppDrawer());
+    globalState.changeDrawerOpen(true);
   };
 
-  const handleChatClick = (chatListItem) => {
-    dispatch(
-      actions.selectedChat({
-        id: chatListItem.userId,
-        type: "private",
-      })
-    );
+  const handleChatClick = (chatListItem: ChatListItem) => {
+    messageState.selectChat(chatListItem.userId);
   };
 
   return (
@@ -56,7 +60,7 @@ const LeftSide = () => {
             }}
           >
             <ChatList
-              selectedChat={state.message.selectedChat}
+              selectedChat={messageState.selectedChat}
               onChatListItemClick={handleChatClick}
               chatList={chatList}
             />
@@ -69,21 +73,25 @@ const LeftSide = () => {
 
 export default LeftSide;
 
-const findUser = (users, id) => {
-  return users.find((c) => c.userId === id);
-};
-const findParticipantId = (chat, userId) => {
-  return chat.participants.find(
-    (participant) => participant.participantId !== userId
-  ).participantId;
+const findUser = (users: Users, id: string) =>
+  users.find((c) => c.userId === id)!;
+
+const findParticipantId = (chat: PrivateChatItem, userId: string) => {
+  return (
+    chat.participants.find(
+      (participant) => participant.participantId !== userId
+    )?.participantId || ""
+  );
 };
 
-const getChatLastMessage = (chat) => arrayUtilities.lastItem(chat.messages);
+const getChatLastMessage = (chat: PrivateChatItem) => chat.messages.at(-1)!;
 
-const createChatListItem = (lastMessage, user) => {
+const createChatListItem = (
+  lastMessage: MessageItem,
+  user: UserItem
+): ChatListItem => {
   return {
-    //TODO: rename .message to .text (server side too)
-    message: lastMessage.message,
+    messageText: lastMessage.messageText,
     name: `${user.firstName} ${user.lastName}`,
     userId: user.userId,
   };

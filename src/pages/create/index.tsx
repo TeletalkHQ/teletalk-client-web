@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 
 import { commonTasks } from "~/classes/CommonTasks";
+import { userUtils } from "~/classes/UserUtils";
+import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
@@ -10,6 +12,7 @@ import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
 import { createInputValidator } from "~/helpers/createInputValidator";
 import { useAuthStore } from "~/store";
+import { CreateNewUserIO } from "~/types";
 
 const CreateNewUser = () => {
   const state = useAuthStore();
@@ -26,12 +29,21 @@ const CreateNewUser = () => {
   };
 
   const handleBackToSignInClick = () => {
-    state.updateVerificationCode("");
     router.back();
   };
 
-  const handleCreateNewUserConfirmClick = () => {
-    console.log("create clicked!");
+  const handleCreateNewUserConfirmClick = async () => {
+    socketEmitterStore.events.createNewUser.emitFull<CreateNewUserIO>(
+      userUtils.extractFullName(state),
+      async ({ data }) => {
+        state.updateFirstName("");
+        state.updateLastName("");
+
+        router.push("/messenger");
+
+        return data;
+      }
+    );
   };
 
   const isCreateNewUserConfirmButtonDisabled = () => {

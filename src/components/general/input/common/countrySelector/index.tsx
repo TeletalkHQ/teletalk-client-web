@@ -2,7 +2,6 @@ import { ListItemProps } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { SyntheticEvent } from "react";
 
-import { validatorManager } from "~/classes/validator/ValidatorManager";
 import Option from "~/components/general/input/common/countrySelector/Option";
 import SelectorInput from "~/components/general/input/common/countrySelector/SelectorInput";
 import { countries } from "~/data/countries";

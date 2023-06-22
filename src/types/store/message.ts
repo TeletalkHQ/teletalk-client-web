@@ -5,26 +5,35 @@ export type CreatedAt = number;
 export type MessageText = string;
 
 export type MessageId = Id;
-interface Sender {
+
+export interface Sender {
   senderId: Id;
 }
 
-interface MessageItem {
+export interface MessageItem {
   createdAt: CreatedAt;
   messageId: Id;
   messageText: MessageText;
   sender: Sender;
 }
 
-interface ParticipantItem {
+export interface ParticipantItem {
   participantId: Id;
 }
 
-type Messages = MessageItem[];
+export interface ChatListItem {
+  messageText: string;
+  name: string;
+  userId: string;
+}
 
-type Participants = ParticipantItem[];
+export type Chats = ChatListItem[];
 
-interface PrivateChatItem {
+export type Messages = MessageItem[];
+
+export type Participants = ParticipantItem[];
+
+export interface PrivateChatItem {
   chatId: Id;
   createdAt: CreatedAt;
   messages: Messages;
@@ -34,7 +43,7 @@ export type PrivateChats = PrivateChatItem[];
 
 export type PrivateChatId = PrivateChatItem["chatId"];
 
-interface SelectedChat {
+export interface SelectedChat {
   id: PrivateChatId;
 }
 
@@ -51,14 +60,16 @@ export interface AddMessagePayload {
 export interface MessageState {
   privateChats: PrivateChats;
   selectedChat: SelectedChat;
+  messageInputTextValue: string;
 }
 
 export interface MessageHandlers {
-  setPrivateChats: (p: PrivateChats) => void;
-  closeRightSide: () => void;
   addMessage: (m: AddMessagePayload) => void;
-  selectChat: (id: PrivateChatId) => void;
+  deselectChat: () => void;
   createNewPrivateChat: (p: PrivateChatItem) => void;
+  messageInputOnChange: (v: string) => void;
+  selectChat: (id: PrivateChatId) => void;
+  setPrivateChats: (p: PrivateChats) => void;
 }
 
 export type MessageSetState = StoreSetFn<MessageState>;
