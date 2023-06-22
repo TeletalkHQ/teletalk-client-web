@@ -2,10 +2,17 @@ import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
 import IconButton from "~/components/general/other/IconButton";
 import { Icons } from "~/components/other/Icons";
+import { CommonOnChange, VoidNoArgsFn } from "~/types";
 
-const MessageInput = ({
+interface Props {
+  messageInputTextValue: string;
+  onChange: CommonOnChange;
+  onSendMessage: VoidNoArgsFn;
+}
+
+const MessageInput: React.FC<Props> = ({
   messageInputTextValue,
-  onInputChange,
+  onChange,
   onSendMessage,
 }) => {
   return (
@@ -23,7 +30,7 @@ const MessageInput = ({
             multiline
             maxRows={8}
             autoFocus
-            onChange={onInputChange}
+            onChange={onChange}
             value={messageInputTextValue}
           />
         </Box.Div>

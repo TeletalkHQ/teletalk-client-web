@@ -1,36 +1,36 @@
 import { useEffect, useMemo, useRef } from "react";
 
 import { domUtils } from "~/classes/DomUtils";
+import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import Box from "~/components/general/box";
 import ChatBar from "~/components/rightSide/ChatBar";
 import MessageInput from "~/components/rightSide/MessageInput";
 import MessageList from "~/components/rightSide/MessageList";
-import { controllers } from "~/controllers";
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
-import { stateStatics } from "~/store/stateStatics";
+import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
+import { CommonChangeEvent, Messages, SendPrivateMessageIO } from "~/types";
 
 const RightSide = () => {
-  const oldMessages = useRef([]);
+  const globalState = useGlobalStore();
+  const messageState = useMessageStore();
+  const userState = useUserStore();
+
+  const oldMessages = useRef<Messages>([]);
 
   const selectedChatMessages = useMemo(() => {
-    if (state.message.selectedChat.type === "private") {
-      return (
-        state.message.privateChats.find((pc) => {
-          return pc.participants.find(
-            (p) => p.participantId === state.message.selectedChat.id
-          );
-        })?.messages || []
-      );
-    }
+    return (
+      messageState.privateChats.find((pc) => {
+        return pc.participants.find(
+          (p) => p.participantId === messageState.selectedChat.id
+        );
+      })?.messages || []
+    );
 
-    return [];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.message.selectedChat.id, state.message.privateChats]);
+  }, [messageState.selectedChat.id, messageState.privateChats]);
 
   useEffect(() => {
     if (oldMessages.current.length < selectedChatMessages.length) {
-      const messageBox = domUtils().getElementById("messageBox");
+      const messageBox = domUtils().getElementById("messageBox")!;
       messageBox.scrollTo({
         top: messageBox.scrollHeight,
       });
@@ -39,24 +39,33 @@ const RightSide = () => {
     oldMessages.current = selectedChatMessages;
   }, [selectedChatMessages]);
 
-  const selectedParticipantToChat = state.global.users.find(
-    (p) => p.userId === state.message.selectedChat.id
-  );
+  const selectedParticipantToChat = globalState.users.find(
+    (p) => p.userId === messageState.selectedChat.id
+  )!;
 
-  const handleInputChange = ({ target: { value } }) => {
-    dispatch(actions.messageInputOnChange({ messageInputTextValue: value }));
+  const handleInputChange = (event: CommonChangeEvent) => {
+    messageState.messageInputOnChange(event.target.value);
   };
 
   const handleSendMessage = async () => {
-    dispatch(controllers.sendPrivateMessage());
+    socketEmitterStore.events.sendPrivateMessage.emitFull<SendPrivateMessageIO>(
+      {
+        messageText: messageState.messageInputTextValue,
+        participantId: messageState.selectedChat.id,
+      },
+      async ({ data }) => {
+        messageState.messageInputOnChange("");
+        return data;
+      }
+    );
   };
 
   const handleMessageContainerCloseClick = () => {
-    dispatch(actions.closeRightSide());
+    messageState.deselectChat();
   };
 
   const handleChatBarClick = () => {
-    dispatch(commonActions.openDialog(stateStatics.DIALOG_NAMES.USER_INFO));
+    globalState.openDialog("userInfo");
   };
 
   return (
@@ -70,7 +79,7 @@ const RightSide = () => {
       lg={9}
       md={8}
     >
-      {state.message.selectedChat.id && (
+      {messageState.selectedChat.id && (
         <Box.Flex
           col
           sx={{
@@ -103,7 +112,7 @@ const RightSide = () => {
             }}
           >
             <MessageList
-              currentUserId={state.user.userId}
+              currentUserId={userState.userId}
               messages={selectedChatMessages}
             />
           </Box.Div>
@@ -114,9 +123,9 @@ const RightSide = () => {
             }}
           >
             <MessageInput
-              messageInputTextValue={state.message.messageInputTextValue}
+              messageInputTextValue={messageState.messageInputTextValue}
               onSendMessage={handleSendMessage}
-              onInputChange={handleInputChange}
+              onChange={handleInputChange}
             />
           </Box.Div>
         </Box.Flex>

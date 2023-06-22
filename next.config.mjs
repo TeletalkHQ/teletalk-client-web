@@ -28,6 +28,13 @@ const nextConfig = {
   experimental: {
     appDir: false,
   },
+
+  async redirects() {
+    return [
+      { source: "/verify", destination: "/signIn", permanent: true },
+      { source: "/create", destination: "/signIn", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

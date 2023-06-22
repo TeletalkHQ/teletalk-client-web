@@ -3,7 +3,7 @@ import { DomUtilities } from "utility-store";
 import { ElementId, ElementName } from "~/types";
 
 class DomUtils extends DomUtilities {
-  setElementByName(elementName: ElementName): this {
+  setElementByName(elementName: ElementName) {
     super.setElementByName(elementName);
     return this;
   }

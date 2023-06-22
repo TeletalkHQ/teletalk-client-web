@@ -1,25 +1,16 @@
-import { createPortal } from "react-dom";
-
-import FullPageLoading from "~/components/portal/FullPageLoading";
-import OverlayLoading from "~/components/portal/OverlayLoading";
+import FullPageLoading from "~/components/loadings/FullPageLoading";
+import OverlayLoading from "~/components/loadings/OverlayLoading";
 import DialogContainer from "~/containers/dialog";
-import AppDrawer from "~/containers/portal/appDrawer";
+import Drawer from "~/containers/drawer";
 
-const PortalProvider = ({ children }) => {
-  return createPortal(children, document.querySelector("#portalContainer"));
-};
-
-const Portal = ({ onGlobalLoadingClose }) => {
+const Portal = () => {
   return (
-    <PortalProvider>
-      <FullPageLoading loading={state.global.globalLoading} />
-      <AppDrawer />
-      <OverlayLoading
-        onGlobalLoadingClose={onGlobalLoadingClose}
-        loading={state.global.globalLoading}
-      />
+    <>
+      <FullPageLoading />
+      <Drawer />
+      <OverlayLoading />
       <DialogContainer />
-    </PortalProvider>
+    </>
   );
 };
 

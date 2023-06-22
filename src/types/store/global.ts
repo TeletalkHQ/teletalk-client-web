@@ -1,19 +1,27 @@
+import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
 import { FullName } from "utility-store/lib/types";
 
 import { StoreSetFn } from ".";
-import { Cellphone, GlobalLoadingType } from "..";
+import { Cellphone } from "..";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
 export type DialogName =
   | "addContact"
+  | "advanced"
+  | "callSettings"
+  | "chatSettings"
   | "contacts"
   | "editBio"
   | "editFullName"
   | "editProfile"
+  | "editProfile"
   | "editUsername"
+  | "language"
   | "logout"
+  | "notificationsAndSounds"
+  | "privacyAndSecurity"
   | "settings"
   | "userInfo";
 
@@ -26,24 +34,42 @@ export interface DialogState {
   props: DialogProps;
 }
 
-export type ContactItem = Cellphone & FullName;
+export interface ContactItem extends FullName, Cellphone {
+  userId: string;
+}
 
-export interface UserItem extends ContactItem {
+export interface UserItem extends FullName {
+  countryCode?: string;
+  countryName?: string;
+  phoneNumber?: string;
   isContact: boolean;
+  userId: string;
 }
 
 export type Users = UserItem[];
 
 export interface GlobalHandlers {
-  addUserWithContact: (c: ContactItem) => void;
+  addUserWithContact: (c: UserItem) => void;
   addUser: (u: UserItem) => void;
   setUsers: (u: Users) => void;
   openGlobalLoading: () => void;
+  closeGlobalLoading: () => void;
   changeDrawerOpen: (o: boolean) => void;
-  updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
+  // updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
   updateOnlineStatus: (isOnline: boolean) => void;
   openDialog: (dialogName: DialogName, props?: DialogProps) => void;
   closeDialog: (dialogName: DialogName, props?: DialogProps) => void;
+}
+
+export type GlobalLoadingType = "FULL_PAGE" | "OVERLAY";
+
+export interface LoadingState {
+  color: "blue";
+  open: false;
+  progressColor: "inherit";
+  size: number;
+  speedMultiplier: number;
+  type: GlobalLoadingType;
 }
 
 export interface GlobalState {
@@ -65,7 +91,7 @@ export interface GlobalState {
   globalLoading: {
     color: CSSProperties["color"];
     open: boolean;
-    progressColor: CSSProperties["color"];
+    progressColor: CircularProgressProps["color"];
     size: 80;
     speedMultiplier: number;
     type: GlobalLoadingType;

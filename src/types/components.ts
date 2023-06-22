@@ -89,12 +89,6 @@ export type ElementLabel =
   | "Verifying..."
   | "Verification Code";
 
-export type ListItemName =
-  | "editBio"
-  | "editFullName"
-  | "editPhoneNumber"
-  | "editUsername";
-
 export type ElementId = ElementName;
 
 export type ValidatorName =
