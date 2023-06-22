@@ -23,6 +23,50 @@ const Messenger = () => {
       //TODO: Update in/out events with events from server
       socketEmitterStore.events.joinRoom.emit();
 
+      await socketEmitterStore.events.getUserData.emitFull<GetUserDataIO>(
+        {},
+        async ({ data }) => {
+          const users = data.user.contacts.map((item) => ({
+            ...item,
+            isContact: true,
+          }));
+
+          globalState.setUsers(users);
+          userState.setUserData(data.user);
+          return data;
+        }
+      );
+
+      websocket.client.on("newPrivateChatMessage", (_data) => {
+        // const newPrivateChatMessage = ({ chatId, newMessage }) => {
+        //   return (dispatch, getState) => {
+        //     const state = getState();
+        //     if (isChatExist(state, chatId))
+        //       return dispatch(actions.addNewMessage({ chatId, newMessage }));
+        //     websocket.client.emit("getChatInfo", { chatId }, (response) => {
+        //       dispatch(
+        //         actions.createNewPrivateChat({
+        //           privateChat: {
+        //             ...response.data.chatInfo,
+        //             messages: [newMessage],
+        //           },
+        //         })
+        //       );
+        //     });
+        //   };
+        // };
+        // const isChatExist = (state, chatId) =>
+        //   messageState.privateChats.some((item) => item.chatId === chatId);
+      });
+    };
+
+    fn();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const fn = async () => {
       await socketEmitterStore.events.getPrivateChats.emitFull<GetPrivateChatsIO>(
         {},
         async ({ data }) => {
@@ -56,48 +100,11 @@ const Messenger = () => {
           return data;
         }
       );
-
-      socketEmitterStore.events.getUserData.emitFull<GetUserDataIO>(
-        {},
-        async ({ data }) => {
-          const users = data.user.contacts.map((item) => ({
-            ...item,
-            isContact: true,
-          }));
-
-          globalState.setUsers(users);
-
-          return data;
-        }
-      );
-
-      websocket.client.on("newPrivateChatMessage", (_data) => {
-        // const newPrivateChatMessage = ({ chatId, newMessage }) => {
-        //   return (dispatch, getState) => {
-        //     const state = getState();
-        //     if (isChatExist(state, chatId))
-        //       return dispatch(actions.addNewMessage({ chatId, newMessage }));
-        //     websocket.client.emit("getChatInfo", { chatId }, (response) => {
-        //       dispatch(
-        //         actions.createNewPrivateChat({
-        //           privateChat: {
-        //             ...response.data.chatInfo,
-        //             messages: [newMessage],
-        //           },
-        //         })
-        //       );
-        //     });
-        //   };
-        // };
-        // const isChatExist = (state, chatId) =>
-        //   messageState.privateChats.some((item) => item.chatId === chatId);
-      });
     };
 
-    fn();
-
+    if (userState.userId) fn();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userState.userId]);
 
   return (
     <Box.Grid
@@ -108,8 +115,7 @@ const Messenger = () => {
     >
       <Portal />
       <LeftSide />
-      {/* 
-      <RightSide /> */}
+      {/* <RightSide />  */}
     </Box.Grid>
   );
 };
