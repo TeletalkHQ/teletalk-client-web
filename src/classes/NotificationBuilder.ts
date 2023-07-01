@@ -15,10 +15,6 @@ class NotificationBuilder {
     (this.notification || {}).message = message;
     return this;
   }
-  code(code: number) {
-    (this.notification || {}).code = code;
-    return this;
-  }
   reason(reason: string) {
     (this.notification || {}).reason = reason;
     return this;

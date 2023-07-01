@@ -3,7 +3,7 @@ import { Stuff } from "~/types";
 
 class StuffStore {
   errors = stuff.errors;
-  events = stuff.routes;
+  events = stuff.events;
   models = stuff.models;
   validationModels = stuff.validationModels;
 
@@ -24,7 +24,7 @@ class StuffStore {
     this.errors = errors;
     return this;
   }
-  updateEvents(events: Stuff["routes"]) {
+  updateEvents(events: Stuff["events"]) {
     this.events = events;
     return this;
   }
@@ -37,7 +37,7 @@ class StuffStore {
     this.errors = data.errors;
     this.models = data.models;
     this.validationModels = data.validationModels;
-    this.events = data.routes;
+    this.events = data.events;
   }
 }
 

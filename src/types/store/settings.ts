@@ -1,13 +1,11 @@
-import { StoreSetFn } from ".";
+import { Cellphone, FullName } from "utility-store/lib/types";
 
-export interface Profile {
-  bio: string;
-  countryCode: string;
-  countryName: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  username: string;
+import { StoreSetFn } from ".";
+import { Bio, Username } from "../datatypes";
+
+export interface Profile extends Cellphone, FullName {
+  bio: Bio;
+  username: Username;
 }
 
 export interface SettingsState {

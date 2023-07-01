@@ -62,9 +62,7 @@ class AppConfigs {
     return this.configs;
   }
 
-  setDebugLevel() {
-    // console.onAll();
-  }
+  setDebugLevel() {}
 }
 
 const appConfigs = new AppConfigs();

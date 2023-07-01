@@ -4,7 +4,7 @@ import type {
   CountrySelectInputChange,
   OnCountryNameInputChange,
 } from "~/components/general/input/common/countrySelector";
-import { CommonOnChange, CountryItem } from "~/types";
+import { CommonOnChange, SelectedCountry } from "~/types";
 import { utilities } from "~/utilities";
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
   onPhoneNumberInputChange: CommonOnChange;
   onSelectedCountryChange: CountrySelectInputChange;
   phoneNumber: string;
-  selectedCountry: CountryItem | null;
+  selectedCountry: SelectedCountry;
 }
 
 const Cellphone: React.FC<Props> = ({
