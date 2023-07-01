@@ -24,6 +24,13 @@ class UserUtils extends UserUtilities {
     };
   }
 
+  makeEmptyAddingContact() {
+    return {
+      ...super.makeEmptyCellphone(),
+      ...super.makeEmptyFullName(),
+    };
+  }
+
   extractUserData(data: UserState) {
     return super.extractUserData(data as UserData);
   }

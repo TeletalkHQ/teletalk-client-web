@@ -9,8 +9,8 @@ import { countries } from "~/data/countries";
 import { useGlobalStore } from "~/store";
 import {
   AddContactWithCellphoneIO,
+  AddingContact,
   CommonChangeEvent,
-  ContactItem,
   CountryItem,
 } from "~/types";
 import { utilities } from "~/utilities";
@@ -18,20 +18,23 @@ import { utilities } from "~/utilities";
 const AddContact = () => {
   const state = useGlobalStore();
 
-  const [contact, setContact] = useState<ContactItem>(
-    userUtils.makeEmptyContactWithCellphone()
+  const [addingContact, setAddingContact] = useState<AddingContact>(
+    userUtils.makeEmptyAddingContact()
   );
   const [selectedCountry, setSelectedCountry] = useState<CountryItem | null>(
     null
   );
 
   const handleInputChange = (event: CommonChangeEvent) => {
-    setContact({ ...contact, [event.target.name]: event.target.value });
+    setAddingContact({
+      ...addingContact,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleAddContactClick = async () => {
     socketEmitterStore.events.addContactWithCellphone.emitFull<AddContactWithCellphoneIO>(
-      contact,
+      addingContact,
       async (response) => {
         state.addUserWithContact({
           ...response.data.addedContact,
@@ -46,7 +49,7 @@ const AddContact = () => {
   const closeAddContactDialog = () => {
     state.closeDialog("addContact");
     setSelectedCountry(null);
-    setContact(userUtils.makeEmptyContactWithCellphone());
+    setAddingContact(userUtils.makeEmptyContactWithCellphone());
   };
 
   const returnToContactsDialog = () => {
@@ -55,14 +58,14 @@ const AddContact = () => {
   };
 
   const handleCountryNameInputChange = (countryName: string) => {
-    setContact({ ...contact, countryName });
+    setAddingContact({ ...addingContact, countryName });
   };
 
   const handleSelectedCountryChange = (value: CountryItem | null) => {
     setSelectedCountry(value);
 
-    setContact({
-      ...contact,
+    setAddingContact({
+      ...addingContact,
       countryName: value?.countryName || "",
       countryCode: value?.countryCode || "",
     });
@@ -76,17 +79,17 @@ const AddContact = () => {
   const isAddContactButtonDisabled = () => {
     const firstNameValidateResult = commonTasks.isValueLengthInBetweenMinMax(
       "firstName",
-      contact.firstName
+      addingContact.firstName
     );
 
     const lastNameValidateResult = commonTasks.isValueLengthInBetweenMinMax(
       "lastName",
-      contact.lastName
+      addingContact.lastName
     );
 
     const phoneNumberValidateResult = commonTasks.isValueLengthInBetweenMinMax(
       "phoneNumber",
-      contact.phoneNumber
+      addingContact.phoneNumber
     );
 
     return ![
@@ -103,8 +106,8 @@ const AddContact = () => {
         title={<AddContactComponents.Title />}
         content={
           <AddContactComponents.Content
-            contact={contact}
-            countryName={contact.countryName}
+            contact={addingContact}
+            countryName={addingContact.countryName}
             onCountryNameInputChange={handleCountryNameInputChange}
             onSelectedCountryChange={handleSelectedCountryChange}
             onCountryCodeInputChange={(event) => {
