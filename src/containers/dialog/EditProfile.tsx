@@ -1,11 +1,11 @@
 import { useEffect } from "react";
+import { Cellphone } from "utility-store/lib/types";
 
 import { userUtils } from "~/classes/UserUtils";
 import EditProfileComponents from "~/components/dialog/editProfile";
 import { EditProfileListItem } from "~/components/dialog/editProfile/types";
 import DialogTemplate from "~/components/dialog/template";
 import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
-import { Profile } from "~/types";
 
 const EditProfile = () => {
   const globalState = useGlobalStore();
@@ -15,11 +15,11 @@ const EditProfile = () => {
   useEffect(() => {
     if (globalState.dialogState.editProfile.open)
       settingsState.updateProfile({
-        ...userUtils.extractCellphone(userState),
+        ...(userUtils.extractCellphone(userState) as Cellphone),
         ...userUtils.extractFullName(userState),
         bio: userState.bio,
         username: userState.username,
-      } as Profile);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalState.dialogState.editProfile.open]);
 

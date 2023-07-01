@@ -1,11 +1,8 @@
-import lodash from "lodash";
-
 import { userUtils } from "~/classes/UserUtils";
 import SettingsComponents from "~/components/dialog/settings";
 import { SettingItem } from "~/components/dialog/settings/types";
 import DialogTemplate from "~/components/dialog/template";
 import { useGlobalStore, useUserStore } from "~/store";
-import { GlobalState } from "~/types";
 
 const Settings = () => {
   const globalState = useGlobalStore();
@@ -16,13 +13,11 @@ const Settings = () => {
   };
 
   const handleSettingItemClick = (item: SettingItem) => {
-    const name = lodash.camelCase(item.displayName);
     handleCloseDialog();
 
-    if (name in globalState.dialogState)
-      globalState.openDialog(name as keyof GlobalState["dialogState"], {
-        zIndex: 1500,
-      });
+    globalState.openDialog(item.name, {
+      zIndex: 1500,
+    });
   };
 
   return (

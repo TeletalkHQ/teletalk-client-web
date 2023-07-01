@@ -8,6 +8,6 @@ class EnvironmentManager {
   }
 }
 
-const environmentManager = new EnvironmentManager();
+const envManager = new EnvironmentManager();
 
-export { EnvironmentManager, environmentManager as envManager };
+export { EnvironmentManager, envManager };

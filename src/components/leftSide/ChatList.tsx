@@ -1,13 +1,13 @@
 import ChatListItem from "~/components/leftSide/chatListItem";
 import {
-  LeftSidePrivateChatItem as ChatListItemType,
+  LeftSidePrivateChatItem,
   LeftSidePrivateChats,
   SelectedPrivateChat,
 } from "~/types";
 
 interface Props {
   chatList: LeftSidePrivateChats;
-  onChatListItemClick: (c: ChatListItemType) => void;
+  onChatListItemClick: (c: LeftSidePrivateChatItem) => void;
   selectedChat: SelectedPrivateChat;
 }
 
