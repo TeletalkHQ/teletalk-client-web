@@ -4,10 +4,10 @@ import {
   CountrySelectInputChange,
   OnCountryNameInputChange,
 } from "~/components/general/input/common/countrySelector";
-import { CommonOnChange, ContactItem, CountryItem } from "~/types";
+import { AddingContact, CommonOnChange, CountryItem } from "~/types";
 
 interface Props {
-  contact: ContactItem;
+  contact: AddingContact;
   countryName: string;
   onCountryCodeInputChange: CommonOnChange;
   onCountryNameInputChange: OnCountryNameInputChange;
