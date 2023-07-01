@@ -142,6 +142,7 @@ const verificationCodeErrorChecker: ErrorChecker = (
   });
 };
 
+//@ts-ignore
 const errorCheckerCollection: ErrorCheckerCollection = {
   countryCode: countryCodeErrorChecker,
   countryName: countryNameErrorChecker,

@@ -1,11 +1,11 @@
 import { create } from "zustand";
 
-import { MessageSetState, MessageStore } from "~/types";
+import { MessageStore } from "~/types";
 
 import { handlers } from "./handlers";
 import { initialState } from "./initialState";
 
-export const useMessageStore = create<MessageStore>((set: MessageSetState) => ({
+export const useMessageStore = create<MessageStore>((set) => ({
   ...initialState,
   ...handlers(set),
 }));

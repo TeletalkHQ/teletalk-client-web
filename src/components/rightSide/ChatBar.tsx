@@ -7,11 +7,12 @@ import { VoidNoArgsFn } from "~/types";
 interface Props {
   contactName: string;
   onMessageContainerCloseClick: VoidNoArgsFn;
+  onChatBarClick: VoidNoArgsFn;
 }
 
 const ChatBar: React.FC<Props> = ({
   contactName,
-  // onChatBarClick,
+  onChatBarClick,
   onMessageContainerCloseClick,
 }) => {
   return (
@@ -25,7 +26,7 @@ const ChatBar: React.FC<Props> = ({
           justifyContent: "space-between",
           padding: 5,
         }}
-        // onClick={onChatBarClick}
+        onClick={onChatBarClick}
       >
         <Box.Div>
           <IconButton onClick={onMessageContainerCloseClick}>

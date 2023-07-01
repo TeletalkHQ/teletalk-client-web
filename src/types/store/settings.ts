@@ -15,7 +15,7 @@ export interface SettingsState {
 }
 
 export interface SettingsHandlers {
-  updateProfile: (p: Profile) => void;
+  updateProfile: (p: Partial<Profile>) => void;
 }
 
 export type SettingsSetState = StoreSetFn<SettingsState>;

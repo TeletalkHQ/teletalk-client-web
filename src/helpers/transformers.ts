@@ -1,8 +1,10 @@
 import { randomMaker } from "utility-store";
 
-const addUniqueIdToEachCountry = (responseData) => {
+import { Countries } from "~/types";
+
+const addUniqueIdToEachCountry = (data: { countries: Countries }) => {
   return {
-    countries: responseData.countries.map((country) => ({
+    countries: data.countries.map((country) => ({
       ...country,
       id: randomMaker.id(),
     })),

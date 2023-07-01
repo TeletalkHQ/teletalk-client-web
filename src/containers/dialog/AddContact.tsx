@@ -3,58 +3,69 @@ import React, { useState } from "react";
 import { commonTasks } from "~/classes/CommonTasks";
 import { userUtils } from "~/classes/UserUtils";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
-import AddNewContactComponents from "~/components/dialog/addNewContact";
+import AddContactComponents from "~/components/dialog/addContact";
 import DialogTemplate from "~/components/dialog/template";
 import { countries } from "~/data/countries";
 import { useGlobalStore } from "~/store";
-import { CommonChangeEvent, ContactItem, CountryItem } from "~/types";
+import {
+  AddContactWithCellphoneIO,
+  AddingContact,
+  CommonChangeEvent,
+  CountryItem,
+} from "~/types";
 import { utilities } from "~/utilities";
-import { variables } from "~/variables";
 
 const AddContact = () => {
   const state = useGlobalStore();
 
-  const [contact, setContact] = useState<ContactItem>(
-    userUtils.makeEmptyContactWithCellphone()
+  const [addingContact, setAddingContact] = useState<AddingContact>(
+    userUtils.makeEmptyAddingContact()
   );
   const [selectedCountry, setSelectedCountry] = useState<CountryItem | null>(
     null
   );
 
   const handleInputChange = (event: CommonChangeEvent) => {
-    setContact({ ...contact, [event.target.name]: event.target.value });
+    setAddingContact({
+      ...addingContact,
+      [event.target.name]: event.target.value,
+    });
   };
 
-  const handleAddNewContactClick = async () => {
-    socketEmitterStore.events.addContactWithCellphone.emitFull(
-      contact,
+  const handleAddContactClick = async () => {
+    socketEmitterStore.events.addContactWithCellphone.emitFull<AddContactWithCellphoneIO>(
+      addingContact,
       async (response) => {
-        state.addUserWithContact(response.data.addedContact);
+        state.addUserWithContact({
+          ...response.data.addedContact,
+          isContact: true,
+        });
         returnToContactsDialog();
+        return response.data;
       }
     );
   };
 
-  const closeAddNewContactDialog = () => {
+  const closeAddContactDialog = () => {
     state.closeDialog("addContact");
     setSelectedCountry(null);
-    setContact(variables.common.object.contact());
+    setAddingContact(userUtils.makeEmptyContactWithCellphone());
   };
 
   const returnToContactsDialog = () => {
-    closeAddNewContactDialog();
+    closeAddContactDialog();
     state.openDialog("contacts");
   };
 
   const handleCountryNameInputChange = (countryName: string) => {
-    setContact({ ...contact, countryName });
+    setAddingContact({ ...addingContact, countryName });
   };
 
   const handleSelectedCountryChange = (value: CountryItem | null) => {
     setSelectedCountry(value);
 
-    setContact({
-      ...contact,
+    setAddingContact({
+      ...addingContact,
       countryName: value?.countryName || "",
       countryCode: value?.countryCode || "",
     });
@@ -65,20 +76,20 @@ const AddContact = () => {
     setSelectedCountry(country || null);
   };
 
-  const isAddNewContactButtonDisabled = () => {
+  const isAddContactButtonDisabled = () => {
     const firstNameValidateResult = commonTasks.isValueLengthInBetweenMinMax(
       "firstName",
-      contact.firstName
+      addingContact.firstName
     );
 
     const lastNameValidateResult = commonTasks.isValueLengthInBetweenMinMax(
       "lastName",
-      contact.lastName
+      addingContact.lastName
     );
 
     const phoneNumberValidateResult = commonTasks.isValueLengthInBetweenMinMax(
       "phoneNumber",
-      contact.phoneNumber
+      addingContact.phoneNumber
     );
 
     return ![
@@ -92,11 +103,11 @@ const AddContact = () => {
   return (
     <>
       <DialogTemplate
-        title={<AddNewContactComponents.Title />}
+        title={<AddContactComponents.Title />}
         content={
-          <AddNewContactComponents.Content
-            contact={contact}
-            countryName={contact.countryName}
+          <AddContactComponents.Content
+            contact={addingContact}
+            countryName={addingContact.countryName}
             onCountryNameInputChange={handleCountryNameInputChange}
             onSelectedCountryChange={handleSelectedCountryChange}
             onCountryCodeInputChange={(event) => {
@@ -112,17 +123,17 @@ const AddContact = () => {
           />
         }
         actions={
-          <AddNewContactComponents.Actions
-            onAddNewContactClick={handleAddNewContactClick}
+          <AddContactComponents.Actions
+            onAddContactClick={handleAddContactClick}
             onContactDialogCancelClick={returnToContactsDialog}
-            isAddNewContactButtonDisabled={isAddNewContactButtonDisabled()}
+            isAddContactButtonDisabled={isAddContactButtonDisabled()}
           />
         }
         open={state.dialogState.addContact.open}
         paperStyle={{
           height: "50vh",
         }}
-        onClose={closeAddNewContactDialog}
+        onClose={closeAddContactDialog}
       />
     </>
   );

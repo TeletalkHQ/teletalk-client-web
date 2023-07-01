@@ -1,58 +1,51 @@
 import { useEffect } from "react";
 
 import { userUtils } from "~/classes/UserUtils";
-import DialogTemplate from "~/components/dialog/Template";
 import EditProfileComponents from "~/components/dialog/editProfile";
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
+import { EditProfileListItem } from "~/components/dialog/editProfile/types";
+import DialogTemplate from "~/components/dialog/template";
+import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
+import { Profile } from "~/types";
 
-const EditProfile = ({ onDialogClose }) => {
+const EditProfile = () => {
+  const globalState = useGlobalStore();
+  const settingsState = useSettingsStore();
+  const userState = useUserStore();
+
   useEffect(() => {
-    if (state.global.dialogState.editProfile.open)
-      dispatch(
-        actions.updateProfile({
-          profile: {
-            ...userUtils.extractCellphone(state.user),
-            ...userUtils.extractFullName(state.user),
-            bio: state.user.bio,
-            username: state.user.username,
-          },
-        })
-      );
+    if (globalState.dialogState.editProfile.open)
+      settingsState.updateProfile({
+        ...userUtils.extractCellphone(userState),
+        ...userUtils.extractFullName(userState),
+        bio: userState.bio,
+        username: userState.username,
+      } as Profile);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.global.dialogState.editProfile.open]);
+  }, [globalState.dialogState.editProfile.open]);
 
-  const handleItemClick = (item) => {
+  const handleItemClick = (item: EditProfileListItem) => {
     handleClose();
-    dispatch(commonActions.openDialog(item.name, { zIndex: 1500 }));
+    globalState.openDialog(item.name, { zIndex: 1500 });
   };
 
-  const handleInputChange = (event) => {
-    dispatch(
-      actions.updateProfile({
-        profile: { [event.target.name]: event.target.value },
-      })
-    );
+  const handleCancel = () => {
+    handleClose();
+    globalState.openDialog("settings");
   };
 
   const handleClose = () => {
-    onDialogClose("editProfile");
-  };
-  const handleCancel = () => {
-    handleClose();
-    dispatch(commonActions.openDialog("settings"));
+    globalState.closeDialog("editProfile");
   };
 
   return (
     <>
       <DialogTemplate
         title={<EditProfileComponents.Title />}
-        open={state.global.dialogState.editProfile.open}
+        open={globalState.dialogState.editProfile.open}
         content={
           <EditProfileComponents.Content
-            profile={state.settings.profile}
-            onInputChange={handleInputChange}
-            onItemClick={handleItemClick}
+            profile={settingsState.profile}
+            onClick={handleItemClick}
           />
         }
         actions={<EditProfileComponents.Actions onCancel={handleCancel} />}

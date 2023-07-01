@@ -5,8 +5,8 @@ import SettingsAccessibilityTwoToneIcon from "@mui/icons-material/SettingsAccess
 
 import ListItem from "~/components/dialog/editProfile/ListItem";
 import {
+  EditProfileListItem,
   EditProfileListItemOnClick,
-  EditProfileListItemProps,
 } from "~/components/dialog/editProfile/types";
 
 interface Props {
@@ -56,7 +56,7 @@ const List: React.FC<Props> = ({
             value: username || "Not set",
             Icon: AlternateEmailTwoTone,
           },
-        ] as EditProfileListItemProps[]
+        ] as EditProfileListItem[]
       ).map((item, i) => (
         <ListItem
           key={i}

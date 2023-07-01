@@ -1,39 +1,38 @@
-import DialogTemplate from "~/components/dialog/Template";
 import EditFullNameComponents from "~/components/dialog/editFullName";
-import { controllers } from "~/controllers";
-import { actions } from "~/store/actions";
-import { commonActions } from "~/store/commonActions";
+import DialogTemplate from "~/components/dialog/template";
+import { helpers } from "~/helpers";
+import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
+import { CommonChangeEvent } from "~/types";
 
-const EditFullName = ({ onDialogClose }) => {
-  const handleInputChange = (event) => {
-    dispatch(
-      actions.updateProfile({
-        profile: { [event.target.name]: event.target.value },
-      })
-    );
+const EditFullName = () => {
+  const globalState = useGlobalStore();
+  const settingsState = useSettingsStore();
+  const userState = useUserStore();
+
+  const handleInputChange = (event: CommonChangeEvent) => {
+    settingsState.updateProfile({ [event.target.name]: event.target.value });
   };
 
   const handleSaveClick = async () => {
-    dispatch(controllers.updateProfile());
-    handleBack();
+    helpers.updateProfile(settingsState, userState, handleBack);
   };
   const handleClose = () => {
-    onDialogClose("editFullName");
+    globalState.closeDialog("editFullName");
   };
   const handleBack = () => {
     handleClose();
-    dispatch(commonActions.openDialog("editProfile"));
+    globalState.openDialog("editProfile");
   };
 
   return (
     <>
       <DialogTemplate
         title={<EditFullNameComponents.Title />}
-        open={state.global.dialogState.editFullName.open}
+        open={globalState.dialogState.editFullName.open}
         content={
           <EditFullNameComponents.Content
-            fullName={state.settings.profile}
-            onInputChange={handleInputChange}
+            fullName={settingsState.profile}
+            onChange={handleInputChange}
           />
         }
         onClose={handleClose}

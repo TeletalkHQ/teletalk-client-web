@@ -5,36 +5,21 @@ import {
   ValidationError,
 } from "fastest-validator";
 import { CSSProperties } from "react";
-import { FullName } from "utility-store/lib/types";
 
 import { Transitions } from "~/components/other/Transitions";
 import { countries } from "~/data/countries";
 import { stuff } from "~/data/stuff";
 
-import { DrawerAnchor } from "./store/global";
+import { ContactItem, DrawerAnchor } from "./store/global";
 
 export type CountryItem = (typeof countries)[number];
-export type CountryName = CountryItem["countryName"];
-export type CountryCode = CountryItem["countryCode"];
-export type CountryShortName = CountryItem["countryShortName"];
+export type Countries = CountryItem[];
+export type CountryName = CountryItem["countryName"] | string;
+export type CountryCode = CountryItem["countryCode"] | string;
+export type CountryShortName = CountryItem["countryShortName"] | string;
 
 export interface StringMap {
   [prop: string]: any;
-}
-
-export interface Contact extends FullName {
-  userId: string;
-}
-
-export type GlobalLoadingType = "FULL_PAGE" | "OVERLAY";
-
-export interface LoadingState {
-  color: "blue";
-  open: false;
-  progressColor: "inherit";
-  size: number;
-  speedMultiplier: number;
-  type: GlobalLoadingType;
 }
 
 export interface Cellphone {
@@ -51,11 +36,11 @@ export interface UiConfig {
   maxNotification: number;
 }
 
-export type Contacts = Contact[];
+export type Contacts = ContactItem[];
 
 export type Style = CSSProperties;
 
-export type FullContact = Contact & Cellphone;
+export type FullContact = ContactItem & Cellphone;
 
 export type VoidNoArgsFn = () => void;
 
@@ -93,38 +78,11 @@ type ErrorReason = string;
 
 export interface NativeError {
   description?: string;
-  code: number;
   message?: string;
   reason: ErrorReason;
 }
 
 export type Notification = NativeError;
-
-export interface SocketResponseErrors {
-  [prop: string]: NativeError & StringMap;
-}
-
-export interface SocketResponse<Data = StringMap> {
-  data: Data;
-  errors?: SocketResponseErrors;
-  ok: boolean;
-}
-
-export type RequestData = StringMap;
-
-export type Data = StringMap;
-
-export type ResponseData = StringMap;
-
-export type ResponseCallback = (response: SocketResponse) => Promise<void>;
-
-export type RequestTransformer = (requestData: RequestData) => RequestData;
-
-export type ResponseTransformer = (response: SocketResponse) => SocketResponse;
-
-export type Interceptor = (data: Data) => Data;
-
-export type Interceptors = Interceptor[];
 
 export interface Environments {
   NEXT_PUBLIC_CLIENT_BASE_URL: string;
@@ -196,7 +154,7 @@ export type Id = string;
 //
 //
 
-//
+export type * from "./api";
 export type * from "./store";
 export type * from "./models";
 export type * from "./components";

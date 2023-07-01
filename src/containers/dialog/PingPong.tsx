@@ -4,7 +4,7 @@ import { websocket } from "~/classes/websocket/Websocket";
 
 const PingPong = () => {
   const [isConnected, setIsConnected] = useState(websocket.client.connected);
-  const [lastPong, setLastPong] = useState(null);
+  const [lastPong, setLastPong] = useState("");
 
   useEffect(() => {
     websocket.client.on("connect", () => {
@@ -16,8 +16,7 @@ const PingPong = () => {
     });
 
     websocket.client.on("pong", () => {
-      const date = new Date().toISOString();
-      setLastPong(date);
+      setLastPong(new Date().toISOString());
     });
 
     return () => {
