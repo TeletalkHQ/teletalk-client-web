@@ -21,6 +21,7 @@ export type DialogName =
   | "contacts"
   | "editBio"
   | "editFullName"
+  | "editPhoneNumber"
   | "editProfile"
   | "editProfile"
   | "editUsername"
