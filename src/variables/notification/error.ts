@@ -77,6 +77,11 @@ const customErrors = {
     .message("REQUIREMENT_ITEM_MISSING")
     .reason("REQUIREMENT_ITEM_MISSING")
     .build(),
+  unknownError: notificationBuilder
+    .create()
+    .message("UNKNOWN_ERROR")
+    .reason("UNKNOWN_ERROR")
+    .build(),
 };
 
 const errors = {

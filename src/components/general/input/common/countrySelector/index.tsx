@@ -1,19 +1,20 @@
 import { ListItemProps } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { SyntheticEvent } from "react";
+import { CountryItem } from "utility-store/lib/types";
+import { countries } from "utility-store/lib/variables/countries";
 
 import Option from "~/components/general/input/common/countrySelector/Option";
 import SelectorInput from "~/components/general/input/common/countrySelector/SelectorInput";
-import { countries } from "~/data/countries";
-import { CountryItem } from "~/types";
+import { SelectedCountry } from "~/types";
 
-export type CountrySelectInputChange = (value: CountryItem | null) => void;
+export type CountrySelectInputChange = (value: SelectedCountry) => void;
 
 export type OnCountryNameInputChange = (value: string) => void;
 
 interface Props {
   countryName: string;
-  selectedCountry: CountryItem | null;
+  selectedCountry: SelectedCountry;
   onCountryNameInputChange: OnCountryNameInputChange;
   onSelectChange: CountrySelectInputChange;
 }
@@ -35,7 +36,7 @@ const CountrySelector: React.FC<Props> = ({
 
   const handleSelectedCountryChange = (
     _event: SyntheticEvent,
-    newValue: CountryItem | null
+    newValue: SelectedCountry
   ) => {
     onSelectChange(newValue);
   };

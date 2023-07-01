@@ -31,6 +31,7 @@ const nextConfig = {
 
   async redirects() {
     return [
+      { source: "/", destination: "/messenger", permanent: true },
       { source: "/verify", destination: "/signIn", permanent: true },
       { source: "/create", destination: "/signIn", permanent: true },
     ];

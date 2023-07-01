@@ -1,8 +1,8 @@
 import FastestValidator, { ValidationSchema } from "fastest-validator";
 import { trier } from "simple-trier";
 
+import { stuffStore } from "~/classes/StuffStore";
 import { Validator, validator } from "~/classes/validator/Validator";
-import { stuff } from "~/data/stuff";
 import { ValidatorName, ValidatorType } from "~/types";
 
 const fastestValidatorCompiler = new FastestValidator();
@@ -24,7 +24,7 @@ class ValidatorManager {
   }
 
   private tryToCompileValidators() {
-    Object.entries(stuff.validationModels).forEach(
+    Object.entries(stuffStore.validationModels).forEach(
       ([validationModelKey, validationModelValue]) => {
         const compiledValidator = this.validationModelCompiler({
           [validationModelKey]: validationModelValue,

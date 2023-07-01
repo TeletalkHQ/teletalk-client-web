@@ -11,7 +11,7 @@ export const handlers = (set: MessageSetState) =>
     deselectChat() {
       set({
         selectedChat: {
-          id: "",
+          chatId: "",
         },
       });
     },
@@ -36,10 +36,10 @@ export const handlers = (set: MessageSetState) =>
       });
     },
 
-    selectChat(id) {
+    selectChat(chatId) {
       set({
         selectedChat: {
-          id,
+          chatId,
         },
       });
     },

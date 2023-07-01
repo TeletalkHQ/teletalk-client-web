@@ -5,6 +5,7 @@ import { websocket } from "~/classes/websocket/Websocket";
 import Box from "~/components/general/box";
 import LeftSide from "~/containers/leftSide";
 import Portal from "~/containers/portal";
+import RightSide from "~/containers/rightSide";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import {
   GetPrivateChatsIO,
@@ -14,7 +15,7 @@ import {
 } from "~/types";
 
 const Messenger = () => {
-  const messageStore = useMessageStore();
+  const messageState = useMessageStore();
   const globalState = useGlobalStore();
   const userState = useUserStore();
 
@@ -89,13 +90,16 @@ const Messenger = () => {
 
             globalState.addUser({
               ...publicUserData,
+              countryCode: "",
+              countryName: "",
               isContact: false,
+              phoneNumber: "",
             });
 
             return data;
           }
 
-          messageStore.setPrivateChats(data.privateChats);
+          messageState.setPrivateChats(data.privateChats);
 
           return data;
         }
@@ -106,6 +110,8 @@ const Messenger = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userState.userId]);
 
+  console.log(messageState.selectedChat);
+
   return (
     <Box.Grid
       container
@@ -115,7 +121,7 @@ const Messenger = () => {
     >
       <Portal />
       <LeftSide />
-      {/* <RightSide />  */}
+      <RightSide />
     </Box.Grid>
   );
 };

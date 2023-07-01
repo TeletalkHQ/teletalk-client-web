@@ -1,4 +1,4 @@
-import { UserUtilities } from "utility-store";
+import { UserUtils as userUtilsMain } from "utility-store";
 import {
   ExtendedCellphone,
   ExtendedFullName,
@@ -7,7 +7,7 @@ import {
 
 import { UserState } from "~/types";
 
-class UserUtils extends UserUtilities {
+class UserUtils extends userUtilsMain {
   concatFirstNameWithLastName(data: ExtendedFullName) {
     return `${data.firstName} ${data.lastName}`;
   }
@@ -16,9 +16,9 @@ class UserUtils extends UserUtilities {
     return `+${data.countryCode} ${data.phoneNumber}`;
   }
 
-  makeEmptyContactWithCellphone() {
+  makeEmptyContact() {
     return {
-      ...super.makeEmptyContactWithCellphone(),
+      ...super.makeEmptyContact(),
       isContact: false,
       userId: "",
     };

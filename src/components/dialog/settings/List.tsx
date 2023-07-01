@@ -10,6 +10,25 @@ import ListItem from "~/components/dialog/settings/ListItem";
 
 import { OnSettingItemClick } from "./types";
 
+interface Props {
+  onSettingItemClick: OnSettingItemClick;
+}
+
+const SettingsList: React.FC<Props> = ({ onSettingItemClick }) => {
+  return (
+    <>
+      {settingsList.map((item, i) => (
+        <ListItem
+          key={i}
+          displayName={item.displayName}
+          Icon={item.Icon}
+          onClick={() => onSettingItemClick(item)}
+        />
+      ))}
+    </>
+  );
+};
+
 export const settingsList = [
   {
     Icon: AccountBoxIcon,
@@ -40,24 +59,5 @@ export const settingsList = [
     Icon: LanguageIcon,
   },
 ] as const;
-
-interface Props {
-  onSettingItemClick: OnSettingItemClick;
-}
-
-const SettingsList: React.FC<Props> = ({ onSettingItemClick }) => {
-  return (
-    <>
-      {settingsList.map((item, i) => (
-        <ListItem
-          key={i}
-          displayName={item.displayName}
-          Icon={item.Icon}
-          onClick={() => onSettingItemClick(item)}
-        />
-      ))}
-    </>
-  );
-};
 
 export default SettingsList;

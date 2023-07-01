@@ -1,17 +1,18 @@
 import React, { useState } from "react";
+import { ContactItem } from "utility-store/lib/types";
+import { countries } from "utility-store/lib/variables/countries";
 
 import { commonTasks } from "~/classes/CommonTasks";
 import { userUtils } from "~/classes/UserUtils";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import AddContactComponents from "~/components/dialog/addContact";
 import DialogTemplate from "~/components/dialog/template";
-import { countries } from "~/data/countries";
 import { useGlobalStore } from "~/store";
 import {
-  AddContactWithCellphoneIO,
+  AddContactIO,
   AddingContact,
   CommonChangeEvent,
-  CountryItem,
+  SelectedCountry,
 } from "~/types";
 import { utilities } from "~/utilities";
 
@@ -19,11 +20,9 @@ const AddContact = () => {
   const state = useGlobalStore();
 
   const [addingContact, setAddingContact] = useState<AddingContact>(
-    userUtils.makeEmptyAddingContact()
+    userUtils.makeEmptyContact()
   );
-  const [selectedCountry, setSelectedCountry] = useState<CountryItem | null>(
-    null
-  );
+  const [selectedCountry, setSelectedCountry] = useState<SelectedCountry>(null);
 
   const handleInputChange = (event: CommonChangeEvent) => {
     setAddingContact({
@@ -33,8 +32,8 @@ const AddContact = () => {
   };
 
   const handleAddContactClick = async () => {
-    socketEmitterStore.events.addContactWithCellphone.emitFull<AddContactWithCellphoneIO>(
-      addingContact,
+    socketEmitterStore.events.addContact.emitFull<AddContactIO>(
+      addingContact as ContactItem,
       async (response) => {
         state.addUserWithContact({
           ...response.data.addedContact,
@@ -49,7 +48,7 @@ const AddContact = () => {
   const closeAddContactDialog = () => {
     state.closeDialog("addContact");
     setSelectedCountry(null);
-    setAddingContact(userUtils.makeEmptyContactWithCellphone());
+    setAddingContact(userUtils.makeEmptyContact());
   };
 
   const returnToContactsDialog = () => {
@@ -61,7 +60,7 @@ const AddContact = () => {
     setAddingContact({ ...addingContact, countryName });
   };
 
-  const handleSelectedCountryChange = (value: CountryItem | null) => {
+  const handleSelectedCountryChange = (value: SelectedCountry) => {
     setSelectedCountry(value);
 
     setAddingContact({

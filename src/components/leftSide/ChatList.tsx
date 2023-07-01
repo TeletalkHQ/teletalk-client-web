@@ -1,10 +1,14 @@
 import ChatListItem from "~/components/leftSide/chatListItem";
-import { ChatListItem as ChatListItemType, Chats, SelectedChat } from "~/types";
+import {
+  LeftSidePrivateChatItem as ChatListItemType,
+  LeftSidePrivateChats,
+  SelectedPrivateChat,
+} from "~/types";
 
 interface Props {
-  chatList: Chats;
+  chatList: LeftSidePrivateChats;
   onChatListItemClick: (c: ChatListItemType) => void;
-  selectedChat: SelectedChat;
+  selectedChat: SelectedPrivateChat;
 }
 
 const ChatList: React.FC<Props> = ({
@@ -18,8 +22,8 @@ const ChatList: React.FC<Props> = ({
         onClick={() => onChatListItemClick(item)}
         key={i}
         message={item.messageText}
-        fullName={item.name}
-        selected={selectedChat.id === item.userId}
+        fullName={item.fullName}
+        selected={selectedChat.chatId === item.senderId}
       />
     ))}
   </>
