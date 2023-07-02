@@ -9,13 +9,3 @@ export interface EditProfileListItem {
 }
 
 export type EditProfileListItemOnClick = (item: EditProfileListItem) => void;
-
-export interface Profile {
-  bio: string;
-  countryCode: string;
-  countryName: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  username: string;
-}

@@ -1,9 +1,9 @@
 import { ListItemProps } from "@mui/material";
+import { CountryItem } from "utility-store/lib/types";
 
 import Box from "~/components/general/box";
 import ListItem from "~/components/general/box/ListItem";
 import Img from "~/components/general/other/Img";
-import { CountryItem } from "~/types";
 
 interface Props {
   option: CountryItem;

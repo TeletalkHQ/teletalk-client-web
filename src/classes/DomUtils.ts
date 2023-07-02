@@ -1,8 +1,8 @@
-import { DomUtilities } from "utility-store";
+import { DomUtils as DomUtilsMain } from "utility-store";
 
 import { ElementId, ElementName } from "~/types";
 
-class DomUtils extends DomUtilities {
+class DomUtils extends DomUtilsMain {
   setElementByName(elementName: ElementName) {
     super.setElementByName(elementName);
     return this;

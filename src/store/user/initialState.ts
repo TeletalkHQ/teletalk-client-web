@@ -1,8 +1,10 @@
-const initialState = {
+import { UserState } from "~/types";
+
+const initialState: UserState = {
   bio: "",
   blacklist: [],
-  countryCode: "",
-  countryName: "",
+  countryCode: "1",
+  countryName: "United States",
   firstName: "",
   lastName: "",
   phoneNumber: "",

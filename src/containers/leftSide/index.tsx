@@ -5,7 +5,7 @@ import ChatList from "~/components/leftSide/ChatList";
 import SearchBar from "~/components/leftSide/SearchBar";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import {
-  ChatListItem,
+  LeftSidePrivateChatItem,
   MessageItem,
   PrivateChatItem,
   UserItem,
@@ -32,8 +32,8 @@ const LeftSide = () => {
     globalState.changeDrawerOpen(true);
   };
 
-  const handleChatClick = (chatListItem: ChatListItem) => {
-    messageState.selectChat(chatListItem.userId);
+  const handleChatClick = (chatListItem: LeftSidePrivateChatItem) => {
+    messageState.selectChat(chatListItem.senderId);
   };
 
   return (
@@ -89,10 +89,10 @@ const getChatLastMessage = (chat: PrivateChatItem) => chat.messages.at(-1)!;
 const createChatListItem = (
   lastMessage: MessageItem,
   user: UserItem
-): ChatListItem => {
+): LeftSidePrivateChatItem => {
   return {
     messageText: lastMessage.messageText,
-    name: `${user.firstName} ${user.lastName}`,
-    userId: user.userId,
+    fullName: `${user.firstName} ${user.lastName}`,
+    senderId: user.userId,
   };
 };

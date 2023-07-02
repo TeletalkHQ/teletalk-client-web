@@ -20,13 +20,13 @@ const RightSide = () => {
     return (
       messageState.privateChats.find((pc) => {
         return pc.participants.find(
-          (p) => p.participantId === messageState.selectedChat.id
+          (p) => p.participantId === messageState.selectedChat.chatId
         );
       })?.messages || []
     );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messageState.selectedChat.id, messageState.privateChats]);
+  }, [messageState.selectedChat.chatId, messageState.privateChats]);
 
   useEffect(() => {
     if (oldMessages.current.length < selectedChatMessages.length) {
@@ -40,7 +40,7 @@ const RightSide = () => {
   }, [selectedChatMessages]);
 
   const selectedParticipantToChat = globalState.users.find(
-    (p) => p.userId === messageState.selectedChat.id
+    (p) => p.userId === messageState.selectedChat.chatId
   )!;
 
   const handleInputChange = (event: CommonChangeEvent) => {
@@ -51,7 +51,7 @@ const RightSide = () => {
     socketEmitterStore.events.sendPrivateMessage.emitFull<SendPrivateMessageIO>(
       {
         messageText: messageState.messageInputTextValue,
-        participantId: messageState.selectedChat.id,
+        participantId: messageState.selectedChat.chatId,
       },
       async ({ data }) => {
         messageState.messageInputOnChange("");
@@ -79,7 +79,7 @@ const RightSide = () => {
       lg={9}
       md={8}
     >
-      {messageState.selectedChat.id && (
+      {messageState.selectedChat.chatId && (
         <Box.Flex
           col
           sx={{

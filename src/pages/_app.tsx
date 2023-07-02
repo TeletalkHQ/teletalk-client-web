@@ -11,6 +11,12 @@ import { events } from "~/events";
 import { registerWindowCustomProperties } from "~/helpers/registerWindowCustomProperties";
 import MUIThemeProvider from "~/providers/MUIThemeProvider";
 import ReactQueryProvider from "~/providers/ReactQueryProvider";
+import {
+  useGlobalStore,
+  useMessageStore,
+  useSettingsStore,
+  useUserStore,
+} from "~/store";
 import createEmotionCache from "~/styles/createEmotionCache";
 
 export interface CustomAppProps extends AppProps {
@@ -21,6 +27,18 @@ const clientSideEmotionCache = createEmotionCache();
 
 export default function _app(props: CustomAppProps) {
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
+
+  const state = {
+    message: useMessageStore(),
+    user: useUserStore(),
+    global: useGlobalStore(),
+    settings: useSettingsStore(),
+  };
+
+  useEffect(() => {
+    //@ts-ignore
+    window.state = state;
+  });
 
   useEffect(() => {
     async function fn() {
