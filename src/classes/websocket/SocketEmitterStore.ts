@@ -14,10 +14,10 @@ class SocketEmitterStore {
 const socketEmitterStore = new SocketEmitterStore();
 
 const events = stuffStore.events;
-Object.entries(events).forEach(([name, route]) => {
-  socketEmitterStore.events[name as EventName] = eventHandler
+events.forEach((i) => {
+  socketEmitterStore.events[i.name as EventName] = eventHandler
     .create()
-    .setRoute(route as SocketRoute);
+    .setRoute(i as SocketRoute);
 });
 
 export { socketEmitterStore, SocketEmitterStore };

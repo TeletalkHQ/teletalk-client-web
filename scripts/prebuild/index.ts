@@ -11,15 +11,14 @@ const saveStuff = () => {
     withCredentials: true,
   })
     .connect()
-    .emit("getStuff", undefined, (response: any) => {
+    .emit("getStuff", {}, (response: any) => {
       console.log("saving stuff...");
 
-      fs.writeFileSync(
-        "./src/data/stuff.ts",
-        JSON.stringify(`
-          export const stuff = ${response.data} as const;
-          `)
-      );
+      const data = `
+          export const stuff = ${JSON.stringify(response.data)} as const;
+          `;
+
+      fs.writeFileSync("./src/data/stuff.ts", data);
 
       console.log("done!");
 

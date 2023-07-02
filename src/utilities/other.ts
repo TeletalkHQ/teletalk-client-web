@@ -1,4 +1,4 @@
-import { CountryItem } from "~/types";
+import { SelectedCountry } from "~/types";
 
 const checkErrorCodeIsConnAborted = (errorCode: string) =>
   errorCode === "ECONNABORTED";
@@ -18,7 +18,7 @@ const isIos = () => {
   );
 };
 
-const isCountrySelected = (c: CountryItem | null) => {
+const isCountrySelected = (c: SelectedCountry) => {
   return !!(c?.countryCode && c?.countryName && c?.countryShortName);
 };
 

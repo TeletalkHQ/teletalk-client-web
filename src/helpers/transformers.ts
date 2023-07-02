@@ -1,6 +1,5 @@
 import { randomMaker } from "utility-store";
-
-import { Countries } from "~/types";
+import { Countries } from "utility-store/lib/types";
 
 const addUniqueIdToEachCountry = (data: { countries: Countries }) => {
   return {

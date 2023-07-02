@@ -4,7 +4,7 @@ import {
   CountrySelectInputChange,
   OnCountryNameInputChange,
 } from "~/components/general/input/common/countrySelector";
-import { AddingContact, CommonOnChange, CountryItem } from "~/types";
+import { AddingContact, CommonOnChange, SelectedCountry } from "~/types";
 
 interface Props {
   contact: AddingContact;
@@ -13,7 +13,7 @@ interface Props {
   onCountryNameInputChange: OnCountryNameInputChange;
   onInputChange: CommonOnChange;
   onSelectedCountryChange: CountrySelectInputChange;
-  selectedCountry: CountryItem | null;
+  selectedCountry: SelectedCountry;
 }
 const AddContactContent: React.FC<Props> = ({
   contact,

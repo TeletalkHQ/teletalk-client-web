@@ -78,7 +78,7 @@ class EventHandler {
   }
 
   async emitFull<T extends IO>(
-    data: T["input"] = {},
+    data: T["input"],
     responseCallback: ResponseCallback<T["output"]> = async (response) =>
       response.data,
     errorCallback: SocketErrorCallback = (_errors) => {}
