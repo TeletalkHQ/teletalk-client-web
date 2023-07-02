@@ -10,37 +10,6 @@ import ListItem from "~/components/dialog/settings/ListItem";
 
 import { OnSettingItemClick } from "./types";
 
-export const settingsList = [
-  {
-    Icon: AccountBoxIcon,
-    displayName: "Edit Profile",
-  },
-  {
-    displayName: "Notifications and Sounds",
-    Icon: CircleNotificationsIcon,
-  },
-  {
-    displayName: "Privacy and Security",
-    Icon: LockIcon,
-  },
-  {
-    displayName: "Chat Settings",
-    Icon: ChatIcon,
-  },
-  {
-    displayName: "Advanced",
-    Icon: PieChartIcon,
-  },
-  {
-    displayName: "Call Settings",
-    Icon: CallIcon,
-  },
-  {
-    displayName: "Language",
-    Icon: LanguageIcon,
-  },
-] as const;
-
 interface Props {
   onSettingItemClick: OnSettingItemClick;
 }
@@ -59,5 +28,43 @@ const SettingsList: React.FC<Props> = ({ onSettingItemClick }) => {
     </>
   );
 };
+
+export const settingsList = [
+  {
+    displayName: "Edit Profile",
+    Icon: AccountBoxIcon,
+    name: "editProfile",
+  },
+  {
+    displayName: "Notifications and Sounds",
+    name: "notificationsAndSounds",
+    Icon: CircleNotificationsIcon,
+  },
+  {
+    displayName: "Privacy and Security",
+    name: "privacyAndSecurity",
+    Icon: LockIcon,
+  },
+  {
+    displayName: "Chat Settings",
+    name: "chatSettings",
+    Icon: ChatIcon,
+  },
+  {
+    displayName: "Advanced",
+    name: "advanced",
+    Icon: PieChartIcon,
+  },
+  {
+    displayName: "Call Settings",
+    name: "callSettings",
+    Icon: CallIcon,
+  },
+  {
+    displayName: "Language",
+    name: "language",
+    Icon: LanguageIcon,
+  },
+] as const;
 
 export default SettingsList;

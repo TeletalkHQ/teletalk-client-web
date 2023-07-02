@@ -1,11 +1,9 @@
 import { userUtils } from "~/classes/UserUtils";
 import Header from "~/components/dialog/editProfile/Header";
 import List from "~/components/dialog/editProfile/List";
-import {
-  EditProfileListItemOnClick,
-  Profile,
-} from "~/components/dialog/editProfile/types";
+import { EditProfileListItemOnClick } from "~/components/dialog/editProfile/types";
 import Box from "~/components/general/box";
+import { Profile } from "~/types";
 
 interface Props {
   onClick: EditProfileListItemOnClick;

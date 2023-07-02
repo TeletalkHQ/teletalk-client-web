@@ -5,27 +5,15 @@ import {
   ValidationError,
 } from "fastest-validator";
 import { CSSProperties } from "react";
+import { Cellphone, ContactItem } from "utility-store/lib/types";
 
 import { Transitions } from "~/components/other/Transitions";
-import { countries } from "~/data/countries";
 import { stuff } from "~/data/stuff";
 
-import { ContactItem, DrawerAnchor } from "./store/global";
-
-export type CountryItem = (typeof countries)[number];
-export type Countries = CountryItem[];
-export type CountryName = CountryItem["countryName"] | string;
-export type CountryCode = CountryItem["countryCode"] | string;
-export type CountryShortName = CountryItem["countryShortName"] | string;
+import { DrawerAnchor } from "./store/global";
 
 export interface StringMap {
   [prop: string]: any;
-}
-
-export interface Cellphone {
-  countryCode: string;
-  countryName: string;
-  phoneNumber: string;
 }
 
 export type TransitionName = keyof typeof Transitions;
@@ -52,8 +40,8 @@ export interface Route {
   isAuthRequired: boolean;
 }
 
-export type EventName =
-  (typeof stuff.routes)[keyof typeof stuff.routes]["name"];
+export type Events = typeof stuff.events;
+export type EventName = Events[number]["name"];
 
 export type ValidatorName = keyof typeof stuff.validationModels;
 
@@ -76,10 +64,14 @@ export interface SocketRoute extends Route {
 
 type ErrorReason = string;
 
+export type ErrorSide = "server" | "client";
+
 export interface NativeError {
   description?: string;
+  isAuthError: boolean;
   message?: string;
   reason: ErrorReason;
+  side: ErrorSide;
 }
 
 export type Notification = NativeError;
@@ -97,65 +89,28 @@ export type RuntimeMode = Environments["NEXT_PUBLIC_RUNTIME_MODE"];
 
 export type Stuff = typeof stuff;
 
-export type Field =
-  | "bio"
-  | "blacklist"
-  | "chatId"
-  | "clientId"
-  | "clients"
-  | "contacts"
-  | "countryCode"
-  | "countryName"
-  | "createdAt"
-  | "firstName"
-  | "id"
-  | "isActive"
-  | "lastName"
-  | "macAddress"
-  | "messageId"
-  | "messages"
-  | "messageText"
-  | "participantId"
-  | "participants"
-  | "phoneNumber"
-  | "privateChats"
-  | "senderId"
-  | "status"
-  | "userId"
-  | "username"
-  | "verificationCode";
+export type Field = keyof typeof stuff.models;
 
-export type FieldType =
-  | "array"
-  | "boolean"
-  | "date"
-  | "number"
-  | "object"
-  | "string";
+export type FieldType = (typeof stuff.models)[Field]["type"];
 
 export interface NativeModel {
-  defaultValue: any;
-  empty: boolean;
-  items: any[];
-  length: number;
-  maxLength: number;
-  minLength: number;
-  numeric: boolean;
-  required: boolean;
-  trim: boolean;
+  defaultValue?: any;
+  empty?: boolean;
+  length?: number;
+  maxLength?: number;
+  minLength?: number;
+  numeric?: boolean;
+  required?: boolean;
+  trim?: boolean;
   type: FieldType;
-  unique: boolean;
+  unique?: boolean;
 }
 
 export type NativeModelKey = keyof NativeModel;
-
-export type Id = string;
-
-//
-//
 
 export type * from "./api";
 export type * from "./store";
 export type * from "./models";
 export type * from "./components";
 export type * from "./utils";
+export type * from "./datatypes";

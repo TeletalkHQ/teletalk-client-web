@@ -1,8 +1,8 @@
 import { customTypeof } from "custom-typeof";
+import { countries } from "utility-store/lib/variables/countries";
 
 import { stuffStore } from "~/classes/StuffStore";
 import { validationChecker } from "~/classes/ValidationChecker";
-import { countries } from "~/data/countries";
 import { ErrorChecker, ErrorCheckerCollection } from "~/types";
 
 const countryCodeErrorChecker: ErrorChecker = (

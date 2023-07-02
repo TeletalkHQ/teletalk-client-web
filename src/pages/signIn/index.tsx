@@ -1,4 +1,6 @@
 import { useRouter } from "next/router";
+import { Cellphone } from "utility-store/lib/types";
+import { countries } from "utility-store/lib/variables/countries";
 
 import { commonTasks } from "~/classes/CommonTasks";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
@@ -10,10 +12,9 @@ import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph
 import H5 from "~/components/general/typography/header/H5";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
-import { countries } from "~/data/countries";
 import { createInputValidator } from "~/helpers/createInputValidator";
 import { useAuthStore } from "~/store";
-import { CountryItem, SignInIO } from "~/types";
+import { SelectedCountry, SignInIO } from "~/types";
 import { utilities } from "~/utilities";
 
 const SignIn = () => {
@@ -28,7 +29,7 @@ const SignIn = () => {
         countryCode: state.countryCode,
         countryName: state.countryName,
         phoneNumber: state.phoneNumber,
-      },
+      } as Cellphone,
       async ({ data }) => {
         state.updateAuthenticationProgress(false);
         router.push("verify");
@@ -57,7 +58,7 @@ const SignIn = () => {
     );
   };
 
-  const handleSelectedCountryChange = (value: CountryItem | null) => {
+  const handleSelectedCountryChange = (value: SelectedCountry) => {
     state.updateSelectedCountry(value);
     state.updateCountryCode(value?.countryCode || "");
     state.updateCountryName(value?.countryName || "");

@@ -24,40 +24,40 @@ const List: React.FC<Props> = ({
   onClick,
   username,
 }) => {
+  const list: EditProfileListItem[] = [
+    {
+      name: "editBio",
+      label: "Bio",
+      disabled: false,
+      value: bio,
+      Icon: SettingsAccessibilityTwoToneIcon,
+    },
+    {
+      name: "editFullName",
+      label: "Name",
+      disabled: false,
+      value: fullName,
+      Icon: AccountBoxTwoTone,
+    },
+    {
+      name: "editPhoneNumber",
+      label: "Phone Number",
+      disabled: true,
+      value: fullNumber,
+      Icon: CallTwoTone,
+    },
+    {
+      label: "Username",
+      disabled: false,
+      name: "editUsername",
+      value: username || "Not set",
+      Icon: AlternateEmailTwoTone,
+    },
+  ];
+
   return (
     <>
-      {(
-        [
-          {
-            name: "editBio",
-            label: "Bio",
-            disabled: false,
-            value: bio,
-            Icon: SettingsAccessibilityTwoToneIcon,
-          },
-          {
-            name: "editFullName",
-            label: "Name",
-            disabled: false,
-            value: fullName,
-            Icon: AccountBoxTwoTone,
-          },
-          {
-            name: "editPhoneNumber",
-            label: "Phone Number",
-            disabled: true,
-            value: fullNumber,
-            Icon: CallTwoTone,
-          },
-          {
-            label: "Username",
-            disabled: false,
-            name: "editUsername",
-            value: username || "Not set",
-            Icon: AlternateEmailTwoTone,
-          },
-        ] as EditProfileListItem[]
-      ).map((item, i) => (
+      {list.map((item, i) => (
         <ListItem
           key={i}
           Icon={item.Icon}

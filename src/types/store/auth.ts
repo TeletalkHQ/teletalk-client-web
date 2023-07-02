@@ -1,4 +1,10 @@
-import { CountryItem, StoreSetFn } from "..";
+import { SelectedCountry, StoreSetFn } from "..";
+import {
+  FirstName,
+  LastName,
+  PhoneNumber,
+  VerificationCode,
+} from "../datatypes";
 
 export interface AuthHandlers {
   updateAuthenticationProgress: (value: boolean) => void;
@@ -8,18 +14,18 @@ export interface AuthHandlers {
   updateLastName: (value: string) => void;
   updatePhoneNumber: (value: string) => void;
   updateVerificationCode: (value: string) => void;
-  updateSelectedCountry: (value: CountryItem | null) => void;
+  updateSelectedCountry: (value: SelectedCountry) => void;
 }
 
 export interface AuthState {
   authenticationProgress: boolean;
   countryCode: string;
   countryName: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  selectedCountry: CountryItem | null;
-  verificationCode: string;
+  firstName: FirstName;
+  lastName: LastName;
+  phoneNumber: PhoneNumber;
+  selectedCountry: SelectedCountry;
+  verificationCode: VerificationCode;
 }
 
 export type AuthSetState = StoreSetFn<AuthState>;

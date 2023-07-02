@@ -13,7 +13,7 @@ const Logout = () => {
 
   const handleLogout = () => {
     socketEmitterStore.events.logout.emitFull<LogoutIO>(
-      undefined,
+      {},
       async ({ data }) => {
         handleClose();
         return data;

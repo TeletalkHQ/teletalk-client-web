@@ -1,5 +1,4 @@
 import { notificationManager } from "~/classes/NotificationManager";
-import { enErrorMessages } from "~/data/enErrorMessages";
 import { NativeError, NativeModel } from "~/types";
 import { ModelName } from "~/types/models";
 
@@ -10,7 +9,7 @@ class CommonTasks {
     errors.forEach((item) => {
       notificationManager.submitErrorNotification({
         ...item,
-        message: enErrorMessages[item.reason as keyof typeof enErrorMessages],
+        message: `MESSAGE: ${item.reason}`,
       });
     });
   }
@@ -22,7 +21,7 @@ class CommonTasks {
 
     const inputValueLength = value.length;
 
-    return inputValueLength >= minLength && inputValueLength <= maxLength;
+    return inputValueLength >= minLength! && inputValueLength <= maxLength!;
   }
 
   isValueLengthEqualToLength(modelName: ModelName, value: string) {
