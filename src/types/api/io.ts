@@ -5,8 +5,8 @@ import {
   ContactItem,
   Contacts,
   Countries,
-  FUllNameWithUserId,
   FullName,
+  FullNameWithUserId,
   NewUser,
   PublicUserData,
   UserData,
@@ -17,6 +17,7 @@ import {
 
 import {
   ChatId,
+  ContactItemWithCellphone,
   MessageItem,
   MessageText,
   ParticipantId,
@@ -124,10 +125,24 @@ export interface AddContactIO {
   };
 }
 
-export interface EditContactIO {
-  input: FUllNameWithUserId;
+export interface AddContactWithCellphoneIO {
+  input: ContactItemWithCellphone;
   output: {
-    editedContact: FUllNameWithUserId;
+    addedContact: ContactItem;
+  };
+}
+
+export interface AddContactWithUserIdIO {
+  input: FullNameWithUserId;
+  output: {
+    addedContact: ContactItem;
+  };
+}
+
+export interface EditContactIO {
+  input: FullNameWithUserId;
+  output: {
+    editedContact: FullNameWithUserId;
   };
 }
 
