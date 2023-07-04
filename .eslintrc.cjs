@@ -11,6 +11,7 @@ module.exports = defineConfig({
     "plugin:@cspell/recommended",
     "plugin:sonarjs/recommended",
     "react-app",
+    "plugin:json/recommended",
     "react-app/jest",
   ],
   globals: {
