@@ -4,8 +4,8 @@ import {
   CountryCode,
   CountryItem,
   CountryName,
-  FUllNameWithUserId,
   FullName,
+  FullNameWithUserId,
 } from "utility-store/lib/types";
 
 import { StoreSetFn } from ".";
@@ -47,7 +47,7 @@ export interface CellphoneWithAllowedEmptyValues {
   phoneNumber: PhoneNumber | "";
 }
 
-export interface AddingContact extends FUllNameWithUserId {
+export interface AddingContact extends FullNameWithUserId {
   countryCode: CountryCode | string;
   countryName: CountryName | string;
   phoneNumber: PhoneNumber;

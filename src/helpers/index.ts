@@ -1,4 +1,4 @@
-import { userUtils } from "~/classes/UserUtils";
+import { extractor } from "~/classes/Extractor";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import {
   SettingsState,
@@ -18,8 +18,10 @@ const updateProfile = (
     profile,
     async ({ data }) => {
       userState.setUserData({
-        ...userUtils.extractUserData(userState),
+        ...extractor.userState({ ...userState, ...data.publicUserData }),
         ...data.publicUserData,
+        status: userState.status,
+        createdAt: userState.createdAt,
       });
 
       cb();

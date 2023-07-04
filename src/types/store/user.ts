@@ -1,6 +1,7 @@
-import { Cellphone, FUllNameWithUserId } from "utility-store/lib/types";
+import { Cellphone, FullNameWithUserId, Status } from "utility-store/lib/types";
 
 import { StoreSetFn } from ".";
+import { StringMap } from "..";
 import { Bio, UserId, Username } from "../datatypes";
 
 export interface BlacklistItem {
@@ -9,11 +10,14 @@ export interface BlacklistItem {
 
 export type Blacklist = BlacklistItem[];
 
-export interface UserState extends FUllNameWithUserId, Cellphone {
+export interface UserState extends FullNameWithUserId, Cellphone {
   bio: Bio;
-  blacklist: Blacklist;
   username: Username;
+  status: Status;
+  createdAt: number;
 }
+
+export type ExtendedUserState = UserState & StringMap;
 
 export interface UserHandlers {
   setUserData: (u: UserState) => void;
