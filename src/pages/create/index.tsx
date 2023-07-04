@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
+import { extractor } from "utility-store";
 
 import { commonTasks } from "~/classes/CommonTasks";
-import { userUtils } from "~/classes/UserUtils";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
@@ -34,7 +34,7 @@ const CreateNewUser = () => {
 
   const handleCreateNewUserConfirmClick = async () => {
     socketEmitterStore.events.createNewUser.emitFull<CreateNewUserIO>(
-      userUtils.extractFullName(state),
+      extractor.fullName(state),
       async ({ data }) => {
         state.updateFirstName("");
         state.updateLastName("");

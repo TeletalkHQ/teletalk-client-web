@@ -3,7 +3,7 @@ import { ContactItem } from "utility-store/lib/types";
 import { countries } from "utility-store/lib/variables/countries";
 
 import { commonTasks } from "~/classes/CommonTasks";
-import { userUtils } from "~/classes/UserUtils";
+import { maker } from "~/classes/Maker";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import AddContactComponents from "~/components/dialog/addContact";
 import DialogTemplate from "~/components/dialog/template";
@@ -20,7 +20,7 @@ const AddContact = () => {
   const state = useGlobalStore();
 
   const [addingContact, setAddingContact] = useState<AddingContact>(
-    userUtils.makeEmptyContact()
+    maker.emptyContact()
   );
   const [selectedCountry, setSelectedCountry] = useState<SelectedCountry>(null);
 
@@ -48,7 +48,7 @@ const AddContact = () => {
   const closeAddContactDialog = () => {
     state.closeDialog("addContact");
     setSelectedCountry(null);
-    setAddingContact(userUtils.makeEmptyContact());
+    setAddingContact(maker.emptyContact());
   };
 
   const returnToContactsDialog = () => {
