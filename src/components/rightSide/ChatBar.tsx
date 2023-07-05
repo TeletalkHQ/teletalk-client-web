@@ -18,6 +18,7 @@ const ChatBar: React.FC<Props> = ({
   return (
     <>
       <Box.Paper
+        onClick={onChatBarClick}
         style={{
           alignItems: "center",
           borderRadius: 0,
@@ -25,11 +26,16 @@ const ChatBar: React.FC<Props> = ({
           height: 50,
           justifyContent: "space-between",
           padding: 5,
+          cursor: "pointer",
         }}
-        onClick={onChatBarClick}
       >
         <Box.Div>
-          <IconButton onClick={onMessageContainerCloseClick}>
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              onMessageContainerCloseClick();
+            }}
+          >
             <Icons.Close.Icon />
           </IconButton>
         </Box.Div>
@@ -45,7 +51,11 @@ const ChatBar: React.FC<Props> = ({
           </Typography>
         </Box.Flex>
 
-        <Box.Div>
+        <Box.Div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
           <IconButton>
             <Icons.MoreVertical.Icon />
           </IconButton>
