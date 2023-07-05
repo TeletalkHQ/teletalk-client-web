@@ -4,10 +4,14 @@ import {
   CountrySelectInputChange,
   OnCountryNameInputChange,
 } from "~/components/general/input/common/countrySelector";
-import { AddingContact, CommonOnChange, SelectedCountry } from "~/types";
+import {
+  AddContactWithCellphoneIO,
+  CommonOnChange,
+  SelectedCountry,
+} from "~/types";
 
 interface Props {
-  contact: AddingContact;
+  contact: AddContactWithCellphoneIO["input"];
   countryName: string;
   onCountryCodeInputChange: CommonOnChange;
   onCountryNameInputChange: OnCountryNameInputChange;

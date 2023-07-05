@@ -1,15 +1,9 @@
 import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
-import {
-  CountryCode,
-  CountryItem,
-  CountryName,
-  FullName,
-  FullNameWithUserId,
-} from "utility-store/lib/types";
+import { Cellphone, CountryItem, FullName } from "utility-store/lib/types";
 
 import { StoreSetFn } from ".";
-import { PhoneNumber, UserId } from "../datatypes";
+import { UserId } from "../datatypes";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -41,19 +35,7 @@ export interface DialogState {
   props: DialogProps;
 }
 
-export interface CellphoneWithAllowedEmptyValues {
-  countryCode: CountryCode | "";
-  countryName: CountryName | "";
-  phoneNumber: PhoneNumber | "";
-}
-
-export interface AddingContact extends FullNameWithUserId {
-  countryCode: CountryCode | string;
-  countryName: CountryName | string;
-  phoneNumber: PhoneNumber;
-}
-
-export interface UserItem extends FullName, CellphoneWithAllowedEmptyValues {
+export interface UserItem extends FullName, Cellphone {
   isContact: boolean;
   userId: UserId;
 }

@@ -10,7 +10,7 @@ export class Maker extends MakerMain {
     };
   }
 
-  emptyAddingContact() {
+  emptyContactWithCellphone() {
     return {
       ...super.emptyCellphone(),
       ...super.emptyFullName(),

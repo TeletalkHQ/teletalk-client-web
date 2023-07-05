@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ContactItem } from "utility-store/lib/types";
+import { CountryName } from "utility-store/lib/types";
 import { countries } from "utility-store/lib/variables/countries";
 
 import { commonTasks } from "~/classes/CommonTasks";
@@ -9,19 +9,18 @@ import AddContactComponents from "~/components/dialog/addContact";
 import DialogTemplate from "~/components/dialog/template";
 import { useGlobalStore } from "~/store";
 import {
-  AddContactIO,
-  AddingContact,
+  AddContactWithCellphoneIO,
   CommonChangeEvent,
   SelectedCountry,
 } from "~/types";
 import { utilities } from "~/utilities";
 
-const AddContact = () => {
+const AddContactWithCellphone = () => {
   const state = useGlobalStore();
 
-  const [addingContact, setAddingContact] = useState<AddingContact>(
-    maker.emptyContact()
-  );
+  const [addingContact, setAddingContact] = useState<
+    AddContactWithCellphoneIO["input"]
+  >(maker.emptyContactWithCellphone());
   const [selectedCountry, setSelectedCountry] = useState<SelectedCountry>(null);
 
   const handleInputChange = (event: CommonChangeEvent) => {
@@ -32,8 +31,8 @@ const AddContact = () => {
   };
 
   const handleAddContactClick = async () => {
-    socketEmitterStore.events.addContact.emitFull<AddContactIO>(
-      addingContact as ContactItem,
+    socketEmitterStore.events.addContactWithCellphone.emitFull<AddContactWithCellphoneIO>(
+      addingContact,
       async (response) => {
         state.addUserWithContact({
           ...response.data.addedContact,
@@ -56,7 +55,7 @@ const AddContact = () => {
     state.openDialog("contacts");
   };
 
-  const handleCountryNameInputChange = (countryName: string) => {
+  const handleCountryNameInputChange = (countryName: CountryName) => {
     setAddingContact({ ...addingContact, countryName });
   };
 
@@ -138,4 +137,4 @@ const AddContact = () => {
   );
 };
 
-export default AddContact;
+export default AddContactWithCellphone;

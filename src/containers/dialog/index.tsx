@@ -1,4 +1,4 @@
-import AddContact from "~/containers/dialog/AddContact";
+import AddContactWithCellphone from "~/containers/dialog/AddContactWithCellphone";
 import Contacts from "~/containers/dialog/Contacts";
 import EditBio from "~/containers/dialog/EditBio";
 import EditFullName from "~/containers/dialog/EditFullName";
@@ -12,7 +12,7 @@ const Dialog = () => {
   return (
     <>
       {[
-        AddContact,
+        AddContactWithCellphone,
         Contacts,
         EditBio,
         EditFullName,
