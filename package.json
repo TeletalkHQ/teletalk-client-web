@@ -72,7 +72,7 @@
     "react-spinners": "^0.13.8",
     "simple-trier": "^4.0.3",
     "socket.io-client": "^4.6.2",
-    "utility-store": "^14.0.1",
+    "utility-store": "^14.0.2",
     "web-vitals": "^3.3.2",
     "zustand": "^4.3.8"
   },

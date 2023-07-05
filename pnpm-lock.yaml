@@ -102,8 +102,8 @@ dependencies:
     specifier: ^4.6.2
     version: 4.6.2
   utility-store:
-    specifier: ^14.0.1
-    version: 14.0.1
+    specifier: ^14.0.2
+    version: 14.0.2
   web-vitals:
     specifier: ^3.3.2
     version: 3.3.2
@@ -11801,8 +11801,8 @@ packages:
     resolution: {integrity: sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==}
     dev: false
 
-  /utility-store@14.0.1:
-    resolution: {integrity: sha512-DEeAeAiXppBNbTjnBPJ9EKvErsMAKGMKUSCRT8mB2C/jK5KY4WVpr39Y10Ou+x5syBP6upnOW/aqClsttX3RdA==}
+  /utility-store@14.0.2:
+    resolution: {integrity: sha512-fdrNC+37wEtfJgZ6yMD5VFocAPdiVfTJvDomk2YHfFzQLJs7eta/frBkvQ1R0fwJwKtxkoYtiOriOJaB//2N4Q==}
     dependencies:
       custom-typeof: 2.0.2
       nanoid: 3.3.6
