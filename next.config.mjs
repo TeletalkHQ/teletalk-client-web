@@ -15,6 +15,8 @@ const env = Object.keys(process.env).reduce((prev, curr) => {
   return prev;
 }, {});
 
+const initialSetupRoute = "/initialSetup";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -31,9 +33,11 @@ const nextConfig = {
 
   async redirects() {
     return [
-      { source: "/", destination: "/messenger", permanent: true },
-      { source: "/verify", destination: "/signIn", permanent: true },
-      { source: "/create", destination: "/signIn", permanent: true },
+      { source: "/", destination: initialSetupRoute, permanent: true },
+      { source: "/create", destination: initialSetupRoute, permanent: true },
+      { source: "/messenger", destination: initialSetupRoute, permanent: true },
+      { source: "/signIn", destination: initialSetupRoute, permanent: true },
+      { source: "/verify", destination: initialSetupRoute, permanent: true },
     ];
   },
 };

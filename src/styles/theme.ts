@@ -76,6 +76,16 @@ const nordDark = createTheme({
         },
       },
     },
+    MuiSvgIcon: {
+      styleOverrides: {
+        colorPrimary: "#fff",
+        colorAction: "red",
+        colorSecondary: "red",
+        root: {
+          color: "white",
+        },
+      },
+    },
   },
 });
 

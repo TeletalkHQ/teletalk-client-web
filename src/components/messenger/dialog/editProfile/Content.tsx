@@ -1,0 +1,40 @@
+import { userUtils } from "~/classes/UserUtils";
+import Box from "~/components/general/box";
+import Header from "~/components/messenger/dialog/editProfile/Header";
+import List from "~/components/messenger/dialog/editProfile/List";
+import { EditProfileListItemOnClick } from "~/components/messenger/dialog/editProfile/types";
+import { Profile } from "~/types";
+
+interface Props {
+  onClick: EditProfileListItemOnClick;
+  profile: Profile;
+}
+
+const EditProfileContent: React.FC<Props> = ({ onClick, profile }) => {
+  const fullName = userUtils.concatFirstNameWithLastName(profile);
+  const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(profile);
+
+  return (
+    <>
+      <Box.Flex
+        gap={1}
+        col
+        jc="center"
+        style={{ maxWidth: "400px" }}
+        ai="center"
+      >
+        <Header fullName={fullName} />
+
+        <List
+          bio={profile.bio}
+          fullName={fullName}
+          fullNumber={fullNumber}
+          username={profile.username}
+          onClick={onClick}
+        />
+      </Box.Flex>
+    </>
+  );
+};
+
+export default EditProfileContent;

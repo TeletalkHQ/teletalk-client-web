@@ -2,7 +2,6 @@ import { checkFields } from "check-fields";
 import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
-import { commonTasks } from "~/classes/CommonTasks";
 import { websocket } from "~/classes/websocket/Websocket";
 import type {
   IO,
@@ -16,6 +15,7 @@ import type {
   SocketRoute,
 } from "~/types";
 import { AutoBind } from "~/types/utils";
+import { utils } from "~/utils";
 import { checkFieldErrors, errors } from "~/variables/notification/error";
 
 class EventHandler {
@@ -114,7 +114,7 @@ class EventHandler {
   @AutoBind
   private catchEmitFull(response: SocketResponse) {
     this.errorCallback(response.errors);
-    commonTasks.correctErrorsAndPrint(response.errors || []);
+    utils.correctErrorsAndPrint(response.errors || []);
     this.logFailureResponse(Object.values(response.errors || [])[0]);
   }
 

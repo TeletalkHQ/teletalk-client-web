@@ -26,11 +26,12 @@ export interface MessageState {
 
 export interface MessageHandlers {
   addMessage: (m: AddMessagePayload) => void;
-  deselectChat: () => void;
+  addPrivateChat: (p: PrivateChatItem) => void;
   createNewPrivateChat: (p: PrivateChatItem) => void;
+  deselectChat: () => void;
   messageInputOnChange: (v: MessageText) => void;
-  updateSelectedChatInfo: (d: { chatId: ChatId; userId: UserId }) => void;
   setPrivateChats: (p: PrivateChats) => void;
+  updateSelectedChatInfo: (d: { chatId: ChatId; userId: UserId }) => void;
 }
 
 export type MessageSetState = StoreSetFn<MessageState>;
