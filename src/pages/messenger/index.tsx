@@ -6,111 +6,77 @@ import Box from "~/components/general/box";
 import LeftSide from "~/containers/leftSide";
 import Portal from "~/containers/portal";
 import RightSide from "~/containers/rightSide";
-import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
+import { useMessageStore, useUserStore } from "~/store";
 import {
+  EventName,
+  GetPrivateChatIO,
   GetPrivateChatsIO,
-  GetPublicUserDataIO,
   GetUserDataIO,
-  ParticipantItem,
+  SendPrivateMessageIO,
 } from "~/types";
 
 const Messenger = () => {
-  const messageState = useMessageStore();
-  const globalState = useGlobalStore();
-  const userState = useUserStore();
+  const messageStore = useMessageStore();
+  const userStore = useUserStore();
 
   useEffect(() => {
-    const fn = async () => {
-      //TODO: Update in/out events with events from server
-      socketEmitterStore.events.joinRoom.emit();
+    handleUpdateUserData();
+    handleJoinRoom();
 
-      await socketEmitterStore.events.getUserData.emitFull<GetUserDataIO>(
-        {},
-        async ({ data }) => {
-          const users = data.user.contacts.map((item) => ({
-            ...item,
-            isContact: true,
-          }));
+    websocket.client.on<EventName>(
+      "newPrivateChatMessage",
+      async (data: SendPrivateMessageIO["output"]) => {
+        if (messageStore.privateChats.some((i) => i.chatId === data.chatId))
+          messageStore.addMessage(data);
+        else {
+          socketEmitterStore.events.getPrivateChat.emitFull<GetPrivateChatIO>(
+            { chatId: data.chatId },
+            async ({ data }) => {
+              messageStore.setPrivateChats([
+                ...messageStore.privateChats,
+                data.privateChat,
+              ]);
 
-          globalState.setUsers(users);
-          userState.setUserData(data.user);
-          return data;
+              return data;
+            }
+          );
         }
-      );
-
-      websocket.client.on("newPrivateChatMessage", (_data) => {
-        // const newPrivateChatMessage = ({ chatId, newMessage }) => {
-        //   return (dispatch, getState) => {
-        //     const state = getState();
-        //     if (isChatExist(state, chatId))
-        //       return dispatch(actions.addNewMessage({ chatId, newMessage }));
-        //     websocket.client.emit("getChatInfo", { chatId }, (response) => {
-        //       dispatch(
-        //         actions.createNewPrivateChat({
-        //           privateChat: {
-        //             ...response.data.chatInfo,
-        //             messages: [newMessage],
-        //           },
-        //         })
-        //       );
-        //     });
-        //   };
-        // };
-        // const isChatExist = (state, chatId) =>
-        //   messageState.privateChats.some((item) => item.chatId === chatId);
-      });
-    };
-
-    fn();
+      }
+    );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const fn = async () => {
-      await socketEmitterStore.events.getPrivateChats.emitFull<GetPrivateChatsIO>(
-        {},
-        async ({ data }) => {
-          for (const item of data.privateChats) {
-            const participant = item.participants.find(
-              (i: ParticipantItem) => i.participantId !== userState.userId
-            )!;
-
-            const isUserExist = globalState.users.some(
-              (i) => i.userId === participant.participantId
-            );
-            if (isUserExist) continue;
-
-            const { publicUserData } =
-              await socketEmitterStore.events.getPublicUserData.emitFull<GetPublicUserDataIO>(
-                {
-                  userId: participant.participantId,
-                }
-              );
-
-            globalState.addUser({
-              ...publicUserData,
-              countryCode: "",
-              countryName: "",
-              isContact: false,
-              phoneNumber: "",
-            });
-
-            return data;
-          }
-
-          messageState.setPrivateChats(data.privateChats);
-
-          return data;
-        }
-      );
-    };
-
-    if (userState.userId) fn();
+    if (userStore.userId) handleUpdatePrivateChats();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userState.userId]);
+  }, [userStore.userId]);
 
-  console.log(messageState.selectedChat);
+  const handleUpdateUserData = async () => {
+    await socketEmitterStore.events.getUserData.emitFull<GetUserDataIO>(
+      {},
+      async ({ data }) => {
+        userStore.setUserData(data.user);
+
+        return data;
+      }
+    );
+  };
+
+  const handleJoinRoom = () => {
+    socketEmitterStore.events.joinRoom.emit();
+  };
+
+  const handleUpdatePrivateChats = async () => {
+    await socketEmitterStore.events.getPrivateChats.emitFull<GetPrivateChatsIO>(
+      {},
+      async ({ data }) => {
+        messageStore.setPrivateChats(data.privateChats);
+
+        return data;
+      }
+    );
+  };
 
   return (
     <Box.Grid
@@ -127,3 +93,36 @@ const Messenger = () => {
 };
 
 export default Messenger;
+
+// for (const item of data.privateChats) {
+//             const participant = item.participants.find(
+//               (i: ParticipantItem) => i.participantId !== userState.userId
+//             )!;
+
+//             const isUserExist = globalState.users.some(
+//               (i) => i.userId === participant.participantId
+//             );
+//             if (isUserExist) continue;
+
+//             const { publicUserData } =
+//               await socketEmitterStore.events.getPublicUserData.emitFull<GetPublicUserDataIO>(
+//                 {
+//                   userId: participant.participantId,
+//                 },
+//                 async ({ data }) => {
+//                   return {
+//                     publicUserData: data.publicUserData,
+//                   };
+//                 }
+//               );
+
+//             globalState.addUser({
+//               ...(publicUserData || {}),
+//               countryCode: "",
+//               countryName: "",
+//               isContact: false,
+//               phoneNumber: "",
+//             });
+
+//             return data;
+//           }

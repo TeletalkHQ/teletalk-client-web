@@ -1,20 +1,23 @@
+import { userUtils } from "~/classes/UserUtils";
 import Box from "~/components/general/box";
 import IconButton from "~/components/general/other/IconButton";
 import Typography from "~/components/general/typography/Typography";
 import { Icons } from "~/components/other/Icons";
+import { useGetPublicUserData } from "~/hooks";
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {
-  contactName: string;
   onMessageContainerCloseClick: VoidNoArgsFn;
   onChatBarClick: VoidNoArgsFn;
 }
 
 const ChatBar: React.FC<Props> = ({
-  contactName,
   onChatBarClick,
   onMessageContainerCloseClick,
 }) => {
+  const publicUserData = useGetPublicUserData();
+  const fullName = userUtils.concatFirstNameWithLastName(publicUserData);
+
   return (
     <>
       <Box.Paper
@@ -22,11 +25,11 @@ const ChatBar: React.FC<Props> = ({
         style={{
           alignItems: "center",
           borderRadius: 0,
+          cursor: "pointer",
           display: "flex",
           height: 50,
           justifyContent: "space-between",
           padding: 5,
-          cursor: "pointer",
         }}
       >
         <Box.Div>
@@ -47,7 +50,7 @@ const ChatBar: React.FC<Props> = ({
               fontWeight: "500",
             }}
           >
-            {contactName}
+            {fullName}
           </Typography>
         </Box.Flex>
 

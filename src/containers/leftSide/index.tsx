@@ -1,39 +1,19 @@
-import { useMemo } from "react";
-
 import Box from "~/components/general/box";
 import ChatList from "~/components/leftSide/ChatList";
 import SearchBar from "~/components/leftSide/SearchBar";
-import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
-import {
-  LeftSidePrivateChatItem,
-  MessageItem,
-  PrivateChatItem,
-  UserItem,
-  Users,
-} from "~/types";
+import { HandleChatListItemClick } from "~/components/leftSide/types";
+import { useGlobalStore, useMessageStore } from "~/store";
 
 const LeftSide = () => {
   const globalState = useGlobalStore();
   const messageState = useMessageStore();
-  const userState = useUserStore();
-
-  const chatList = useMemo(() => {
-    return messageState.privateChats.map((chat) => {
-      const lastMessage = getChatLastMessage(chat);
-      const participantId = findParticipantId(chat, userState.userId);
-      const user = findUser(globalState.users, participantId);
-
-      return createChatListItem(lastMessage, user);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messageState.privateChats, globalState.users]);
 
   const handleDrawerIconClick = () => {
     globalState.changeDrawerOpen(true);
   };
 
-  const handleChatClick = (chatListItem: LeftSidePrivateChatItem) => {
-    messageState.selectChat(chatListItem.senderId);
+  const handleChatListItemClick: HandleChatListItemClick = (data) => {
+    messageState.updateSelectedChatInfo(data);
   };
 
   return (
@@ -60,9 +40,8 @@ const LeftSide = () => {
             }}
           >
             <ChatList
-              selectedChat={messageState.selectedChat}
-              onChatListItemClick={handleChatClick}
-              chatList={chatList}
+              selectedUserToChat={messageState.selectedChatInfo}
+              onChatListItemClick={handleChatListItemClick}
             />
           </Box.List>
         </Box.Flex>
@@ -72,27 +51,3 @@ const LeftSide = () => {
 };
 
 export default LeftSide;
-
-const findUser = (users: Users, id: string) =>
-  users.find((c) => c.userId === id)!;
-
-const findParticipantId = (chat: PrivateChatItem, userId: string) => {
-  return (
-    chat.participants.find(
-      (participant) => participant.participantId !== userId
-    )?.participantId || ""
-  );
-};
-
-const getChatLastMessage = (chat: PrivateChatItem) => chat.messages.at(-1)!;
-
-const createChatListItem = (
-  lastMessage: MessageItem,
-  user: UserItem
-): LeftSidePrivateChatItem => {
-  return {
-    messageText: lastMessage.messageText,
-    fullName: `${user.firstName} ${user.lastName}`,
-    senderId: user.userId,
-  };
-};

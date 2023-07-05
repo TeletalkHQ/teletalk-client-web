@@ -1,71 +1,38 @@
-import { useEffect, useMemo, useRef } from "react";
-
-import { domUtils } from "~/classes/DomUtils";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import Box from "~/components/general/box";
 import ChatBar from "~/components/rightSide/ChatBar";
 import MessageInput from "~/components/rightSide/MessageInput";
 import MessageList from "~/components/rightSide/MessageList";
-import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
-import { CommonChangeEvent, Messages, SendPrivateMessageIO } from "~/types";
+import { useGlobalStore, useMessageStore } from "~/store";
+import { CommonChangeEvent, SendPrivateMessageIO } from "~/types";
 
 const RightSide = () => {
-  const globalState = useGlobalStore();
-  const messageState = useMessageStore();
-  const userState = useUserStore();
-
-  const oldMessages = useRef<Messages>([]);
-
-  const selectedChatMessages = useMemo(() => {
-    return (
-      messageState.privateChats.find((pc) => {
-        return pc.participants.find(
-          (p) => p.participantId === messageState.selectedChat.chatId
-        );
-      })?.messages || []
-    );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messageState.selectedChat.chatId, messageState.privateChats]);
-
-  useEffect(() => {
-    if (oldMessages.current.length < selectedChatMessages.length) {
-      const messageBox = domUtils().getElementById("messageBox")!;
-      messageBox.scrollTo({
-        top: messageBox.scrollHeight,
-      });
-    }
-
-    oldMessages.current = selectedChatMessages;
-  }, [selectedChatMessages]);
-
-  const selectedParticipantToChat = globalState.users.find(
-    (p) => p.userId === messageState.selectedChat.chatId
-  )!;
+  const globalStore = useGlobalStore();
+  const messageStore = useMessageStore();
 
   const handleInputChange = (event: CommonChangeEvent) => {
-    messageState.messageInputOnChange(event.target.value);
+    messageStore.messageInputOnChange(event.target.value);
   };
 
   const handleSendMessage = async () => {
     socketEmitterStore.events.sendPrivateMessage.emitFull<SendPrivateMessageIO>(
       {
-        messageText: messageState.messageInputTextValue,
-        participantId: messageState.selectedChat.chatId,
+        messageText: messageStore.messageInputTextValue,
+        participantId: messageStore.selectedChatInfo.userId,
       },
       async ({ data }) => {
-        messageState.messageInputOnChange("");
+        messageStore.messageInputOnChange("");
         return data;
       }
     );
   };
 
   const handleMessageContainerCloseClick = () => {
-    messageState.deselectChat();
+    messageStore.deselectChat();
   };
 
   const handleChatBarClick = () => {
-    globalState.openDialog("userInfo");
+    globalStore.openDialog("userInfo");
   };
 
   return (
@@ -79,7 +46,7 @@ const RightSide = () => {
       lg={9}
       md={8}
     >
-      {messageState.selectedChat.chatId && (
+      {messageStore.selectedChatInfo.userId && (
         <Box.Flex
           col
           sx={{
@@ -97,25 +64,10 @@ const RightSide = () => {
             <ChatBar
               onChatBarClick={handleChatBarClick}
               onMessageContainerCloseClick={handleMessageContainerCloseClick}
-              contactName={`${selectedParticipantToChat.firstName} ${selectedParticipantToChat.lastName}`}
             />
           </Box.Div>
 
-          <Box.Div
-            id="messageBox"
-            style={{
-              height: "100%",
-              overflowY: "auto",
-              padding: 5,
-              scrollBehavior: "smooth",
-              width: "100%",
-            }}
-          >
-            <MessageList
-              currentUserId={userState.userId}
-              messages={selectedChatMessages}
-            />
-          </Box.Div>
+          <MessageList />
 
           <Box.Div
             style={{
@@ -123,7 +75,7 @@ const RightSide = () => {
             }}
           >
             <MessageInput
-              messageInputTextValue={messageState.messageInputTextValue}
+              messageInputTextValue={messageStore.messageInputTextValue}
               onSendMessage={handleSendMessage}
               onChange={handleInputChange}
             />

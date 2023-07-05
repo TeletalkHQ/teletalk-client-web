@@ -1,4 +1,9 @@
-import { Cellphone, FullNameWithUserId, Status } from "utility-store/lib/types";
+import {
+  Cellphone,
+  ContactItem,
+  FullNameWithUserId,
+  Status,
+} from "utility-store/lib/types";
 
 import { StoreSetFn } from ".";
 import { StringMap } from "..";
@@ -15,12 +20,14 @@ export interface UserState extends FullNameWithUserId, Cellphone {
   username: Username;
   status: Status;
   createdAt: number;
+  contacts: ContactItem[];
 }
 
 export type ExtendedUserState = UserState & StringMap;
 
 export interface UserHandlers {
   setUserData: (u: UserState) => void;
+  addContact: (c: ContactItem) => void;
 }
 
 export type UserSetState = StoreSetFn<UserState>;

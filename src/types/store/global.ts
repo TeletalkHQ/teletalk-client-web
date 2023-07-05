@@ -1,9 +1,8 @@
 import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
-import { Cellphone, CountryItem, FullName } from "utility-store/lib/types";
+import { CountryItem } from "utility-store/lib/types";
 
 import { StoreSetFn } from ".";
-import { UserId } from "../datatypes";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -35,19 +34,9 @@ export interface DialogState {
   props: DialogProps;
 }
 
-export interface UserItem extends FullName, Cellphone {
-  isContact: boolean;
-  userId: UserId;
-}
-
-export type Users = UserItem[];
-
 export type SelectedCountry = CountryItem | null;
 
 export interface GlobalHandlers {
-  addUserWithContact: (c: UserItem) => void;
-  addUser: (u: UserItem) => void;
-  setUsers: (u: Users) => void;
   openGlobalLoading: () => void;
   closeGlobalLoading: () => void;
   changeDrawerOpen: (o: boolean) => void;
@@ -93,7 +82,6 @@ export interface GlobalState {
     type: GlobalLoadingType;
   };
   isOnline: boolean;
-  users: Users;
 }
 
 export type GlobalSetState = StoreSetFn<GlobalState>;

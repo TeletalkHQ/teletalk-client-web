@@ -5,19 +5,12 @@ import {
   MessageText,
   PrivateChatItem,
   PrivateChats,
-  SenderId,
+  UserId,
 } from "../datatypes";
 
-export interface LeftSidePrivateChatItem {
-  messageText: MessageText;
-  fullName: string;
-  senderId: SenderId;
-}
-
-export type LeftSidePrivateChats = LeftSidePrivateChatItem[];
-
-export interface SelectedPrivateChat {
+export interface SelectedChatInfo {
   chatId: ChatId;
+  userId: UserId;
 }
 
 export interface AddMessagePayload {
@@ -27,7 +20,7 @@ export interface AddMessagePayload {
 
 export interface MessageState {
   privateChats: PrivateChats;
-  selectedChat: SelectedPrivateChat;
+  selectedChatInfo: SelectedChatInfo;
   messageInputTextValue: MessageText;
 }
 
@@ -36,7 +29,7 @@ export interface MessageHandlers {
   deselectChat: () => void;
   createNewPrivateChat: (p: PrivateChatItem) => void;
   messageInputOnChange: (v: MessageText) => void;
-  selectChat: (id: ChatId) => void;
+  updateSelectedChatInfo: (d: { chatId: ChatId; userId: UserId }) => void;
   setPrivateChats: (p: PrivateChats) => void;
 }
 

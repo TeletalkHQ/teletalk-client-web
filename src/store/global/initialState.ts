@@ -34,7 +34,6 @@ const initialState: GlobalState = {
     type: "FULL_PAGE",
   },
   isOnline: false,
-  users: [],
 };
 
 export { initialState, defaultDialogState };

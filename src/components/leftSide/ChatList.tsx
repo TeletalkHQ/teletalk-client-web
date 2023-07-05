@@ -1,32 +1,53 @@
 import ChatListItem from "~/components/leftSide/chatListItem";
-import {
-  LeftSidePrivateChatItem,
-  LeftSidePrivateChats,
-  SelectedPrivateChat,
-} from "~/types";
+import { useMessageStore, useUserStore } from "~/store";
+import { PrivateChatItem, SelectedChatInfo, UserId } from "~/types";
+
+import { HandleChatListItemClick } from "./types";
 
 interface Props {
-  chatList: LeftSidePrivateChats;
-  onChatListItemClick: (c: LeftSidePrivateChatItem) => void;
-  selectedChat: SelectedPrivateChat;
+  onChatListItemClick: HandleChatListItemClick;
+  selectedUserToChat: SelectedChatInfo;
 }
 
 const ChatList: React.FC<Props> = ({
-  chatList,
   onChatListItemClick,
-  selectedChat,
-}) => (
-  <>
-    {chatList.map((item, i) => (
-      <ChatListItem
-        onClick={() => onChatListItemClick(item)}
-        key={i}
-        message={item.messageText}
-        fullName={item.fullName}
-        selected={selectedChat.chatId === item.senderId}
-      />
-    ))}
-  </>
-);
+  selectedUserToChat,
+}) => {
+  const messageStore = useMessageStore();
+  const userStore = useUserStore();
+
+  return (
+    <>
+      {messageStore.privateChats.map((p, index) => {
+        const targetUserId = findTargetUserId(p, userStore.userId);
+        const lastMessage = getLastMessage(p);
+
+        return (
+          <ChatListItem
+            onClick={() =>
+              onChatListItemClick({
+                chatId: p.chatId,
+                userId: targetUserId,
+              })
+            }
+            key={index}
+            userId={targetUserId}
+            messageText={lastMessage.messageText}
+            selected={selectedUserToChat.userId === targetUserId}
+          />
+        );
+      })}
+    </>
+  );
+};
 
 export default ChatList;
+
+const findTargetUserId = (p: PrivateChatItem, userId: UserId) => {
+  return (
+    p.participants.find((participant) => participant.participantId !== userId)
+      ?.participantId || ""
+  );
+};
+
+const getLastMessage = (p: PrivateChatItem) => p.messages.at(-1)!;
