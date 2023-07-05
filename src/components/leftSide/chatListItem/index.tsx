@@ -1,25 +1,30 @@
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 
+import { userUtils } from "~/classes/UserUtils";
 import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
-import { VoidNoArgsFn } from "~/types";
+import { useGetPublicUserData } from "~/hooks";
+import { MessageText, UserId, VoidNoArgsFn } from "~/types";
 
 import Lower from "./Lower";
 import Upper from "./Upper";
 
 interface Props {
-  message: string;
-  fullName: string;
+  messageText: MessageText;
+  userId: UserId;
   onClick: VoidNoArgsFn;
   selected: boolean;
 }
 
 const ChatListItem: React.FC<Props> = ({
-  message,
-  fullName,
+  messageText,
   onClick,
   selected,
+  userId,
 }) => {
+  const publicUserData = useGetPublicUserData(userId);
+  const fullName = userUtils.concatFirstNameWithLastName(publicUserData);
+
   return (
     <Box.ListItemButton
       selected={selected}
@@ -40,7 +45,7 @@ const ChatListItem: React.FC<Props> = ({
 
       <Box.Flex col style={{ width: "80%" }}>
         <Upper fullName={fullName} />
-        <Lower message={message} />
+        <Lower messageText={messageText} />
       </Box.Flex>
     </Box.ListItemButton>
   );

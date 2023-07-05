@@ -1,4 +1,5 @@
 import { Maker as MakerMain } from "utility-store";
+import { PublicUserData } from "utility-store/lib/types";
 
 export class Maker extends MakerMain {
   //@ts-ignore
@@ -14,6 +15,15 @@ export class Maker extends MakerMain {
     return {
       ...super.emptyCellphone(),
       ...super.emptyFullName(),
+    };
+  }
+
+  emptyUserPublicData(): PublicUserData {
+    return {
+      ...super.emptyFullName(),
+      bio: "",
+      userId: "",
+      username: "",
     };
   }
 }

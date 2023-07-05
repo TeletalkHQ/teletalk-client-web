@@ -7,7 +7,7 @@ import { maker } from "~/classes/Maker";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import AddContactComponents from "~/components/dialog/addContact";
 import DialogTemplate from "~/components/dialog/template";
-import { useGlobalStore } from "~/store";
+import { useGlobalStore, useUserStore } from "~/store";
 import {
   AddContactWithCellphoneIO,
   CommonChangeEvent,
@@ -16,7 +16,8 @@ import {
 import { utilities } from "~/utilities";
 
 const AddContactWithCellphone = () => {
-  const state = useGlobalStore();
+  const globalStore = useGlobalStore();
+  const userStore = useUserStore();
 
   const [addingContact, setAddingContact] = useState<
     AddContactWithCellphoneIO["input"]
@@ -34,10 +35,7 @@ const AddContactWithCellphone = () => {
     socketEmitterStore.events.addContactWithCellphone.emitFull<AddContactWithCellphoneIO>(
       addingContact,
       async (response) => {
-        state.addUserWithContact({
-          ...response.data.addedContact,
-          isContact: true,
-        });
+        userStore.addContact(response.data.addedContact);
         returnToContactsDialog();
         return response.data;
       }
@@ -45,14 +43,14 @@ const AddContactWithCellphone = () => {
   };
 
   const closeAddContactDialog = () => {
-    state.closeDialog("addContact");
+    globalStore.closeDialog("addContact");
     setSelectedCountry(null);
     setAddingContact(maker.emptyContact());
   };
 
   const returnToContactsDialog = () => {
     closeAddContactDialog();
-    state.openDialog("contacts");
+    globalStore.openDialog("contacts");
   };
 
   const handleCountryNameInputChange = (countryName: CountryName) => {
@@ -127,7 +125,7 @@ const AddContactWithCellphone = () => {
             isAddContactButtonDisabled={isAddContactButtonDisabled()}
           />
         }
-        open={state.dialogState.addContact.open}
+        open={globalStore.dialogState.addContact.open}
         paperStyle={{
           height: "50vh",
         }}

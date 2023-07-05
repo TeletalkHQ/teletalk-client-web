@@ -9,8 +9,9 @@ export const handlers: (set: MessageSetState) => MessageHandlers = (set) => ({
 
   deselectChat() {
     set({
-      selectedChat: {
+      selectedChatInfo: {
         chatId: "",
+        userId: "",
       },
     });
   },
@@ -23,24 +24,29 @@ export const handlers: (set: MessageSetState) => MessageHandlers = (set) => ({
         (item) => item.chatId === chatId
       );
       const chat = copyPrivateChats[index];
-      const newChat = {
-        ...chat,
-        messages: [...chat.messages, addedMessage],
-      };
 
-      copyPrivateChats.splice(index, 1, newChat);
+      if (chat) {
+        const newChat = {
+          ...chat,
+          messages: [...chat.messages, addedMessage],
+        };
+
+        copyPrivateChats.splice(index, 1, newChat);
+        return {
+          privateChats: copyPrivateChats,
+        };
+      } else {
+        console.error("private chat not found for update!");
+      }
+
       return {
-        privateChats: copyPrivateChats,
+        privateChats: prevState.privateChats,
       };
     });
   },
 
-  selectChat(chatId) {
-    set({
-      selectedChat: {
-        chatId,
-      },
-    });
+  updateSelectedChatInfo(selectedChatInfo) {
+    set({ selectedChatInfo });
   },
 
   createNewPrivateChat(privateChat) {

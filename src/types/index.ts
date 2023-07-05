@@ -41,7 +41,7 @@ export interface Route {
 }
 
 export type Events = typeof stuff.events;
-export type EventName = Events[number]["name"];
+export type EventName = Events[number]["name"] | "newPrivateChatMessage";
 
 export type ValidatorName = keyof typeof stuff.validationModels;
 

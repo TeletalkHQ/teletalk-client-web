@@ -3,26 +3,6 @@ import { GlobalHandlers, GlobalSetState } from "~/types";
 import { defaultDialogState } from "./initialState";
 
 export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
-  addUserWithContact(c) {
-    set((prevState) => {
-      return {
-        users: [...prevState.users, { ...c, isContact: true }],
-      };
-    });
-  },
-
-  addUser(user) {
-    set((prevState) => {
-      return { users: [...prevState.users, user] };
-    });
-  },
-
-  setUsers(users) {
-    set((prevState) => {
-      return { users: [...prevState.users, ...users] };
-    });
-  },
-
   openGlobalLoading() {
     set((prevState) => {
       return {

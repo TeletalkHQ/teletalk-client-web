@@ -1,9 +1,11 @@
+import { ContactItem } from "utility-store/lib/types";
+
 import ListItem from "~/components/dialog/contacts/ListItem";
-import { UserItem, Users } from "~/types";
+import { Contacts } from "~/types";
 
 interface Props {
-  contacts: Users;
-  onContactItemClicked: (contact: UserItem) => void;
+  contacts: Contacts;
+  onContactItemClicked: (contact: ContactItem) => void;
 }
 
 const ContactsContent: React.FC<Props> = ({
