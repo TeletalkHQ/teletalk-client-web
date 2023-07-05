@@ -1,7 +1,5 @@
 import { trier } from "simple-trier";
 
-import { commonTasks } from "~/classes/CommonTasks";
-import { errorCheckerCollection } from "~/helpers/errorCheckerCollection";
 import {
   ErrorChecker,
   NativeError,
@@ -10,10 +8,11 @@ import {
   ValidatorType,
 } from "~/types";
 import { AutoBind } from "~/types/utils";
+import { utils } from "~/utils";
+import { errorCheckerCollection } from "~/utils/errorCheckerCollection";
 
 class Validator {
   private errorChecker: ErrorChecker;
-  //TODO: Change Result name
   private validationResult: ValidationResult;
   private value: any;
 
@@ -87,7 +86,7 @@ class Validator {
 
   @AutoBind
   private printErrors(errors: NativeError[]) {
-    commonTasks.correctErrorsAndPrint(errors);
+    utils.correctErrorsAndPrint(errors);
     return this;
   }
 

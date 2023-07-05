@@ -5,7 +5,7 @@ import type {
   OnCountryNameInputChange,
 } from "~/components/general/input/common/countrySelector";
 import { CommonOnChange, SelectedCountry } from "~/types";
-import { utilities } from "~/utilities";
+import { utils } from "~/utils";
 
 interface Props {
   countryCode: string;
@@ -35,7 +35,7 @@ const Cellphone: React.FC<Props> = ({
         onSelectChange={onSelectedCountryChange}
         onCountryNameInputChange={onCountryNameInputChange}
         selectedCountry={
-          utilities.isCountrySelected(selectedCountry) ? selectedCountry : null
+          utils.isCountrySelected(selectedCountry) ? selectedCountry : null
         }
       />
       <Box.Flex jc="space-between" style={{ width: "100%" }}>

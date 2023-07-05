@@ -1,4 +1,4 @@
-import { MessageHandlers, MessageSetState } from "~/types";
+import { MessageHandlers, MessageSetState, PrivateChatItem } from "~/types";
 
 export const handlers: (set: MessageSetState) => MessageHandlers = (set) => ({
   setPrivateChats(privateChats) {
@@ -16,6 +16,11 @@ export const handlers: (set: MessageSetState) => MessageHandlers = (set) => ({
     });
   },
 
+  addPrivateChat(p: PrivateChatItem) {
+    set((prevState) => ({
+      privateChats: [...prevState.privateChats, p],
+    }));
+  },
   addMessage(payload) {
     set((prevState) => {
       const { chatId, addedMessage } = payload;

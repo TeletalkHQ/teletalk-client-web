@@ -6,9 +6,8 @@ import { useEffect } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
-import Layout from "~/components/layout";
 import { events } from "~/events";
-import { registerWindowCustomProperties } from "~/helpers/registerWindowCustomProperties";
+import Layout from "~/layout";
 import MUIThemeProvider from "~/providers/MUIThemeProvider";
 import ReactQueryProvider from "~/providers/ReactQueryProvider";
 import {
@@ -18,6 +17,7 @@ import {
   useUserStore,
 } from "~/store";
 import createEmotionCache from "~/styles/createEmotionCache";
+import { utils } from "~/utils";
 
 export interface CustomAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -46,7 +46,7 @@ export default function _app(props: CustomAppProps) {
 
       websocket.client.connect();
 
-      registerWindowCustomProperties();
+      utils.registerWindowCustomProperties();
       events.websocket.otherEvents();
     }
 

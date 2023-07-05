@@ -6,7 +6,14 @@ import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { useMessageStore, useUserStore } from "~/store";
 import { GetPublicUserDataIO, UserId } from "~/types";
 
-export const useGetPublicUserData = (userId?: UserId): PublicUserData => {
+type UseGetPublicUserData = (userId?: UserId) => {
+  publicUserData: PublicUserData;
+  updater: (u: UserId) => Promise<{
+    publicUserData: PublicUserData;
+  }>;
+};
+
+export const useGetPublicUserData: UseGetPublicUserData = (userId) => {
   const messageStore = useMessageStore();
   const userStore = useUserStore();
 
@@ -17,15 +24,15 @@ export const useGetPublicUserData = (userId?: UserId): PublicUserData => {
   useEffect(() => {
     const { userId: targetUserId } = messageStore.selectedChatInfo;
 
-    if (userId) handleSetUserPublicData(userId);
-    else handleSetUserPublicData(targetUserId);
+    if (userId) updater(userId);
+    else updater(targetUserId);
 
     return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messageStore.selectedChatInfo, userId]);
 
-  const handleSetUserPublicData = async (userId: UserId) => {
-    socketEmitterStore.events.getPublicUserData.emitFull<GetPublicUserDataIO>(
+  const updater = (userId: UserId) => {
+    return socketEmitterStore.events.getPublicUserData.emitFull<GetPublicUserDataIO>(
       { userId },
       async ({ data }) => {
         const contactItem =
@@ -40,5 +47,8 @@ export const useGetPublicUserData = (userId?: UserId): PublicUserData => {
     );
   };
 
-  return publicUserData;
+  return {
+    publicUserData,
+    updater,
+  };
 };
