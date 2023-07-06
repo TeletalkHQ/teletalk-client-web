@@ -3,6 +3,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { AppProps } from "next/app";
 import { SnackbarProvider } from "notistack";
 import { useEffect } from "react";
+import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
@@ -41,21 +42,26 @@ export default function _app(props: CustomAppProps) {
   });
 
   useEffect(() => {
-    async function fn() {
-      await setClientId();
-
-      websocket.client.connect();
-
-      utils.registerWindowCustomProperties();
-      events.websocket.otherEvents();
-    }
-
-    fn();
+    setup();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const setClientId = async () => {
-    await fetch("http://localhost:8090/setClientId", {
+  const setup = () => {
+    trier(setup.name)
+      .async()
+      .try(async () => {
+        await handleSetClientId();
+      })
+      .executeIfNoError(() => {
+        websocket.client.connect();
+        utils.registerWindowCustomProperties();
+        events.websocket.otherEvents();
+      })
+      .run();
+  };
+
+  const handleSetClientId = () => {
+    return fetch("http://localhost:8090/setClientId", {
       method: "GET",
       credentials: "include",
     });
