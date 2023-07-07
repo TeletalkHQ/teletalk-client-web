@@ -1,12 +1,7 @@
-import { RuntimeMode, StringMap, UiConfig } from "~/types";
+import { RuntimeMode, UiConfig } from "~/types";
 
 type BaseUrl = {
   [key in RuntimeMode]: string;
-};
-
-type Configs = {
-  [key: string]: StringMap;
-  ui: UiConfig;
 };
 
 class AppConfigs {
@@ -21,15 +16,14 @@ class AppConfigs {
     production: process.env.NEXT_PUBLIC_SERVER_BASE_URL,
   };
 
-  private configs: Configs = {
+  private configs = {
     api: {
       clientBaseUrl: this.CLIENT_BASE_URLS[this.RUNTIME_MODE],
       defaultHeaders: {
-        Authorization: "",
         "Content-Type": "application/json",
       },
       requestTimeout: 60000,
-      serverBaseUrl: this.getServerBaseUrl(),
+      selectedServerUrl: this.getServerBaseUrl(),
       shouldCheckInputDataFields: true,
       shouldCheckOutputDataFields: false,
       shouldCheckResponseStatus: true,
@@ -48,8 +42,8 @@ class AppConfigs {
       drawerDefaultAnchor: "left",
       dialogDefaultTransition: "Grow",
       maxNotification: 10,
-    },
-  };
+    } as UiConfig,
+  } as const;
 
   private getServerBaseUrl() {
     if (this.RUNTIME_MODE === "development")
