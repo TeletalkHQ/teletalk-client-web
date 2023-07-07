@@ -108,6 +108,10 @@ export interface NativeModel {
 
 export type NativeModelKey = keyof NativeModel;
 
+export type Status = "idle" | "pending" | "offline" | "online";
+
+export type ConnectionColors = { [key in Status]: string };
+
 export type * from "./api";
 export type * from "./store";
 export type * from "./models";
