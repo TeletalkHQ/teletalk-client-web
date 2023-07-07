@@ -1,9 +1,9 @@
 import { NotificationManager } from "~/classes/NotificationManager";
-import { variables } from "~/variables";
+import { errors } from "~/variables/notification/error";
 
 class CommonNotificationManager extends NotificationManager {
   submitAbortedConnectionNotification() {
-    super.submitErrorNotification(variables.notification.errors.econnAborted);
+    super.submitErrorNotification(errors.econnAborted);
   }
 }
 

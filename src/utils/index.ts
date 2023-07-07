@@ -73,10 +73,19 @@ const registerWindowCustomProperties = () => {
   window.websocket = websocket;
 };
 
+const setWebsocketClient = (url: string) => {
+  websocket.client?.disconnect();
+  const client = websocket.initialize({
+    url: url || appConfigs.getConfigs().api.selectedServerUrl,
+  });
+  websocket.setClient(client);
+};
+
 const utils = {
   checkErrorCodeIsConnAborted,
   correctErrorsAndPrint,
   createInputValidator,
+  setWebsocketClient,
   isCountrySelected,
   isIos,
   isValueLengthEqualToLength,

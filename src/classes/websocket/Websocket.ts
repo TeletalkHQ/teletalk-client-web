@@ -2,19 +2,25 @@ import io, { Socket } from "socket.io-client";
 
 import { appConfigs } from "~/classes/AppConfigs";
 
+interface Options {
+  url: string;
+}
+
 class Websocket {
   client: Socket;
+  private defaultOptions: Options = {
+    url: appConfigs.getConfigs().api.selectedServerUrl,
+  };
 
-  constructor() {
-    this.client = this.initializeClient();
-  }
-
-  initializeClient(options = {}) {
-    return io(appConfigs.getConfigs().api.serverBaseUrl, {
+  initialize(options = this.defaultOptions) {
+    return io(options.url, {
       autoConnect: false,
       withCredentials: true,
-      ...options,
     });
+  }
+
+  setClient(client: Socket) {
+    this.client = client;
   }
 }
 

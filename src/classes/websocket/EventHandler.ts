@@ -1,5 +1,6 @@
 import { checkFields } from "check-fields";
 import { trier } from "simple-trier";
+import { Socket } from "socket.io-client";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
@@ -18,8 +19,14 @@ import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
 import { checkFieldErrors, errors } from "~/variables/notification/error";
 
+interface Options {
+  timeout: number;
+  client: Socket;
+}
+
 class EventHandler {
   requestData: IO["input"];
+  defaultOptions: Options = { timeout: 0, client: websocket.client };
   requestInterceptors: Interceptors = [];
   requestTransformer: RequestTransformer<IO["input"]> = (requestData) =>
     requestData;
@@ -59,15 +66,22 @@ class EventHandler {
     return this;
   }
 
-  async emit(data?: IO["output"]) {
+  async emit(
+    data?: IO["output"],
+    options: Partial<Options> = this.defaultOptions
+  ) {
+    const mergedOptions = { ...this.defaultOptions, ...options };
+
     const response: SocketResponse = await new Promise((resolve, reject) => {
-      websocket.client.emit(
+      mergedOptions.client.emit(
         this.route.name,
         data || {},
         (response: SocketResponse) => {
-          if (response.ok) resolve(response);
+          setTimeout(() => {
+            if (response.ok) resolve(response);
 
-          reject(response);
+            reject(response);
+          }, options.timeout);
         }
       );
     });
@@ -81,7 +95,8 @@ class EventHandler {
     data: T["input"],
     responseCallback: ResponseCallback<T["output"]> = async (response) =>
       response.data,
-    errorCallback: SocketErrorCallback = (_errors) => {}
+    errorCallback: SocketErrorCallback = (_errors) => {},
+    options?: Partial<Options>
   ): Promise<T["output"]> {
     this.requestData = data;
     this.responseCallback = responseCallback;
@@ -89,18 +104,18 @@ class EventHandler {
 
     return await trier<T["output"]>(this.emitFull.name)
       .async()
-      .try(this.tryToEmitFull)
+      .try(this.tryToEmitFull, options)
       .catch(this.catchEmitFull)
       .run();
   }
 
   @AutoBind
-  private async tryToEmitFull() {
+  private async tryToEmitFull(options?: Options) {
     await this
       // .executeRequestTransformer()
       // .executeRequestInterceptors()
       .inputDataFieldsCheck()
-      .emit(this.requestData);
+      .emit(this.requestData, options);
 
     await this.outputDataFieldsCheck()
       // .executeResponseTransformer()
