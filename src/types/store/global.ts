@@ -3,6 +3,7 @@ import { CSSProperties } from "react";
 import { CountryItem } from "utility-store/lib/types";
 
 import { StoreSetFn } from ".";
+import { VoidNoArgsFn } from "..";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -23,6 +24,7 @@ export type DialogName =
   | "notificationsAndSounds"
   | "privacyAndSecurity"
   | "settings"
+  | "servers"
   | "userInfo";
 
 export interface DialogProps {
@@ -36,17 +38,21 @@ export interface DialogState {
 
 export type SelectedCountry = CountryItem | null;
 
+export type LoadingType = "FULL_PAGE" | "OVERLAY";
+
 export interface GlobalHandlers {
-  openGlobalLoading: () => void;
-  closeGlobalLoading: () => void;
+  openLoading: (type?: LoadingType) => void;
+  closeLoading: (type?: LoadingType) => void;
   changeDrawerOpen: (o: boolean) => void;
   // updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
   updateOnlineStatus: (isOnline: boolean) => void;
   openDialog: (dialogName: DialogName, props?: DialogProps) => void;
   closeDialog: (dialogName: DialogName, props?: DialogProps) => void;
+  openOverlayLoading: VoidNoArgsFn;
+  closeOverlayLoading: VoidNoArgsFn;
+  openFullPageLoading: VoidNoArgsFn;
+  closeFullPageLoading: VoidNoArgsFn;
 }
-
-export type GlobalLoadingType = "FULL_PAGE" | "OVERLAY";
 
 export interface LoadingState {
   color: "blue";
@@ -54,7 +60,7 @@ export interface LoadingState {
   progressColor: "inherit";
   size: number;
   speedMultiplier: number;
-  type: GlobalLoadingType;
+  type: LoadingType;
 }
 
 export interface GlobalState {
@@ -72,14 +78,15 @@ export interface GlobalState {
     logout: DialogState;
     settings: DialogState;
     userInfo: DialogState;
+    servers: DialogState;
   };
-  globalLoading: {
+  loading: {
     color: CSSProperties["color"];
     open: boolean;
     progressColor: CircularProgressProps["color"];
     size: 80;
     speedMultiplier: number;
-    type: GlobalLoadingType;
+    type: LoadingType;
   };
   isOnline: boolean;
 }
