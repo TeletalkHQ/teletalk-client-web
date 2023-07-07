@@ -22,10 +22,11 @@ const initialState: GlobalState = {
     editProfile: defaultDialogState,
     editUsername: defaultDialogState,
     logout: defaultDialogState,
+    servers: defaultDialogState,
     settings: defaultDialogState,
     userInfo: defaultDialogState,
   },
-  globalLoading: {
+  loading: {
     color: "blue",
     open: false,
     progressColor: "inherit",

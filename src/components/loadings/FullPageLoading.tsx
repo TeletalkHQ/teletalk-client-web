@@ -8,30 +8,29 @@ const FullPageLoading = () => {
 
   return (
     <>
-      {globalState.globalLoading.open &&
-        globalState.globalLoading.type === "FULL_PAGE" && (
-          <Box.Flex
-            jc={"center"}
-            ai={"center"}
-            style={{
-              //TODO: Read from mui
-              zIndex: 1000,
-              top: "0",
-              left: "0",
-              position: "absolute",
-              backgroundColor: "#ffffff",
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <MoonLoader
-              color={globalState.globalLoading.color}
-              loading
-              size={globalState.globalLoading.size}
-              speedMultiplier={globalState.globalLoading.speedMultiplier}
-            />
-          </Box.Flex>
-        )}
+      {globalState.loading.open && globalState.loading.type === "FULL_PAGE" && (
+        <Box.Flex
+          jc={"center"}
+          ai={"center"}
+          style={{
+            //TODO: Read from mui
+            zIndex: 1000,
+            top: "0",
+            left: "0",
+            position: "absolute",
+            backgroundColor: "#ffffff",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <MoonLoader
+            color={globalState.loading.color}
+            loading
+            size={globalState.loading.size}
+            speedMultiplier={globalState.loading.speedMultiplier}
+          />
+        </Box.Flex>
+      )}
     </>
   );
 };

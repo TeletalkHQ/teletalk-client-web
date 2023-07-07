@@ -3,26 +3,41 @@ import { GlobalHandlers, GlobalSetState } from "~/types";
 import { defaultDialogState } from "./initialState";
 
 export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
-  openGlobalLoading() {
+  openLoading(type) {
     set((prevState) => {
       return {
-        globalLoading: {
-          ...prevState.globalLoading,
+        loading: {
+          ...prevState.loading,
           open: true,
+          type: type || prevState.loading.type,
+        },
+      };
+    });
+  },
+  closeLoading(type) {
+    set((prevState) => {
+      return {
+        loading: {
+          ...prevState.loading,
+          open: false,
+          type: type || prevState.loading.type,
         },
       };
     });
   },
 
-  closeGlobalLoading() {
-    set((prevState) => {
-      return {
-        globalLoading: {
-          ...prevState.globalLoading,
-          open: false,
-        },
-      };
-    });
+  openOverlayLoading() {
+    this.openLoading("OVERLAY");
+  },
+  closeOverlayLoading() {
+    this.closeLoading("OVERLAY");
+  },
+
+  openFullPageLoading() {
+    this.openLoading("FULL_PAGE");
+  },
+  closeFullPageLoading() {
+    this.closeLoading("FULL_PAGE");
   },
 
   changeDrawerOpen(open) {

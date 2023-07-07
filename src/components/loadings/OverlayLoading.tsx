@@ -9,16 +9,15 @@ const OverlayLoading = () => {
     <>
       <Backdrop
         sx={{
-          color: globalState.globalLoading.color,
+          color: globalState.loading.color,
           // zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
         open={
-          globalState.globalLoading.open &&
-          globalState.globalLoading.type === "OVERLAY"
+          globalState.loading.open && globalState.loading.type === "OVERLAY"
         }
-        onClick={globalState.closeGlobalLoading}
+        onClick={globalState.closeOverlayLoading}
       >
-        <CircularProgress color={globalState.globalLoading.progressColor} />
+        <CircularProgress color={globalState.loading.progressColor} />
       </Backdrop>
     </>
   );
