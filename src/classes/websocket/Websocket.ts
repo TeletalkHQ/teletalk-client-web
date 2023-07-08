@@ -8,15 +8,17 @@ interface Options {
 
 class Websocket {
   client: Socket;
-  private defaultOptions: Options = {
-    url: appConfigs.getConfigs().api.selectedServerUrl,
-  };
 
-  initialize(options = this.defaultOptions) {
+  initialize(options = this.getDefaultOptions()) {
     return io(options.url, {
       autoConnect: false,
       withCredentials: true,
     });
+  }
+  getDefaultOptions() {
+    return {
+      url: appConfigs.getConfigs().api.selectedServerUrl,
+    } as Options;
   }
 
   setClient(client: Socket) {

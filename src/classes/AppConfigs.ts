@@ -51,7 +51,7 @@ class AppConfigs {
         drawerDefaultAnchor: "left",
         maxNotification: 10,
       } as UiConfig,
-    } as const;
+    };
   }
 
   private getServerBaseUrl() {
@@ -77,6 +77,16 @@ class AppConfigs {
   addServerUrl(url: string) {
     const configs = this.getConfigs();
     configs.api.servers.push({ url });
+    localStorage.setItem("configs", JSON.stringify(configs));
+  }
+
+  updateSelectedServer(url: string) {
+    const configs = this.getConfigs();
+    configs.api.selectedServerUrl = url;
+    this.updateConfigs(configs);
+  }
+
+  private updateConfigs(configs: object) {
     localStorage.setItem("configs", JSON.stringify(configs));
   }
 
