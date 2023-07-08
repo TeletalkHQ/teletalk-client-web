@@ -47,10 +47,8 @@ const InitialSetup = () => {
           utils.registerWindowCustomProperties();
           appConfigs.updateSelectedServer(selectedServer);
           events.websocket.otherEvents();
-          console.log("setup successful");
           setStatus("online");
           setLoading(false);
-          router.push("auth");
         });
 
         websocket.client.on("connect_error", () => {
@@ -132,6 +130,15 @@ const InitialSetup = () => {
             loading={loading}
             onSetup={handleSetup}
           />
+
+          <div style={{ marginTop: "10px" }}></div>
+
+          <Input.Button
+            onClick={() => router.push("auth")}
+            disabled={status !== "online"}
+          >
+            Authenticate
+          </Input.Button>
         </Box.Div>
       </Box.Div>
 
