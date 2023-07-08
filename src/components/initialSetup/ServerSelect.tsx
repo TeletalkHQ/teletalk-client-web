@@ -28,14 +28,7 @@ const ServerSelect: React.FC<Props> = ({
             onServerSelectChange(props.target.value as string)
           }
         >
-          {[
-            {
-              url: appConfigs.getConfigs().api.selectedServerUrl,
-            },
-            {
-              url: "hallo!",
-            },
-          ].map((item, index) => (
+          {appConfigs.getConfigs().api.servers.map((item, index) => (
             <Box.MenuItem key={index} value={item.url}>
               {item.url}
             </Box.MenuItem>

@@ -7,18 +7,18 @@ import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
+import AddServerButton from "~/components/initialSetup/AddServerButton";
 import ServerSelect from "~/components/initialSetup/ServerSelect";
 import ServerStatus from "~/components/initialSetup/ServerStatus";
 import SetupButton from "~/components/initialSetup/SetupButton";
 import { events } from "~/events";
-import { useGlobalStore, useUserStore } from "~/store";
-import { GetUserDataIO, Status } from "~/types";
+import { useGlobalStore } from "~/store";
+import { Status } from "~/types";
 import { utils } from "~/utils";
 
 import Portal from "./portal";
 
 const InitialSetup = () => {
-  const userStore = useUserStore();
   const globalStore = useGlobalStore();
   const [loading, setLoading] = useState(true);
   const [selectedServer, setSelectedServer] = useState(
@@ -38,16 +38,16 @@ const InitialSetup = () => {
       .try(async () => {
         setLoading(true);
         setStatus("pending");
-        await handleSetClientId();
+        await handleSetClientId(selectedServer);
         utils.setWebsocketClient(selectedServer);
         websocket.client.on("connect", async () => {
           socketEmitterStore.build();
           utils.registerWindowCustomProperties();
           events.websocket.otherEvents();
-          await handleUpdateUserData();
           console.log("setup successful");
           setStatus("online");
-          router.push("/messenger");
+          setLoading(false);
+          router.push("/auth");
         });
 
         websocket.client.on("connect_error", () => {
@@ -64,28 +64,11 @@ const InitialSetup = () => {
       .run();
   };
 
-  const handleSetClientId = () => {
-    return fetch("http://localhost:8090/setClientId", {
+  const handleSetClientId = (url: string) => {
+    return fetch(`${url}/setClientId`, {
       method: "GET",
       credentials: "include",
     });
-  };
-
-  const handleUpdateUserData = () => {
-    return socketEmitterStore.events.getUserData.emitFull<GetUserDataIO>(
-      {},
-      async ({ data }) => {
-        userStore.setUserData(data.user);
-
-        return data;
-      },
-      (errors) => {
-        if (errors.some((i) => i.isAuthError)) router.push("/signIn");
-      },
-      {
-        timeout: 2000,
-      }
-    );
   };
 
   const handleServersClick = () => {
@@ -95,6 +78,10 @@ const InitialSetup = () => {
   const handleServerSelectChange = (url: string) => {
     setSelectedServer(url);
     setStatus("idle");
+  };
+
+  const handleAddServerClick = () => {
+    globalStore.openDialog("addServer");
   };
 
   return (
@@ -128,6 +115,10 @@ const InitialSetup = () => {
             onServerSelectChange={handleServerSelectChange}
             selectedServer={selectedServer}
           />
+
+          <div style={{ marginTop: "10px" }}></div>
+
+          <AddServerButton onAddServerClick={handleAddServerClick} />
 
           <div style={{ marginTop: "10px" }}></div>
 

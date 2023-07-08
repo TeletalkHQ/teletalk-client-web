@@ -16,6 +16,7 @@ const initialState: GlobalState = {
   },
   dialogState: {
     addContact: defaultDialogState,
+    addServer: defaultDialogState,
     contacts: defaultDialogState,
     editBio: defaultDialogState,
     editFullName: defaultDialogState,
@@ -27,7 +28,7 @@ const initialState: GlobalState = {
     userInfo: defaultDialogState,
   },
   loading: {
-    color: "blue",
+    color: "wheat",
     open: false,
     progressColor: "inherit",
     size: 80,

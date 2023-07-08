@@ -80,6 +80,7 @@ export type ElementLabel =
   | "Creating..."
   | "First Name"
   | "Last Name"
+  | "Url"
   | "Name"
   | "Next"
   | "Phone Number"

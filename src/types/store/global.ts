@@ -9,6 +9,7 @@ export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
 export type DialogName =
   | "addContact"
+  | "addServer"
   | "advanced"
   | "callSettings"
   | "chatSettings"
@@ -70,15 +71,16 @@ export interface GlobalState {
   };
   dialogState: {
     addContact: DialogState;
+    addServer: DialogState;
     contacts: DialogState;
     editBio: DialogState;
     editFullName: DialogState;
     editProfile: DialogState;
     editUsername: DialogState;
     logout: DialogState;
+    servers: DialogState;
     settings: DialogState;
     userInfo: DialogState;
-    servers: DialogState;
   };
   loading: {
     color: CSSProperties["color"];
