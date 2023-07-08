@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { trier } from "simple-trier";
 
@@ -21,16 +23,16 @@ import Portal from "./portal";
 const InitialSetup = () => {
   const globalStore = useGlobalStore();
   const [loading, setLoading] = useState(true);
-  const [selectedServer, setSelectedServer] = useState(
-    appConfigs.getConfigs().api.selectedServerUrl
-  );
+  const [selectedServer, setSelectedServer] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const router = useCustomRouter();
 
   useEffect(() => {
-    handleSetup();
+    if (!selectedServer)
+      setSelectedServer(appConfigs.getConfigs().api.selectedServerUrl);
+    else handleSetup();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [selectedServer]);
 
   const handleSetup = () => {
     trier(handleSetup.name)
@@ -43,6 +45,7 @@ const InitialSetup = () => {
         websocket.client.on("connect", async () => {
           socketEmitterStore.build();
           utils.registerWindowCustomProperties();
+          appConfigs.updateSelectedServer(selectedServer);
           events.websocket.otherEvents();
           console.log("setup successful");
           setStatus("online");
