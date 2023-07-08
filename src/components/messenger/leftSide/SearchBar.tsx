@@ -11,7 +11,15 @@ interface Props {
 
 const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
   return (
-    <>
+    <Box.Paper
+      style={{
+        width: "100%",
+
+        height: 50,
+        borderRadius: "0px",
+        padding: "0px",
+      }}
+    >
       <Box.Flex
         gap={1}
         style={{ width: "100%" }}
@@ -40,7 +48,7 @@ const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
           />
         </Box.Div>
       </Box.Flex>
-    </>
+    </Box.Paper>
   );
 };
 
