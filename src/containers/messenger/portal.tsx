@@ -1,6 +1,4 @@
 import Drawer from "~/components/drawer";
-import FullPageLoading from "~/components/loadings/FullPageLoading";
-import OverlayLoading from "~/components/loadings/OverlayLoading";
 import AddContactWithCellphone from "~/components/messenger/dialog/addContactWithCellphone";
 import Contacts from "~/components/messenger/dialog/contacts";
 import EditBio from "~/components/messenger/dialog/editBio";
@@ -14,9 +12,8 @@ import UserInfo from "~/components/messenger/dialog/userInfo";
 const Portal = () => {
   return (
     <>
-      <FullPageLoading />
       <Drawer />
-      <OverlayLoading />
+
       {[
         AddContactWithCellphone,
         Contacts,

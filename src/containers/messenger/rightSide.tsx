@@ -22,7 +22,6 @@ const RightSide = () => {
     <Box.Grid
       container
       sx={{
-        backgroundColor: "lightgray",
         height: "100%",
       }}
       item
