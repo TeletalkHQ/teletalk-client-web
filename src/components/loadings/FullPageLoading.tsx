@@ -12,16 +12,15 @@ const FullPageLoading = () => {
         <Box.Flex
           jc={"center"}
           ai={"center"}
-          style={{
-            //TODO: Read from mui
-            zIndex: 1000,
+          sx={(theme) => ({
+            zIndex: theme.zIndex.tooltip + 1000,
             top: "0",
             left: "0",
             position: "absolute",
-            backgroundColor: "#ffffff",
+            backgroundColor: theme.palette.background.default,
             width: "100%",
             height: "100%",
-          }}
+          })}
         >
           <MoonLoader
             color={globalState.loading.color}
