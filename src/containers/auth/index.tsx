@@ -17,8 +17,8 @@ const Auth = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleUpdateUserData = () => {
-    return socketEmitterStore.events.getUserData.emitFull<GetUserDataIO>(
+  const handleUpdateUserData = async () => {
+    await socketEmitterStore.events.getUserData.emitFull<GetUserDataIO>(
       {},
       async ({ data }) => {
         userStore.setUserData(data.user);
@@ -32,6 +32,8 @@ const Auth = () => {
         timeout: 2000,
       }
     );
+
+    globalStore.closeFullPageLoading();
   };
 
   return <></>;
