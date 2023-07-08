@@ -112,6 +112,14 @@ export type Status = "idle" | "pending" | "offline" | "online";
 
 export type ConnectionColors = { [key in Status]: string };
 
+export type UrlName =
+  | "auth"
+  | "create"
+  | "initialSetup"
+  | "messenger"
+  | "signIn"
+  | "verify";
+
 export type * from "./api";
 export type * from "./store";
 export type * from "./models";
