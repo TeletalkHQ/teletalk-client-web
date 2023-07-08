@@ -1,3 +1,5 @@
+import { merge } from "lodash";
+
 import { RuntimeMode, UiConfig } from "~/types";
 
 type BaseUrl = {
@@ -16,34 +18,41 @@ class AppConfigs {
     production: process.env.NEXT_PUBLIC_SERVER_BASE_URL,
   };
 
-  private configs = {
-    api: {
-      clientBaseUrl: this.CLIENT_BASE_URLS[this.RUNTIME_MODE],
-      defaultHeaders: {
-        "Content-Type": "application/json",
+  getDefaultConfigs() {
+    return {
+      api: {
+        clientBaseUrl: this.CLIENT_BASE_URLS[this.RUNTIME_MODE],
+        defaultHeaders: {
+          "Content-Type": "application/json",
+        },
+        requestTimeout: 60000,
+        selectedServerUrl: this.getServerBaseUrl(),
+        servers: [
+          {
+            url: this.getServerBaseUrl(),
+          },
+        ] as { url: string }[],
+        shouldCheckInputDataFields: true,
+        shouldCheckOutputDataFields: false,
+        shouldCheckResponseStatus: true,
+        shouldLogFailureResponse: false,
+        shouldLogSuccessfulResponse: false,
+        shouldValidateStatus: false,
       },
-      requestTimeout: 60000,
-      selectedServerUrl: this.getServerBaseUrl(),
-      shouldCheckInputDataFields: true,
-      shouldCheckOutputDataFields: false,
-      shouldCheckResponseStatus: true,
-      shouldLogFailureResponse: false,
-      shouldLogSuccessfulResponse: false,
-      shouldValidateStatus: false,
-    },
-    others: {
-      runtimeMode: this.RUNTIME_MODE,
-      shouldLogPerformanceMeasuring: false,
-    },
-    stateManagement: {
-      shouldLogActions: false,
-    },
-    ui: {
-      drawerDefaultAnchor: "left",
-      dialogDefaultTransition: "Grow",
-      maxNotification: 10,
-    } as UiConfig,
-  } as const;
+      others: {
+        runtimeMode: this.RUNTIME_MODE,
+        shouldLogPerformanceMeasuring: false,
+      },
+      stateManagement: {
+        shouldLogActions: false,
+      },
+      ui: {
+        dialogDefaultTransition: "Grow",
+        drawerDefaultAnchor: "left",
+        maxNotification: 10,
+      } as UiConfig,
+    } as const;
+  }
 
   private getServerBaseUrl() {
     if (this.RUNTIME_MODE === "development")
@@ -53,7 +62,22 @@ class AppConfigs {
   }
 
   getConfigs() {
-    return this.configs;
+    const defaultConfigs = this.getDefaultConfigs();
+    type Configs = typeof defaultConfigs;
+
+    if (typeof localStorage === "undefined") return defaultConfigs;
+
+    const oldConfigs = localStorage.getItem("configs");
+    return merge(
+      this.getDefaultConfigs(),
+      JSON.parse(oldConfigs || "{}") || this.getDefaultConfigs()
+    ) as Configs;
+  }
+
+  addServerUrl(url: string) {
+    const configs = this.getConfigs();
+    configs.api.servers.push({ url });
+    localStorage.setItem("configs", JSON.stringify(configs));
   }
 
   setDebugLevel() {}
