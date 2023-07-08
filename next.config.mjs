@@ -34,6 +34,11 @@ const nextConfig = {
   async redirects() {
     return [
       { source: "/", destination: initialSetupRoute, permanent: true },
+      {
+        source: "/auth",
+        destination: initialSetupRoute,
+        permanent: true,
+      },
       { source: "/create", destination: initialSetupRoute, permanent: true },
       { source: "/messenger", destination: initialSetupRoute, permanent: true },
       { source: "/signIn", destination: initialSetupRoute, permanent: true },
