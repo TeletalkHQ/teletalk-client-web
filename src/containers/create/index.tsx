@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { extractor } from "utility-store";
 
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
@@ -9,13 +8,14 @@ import IconButton from "~/components/general/other/IconButton";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
+import { useCustomRouter } from "~/hooks/useCustomRouter";
 import { useAuthStore } from "~/store";
 import { CreateNewUserIO } from "~/types";
 import { utils } from "~/utils";
 
 const Create = () => {
   const state = useAuthStore();
-  const router = useRouter();
+  const router = useCustomRouter();
 
   const handleFirstNameInputChange = utils.createInputValidator(
     "firstName",
@@ -41,7 +41,7 @@ const Create = () => {
         state.updateFirstName("");
         state.updateLastName("");
 
-        router.push("/initialSetup");
+        router.push("initialSetup");
 
         return data;
       }

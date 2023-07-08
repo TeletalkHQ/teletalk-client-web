@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { trier } from "simple-trier";
 
@@ -12,6 +11,7 @@ import ServerSelect from "~/components/initialSetup/ServerSelect";
 import ServerStatus from "~/components/initialSetup/ServerStatus";
 import SetupButton from "~/components/initialSetup/SetupButton";
 import { events } from "~/events";
+import { useCustomRouter } from "~/hooks/useCustomRouter";
 import { useGlobalStore } from "~/store";
 import { Status } from "~/types";
 import { utils } from "~/utils";
@@ -25,7 +25,7 @@ const InitialSetup = () => {
     appConfigs.getConfigs().api.selectedServerUrl
   );
   const [status, setStatus] = useState<Status>("idle");
-  const router = useRouter();
+  const router = useCustomRouter();
 
   useEffect(() => {
     handleSetup();
@@ -47,7 +47,7 @@ const InitialSetup = () => {
           console.log("setup successful");
           setStatus("online");
           setLoading(false);
-          router.push("/auth");
+          router.push("auth");
         });
 
         websocket.client.on("connect_error", () => {
