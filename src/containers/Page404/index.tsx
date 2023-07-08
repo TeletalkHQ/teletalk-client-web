@@ -1,11 +1,12 @@
-import { useRouter } from "next/router";
 import { useEffect } from "react";
 
+import { useCustomRouter } from "~/hooks/useCustomRouter";
+
 const Page404Container = () => {
-  const router = useRouter();
+  const router = useCustomRouter();
 
   useEffect(() => {
-    router.push("/");
+    router.push("initialSetup");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

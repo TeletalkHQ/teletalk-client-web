@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { Cellphone } from "utility-store/lib/types";
 import { countries } from "utility-store/lib/variables/countries";
 
@@ -11,13 +10,14 @@ import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph
 import H5 from "~/components/general/typography/header/H5";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
+import { useCustomRouter } from "~/hooks/useCustomRouter";
 import { useAuthStore } from "~/store";
 import { SelectedCountry, SignInIO } from "~/types";
 import { utils } from "~/utils";
 
 const SignIn = () => {
   const state = useAuthStore();
-  const router = useRouter();
+  const router = useCustomRouter();
 
   const handleSignInClick = async () => {
     state.updateAuthenticationProgress(true);
