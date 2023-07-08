@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useGlobalStore } from "~/store";
-import { Status } from "~/types";
 import { utils } from "~/utils";
 
 import Actions from "./Actions";
@@ -16,51 +15,72 @@ import { ServerListItem } from "./types";
 const Servers = () => {
   const globalStore = useGlobalStore();
   const [loading, setLoading] = useState(false);
-  const [list, setList] = useState<ServerListItem[]>([
-    {
-      url: appConfigs.getConfigs().api.selectedServerUrl,
-      ping: 20,
-      status: "idle",
-    },
-  ]);
+  const [list, setList] = useState<ServerListItem[]>([]);
+
+  useEffect(() => {
+    setList(
+      appConfigs.getConfigs().api.servers.map((item) => ({
+        ping: -1,
+        status: "idle",
+        url: item.url,
+      }))
+    );
+  }, [globalStore.dialogState.servers.open]);
 
   const handleClose = () => {
     globalStore.closeDialog("servers");
   };
 
-  const handlePingAllClick = async () => {
+  const handlePingAllServers = async () => {
     setLoading(true);
 
+    const newList: ServerListItem[] = [];
+
     for (const item of list) {
-      await handlePingSelectedUrl(item.url);
+      const result = await handlePingSelectedUrl(item.url);
+      newList.push(result);
     }
+
+    setList(newList);
 
     setLoading(false);
   };
 
   const handlePingSelectedUrl = async (url: string) => {
-    setLoading(true);
-    utils.setWebsocketClient(url);
-    socketEmitterStore.build();
-    websocket.client.on("connect", () => {
-      websocket.client.disconnect();
-      setLoading(false);
-      updateServer(url, Date.now() - startDate, "online");
-    });
-    websocket.client.on("connect_error", () => {
-      websocket.client.disconnect();
-      setLoading(false);
-      updateServer(url, -1, "offline");
-    });
-    websocket.client.connect();
-    const startDate = Date.now();
-    await socketEmitterStore.events.ping.emitFull({}, undefined, undefined, {
-      client: websocket.client,
-      timeout: 3000,
+    return new Promise<ServerListItem>((resolve, reject) => {
+      utils.setWebsocketClient(url);
+      socketEmitterStore.build();
+      websocket.client.on("connect", () => {
+        websocket.client.disconnect();
+        resolve({
+          ping: Date.now() - startDate,
+          status: "online",
+          url,
+        });
+      });
+      websocket.client.on("connect_error", () => {
+        websocket.client.disconnect();
+        reject({
+          ping: -1,
+          status: "offline",
+          url,
+        });
+      });
+      websocket.client.connect();
+      const startDate = Date.now();
+      // socketEmitterStore.events.ping.emitFull({}, undefined, undefined, {
+      //   client: websocket.client,
+      //   timeout: 3000,
+      // });
     });
   };
 
-  const updateServer = (url: string, ping: number, status: Status) => {
+  const handlePingOneServer = async (url: string) => {
+    const result = await handlePingSelectedUrl(url);
+    updateServer(result);
+  };
+
+  const updateServer = ({ ping, status, url }: ServerListItem) => {
     const index = list.findIndex((i) => i.url === url);
 
     const copyList = [...list];
@@ -73,9 +93,9 @@ const Servers = () => {
   return (
     <DialogTemplate
       actions={
-        <Actions loading={loading} onPingAllClick={handlePingAllClick} />
+        <Actions loading={loading} onPingAllClick={handlePingAllServers} />
       }
-      content={<Content onListItemClick={handlePingSelectedUrl} list={list} />}
+      content={<Content onListItemClick={handlePingOneServer} list={list} />}
       title={<Title />}
       onClose={handleClose}
       open={globalStore.dialogState.servers.open}
