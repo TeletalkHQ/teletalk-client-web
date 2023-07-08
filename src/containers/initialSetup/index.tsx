@@ -60,6 +60,8 @@ const InitialSetup = () => {
       })
       .catch(() => {
         websocket.client?.disconnect();
+        setLoading(false);
+        setStatus("offline");
       })
       .run();
   };
