@@ -24,7 +24,7 @@ const Content: React.FC<Props> = ({
   return (
     <Box.Div style={{ maxWidth: "400px" }}>
       <Input.Text
-        InputProps={{ startAdornment: "http://" }}
+        InputProps={{ startAdornment: "https://" }}
         disabled={disabled}
         label="Url"
         value={inputValue}

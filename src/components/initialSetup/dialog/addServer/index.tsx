@@ -76,7 +76,7 @@ const AddServer = () => {
   };
 
   const fixServerUrl = () => {
-    return `http://${inputValue}`;
+    return `https://${inputValue}`;
   };
 
   const handleReset = () => {
