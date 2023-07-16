@@ -88,7 +88,7 @@ dependencies:
     version: 4.4.5(react-dom@18.2.0)(react@18.2.0)
   react-scripts:
     specifier: ^5.0.1
-    version: 5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.41.0)(react@18.2.0)(ts-node@10.9.1)(typescript@5.0.4)
+    version: 5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.41.0)(react@18.2.0)(ts-node@10.9.1)(type-fest@3.13.0)(typescript@5.0.4)
   react-scroll-up:
     specifier: ^1.4.0
     version: 1.4.0(react@18.2.0)
@@ -229,6 +229,9 @@ devDependencies:
   tsconfig-paths:
     specifier: ^4.2.0
     version: 4.2.0
+  type-fest:
+    specifier: ^3.13.0
+    version: 3.13.0
   typescript:
     specifier: 5.0.4
     version: 5.0.4
@@ -3066,7 +3069,7 @@ packages:
       picocolors: 1.0.0
       tslib: 2.5.3
 
-  /@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.11.0)(webpack-dev-server@4.15.1)(webpack@5.86.0):
+  /@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.11.0)(type-fest@3.13.0)(webpack-dev-server@4.15.1)(webpack@5.86.0):
     resolution: {integrity: sha512-j0Ya0hCFZPd4x40qLzbhGsh9TMtdb+CJQiso+WxLOPNasohq9cc5SNUcwsZaRH6++Xh91Xkm/xHCkuIiIu0LUA==}
     engines: {node: '>= 10.13'}
     peerDependencies:
@@ -3102,6 +3105,7 @@ packages:
       react-refresh: 0.11.0
       schema-utils: 3.2.0
       source-map: 0.7.4
+      type-fest: 3.13.0
       webpack: 5.86.0
       webpack-dev-server: 4.15.1(webpack@5.86.0)
     dev: false
@@ -10243,7 +10247,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /react-scripts@5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.41.0)(react@18.2.0)(ts-node@10.9.1)(typescript@5.0.4):
+  /react-scripts@5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.41.0)(react@18.2.0)(ts-node@10.9.1)(type-fest@3.13.0)(typescript@5.0.4):
     resolution: {integrity: sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
@@ -10256,7 +10260,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.22.5
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.11.0)(webpack-dev-server@4.15.1)(webpack@5.86.0)
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.11.0)(type-fest@3.13.0)(webpack-dev-server@4.15.1)(webpack@5.86.0)
       '@svgr/webpack': 5.5.0
       babel-jest: 27.5.1(@babel/core@7.22.5)
       babel-loader: 8.3.0(@babel/core@7.22.5)(webpack@5.86.0)
@@ -11661,6 +11665,10 @@ packages:
   /type-fest@0.21.3:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
+
+  /type-fest@3.13.0:
+    resolution: {integrity: sha512-Gur3yQGM9qiLNs0KPP7LPgeRbio2QTt4xXouobMCarR0/wyW3F+F/+OWwshg3NG0Adon7uQfSZBpB46NfhoF1A==}
+    engines: {node: '>=14.16'}
 
   /type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
