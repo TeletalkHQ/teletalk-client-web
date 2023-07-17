@@ -17,13 +17,13 @@ const Create = () => {
   const state = useAuthStore();
   const router = useCustomRouter();
 
-  const handleFirstNameInputChange = utils.createInputValidator(
+  const handleFirstNameInputChange = utils.createOnChangeValidator(
     "firstName",
     (value: string) => {
       state.updateFirstName(value);
     }
   );
-  const handleLastNameInputChange = utils.createInputValidator(
+  const handleLastNameInputChange = utils.createOnChangeValidator(
     "lastName",
     (value: string) => {
       state.updateLastName(value);

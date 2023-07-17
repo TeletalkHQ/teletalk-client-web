@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-const nordDark = createTheme({
+export const nordDark = createTheme({
   palette: {
     mode: "light",
     primary: {
@@ -89,7 +89,7 @@ const nordDark = createTheme({
   },
 });
 
-const nordLight = createTheme({
+export const nordLight = createTheme({
   palette: {
     mode: "light",
     primary: {
@@ -170,5 +170,3 @@ const nordLight = createTheme({
     },
   },
 });
-
-export { nordDark, nordLight };

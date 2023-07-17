@@ -40,7 +40,7 @@ const iconProperties = (
   text,
 });
 
-const Icons = {
+export const Icons = {
   AccountCircleOutlined: iconProperties(
     "Account",
     "account",
@@ -106,5 +106,3 @@ const Icons = {
   ),
   VerifiedUser: iconProperties("Verified User", "lock", VerifiedUserIcon),
 };
-
-export { Icons };

@@ -1,6 +1,5 @@
 import { checkFields } from "check-fields";
 import { trier } from "simple-trier";
-import { Socket } from "socket.io-client";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
@@ -17,25 +16,26 @@ import type {
 } from "~/types";
 import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
-import { checkFieldErrors, errors } from "~/variables/notification/error";
+import { checkFieldErrors } from "~/variables/notification";
+
+import { notificationStore } from "../NotificationStore";
 
 interface Options {
   timeout: number;
-  client: Socket;
 }
 
-class EventHandler {
-  requestData: IO["input"];
-  defaultOptions: Options = { timeout: 0, client: websocket.client };
-  requestInterceptors: Interceptors = [];
-  requestTransformer: RequestTransformer<IO["input"]> = (requestData) =>
+export class EventHandler {
+  private requestData: IO["input"];
+  private defaultOptions: Options = { timeout: 0 };
+  private requestInterceptors: Interceptors = [];
+  private requestTransformer: RequestTransformer<IO["input"]> = (requestData) =>
     requestData;
-  response: SocketResponse;
-  responseCallback: ResponseCallback;
-  errorCallback: SocketErrorCallback;
-  responseInterceptors: Interceptors = [];
-  responseTransformer: ResponseTransformer = (response) => response;
-  route: SocketRoute;
+  private response: SocketResponse;
+  private responseCallback: ResponseCallback;
+  private errorCallback: SocketErrorCallback;
+  private responseInterceptors: Interceptors = [];
+  private responseTransformer: ResponseTransformer = (response) => response;
+  private route: SocketRoute;
 
   getRequestData() {
     return this.requestData;
@@ -67,21 +67,21 @@ class EventHandler {
   }
 
   async emit(
-    data?: IO["output"],
+    data: IO["output"] = {},
     options: Partial<Options> = this.defaultOptions
   ) {
     const mergedOptions = { ...this.defaultOptions, ...options };
 
     const response: SocketResponse = await new Promise((resolve, reject) => {
-      mergedOptions.client.emit(
+      this.getClient().emit(
         this.route.name,
-        data || {},
+        data,
         (response: SocketResponse) => {
           setTimeout(() => {
             if (response.ok) resolve(response);
 
             reject(response);
-          }, options.timeout);
+          }, mergedOptions.timeout);
         }
       );
     });
@@ -89,6 +89,10 @@ class EventHandler {
     this.setResponse(response).setResponseData(response.data);
 
     return this;
+  }
+
+  getClient() {
+    return websocket.client;
   }
 
   async emitFull<T extends IO>(
@@ -129,7 +133,9 @@ class EventHandler {
   @AutoBind
   private catchEmitFull(response: SocketResponse) {
     this.errorCallback(response.errors);
-    utils.correctErrorsAndPrint(response.errors || []);
+
+    utils.printResponseErrors(response.errors);
+
     this.logFailureResponse(Object.values(response.errors || [])[0]);
   }
 
@@ -183,7 +189,9 @@ class EventHandler {
     return this;
   }
 
-  private logFailureResponse(error: NativeError = errors.unknownError) {
+  private logFailureResponse(
+    error: NativeError = notificationStore.find("UNKNOWN_ERROR")
+  ) {
     if (appConfigs.getConfigs().api.shouldLogFailureResponse)
       console.error(`Api:${this.route.name} Api catch, error:`, error);
   }
@@ -207,8 +215,4 @@ class EventHandler {
   }
 }
 
-const eventHandler = {
-  create: () => new EventHandler(),
-};
-
-export { eventHandler, EventHandler };
+export const eventHandler = () => new EventHandler();

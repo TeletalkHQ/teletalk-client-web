@@ -36,14 +36,14 @@ const SignIn = () => {
     );
   };
 
-  const handlePhoneNumberInputChange = utils.createInputValidator(
+  const handlePhoneNumberInputChange = utils.createOnChangeValidator(
     "phoneNumber",
     (value: string) => {
       state.updatePhoneNumber(value);
     }
   );
 
-  const handleCountryCodeInputChange = utils.createInputValidator(
+  const handleCountryCodeInputChange = utils.createOnChangeValidator(
     "countryCode",
     (value: string) => {
       state.updateCountryCode(value);
@@ -62,7 +62,7 @@ const SignIn = () => {
     state.updateCountryName(value?.countryName || "");
   };
 
-  const handleCountryNameInputChange = utils.createInputValidator(
+  const handleCountryNameInputChange = utils.createOnChangeValidator(
     "countryName",
     (value: string) => {
       state.updateCountryName(value);

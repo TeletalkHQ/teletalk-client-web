@@ -8,9 +8,7 @@ export const connectionColors: ConnectionColors = {
   pending: "yellow",
 };
 
-const other = {
+export const other = {
   connectionColors,
   regex,
 };
-
-export { other };

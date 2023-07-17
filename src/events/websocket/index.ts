@@ -1,7 +1,5 @@
 import { otherEvents } from "~/events/websocket/other";
 
-const websocketEvents = {
+export const websocketEvents = {
   otherEvents,
 };
-
-export { websocketEvents };

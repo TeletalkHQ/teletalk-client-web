@@ -92,14 +92,6 @@ export type ElementLabel =
 
 export type ElementId = ElementName;
 
-export type ValidatorName =
-  | "countryCode"
-  | "countryName"
-  | "firstName"
-  | "lastName"
-  | "phoneNumber"
-  | "verificationCode";
-
 export type IconType = OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
   muiName: string;
 };

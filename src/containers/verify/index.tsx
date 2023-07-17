@@ -56,7 +56,7 @@ const Verify = () => {
     );
   };
 
-  const handleVerificationCodeInputChange = utils.createInputValidator(
+  const handleVerificationCodeInputChange = utils.createOnChangeValidator(
     "verificationCode",
     (value: string) => {
       authStore.updateVerificationCode(value);

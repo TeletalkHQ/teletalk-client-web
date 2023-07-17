@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
@@ -43,7 +42,6 @@ const InitialSetup = () => {
         await handleSetClientId(selectedServer);
         utils.setWebsocketClient(selectedServer);
         websocket.client.on("connect", async () => {
-          socketEmitterStore.build();
           utils.registerWindowCustomProperties();
           appConfigs.updateSelectedServer(selectedServer);
           events.websocket.otherEvents();
