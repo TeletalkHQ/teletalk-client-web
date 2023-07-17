@@ -2,7 +2,7 @@ import { DomUtils as DomUtilsMain } from "utility-store";
 
 import { ElementId, ElementName } from "~/types";
 
-class DomUtils extends DomUtilsMain {
+export class DomUtils extends DomUtilsMain {
   setElementByName(elementName: ElementName) {
     super.setElementByName(elementName);
     return this;
@@ -13,6 +13,4 @@ class DomUtils extends DomUtilsMain {
   }
 }
 
-const domUtils = () => new DomUtils();
-
-export { domUtils };
+export const domUtils = () => new DomUtils();

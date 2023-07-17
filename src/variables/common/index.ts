@@ -1,3 +1,1 @@
-const common = {};
-
-export { common };
+export const common = {};

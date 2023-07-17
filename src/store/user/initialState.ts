@@ -1,6 +1,6 @@
 import { UserState } from "~/types";
 
-const initialState: UserState = {
+export const initialState: UserState = {
   bio: "",
   contacts: [],
   countryCode: "",
@@ -15,5 +15,3 @@ const initialState: UserState = {
   userId: "",
   username: "",
 };
-
-export { initialState };

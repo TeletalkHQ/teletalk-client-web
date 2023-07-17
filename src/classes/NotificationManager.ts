@@ -1,20 +1,21 @@
 import { enqueueSnackbar } from "notistack";
 
-import { Notification } from "~/types";
+import { NotificationReason } from "~/types";
 
-class NotificationManager {
-  submitErrorNotification(notification: Notification) {
-    const { message, reason } = notification;
+import { notificationStore } from "./NotificationStore";
 
-    enqueueSnackbar(message || reason || "UNKNOWN_ERROR", { variant: "error" });
+export class NotificationManager {
+  printError(reason: NotificationReason) {
+    enqueueSnackbar(notificationStore.find(reason).message, {
+      variant: "error",
+    });
   }
 
-  submitSuccessNotification(notification: Notification) {
-    const { message, reason } = notification;
-    enqueueSnackbar(message || reason, { variant: "success" });
+  printSuccess(reason: NotificationReason) {
+    enqueueSnackbar(notificationStore.find(reason).message, {
+      variant: "success",
+    });
   }
 }
 
-const notificationManager = new NotificationManager();
-
-export { notificationManager, NotificationManager };
+export const notificationManager = new NotificationManager();

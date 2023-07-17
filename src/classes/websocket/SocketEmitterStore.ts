@@ -6,17 +6,12 @@ type Events = {
   [key in EventName]: EventHandler;
 };
 
-class SocketEmitterStore {
-  //@ts-ignore
-  events: Events = {};
-
-  build() {
-    stuffStore.events.forEach((i) => {
-      this.events[i.name] = eventHandler.create().setRoute(i as SocketRoute);
-    });
-  }
+export class SocketEmitterStore {
+  events = stuffStore.events.reduce((prevValue, currValue) => {
+    const c = currValue as SocketRoute;
+    prevValue[c.name] = eventHandler().setRoute(c);
+    return prevValue;
+  }, {} as Events);
 }
 
-const socketEmitterStore = new SocketEmitterStore();
-
-export { socketEmitterStore, SocketEmitterStore };
+export const socketEmitterStore = new SocketEmitterStore();

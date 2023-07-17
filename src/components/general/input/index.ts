@@ -6,7 +6,7 @@ import Select from "~/components/general/input/Select";
 import Text from "~/components/general/input/Text";
 import { CommonInput } from "~/components/general/input/common";
 
-const Input = {
+export const Input = {
   ...CommonInput,
   AutoComplete,
   Button,
@@ -15,5 +15,3 @@ const Input = {
   Select,
   Text,
 };
-
-export { Input };

@@ -2,21 +2,21 @@ import { trier } from "simple-trier";
 
 import {
   ErrorChecker,
+  Field,
   NativeError,
   ValidationResult,
-  ValidatorName,
   ValidatorType,
 } from "~/types";
 import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
-import { errorCheckerCollection } from "~/utils/errorCheckerCollection";
+import { validationCheckers } from "~/validationCheckers";
 
-class Validator {
-  private errorChecker: ErrorChecker;
-  private validationResult: ValidationResult;
-  private value: any;
+export class Validator {
+  protected errorChecker: ErrorChecker;
+  protected validationResult: ValidationResult;
+  protected value: any;
 
-  private ignoredErrorTypesForInputValidator = [
+  protected ignoredErrorTypesForInputValidator = [
     "required",
     "stringEmpty",
     "stringLength",
@@ -24,47 +24,10 @@ class Validator {
   ];
 
   constructor(
-    private validatorName: ValidatorName,
-    private compiledValidator: ValidatorType
+    protected fieldName: Field,
+    protected compiledValidator: ValidatorType
   ) {
-    this.errorChecker = errorCheckerCollection[validatorName];
-  }
-
-  inputValidator(value: any) {
-    this.value = value;
-
-    const validationResult = this.compiledValidator({
-      [this.validatorName]: value,
-    });
-
-    if (Array.isArray(validationResult)) {
-      const extraIgnoreTypes: string[] = [];
-      if (value === "") extraIgnoreTypes.push("stringNumeric");
-
-      const filteredValidationResult = validationResult.filter(
-        (errorItem) =>
-          ![
-            ...this.ignoredErrorTypesForInputValidator,
-            ...extraIgnoreTypes,
-          ].includes(errorItem.type)
-      );
-
-      this.validationResult = filteredValidationResult;
-    } else {
-      this.validationResult = [];
-    }
-
-    return this;
-  }
-
-  submitValidator(value: any) {
-    const validationResult = this.compiledValidator(value);
-
-    if (validationResult === true) this.validationResult = [];
-
-    this.validationResult = validationResult;
-
-    return this;
+    this.errorChecker = validationCheckers[fieldName];
   }
 
   checkErrors() {
@@ -86,7 +49,7 @@ class Validator {
 
   @AutoBind
   private printErrors(errors: NativeError[]) {
-    utils.correctErrorsAndPrint(errors);
+    utils.printResponseErrors(errors);
     return this;
   }
 
@@ -100,9 +63,5 @@ class Validator {
   }
 }
 
-const validator = {
-  create: (validatorName: ValidatorName, compiledValidator: ValidatorType) =>
-    new Validator(validatorName, compiledValidator),
-};
-
-export { Validator, validator };
+export const validator = (fieldName: Field, compiledValidator: ValidatorType) =>
+  new Validator(fieldName, compiledValidator);

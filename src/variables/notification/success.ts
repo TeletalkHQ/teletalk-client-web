@@ -1,3 +1,1 @@
-const success = {};
-
-export { success };
+export const success = {};

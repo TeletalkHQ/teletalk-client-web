@@ -1,7 +1,7 @@
 import { UserUtils as userUtilsMain } from "utility-store";
 import { ExtendedCellphone, ExtendedFullName } from "utility-store/lib/types";
 
-class UserUtils extends userUtilsMain {
+export class UserUtils extends userUtilsMain {
   concatFirstNameWithLastName(data: ExtendedFullName) {
     return `${data.firstName} ${data.lastName}`;
   }
@@ -11,6 +11,4 @@ class UserUtils extends userUtilsMain {
   }
 }
 
-const userUtils = new UserUtils();
-
-export { userUtils };
+export const userUtils = new UserUtils();

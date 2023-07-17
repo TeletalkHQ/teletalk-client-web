@@ -45,8 +45,8 @@ dependencies:
     specifier: ^1.4.0
     version: 1.4.0
   check-fields:
-    specifier: ^3.0.1
-    version: 3.0.1
+    specifier: ^5.0.1
+    version: 5.0.1
   cross-env:
     specifier: ^7.0.3
     version: 7.0.3
@@ -4711,8 +4711,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: false
 
-  /check-fields@3.0.1:
-    resolution: {integrity: sha512-gLYxQ072Y3/eGXmP+4b4reQyytlSR1B5KU9qVIk9VlbE2DzWY4V9k/v4x/7xSMdeM3CgqQktoTdJtkhyU5ut2g==}
+  /check-fields@5.0.1:
+    resolution: {integrity: sha512-emOm3PAQUTa9RC2sAZaA5ztiak8sJntG8YlFkhZ9TqwJp0M2ctQd/+VmeWFXd3YBHWPHEqP/qfiKVYLRNWwAMw==}
     dependencies:
       custom-typeof: 3.0.4
     dev: false

@@ -1,7 +1,7 @@
 import { appConfigs } from "~/classes/AppConfigs";
 import { GlobalState } from "~/types";
 
-const defaultDialogState = {
+export const defaultDialogState = {
   open: false,
   //TODO: read default value from mui
   props: {
@@ -9,7 +9,7 @@ const defaultDialogState = {
   },
 };
 
-const initialState: GlobalState = {
+export const initialState: GlobalState = {
   drawer: {
     anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
     open: false,
@@ -37,5 +37,3 @@ const initialState: GlobalState = {
   },
   isOnline: false,
 };
-
-export { initialState, defaultDialogState };

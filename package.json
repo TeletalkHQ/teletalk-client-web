@@ -53,7 +53,7 @@
     "@types/jest": "^29.5.2",
     "autosuggest-highlight": "^3.3.4",
     "axios": "^1.4.0",
-    "check-fields": "^3.0.1",
+    "check-fields": "^5.0.1",
     "cross-env": "^7.0.3",
     "custom-typeof": "^3.0.4",
     "fastest-validator": "^1.17.0",

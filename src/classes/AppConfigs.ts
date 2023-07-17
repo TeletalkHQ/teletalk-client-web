@@ -6,7 +6,7 @@ type BaseUrl = {
   [key in RuntimeMode]: string;
 };
 
-class AppConfigs {
+export class AppConfigs {
   private RUNTIME_MODE = process.env.NEXT_PUBLIC_RUNTIME_MODE;
 
   private CLIENT_BASE_URLS: BaseUrl = {
@@ -93,6 +93,4 @@ class AppConfigs {
   setDebugLevel() {}
 }
 
-const appConfigs = new AppConfigs();
-
-export { appConfigs, AppConfigs };
+export const appConfigs = new AppConfigs();

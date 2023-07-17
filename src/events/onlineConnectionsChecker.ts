@@ -12,12 +12,10 @@ const addOnlineStatusOnChangeListener = (type, dispatch) =>
 const removeOnlineStatusOnChangeListener = (type, dispatch) =>
   window.removeEventListener(type, () => onlineStatusOnChangeEvent(dispatch));
 
-const addOnlineStatusEvents = (dispatch) => {
+export const addOnlineStatusEvents = (dispatch) => {
   removeOnlineStatusOnChangeListener("offline", dispatch);
   removeOnlineStatusOnChangeListener("online", dispatch);
 
   addOnlineStatusOnChangeListener("offline", dispatch);
   addOnlineStatusOnChangeListener("online", dispatch);
 };
-
-export { addOnlineStatusEvents };

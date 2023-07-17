@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useGlobalStore } from "~/store";
@@ -49,7 +48,6 @@ const Servers = () => {
   const handlePingSelectedUrl = async (url: string) => {
     return new Promise<ServerListItem>((resolve, reject) => {
       utils.setWebsocketClient(url);
-      socketEmitterStore.build();
       websocket.client.on("connect", () => {
         websocket.client.disconnect();
         resolve({

@@ -27,7 +27,6 @@ const AddServer = () => {
     setLoading(true);
     setStatus("pending");
     utils.setWebsocketClient(fixServerUrl());
-    socketEmitterStore.build();
     websocket.client.on("connect", () => {
       websocket.client.disconnect();
       setStatus("online");
@@ -47,7 +46,6 @@ const AddServer = () => {
         websocket.client.disconnect();
       },
       {
-        client: websocket.client,
         timeout: 3000,
       }
     );
@@ -62,13 +60,7 @@ const AddServer = () => {
     if (
       appConfigs.getConfigs().api.servers.some((i) => i.url === fixServerUrl())
     )
-      notificationManager.submitErrorNotification({
-        description: "",
-        isAuthError: false,
-        message: "MESSAGE: SERVER_ALREADY_EXIST",
-        reason: "SERVER_ALREADY_EXIST",
-        side: "client",
-      });
+      notificationManager.printError("SERVER_ALREADY_EXIST");
     else {
       appConfigs.addServerUrl(fixServerUrl());
       handleReset();

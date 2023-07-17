@@ -6,7 +6,7 @@ interface Options {
   url: string;
 }
 
-class Websocket {
+export class Websocket {
   client: Socket;
 
   initialize(options = this.getDefaultOptions()) {
@@ -26,6 +26,4 @@ class Websocket {
   }
 }
 
-const websocket = new Websocket();
-
-export { websocket, Websocket };
+export const websocket = new Websocket();

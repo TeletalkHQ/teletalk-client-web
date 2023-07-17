@@ -6,7 +6,7 @@ import LastName from "~/components/general/input/common/LastName";
 import PhoneNumber from "~/components/general/input/common/PhoneNumber";
 import CountrySelector from "~/components/general/input/common/countrySelector";
 
-const CommonInput = {
+export const CommonInput = {
   Cellphone,
   CountryCode,
   CountrySelector,
@@ -15,5 +15,3 @@ const CommonInput = {
   LastName,
   PhoneNumber,
 };
-
-export { CommonInput };
