@@ -16,7 +16,7 @@ import type {
 } from "~/types";
 import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
-import { checkFieldErrors } from "~/variables/notification";
+import { variables } from "~/variables";
 
 import { notificationStore } from "../NotificationStore";
 
@@ -155,14 +155,22 @@ export class EventHandler {
 
   private inputDataFieldsCheck(inputData = this.getRequestData()) {
     if (appConfigs.getConfigs().api.shouldCheckInputDataFields)
-      checkFields(inputData, this.route.inputFields, checkFieldErrors.input);
+      checkFields(
+        inputData,
+        this.route.inputFields,
+        variables.notifications.errors.checkFieldErrors.input
+      );
 
     return this;
   }
 
   private outputDataFieldsCheck(outputData = this.getResponseData()) {
     if (appConfigs.getConfigs().api.shouldCheckOutputDataFields)
-      checkFields(outputData, this.route.outputFields, checkFieldErrors.output);
+      checkFields(
+        outputData,
+        this.route.outputFields,
+        variables.notifications.errors.checkFieldErrors.output
+      );
 
     return this;
   }

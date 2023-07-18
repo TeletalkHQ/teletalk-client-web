@@ -126,7 +126,7 @@ export type NativeModelKey = keyof NativeModel;
 
 export type Status = "idle" | "pending" | "offline" | "online";
 
-export type ConnectionColors = { [key in Status]: string };
+export type StatusColors = { [key in Status]: string };
 
 export type UrlName =
   | "auth"

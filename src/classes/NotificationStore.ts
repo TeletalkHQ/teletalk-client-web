@@ -1,19 +1,20 @@
 import { Notification, NotificationReason } from "~/types";
-import { customErrors } from "~/variables/notification";
+import { variables } from "~/variables";
 
 import { notificationBuilder } from "./NotificationBuilder";
 import { stuffStore } from "./StuffStore";
 
 class NotificationStore {
-  private notifications = [...stuffStore.errors, ...customErrors].map(
-    (item) => {
-      return notificationBuilder()
-        .reason(item.reason)
-        .isAuthError(item.isAuthError)
-        .side(item.side)
-        .build();
-    }
-  );
+  private notifications = [
+    ...stuffStore.errors,
+    ...variables.notifications.errors.customErrors,
+  ].map((item) => {
+    return notificationBuilder()
+      .reason(item.reason)
+      .isAuthError(item.isAuthError)
+      .side(item.side)
+      .build();
+  });
 
   find(reason: NotificationReason): Notification {
     return this.notifications.find((i) => i.reason === reason)!;
