@@ -5,9 +5,7 @@ import {
   Status,
 } from "utility-store/lib/types";
 
-import { StoreSetFn } from ".";
-import { StringMap } from "..";
-import { Bio, UserId, Username } from "../datatypes";
+import { Bio, StoreSetFn, StringMap, UserId, Username } from "~/types";
 
 export interface BlacklistItem {
   userId: UserId;

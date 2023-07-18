@@ -24,7 +24,7 @@ import {
   PrivateChatItem,
   PrivateChats,
   WelcomeMessage,
-} from "../datatypes";
+} from "~/types/datatypes";
 
 export interface CreateNewUserIO {
   input: FullName;

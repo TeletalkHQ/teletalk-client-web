@@ -1,7 +1,8 @@
 import { Cellphone, FullName } from "utility-store/lib/types";
 
+import { Bio, Username } from "~/types/datatypes";
+
 import { StoreSetFn } from ".";
-import { Bio, Username } from "../datatypes";
 
 export interface Profile extends Cellphone, FullName {
   bio: Bio;

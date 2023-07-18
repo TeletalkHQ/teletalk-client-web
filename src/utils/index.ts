@@ -1,6 +1,7 @@
 import createCache from "@emotion/cache";
 import lodash from "lodash";
 import { ScreamingSnakeCase } from "type-fest";
+import { CountryCode, CountryName } from "utility-store/lib/types";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { envManager } from "~/classes/EnvironmentManager";
@@ -9,14 +10,19 @@ import { stuffStore } from "~/classes/StuffStore";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import {
+  CommonChangeEvent,
+  ContactItemWithCellphone,
   Field,
+  FirstName,
+  LastName,
   ModelErrorReason,
   ModelName,
   NativeModel,
   NativeModelKey,
+  PhoneNumber,
+  SelectedCountry,
   SocketResponseErrors,
 } from "~/types";
-import { SelectedCountry } from "~/types";
 import { validators } from "~/validators";
 
 import { transformers } from "./transformers";
@@ -47,9 +53,11 @@ const isValueLengthEqualToLength = (modelName: ModelName, value: string) => {
 };
 
 const createOnChangeValidator =
-  (fieldName: Field, onChangeFn: any) => (value: any) => {
-    validators[fieldName].onChangeValidator
-      .checkValue(value)
+  (fieldName: Field, onChangeFn: any) =>
+  (e: CommonChangeEvent, value?: any) => {
+    validators[fieldName]
+      .onChangeValidator()
+      .checkValue(e, value)
       .checkErrors()
       .executeIfNoError(onChangeFn);
   };
@@ -100,6 +108,31 @@ const makeModelErrorReason = (
     modelKeyName
   )}_ERROR` as ModelErrorReason;
 };
+
+const isCellphoneValid = (
+  countryCode: CountryCode,
+  countryName: CountryName,
+  phoneNumber: PhoneNumber
+) => {
+  return [
+    validators.countryName.submitValidator().checkValue(countryName).hasError,
+    validators.countryCode.submitValidator().checkValue(countryCode).hasError,
+    validators.phoneNumber.submitValidator().checkValue(phoneNumber).hasError,
+  ].some(Boolean);
+};
+
+const isContactWithCellphoneValid = (c: ContactItemWithCellphone) => {
+  return (
+    isCellphoneValid(c.countryCode, c.countryName, c.phoneNumber) ||
+    isFullNameValid(c.firstName, c.lastName)
+  );
+};
+
+const isFullNameValid = (firstName: FirstName, lastName: LastName) =>
+  [
+    validators.firstName.submitValidator().checkValue(firstName).hasError,
+    validators.lastName.submitValidator().checkValue(lastName).hasError,
+  ].some(Boolean);
 
 const getDefaultValidatorErrorTypes = () => ({
   array: false,
@@ -171,7 +204,10 @@ export const utils = {
   createEmotionCache,
   createOnChangeValidator,
   getDefaultValidatorErrorTypes,
+  isCellphoneValid,
+  isContactWithCellphoneValid,
   isCountrySelected,
+  isFullNameValid,
   isIos,
   isValueLengthEqualToLength,
   isValueLengthInBetweenMinMax,
