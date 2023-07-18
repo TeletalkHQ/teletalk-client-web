@@ -60,7 +60,7 @@
     "immer": "^10.0.2",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
-    "logger-browser": "^2.0.2",
+    "logger-browser": "^2.0.4",
     "next": "13.4.4",
     "notistack": "^3.0.1",
     "react": "^18.2.0",
