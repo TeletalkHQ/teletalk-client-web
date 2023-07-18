@@ -46,7 +46,7 @@ const AddContactWithCellphone = () => {
   const closeAddContactDialog = () => {
     globalStore.closeDialog("addContact");
     setSelectedCountry(null);
-    setAddingContact(maker.emptyContact());
+    setAddingContact(maker.emptyContactWithCellphone());
   };
 
   const returnToContactsDialog = () => {
