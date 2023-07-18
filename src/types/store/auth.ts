@@ -1,10 +1,11 @@
-import { SelectedCountry, StoreSetFn } from "..";
 import {
   FirstName,
   LastName,
   PhoneNumber,
+  SelectedCountry,
+  StoreSetFn,
   VerificationCode,
-} from "../datatypes";
+} from "~/types";
 
 export interface AuthHandlers {
   updateAuthenticationProgress: (value: boolean) => void;

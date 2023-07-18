@@ -1,12 +1,12 @@
-import { StoreSetFn } from "..";
 import {
   ChatId,
   MessageItem,
   MessageText,
   PrivateChatItem,
   PrivateChats,
+  StoreSetFn,
   UserId,
-} from "../datatypes";
+} from "~/types";
 
 export interface SelectedChatInfo {
   chatId: ChatId;

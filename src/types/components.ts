@@ -32,6 +32,8 @@ export type CommonChangeEvent = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement
 >;
 
+export type OnChangeValidatorFn = (value: any, e: CommonChangeEvent) => void;
+
 export type HTMLProps = HTMLAttributes<HTMLLIElement>;
 
 export type ElementName =

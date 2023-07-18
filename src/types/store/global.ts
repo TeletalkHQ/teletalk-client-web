@@ -2,8 +2,7 @@ import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
 import { CountryItem } from "utility-store/lib/types";
 
-import { StoreSetFn } from ".";
-import { VoidNoArgsFn } from "..";
+import { StoreSetFn, VoidNoArgsFn } from "~/types";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 

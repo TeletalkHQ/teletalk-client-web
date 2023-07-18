@@ -1,4 +1,4 @@
-import { NativeError } from "..";
+import { NativeError } from "~/types";
 
 export type IO = {
   input: object;
