@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { websocket } from "~/classes/websocket/Websocket";
 import { useMessageStore } from "~/store";
-import { EventName, SendPrivateMessageIO } from "~/types";
+import { EventName, SendPrivateMessageIO, SocketResponse } from "~/types";
 
 import { useAddPrivateChat } from "./useAddPrivateChat";
 
@@ -11,7 +11,6 @@ export const useNewPrivateChatMessage = () => {
   const { updater: privateChatUpdater } = useAddPrivateChat();
 
   useEffect(() => {
-    turnOffUpdater();
     websocket.client.on<EventName>("sendPrivateMessage", updater);
 
     return turnOffUpdater;
@@ -22,11 +21,17 @@ export const useNewPrivateChatMessage = () => {
     websocket.client.off<EventName>("sendPrivateMessage", updater);
   };
 
-  const updater = async (data: SendPrivateMessageIO["output"]) => {
-    if (messageStore.privateChats.some((i) => i.chatId === data.chatId))
-      messageStore.addMessage(data);
-    else privateChatUpdater(data.chatId);
+  const updater = async (
+    response: SocketResponse<SendPrivateMessageIO["output"]>
+  ) => {
+    if (
+      messageStore.privateChats.some((i) => i.chatId === response.data.chatId)
+    )
+      messageStore.addMessage(response.data);
+    else privateChatUpdater(response.data.chatId);
   };
 
-  return { updater };
+  return {
+    updater,
+  };
 };
