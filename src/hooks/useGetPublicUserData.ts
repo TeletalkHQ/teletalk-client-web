@@ -23,11 +23,8 @@ export const useGetPublicUserData: UseGetPublicUserData = (userId) => {
 
   useEffect(() => {
     const { userId: targetUserId } = messageStore.selectedChatInfo;
+    updater(userId || targetUserId);
 
-    if (userId) updater(userId);
-    else updater(targetUserId);
-
-    return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messageStore.selectedChatInfo, userId]);
 

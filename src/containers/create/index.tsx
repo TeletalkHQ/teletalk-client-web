@@ -1,6 +1,3 @@
-import { extractor } from "utility-store";
-
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
@@ -8,25 +5,26 @@ import IconButton from "~/components/general/other/IconButton";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
+import { useCreate } from "~/hooks/useCreate";
 import { useCustomRouter } from "~/hooks/useCustomRouter";
 import { useAuthStore } from "~/store";
-import { CreateNewUserIO } from "~/types";
 import { utils } from "~/utils";
 
 const Create = () => {
-  const state = useAuthStore();
+  const authState = useAuthStore();
   const router = useCustomRouter();
+  const { updater } = useCreate();
 
   const handleFirstNameInputChange = utils.createOnChangeValidator(
     "firstName",
     (value: string) => {
-      state.updateFirstName(value);
+      authState.updateFirstName(value);
     }
   );
   const handleLastNameInputChange = utils.createOnChangeValidator(
     "lastName",
     (value: string) => {
-      state.updateLastName(value);
+      authState.updateLastName(value);
     }
   );
 
@@ -34,29 +32,15 @@ const Create = () => {
     router.back();
   };
 
-  const handleCreateNewUserConfirmClick = async () => {
-    socketEmitterStore.events.createNewUser.emitFull<CreateNewUserIO>(
-      extractor.fullName(state),
-      async ({ data }) => {
-        state.updateFirstName("");
-        state.updateLastName("");
-
-        router.push("initialSetup");
-
-        return data;
-      }
-    );
-  };
-
   const isCreateNewUserConfirmButtonDisabled = () => {
     const firstNameValidateResult = utils.isValueLengthInBetweenMinMax(
       "firstName",
-      state.firstName
+      authState.firstName
     );
 
     const lastNameValidateResult = utils.isValueLengthInBetweenMinMax(
       "lastName",
-      state.lastName
+      authState.lastName
     );
 
     return !firstNameValidateResult || !lastNameValidateResult;
@@ -83,8 +67,8 @@ const Create = () => {
           </GreyTextParagraph>
 
           <Input.FullName
-            firstName={state.firstName}
-            lastName={state.lastName}
+            firstName={authState.firstName}
+            lastName={authState.lastName}
             onFirstNameInputChange={({ target: { value } }) => {
               handleFirstNameInputChange(value);
             }}
@@ -94,8 +78,8 @@ const Create = () => {
           />
 
           <LoadingButton
-            loading={state.authenticationProgress}
-            onClick={handleCreateNewUserConfirmClick}
+            loading={authState.authenticationProgress}
+            onClick={updater}
             buttonValue="Create"
             indicatorValue="Creating..."
             disabled={isCreateNewUserConfirmButtonDisabled()}
