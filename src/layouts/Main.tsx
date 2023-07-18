@@ -5,7 +5,7 @@ interface Props {
   children: JSX.Element;
 }
 
-const Layout: React.FC<Props> = ({ children }) => {
+const MainLayout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <FullPageLoading />
@@ -16,4 +16,4 @@ const Layout: React.FC<Props> = ({ children }) => {
   );
 };
 
-export default Layout;
+export default MainLayout;
