@@ -8,17 +8,14 @@ export const useUpdateProfile = () => {
   const settingsStore = useSettingsStore();
 
   const updater = (cb: VoidNoArgsFn) => {
-    const { countryCode, countryName, phoneNumber, ...profile } =
+    const { countryCode, countryName, phoneNumber, ...restProfile } =
       settingsStore.profile;
     socketEmitterStore.events.updatePublicUserData.emitFull<UpdatePublicUserDataIO>(
-      profile,
+      restProfile,
       async ({ data }) => {
-        userStore.setUserData({
-          ...extractor.userState({ ...userStore, ...data.publicUserData }),
-          ...data.publicUserData,
-          status: userStore.status,
-          createdAt: userStore.createdAt,
-        });
+        userStore.setUserData(
+          extractor.userState({ ...userStore, ...data.publicUserData })
+        );
 
         cb();
 
