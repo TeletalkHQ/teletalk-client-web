@@ -1,3 +1,4 @@
+import createCache from "@emotion/cache";
 import lodash from "lodash";
 import { ScreamingSnakeCase } from "type-fest";
 
@@ -19,6 +20,21 @@ import { SelectedCountry } from "~/types";
 import { validators } from "~/validators";
 
 import { transformers } from "./transformers";
+
+const isBrowser = typeof document !== "undefined";
+
+const createEmotionCache = () => {
+  let insertionPoint: HTMLElement | undefined;
+
+  if (isBrowser) {
+    const emotionInsertionPoint = document.querySelector<HTMLMetaElement>(
+      "meta[name='emotion-insertion-point']"
+    );
+    insertionPoint = emotionInsertionPoint ?? undefined;
+  }
+
+  return createCache({ key: "mui-style", insertionPoint });
+};
 
 const isValueLengthInBetweenMinMax = (modelName: ModelName, value: string) => {
   const { maxLength, minLength } = stuffStore.models[modelName] as NativeModel;
@@ -152,6 +168,7 @@ const printResponseErrors = (errors: SocketResponseErrors) => {
 };
 
 export const utils = {
+  createEmotionCache,
   createOnChangeValidator,
   getDefaultValidatorErrorTypes,
   isCountrySelected,

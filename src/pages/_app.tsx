@@ -14,13 +14,13 @@ import {
   useSettingsStore,
   useUserStore,
 } from "~/store";
-import createEmotionCache from "~/styles/createEmotionCache";
+import { utils } from "~/utils";
 
 export interface CustomAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
-const clientSideEmotionCache = createEmotionCache();
+const clientSideEmotionCache = utils.createEmotionCache();
 
 export default function _app(props: CustomAppProps) {
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;

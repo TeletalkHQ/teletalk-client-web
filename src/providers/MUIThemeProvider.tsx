@@ -2,7 +2,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
-import { nordDark } from "~/styles/theme";
+import { nordDark } from "~/styles/themes";
 
 interface Props {
   children: React.ReactNode;
