@@ -6,13 +6,11 @@ export class OnChangeValidator extends Validator {
   checkValue(value: any) {
     this.value = value;
 
-    const validationResult = this.compiledValidator({
-      [this.fieldName]: value,
-    });
+    const validationResult = this.compiledValidator(this.value);
 
     if (Array.isArray(validationResult)) {
       const extraIgnoreTypes: string[] = [];
-      if (value === "") extraIgnoreTypes.push("stringNumeric");
+      if (this.value === "") extraIgnoreTypes.push("stringNumeric");
 
       const filteredValidationResult = validationResult.filter(
         (errorItem) =>
