@@ -1,8 +1,7 @@
 import CircleIcon from "@mui/icons-material/Circle";
 
+import Box from "~/components/general/box";
 import { Status, StatusColors } from "~/types";
-
-import Box from "../general/box";
 
 interface Props {
   status: Status;

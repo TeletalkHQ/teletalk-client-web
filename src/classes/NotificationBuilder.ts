@@ -1,5 +1,4 @@
-import { NotificationSide } from "~/types";
-import { Notification, NotificationReason } from "~/types";
+import { Notification, NotificationReason, NotificationSide } from "~/types";
 
 interface PartialNotification extends Partial<Notification> {
   isAuthError: boolean;

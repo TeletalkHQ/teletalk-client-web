@@ -1,18 +1,21 @@
-import { Input } from "~/components/general/input";
-import { CommonOnChange } from "~/types";
+import { Input } from "~/components";
+import { OnChangeValidatorFn } from "~/types";
+import { utils } from "~/utils";
 
 interface Props {
-  onChange: CommonOnChange;
+  onChange: OnChangeValidatorFn;
   value: unknown;
 }
 
 const PhoneNumber: React.FC<Props> = ({ value, onChange }) => {
+  const handleChange = utils.createOnChangeValidator("phoneNumber", onChange);
+
   return (
     <Input.Text
       autoComplete="tel-national"
       label="Phone Number"
       name="phoneNumber"
-      onChange={onChange}
+      onChange={handleChange}
       required
       style={{ marginLeft: "5px" }}
       value={value}

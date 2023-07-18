@@ -5,9 +5,8 @@ import {
   ValidationRuleObject,
 } from "fastest-validator";
 
+import { ErrorReason, Field, NativeError } from "~/types";
 import { utils } from "~/utils";
-
-import { ErrorReason, Field, NativeError } from "..";
 
 export type ValidationModel = ValidationRuleObject;
 
@@ -17,6 +16,8 @@ export type ValidationCollection = {
 
 const ERROR_TYPES = utils.getDefaultValidatorErrorTypes();
 export type ErrorTypes = typeof ERROR_TYPES;
+export type ErrorTypeItem = keyof ErrorTypes;
+
 export type ValidationErrors = ValidationError[];
 
 export interface ValidationCheckerError extends NativeError {

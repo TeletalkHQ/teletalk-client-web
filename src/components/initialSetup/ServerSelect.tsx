@@ -2,9 +2,8 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 
 import { appConfigs } from "~/classes/AppConfigs";
-
-import Box from "../general/box";
-import { Input } from "../general/input";
+import { Input } from "~/components";
+import Box from "~/components/general/box";
 
 interface Props {
   onServerSelectChange: (url: string) => void;

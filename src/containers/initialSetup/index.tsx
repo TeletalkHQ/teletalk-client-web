@@ -5,8 +5,8 @@ import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
+import { Input } from "~/components";
 import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
 import AddServerButton from "~/components/initialSetup/AddServerButton";
 import ServerSelect from "~/components/initialSetup/ServerSelect";
 import ServerStatus from "~/components/initialSetup/ServerStatus";

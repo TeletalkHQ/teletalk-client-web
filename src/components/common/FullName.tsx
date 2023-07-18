@@ -1,9 +1,9 @@
-import { Input } from "~/components/general/input";
-import { CommonOnChange } from "~/types";
+import { Input } from "~/components";
+import { OnChangeValidatorFn } from "~/types";
 
 interface Props {
-  onFirstNameInputChange: CommonOnChange;
-  onLastNameInputChange: CommonOnChange;
+  onFirstNameInputChange: OnChangeValidatorFn;
+  onLastNameInputChange: OnChangeValidatorFn;
   firstName: string;
   lastName: string;
 }

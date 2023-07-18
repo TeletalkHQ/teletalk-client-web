@@ -1,6 +1,7 @@
 import { notificationStore } from "~/classes/NotificationStore";
 import {
   ErrorTypes,
+  Field,
   NativeError,
   NativeModelKey,
   ValidationCheckerError,
@@ -8,7 +9,6 @@ import {
   ValidationErrors,
   ValidationResult,
 } from "~/types";
-import { Field } from "~/types";
 import { utils } from "~/utils";
 
 export class ValidationChecker {

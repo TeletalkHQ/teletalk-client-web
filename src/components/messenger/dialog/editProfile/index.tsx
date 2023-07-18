@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { extractor } from "utility-store";
-import { Cellphone } from "utility-store/lib/types";
 
 import Actions from "~/components/messenger/dialog/editProfile/Actions";
 import Content from "~/components/messenger/dialog/editProfile/Content";
@@ -17,7 +16,7 @@ const EditProfile = () => {
   useEffect(() => {
     if (globalState.dialogState.editProfile.open)
       settingsState.updateProfile({
-        ...(extractor.cellphone(userState) as Cellphone),
+        ...extractor.cellphone(userState),
         ...extractor.fullName(userState),
         bio: userState.bio,
         username: userState.username,

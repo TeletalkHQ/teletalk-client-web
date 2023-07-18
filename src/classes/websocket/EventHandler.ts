@@ -2,6 +2,7 @@ import { checkFields } from "check-fields";
 import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
+import { notificationStore } from "~/classes/NotificationStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import type {
   IO,
@@ -17,8 +18,6 @@ import type {
 import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
 import { variables } from "~/variables";
-
-import { notificationStore } from "../NotificationStore";
 
 interface Options {
   timeout: number;

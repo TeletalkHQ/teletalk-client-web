@@ -1,8 +1,7 @@
+import { Input } from "~/components";
 import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
+import ServerStatus from "~/components/initialSetup/ServerStatus";
 import { CommonOnChange, Status, VoidNoArgsFn } from "~/types";
-
-import ServerStatus from "../../ServerStatus";
 
 interface Props {
   disabled: boolean;

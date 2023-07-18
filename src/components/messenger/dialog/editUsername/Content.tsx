@@ -1,11 +1,10 @@
+import { Input } from "~/components";
 import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
-import InputAdornment from "~/components/general/other/InputAdornment";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
-import { CommonOnChange } from "~/types";
+import { OnChangeValidatorFn } from "~/types";
 
 interface Props {
-  onChange: CommonOnChange;
+  onChange: OnChangeValidatorFn;
   username: string;
   usernameLength: string | number;
 }
@@ -17,16 +16,7 @@ const EditUsernameContent: React.FC<Props> = ({
 }) => {
   return (
     <Box.Flex style={{ maxWidth: 400 }} col>
-      <Input.Text
-        autoFocus
-        name="username"
-        label="Username"
-        onChange={onChange}
-        value={username}
-        InputProps={{
-          startAdornment: <InputAdornment position="start">@</InputAdornment>,
-        }}
-      />
+      <Input.Username value={username} onChange={onChange} />
 
       <GreyTextParagraph>
         You can choose a username on Teletalk. If you do, other people will be

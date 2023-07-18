@@ -1,5 +1,5 @@
+import { Input } from "~/components";
 import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
 import IconButton from "~/components/general/other/IconButton";
 import InputAdornment from "~/components/general/other/InputAdornment";
 import { Icons } from "~/components/other/Icons";

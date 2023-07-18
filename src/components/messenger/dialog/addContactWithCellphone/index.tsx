@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CountryName } from "utility-store/lib/types";
+import { CountryCode, CountryName } from "utility-store/lib/types";
 import { countries } from "utility-store/lib/variables/countries";
 
 import { maker } from "~/classes/Maker";
@@ -25,7 +25,7 @@ const AddContactWithCellphone = () => {
   >(maker.emptyContactWithCellphone());
   const [selectedCountry, setSelectedCountry] = useState<SelectedCountry>(null);
 
-  const handleInputChange = (event: CommonChangeEvent) => {
+  const handleInputChange = (_value: string, event: CommonChangeEvent) => {
     setAddingContact({
       ...addingContact,
       [event.target.name]: event.target.value,
@@ -54,7 +54,10 @@ const AddContactWithCellphone = () => {
     globalStore.openDialog("contacts");
   };
 
-  const handleCountryNameInputChange = (countryName: CountryName) => {
+  const handleCountryNameInputChange = (
+    countryName: CountryName,
+    _e: CommonChangeEvent
+  ) => {
     setAddingContact({ ...addingContact, countryName });
   };
 
@@ -73,29 +76,16 @@ const AddContactWithCellphone = () => {
     setSelectedCountry(country || null);
   };
 
-  const isAddContactButtonDisabled = () => {
-    const firstNameValidateResult = utils.isValueLengthInBetweenMinMax(
-      "firstName",
-      addingContact.firstName
-    );
-
-    const lastNameValidateResult = utils.isValueLengthInBetweenMinMax(
-      "lastName",
-      addingContact.lastName
-    );
-
-    const phoneNumberValidateResult = utils.isValueLengthInBetweenMinMax(
-      "phoneNumber",
-      addingContact.phoneNumber
-    );
-
-    return ![
-      firstNameValidateResult,
-      phoneNumberValidateResult,
-      lastNameValidateResult,
-      utils.isCountrySelected(selectedCountry),
-    ].some(Boolean);
+  const handleOnCountryCodeChange = (
+    value: CountryCode,
+    event: CommonChangeEvent
+  ) => {
+    handleInputChange(value, event);
+    selectCountryByCountryCodeInputChange(value);
   };
+
+  const isAddContactButtonDisabled = () =>
+    utils.isContactWithCellphoneValid(addingContact);
 
   return (
     <>
@@ -107,10 +97,7 @@ const AddContactWithCellphone = () => {
             countryName={addingContact.countryName}
             onCountryNameInputChange={handleCountryNameInputChange}
             onSelectedCountryChange={handleSelectedCountryChange}
-            onCountryCodeInputChange={(event) => {
-              handleInputChange(event);
-              selectCountryByCountryCodeInputChange(event.target.value);
-            }}
+            onCountryCodeInputChange={handleOnCountryCodeChange}
             onInputChange={handleInputChange}
             selectedCountry={
               utils.isCountrySelected(selectedCountry) ? selectedCountry : null

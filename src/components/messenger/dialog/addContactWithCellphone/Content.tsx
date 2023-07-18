@@ -1,21 +1,21 @@
-import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
+import { Input } from "~/components";
 import {
   CountrySelectInputChange,
   OnCountryNameInputChange,
-} from "~/components/general/input/common/countrySelector";
+} from "~/components/common/countrySelector";
+import Box from "~/components/general/box";
 import {
   AddContactWithCellphoneIO,
-  CommonOnChange,
+  OnChangeValidatorFn,
   SelectedCountry,
 } from "~/types";
 
 interface Props {
   contact: AddContactWithCellphoneIO["input"];
   countryName: string;
-  onCountryCodeInputChange: CommonOnChange;
+  onCountryCodeInputChange: OnChangeValidatorFn;
   onCountryNameInputChange: OnCountryNameInputChange;
-  onInputChange: CommonOnChange;
+  onInputChange: OnChangeValidatorFn;
   onSelectedCountryChange: CountrySelectInputChange;
   selectedCountry: SelectedCountry;
 }

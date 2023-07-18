@@ -1,6 +1,5 @@
+import { Input } from "~/components";
 import { VoidNoArgsFn } from "~/types";
-
-import { Input } from "../general/input";
 
 interface Props {
   onAddServerClick: VoidNoArgsFn;

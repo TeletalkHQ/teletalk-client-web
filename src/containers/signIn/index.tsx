@@ -1,8 +1,8 @@
 import { countries } from "utility-store/lib/variables/countries";
 
+import { Input } from "~/components";
 import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
 import Avatar from "~/components/general/other/Avatar";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 import H5 from "~/components/general/typography/header/H5";
@@ -14,51 +14,39 @@ import { SelectedCountry } from "~/types";
 import { utils } from "~/utils";
 
 const SignIn = () => {
-  const state = useAuthStore();
+  const authStore = useAuthStore();
   const { updater } = useSignIn();
-  const handlePhoneNumberInputChange = utils.createOnChangeValidator(
-    "phoneNumber",
-    (value: string) => {
-      state.updatePhoneNumber(value);
-    }
-  );
 
-  const handleCountryCodeInputChange = utils.createOnChangeValidator(
-    "countryCode",
-    (value: string) => {
-      state.updateCountryCode(value);
-    }
-  );
+  const handlePhoneNumberInputChange = (value: string) => {
+    authStore.updatePhoneNumber(value);
+  };
+
+  const handleCountryCodeInputChange = (value: string) => {
+    authStore.updateCountryCode(value);
+  };
 
   const handleSelectedCountryByCountryCodeInput = (value: string) => {
-    state.updateSelectedCountry(
+    authStore.updateSelectedCountry(
       countries.find((i) => i.countryCode === value) || null
     );
   };
 
   const handleSelectedCountryChange = (value: SelectedCountry) => {
-    state.updateSelectedCountry(value);
-    state.updateCountryCode(value?.countryCode || "");
-    state.updateCountryName(value?.countryName || "");
+    authStore.updateSelectedCountry(value);
+    authStore.updateCountryCode(value?.countryCode || "");
+    authStore.updateCountryName(value?.countryName || "");
   };
 
-  const handleCountryNameInputChange = utils.createOnChangeValidator(
-    "countryName",
-    (value: string) => {
-      state.updateCountryName(value);
-    }
-  );
-
-  const isSignInSubmitButtonDisabled = () => {
-    const lengthCheckResult = utils.isValueLengthInBetweenMinMax(
-      "phoneNumber",
-      state.phoneNumber
-    );
-
-    return (
-      !lengthCheckResult || !utils.isCountrySelected(state.selectedCountry)
-    );
+  const handleCountryNameInputChange = (value: string) => {
+    authStore.updateCountryName(value);
   };
+
+  const isSignInSubmitButtonDisabled = () =>
+    utils.isCellphoneValid(
+      authStore.countryCode,
+      authStore.countryName,
+      authStore.phoneNumber
+    );
 
   return (
     <Box.Container mw="xl">
@@ -82,19 +70,17 @@ const SignIn = () => {
             </GreyTextParagraph>
 
             <Input.Cellphone
-              countryCode={state.countryCode}
-              countryName={state.countryName}
-              onCountryCodeInputChange={({ target: { value } }) => {
-                handleCountryCodeInputChange(value);
+              countryCode={authStore.countryCode}
+              countryName={authStore.countryName}
+              onCountryCodeInputChange={(value) => {
                 handleSelectedCountryByCountryCodeInput(value);
+                handleCountryCodeInputChange(value);
               }}
               onCountryNameInputChange={handleCountryNameInputChange}
-              onPhoneNumberInputChange={({ target: { value } }) =>
-                handlePhoneNumberInputChange(value)
-              }
+              onPhoneNumberInputChange={handlePhoneNumberInputChange}
               onSelectedCountryChange={handleSelectedCountryChange}
-              phoneNumber={state.phoneNumber}
-              selectedCountry={state.selectedCountry}
+              phoneNumber={authStore.phoneNumber}
+              selectedCountry={authStore.selectedCountry}
             />
 
             <LoadingButton
@@ -102,7 +88,7 @@ const SignIn = () => {
               onClick={updater}
               indicatorValue="Sign in..."
               disabled={isSignInSubmitButtonDisabled()}
-              loading={state.authenticationProgress}
+              loading={authStore.authenticationProgress}
               sx={{
                 mb: 1,
                 mt: 2,

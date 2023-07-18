@@ -1,6 +1,6 @@
 import { AutocompleteRenderInputParams } from "@mui/material";
 
-import { Input } from "~/components/general/input";
+import { Input } from "~/components";
 
 const SelectorInput = (props: AutocompleteRenderInputParams) => {
   const { id, ...rest } = props;

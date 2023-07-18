@@ -1,23 +1,43 @@
-import { Field, ValidatorType } from "~/types";
+import {
+  CommonChangeEvent,
+  ErrorTypeItem,
+  Field,
+  ValidationModel,
+  ValidationResult,
+  ValidatorType,
+} from "~/types";
 
 import { Validator } from "./Validator";
 
 export class OnChangeValidator extends Validator {
-  checkValue(value: any) {
-    this.value = value;
+  changeEvent: CommonChangeEvent;
 
-    const validationResult = this.compiledValidator(this.value);
+  checkValue(e: CommonChangeEvent, value?: string) {
+    this.value = value ?? e.target.value;
+    this.changeEvent = e;
+
+    const validationResult = this.compiledValidator(
+      this.value
+    ) as ValidationResult;
 
     if (Array.isArray(validationResult)) {
-      const extraIgnoreTypes: string[] = [];
+      const extraIgnoreTypes: ErrorTypeItem[] = [];
       if (this.value === "") extraIgnoreTypes.push("stringNumeric");
+      if (
+        validationResult.some(
+          (i) => (i.type as ErrorTypeItem) === "stringLength"
+        ) &&
+        this.value.length < this.model.length
+      ) {
+        extraIgnoreTypes.push("stringLength");
+      }
 
       const filteredValidationResult = validationResult.filter(
         (errorItem) =>
           ![
             ...this.ignoredErrorTypesForInputValidator,
             ...extraIgnoreTypes,
-          ].includes(errorItem.type)
+          ].includes(errorItem.type as ErrorTypeItem)
       );
 
       this.validationResult = filteredValidationResult;
@@ -27,9 +47,22 @@ export class OnChangeValidator extends Validator {
 
     return this;
   }
+
+  executeIfNoError(cb: (value: any, e: CommonChangeEvent) => void) {
+    if (
+      Array.isArray(this.validationResult) &&
+      this.validationResult.length === 0
+    ) {
+      cb(this.value, this.changeEvent);
+    }
+  }
 }
 
-export const onChangeValidator = (
-  fieldName: Field,
-  compiledValidator: ValidatorType
-) => new OnChangeValidator(fieldName, compiledValidator);
+export const onChangeValidator =
+  (
+    fieldName: Field,
+    compiledValidator: ValidatorType,
+    model: ValidationModel
+  ) =>
+  () =>
+    new OnChangeValidator(fieldName, compiledValidator, model);

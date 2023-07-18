@@ -1,7 +1,7 @@
 import { SxProps } from "@mui/material";
 
+import { Input } from "~/components";
 import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
 import CircularProgress from "~/components/general/progress/CircularProgress";
 import { ElementLabel, Style, VoidNoArgsFn } from "~/types";
 

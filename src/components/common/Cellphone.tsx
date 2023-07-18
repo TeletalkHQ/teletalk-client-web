@@ -1,18 +1,18 @@
-import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
+import { Input } from "~/components";
 import type {
   CountrySelectInputChange,
   OnCountryNameInputChange,
-} from "~/components/general/input/common/countrySelector";
-import { CommonOnChange, SelectedCountry } from "~/types";
+} from "~/components/common/countrySelector";
+import Box from "~/components/general/box";
+import { OnChangeValidatorFn, SelectedCountry } from "~/types";
 import { utils } from "~/utils";
 
 interface Props {
   countryCode: string;
   countryName: string;
-  onCountryCodeInputChange: CommonOnChange;
+  onCountryCodeInputChange: OnChangeValidatorFn;
   onCountryNameInputChange: OnCountryNameInputChange;
-  onPhoneNumberInputChange: CommonOnChange;
+  onPhoneNumberInputChange: OnChangeValidatorFn;
   onSelectedCountryChange: CountrySelectInputChange;
   phoneNumber: string;
   selectedCountry: SelectedCountry;
