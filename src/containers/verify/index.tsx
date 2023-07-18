@@ -1,5 +1,3 @@
-import { domUtils } from "~/classes/DomUtils";
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
@@ -10,13 +8,14 @@ import H5 from "~/components/general/typography/header/H5";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
 import { useCustomRouter } from "~/hooks/useCustomRouter";
+import { useVerify } from "~/hooks/useVerify";
 import { useAuthStore } from "~/store";
-import { VerifyIO } from "~/types";
 import { utils } from "~/utils";
 
 const Verify = () => {
   const authStore = useAuthStore();
   const router = useCustomRouter();
+  const { updater } = useVerify();
 
   const isVerificationSubmitButtonDisabled = () => {
     return !utils.isValueLengthEqualToLength(
@@ -28,32 +27,6 @@ const Verify = () => {
   const handleBackToSignInClick = () => {
     authStore.updateVerificationCode("");
     router.back();
-  };
-
-  const handleVerifyClick = async () => {
-    authStore.updateAuthenticationProgress(true);
-
-    await socketEmitterStore.events.verify.emitFull<VerifyIO>(
-      {
-        verificationCode: authStore.verificationCode,
-      },
-      async ({ data }) => {
-        authStore.updateVerificationCode("");
-        authStore.updateAuthenticationProgress(false);
-
-        if (data.newUser) router.replace("create");
-        else router.push("initialSetup");
-
-        return data;
-      },
-      () => {
-        authStore.updateAuthenticationProgress(false);
-        domUtils()
-          .setElementByName("verificationCode")
-          .focusElement()
-          .selectAllValue();
-      }
-    );
   };
 
   const handleVerificationCodeInputChange = utils.createOnChangeValidator(
@@ -110,7 +83,7 @@ const Verify = () => {
             <LoadingButton
               disabled={isVerificationSubmitButtonDisabled()}
               loading={authStore.authenticationProgress}
-              onClick={handleVerifyClick}
+              onClick={updater}
               sx={{ mt: 2, mb: 2 }}
               buttonValue="Verify"
               indicatorValue="Verifying..."
