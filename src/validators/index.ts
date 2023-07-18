@@ -9,7 +9,7 @@ import {
   SubmitValidator,
   submitValidator,
 } from "~/classes/validator/SubmitValidator";
-import { Field, ValidatorType } from "~/types";
+import { Field, ValidationModel, ValidatorType } from "~/types";
 
 const compiler = new FastestValidator({
   useNewCustomCheckerFunction: true,
@@ -19,12 +19,13 @@ export const validators = Object.entries(stuffStore.validationModels).reduce(
   (prevValue, [fieldName, model]) => {
     const f = fieldName as Field;
 
-    const params: [Field, ValidatorType] = [
+    const params: [Field, ValidatorType, ValidationModel] = [
       f,
       compiler.compile({
         ...model,
         $$root: true,
       }),
+      model,
     ];
 
     prevValue[f] = {
@@ -36,8 +37,8 @@ export const validators = Object.entries(stuffStore.validationModels).reduce(
   },
   {} as {
     [key in Field]: {
-      onChangeValidator: OnChangeValidator;
-      submitValidator: SubmitValidator;
+      onChangeValidator: () => OnChangeValidator;
+      submitValidator: () => SubmitValidator;
     };
   }
 );

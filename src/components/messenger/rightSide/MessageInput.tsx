@@ -1,6 +1,6 @@
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
+import { Input } from "~/components";
 import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
 import IconButton from "~/components/general/other/IconButton";
 import { Icons } from "~/components/other/Icons";
 import { useMessageStore } from "~/store";

@@ -20,7 +20,11 @@ export default function _app(props: CustomAppProps) {
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
 
   return (
-    <SnackbarProvider maxSnack={appConfigs.getConfigs().ui.maxNotification}>
+    <SnackbarProvider
+      maxSnack={appConfigs.getConfigs().ui.maxNotification}
+      dense
+      preventDuplicate
+    >
       <ReactQueryProvider>
         <MUIThemeProvider emotionCache={emotionCache}>
           <DevLayout>

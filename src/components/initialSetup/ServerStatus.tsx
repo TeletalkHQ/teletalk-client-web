@@ -1,9 +1,8 @@
+import { Input } from "~/components";
 import Box from "~/components/general/box";
+import CircularProgress from "~/components/general/progress/CircularProgress";
 import StatusIndicator from "~/components/other/StatusIndicator";
 import { Status, VoidNoArgsFn } from "~/types";
-
-import { Input } from "../general/input";
-import CircularProgress from "../general/progress/CircularProgress";
 
 interface Props {
   disabled?: boolean;

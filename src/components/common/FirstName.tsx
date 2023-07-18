@@ -1,20 +1,23 @@
-import { Input } from "~/components/general/input";
-import { CommonOnChange } from "~/types";
+import { Input } from "~/components";
+import { OnChangeValidatorFn } from "~/types";
+import { utils } from "~/utils";
 
 interface Props {
   value: string;
-  onChange: CommonOnChange;
+  onChange: OnChangeValidatorFn;
   required?: boolean;
 }
 
 const FirstName: React.FC<Props> = ({ value, onChange, required = true }) => {
+  const handleChange = utils.createOnChangeValidator("firstName", onChange);
+
   return (
     <Input.Text
       autoFocus
       id="firstName"
       label="First Name"
       name="firstName"
-      onChange={onChange}
+      onChange={handleChange}
       required={required}
       value={value}
     />

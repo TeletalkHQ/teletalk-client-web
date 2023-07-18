@@ -5,15 +5,15 @@ import Title from "~/components/messenger/dialog/editUsername/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useUpdateProfile } from "~/hooks/useUpdateProfile";
 import { useGlobalStore, useSettingsStore } from "~/store";
-import { CommonChangeEvent } from "~/types";
+import { OnChangeValidatorFn } from "~/types";
 
 const EditUsername = () => {
   const globalState = useGlobalStore();
   const settingsState = useSettingsStore();
   const { updater: profileUpdater } = useUpdateProfile();
 
-  const handleInputChange = (event: CommonChangeEvent) => {
-    settingsState.updateProfile({ [event.target.name]: event.target.value });
+  const handleInputChange: OnChangeValidatorFn = (value, event) => {
+    settingsState.updateProfile({ [event.target.name]: value });
   };
 
   const handleSaveClick = async () => {

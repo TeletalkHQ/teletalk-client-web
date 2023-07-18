@@ -1,4 +1,4 @@
-import { Input } from "~/components/general/input";
+import { Input } from "~/components";
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {

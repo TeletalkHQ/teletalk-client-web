@@ -1,6 +1,6 @@
+import { Input } from "~/components";
 import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
-import { Input } from "~/components/general/input";
 import Avatar from "~/components/general/other/Avatar";
 import IconButton from "~/components/general/other/IconButton";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
@@ -10,31 +10,26 @@ import { Icons } from "~/components/other/Icons";
 import { useCustomRouter } from "~/hooks/useCustomRouter";
 import { useVerify } from "~/hooks/useVerify";
 import { useAuthStore } from "~/store";
-import { utils } from "~/utils";
+import { validators } from "~/validators";
 
 const Verify = () => {
   const authStore = useAuthStore();
   const router = useCustomRouter();
   const { updater } = useVerify();
 
-  const isVerificationSubmitButtonDisabled = () => {
-    return !utils.isValueLengthEqualToLength(
-      "verificationCode",
-      authStore.verificationCode
-    );
-  };
+  const isVerifySubmitButtonDisabled = () =>
+    validators.verificationCode
+      .submitValidator()
+      .checkValue(authStore.verificationCode).hasError;
 
   const handleBackToSignInClick = () => {
     authStore.updateVerificationCode("");
     router.back();
   };
 
-  const handleVerificationCodeInputChange = utils.createOnChangeValidator(
-    "verificationCode",
-    (value: string) => {
-      authStore.updateVerificationCode(value);
-    }
-  );
+  const handleVerificationCodeInputChange = (value: string) => {
+    authStore.updateVerificationCode(value);
+  };
 
   return (
     <Box.Container maxWidth="xl">
@@ -69,19 +64,13 @@ const Verify = () => {
               We have sent the code to the Teletalk app to your phone number.
             </GreyTextParagraph>
 
-            <Input.Text
-              required
-              label="Verification Code"
-              name="verificationCode"
-              autoFocus
+            <Input.VerificationCode
               value={authStore.verificationCode}
-              onChange={({ target: { value } }) =>
-                handleVerificationCodeInputChange(value)
-              }
+              onChange={handleVerificationCodeInputChange}
             />
 
             <LoadingButton
-              disabled={isVerificationSubmitButtonDisabled()}
+              disabled={isVerifySubmitButtonDisabled()}
               loading={authStore.authenticationProgress}
               onClick={updater}
               sx={{ mt: 2, mb: 2 }}

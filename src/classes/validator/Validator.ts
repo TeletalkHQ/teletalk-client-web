@@ -2,8 +2,10 @@ import { trier } from "simple-trier";
 
 import {
   ErrorChecker,
+  ErrorTypeItem,
   Field,
   NativeError,
+  ValidationModel,
   ValidationResult,
   ValidatorType,
 } from "~/types";
@@ -15,17 +17,18 @@ export class Validator {
   protected errorChecker: ErrorChecker;
   protected validationResult: ValidationResult;
   protected value: any;
+  hasError = false;
 
-  protected ignoredErrorTypesForInputValidator = [
+  protected ignoredErrorTypesForInputValidator: ErrorTypeItem[] = [
     "required",
     "stringEmpty",
-    "stringLength",
     "stringMin",
   ];
 
   constructor(
     protected fieldName: Field,
-    protected compiledValidator: ValidatorType
+    protected compiledValidator: ValidatorType,
+    protected model: ValidationModel
   ) {
     this.errorChecker = validationCheckers[fieldName];
   }
@@ -63,5 +66,8 @@ export class Validator {
   }
 }
 
-export const validator = (fieldName: Field, compiledValidator: ValidatorType) =>
-  new Validator(fieldName, compiledValidator);
+export const validator = (
+  fieldName: Field,
+  compiledValidator: ValidatorType,
+  model: ValidationModel
+) => new Validator(fieldName, compiledValidator, model);

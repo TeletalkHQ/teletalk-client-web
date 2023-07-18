@@ -1,20 +1,28 @@
-import { Field, ValidatorType } from "~/types";
+import {
+  Field,
+  ValidationModel,
+  ValidationResult,
+  ValidatorType,
+} from "~/types";
 
 import { Validator } from "./Validator";
 
 export class SubmitValidator extends Validator {
-  async checkValue(value: any) {
-    const validationResult = await this.compiledValidator(value);
+  checkValue(value: any) {
+    this.validationResult = this.compiledValidator(value) as ValidationResult;
 
-    if (validationResult === true) this.validationResult = [];
-
-    this.validationResult = validationResult;
+    if (this.validationResult === true) this.validationResult = [];
+    else this.hasError = true;
 
     return this;
   }
 }
 
-export const submitValidator = (
-  fieldName: Field,
-  compiledValidator: ValidatorType
-) => new SubmitValidator(fieldName, compiledValidator);
+export const submitValidator =
+  (
+    fieldName: Field,
+    compiledValidator: ValidatorType,
+    model: ValidationModel
+  ) =>
+  () =>
+    new SubmitValidator(fieldName, compiledValidator, model);

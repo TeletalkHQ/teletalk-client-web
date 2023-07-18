@@ -1,12 +1,15 @@
-import { Input } from "~/components/general/input";
-import { CommonOnChange } from "~/types";
+import { Input } from "~/components";
+import { OnChangeValidatorFn } from "~/types";
+import { utils } from "~/utils";
 
 interface Props {
   value: string;
-  onChange: CommonOnChange;
+  onChange: OnChangeValidatorFn;
 }
 
 const CountryCode: React.FC<Props> = ({ value, onChange }) => {
+  const handleChange = utils.createOnChangeValidator("countryCode", onChange);
+
   return (
     <Input.Text
       autoComplete="off"
@@ -19,7 +22,7 @@ const CountryCode: React.FC<Props> = ({ value, onChange }) => {
       }}
       label="Code"
       name="countryCode"
-      onChange={onChange}
+      onChange={handleChange}
       required
       style={{ width: "90px" }}
       value={value}
