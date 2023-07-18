@@ -118,7 +118,7 @@ export class EventHandler {
     await this
       // .executeRequestTransformer()
       // .executeRequestInterceptors()
-      .inputDataFieldsCheck()
+      // .inputDataFieldsCheck()
       .emit(this.requestData, options);
 
     await this.outputDataFieldsCheck()
