@@ -1,7 +1,5 @@
-import { Cellphone } from "utility-store/lib/types";
 import { countries } from "utility-store/lib/variables/countries";
 
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
 import { Input } from "~/components/general/input";
@@ -10,32 +8,14 @@ import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph
 import H5 from "~/components/general/typography/header/H5";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
-import { useCustomRouter } from "~/hooks/useCustomRouter";
+import { useSignIn } from "~/hooks/useSignIn";
 import { useAuthStore } from "~/store";
-import { SelectedCountry, SignInIO } from "~/types";
+import { SelectedCountry } from "~/types";
 import { utils } from "~/utils";
 
 const SignIn = () => {
   const state = useAuthStore();
-  const router = useCustomRouter();
-
-  const handleSignInClick = async () => {
-    state.updateAuthenticationProgress(true);
-
-    await socketEmitterStore.events.signIn.emitFull<SignInIO>(
-      {
-        countryCode: state.countryCode,
-        countryName: state.countryName,
-        phoneNumber: state.phoneNumber,
-      } as Cellphone,
-      async ({ data }) => {
-        state.updateAuthenticationProgress(false);
-        router.push("verify");
-        return data;
-      }
-    );
-  };
-
+  const { updater } = useSignIn();
   const handlePhoneNumberInputChange = utils.createOnChangeValidator(
     "phoneNumber",
     (value: string) => {
@@ -119,7 +99,7 @@ const SignIn = () => {
 
             <LoadingButton
               buttonValue="Next"
-              onClick={handleSignInClick}
+              onClick={updater}
               indicatorValue="Sign in..."
               disabled={isSignInSubmitButtonDisabled()}
               loading={state.authenticationProgress}
