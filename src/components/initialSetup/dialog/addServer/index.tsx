@@ -6,7 +6,7 @@ import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useGlobalStore } from "~/store";
-import { CommonChangeEvent, Status } from "~/types";
+import { CommonChangeEvent, CommonSelectChangeEvent, Status } from "~/types";
 import { utils } from "~/utils";
 
 import Actions from "./Actions";
@@ -18,6 +18,7 @@ const AddServer = () => {
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
+  const [protocol, setProtocol] = useState("https");
 
   const handleClose = () => {
     globalStore.closeDialog("addServer");
@@ -68,13 +69,17 @@ const AddServer = () => {
   };
 
   const fixServerUrl = () => {
-    return `https://${inputValue}`;
+    return `${protocol}://${inputValue}`;
   };
 
   const handleReset = () => {
     globalStore.closeDialog("addServer");
     setInputValue("");
     setStatus("idle");
+  };
+
+  const handleSelectChange = (e: CommonSelectChangeEvent) => {
+    setProtocol(e.target.value as string);
   };
 
   return (
@@ -85,11 +90,13 @@ const AddServer = () => {
       content={
         <Content
           disabled={status === "pending"}
-          status={status}
           inputValue={inputValue}
-          onInputChange={handleInputChange}
           loading={loading}
+          onInputChange={handleInputChange}
+          onSelectChange={handleSelectChange}
           onTestClick={handlePingServer}
+          protocol={protocol}
+          status={status}
         />
       }
       title={<Title />}
