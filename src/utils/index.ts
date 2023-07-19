@@ -22,6 +22,7 @@ import {
   PhoneNumber,
   SelectedCountry,
   SocketResponseErrors,
+  Url,
 } from "~/types";
 import { validators } from "~/validators";
 
@@ -87,7 +88,7 @@ const registerWindowCustomProperties = () => {
   window.websocket = websocket;
 };
 
-const setWebsocketClient = (url: string) => {
+const setWebsocketClient = (url: Url) => {
   websocket.client?.disconnect();
   const client = websocket.initialize({
     url: url || appConfigs.getConfigs().api.selectedServerUrl,

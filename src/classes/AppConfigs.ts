@@ -1,9 +1,9 @@
 import { merge } from "lodash";
 
-import { RuntimeMode, UiConfig } from "~/types";
+import { RuntimeMode, UiConfig, Url } from "~/types";
 
 type BaseUrl = {
-  [key in RuntimeMode]: string;
+  [key in RuntimeMode]: Url;
 };
 
 export class AppConfigs {
@@ -31,7 +31,7 @@ export class AppConfigs {
           {
             url: this.getServerBaseUrl(),
           },
-        ] as { url: string }[],
+        ] as { url: Url }[],
         shouldCheckInputDataFields: true,
         shouldCheckOutputDataFields: false,
         shouldCheckResponseStatus: true,
@@ -54,7 +54,7 @@ export class AppConfigs {
     };
   }
 
-  private getServerBaseUrl() {
+  private getServerBaseUrl(): Url {
     if (this.RUNTIME_MODE === "development")
       return this.SERVER_BASE_URLS.development;
 
@@ -74,13 +74,13 @@ export class AppConfigs {
     ) as Configs;
   }
 
-  addServerUrl(url: string) {
+  addServerUrl(url: Url) {
     const configs = this.getConfigs();
     configs.api.servers.push({ url });
     localStorage.setItem("configs", JSON.stringify(configs));
   }
 
-  updateSelectedServer(url: string) {
+  updateSelectedServer(url: Url) {
     const configs = this.getConfigs();
     configs.api.selectedServerUrl = url;
     this.updateConfigs(configs);

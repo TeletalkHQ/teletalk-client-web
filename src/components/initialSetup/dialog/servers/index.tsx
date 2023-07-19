@@ -4,6 +4,7 @@ import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useGlobalStore } from "~/store";
+import { Url } from "~/types";
 import { utils } from "~/utils";
 
 import Actions from "./Actions";
@@ -45,7 +46,7 @@ const Servers = () => {
     setLoading(false);
   };
 
-  const handlePingSelectedUrl = async (url: string) => {
+  const handlePingSelectedUrl = async (url: Url) => {
     return new Promise<ServerListItem>((resolve, reject) => {
       utils.setWebsocketClient(url);
       websocket.client.on("connect", () => {
@@ -73,7 +74,7 @@ const Servers = () => {
     });
   };
 
-  const handlePingOneServer = async (url: string) => {
+  const handlePingOneServer = async (url: Url) => {
     const result = await handlePingSelectedUrl(url);
     updateServer(result);
   };

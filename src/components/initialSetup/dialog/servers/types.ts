@@ -1,7 +1,7 @@
-import { Status } from "~/types";
+import { Status, Url } from "~/types";
 
 export interface ServerListItem {
-  url: string;
+  url: Url;
   ping: number | undefined;
   status: Status;
 }
