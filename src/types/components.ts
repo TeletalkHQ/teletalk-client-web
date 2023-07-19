@@ -1,4 +1,4 @@
-import { SvgIconTypeMap } from "@mui/material";
+import { SelectChangeEvent, SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import {
   ChangeEvent,
@@ -27,6 +27,10 @@ export type CommonOnClose = VoidNoArgsFn;
 export type CommonOnChange = ChangeEventHandler<
   HTMLInputElement | HTMLTextAreaElement
 >;
+
+export type CommonSelectChangeEvent = SelectChangeEvent<unknown>;
+
+export type CommonSelectOnChange = (e: CommonSelectChangeEvent) => void;
 
 export type CommonChangeEvent = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement
