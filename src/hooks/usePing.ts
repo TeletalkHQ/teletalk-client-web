@@ -2,45 +2,58 @@ import { useState } from "react";
 
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
-import { Status, Url } from "~/types";
+import { PingIO, Status, Url } from "~/types";
 import { utils } from "~/utils";
 
 export const usePing = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
 
-  const handlePingServer = async (url: Url) => {
+  const pinger = async (url: Url) => {
     setLoading(true);
     setStatus("pending");
+
     utils.setWebsocketClient(url);
-    websocket.client.on("connect", () => {
-      websocket.client.disconnect();
-      setStatus("online");
-      setLoading(false);
-    });
+
     websocket.client.on("connect_error", () => {
-      setStatus("offline");
-      websocket.client.disconnect();
-      setLoading(false);
+      handleSettled("offline");
     });
+
     websocket.client.connect();
-    await socketEmitterStore.events.ping.emitFull(
+
+    await emitPingEvent();
+  };
+
+  const emitPingEvent = () => {
+    return socketEmitterStore.events.ping.emitFull<PingIO>(
       {},
-      undefined,
-      () => {
-        setStatus("offline");
-        websocket.client.disconnect();
-      },
+      successPingCallback,
+      failPingCallback,
       {
-        timeout: 3000,
+        timeout: 1000,
       }
     );
   };
 
+  const successPingCallback = async ({ data }: { data: PingIO["output"] }) => {
+    handleSettled("online");
+    return data;
+  };
+
+  const failPingCallback = () => {
+    handleSettled("offline");
+  };
+
+  const handleSettled = (status: Status) => {
+    setStatus(status);
+    websocket.client.disconnect();
+    setLoading(false);
+  };
+
   return {
     loading,
-    status,
-    pinger: handlePingServer,
+    pinger,
     setStatus,
+    status,
   };
 };
