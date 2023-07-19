@@ -57,12 +57,16 @@ export interface SocketRoute extends Route {
   name: EventName;
 }
 
+export type Protocol = "http" | "https";
+
+export type Url = `${Protocol}://${string}`;
+
 export type NotificationSide = "SERVER" | "CLIENT";
 
 export interface Environments {
-  NEXT_PUBLIC_CLIENT_BASE_URL: string;
-  NEXT_PUBLIC_SERVER_BASE_URL: string;
-  NEXT_PUBLIC_PRODUCTION_CLIENT_BASE_URL: string;
+  NEXT_PUBLIC_CLIENT_BASE_URL: Url;
+  NEXT_PUBLIC_SERVER_BASE_URL: Url;
+  NEXT_PUBLIC_PRODUCTION_CLIENT_BASE_URL: Url;
   NEXT_PUBLIC_RUNTIME_MODE: "development" | "production";
 }
 

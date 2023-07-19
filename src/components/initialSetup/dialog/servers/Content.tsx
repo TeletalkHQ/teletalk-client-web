@@ -1,11 +1,12 @@
 import Box from "~/components/general/box";
 import StatusIndicator from "~/components/other/StatusIndicator";
+import { Url } from "~/types";
 
 import { ServerListItem } from "./types";
 
 interface Props {
   list: ServerListItem[];
-  onListItemClick: (url: string) => Promise<void>;
+  onListItemClick: (url: Url) => Promise<void>;
 }
 
 const Content: React.FC<Props> = ({ list, onListItemClick }) => {

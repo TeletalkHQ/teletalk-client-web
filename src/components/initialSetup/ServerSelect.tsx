@@ -4,9 +4,10 @@ import InputLabel from "@mui/material/InputLabel";
 import { appConfigs } from "~/classes/AppConfigs";
 import { Input } from "~/components";
 import Box from "~/components/general/box";
+import { Url } from "~/types";
 
 interface Props {
-  onServerSelectChange: (url: string) => void;
+  onServerSelectChange: (url: Url) => void;
   selectedServer: string;
 }
 
@@ -23,9 +24,7 @@ const ServerSelect: React.FC<Props> = ({
           labelId="labelId"
           value={selectedServer}
           label="Selected server"
-          onChange={(props) =>
-            onServerSelectChange(props.target.value as string)
-          }
+          onChange={(props) => onServerSelectChange(props.target.value as Url)}
         >
           {appConfigs.getConfigs().api.servers.map((item, index) => (
             <Box.MenuItem key={index} value={item.url}>

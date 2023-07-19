@@ -2,12 +2,15 @@ import React, { useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { notificationManager } from "~/classes/NotificationManager";
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
-import { websocket } from "~/classes/websocket/Websocket";
 import DialogTemplate from "~/components/messenger/dialog/template";
+import { usePing } from "~/hooks/usePing";
 import { useGlobalStore } from "~/store";
-import { CommonChangeEvent, CommonSelectChangeEvent, Status } from "~/types";
-import { utils } from "~/utils";
+import {
+  CommonChangeEvent,
+  CommonSelectChangeEvent,
+  Protocol,
+  Url,
+} from "~/types";
 
 import Actions from "./Actions";
 import Content from "./Content";
@@ -16,40 +19,11 @@ import Title from "./Title";
 const AddServer = () => {
   const globalStore = useGlobalStore();
   const [inputValue, setInputValue] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<Status>("idle");
-  const [protocol, setProtocol] = useState("https");
+  const [protocol, setProtocol] = useState<Protocol>("https");
+  const { loading, pinger, setStatus, status } = usePing();
 
   const handleClose = () => {
     globalStore.closeDialog("addServer");
-  };
-
-  const handlePingServer = async () => {
-    setLoading(true);
-    setStatus("pending");
-    utils.setWebsocketClient(fixServerUrl());
-    websocket.client.on("connect", () => {
-      websocket.client.disconnect();
-      setStatus("online");
-      setLoading(false);
-    });
-    websocket.client.on("connect_error", () => {
-      setStatus("offline");
-      websocket.client.disconnect();
-      setLoading(false);
-    });
-    websocket.client.connect();
-    await socketEmitterStore.events.ping.emitFull(
-      {},
-      undefined,
-      () => {
-        setStatus("offline");
-        websocket.client.disconnect();
-      },
-      {
-        timeout: 3000,
-      }
-    );
   };
 
   const handleInputChange = (event: CommonChangeEvent) => {
@@ -68,7 +42,7 @@ const AddServer = () => {
     }
   };
 
-  const fixServerUrl = () => {
+  const fixServerUrl = (): Url => {
     return `${protocol}://${inputValue}`;
   };
 
@@ -79,7 +53,11 @@ const AddServer = () => {
   };
 
   const handleSelectChange = (e: CommonSelectChangeEvent) => {
-    setProtocol(e.target.value as string);
+    setProtocol(e.target.value as Protocol);
+  };
+
+  const handleTestClick = () => {
+    pinger(fixServerUrl());
   };
 
   return (
@@ -94,7 +72,7 @@ const AddServer = () => {
           loading={loading}
           onInputChange={handleInputChange}
           onSelectChange={handleSelectChange}
-          onTestClick={handlePingServer}
+          onTestClick={handleTestClick}
           protocol={protocol}
           status={status}
         />

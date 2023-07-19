@@ -14,7 +14,7 @@ import SetupButton from "~/components/initialSetup/SetupButton";
 import { events } from "~/events";
 import { useCustomRouter } from "~/hooks/useCustomRouter";
 import { useGlobalStore } from "~/store";
-import { Status } from "~/types";
+import { Status, Url } from "~/types";
 import { utils } from "~/utils";
 
 import Portal from "./portal";
@@ -22,7 +22,7 @@ import Portal from "./portal";
 const InitialSetup = () => {
   const globalStore = useGlobalStore();
   const [loading, setLoading] = useState(true);
-  const [selectedServer, setSelectedServer] = useState("");
+  const [selectedServer, setSelectedServer] = useState<Url>("http://");
   const [status, setStatus] = useState<Status>("idle");
   const router = useCustomRouter();
 
@@ -76,7 +76,7 @@ const InitialSetup = () => {
     globalStore.openDialog("servers");
   };
 
-  const handleServerSelectChange = (url: string) => {
+  const handleServerSelectChange = (url: Url) => {
     setSelectedServer(url);
     setStatus("idle");
   };
