@@ -1,20 +1,20 @@
 import Box from "~/components/general/box";
 import StatusIndicator from "~/components/other/StatusIndicator";
-import { Url } from "~/types";
-
-import { ServerListItem } from "./types";
+import { ServerTestResult, Url } from "~/types";
 
 interface Props {
-  list: ServerListItem[];
+  disabled: boolean;
+  list: ServerTestResult[];
   onListItemClick: (url: Url) => Promise<void>;
 }
 
-const Content: React.FC<Props> = ({ list, onListItemClick }) => {
+const Content: React.FC<Props> = ({ list, onListItemClick, disabled }) => {
   return (
     <Box.List>
       {list.map((item, index) => {
         return (
           <Box.ListItemButton
+            disabled={disabled}
             onClick={() => onListItemClick(item.url)}
             style={{ borderRadius: "10px" }}
             key={index}

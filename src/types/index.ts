@@ -160,6 +160,12 @@ export type KeysToSnakeCase<T> = {
   [K in keyof T as CamelToSnakeCase<string & K>]: T[K];
 };
 
+export interface ServerTestResult {
+  url: Url;
+  ping: number | undefined;
+  status: Status;
+}
+
 export type * from "./api";
 export type * from "./components";
 export type * from "./datatypes";

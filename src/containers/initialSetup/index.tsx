@@ -1,75 +1,37 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { trier } from "simple-trier";
+import { useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
 import { Input } from "~/components";
 import Box from "~/components/general/box";
 import AddServerButton from "~/components/initialSetup/AddServerButton";
-import ServerSelect from "~/components/initialSetup/ServerSelect";
 import ServerStatus from "~/components/initialSetup/ServerStatus";
+import ServerSelect from "~/components/initialSetup/ServersSelect";
 import SetupButton from "~/components/initialSetup/SetupButton";
 import { events } from "~/events";
 import { useCustomRouter } from "~/hooks/useCustomRouter";
+import { usePing } from "~/hooks/usePing";
 import { useGlobalStore } from "~/store";
-import { Status, Url } from "~/types";
+import { Url } from "~/types";
 import { utils } from "~/utils";
 
 import Portal from "./portal";
 
 const InitialSetup = () => {
   const globalStore = useGlobalStore();
-  const [loading, setLoading] = useState(true);
-  const [selectedServer, setSelectedServer] = useState<Url>("http://");
-  const [status, setStatus] = useState<Status>("idle");
+  const [selectedServer, setSelectedServer] = useState<Url>(
+    appConfigs.getConfigs().api.selectedServerUrl
+  );
   const router = useCustomRouter();
+  const { loading, pinger, status } = usePing();
 
-  useEffect(() => {
-    if (!selectedServer)
-      setSelectedServer(appConfigs.getConfigs().api.selectedServerUrl);
-    else handleSetup();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedServer]);
-
-  const handleSetup = () => {
-    trier(handleSetup.name)
-      .async()
-      .try(async () => {
-        setLoading(true);
-        setStatus("pending");
-        await handleSetClientId(selectedServer);
-        utils.setWebsocketClient(selectedServer);
-        websocket.client.on("connect", async () => {
-          utils.registerWindowCustomProperties();
-          appConfigs.updateSelectedServer(selectedServer);
-          events.websocket.otherEvents();
-          setStatus("online");
-          setLoading(false);
-        });
-
-        websocket.client.on("connect_error", () => {
-          websocket.client.disconnect();
-          setStatus("offline");
-          setLoading(false);
-        });
-
-        websocket.client.connect();
-      })
-      .catch(() => {
-        websocket.client?.disconnect();
-        setLoading(false);
-        setStatus("offline");
-      })
-      .run();
-  };
-
-  const handleSetClientId = (url: string) => {
-    return fetch(`${url}/setClientId`, {
-      method: "GET",
-      credentials: "include",
-    });
+  const handleSetup = async () => {
+    const { status } = await pinger(selectedServer);
+    if (status === "online") {
+      utils.registerWindowCustomProperties();
+      appConfigs.updateSelectedServer(selectedServer);
+      events.websocket.otherEvents();
+    }
   };
 
   const handleServersClick = () => {
@@ -78,11 +40,15 @@ const InitialSetup = () => {
 
   const handleServerSelectChange = (url: Url) => {
     setSelectedServer(url);
-    setStatus("idle");
   };
 
   const handleAddServerClick = () => {
     globalStore.openDialog("addServer");
+  };
+
+  const handleAuthenticateClick = () => {
+    websocket.client.connect();
+    router.push("auth");
   };
 
   return (
@@ -104,7 +70,11 @@ const InitialSetup = () => {
             maxWidth: "400px",
           }}
         >
-          <ServerStatus status={status} />
+          <ServerStatus
+            onClick={handleSetup}
+            loading={loading}
+            status={status}
+          />
 
           <div style={{ marginTop: "10px" }}></div>
 
@@ -132,7 +102,7 @@ const InitialSetup = () => {
           <div style={{ marginTop: "10px" }}></div>
 
           <Input.Button
-            onClick={() => router.push("auth")}
+            onClick={handleAuthenticateClick}
             disabled={status !== "online"}
           >
             Authenticate
