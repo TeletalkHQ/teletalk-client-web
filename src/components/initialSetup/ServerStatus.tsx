@@ -7,17 +7,17 @@ import { Status, VoidNoArgsFn } from "~/types";
 interface Props {
   disabled?: boolean;
   indicatorValue?: string;
-  loading?: boolean;
-  onClick?: VoidNoArgsFn;
+  loading: boolean;
+  onClick: VoidNoArgsFn;
   status: Status;
 }
 
 const ServerStatus: React.FC<Props> = ({
+  disabled,
   indicatorValue,
   loading,
   onClick,
   status,
-  disabled,
 }) => {
   return (
     <Input.LoadingButton
@@ -31,15 +31,15 @@ const ServerStatus: React.FC<Props> = ({
       }
       onClick={onClick}
       sx={(theme) => ({
-        color: theme.palette.background.default,
+        ":disabled": {
+          backgroundColor: theme.palette.primary.dark,
+          color: theme.palette.text.disabled,
+        },
         borderRadius: "10px",
-        padding: "10px",
+        color: theme.palette.background.default,
         display: "flex",
         justifyContent: "space-around",
-        ":disabled": {
-          color: theme.palette.text.disabled,
-          backgroundColor: theme.palette.primary.dark,
-        },
+        padding: "10px",
       })}
     >
       <Box.Span>Status:</Box.Span>

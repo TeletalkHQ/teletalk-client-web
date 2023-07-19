@@ -4,9 +4,9 @@ import CircularProgress from "~/components/general/progress/CircularProgress";
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {
+  indicatorText: string;
   loading: boolean;
   onSetup: VoidNoArgsFn;
-  indicatorText: string;
 }
 
 const SetupButton: React.FC<Props> = ({ indicatorText, loading, onSetup }) => {
@@ -19,8 +19,20 @@ const SetupButton: React.FC<Props> = ({ indicatorText, loading, onSetup }) => {
       }}
       loadingIndicator={
         <Box.Span>
-          <Box.Span style={{ color: "white" }}>{indicatorText}</Box.Span>
-          <CircularProgress style={{ marginLeft: 10 }} size={20} color="info" />
+          <Box.Span
+            style={{
+              color: "white",
+            }}
+          >
+            {indicatorText}
+          </Box.Span>
+          <CircularProgress
+            style={{
+              marginLeft: 10,
+            }}
+            size={20}
+            color="info"
+          />
         </Box.Span>
       }
     >
