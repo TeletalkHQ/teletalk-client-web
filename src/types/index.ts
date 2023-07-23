@@ -65,9 +65,8 @@ export type NotificationSide = "SERVER" | "CLIENT";
 
 export interface Environments {
   NEXT_PUBLIC_CLIENT_BASE_URL: Url;
-  NEXT_PUBLIC_SERVER_BASE_URL: Url;
-  NEXT_PUBLIC_PRODUCTION_CLIENT_BASE_URL: Url;
   NEXT_PUBLIC_RUNTIME_MODE: "development" | "production";
+  NEXT_PUBLIC_SERVER_BASE_URL: Url;
 }
 
 export type NativeModelCollection = typeof stuffStore.models;
