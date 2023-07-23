@@ -21,6 +21,10 @@ export const useSignIn = () => {
         state.updateAuthenticationProgress(false);
         router.push("verify");
         return data;
+      },
+      (errors) => {
+        console.error(errors);
+        state.updateAuthenticationProgress(false);
       }
     );
   };
