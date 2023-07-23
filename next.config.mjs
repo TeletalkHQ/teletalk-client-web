@@ -1,21 +1,12 @@
-import dotenv from "dotenv";
+import { evnLoader } from "./src/utils/envLoader";
 
-["./configs/env/base.env", `./configs/env/${process.env.NODE_ENV}.env`].forEach(
-  (path) => {
-    dotenv.config({
-      path,
-      override: true,
-    });
-  }
-);
+evnLoader();
 
 const env = Object.keys(process.env).reduce((prev, curr) => {
   if (curr.startsWith("NEXT_PUBLIC_")) prev[curr] = process.env[curr];
 
   return prev;
 }, {});
-
-const initialSetupRoute = "/initialSetup";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -34,9 +25,9 @@ const nextConfig = {
   async redirects() {
     return ["/", "/auth", "/create", "/messenger", "/signIn", "/verify"].map(
       (item) => ({
-        source: item,
-        destination: initialSetupRoute,
+        destination: "/initialSetup",
         permanent: true,
+        source: item,
       })
     );
   },
