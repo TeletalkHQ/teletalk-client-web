@@ -1,4 +1,4 @@
-import { evnLoader } from "./src/utils/envLoader";
+import { evnLoader } from "./configs/env/envLoader.js";
 
 evnLoader();
 
