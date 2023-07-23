@@ -1,17 +1,22 @@
 import fs from "fs";
 import io from "socket.io-client";
 
+import { EventName } from "~/types";
+import { evnLoader } from "~/utils/envLoader";
+
+evnLoader();
+
 const run = async () => {
   saveStuff();
 };
 
 const saveStuff = () => {
-  io("http://localhost:8090", {
+  io(process.env.NEXT_PUBLIC_SERVER_BASE_URL, {
     autoConnect: false,
     withCredentials: true,
   })
     .connect()
-    .emit("getStuff", {}, (response: any) => {
+    .emit<EventName>("getStuff", {}, (response: any) => {
       console.log("saving stuff...");
 
       const data = `
