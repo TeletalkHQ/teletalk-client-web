@@ -22,7 +22,6 @@ import {
   PhoneNumber,
   SelectedCountry,
   SocketResponseErrors,
-  Url,
 } from "~/types";
 import { validators } from "~/validators";
 
@@ -86,14 +85,6 @@ const registerWindowCustomProperties = () => {
   window.socketEmitterStore = socketEmitterStore;
   //@ts-ignore
   window.websocket = websocket;
-};
-
-const setWebsocketClient = (url: Url) => {
-  websocket.client?.disconnect();
-  const client = websocket.initialize({
-    url: url || appConfigs.getConfigs().api.selectedServerUrl,
-  });
-  websocket.setClient(client);
 };
 
 const makeScreamingSnakeCase = <T extends string>(value: T) =>
@@ -216,6 +207,5 @@ export const utils = {
   makeNonBreakSpace,
   printResponseErrors,
   registerWindowCustomProperties,
-  setWebsocketClient,
   transformers,
 };
