@@ -1,8 +1,8 @@
+import { evnLoader } from "configs/env/envLoader";
 import fs from "fs";
 import io from "socket.io-client";
 
 import { EventName } from "~/types";
-import { evnLoader } from "~/utils/envLoader";
 
 evnLoader();
 
