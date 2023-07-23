@@ -3,7 +3,6 @@ import { useState } from "react";
 import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import { PingIO, ServerTestResult, Status, Url } from "~/types";
-import { utils } from "~/utils";
 
 export const usePing = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +14,7 @@ export const usePing = () => {
     await setClientId(url);
 
     return new Promise<ServerTestResult>((resolve) => {
-      utils.setWebsocketClient(url);
+      setWebsocketClient(url);
 
       websocket.client.on("connect", async () => {
         await emitPingEvent();
@@ -39,6 +38,16 @@ export const usePing = () => {
       const startTime = Date.now();
       websocket.client.connect();
     });
+  };
+
+  const setWebsocketClient = (url: Url) => {
+    websocket.client?.removeAllListeners();
+    websocket.client?.disconnect();
+
+    const client = websocket.initialize({
+      url,
+    });
+    websocket.setClient(client);
   };
 
   const setClientId = async (url: Url) => {
@@ -69,14 +78,11 @@ export const usePing = () => {
   };
 
   const failPingCallback = () => {
-    console.log("error happened!");
-
     handleSettled("offline");
   };
 
   const handleSettled = (status: Status) => {
     setStatus(status);
-    websocket.client.disconnect();
     setLoading(false);
   };
 
