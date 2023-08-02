@@ -200,3 +200,29 @@ export interface UpdatePublicUserDataIO {
     publicUserData: PublicUserData;
   };
 }
+
+export interface IOCollection {
+  addBlock: AddBlockIO;
+  addContact: AddContactIO;
+  addContactWithCellphone: AddContactWithCellphoneIO;
+  addContactWithUserId: AddContactWithUserIdIO;
+  createNewUser: CreateNewUserIO;
+  editContact: EditContactIO;
+  getChatInfo: GetChatInfoIO;
+  getContacts: GetContactsIO;
+  getCountries: GetCountriesIO;
+  getPrivateChat: GetPrivateChatIO;
+  getPrivateChats: GetPrivateChatsIO;
+  getPublicUserData: GetPublicUserDataIO;
+  getUserData: GetUserDataIO;
+  getWelcomeMessage: GetWelcomeMessageIO;
+  joinRoom: JoinRoomIO;
+  logout: LogoutIO;
+  ping: PingIO;
+  removeBlock: RemoveBlockIO;
+  removeContact: RemoveContactIO;
+  sendPrivateMessage: SendPrivateMessageIO;
+  signIn: SignInIO;
+  updatePublicUserData: UpdatePublicUserDataIO;
+  verify: VerifyIO;
+}
