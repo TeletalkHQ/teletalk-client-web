@@ -23,7 +23,7 @@ export interface SocketResponse<Data = IO["output"]> {
 
 export type ResponseCallback<Data = IO["output"]> = (
   response: SocketResponse<Data>
-) => Promise<Data>;
+) => Promise<void> | void;
 
 export type SocketErrorCallback = (errors: SocketResponseErrors) => void;
 
@@ -32,8 +32,8 @@ export type RequestTransformer<Data = IO["input"]> = (
 ) => Data;
 
 export type ResponseTransformer<DataType = IO["output"]> = (
-  response: SocketResponse<DataType>
-) => SocketResponse<DataType>;
+  response: DataType
+) => DataType;
 
 export type Interceptor<Data> = (data: Data) => Data;
 
