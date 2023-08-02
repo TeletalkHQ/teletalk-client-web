@@ -3,11 +3,11 @@ import { CountryCode, CountryName } from "utility-store/lib/types";
 import { countries } from "utility-store/lib/variables/countries";
 
 import { maker } from "~/classes/Maker";
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import Actions from "~/components/messenger/dialog/addContactWithCellphone/Actions";
 import Content from "~/components/messenger/dialog/addContactWithCellphone/Content";
 import Title from "~/components/messenger/dialog/addContactWithCellphone/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
+import { useEmitter } from "~/hooks/useEmitter";
 import { useGlobalStore, useUserStore } from "~/store";
 import {
   AddContactWithCellphoneIO,
@@ -19,6 +19,7 @@ import { utils } from "~/utils";
 const AddContactWithCellphone = () => {
   const globalStore = useGlobalStore();
   const userStore = useUserStore();
+  const { handler } = useEmitter("addContactWithCellphone");
 
   const [addingContact, setAddingContact] = useState<
     AddContactWithCellphoneIO["input"]
@@ -33,14 +34,11 @@ const AddContactWithCellphone = () => {
   };
 
   const handleAddContactClick = async () => {
-    socketEmitterStore.events.addContactWithCellphone.emitFull<AddContactWithCellphoneIO>(
-      addingContact,
-      async (response) => {
-        userStore.addContact(response.data.addedContact);
-        returnToContactsDialog();
-        return response.data;
-      }
-    );
+    handler.emitFull(addingContact, async (response) => {
+      userStore.addContact(response.data.addedContact);
+      returnToContactsDialog();
+      return response.data;
+    });
   };
 
   const closeAddContactDialog = () => {

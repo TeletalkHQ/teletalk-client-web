@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import Box from "~/components/general/box";
 import ChatBar from "~/components/messenger/rightSide/ChatBar";
 import MessageInput from "~/components/messenger/rightSide/MessageInput";
 import MessageList from "~/components/messenger/rightSide/MessageList";
+import { useEmitter } from "~/hooks/useEmitter";
 import { useNewPrivateChatMessage } from "~/hooks/useNewPrivateChatMessage";
 import { useSetPrivateChats } from "~/hooks/useSetPrivateChats";
 import { useMessageStore } from "~/store";
@@ -13,9 +13,11 @@ const RightSide = () => {
   const messageStore = useMessageStore();
   useNewPrivateChatMessage();
   useSetPrivateChats();
+  const { handler } = useEmitter("joinRoom");
 
   useEffect(() => {
-    socketEmitterStore.events.joinRoom.emit();
+    handler.emit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

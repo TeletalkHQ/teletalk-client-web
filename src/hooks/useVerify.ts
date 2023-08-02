@@ -1,18 +1,18 @@
 import { domUtils } from "~/classes/DomUtils";
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { useAuthStore } from "~/store";
-import { VerifyIO } from "~/types";
 
 import { useCustomRouter } from "./useCustomRouter";
+import { useEmitter } from "./useEmitter";
 
 export const useVerify = () => {
   const authStore = useAuthStore();
   const router = useCustomRouter();
+  const { handler } = useEmitter("verify");
 
   const updater = async () => {
     authStore.updateAuthenticationProgress(true);
 
-    await socketEmitterStore.events.verify.emitFull<VerifyIO>(
+    await handler.emitFull(
       {
         verificationCode: authStore.verificationCode,
       },

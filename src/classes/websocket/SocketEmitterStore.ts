@@ -1,15 +1,15 @@
 import { stuffStore } from "~/classes/StuffStore";
 import { EventHandler, eventHandler } from "~/classes/websocket/EventHandler";
-import { EventName, SocketRoute } from "~/types";
+import { EventName, IO, SocketRoute } from "~/types";
 
 type Events = {
-  [key in EventName]: EventHandler;
+  [key in EventName]: EventHandler<IO>;
 };
 
 export class SocketEmitterStore {
   events = stuffStore.events.reduce((prevValue, currValue) => {
     const c = currValue as SocketRoute;
-    prevValue[c.name] = eventHandler().setRoute(c);
+    prevValue[c.name] = eventHandler(() => undefined).setRoute(c);
     return prevValue;
   }, {} as Events);
 }

@@ -1,19 +1,18 @@
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { useMessageStore } from "~/store";
-import { ChatId, GetPrivateChatIO } from "~/types";
+import { ChatId } from "~/types";
+
+import { useEmitter } from "./useEmitter";
 
 export const useAddPrivateChat = () => {
   const messageStore = useMessageStore();
+  const { handler } = useEmitter("getPrivateChat");
 
   const updater = (chatId: ChatId) => {
-    return socketEmitterStore.events.getPrivateChat.emitFull<GetPrivateChatIO>(
-      { chatId },
-      async ({ data }) => {
-        messageStore.addPrivateChat(data.privateChat);
+    return handler.emitFull({ chatId }, async ({ data }) => {
+      messageStore.addPrivateChat(data.privateChat);
 
-        return data;
-      }
-    );
+      return data;
+    });
   };
 
   return { updater };

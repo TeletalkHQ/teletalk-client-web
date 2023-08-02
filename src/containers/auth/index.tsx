@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { useCustomRouter } from "~/hooks/useCustomRouter";
+import { useEmitter } from "~/hooks/useEmitter";
 import { useGlobalStore, useUserStore } from "~/store";
-import { GetUserDataIO } from "~/types";
 
 const Auth = () => {
   const userStore = useUserStore();
   const globalStore = useGlobalStore();
   const router = useCustomRouter();
+  const { handler } = useEmitter("getUserData");
 
   useEffect(() => {
     globalStore.openFullPageLoading();
@@ -18,7 +18,7 @@ const Auth = () => {
   }, []);
 
   const handleUpdateUserData = async () => {
-    await socketEmitterStore.events.getUserData.emitFull<GetUserDataIO>(
+    await handler.emitFull(
       {},
       async ({ data }) => {
         userStore.setUserData(data.user);

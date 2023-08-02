@@ -1,28 +1,25 @@
-import { extractor } from "~/classes/Extractor";
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
-import { useSettingsStore, useUserStore } from "~/store";
-import { UpdatePublicUserDataIO, VoidNoArgsFn } from "~/types";
+import { useSettingsStore } from "~/store";
+import { VoidNoArgsFn } from "~/types";
+
+import { useEmitter } from "./useEmitter";
 
 export const useUpdateProfile = () => {
-  const userStore = useUserStore();
   const settingsStore = useSettingsStore();
+  const { handler, loading } = useEmitter("updatePublicUserData");
 
   const updater = (cb: VoidNoArgsFn) => {
     const { countryCode, countryName, phoneNumber, ...restProfile } =
       settingsStore.profile;
-    socketEmitterStore.events.updatePublicUserData.emitFull<UpdatePublicUserDataIO>(
-      restProfile,
-      async ({ data }) => {
-        userStore.setUserData(
-          extractor.userState({ ...userStore, ...data.publicUserData })
-        );
 
-        cb();
+    handler.emitFull(restProfile, async ({ data }) => {
+      cb();
 
-        return data;
-      }
-    );
+      return data;
+    });
   };
 
-  return { updater };
+  return {
+    loading,
+    updater,
+  };
 };

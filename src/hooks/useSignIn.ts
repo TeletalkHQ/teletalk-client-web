@@ -1,17 +1,17 @@
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { useAuthStore } from "~/store";
-import { SignInIO } from "~/types";
 
 import { useCustomRouter } from "./useCustomRouter";
+import { useEmitter } from "./useEmitter";
 
 export const useSignIn = () => {
   const state = useAuthStore();
   const router = useCustomRouter();
+  const { handler } = useEmitter("signIn");
 
   const updater = async () => {
     state.updateAuthenticationProgress(true);
 
-    await socketEmitterStore.events.signIn.emitFull<SignInIO>(
+    await handler.emitFull(
       {
         countryCode: state.countryCode,
         countryName: state.countryName,
