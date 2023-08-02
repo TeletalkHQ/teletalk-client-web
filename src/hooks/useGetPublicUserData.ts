@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { PublicUserData } from "utility-store/lib/types";
 
 import { maker } from "~/classes/Maker";
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { useMessageStore, useUserStore } from "~/store";
-import { GetPublicUserDataIO, UserId } from "~/types";
+import { UserId } from "~/types";
+
+import { useEmitter } from "./useEmitter";
 
 type UseGetPublicUserData = (userId?: UserId) => {
   publicUserData: PublicUserData;
@@ -16,7 +17,7 @@ type UseGetPublicUserData = (userId?: UserId) => {
 export const useGetPublicUserData: UseGetPublicUserData = (userId) => {
   const messageStore = useMessageStore();
   const userStore = useUserStore();
-
+  const { handler } = useEmitter("getPublicUserData");
   const [publicUserData, setPublicUserData] = useState<PublicUserData>(
     maker.emptyUserPublicData()
   );
@@ -29,19 +30,16 @@ export const useGetPublicUserData: UseGetPublicUserData = (userId) => {
   }, [messageStore.selectedChatInfo, userId]);
 
   const updater = (userId: UserId) => {
-    return socketEmitterStore.events.getPublicUserData.emitFull<GetPublicUserDataIO>(
-      { userId },
-      async ({ data }) => {
-        const contactItem =
-          userStore.contacts.find(
-            (i) => i.userId === data.publicUserData.userId
-          ) || {};
+    return handler.emitFull({ userId }, async ({ data }) => {
+      const contactItem =
+        userStore.contacts.find(
+          (i) => i.userId === data.publicUserData.userId
+        ) || {};
 
-        setPublicUserData({ ...data.publicUserData, ...contactItem });
+      setPublicUserData({ ...data.publicUserData, ...contactItem });
 
-        return data;
-      }
-    );
+      return data;
+    });
   };
 
   return {

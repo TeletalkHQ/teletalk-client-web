@@ -1,27 +1,24 @@
 import { useEffect } from "react";
 
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { useMessageStore, useUserStore } from "~/store";
-import { GetPrivateChatsIO } from "~/types";
+
+import { useEmitter } from "./useEmitter";
 
 export const useSetPrivateChats = () => {
   const messageStore = useMessageStore();
   const userStore = useUserStore();
-
+  const { handler } = useEmitter("getPrivateChats");
   useEffect(() => {
     if (userStore.userId) updater();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userStore.userId]);
 
   const updater = async () => {
-    await socketEmitterStore.events.getPrivateChats.emitFull<GetPrivateChatsIO>(
-      {},
-      async ({ data }) => {
-        messageStore.setPrivateChats(data.privateChats);
+    await handler.emitFull({}, async ({ data }) => {
+      messageStore.setPrivateChats(data.privateChats);
 
-        return data;
-      }
-    );
+      return data;
+    });
   };
 
   return { updater };

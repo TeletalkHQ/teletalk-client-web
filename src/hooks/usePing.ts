@@ -1,12 +1,14 @@
 import { useState } from "react";
 
-import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import { PingIO, ServerTestResult, Status, Url } from "~/types";
+
+import { useEmitter } from "./useEmitter";
 
 export const usePing = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
+  const { handler } = useEmitter("ping");
 
   const pinger = async (url: Url) => {
     setLoading(true);
@@ -62,14 +64,9 @@ export const usePing = () => {
   };
 
   const emitPingEvent = () => {
-    return socketEmitterStore.events.ping.emitFull<PingIO>(
-      {},
-      successPingCallback,
-      failPingCallback,
-      {
-        timeout: 1000,
-      }
-    );
+    return handler.emitFull({}, successPingCallback, failPingCallback, {
+      timeout: 1000,
+    });
   };
 
   const successPingCallback = async ({ data }: { data: PingIO["output"] }) => {

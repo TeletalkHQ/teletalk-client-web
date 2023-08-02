@@ -4,6 +4,7 @@ import { trier } from "simple-trier";
 import { appConfigs } from "~/classes/AppConfigs";
 import { notificationStore } from "~/classes/NotificationStore";
 import { websocket } from "~/classes/websocket/Websocket";
+import { UpdateLoadingFn } from "~/hooks/useLoading";
 import type {
   IO,
   Interceptors,
@@ -23,12 +24,13 @@ interface Options {
   timeout: number;
 }
 
-export class EventHandler {
-  private requestData: IO["input"];
+export class EventHandler<IOType extends IO> {
+  private requestData: IOType["input"];
   private defaultOptions: Options = { timeout: 0 };
   private requestInterceptors: Interceptors = [];
-  private requestTransformer: RequestTransformer<IO["input"]> = (requestData) =>
-    requestData;
+  private requestTransformer: RequestTransformer<IOType["input"]> = (
+    requestData
+  ) => requestData;
   private response: SocketResponse;
   private responseCallback: ResponseCallback;
   private errorCallback: SocketErrorCallback;
@@ -36,10 +38,12 @@ export class EventHandler {
   private responseTransformer: ResponseTransformer = (response) => response;
   private route: SocketRoute;
 
+  constructor(private loadingUpdater: UpdateLoadingFn) {}
+
   getRequestData() {
     return this.requestData;
   }
-  setRequestData(requestData: IO["input"]) {
+  setRequestData(requestData: IOType["input"]) {
     this.requestData = requestData;
     return this;
   }
@@ -60,16 +64,18 @@ export class EventHandler {
   getResponseData() {
     return this.getResponse().data;
   }
-  setResponseData(responseData: IO["output"]) {
+  setResponseData(responseData: IOType["output"]) {
     this.response.data = responseData;
     return this;
   }
 
   async emit(
-    data: IO["output"] = {},
+    data: IOType["input"] = {},
     options: Partial<Options> = this.defaultOptions
   ) {
     const mergedOptions = { ...this.defaultOptions, ...options };
+
+    this.loadingUpdater(true);
 
     const response: SocketResponse = await new Promise((resolve, reject) => {
       this.getClient().emit(
@@ -85,6 +91,8 @@ export class EventHandler {
       );
     });
 
+    this.loadingUpdater(false);
+
     this.setResponse(response).setResponseData(response.data);
 
     return this;
@@ -94,18 +102,18 @@ export class EventHandler {
     return websocket.client;
   }
 
-  async emitFull<T extends IO>(
-    data: T["input"],
-    responseCallback: ResponseCallback<T["output"]> = async (response) =>
+  async emitFull(
+    data: IOType["input"],
+    responseCallback: ResponseCallback<IOType["output"]> = async (response) =>
       response.data,
     errorCallback: SocketErrorCallback = (_errors) => {},
     options?: Partial<Options>
-  ): Promise<T["output"]> {
+  ): Promise<IOType["output"]> {
     this.requestData = data;
     this.responseCallback = responseCallback;
     this.errorCallback = errorCallback;
 
-    return await trier<T["output"]>(this.emitFull.name)
+    return await trier<IOType["output"]>(this.emitFull.name)
       .async()
       .try(this.tryToEmitFull, options)
       .catch(this.catchEmitFull)
@@ -205,7 +213,7 @@ export class EventHandler {
 
   private executeInterceptors(
     interceptors: Interceptors,
-    data: IO["input"] | IO["output"]
+    data: IOType["input"] | IOType["output"]
   ) {
     let newData = data;
 
@@ -222,4 +230,6 @@ export class EventHandler {
   }
 }
 
-export const eventHandler = () => new EventHandler();
+export const eventHandler = <IOType extends IO>(
+  loadingUpdater: UpdateLoadingFn
+) => new EventHandler<IOType>(loadingUpdater);
