@@ -1,33 +1,37 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { websocket } from "~/classes/websocket/Websocket";
+import { useEmitter } from "~/hooks/useEmitter";
+import { useListener } from "~/hooks/useListener";
 
 const PingPong = () => {
   const [isConnected, setIsConnected] = useState(websocket.client.connected);
   const [lastPong, setLastPong] = useState("");
+  const { handler } = useEmitter("ping");
 
-  useEffect(() => {
-    websocket.client.on("connect", () => {
+  useListener({
+    evName: "connect",
+    cb: () => {
       setIsConnected(true);
-    });
+    },
+  });
 
-    websocket.client.on("disconnect", () => {
+  useListener({
+    evName: "disconnect",
+    cb: () => {
       setIsConnected(false);
-    });
+    },
+  });
 
-    websocket.client.on("pong", () => {
+  useListener({
+    evName: "pong",
+    cb: () => {
       setLastPong(new Date().toISOString());
-    });
-
-    return () => {
-      websocket.client.off("connect");
-      websocket.client.off("disconnect");
-      websocket.client.off("pong");
-    };
-  }, []);
+    },
+  });
 
   const sendPing = () => {
-    websocket.client.emit("ping");
+    handler.emitFull({});
   };
 
   return (
