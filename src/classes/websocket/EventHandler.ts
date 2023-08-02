@@ -7,11 +7,8 @@ import { websocket } from "~/classes/websocket/Websocket";
 import { UpdateLoadingFn } from "~/hooks/useLoading";
 import type {
   IO,
-  Interceptors,
   NativeError,
-  RequestTransformer,
   ResponseCallback,
-  ResponseTransformer,
   SocketErrorCallback,
   SocketResponse,
   SocketRoute,
@@ -25,17 +22,14 @@ interface Options {
 }
 
 export class EventHandler<IOType extends IO> {
+  private defaultOptions: Options = {
+    timeout: 0,
+  };
+
+  private errorCallback: SocketErrorCallback;
   private requestData: IOType["input"];
-  private defaultOptions: Options = { timeout: 0 };
-  private requestInterceptors: Interceptors = [];
-  private requestTransformer: RequestTransformer<IOType["input"]> = (
-    requestData
-  ) => requestData;
   private response: SocketResponse;
   private responseCallback: ResponseCallback;
-  private errorCallback: SocketErrorCallback;
-  private responseInterceptors: Interceptors = [];
-  private responseTransformer: ResponseTransformer = (response) => response;
   private route: SocketRoute;
 
   constructor(private loadingUpdater: UpdateLoadingFn) {}
@@ -78,7 +72,7 @@ export class EventHandler<IOType extends IO> {
     this.loadingUpdater(true);
 
     const response: SocketResponse = await new Promise((resolve, reject) => {
-      this.getClient().emit(
+      websocket.client.emit(
         this.route.name,
         data,
         (response: SocketResponse) => {
@@ -98,14 +92,9 @@ export class EventHandler<IOType extends IO> {
     return this;
   }
 
-  getClient() {
-    return websocket.client;
-  }
-
   async emitFull(
     data: IOType["input"],
-    responseCallback: ResponseCallback<IOType["output"]> = async (response) =>
-      response.data,
+    responseCallback: ResponseCallback<IOType["output"]> = () => undefined,
     errorCallback: SocketErrorCallback = (_errors) => {},
     options?: Partial<Options>
   ): Promise<IOType["output"]> {
@@ -122,15 +111,9 @@ export class EventHandler<IOType extends IO> {
 
   @AutoBind
   private async tryToEmitFull(options?: Options) {
-    await this
-      // .executeRequestTransformer()
-      // .executeRequestInterceptors()
-      // .inputDataFieldsCheck()
-      .emit(this.requestData, options);
+    await this.emit(this.requestData, options);
 
     await this.outputDataFieldsCheck()
-      // .executeResponseTransformer()
-      // .executeResponseInterceptors()
       .logSuccessfulResponse()
       .executeResponseCallback();
 
@@ -144,20 +127,6 @@ export class EventHandler<IOType extends IO> {
     utils.printResponseErrors(response.errors);
 
     this.logFailureResponse(Object.values(response.errors || [])[0]);
-  }
-
-  private executeRequestTransformer() {
-    this.requestData = this.requestTransformer(this.getRequestData());
-    return this;
-  }
-
-  private executeRequestInterceptors(requestData = this.getRequestData()) {
-    const newData = this.executeInterceptors(
-      this.requestInterceptors,
-      requestData
-    );
-    this.setRequestData(newData);
-    return this;
   }
 
   private inputDataFieldsCheck(inputData = this.getRequestData()) {
@@ -182,21 +151,6 @@ export class EventHandler<IOType extends IO> {
     return this;
   }
 
-  private executeResponseTransformer() {
-    const transformedResponse = this.responseTransformer(this.getResponse());
-    this.setResponse(transformedResponse);
-    return this;
-  }
-
-  private executeResponseInterceptors(response = this.getResponse()) {
-    const newData = this.executeInterceptors(
-      this.responseInterceptors,
-      response
-    );
-    this.setResponseData(newData);
-    return this;
-  }
-
   private logSuccessfulResponse(response = this.getResponse()) {
     if (appConfigs.getConfigs().api.shouldLogSuccessfulResponse)
       console.debug("response:", response);
@@ -209,19 +163,6 @@ export class EventHandler<IOType extends IO> {
   ) {
     if (appConfigs.getConfigs().api.shouldLogFailureResponse)
       console.error(`Api:${this.route.name} Api catch, error:`, error);
-  }
-
-  private executeInterceptors(
-    interceptors: Interceptors,
-    data: IOType["input"] | IOType["output"]
-  ) {
-    let newData = data;
-
-    interceptors.forEach((interceptor) => {
-      newData = interceptor(newData);
-    });
-
-    return newData;
   }
 
   private async executeResponseCallback() {
