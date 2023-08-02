@@ -7,5 +7,8 @@ export const otherEvents = () => {
   });
 
   websocket.client.on("pong", (...args) => console.debug(...args));
-  window.ping = (data: StringMap) => websocket.client.emit("ping", data);
+  window.ping = (data: StringMap) =>
+    websocket.client.emit("ping", data, (response: any) =>
+      console.log(response)
+    );
 };
