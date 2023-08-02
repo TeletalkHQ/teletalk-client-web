@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { websocket } from "~/classes/websocket/Websocket";
-import { PingIO, ServerTestResult, Status, Url } from "~/types";
+import { ServerTestResult, Status, Url } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 
@@ -69,9 +69,8 @@ export const usePing = () => {
     });
   };
 
-  const successPingCallback = async ({ data }: { data: PingIO["output"] }) => {
+  const successPingCallback = () => {
     handleSettled("online");
-    return data;
   };
 
   const failPingCallback = () => {

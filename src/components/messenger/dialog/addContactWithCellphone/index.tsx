@@ -33,11 +33,10 @@ const AddContactWithCellphone = () => {
     });
   };
 
-  const handleAddContactClick = async () => {
-    handler.emitFull(addingContact, async (response) => {
+  const handleAddContactClick = () => {
+    handler.emitFull(addingContact, (response) => {
       userStore.addContact(response.data.addedContact);
       returnToContactsDialog();
-      return response.data;
     });
   };
 

@@ -8,12 +8,12 @@ export const useAddPrivateChat = () => {
   const { handler } = useEmitter("getPrivateChat");
 
   const updater = (chatId: ChatId) => {
-    return handler.emitFull({ chatId }, async ({ data }) => {
+    return handler.emitFull({ chatId }, ({ data }) => {
       messageStore.addPrivateChat(data.privateChat);
-
-      return data;
     });
   };
 
-  return { updater };
+  return {
+    updater,
+  };
 };

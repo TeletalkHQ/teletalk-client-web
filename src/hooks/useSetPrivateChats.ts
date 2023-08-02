@@ -13,13 +13,13 @@ export const useSetPrivateChats = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userStore.userId]);
 
-  const updater = async () => {
-    await handler.emitFull({}, async ({ data }) => {
+  const updater = () => {
+    handler.emitFull({}, ({ data }) => {
       messageStore.setPrivateChats(data.privateChats);
-
-      return data;
     });
   };
 
-  return { updater };
+  return {
+    updater,
+  };
 };

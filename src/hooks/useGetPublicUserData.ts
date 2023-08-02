@@ -30,15 +30,13 @@ export const useGetPublicUserData: UseGetPublicUserData = (userId) => {
   }, [messageStore.selectedChatInfo, userId]);
 
   const updater = (userId: UserId) => {
-    return handler.emitFull({ userId }, async ({ data }) => {
+    return handler.emitFull({ userId }, ({ data }) => {
       const contactItem =
         userStore.contacts.find(
           (i) => i.userId === data.publicUserData.userId
         ) || {};
 
       setPublicUserData({ ...data.publicUserData, ...contactItem });
-
-      return data;
     });
   };
 

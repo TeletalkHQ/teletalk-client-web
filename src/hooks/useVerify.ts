@@ -9,21 +9,19 @@ export const useVerify = () => {
   const router = useCustomRouter();
   const { handler } = useEmitter("verify");
 
-  const updater = async () => {
+  const updater = () => {
     authStore.updateAuthenticationProgress(true);
 
-    await handler.emitFull(
+    handler.emitFull(
       {
         verificationCode: authStore.verificationCode,
       },
-      async ({ data }) => {
+      ({ data }) => {
         authStore.updateVerificationCode("");
         authStore.updateAuthenticationProgress(false);
 
         if (data.newUser) router.replace("create");
         else router.push("initialSetup");
-
-        return data;
       },
       () => {
         authStore.updateAuthenticationProgress(false);

@@ -17,23 +17,24 @@ const Auth = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleUpdateUserData = async () => {
-    await handler.emitFull(
+  const handleUpdateUserData = () => {
+    handler.emitFull(
       {},
-      async ({ data }) => {
+      ({ data }) => {
         userStore.setUserData(data.user);
         router.push("messenger");
-        return data;
+        globalStore.closeFullPageLoading();
       },
       (errors) => {
-        if (errors.some((i) => i.isAuthError)) router.push("signIn");
+        if (errors.some((i) => i.isAuthError)) {
+          router.push("signIn");
+        }
+        globalStore.closeFullPageLoading();
       },
       {
         timeout: 2000,
       }
     );
-
-    globalStore.closeFullPageLoading();
   };
 
   return <></>;

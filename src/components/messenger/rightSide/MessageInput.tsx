@@ -11,19 +11,19 @@ interface Props {}
 const MessageInput: React.FC<Props> = () => {
   const messageStore = useMessageStore();
   const { handler } = useEmitter("sendPrivateMessage");
+
   const handleInputChange = (event: CommonChangeEvent) => {
     messageStore.messageInputOnChange(event.target.value);
   };
 
-  const handleSendMessage = async () => {
+  const handleSendMessage = () => {
     handler.emitFull(
       {
         messageText: messageStore.messageInputTextValue,
         participantId: messageStore.selectedChatInfo.userId,
       },
-      async ({ data }) => {
+      () => {
         messageStore.messageInputOnChange("");
-        return data;
       }
     );
   };
