@@ -13,10 +13,7 @@ const Logout = () => {
   };
 
   const handleLogout = () => {
-    handler.emitFull({}, async ({ data }) => {
-      handleClose();
-      return data;
-    });
+    handler.emitFull({}, handleClose);
   };
 
   return (

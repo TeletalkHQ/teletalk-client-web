@@ -10,15 +10,15 @@ export const useCreate = () => {
   const { handler } = useEmitter("createNewUser");
 
   const updater = async () => {
-    handler.emitFull(extractor.fullName(authState), async ({ data }) => {
+    handler.emitFull(extractor.fullName(authState), () => {
       authState.updateFirstName("");
       authState.updateLastName("");
 
       router.push("initialSetup");
-
-      return data;
     });
   };
 
-  return { updater };
+  return {
+    updater,
+  };
 };

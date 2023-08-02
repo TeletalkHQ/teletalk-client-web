@@ -11,11 +11,7 @@ export const useUpdateProfile = () => {
     const { countryCode, countryName, phoneNumber, ...restProfile } =
       settingsStore.profile;
 
-    handler.emitFull(restProfile, async ({ data }) => {
-      cb();
-
-      return data;
-    });
+    handler.emitFull(restProfile, cb);
   };
 
   return {
