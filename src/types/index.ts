@@ -43,7 +43,12 @@ export interface Route {
 }
 
 export type Events = typeof stuff.events;
-export type EventName = Events[number]["name"];
+export type EventName =
+  | Events[number]["name"]
+  | "connect"
+  | "connect_error"
+  | "disconnect"
+  | "pong";
 
 export type ValidatorType = SyncCheckFunction | AsyncCheckFunction;
 
