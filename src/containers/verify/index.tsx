@@ -1,5 +1,4 @@
 import { Input } from "~/components";
-import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
 import IconButton from "~/components/general/other/IconButton";
@@ -69,13 +68,13 @@ const Verify = () => {
               onChange={handleVerificationCodeInputChange}
             />
 
-            <LoadingButton
+            <Input.LoadingButton
               disabled={isVerifySubmitButtonDisabled()}
               loading={authStore.authenticationProgress}
+              loadingIndicatorText="Verifying..."
               onClick={updater}
               sx={{ mt: 2, mb: 2 }}
-              buttonValue="Verify"
-              indicatorValue="Verifying..."
+              value="Verify"
             />
           </Box.Div>
         </Box.Container>

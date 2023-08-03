@@ -1,7 +1,6 @@
 import { countries } from "utility-store/lib/variables/countries";
 
 import { Input } from "~/components";
-import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
@@ -83,12 +82,12 @@ const SignIn = () => {
               selectedCountry={authStore.selectedCountry}
             />
 
-            <LoadingButton
-              buttonValue="Next"
-              onClick={updater}
-              indicatorValue="Sign in..."
+            <Input.LoadingButton
               disabled={isSignInSubmitButtonDisabled()}
               loading={authStore.authenticationProgress}
+              loadingIndicatorText="Sign in..."
+              onClick={updater}
+              value="Next"
               sx={{
                 mb: 1,
                 mt: 2,

@@ -1,5 +1,4 @@
 import { Input } from "~/components";
-import LoadingButton from "~/components/auth/LoadingButton";
 import Box from "~/components/general/box";
 import IconButton from "~/components/general/other/IconButton";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
@@ -57,13 +56,13 @@ const Create = () => {
             onLastNameInputChange={handleLastNameInputChange}
           />
 
-          <LoadingButton
-            loading={authStore.authenticationProgress}
-            onClick={updater}
-            buttonValue="Create"
-            indicatorValue="Creating..."
+          <Input.LoadingButton
             disabled={isCreateNewUserConfirmButtonDisabled()}
+            loading={authStore.authenticationProgress}
+            loadingIndicatorText="Creating..."
+            onClick={updater}
             sx={{ mt: 1 }}
+            value="Create"
           />
         </Box.Container>
       </Box.Flex>
