@@ -3,9 +3,17 @@ import {
   LoadingButton as MuiLoadingButton,
 } from "@mui/lab";
 
-const LoadingButton: React.FC<LoadingButtonProps> = ({
+import Box from "~/components/general/box";
+import CircularProgress from "~/components/general/progress/CircularProgress";
+
+interface Props extends LoadingButtonProps {
+  loadingIndicatorText?: string;
+}
+
+const LoadingButton: React.FC<Props> = ({
   size = "large",
   variant = "contained",
+  loadingIndicatorText = "",
   ...props
 }) => {
   return (
@@ -15,6 +23,24 @@ const LoadingButton: React.FC<LoadingButtonProps> = ({
         borderRadius: "10px",
         ...props.style,
       }}
+      loadingIndicator={
+        <>
+          <Box.Span
+            style={{
+              color: "white",
+            }}
+          >
+            {loadingIndicatorText}
+          </Box.Span>
+          <CircularProgress
+            style={{
+              marginLeft: 10,
+            }}
+            size={20}
+            color="info"
+          />
+        </>
+      }
       fullWidth
       size={size}
       variant={variant}
