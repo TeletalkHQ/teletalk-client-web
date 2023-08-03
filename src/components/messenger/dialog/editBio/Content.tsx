@@ -10,7 +10,12 @@ interface Props {
 
 const EditBioContent: React.FC<Props> = ({ bio, onChange }) => {
   return (
-    <Box.Flex style={{ maxWidth: 400 }} col>
+    <Box.Flex
+      style={{
+        maxWidth: 400,
+      }}
+      col
+    >
       <Input.Bio value={bio} onChange={onChange} />
       <GreyTextParagraph>
         any details such as age, occupation or city. Example: 23 y.o. designer
