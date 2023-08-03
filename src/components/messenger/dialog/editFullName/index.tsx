@@ -9,7 +9,7 @@ import { OnChangeValidatorFn } from "~/types";
 const EditFullName = () => {
   const globalState = useGlobalStore();
   const settingsState = useSettingsStore();
-  const { updater: profileUpdater } = useUpdateProfile();
+  const { updater: profileUpdater, loading } = useUpdateProfile();
 
   const handleInputChange: OnChangeValidatorFn = (value, event) => {
     settingsState.updateProfile({ [event.target.name]: value });
@@ -39,7 +39,11 @@ const EditFullName = () => {
         }
         onClose={handleClose}
         actions={
-          <Actions onSaveClick={handleSaveClick} onCancel={handleBack} />
+          <Actions
+            loading={loading}
+            onSaveClick={handleSaveClick}
+            onCancel={handleBack}
+          />
         }
       />
     </>
