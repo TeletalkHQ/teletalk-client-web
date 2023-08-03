@@ -5,16 +5,15 @@ import Portal from "~/containers/messenger/portal";
 import RightSide from "~/containers/messenger/rightSide";
 import { useListener } from "~/hooks/useListener";
 import { useUserStore } from "~/store";
-import { SocketResponse, UpdatePublicUserDataIO } from "~/types";
 
 const Messenger = () => {
   const userStore = useUserStore();
 
   useListener({
     evName: "updatePublicUserData",
-    cb: (response: SocketResponse<UpdatePublicUserDataIO["output"]>) => {
+    cb: (response) => {
       userStore.setUserData({
-        ...extractor.userData({ ...userStore, blacklist: [] }),
+        ...extractor.userData({ ...userStore, blacklist: [], clients: [] }),
         ...extractor.publicUserData(response.data.publicUserData),
       });
     },
