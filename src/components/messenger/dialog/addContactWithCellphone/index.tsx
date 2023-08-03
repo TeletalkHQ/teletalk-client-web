@@ -19,7 +19,7 @@ import { utils } from "~/utils";
 const AddContactWithCellphone = () => {
   const globalStore = useGlobalStore();
   const userStore = useUserStore();
-  const { handler } = useEmitter("addContactWithCellphone");
+  const { handler, loading } = useEmitter("addContactWithCellphone");
 
   const [addingContact, setAddingContact] = useState<
     AddContactWithCellphoneIO["input"]
@@ -103,6 +103,7 @@ const AddContactWithCellphone = () => {
         }
         actions={
           <Actions
+            loading={loading}
             onAddContactClick={handleAddContactClick}
             onContactDialogCancelClick={returnToContactsDialog}
             isAddContactButtonDisabled={isAddContactButtonDisabled()}
