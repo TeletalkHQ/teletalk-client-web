@@ -1,6 +1,5 @@
 import { Input } from "~/components";
 import Box from "~/components/general/box";
-import CircularProgress from "~/components/general/progress/CircularProgress";
 import StatusIndicator from "~/components/other/StatusIndicator";
 import { Status, VoidNoArgsFn } from "~/types";
 
@@ -23,12 +22,7 @@ const ServerStatus: React.FC<Props> = ({
     <Input.LoadingButton
       disabled={disabled}
       loading={loading}
-      loadingIndicator={
-        <>
-          <Box.Span>{indicatorValue}</Box.Span>
-          <CircularProgress style={{ marginLeft: 10 }} size={20} color="info" />
-        </>
-      }
+      loadingIndicatorText={indicatorValue}
       onClick={onClick}
       sx={(theme) => ({
         ":disabled": {
