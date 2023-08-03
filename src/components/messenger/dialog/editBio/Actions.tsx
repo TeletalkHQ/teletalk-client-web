@@ -3,18 +3,28 @@ import { VoidNoArgsFn } from "~/types";
 
 interface Props {
   onCancel: VoidNoArgsFn;
+  loading: boolean;
   onSaveClick: VoidNoArgsFn;
 }
 
-const EditBioActions: React.FC<Props> = ({ onCancel, onSaveClick }) => (
+const EditBioActions: React.FC<Props> = ({
+  loading,
+  onCancel,
+  onSaveClick,
+}) => (
   <>
     <Input.Button onClick={onCancel} variant="text" color="error">
       Cancel
     </Input.Button>
 
-    <Input.Button onClick={onSaveClick} variant="text" color="primary">
+    <Input.LoadingButton
+      loadingIndicatorText="Updating..."
+      loading={loading}
+      onClick={onSaveClick}
+      color="primary"
+    >
       Confirm
-    </Input.Button>
+    </Input.LoadingButton>
   </>
 );
 
