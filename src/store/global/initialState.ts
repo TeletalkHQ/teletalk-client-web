@@ -1,4 +1,5 @@
 import { appConfigs } from "~/classes/AppConfigs";
+import { maker } from "~/classes/Maker";
 import { GlobalState } from "~/types";
 
 export const defaultDialogState = {
@@ -19,6 +20,8 @@ export const initialState: GlobalState = {
     addServer: defaultDialogState,
     contacts: defaultDialogState,
     editBio: defaultDialogState,
+    editContact: defaultDialogState,
+    editContactWithCellphone: defaultDialogState,
     editFullName: defaultDialogState,
     editProfile: defaultDialogState,
     editUsername: defaultDialogState,
@@ -40,4 +43,5 @@ export const initialState: GlobalState = {
     speedMultiplier: 1,
     type: "FULL_PAGE",
   },
+  editingContact: maker.emptyContactWithUserId(),
 };

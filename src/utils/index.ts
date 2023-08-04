@@ -1,7 +1,7 @@
 import createCache from "@emotion/cache";
 import lodash from "lodash";
 import { ScreamingSnakeCase } from "type-fest";
-import { CountryCode, CountryName } from "utility-store/lib/types";
+import { CountryCode, CountryName, FullName } from "utility-store/lib/types";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { envManager } from "~/classes/EnvironmentManager";
@@ -13,8 +13,6 @@ import {
   CommonChangeEvent,
   ContactItemWithCellphone,
   Field,
-  FirstName,
-  LastName,
   ModelErrorReason,
   ModelName,
   NativeModel,
@@ -116,14 +114,16 @@ const isCellphoneValid = (
 const isContactWithCellphoneValid = (c: ContactItemWithCellphone) => {
   return (
     isCellphoneValid(c.countryCode, c.countryName, c.phoneNumber) ||
-    isFullNameValid(c.firstName, c.lastName)
+    isFullNameValid(c)
   );
 };
 
-const isFullNameValid = (firstName: FirstName, lastName: LastName) =>
+const isFullNameValid = (fullName: FullName) =>
   [
-    validators.firstName.submitValidator().checkValue(firstName).hasError,
-    validators.lastName.submitValidator().checkValue(lastName).hasError,
+    validators.firstName.submitValidator().checkValue(fullName.firstName)
+      .hasError,
+    validators.lastName.submitValidator().checkValue(fullName.lastName)
+      .hasError,
   ].some(Boolean);
 
 const getDefaultValidatorErrorTypes = () => ({
