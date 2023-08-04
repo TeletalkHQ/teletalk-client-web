@@ -8,7 +8,6 @@ import {
 } from "~/types";
 
 export interface AuthHandlers {
-  updateAuthenticationProgress: (value: boolean) => void;
   updateCountryCode: (value: string) => void;
   updateCountryName: (value: string) => void;
   updateFirstName: (value: string) => void;
@@ -19,7 +18,6 @@ export interface AuthHandlers {
 }
 
 export interface AuthState {
-  authenticationProgress: boolean;
   countryCode: string;
   countryName: string;
   firstName: FirstName;

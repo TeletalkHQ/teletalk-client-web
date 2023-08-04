@@ -14,7 +14,7 @@ import { utils } from "~/utils";
 
 const SignIn = () => {
   const authStore = useAuthStore();
-  const { updater } = useSignIn();
+  const { updater, loading } = useSignIn();
 
   const handlePhoneNumberInputChange = (value: string) => {
     authStore.updatePhoneNumber(value);
@@ -84,7 +84,7 @@ const SignIn = () => {
 
             <Input.LoadingButton
               disabled={isSignInSubmitButtonDisabled()}
-              loading={authStore.authenticationProgress}
+              loading={loading}
               loadingIndicatorText="Sign in..."
               onClick={updater}
               sx={{

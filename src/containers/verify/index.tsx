@@ -14,7 +14,7 @@ import { validators } from "~/validators";
 const Verify = () => {
   const authStore = useAuthStore();
   const router = useCustomRouter();
-  const { updater } = useVerify();
+  const { updater, loading } = useVerify();
 
   const isVerifySubmitButtonDisabled = () =>
     validators.verificationCode
@@ -70,7 +70,7 @@ const Verify = () => {
 
             <Input.LoadingButton
               disabled={isVerifySubmitButtonDisabled()}
-              loading={authStore.authenticationProgress}
+              loading={loading}
               loadingIndicatorText="Verifying..."
               onClick={updater}
               sx={{
