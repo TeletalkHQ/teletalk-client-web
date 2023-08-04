@@ -1,6 +1,7 @@
 import { Input } from "~/components";
 import Box from "~/components/general/box";
 import IconButton from "~/components/general/other/IconButton";
+import CircularProgress from "~/components/general/progress/CircularProgress";
 import { Icons } from "~/components/other/Icons";
 import { useEmitter } from "~/hooks/useEmitter";
 import { useMessageStore } from "~/store";
@@ -10,7 +11,7 @@ interface Props {}
 
 const MessageInput: React.FC<Props> = () => {
   const messageStore = useMessageStore();
-  const { handler } = useEmitter("sendPrivateMessage");
+  const { handler, loading } = useEmitter("sendPrivateMessage");
 
   const handleInputChange = (event: CommonChangeEvent) => {
     messageStore.messageInputOnChange(event.target.value);
@@ -58,8 +59,12 @@ const MessageInput: React.FC<Props> = () => {
 
         <Box.Div>
           {messageStore.messageInputTextValue ? (
-            <IconButton onClick={handleSendMessage}>
-              <Icons.Telegram.Icon color="primary" />
+            <IconButton onClick={() => !loading && handleSendMessage()}>
+              {loading ? (
+                <CircularProgress size={20} color="info" />
+              ) : (
+                <Icons.Telegram.Icon color="primary" />
+              )}
             </IconButton>
           ) : (
             <>
