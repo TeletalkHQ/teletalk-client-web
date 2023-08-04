@@ -73,9 +73,13 @@ const Verify = () => {
               loading={authStore.authenticationProgress}
               loadingIndicatorText="Verifying..."
               onClick={updater}
-              sx={{ mt: 2, mb: 2 }}
-              value="Verify"
-            />
+              sx={{
+                mb: 2,
+                mt: 2,
+              }}
+            >
+              Verify
+            </Input.LoadingButton>
           </Box.Div>
         </Box.Container>
       </Box.Div>

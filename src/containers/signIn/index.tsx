@@ -87,12 +87,13 @@ const SignIn = () => {
               loading={authStore.authenticationProgress}
               loadingIndicatorText="Sign in..."
               onClick={updater}
-              value="Next"
               sx={{
                 mb: 1,
                 mt: 2,
               }}
-            />
+            >
+              Next
+            </Input.LoadingButton>
           </Box.Div>
         </Box.Container>
       </Box.Flex>

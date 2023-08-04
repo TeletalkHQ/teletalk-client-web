@@ -62,8 +62,9 @@ const Create = () => {
             loadingIndicatorText="Creating..."
             onClick={updater}
             sx={{ mt: 1 }}
-            value="Create"
-          />
+          >
+            Create
+          </Input.LoadingButton>
         </Box.Container>
       </Box.Flex>
 
