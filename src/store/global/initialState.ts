@@ -10,9 +10,9 @@ export const defaultDialogState = {
 };
 
 export const initialState: GlobalState = {
-  drawer: {
-    anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
-    open: false,
+  contextMenu: {
+    list: [],
+    position: null,
   },
   dialogState: {
     addContact: defaultDialogState,
@@ -27,6 +27,11 @@ export const initialState: GlobalState = {
     settings: defaultDialogState,
     userInfo: defaultDialogState,
   },
+  drawer: {
+    anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
+    open: false,
+  },
+  isOnline: false,
   loading: {
     color: "wheat",
     open: false,
@@ -35,5 +40,4 @@ export const initialState: GlobalState = {
     speedMultiplier: 1,
     type: "FULL_PAGE",
   },
-  isOnline: false,
 };
