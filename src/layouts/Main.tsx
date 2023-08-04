@@ -1,3 +1,4 @@
+import ContextMenu from "~/components/general/other/ContextMenu";
 import FullPageLoading from "~/components/loadings/FullPageLoading";
 import OverlayLoading from "~/components/loadings/OverlayLoading";
 
@@ -10,7 +11,7 @@ const MainLayout: React.FC<Props> = ({ children }) => {
     <>
       <FullPageLoading />
       <OverlayLoading />
-
+      <ContextMenu />
       {children}
     </>
   );
