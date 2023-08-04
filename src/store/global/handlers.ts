@@ -95,4 +95,33 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
       },
     }));
   },
+
+  handleContextMenu(e: React.MouseEvent, list) {
+    e.preventDefault();
+
+    set((prevState) => ({
+      contextMenu:
+        prevState.contextMenu.position === null
+          ? {
+              list,
+              position: {
+                mouseX: e.clientX + 2,
+                mouseY: e.clientY - 6,
+              },
+            }
+          : {
+              list: [],
+              position: null,
+            },
+    }));
+  },
+
+  closeContextMenu() {
+    set(() => ({
+      contextMenu: {
+        list: [],
+        position: null,
+      },
+    }));
+  },
 });
