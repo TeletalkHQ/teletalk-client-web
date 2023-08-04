@@ -40,6 +40,23 @@ export type SelectedCountry = CountryItem | null;
 
 export type LoadingType = "FULL_PAGE" | "OVERLAY";
 
+export type OnContextMenu = (e: React.MouseEvent) => void;
+
+export interface ContextMenuItem {
+  text: string;
+  handler: VoidNoArgsFn;
+}
+
+export type ContextMenuList = ContextMenuItem[];
+
+export type ContextMenuState = {
+  position: {
+    mouseX: number;
+    mouseY: number;
+  } | null;
+  list: ContextMenuList;
+};
+
 export interface GlobalHandlers {
   openLoading: (type?: LoadingType) => void;
   closeLoading: (type?: LoadingType) => void;
@@ -52,6 +69,8 @@ export interface GlobalHandlers {
   closeOverlayLoading: VoidNoArgsFn;
   openFullPageLoading: VoidNoArgsFn;
   closeFullPageLoading: VoidNoArgsFn;
+  handleContextMenu: (e: React.MouseEvent, list: ContextMenuList) => void;
+  closeContextMenu: () => void;
 }
 
 export interface LoadingState {
@@ -64,10 +83,7 @@ export interface LoadingState {
 }
 
 export interface GlobalState {
-  drawer: {
-    anchor: DrawerAnchor;
-    open: boolean;
-  };
+  contextMenu: ContextMenuState;
   dialogState: {
     addContact: DialogState;
     addServer: DialogState;
@@ -81,6 +97,11 @@ export interface GlobalState {
     settings: DialogState;
     userInfo: DialogState;
   };
+  drawer: {
+    anchor: DrawerAnchor;
+    open: boolean;
+  };
+  isOnline: boolean;
   loading: {
     color: CSSProperties["color"];
     open: boolean;
@@ -89,7 +110,6 @@ export interface GlobalState {
     speedMultiplier: number;
     type: LoadingType;
   };
-  isOnline: boolean;
 }
 
 export type GlobalSetState = StoreSetFn<GlobalState>;
