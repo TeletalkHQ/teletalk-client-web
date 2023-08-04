@@ -8,6 +8,7 @@ import Content from "~/components/messenger/dialog/addContactWithCellphone/Conte
 import Title from "~/components/messenger/dialog/addContactWithCellphone/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useEmitter } from "~/hooks/useEmitter";
+import { useListener } from "~/hooks/useListener";
 import { useGlobalStore, useUserStore } from "~/store";
 import {
   AddContactWithCellphoneIO,
@@ -20,6 +21,13 @@ const AddContactWithCellphone = () => {
   const globalStore = useGlobalStore();
   const userStore = useUserStore();
   const { handler, loading } = useEmitter("addContactWithCellphone");
+
+  useListener({
+    evName: "addContactWithCellphone",
+    cb(response) {
+      userStore.addContact(response.data.addedContact);
+    },
+  });
 
   const [addingContact, setAddingContact] = useState<
     AddContactWithCellphoneIO["input"]
@@ -34,10 +42,7 @@ const AddContactWithCellphone = () => {
   };
 
   const handleAddContactClick = () => {
-    handler.emitFull(addingContact, (response) => {
-      userStore.addContact(response.data.addedContact);
-      returnToContactsDialog();
-    });
+    handler.emitFull(addingContact, returnToContactsDialog);
   };
 
   const closeAddContactDialog = () => {
