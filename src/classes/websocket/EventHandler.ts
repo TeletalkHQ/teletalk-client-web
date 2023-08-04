@@ -1,3 +1,4 @@
+import Timeout from "await-timeout";
 import { checkFields } from "check-fields";
 import { trier } from "simple-trier";
 
@@ -23,7 +24,7 @@ interface Options {
 
 export class EventHandler<IOType extends IO> {
   private defaultOptions: Options = {
-    timeout: 0,
+    timeout: appConfigs.getConfigs().api.defaultTimeout,
   };
 
   private errorCallback: SocketErrorCallback;
@@ -71,16 +72,16 @@ export class EventHandler<IOType extends IO> {
 
     this.loadingUpdater(true);
 
+    await Timeout.set(mergedOptions.timeout);
+
     const response: SocketResponse = await new Promise((resolve, reject) => {
       websocket.client.emit(
         this.route.name,
         data,
         (response: SocketResponse) => {
-          setTimeout(() => {
-            if (response.ok) resolve(response);
+          if (response.ok) resolve(response);
 
-            reject(response);
-          }, mergedOptions.timeout);
+          reject(response);
         }
       );
     });
