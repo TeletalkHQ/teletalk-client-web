@@ -1,17 +1,24 @@
 import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
-import { VoidNoArgsFn } from "~/types";
+import { OnContextMenu, VoidNoArgsFn } from "~/types";
 
 interface Props {
   fullName: string;
   //REFACTOR: To template string
   lastSeen: string;
   onContactClick: VoidNoArgsFn;
+  onContextMenu: OnContextMenu;
 }
 
-const ListItem: React.FC<Props> = ({ fullName, lastSeen, onContactClick }) => {
+const ListItem: React.FC<Props> = ({
+  fullName,
+  lastSeen,
+  onContactClick,
+  onContextMenu,
+}) => {
   return (
     <Box.ListItemButton
+      onContextMenu={onContextMenu}
       style={{
         display: "flex",
         height: "65px",

@@ -27,7 +27,7 @@ const Create = () => {
   };
 
   const isCreateNewUserConfirmButtonDisabled = () =>
-    utils.isFullNameValid(authStore.firstName, authStore.lastName);
+    utils.isFullNameValid(authStore);
 
   return (
     <Box.Container mw="xl">

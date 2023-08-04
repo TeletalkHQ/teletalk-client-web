@@ -124,4 +124,10 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
       },
     }));
   },
+
+  setEditingContact(c) {
+    set(() => ({
+      editingContact: c,
+    }));
+  },
 });

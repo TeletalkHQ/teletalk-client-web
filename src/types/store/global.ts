@@ -1,6 +1,6 @@
 import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
-import { CountryItem } from "utility-store/lib/types";
+import { CountryItem, FullNameWithUserId } from "utility-store/lib/types";
 
 import { StoreSetFn, VoidNoArgsFn } from "~/types";
 
@@ -14,6 +14,8 @@ export type DialogName =
   | "chatSettings"
   | "contacts"
   | "editBio"
+  | "editContact"
+  | "editContactWithCellphone"
   | "editFullName"
   | "editPhoneNumber"
   | "editProfile"
@@ -23,8 +25,8 @@ export type DialogName =
   | "logout"
   | "notificationsAndSounds"
   | "privacyAndSecurity"
-  | "settings"
   | "servers"
+  | "settings"
   | "userInfo";
 
 export interface DialogProps {
@@ -42,9 +44,14 @@ export type LoadingType = "FULL_PAGE" | "OVERLAY";
 
 export type OnContextMenu = (e: React.MouseEvent) => void;
 
+export type ExtendedOnContextMenu<T extends any = any> = (
+  e: React.MouseEvent,
+  arg: T
+) => void;
+
 export interface ContextMenuItem {
   text: string;
-  handler: VoidNoArgsFn;
+  handler: (...args: any[]) => void;
 }
 
 export type ContextMenuList = ContextMenuItem[];
@@ -71,6 +78,7 @@ export interface GlobalHandlers {
   closeFullPageLoading: VoidNoArgsFn;
   handleContextMenu: (e: React.MouseEvent, list: ContextMenuList) => void;
   closeContextMenu: () => void;
+  setEditingContact: (c: FullNameWithUserId) => void;
 }
 
 export interface LoadingState {
@@ -89,6 +97,8 @@ export interface GlobalState {
     addServer: DialogState;
     contacts: DialogState;
     editBio: DialogState;
+    editContact: DialogState;
+    editContactWithCellphone: DialogState;
     editFullName: DialogState;
     editProfile: DialogState;
     editUsername: DialogState;
@@ -101,6 +111,7 @@ export interface GlobalState {
     anchor: DrawerAnchor;
     open: boolean;
   };
+  editingContact: FullNameWithUserId;
   isOnline: boolean;
   loading: {
     color: CSSProperties["color"];

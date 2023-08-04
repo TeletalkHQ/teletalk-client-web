@@ -31,7 +31,7 @@ const AddContactWithCellphone = () => {
 
   const [addingContact, setAddingContact] = useState<
     AddContactWithCellphoneIO["input"]
-  >(maker.emptyContactWithCellphone());
+  >(maker.emptyContactWithCellphone);
   const [selectedCountry, setSelectedCountry] = useState<SelectedCountry>(null);
 
   const handleInputChange = (_value: string, event: CommonChangeEvent) => {
@@ -48,7 +48,7 @@ const AddContactWithCellphone = () => {
   const closeAddContactDialog = () => {
     globalStore.closeDialog("addContact");
     setSelectedCountry(null);
-    setAddingContact(maker.emptyContactWithCellphone());
+    setAddingContact(maker.emptyContactWithCellphone);
   };
 
   const returnToContactsDialog = () => {
@@ -86,8 +86,7 @@ const AddContactWithCellphone = () => {
     selectCountryByCountryCodeInputChange(value);
   };
 
-  const isAddContactButtonDisabled = () =>
-    utils.isContactWithCellphoneValid(addingContact);
+  const isSubmitDisabled = utils.isContactWithCellphoneValid(addingContact);
 
   return (
     <>
@@ -111,7 +110,7 @@ const AddContactWithCellphone = () => {
             loading={loading}
             onAddContactClick={handleAddContactClick}
             onContactDialogCancelClick={returnToContactsDialog}
-            isAddContactButtonDisabled={isAddContactButtonDisabled()}
+            isAddContactButtonDisabled={isSubmitDisabled}
           />
         }
         open={globalStore.dialogState.addContact.open}

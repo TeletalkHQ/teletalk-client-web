@@ -5,7 +5,14 @@ import {
   Status,
 } from "utility-store/lib/types";
 
-import { Bio, StoreSetFn, StringMap, UserId, Username } from "~/types";
+import {
+  Bio,
+  EditContactIO,
+  StoreSetFn,
+  StringMap,
+  UserId,
+  Username,
+} from "~/types";
 
 export interface BlacklistItem {
   userId: UserId;
@@ -26,6 +33,7 @@ export type ExtendedUserState = UserState & StringMap;
 export interface UserHandlers {
   setUserData: (u: UserState) => void;
   addContact: (c: ContactItem) => void;
+  editContact: (c: EditContactIO["output"]["editedContact"]) => void;
 }
 
 export type UserSetState = StoreSetFn<UserState>;
