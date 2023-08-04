@@ -12,7 +12,7 @@ import { utils } from "~/utils";
 const Create = () => {
   const authStore = useAuthStore();
   const router = useCustomRouter();
-  const { updater } = useCreate();
+  const { updater, loading } = useCreate();
 
   const handleFirstNameInputChange = (value: string) => {
     authStore.updateFirstName(value);
@@ -58,7 +58,7 @@ const Create = () => {
 
           <Input.LoadingButton
             disabled={isCreateNewUserConfirmButtonDisabled()}
-            loading={authStore.authenticationProgress}
+            loading={loading}
             loadingIndicatorText="Creating..."
             onClick={updater}
             sx={{ mt: 1 }}

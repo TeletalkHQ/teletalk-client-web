@@ -6,11 +6,6 @@ export const handlers: (set: AuthSetState) => AuthHandlers = (set) => ({
       countryCode,
     });
   },
-  updateAuthenticationProgress(authenticationProgress) {
-    set({
-      authenticationProgress,
-    });
-  },
   updateCountryName(countryName) {
     set({
       countryName,
