@@ -79,14 +79,14 @@ export class EventHandler<IOType extends IO> {
         this.route.name,
         data,
         (response: SocketResponse) => {
+          this.loadingUpdater(false);
+
           if (response.ok) resolve(response);
 
           reject(response);
         }
       );
     });
-
-    this.loadingUpdater(false);
 
     this.setResponse(response).setResponseData(response.data);
 
