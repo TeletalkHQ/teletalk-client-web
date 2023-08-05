@@ -1,1 +1,1 @@
-export { useGetPublicUserData } from "./useGetPublicUserData";
+export { useUserPublicData } from "./useUserPublicData";
