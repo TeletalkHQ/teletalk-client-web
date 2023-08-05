@@ -8,7 +8,9 @@ interface Props {
 const AddServerButton: React.FC<Props> = ({ onAddServerClick }) => {
   return (
     <>
-      <Input.Button onClick={onAddServerClick}>Add server</Input.Button>
+      <Input.PrimaryButton onClick={onAddServerClick}>
+        Add server
+      </Input.PrimaryButton>
     </>
   );
 };
