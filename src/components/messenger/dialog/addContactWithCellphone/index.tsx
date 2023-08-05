@@ -9,7 +9,7 @@ import Title from "~/components/messenger/dialog/addContactWithCellphone/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useEmitter } from "~/hooks/useEmitter";
 import { useListener } from "~/hooks/useListener";
-import { useGlobalStore, useUserStore } from "~/store";
+import { useGlobalStore } from "~/store";
 import {
   AddContactWithCellphoneIO,
   CommonChangeEvent,
@@ -19,13 +19,17 @@ import { utils } from "~/utils";
 
 const AddContactWithCellphone = () => {
   const globalStore = useGlobalStore();
-  const userStore = useUserStore();
   const { handler, loading } = useEmitter("addContactWithCellphone");
 
   useListener({
     evName: "addContactWithCellphone",
     cb(response) {
-      userStore.addContact(response.data.addedContact);
+      globalStore.addUser({
+        ...maker.emptyUserPublicData(),
+        ...response.data.addedContact,
+        isContact: true,
+        isPublicDataUpdated: false,
+      });
     },
   });
 

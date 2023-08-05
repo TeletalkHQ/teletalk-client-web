@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { extractor } from "~/classes/Extractor";
+import { maker } from "~/classes/Maker";
 import { useCustomRouter } from "~/hooks/useCustomRouter";
 import { useEmitter } from "~/hooks/useEmitter";
 import { useGlobalStore, useUserStore } from "~/store";
@@ -21,7 +23,15 @@ const Auth = () => {
     handler.emitFull(
       {},
       ({ data }) => {
-        userStore.setUserData(data.user);
+        userStore.setUserData(extractor.userState(data.user));
+        globalStore.setUsers(
+          data.user.contacts.map((item) => ({
+            ...maker.emptyUserPublicData(),
+            ...item,
+            isContact: true,
+            isPublicDataUpdated: false,
+          }))
+        );
         router.push("messenger");
         globalStore.closeFullPageLoading();
       },
@@ -30,9 +40,6 @@ const Auth = () => {
           router.push("signIn");
         }
         globalStore.closeFullPageLoading();
-      },
-      {
-        timeout: 2000,
       }
     );
   };

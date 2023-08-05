@@ -7,19 +7,18 @@ import Title from "~/components/messenger/dialog/editContactWithCellphone/Title"
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useEmitter } from "~/hooks/useEmitter";
 import { useListener } from "~/hooks/useListener";
-import { useGlobalStore, useUserStore } from "~/store";
+import { useGlobalStore } from "~/store";
 import { CommonChangeEvent } from "~/types";
 import { utils } from "~/utils";
 
 const EditContactWithCellphone = () => {
   const globalStore = useGlobalStore();
-  const userStore = useUserStore();
   const { handler, loading } = useEmitter("editContact");
 
   useListener({
     evName: "editContact",
     cb(response) {
-      userStore.editContact(response.data.editedContact);
+      globalStore.updateUser(response.data.editedContact);
     },
   });
 
