@@ -9,26 +9,18 @@ interface Props {
 
 const ContactsActions: React.FC<Props> = ({ onClose, onAddContactClick }) => (
   <>
-    <Box.Flex sx={{ width: "100%" }} jc="space-between" ai="center">
-      <Box.Div>
-        <Input.Button
-          variant="text"
-          style={{ fontWeight: "bold" }}
-          onClick={onAddContactClick}
-        >
-          Add Contact
-        </Input.Button>
-      </Box.Div>
+    <Box.Flex
+      sx={{
+        width: "100%",
+      }}
+      jc="space-between"
+      ai="center"
+    >
+      <Input.CloseButton onClick={onClose} />
 
-      <Box.Div>
-        <Input.Button
-          variant="text"
-          style={{ fontWeight: "bold" }}
-          onClick={onClose}
-        >
-          Close
-        </Input.Button>
-      </Box.Div>
+      <Input.PrimaryTextButton onClick={onAddContactClick}>
+        Add Contact
+      </Input.PrimaryTextButton>
     </Box.Flex>
   </>
 );

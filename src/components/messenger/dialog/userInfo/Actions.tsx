@@ -7,13 +7,7 @@ interface Props {
 
 const UserInfoActions: React.FC<Props> = ({ onClose }) => (
   <>
-    <Input.Button
-      variant="text"
-      style={{ fontWeight: "bold" }}
-      onClick={onClose}
-    >
-      Close
-    </Input.Button>
+    <Input.CloseButton onClick={onClose} />
   </>
 );
 

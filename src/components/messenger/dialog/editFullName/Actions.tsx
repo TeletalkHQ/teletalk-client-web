@@ -13,19 +13,9 @@ const EditFullNameActions: React.FC<Props> = ({
   onSaveClick,
 }) => (
   <>
-    {/* //TODO: Replace with CancelButton */}
-    <Input.Button onClick={onCancel} variant="text" color="error">
-      Cancel
-    </Input.Button>
+    <Input.CancelButton onClick={onCancel} />
 
-    <Input.LoadingButton
-      loading={loading}
-      loadingIndicatorText="Updating..."
-      onClick={onSaveClick}
-      color="primary"
-    >
-      Confirm
-    </Input.LoadingButton>
+    <Input.ConfirmButton loading={loading} onClick={onSaveClick} />
   </>
 );
 
