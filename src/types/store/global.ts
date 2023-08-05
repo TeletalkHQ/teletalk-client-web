@@ -1,8 +1,13 @@
 import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
-import { CountryItem, FullNameWithUserId } from "utility-store/lib/types";
+import {
+  Cellphone,
+  CountryItem,
+  FullNameWithUserId,
+  PublicUserData,
+} from "utility-store/lib/types";
 
-import { StoreSetFn, VoidNoArgsFn } from "~/types";
+import { EditContactIO, StoreSetFn, VoidNoArgsFn } from "~/types";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -64,6 +69,14 @@ export type ContextMenuState = {
   list: ContextMenuList;
 };
 
+export type UserItem = PublicUserData &
+  Cellphone & {
+    isContact: boolean;
+    isPublicDataUpdated: boolean;
+  };
+
+export type Users = UserItem[];
+
 export interface GlobalHandlers {
   openLoading: (type?: LoadingType) => void;
   closeLoading: (type?: LoadingType) => void;
@@ -79,6 +92,9 @@ export interface GlobalHandlers {
   handleContextMenu: (e: React.MouseEvent, list: ContextMenuList) => void;
   closeContextMenu: () => void;
   setEditingContact: (c: FullNameWithUserId) => void;
+  addUser: (u: UserItem) => void;
+  updateUser: (u: EditContactIO["output"]["editedContact"]) => void;
+  setUsers: (u: Users) => void;
 }
 
 export interface LoadingState {
@@ -121,6 +137,8 @@ export interface GlobalState {
     speedMultiplier: number;
     type: LoadingType;
   };
+
+  users: Users;
 }
 
 export type GlobalSetState = StoreSetFn<GlobalState>;
