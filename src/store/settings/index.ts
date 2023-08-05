@@ -1,7 +1,6 @@
-import { create } from "zustand";
-
 import { SettingsStore } from "~/types";
 
+import { create } from "../utils";
 import { handlers } from "./handlers";
 import { initialState } from "./initialState";
 
