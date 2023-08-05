@@ -3,7 +3,7 @@ import Box from "~/components/general/box";
 import IconButton from "~/components/general/other/IconButton";
 import Typography from "~/components/general/typography/Typography";
 import { Icons } from "~/components/other/Icons";
-import { useGetPublicUserData } from "~/hooks";
+import { useUserPublicData } from "~/hooks";
 import { useGlobalStore, useMessageStore } from "~/store";
 
 interface Props {}
@@ -11,7 +11,7 @@ interface Props {}
 const ChatBar: React.FC<Props> = () => {
   const globalStore = useGlobalStore();
   const messageStore = useMessageStore();
-  const { publicUserData } = useGetPublicUserData();
+  const { publicUserData } = useUserPublicData();
 
   const fullName = userUtils.concatFirstNameWithLastName(publicUserData);
 

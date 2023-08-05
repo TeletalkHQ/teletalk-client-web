@@ -3,7 +3,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { userUtils } from "~/classes/UserUtils";
 import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
-import { useGetPublicUserData } from "~/hooks";
+import { useUserPublicData } from "~/hooks";
 import { MessageText, UserId, VoidNoArgsFn } from "~/types";
 
 import Lower from "./Lower";
@@ -22,7 +22,7 @@ const ChatListItem: React.FC<Props> = ({
   selected,
   userId,
 }) => {
-  const { publicUserData } = useGetPublicUserData(userId);
+  const { publicUserData } = useUserPublicData(userId);
   const fullName = userUtils.concatFirstNameWithLastName(publicUserData);
 
   return (

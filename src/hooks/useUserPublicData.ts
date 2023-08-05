@@ -7,14 +7,14 @@ import { UserId } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 
-type UseGetPublicUserData = (userId?: UserId) => {
+type UseUserPublicData = (userId?: UserId) => {
   publicUserData: PublicUserData;
   updater: (u: UserId) => Promise<{
     publicUserData: PublicUserData;
   }>;
 };
 
-export const useGetPublicUserData: UseGetPublicUserData = (userId) => {
+export const useUserPublicData: UseUserPublicData = (userId) => {
   const messageStore = useMessageStore();
   const userStore = useUserStore();
   const { handler } = useEmitter("getPublicUserData");
