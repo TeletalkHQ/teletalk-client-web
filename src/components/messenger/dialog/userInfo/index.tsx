@@ -3,11 +3,15 @@ import DialogTemplate from "~/components/messenger/dialog/template";
 import Actions from "~/components/messenger/dialog/userInfo/Actions";
 import Content from "~/components/messenger/dialog/userInfo/Content";
 import Title from "~/components/messenger/dialog/userInfo/Title";
-import { useGlobalStore, useUserStore } from "~/store";
+import { useUserPublicData } from "~/hooks";
+import { useGlobalStore, useMessageStore } from "~/store";
 
 const UserInfo = () => {
   const globalState = useGlobalStore();
-  const userState = useUserStore();
+  const messageStore = useMessageStore();
+  const { publicUserData } = useUserPublicData(
+    messageStore.selectedChatInfo.userId
+  );
 
   const handleClose = () => {
     globalState.closeDialog("userInfo");
@@ -20,8 +24,10 @@ const UserInfo = () => {
         open={globalState.dialogState.userInfo.open}
         content={
           <Content
-            fullName={userUtils.concatFirstNameWithLastName(userState)}
-            fullNumber={userUtils.concatCountryCodeWithPhoneNumber(userState)}
+            fullName={userUtils.concatFirstNameWithLastName(publicUserData)}
+            fullNumber={userUtils.concatCountryCodeWithPhoneNumber(
+              publicUserData
+            )}
           />
         }
         actions={<Actions onClose={handleClose} />}
