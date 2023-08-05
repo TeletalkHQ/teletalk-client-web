@@ -34,10 +34,7 @@ const Auth = () => {
         router.push("messenger");
         globalStore.closeFullPageLoading();
       },
-      (errors) => {
-        if (errors.some((i) => i.isAuthError)) {
-          router.push("signIn");
-        }
+      () => {
         globalStore.closeFullPageLoading();
       }
     );

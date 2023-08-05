@@ -9,7 +9,10 @@ type Events = {
 export class SocketEmitterStore {
   events = stuffStore.events.reduce((prevValue, currValue) => {
     const c = currValue as SocketRoute;
-    prevValue[c.name] = eventHandler(() => undefined).setRoute(c);
+    prevValue[c.name] = eventHandler(
+      () => undefined,
+      () => undefined
+    ).setRoute(c);
     return prevValue;
   }, {} as Events);
 }
