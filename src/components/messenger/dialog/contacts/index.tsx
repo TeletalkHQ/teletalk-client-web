@@ -5,7 +5,7 @@ import Actions from "~/components/messenger/dialog/contacts/Actions";
 import Content from "~/components/messenger/dialog/contacts/Content";
 import Title from "~/components/messenger/dialog/contacts/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
-import { useContextMenu } from "~/hooks/useContextMenu";
+import { useContextMenu } from "~/hooks";
 import { useGlobalStore, useMessageStore } from "~/store";
 import { ExtendedOnContextMenu } from "~/types";
 

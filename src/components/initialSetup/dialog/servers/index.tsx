@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import DialogTemplate from "~/components/messenger/dialog/template";
-import { usePing } from "~/hooks/usePing";
+import { usePing } from "~/hooks";
 import { useGlobalStore } from "~/store";
 import { ServerTestResult, Url } from "~/types";
 

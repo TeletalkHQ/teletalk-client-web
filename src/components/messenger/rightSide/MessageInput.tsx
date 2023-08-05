@@ -3,7 +3,7 @@ import Box from "~/components/general/box";
 import IconButton from "~/components/general/other/IconButton";
 import CircularProgress from "~/components/general/progress/CircularProgress";
 import { Icons } from "~/components/other/Icons";
-import { useEmitter } from "~/hooks/useEmitter";
+import { useEmitter } from "~/hooks";
 import { useMessageStore } from "~/store";
 import { CommonChangeEvent } from "~/types";
 

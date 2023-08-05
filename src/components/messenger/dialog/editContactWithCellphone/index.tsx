@@ -5,8 +5,7 @@ import Actions from "~/components/messenger/dialog/editContactWithCellphone/Acti
 import Content from "~/components/messenger/dialog/editContactWithCellphone/Content";
 import Title from "~/components/messenger/dialog/editContactWithCellphone/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
-import { useEmitter } from "~/hooks/useEmitter";
-import { useListener } from "~/hooks/useListener";
+import { useEmitter, useListener } from "~/hooks";
 import { useGlobalStore } from "~/store";
 import { CommonChangeEvent } from "~/types";
 import { utils } from "~/utils";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export type UpdateLoadingFn = (l: boolean) => void;
+import { UpdateLoadingFn } from "~/types";
 
 export const useLoading = () => {
   const [loading, setLoading] = useState(false);

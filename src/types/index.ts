@@ -170,6 +170,8 @@ export interface ServerTestResult {
   status: Status;
 }
 
+export type UpdateLoadingFn = (l: boolean) => void;
+
 export type * from "./api";
 export type * from "./components";
 export type * from "./datatypes";

@@ -1,7 +1,7 @@
 import Actions from "~/components/messenger/dialog/logout/Actions";
 import Content from "~/components/messenger/dialog/logout/Content";
 import DialogTemplate from "~/components/messenger/dialog/template";
-import { useEmitter } from "~/hooks/useEmitter";
+import { useEmitter } from "~/hooks";
 import { useGlobalStore } from "~/store";
 
 const Logout = () => {

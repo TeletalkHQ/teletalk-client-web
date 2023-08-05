@@ -7,8 +7,7 @@ import Actions from "~/components/messenger/dialog/addContactWithCellphone/Actio
 import Content from "~/components/messenger/dialog/addContactWithCellphone/Content";
 import Title from "~/components/messenger/dialog/addContactWithCellphone/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
-import { useEmitter } from "~/hooks/useEmitter";
-import { useListener } from "~/hooks/useListener";
+import { useEmitter, useListener } from "~/hooks";
 import { useGlobalStore } from "~/store";
 import {
   AddContactWithCellphoneIO,

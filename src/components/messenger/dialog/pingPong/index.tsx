@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 import { websocket } from "~/classes/websocket/Websocket";
-import { useEmitter } from "~/hooks/useEmitter";
-import { useListener } from "~/hooks/useListener";
+import { useEmitter, useListener } from "~/hooks";
 
 const PingPong = () => {
   const [isConnected, setIsConnected] = useState(websocket.client.connected);

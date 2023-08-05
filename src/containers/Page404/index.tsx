@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useCustomRouter } from "~/hooks/useCustomRouter";
+import { useCustomRouter } from "~/hooks";
 
 const Page404Container = () => {
   const router = useCustomRouter();

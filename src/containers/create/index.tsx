@@ -4,8 +4,7 @@ import IconButton from "~/components/general/other/IconButton";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
-import { useCreate } from "~/hooks/useCreate";
-import { useCustomRouter } from "~/hooks/useCustomRouter";
+import { useCreate, useCustomRouter } from "~/hooks";
 import { useAuthStore } from "~/store";
 import { utils } from "~/utils";
 

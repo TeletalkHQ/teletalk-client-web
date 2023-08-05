@@ -2,7 +2,7 @@ import Actions from "~/components/messenger/dialog/editBio/Actions";
 import Content from "~/components/messenger/dialog/editBio/Content";
 import Title from "~/components/messenger/dialog/editBio/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
-import { useUpdateProfile } from "~/hooks/useUpdateProfile";
+import { useUpdateProfile } from "~/hooks";
 import { useGlobalStore, useSettingsStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 
