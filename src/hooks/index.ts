@@ -12,3 +12,4 @@ export { useSignIn } from "./useSignIn";
 export { useUpdateProfile } from "./useUpdateProfile";
 export { useVerify } from "./useVerify";
 export { useUserPublicData } from "./useUserPublicData";
+export { useUnmount } from "./useUnmount";
