@@ -3,11 +3,13 @@ import Box from "~/components/general/box";
 import LeftSide from "~/containers/messenger/leftSide";
 import Portal from "~/containers/messenger/portal";
 import RightSide from "~/containers/messenger/rightSide";
-import { useListener } from "~/hooks";
+import { useListener, useUnmount } from "~/hooks";
 import { useUserStore } from "~/store";
+import { resetAllStores } from "~/store/utils";
 
 const Messenger = () => {
   const userStore = useUserStore();
+  useUnmount(resetAllStores);
 
   useListener({
     evName: "updatePublicUserData",
