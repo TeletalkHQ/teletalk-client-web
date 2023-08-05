@@ -1,4 +1,4 @@
-import { GlobalHandlers, GlobalSetState } from "~/types";
+import { GlobalHandlers, GlobalSetState, UserItem } from "~/types";
 
 import { defaultDialogState } from "./initialState";
 
@@ -128,6 +128,40 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
   setEditingContact(c) {
     set(() => ({
       editingContact: c,
+    }));
+  },
+
+  addUser(c: UserItem) {
+    set((prevState) => {
+      return {
+        users: [...prevState.users, c],
+      };
+    });
+  },
+
+  updateUser(updatedUser) {
+    set((prevState) => {
+      const index = prevState.users.findIndex(
+        (item) => item.userId === updatedUser.userId
+      );
+      const item = prevState.users[index];
+
+      const newUsers = [...prevState.users];
+
+      newUsers[index] = {
+        ...item,
+        ...updatedUser,
+      };
+
+      return {
+        users: newUsers,
+      };
+    });
+  },
+
+  setUsers(u) {
+    set((prevState) => ({
+      users: [...prevState.users, ...u],
     }));
   },
 });

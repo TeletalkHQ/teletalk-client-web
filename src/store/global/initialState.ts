@@ -34,6 +34,7 @@ export const initialState: GlobalState = {
     anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
     open: false,
   },
+  editingContact: maker.emptyContactWithUserId(),
   isOnline: false,
   loading: {
     color: "wheat",
@@ -43,5 +44,5 @@ export const initialState: GlobalState = {
     speedMultiplier: 1,
     type: "FULL_PAGE",
   },
-  editingContact: maker.emptyContactWithUserId(),
+  users: [],
 };
