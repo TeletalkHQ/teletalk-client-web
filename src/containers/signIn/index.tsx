@@ -7,7 +7,7 @@ import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph
 import H5 from "~/components/general/typography/header/H5";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
-import { useSignIn } from "~/hooks/useSignIn";
+import { useSignIn } from "~/hooks";
 import { useAuthStore } from "~/store";
 import { SelectedCountry } from "~/types";
 import { utils } from "~/utils";

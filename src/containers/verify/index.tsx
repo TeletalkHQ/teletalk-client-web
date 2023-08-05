@@ -6,8 +6,7 @@ import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph
 import H5 from "~/components/general/typography/header/H5";
 import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
-import { useCustomRouter } from "~/hooks/useCustomRouter";
-import { useVerify } from "~/hooks/useVerify";
+import { useCustomRouter, useVerify } from "~/hooks";
 import { useAuthStore } from "~/store";
 import { validators } from "~/validators";
 

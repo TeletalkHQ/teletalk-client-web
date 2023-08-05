@@ -2,8 +2,7 @@ import { useEffect } from "react";
 
 import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";
-import { useCustomRouter } from "~/hooks/useCustomRouter";
-import { useEmitter } from "~/hooks/useEmitter";
+import { useCustomRouter, useEmitter } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 
 const Auth = () => {

@@ -3,7 +3,7 @@ import Box from "~/components/general/box";
 import LeftSide from "~/containers/messenger/leftSide";
 import Portal from "~/containers/messenger/portal";
 import RightSide from "~/containers/messenger/rightSide";
-import { useListener } from "~/hooks/useListener";
+import { useListener } from "~/hooks";
 import { useUserStore } from "~/store";
 
 const Messenger = () => {

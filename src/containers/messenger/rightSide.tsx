@@ -4,9 +4,11 @@ import Box from "~/components/general/box";
 import ChatBar from "~/components/messenger/rightSide/ChatBar";
 import MessageInput from "~/components/messenger/rightSide/MessageInput";
 import MessageList from "~/components/messenger/rightSide/MessageList";
-import { useEmitter } from "~/hooks/useEmitter";
-import { useNewPrivateChatMessage } from "~/hooks/useNewPrivateChatMessage";
-import { useSetPrivateChats } from "~/hooks/useSetPrivateChats";
+import {
+  useEmitter,
+  useNewPrivateChatMessage,
+  useSetPrivateChats,
+} from "~/hooks";
 import { useMessageStore } from "~/store";
 
 const RightSide = () => {

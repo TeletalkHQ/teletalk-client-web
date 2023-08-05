@@ -5,7 +5,6 @@ import { trier } from "simple-trier";
 import { appConfigs } from "~/classes/AppConfigs";
 import { notificationStore } from "~/classes/NotificationStore";
 import { websocket } from "~/classes/websocket/Websocket";
-import { UpdateLoadingFn } from "~/hooks/useLoading";
 import type {
   IO,
   NativeError,
@@ -13,6 +12,7 @@ import type {
   SocketErrorCallback,
   SocketResponse,
   SocketRoute,
+  UpdateLoadingFn,
 } from "~/types";
 import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
