@@ -77,7 +77,9 @@ const InitialSetup = () => {
 
           <div style={{ marginTop: "10px" }}></div>
 
-          <Input.Button onClick={handleServersClick}>Servers</Input.Button>
+          <Input.PrimaryButton onClick={handleServersClick}>
+            Servers
+          </Input.PrimaryButton>
 
           <div style={{ marginTop: "10px" }}></div>
 
@@ -100,12 +102,12 @@ const InitialSetup = () => {
 
           <div style={{ marginTop: "10px" }}></div>
 
-          <Input.Button
+          <Input.PrimaryButton
             onClick={handleAuthenticateClick}
             disabled={status !== "online"}
           >
             Authenticate
-          </Input.Button>
+          </Input.PrimaryButton>
         </Box.Div>
       </Box.Div>
 
