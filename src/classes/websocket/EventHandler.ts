@@ -7,12 +7,12 @@ import { notificationStore } from "~/classes/NotificationStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import type {
   IO,
-  NativeError,
   ResponseCallback,
   SocketErrorCallback,
   SocketResponse,
   SocketRoute,
   UpdateLoadingFn,
+  VoidNoArgsFn,
 } from "~/types";
 import { AutoBind } from "~/types/utils";
 import { utils } from "~/utils";
@@ -33,7 +33,10 @@ export class EventHandler<IOType extends IO> {
   private responseCallback: ResponseCallback;
   private route: SocketRoute;
 
-  constructor(private loadingUpdater: UpdateLoadingFn) {}
+  constructor(
+    private loadingUpdater: UpdateLoadingFn,
+    private authErrorHandler: VoidNoArgsFn
+  ) {}
 
   getRequestData() {
     return this.requestData;
@@ -74,11 +77,13 @@ export class EventHandler<IOType extends IO> {
 
     await Timeout.set(mergedOptions.timeout);
 
-    const response: SocketResponse = await new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       websocket.client.emit(
         this.route.name,
         data,
         (response: SocketResponse) => {
+          this.setResponse(response).setResponseData(response.data);
+
           this.loadingUpdater(false);
 
           if (response.ok) resolve(response);
@@ -87,8 +92,6 @@ export class EventHandler<IOType extends IO> {
         }
       );
     });
-
-    this.setResponse(response).setResponseData(response.data);
 
     return this;
   }
@@ -122,12 +125,11 @@ export class EventHandler<IOType extends IO> {
   }
 
   @AutoBind
-  private catchEmitFull(response: SocketResponse) {
-    this.errorCallback(response.errors);
-
-    utils.printResponseErrors(response.errors);
-
-    this.logFailureResponse(Object.values(response.errors || [])[0]);
+  private catchEmitFull() {
+    this.errorCallback(this.response.errors);
+    utils.printResponseErrors(this.response.errors);
+    this.logFailureResponse();
+    this.handleAuthError();
   }
 
   private inputDataFieldsCheck(inputData = this.getRequestData()) {
@@ -159,19 +161,36 @@ export class EventHandler<IOType extends IO> {
     return this;
   }
 
-  private logFailureResponse(
-    error: NativeError = notificationStore.find("UNKNOWN_ERROR")
-  ) {
+  private logFailureResponse() {
     if (appConfigs.getConfigs().api.shouldLogFailureResponse)
-      console.error(`Api:${this.route.name} Api catch, error:`, error);
+      console.error(
+        `Api:${this.route.name} Api catch, error:`,
+        this.resolveError()
+      );
+  }
+
+  private resolveError() {
+    return (
+      Object.values(this.response.errors || [])[0] ||
+      notificationStore.find("UNKNOWN_ERROR")
+    );
   }
 
   private async executeResponseCallback() {
     await this.responseCallback(this.response);
     return this;
   }
+
+  private handleAuthError() {
+    if (this.isAuthErrorHappened()) this.authErrorHandler();
+  }
+
+  private isAuthErrorHappened() {
+    return this.response.errors.some((i) => i.isAuthError);
+  }
 }
 
 export const eventHandler = <IOType extends IO>(
-  loadingUpdater: UpdateLoadingFn
-) => new EventHandler<IOType>(loadingUpdater);
+  loadingUpdater: UpdateLoadingFn,
+  authErrorHandler: VoidNoArgsFn
+) => new EventHandler<IOType>(loadingUpdater, authErrorHandler);
