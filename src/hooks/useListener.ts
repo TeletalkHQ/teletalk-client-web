@@ -9,6 +9,6 @@ export const useListener = <EvName extends EventName>({
   //@ts-ignore
   cb: (response: SocketResponse<IOCollection[EvName]["output"]>) => void;
 }) => {
-  websocket.client?.off(evName);
+  websocket.client.off(evName);
   websocket.client.on<EventName>(evName, cb);
 };
