@@ -7,9 +7,7 @@ interface Props {
 
 const EditProfileActions: React.FC<Props> = ({ onCancel }) => (
   <>
-    <Input.Button onClick={onCancel} variant="text" color="primary">
-      Close
-    </Input.Button>
+    <Input.CloseButton onClick={onCancel} />
   </>
 );
 

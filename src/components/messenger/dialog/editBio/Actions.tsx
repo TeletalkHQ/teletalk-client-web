@@ -13,18 +13,9 @@ const EditBioActions: React.FC<Props> = ({
   onSaveClick,
 }) => (
   <>
-    <Input.Button onClick={onCancel} variant="text" color="error">
-      Cancel
-    </Input.Button>
+    <Input.CancelButton onClick={onCancel} />
 
-    <Input.LoadingButton
-      loadingIndicatorText="Updating..."
-      loading={loading}
-      onClick={onSaveClick}
-      color="primary"
-    >
-      Confirm
-    </Input.LoadingButton>
+    <Input.ConfirmButton loading={loading} onClick={onSaveClick} />
   </>
 );
 

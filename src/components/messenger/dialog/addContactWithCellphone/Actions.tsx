@@ -8,6 +8,7 @@ interface Props {
   onAddContactClick: VoidNoArgsFn;
   onContactDialogCancelClick: VoidNoArgsFn;
 }
+
 const AddContactActions: React.FC<Props> = ({
   isAddContactButtonDisabled,
   loading,
@@ -24,18 +25,13 @@ const AddContactActions: React.FC<Props> = ({
         jc="flex-end"
         ai="center"
       >
-        <Input.Button variant="text" onClick={onContactDialogCancelClick}>
-          Cancel
-        </Input.Button>
+        <Input.CancelButton onClick={onContactDialogCancelClick} />
 
-        <Input.LoadingButton
-          loadingIndicatorText="Updating..."
+        <Input.ConfirmButton
           disabled={isAddContactButtonDisabled}
           loading={loading}
           onClick={onAddContactClick}
-        >
-          Create
-        </Input.LoadingButton>
+        />
       </Box.Flex>
     </>
   );

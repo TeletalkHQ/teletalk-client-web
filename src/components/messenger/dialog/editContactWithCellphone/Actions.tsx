@@ -24,18 +24,13 @@ const AddContactActions: React.FC<Props> = ({
         jc="flex-end"
         ai="center"
       >
-        <Input.Button variant="text" onClick={onContactDialogCancelClick}>
-          Cancel
-        </Input.Button>
+        <Input.CancelButton onClick={onContactDialogCancelClick} />
 
-        <Input.LoadingButton
-          loadingIndicatorText="Updating..."
+        <Input.ConfirmButton
           disabled={isAddContactButtonDisabled}
           loading={loading}
           onClick={onAddContactClick}
-        >
-          Update
-        </Input.LoadingButton>
+        />
       </Box.Flex>
     </>
   );

@@ -13,18 +13,8 @@ const EditUsernameActions: React.FC<Props> = ({
   onSaveClick,
 }) => (
   <>
-    <Input.Button onClick={onCancel} variant="text" color="error">
-      Cancel
-    </Input.Button>
-
-    <Input.LoadingButton
-      loadingIndicatorText="Updating..."
-      loading={loading}
-      onClick={onSaveClick}
-      color="primary"
-    >
-      Confirm
-    </Input.LoadingButton>
+    <Input.CancelButton onClick={onCancel} />
+    <Input.ConfirmButton loading={loading} onClick={onSaveClick} />
   </>
 );
 
