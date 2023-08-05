@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PublicUserData } from "utility-store/lib/types";
 
 import { maker } from "~/classes/Maker";
-import { useMessageStore, useUserStore } from "~/store";
+import { useGlobalStore, useMessageStore } from "~/store";
 import { UserId } from "~/types";
 
 import { useEmitter } from "./useEmitter";
@@ -16,7 +16,7 @@ type UseUserPublicData = (userId?: UserId) => {
 
 export const useUserPublicData: UseUserPublicData = (userId) => {
   const messageStore = useMessageStore();
-  const userStore = useUserStore();
+  const globalStore = useGlobalStore();
   const { handler } = useEmitter("getPublicUserData");
   const [publicUserData, setPublicUserData] = useState<PublicUserData>(
     maker.emptyUserPublicData()
@@ -32,7 +32,7 @@ export const useUserPublicData: UseUserPublicData = (userId) => {
   const updater = (userId: UserId) => {
     return handler.emitFull({ userId }, ({ data }) => {
       const contactItem =
-        userStore.contacts.find(
+        globalStore.users.find(
           (i) => i.userId === data.publicUserData.userId
         ) || {};
 

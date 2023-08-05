@@ -12,7 +12,6 @@ export class Extractor extends ExtractorMain {
       status: data.status,
       userId: data.userId,
       username: data.username,
-      contacts: data.contacts,
     };
   }
 }

@@ -13,7 +13,7 @@ const Messenger = () => {
     evName: "updatePublicUserData",
     cb: (response) => {
       userStore.setUserData({
-        ...extractor.userData({ ...userStore, blacklist: [], clients: [] }),
+        ...extractor.userState({ ...userStore, blacklist: [], clients: [] }),
         ...extractor.publicUserData(response.data.publicUserData),
       });
     },

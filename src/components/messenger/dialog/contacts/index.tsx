@@ -6,13 +6,12 @@ import Content from "~/components/messenger/dialog/contacts/Content";
 import Title from "~/components/messenger/dialog/contacts/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useContextMenu } from "~/hooks/useContextMenu";
-import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
+import { useGlobalStore, useMessageStore } from "~/store";
 import { ExtendedOnContextMenu } from "~/types";
 
 const Contacts = () => {
   const globalStore = useGlobalStore();
   const messageStore = useMessageStore();
-  const userStore = useUserStore();
 
   const { onContextMenu } = useContextMenu([
     {
@@ -55,7 +54,7 @@ const Contacts = () => {
       title={<Title />}
       content={
         <Content
-          contacts={userStore.contacts}
+          contacts={globalStore.users.filter((i) => i.isContact)}
           onContactItemClicked={handleContactItemClicked}
           onContextMenu={handleContextMenu}
         />

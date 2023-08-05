@@ -2,7 +2,6 @@ import { UserState } from "~/types";
 
 export const initialState: UserState = {
   bio: "",
-  contacts: [],
   countryCode: "",
   countryName: "",
   createdAt: 0,

@@ -64,9 +64,7 @@ export const usePing = () => {
   };
 
   const emitPingEvent = () => {
-    return handler.emitFull({}, successPingCallback, failPingCallback, {
-      timeout: 1000,
-    });
+    return handler.emitFull({}, successPingCallback, failPingCallback);
   };
 
   const successPingCallback = () => {
