@@ -10,11 +10,7 @@ const ConfirmButton: React.FC<Props> = ({
   loadingIndicatorText = "Updating...",
   ...rest
 }) => (
-  <Input.LoadingButton
-    {...rest}
-    loadingIndicatorText={loadingIndicatorText}
-    color="primary"
-  >
+  <Input.LoadingButton {...rest} loadingIndicatorText={loadingIndicatorText}>
     Confirm
   </Input.LoadingButton>
 );
