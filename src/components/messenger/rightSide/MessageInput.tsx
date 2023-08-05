@@ -61,7 +61,7 @@ const MessageInput: React.FC<Props> = () => {
           {messageStore.messageInputTextValue ? (
             <IconButton onClick={() => !loading && handleSendMessage()}>
               {loading ? (
-                <CircularProgress size={20} color="info" />
+                <CircularProgress />
               ) : (
                 <Icons.Telegram.Icon color="primary" />
               )}
