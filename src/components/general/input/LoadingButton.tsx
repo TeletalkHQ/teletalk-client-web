@@ -36,8 +36,6 @@ const LoadingButton: React.FC<Props> = ({
             style={{
               marginLeft: 10,
             }}
-            size={20}
-            color="info"
           />
         </>
       }
