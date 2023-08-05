@@ -7,7 +7,7 @@ interface Options {
 }
 
 export class Websocket {
-  client: Socket;
+  client: Socket = this.initialize();
 
   initialize(options = this.getDefaultOptions()) {
     return io(options.url, {
