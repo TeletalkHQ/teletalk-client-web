@@ -1,47 +1,46 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { PublicUserData } from "utility-store/lib/types";
 
 import { maker } from "~/classes/Maker";
-import { useGlobalStore, useMessageStore } from "~/store";
-import { UserId } from "~/types";
+import { useGlobalStore } from "~/store";
+import { UserId, UserItem } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 
-type UseUserPublicData = (userId?: UserId) => {
-  publicUserData: PublicUserData;
+type UseUserPublicData = (userId: UserId) => {
+  publicUserData: UserItem;
   updater: (u: UserId) => Promise<{
     publicUserData: PublicUserData;
   }>;
 };
 
 export const useUserPublicData: UseUserPublicData = (userId) => {
-  const messageStore = useMessageStore();
   const globalStore = useGlobalStore();
   const { handler } = useEmitter("getPublicUserData");
-  const [publicUserData, setPublicUserData] = useState<PublicUserData>(
-    maker.emptyUserPublicData()
-  );
 
   useEffect(() => {
-    const { userId: targetUserId } = messageStore.selectedChatInfo;
-    updater(userId || targetUserId);
-
+    updater(userId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messageStore.selectedChatInfo, userId]);
+  }, [userId]);
 
   const updater = (userId: UserId) => {
     return handler.emitFull({ userId }, ({ data }) => {
-      const contactItem =
+      const userItem =
         globalStore.users.find(
           (i) => i.userId === data.publicUserData.userId
         ) || {};
 
-      setPublicUserData({ ...data.publicUserData, ...contactItem });
+      globalStore.updateUser({ ...data.publicUserData, ...userItem });
     });
   };
 
   return {
-    publicUserData,
+    publicUserData: globalStore.users.find((i) => i.userId === userId) || {
+      ...maker.emptyUserPublicData(),
+      ...maker.emptyCellphone(),
+      isContact: false,
+      isPublicDataUpdated: false,
+    },
     updater,
   };
 };

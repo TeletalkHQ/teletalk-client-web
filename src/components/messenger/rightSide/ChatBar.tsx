@@ -11,7 +11,9 @@ interface Props {}
 const ChatBar: React.FC<Props> = () => {
   const globalStore = useGlobalStore();
   const messageStore = useMessageStore();
-  const { publicUserData } = useUserPublicData();
+  const { publicUserData } = useUserPublicData(
+    messageStore.selectedChatInfo.userId
+  );
 
   const fullName = userUtils.concatFirstNameWithLastName(publicUserData);
 
