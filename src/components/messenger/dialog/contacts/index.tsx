@@ -22,6 +22,14 @@ const Contacts = () => {
         globalStore.openDialog("editContactWithCellphone");
       },
     },
+    {
+      text: "Remove Contact",
+      handler: () => {
+        globalStore.closeContextMenu();
+        globalStore.closeDialog("contacts");
+        globalStore.openDialog("removeContact");
+      },
+    },
   ]);
 
   const handleAddContactClick = () => {
@@ -42,7 +50,7 @@ const Contacts = () => {
   };
 
   const handleContextMenu: ExtendedOnContextMenu<ContactItem> = (event, c) => {
-    globalStore.setEditingContact({
+    globalStore.setSelectedContactFromContext({
       ...extractor.fullName(c),
       userId: c.userId,
     });

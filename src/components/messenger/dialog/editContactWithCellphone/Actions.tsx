@@ -8,7 +8,7 @@ interface Props {
   onAddContactClick: VoidNoArgsFn;
   onContactDialogCancelClick: VoidNoArgsFn;
 }
-const AddContactActions: React.FC<Props> = ({
+const EditContactWithCellphoneActions: React.FC<Props> = ({
   isAddContactButtonDisabled,
   loading,
   onAddContactClick,
@@ -36,4 +36,4 @@ const AddContactActions: React.FC<Props> = ({
   );
 };
 
-export default AddContactActions;
+export default EditContactWithCellphoneActions;

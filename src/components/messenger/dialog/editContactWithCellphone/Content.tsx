@@ -9,7 +9,10 @@ interface Props {
   fullName: FullName;
   onInputChange: OnChangeValidatorFn;
 }
-const AddContactContent: React.FC<Props> = ({ fullName, onInputChange }) => {
+const EditContactWithCellphoneContent: React.FC<Props> = ({
+  fullName,
+  onInputChange,
+}) => {
   return (
     <>
       <Box.Div>
@@ -26,4 +29,4 @@ const AddContactContent: React.FC<Props> = ({ fullName, onInputChange }) => {
   );
 };
 
-export default AddContactContent;
+export default EditContactWithCellphoneContent;

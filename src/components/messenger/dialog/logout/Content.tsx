@@ -1,6 +1,6 @@
 import Box from "~/components/general/box";
 
-const Content = () => (
+const LogoutContent = () => (
   <>
     <Box.Div style={{ textAlign: "center", fontSize: 18 }}>
       <Box.Span>Are you sure you want to</Box.Span>{" "}
@@ -16,4 +16,4 @@ const Content = () => (
   </>
 );
 
-export default Content;
+export default LogoutContent;

@@ -7,6 +7,7 @@ import EditFullName from "~/components/messenger/dialog/editFullName";
 import EditProfile from "~/components/messenger/dialog/editProfile";
 import EditUsername from "~/components/messenger/dialog/editUsername";
 import Logout from "~/components/messenger/dialog/logout";
+import RemoveContact from "~/components/messenger/dialog/removeContact";
 import Settings from "~/components/messenger/dialog/settings";
 import UserInfo from "~/components/messenger/dialog/userInfo";
 
@@ -24,6 +25,7 @@ const Portal = () => {
         EditProfile,
         EditUsername,
         Logout,
+        RemoveContact,
         Settings,
         UserInfo,
       ].map((Component, i) => (
