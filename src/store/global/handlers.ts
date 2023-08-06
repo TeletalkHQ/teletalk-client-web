@@ -117,9 +117,9 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
   },
 
   closeContextMenu() {
-    set(() => ({
+    set((prevState) => ({
       contextMenu: {
-        list: [],
+        ...prevState.contextMenu,
         position: null,
       },
     }));
