@@ -1,7 +1,7 @@
 import Box from "~/components/general/box";
 import H5 from "~/components/general/typography/header/H5";
 
-const AddContactTitle = () => {
+const EditContactWithCellphoneTitle = () => {
   return (
     <>
       <Box.Flex jc="space-between" ai="center">
@@ -14,4 +14,4 @@ const AddContactTitle = () => {
   );
 };
 
-export default AddContactTitle;
+export default EditContactWithCellphoneTitle;

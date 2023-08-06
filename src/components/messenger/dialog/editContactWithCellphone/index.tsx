@@ -22,19 +22,22 @@ const EditContactWithCellphone = () => {
   });
 
   const handleInputChange = (_value: string, event: CommonChangeEvent) => {
-    globalStore.setEditingContact({
-      ...globalStore.editingContact,
+    globalStore.setSelectedContactFromContext({
+      ...globalStore.selectedContactFromContext,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleAddContactClick = () => {
-    handler.emitFull(globalStore.editingContact, returnToContactsDialog);
+    handler.emitFull(
+      globalStore.selectedContactFromContext,
+      returnToContactsDialog
+    );
   };
 
   const closeAddContactDialog = () => {
     globalStore.closeDialog("editContactWithCellphone");
-    globalStore.setEditingContact(maker.emptyContactWithUserId());
+    globalStore.setSelectedContactFromContext(maker.emptyContactWithUserId());
   };
 
   const returnToContactsDialog = () => {
@@ -42,7 +45,9 @@ const EditContactWithCellphone = () => {
     globalStore.openDialog("contacts");
   };
 
-  const isSubmitDisabled = utils.isFullNameValid(globalStore.editingContact);
+  const isSubmitDisabled = utils.isFullNameValid(
+    globalStore.selectedContactFromContext
+  );
 
   return (
     <>
@@ -50,7 +55,7 @@ const EditContactWithCellphone = () => {
         title={<Title />}
         content={
           <Content
-            fullName={globalStore.editingContact}
+            fullName={globalStore.selectedContactFromContext}
             onInputChange={handleInputChange}
           />
         }

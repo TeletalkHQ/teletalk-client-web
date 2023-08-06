@@ -7,7 +7,12 @@ import {
   PublicUserData,
 } from "utility-store/lib/types";
 
-import { EditContactIO, StoreSetFn, VoidNoArgsFn } from "~/types";
+import {
+  EditContactIO,
+  RemoveContactIO,
+  StoreSetFn,
+  VoidNoArgsFn,
+} from "~/types";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -30,6 +35,7 @@ export type DialogName =
   | "logout"
   | "notificationsAndSounds"
   | "privacyAndSecurity"
+  | "removeContact"
   | "servers"
   | "settings"
   | "userInfo";
@@ -91,9 +97,10 @@ export interface GlobalHandlers {
   closeFullPageLoading: VoidNoArgsFn;
   handleContextMenu: (e: React.MouseEvent, list: ContextMenuList) => void;
   closeContextMenu: () => void;
-  setEditingContact: (c: FullNameWithUserId) => void;
+  setSelectedContactFromContext: (c: FullNameWithUserId) => void;
   addUser: (u: UserItem) => void;
   updateUser: (u: EditContactIO["output"]["editedContact"]) => void;
+  removeUser: (u: RemoveContactIO["output"]["removedContact"]) => void;
   setUsers: (u: Users) => void;
 }
 
@@ -119,6 +126,7 @@ export interface GlobalState {
     editProfile: DialogState;
     editUsername: DialogState;
     logout: DialogState;
+    removeContact: DialogState;
     servers: DialogState;
     settings: DialogState;
     userInfo: DialogState;
@@ -127,7 +135,7 @@ export interface GlobalState {
     anchor: DrawerAnchor;
     open: boolean;
   };
-  editingContact: FullNameWithUserId;
+  selectedContactFromContext: FullNameWithUserId;
   isOnline: boolean;
   loading: {
     color: CSSProperties["color"];

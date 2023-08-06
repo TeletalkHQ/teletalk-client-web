@@ -125,9 +125,9 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
     }));
   },
 
-  setEditingContact(c) {
+  setSelectedContactFromContext(c) {
     set(() => ({
-      editingContact: c,
+      selectedContactFromContext: c,
     }));
   },
 
@@ -152,6 +152,24 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
         ...item,
         ...updatedUser,
       };
+
+      return {
+        users: newUsers,
+      };
+    });
+  },
+
+  removeUser(removedUser) {
+    set((prevState) => {
+      const index = prevState.users.findIndex(
+        (i) => i.userId === removedUser.userId
+      );
+
+      if (index < 0) return prevState;
+
+      const newUsers = [...prevState.users];
+
+      newUsers.splice(index, 1);
 
       return {
         users: newUsers,

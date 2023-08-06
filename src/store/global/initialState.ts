@@ -26,6 +26,7 @@ export const initialState: GlobalState = {
     editProfile: defaultDialogState,
     editUsername: defaultDialogState,
     logout: defaultDialogState,
+    removeContact: defaultDialogState,
     servers: defaultDialogState,
     settings: defaultDialogState,
     userInfo: defaultDialogState,
@@ -34,7 +35,7 @@ export const initialState: GlobalState = {
     anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
     open: false,
   },
-  editingContact: maker.emptyContactWithUserId(),
+  selectedContactFromContext: maker.emptyContactWithUserId(),
   isOnline: false,
   loading: {
     color: "wheat",
