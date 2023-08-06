@@ -1,4 +1,5 @@
-import { GlobalHandlers, GlobalSetState, UserItem } from "~/types";
+import { maker } from "~/classes/Maker";
+import { GlobalHandlers, GlobalSetState } from "~/types";
 
 import { defaultDialogState } from "./initialState";
 
@@ -131,27 +132,28 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
     }));
   },
 
-  addUser(c: UserItem) {
-    set((prevState) => {
-      return {
-        users: [...prevState.users, c],
-      };
-    });
-  },
-
   updateUser(updatedUser) {
     set((prevState) => {
       const index = prevState.users.findIndex(
         (item) => item.userId === updatedUser.userId
       );
-      const item = prevState.users[index];
 
       const newUsers = [...prevState.users];
 
-      newUsers[index] = {
-        ...item,
-        ...updatedUser,
-      };
+      const userItem =
+        index < 0
+          ? {
+              ...maker.emptyUser(),
+              ...updatedUser,
+              ...maker.originalFullName(updatedUser),
+            }
+          : {
+              ...newUsers[index],
+              ...updatedUser,
+            };
+
+      if (index < 0) newUsers.push(userItem);
+      else newUsers[index] = userItem;
 
       return {
         users: newUsers,
@@ -159,17 +161,24 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
     });
   },
 
-  removeUser(removedUser) {
+  removeContact(removedContact) {
     set((prevState) => {
       const index = prevState.users.findIndex(
-        (i) => i.userId === removedUser.userId
+        (i) => i.userId === removedContact.userId
       );
 
       if (index < 0) return prevState;
 
       const newUsers = [...prevState.users];
 
-      newUsers.splice(index, 1);
+      const item = newUsers[index];
+
+      newUsers.splice(index, 1, {
+        ...item,
+        firstName: "",
+        isContact: false,
+        lastName: "",
+      });
 
       return {
         users: newUsers,

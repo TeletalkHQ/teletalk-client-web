@@ -7,12 +7,7 @@ import {
   PublicUserData,
 } from "utility-store/lib/types";
 
-import {
-  EditContactIO,
-  RemoveContactIO,
-  StoreSetFn,
-  VoidNoArgsFn,
-} from "~/types";
+import { RemoveContactIO, StoreSetFn, VoidNoArgsFn } from "~/types";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -78,7 +73,8 @@ export type ContextMenuState = {
 export type UserItem = PublicUserData &
   Cellphone & {
     isContact: boolean;
-    isPublicDataUpdated: boolean;
+    originalFirstName: string;
+    originalLastName: string;
   };
 
 export type Users = UserItem[];
@@ -98,9 +94,8 @@ export interface GlobalHandlers {
   handleContextMenu: (e: React.MouseEvent, list: ContextMenuList) => void;
   closeContextMenu: () => void;
   setSelectedContactFromContext: (c: FullNameWithUserId) => void;
-  addUser: (u: UserItem) => void;
-  updateUser: (u: EditContactIO["output"]["editedContact"]) => void;
-  removeUser: (u: RemoveContactIO["output"]["removedContact"]) => void;
+  updateUser: (u: Partial<UserItem>) => void;
+  removeContact: (u: RemoveContactIO["output"]["removedContact"]) => void;
   setUsers: (u: Users) => void;
 }
 

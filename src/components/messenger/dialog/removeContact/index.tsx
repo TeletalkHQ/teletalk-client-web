@@ -16,7 +16,7 @@ const RemoveContact = () => {
   useListener({
     evName: "removeContact",
     cb(response) {
-      globalStore.removeUser(response.data.removedContact);
+      globalStore.removeContact(response.data.removedContact);
     },
   });
 

@@ -25,10 +25,9 @@ const Auth = () => {
         userStore.setUserData(extractor.userState(data.user));
         globalStore.setUsers(
           data.user.contacts.map((item) => ({
-            ...maker.emptyUserPublicData(),
+            ...maker.emptyUser(),
             ...item,
             isContact: true,
-            isPublicDataUpdated: false,
           }))
         );
         router.push("messenger");

@@ -1,5 +1,11 @@
 import { Maker as MakerMain } from "utility-store";
-import { FullNameWithUserId, PublicUserData } from "utility-store/lib/types";
+import {
+  ExtendedFullName,
+  FullNameWithUserId,
+  PublicUserData,
+} from "utility-store/lib/types";
+
+import { UserItem } from "~/types";
 
 export class Maker extends MakerMain {
   //@ts-ignore
@@ -34,12 +40,29 @@ export class Maker extends MakerMain {
     };
   }
 
-  emptyUser() {
+  emptyUser(): UserItem {
     return {
       ...this.emptyUserPublicData(),
       ...this.emptyCellphone(),
       isContact: false,
-      isPublicDataUpdated: false,
+      originalFirstName: "",
+      originalLastName: "",
+    };
+  }
+
+  user(publicData: PublicUserData, userItem?: UserItem): UserItem {
+    return {
+      ...this.emptyUser(),
+      ...publicData,
+      ...(userItem || {}),
+      ...this.originalFullName(publicData),
+    };
+  }
+
+  originalFullName(d: Partial<ExtendedFullName>) {
+    return {
+      originalFirstName: d.firstName || "",
+      originalLastName: d.lastName || "",
     };
   }
 }

@@ -9,7 +9,7 @@ import { useGlobalStore, useMessageStore } from "~/store";
 const UserInfo = () => {
   const globalState = useGlobalStore();
   const messageStore = useMessageStore();
-  const { publicUserData } = useUserPublicData(
+  const { publicData } = useUserPublicData(
     messageStore.selectedChatInfo.userId
   );
 
@@ -24,10 +24,8 @@ const UserInfo = () => {
         open={globalState.dialogState.userInfo.open}
         content={
           <Content
-            fullName={userUtils.concatFirstNameWithLastName(publicUserData)}
-            fullNumber={userUtils.concatCountryCodeWithPhoneNumber(
-              publicUserData
-            )}
+            fullName={userUtils.concatFirstNameWithLastName(publicData)}
+            fullNumber={userUtils.concatCountryCodeWithPhoneNumber(publicData)}
           />
         }
         actions={<Actions onClose={handleClose} />}

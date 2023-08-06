@@ -23,11 +23,9 @@ const AddContactWithCellphone = () => {
   useListener({
     evName: "addContactWithCellphone",
     cb(response) {
-      globalStore.addUser({
-        ...maker.emptyUserPublicData(),
+      globalStore.updateUser({
         ...response.data.addedContact,
         isContact: true,
-        isPublicDataUpdated: false,
       });
     },
   });

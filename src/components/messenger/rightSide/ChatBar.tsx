@@ -11,11 +11,11 @@ interface Props {}
 const ChatBar: React.FC<Props> = () => {
   const globalStore = useGlobalStore();
   const messageStore = useMessageStore();
-  const { publicUserData } = useUserPublicData(
+  const { publicData } = useUserPublicData(
     messageStore.selectedChatInfo.userId
   );
 
-  const fullName = userUtils.concatFirstNameWithLastName(publicUserData);
+  const fullName = userUtils.concatFirstNameWithLastName(publicData);
 
   const handleMessageContainerCloseClick = () => {
     messageStore.deselectChat();

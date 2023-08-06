@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { PublicUserData } from "utility-store/lib/types";
 
 import { maker } from "~/classes/Maker";
 import { useGlobalStore } from "~/store";
@@ -9,15 +8,15 @@ import { useEmitter } from "./useEmitter";
 
 type Updater = (u: UserId) =>
   | Promise<{
-      publicUserData: PublicUserData;
+      publicData: UserItem;
     }>
   | {
-      publicUserData: PublicUserData;
+      publicData: UserItem;
     };
 
 type UseUserPublicData = (userId: UserId) => {
   loading: boolean;
-  publicUserData: UserItem;
+  publicData: UserItem;
   updater: Updater;
 };
 
@@ -31,26 +30,28 @@ export const useUserPublicData: UseUserPublicData = (userId) => {
   }, [userId]);
 
   const updater: Updater = async (userId: UserId) => {
-    if (!userId) return { publicUserData: maker.emptyUser() };
+    if (!userId) return { publicData: maker.emptyUser() };
 
-    return handler.emitFull({ userId }, ({ data }) => {
-      const item = globalStore.users.find(
-        (i) => i.userId === data.publicUserData.userId
-      );
+    const {
+      data: { publicUserData },
+    } = await handler.emitFull({ userId });
 
-      if (item)
-        return globalStore.updateUser({ ...data.publicUserData, ...item });
+    const item = globalStore.users.find(
+      (i) => i.userId === publicUserData.userId
+    );
 
-      globalStore.addUser({
-        ...maker.emptyUser(),
-        ...data.publicUserData,
-      });
-    });
+    const userItem: UserItem = maker.user(publicUserData, item);
+
+    globalStore.updateUser(userItem);
+
+    return {
+      publicData: userItem,
+    };
   };
 
   return {
     loading,
-    publicUserData:
+    publicData:
       globalStore.users.find((i) => i.userId === userId) || maker.emptyUser(),
     updater,
   };
