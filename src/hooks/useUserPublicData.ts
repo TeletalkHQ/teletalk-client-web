@@ -7,40 +7,51 @@ import { UserId, UserItem } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 
+type Updater = (u: UserId) =>
+  | Promise<{
+      publicUserData: PublicUserData;
+    }>
+  | {
+      publicUserData: PublicUserData;
+    };
+
 type UseUserPublicData = (userId: UserId) => {
+  loading: boolean;
   publicUserData: UserItem;
-  updater: (u: UserId) => Promise<{
-    publicUserData: PublicUserData;
-  }>;
+  updater: Updater;
 };
 
 export const useUserPublicData: UseUserPublicData = (userId) => {
   const globalStore = useGlobalStore();
-  const { handler } = useEmitter("getPublicUserData");
+  const { handler, loading } = useEmitter("getPublicUserData");
 
   useEffect(() => {
     updater(userId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
-  const updater = (userId: UserId) => {
-    return handler.emitFull({ userId }, ({ data }) => {
-      const userItem =
-        globalStore.users.find(
-          (i) => i.userId === data.publicUserData.userId
-        ) || {};
+  const updater: Updater = async (userId: UserId) => {
+    if (!userId) return { publicUserData: maker.emptyUser() };
 
-      globalStore.updateUser({ ...data.publicUserData, ...userItem });
+    return handler.emitFull({ userId }, ({ data }) => {
+      const item = globalStore.users.find(
+        (i) => i.userId === data.publicUserData.userId
+      );
+
+      if (item)
+        return globalStore.updateUser({ ...data.publicUserData, ...item });
+
+      globalStore.addUser({
+        ...maker.emptyUser(),
+        ...data.publicUserData,
+      });
     });
   };
 
   return {
-    publicUserData: globalStore.users.find((i) => i.userId === userId) || {
-      ...maker.emptyUserPublicData(),
-      ...maker.emptyCellphone(),
-      isContact: false,
-      isPublicDataUpdated: false,
-    },
+    loading,
+    publicUserData:
+      globalStore.users.find((i) => i.userId === userId) || maker.emptyUser(),
     updater,
   };
 };

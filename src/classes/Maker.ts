@@ -33,6 +33,15 @@ export class Maker extends MakerMain {
       userId: "",
     };
   }
+
+  emptyUser() {
+    return {
+      ...this.emptyUserPublicData(),
+      ...this.emptyCellphone(),
+      isContact: false,
+      isPublicDataUpdated: false,
+    };
+  }
 }
 
 export const maker = new Maker();
