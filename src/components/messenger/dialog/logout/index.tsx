@@ -6,7 +6,7 @@ import { useGlobalStore } from "~/store";
 
 const Logout = () => {
   const globalState = useGlobalStore();
-  const { handler } = useEmitter("logout");
+  const { handler, loading } = useEmitter("logout");
   const router = useCustomRouter();
 
   const handleClose = () => {
@@ -24,7 +24,13 @@ const Logout = () => {
     <>
       <DialogTemplate
         open={globalState.dialogState.logout.open}
-        actions={<Actions onClose={handleClose} onLogout={handleLogout} />}
+        actions={
+          <Actions
+            loading={loading}
+            onClose={handleClose}
+            onLogout={handleLogout}
+          />
+        }
         content={<Content />}
         onClose={handleClose}
       />

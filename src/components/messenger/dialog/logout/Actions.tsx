@@ -1,16 +1,32 @@
 import { Input } from "~/components";
+import Box from "~/components/general/box";
 import { CommonOnClose, VoidNoArgsFn } from "~/types";
 
 interface Props {
+  loading: boolean;
   onClose: CommonOnClose;
   onLogout: VoidNoArgsFn;
 }
 
-const LogoutActions: React.FC<Props> = ({ onClose, onLogout }) => (
+const LogoutActions: React.FC<Props> = ({ loading, onClose, onLogout }) => (
   <>
-    <Input.CloseButton onClick={onClose} />
+    <Box.Div style={{ width: "35%" }}>
+      <Input.CloseButton onClick={onClose} />
+    </Box.Div>
 
-    <Input.ErrorTextButton onClick={onLogout}>Log out</Input.ErrorTextButton>
+    <Box.Div
+      style={{
+        width: "65%",
+      }}
+    >
+      <Input.ErrorButton
+        loadingIndicatorText="Logging out..."
+        loading={loading}
+        onClick={onLogout}
+      >
+        Log out
+      </Input.ErrorButton>
+    </Box.Div>
   </>
 );
 
