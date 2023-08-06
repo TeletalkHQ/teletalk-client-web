@@ -101,7 +101,7 @@ export class EventHandler<IOType extends IO> {
     responseCallback: ResponseCallback<IOType["output"]> = () => undefined,
     errorCallback: SocketErrorCallback = (_errors) => {},
     options?: Partial<Options>
-  ): Promise<IOType["output"]> {
+  ): Promise<SocketResponse<IOType["output"]>> {
     this.requestData = data;
     this.responseCallback = responseCallback;
     this.errorCallback = errorCallback;
