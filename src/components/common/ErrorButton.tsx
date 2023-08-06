@@ -1,11 +1,10 @@
-import { ButtonProps } from "@mui/material";
-
 import { Input } from "~/components";
+import { CustomLoadingButtonProps } from "~/types";
 
-interface Props extends ButtonProps {}
+interface Props extends CustomLoadingButtonProps {}
 
 const ErrorButton: React.FC<Props> = (props) => (
-  <Input.Button {...props} color="error" />
+  <Input.LoadingButton {...props} color="error" />
 );
 
 export default ErrorButton;

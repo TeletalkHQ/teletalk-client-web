@@ -1,16 +1,10 @@
-import {
-  LoadingButtonProps,
-  LoadingButton as MuiLoadingButton,
-} from "@mui/lab";
+import { LoadingButton as MuiLoadingButton } from "@mui/lab";
 
 import Box from "~/components/general/box";
 import CircularProgress from "~/components/general/progress/CircularProgress";
+import { CustomLoadingButtonProps } from "~/types";
 
-interface Props extends LoadingButtonProps {
-  loadingIndicatorText?: string;
-}
-
-const LoadingButton: React.FC<Props> = ({
+const LoadingButton: React.FC<CustomLoadingButtonProps> = ({
   size = "large",
   variant = "contained",
   loadingIndicatorText = "",
