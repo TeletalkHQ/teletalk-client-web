@@ -4,13 +4,13 @@ import { Icons } from "~/components/other/Icons";
 import { ElementName, HTMLDivMouseEvent } from "~/types";
 
 const drawerList = [
-  Icons.Calls,
-  Icons.Contacts,
-  Icons.LogoutOutlined,
-  Icons.NewChannelOutlined,
-  Icons.NewGroupOutlined,
-  Icons.NightModeOutlined,
-  Icons.SettingsOutlined,
+  { ...Icons.Calls, disabled: true },
+  { ...Icons.Contacts, disabled: false },
+  { ...Icons.LogoutOutlined, disabled: false },
+  { ...Icons.NewChannelOutlined, disabled: true },
+  { ...Icons.NewGroupOutlined, disabled: true },
+  { ...Icons.NightModeOutlined, disabled: true },
+  { ...Icons.SettingsOutlined, disabled: false },
 ];
 
 interface Props {
@@ -20,8 +20,9 @@ interface Props {
 
 const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
   <Box.List style={{ padding: 10 }}>
-    {drawerList.map(({ elementName, Icon, text }, index) => (
+    {drawerList.map(({ elementName, Icon, text, disabled }, index) => (
       <Box.ListItemButton
+        disabled={disabled}
         style={{
           alignItems: "center",
           borderRadius: "10px",

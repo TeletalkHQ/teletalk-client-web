@@ -19,6 +19,7 @@ const SettingsList: React.FC<Props> = ({ onSettingItemClick }) => {
     <>
       {settingsList.map((item, i) => (
         <ListItem
+          disabled={item.disabled}
           key={i}
           displayName={item.displayName}
           Icon={item.Icon}
@@ -31,36 +32,43 @@ const SettingsList: React.FC<Props> = ({ onSettingItemClick }) => {
 
 export const settingsList = [
   {
+    disabled: false,
     displayName: "Edit Profile",
     Icon: AccountBoxIcon,
     name: "editProfile",
   },
   {
+    disabled: true,
     displayName: "Notifications and Sounds",
     name: "notificationsAndSounds",
     Icon: CircleNotificationsIcon,
   },
   {
+    disabled: true,
     displayName: "Privacy and Security",
     name: "privacyAndSecurity",
     Icon: LockIcon,
   },
   {
+    disabled: true,
     displayName: "Chat Settings",
     name: "chatSettings",
     Icon: ChatIcon,
   },
   {
+    disabled: true,
     displayName: "Advanced",
     name: "advanced",
     Icon: PieChartIcon,
   },
   {
+    disabled: true,
     displayName: "Call Settings",
     name: "callSettings",
     Icon: CallIcon,
   },
   {
+    disabled: true,
     displayName: "Language",
     name: "language",
     Icon: LanguageIcon,

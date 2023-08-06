@@ -6,11 +6,18 @@ import { SettingDisplayName } from "./types";
 interface Props {
   onClick: VoidNoArgsFn;
   displayName: SettingDisplayName;
+  disabled: boolean;
   Icon: IconType;
 }
 
-const ListItem: React.FC<Props> = ({ onClick, displayName, Icon }) => (
+const ListItem: React.FC<Props> = ({
+  disabled,
+  displayName,
+  Icon,
+  onClick,
+}) => (
   <Box.ListItemButton
+    disabled={disabled}
     style={{
       display: "flex",
       height: "65px",
