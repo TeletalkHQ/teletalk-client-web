@@ -1,8 +1,7 @@
-import { ButtonProps } from "@mui/material";
-
 import { Input } from "~/components";
+import { CustomLoadingButtonProps } from "~/types";
 
-interface Props extends ButtonProps {}
+interface Props extends CustomLoadingButtonProps {}
 
 const ErrorTextButton: React.FC<Props> = (props) => (
   <Input.ErrorButton {...props} variant="text" />

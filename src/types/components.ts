@@ -1,3 +1,4 @@
+import { LoadingButtonProps } from "@mui/lab";
 import { SelectChangeEvent, SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 import {
@@ -108,3 +109,7 @@ export type HTMLDivMouseEvent = MouseEvent<
 >;
 
 export type OnDialogClose = (n: DialogName) => void;
+
+export interface CustomLoadingButtonProps extends LoadingButtonProps {
+  loadingIndicatorText?: string;
+}
