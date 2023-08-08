@@ -1,4 +1,4 @@
-class EnvironmentManager {
+export class EnvironmentManager {
   getEnv() {
     return process.env;
   }
@@ -8,6 +8,4 @@ class EnvironmentManager {
   }
 }
 
-const environmentManager = new EnvironmentManager();
-
-export { EnvironmentManager, environmentManager as envManager };
+export const envManager = new EnvironmentManager();

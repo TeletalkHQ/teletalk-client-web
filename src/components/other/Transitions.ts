@@ -1,9 +1,7 @@
 import { Grow, Slide, Zoom } from "@mui/material";
 
-const Transitions = {
+export const Transitions = {
   Grow,
   Slide,
   Zoom,
 };
-
-export { Transitions };

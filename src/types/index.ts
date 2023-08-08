@@ -1,57 +1,36 @@
 import { IoFields } from "check-fields";
+import {
+  AsyncCheckFunction,
+  SyncCheckFunction,
+  ValidationError,
+} from "fastest-validator";
 import { CSSProperties } from "react";
+import { ScreamingSnakeCase } from "type-fest";
+import { Cellphone, ContactItem } from "utility-store/lib/types";
 
-import { FullName } from "utility-store/lib/types";
+import { stuffStore } from "~/classes/StuffStore";
 import { Transitions } from "~/components/other/Transitions";
-
-import { countries } from "~/data/countries";
 import { stuff } from "~/data/stuff";
 
-export type CountryItem = (typeof countries)[number];
-export type CountryName = CountryItem["countryName"];
-export type CountryCode = CountryItem["countryCode"];
-export type CountryShortName = CountryItem["countryShortName"];
+import { DrawerAnchor } from "./store/global";
 
 export interface StringMap {
   [prop: string]: any;
 }
 
-export interface Contact extends FullName {
-  userId: string;
-}
-
-export type GlobalLoadingType = "FULL_PAGE" | "OVERLAY";
-
-export interface LoadingState {
-  color: "blue";
-  open: false;
-  progressColor: "inherit";
-  size: number;
-  speedMultiplier: number;
-  type: GlobalLoadingType;
-}
-
-export interface Cellphone {
-  countryCode: CountryCode;
-  countryName: CountryName;
-  phoneNumber: string;
-}
-
-export type AppDrawerAnchor = "bottom" | "left" | "right" | "top";
-
 export type TransitionName = keyof typeof Transitions;
 
 export interface UiConfig {
-  appDrawerCurrentAnchor: AppDrawerAnchor;
+  drawerDefaultAnchor: DrawerAnchor;
   dialogDefaultTransition: TransitionName;
   maxNotification: number;
 }
 
-export type Contacts = Contact[];
+export type Contacts = ContactItem[];
 
 export type Style = CSSProperties;
 
-export type FullContact = Contact & Cellphone;
+export type FullContact = ContactItem & Cellphone;
 
 export type VoidNoArgsFn = () => void;
 
@@ -63,59 +42,140 @@ export interface Route {
   isAuthRequired: boolean;
 }
 
+export type Events = typeof stuff.events;
 export type EventName =
-  (typeof stuff.routes)[keyof typeof stuff.routes]["name"];
+  | Events[number]["name"]
+  | "connect"
+  | "connect_error"
+  | "disconnect"
+  | "pong";
+
+export type ValidatorType = SyncCheckFunction | AsyncCheckFunction;
+
+export type ErrorChecker = (validationResult: any, value: any) => void;
+
+export type ValidationErrors = ValidationError[];
+
+export type ValidationResult = true | ValidationErrors;
 
 export interface SocketRoute extends Route {
   name: EventName;
 }
 
-type ErrorReason = string;
+export type Protocol = "http" | "https";
+
+export type Url = `${Protocol}://${string}`;
+
+export type NotificationSide = "SERVER" | "CLIENT";
+
+export interface Environments {
+  NEXT_PUBLIC_CLIENT_BASE_URL: Url;
+  NEXT_PUBLIC_RUNTIME_MODE: "development" | "production";
+  NEXT_PUBLIC_SERVER_BASE_URL: Url;
+}
+
+export type NativeModelCollection = typeof stuffStore.models;
+
+type AllErrorKeys = {
+  [T in keyof NativeModelCollection]: `${T}_${keyof NativeModelCollection[T] &
+    string}_error`;
+};
+
+export type ModelErrorReason = ScreamingSnakeCase<
+  AllErrorKeys[keyof AllErrorKeys] | `${keyof NativeModelCollection}_invalid`
+>;
+
+export type Errors = typeof stuffStore.errors;
+export type ErrorItem = Errors[number];
+export type ErrorReason =
+  | ModelErrorReason
+  | ErrorItem["reason"]
+  | "ECONNABORTED"
+  | "EVENT_IS_BROKEN"
+  | "REQUIREMENT_ITEM_MISSING"
+  | "SERVER_ALREADY_EXIST";
+
+export type NotificationReason = ErrorReason;
 
 export interface NativeError {
-  description?: string;
-  code: number;
-  message?: string;
+  description: string;
+  isAuthError: boolean;
+  message: string;
   reason: ErrorReason;
+  side: NotificationSide;
 }
 
 export type Notification = NativeError;
-
-export interface SocketResponseErrors {
-  [prop: string]: NativeError & StringMap;
-}
-
-export interface SocketResponse<Data = StringMap> {
-  data: Data;
-  errors?: SocketResponseErrors;
-  ok: boolean;
-}
-
-export type RequestData = StringMap;
-
-export type Data = StringMap;
-
-export type ResponseData = StringMap;
-
-export type ResponseCallback = (response: SocketResponse) => Promise<void>;
-
-export type RequestTransformer = (requestData: RequestData) => RequestData;
-
-export type ResponseTransformer = (response: SocketResponse) => SocketResponse;
-
-export type Interceptor = (data: Data) => Data;
-
-export type Interceptors = Interceptor[];
-
-export interface Environments {
-  NEXT_PUBLIC_CLIENT_BASE_URL: string;
-  NEXT_PUBLIC_SERVER_BASE_URL: string;
-  NEXT_PUBLIC_PRODUCTION_CLIENT_BASE_URL: string;
-  NEXT_PUBLIC_RUNTIME_MODE: "development" | "production";
-}
 
 export type EnvName = keyof Environments;
 
 export type RuntimeMode = Environments["NEXT_PUBLIC_RUNTIME_MODE"];
 
 export type Stuff = typeof stuff;
+
+export type Field = keyof typeof stuff.models;
+
+export type FieldType = (typeof stuff.models)[Field]["type"];
+
+export interface NativeModel {
+  defaultValue?: any;
+  empty?: boolean;
+  length?: number;
+  maxLength?: number;
+  minLength?: number;
+  numeric?: boolean;
+  required?: boolean;
+  trim?: boolean;
+  type: FieldType;
+  unique?: boolean;
+}
+
+export type NativeModelKey = keyof NativeModel;
+
+export type Status = "idle" | "pending" | "offline" | "online";
+
+export type StatusColors = { [key in Status]: string };
+
+export type UrlName =
+  | "auth"
+  | "create"
+  | "initialSetup"
+  | "messenger"
+  | "signIn"
+  | "verify";
+
+export type CamelCase<S extends string> =
+  S extends `${infer P1}_${infer P2}${infer P3}`
+    ? `${Lowercase<P1>}${Uppercase<P2>}${CamelCase<P3>}`
+    : Lowercase<S>;
+
+export type KeysToCamelCase<T> = {
+  [K in keyof T as CamelCase<string & K>]: T[K];
+};
+
+export type CamelToSnakeCase<S extends string> =
+  S extends `${infer T}${infer U}`
+    ? `${T extends Capitalize<T>
+        ? "_"
+        : ""}${Lowercase<T>}${CamelToSnakeCase<U>}`
+    : S;
+
+export type KeysToSnakeCase<T> = {
+  [K in keyof T as CamelToSnakeCase<string & K>]: T[K];
+};
+
+export interface ServerTestResult {
+  url: Url;
+  ping: number | undefined;
+  status: Status;
+}
+
+export type UpdateLoadingFn = (l: boolean) => void;
+
+export type * from "./api";
+export type * from "./components";
+export type * from "./datatypes";
+export type * from "./models";
+export type * from "./store";
+export type * from "./utils";
+export type * from "./validation";

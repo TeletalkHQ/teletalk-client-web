@@ -1,13 +1,6 @@
-import dotenv from "dotenv";
+import { evnLoader } from "./configs/env/envLoader.js";
 
-dotenv.config({
-  path: "./configs/env/base.env",
-  override: true,
-});
-dotenv.config({
-  path: `./configs/env/${process.env.NODE_ENV}.env`,
-  override: true,
-});
+evnLoader();
 
 const env = Object.keys(process.env).reduce((prev, curr) => {
   if (curr.startsWith("NEXT_PUBLIC_")) prev[curr] = process.env[curr];
@@ -27,6 +20,16 @@ const nextConfig = {
   env,
   experimental: {
     appDir: false,
+  },
+
+  async redirects() {
+    return ["/", "/auth", "/create", "/messenger", "/signIn", "/verify"].map(
+      (item) => ({
+        destination: "/initialSetup",
+        permanent: true,
+        source: item,
+      })
+    );
   },
 };
 

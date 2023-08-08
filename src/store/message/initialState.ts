@@ -1,9 +1,10 @@
-const initialMessageState = () => ({
-  privateChats: [],
-  selectedChat: {
-    id: "",
-    type: "",
-  },
-});
+import { MessageState } from "~/types";
 
-export { initialMessageState };
+export const initialState: MessageState = {
+  messageInputTextValue: "",
+  privateChats: [],
+  selectedChatInfo: {
+    chatId: "",
+    userId: "",
+  },
+};

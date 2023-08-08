@@ -1,17 +1,15 @@
-import { CommonInput } from "~/components/general/input/common";
-import AutoComplete from "~/components/general/input/AutoComplete";
-import Button from "~/components/general/input/Button";
-import Divider from "~/components/general/input/Divider";
-import LoadingButton from "~/components/general/input/LoadingButton";
-import Text from "~/components/general/input/Text";
+import AutoComplete from "./AutoComplete";
+import Button from "./Button";
+import Divider from "./Divider";
+import LoadingButton from "./LoadingButton";
+import Select from "./Select";
+import Text from "./Text";
 
-const Input = {
-  ...CommonInput,
+export const GeneralInput = {
   AutoComplete,
   Button,
   Divider,
   LoadingButton,
+  Select,
   Text,
 };
-
-export { Input };

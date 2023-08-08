@@ -1,107 +1,73 @@
 import { trier } from "simple-trier";
 
-import { commonTasks } from "~/classes/CommonTasks";
-
-import { errorCheckerCollection } from "~/helpers/errorCheckerCollection";
-
 import {
   ErrorChecker,
+  ErrorTypeItem,
+  Field,
+  NativeError,
+  ValidationModel,
   ValidationResult,
-  ValidatorName,
   ValidatorType,
 } from "~/types";
+import { AutoBind } from "~/types/utils";
+import { utils } from "~/utils";
+import { validationCheckers } from "~/validationCheckers";
 
-import { utilities } from "~/utilities";
+export class Validator {
+  protected errorChecker: ErrorChecker;
+  protected validationResult: ValidationResult;
+  protected value: any;
+  hasError = false;
 
-class Validator {
-  private errorChecker: ErrorChecker;
-  //TODO: Change Result name
-  private validationResult: ValidationResult;
-  private value: any;
-
-  private ignoredErrorTypesForInputValidator = [
+  protected ignoredErrorTypesForInputValidator: ErrorTypeItem[] = [
     "required",
     "stringEmpty",
-    "stringLength",
     "stringMin",
   ];
 
   constructor(
-    private validatorName: ValidatorName,
-    private compiledValidator: ValidatorType
+    protected fieldName: Field,
+    protected compiledValidator: ValidatorType,
+    protected model: ValidationModel
   ) {
-    this.errorChecker = errorCheckerCollection[validatorName];
-  }
-
-  inputValidator(value: any) {
-    this.value = value;
-
-    const validationResult = this.compiledValidator({
-      [this.validatorName]: value,
-    });
-
-    if (Array.isArray(validationResult)) {
-      const extraIgnoreTypes: string[] = [];
-      if (value === "") extraIgnoreTypes.push("stringNumeric");
-
-      const filteredValidationResult = validationResult.filter(
-        (errorItem) =>
-          ![
-            ...this.ignoredErrorTypesForInputValidator,
-            ...extraIgnoreTypes,
-          ].includes(errorItem.type)
-      );
-
-      this.validationResult = filteredValidationResult;
-    } else {
-      this.validationResult = [];
-    }
-
-    return this;
-  }
-
-  submitValidator(value: any) {
-    const validationResult = this.compiledValidator(value);
-
-    if (validationResult === true) this.validationResult = [];
-
-    this.validationResult = validationResult;
-
-    return this;
+    this.errorChecker = validationCheckers[fieldName];
   }
 
   checkErrors() {
-    trier(commonTasks.correctErrorsAndPrint.name)
+    trier(this.checkErrors.name)
       .sync()
-      .try(this.tryToCheckErrors.bind(this))
-      .catch(this.printErrors.bind(this))
+      .try(this.tryToCheckErrors)
+      .catch(this.printErrors)
       .run();
 
     return this;
   }
 
+  @AutoBind
   private tryToCheckErrors() {
-    if (this.validationResult.length)
+    if (Array.isArray(this.validationResult) && this.validationResult.length)
       this.errorChecker(this.validationResult, this.value);
     return this;
   }
 
-  private printErrors(error: any) {
-    const fixedErrors = utilities.fixErrorBuilderErrors(error);
-    commonTasks.correctErrorsAndPrint(fixedErrors);
+  @AutoBind
+  private printErrors(errors: NativeError[]) {
+    utils.printResponseErrors(errors);
     return this;
   }
 
-  executeIfNoError(cb: () => void) {
-    if (this.validationResult.length === 0) {
-      cb();
+  executeIfNoError(cb: (value: any) => void) {
+    if (
+      Array.isArray(this.validationResult) &&
+      this.validationResult.length === 0
+    ) {
+      cb(this.value);
     }
   }
 }
 
-const validator = {
-  create: (validatorName: ValidatorName, compiledValidator: ValidatorType) =>
-    new Validator(validatorName, compiledValidator),
-};
-
-export { Validator, validator };
+export const validator = (
+  fieldName: Field,
+  compiledValidator: ValidatorType,
+  model: ValidationModel
+) => new Validator(fieldName, compiledValidator, model);

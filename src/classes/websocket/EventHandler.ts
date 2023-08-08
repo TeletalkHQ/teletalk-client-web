@@ -1,40 +1,47 @@
+import Timeout from "await-timeout";
 import { checkFields } from "check-fields";
 import { trier } from "simple-trier";
 
 import { appConfigs } from "~/classes/AppConfigs";
-import { commonTasks } from "~/classes/CommonTasks";
+import { notificationStore } from "~/classes/NotificationStore";
 import { websocket } from "~/classes/websocket/Websocket";
-
 import type {
-  Interceptors,
-  NativeError,
-  RequestData,
-  RequestTransformer,
+  IO,
   ResponseCallback,
-  ResponseData,
-  ResponseTransformer,
+  SocketErrorCallback,
   SocketResponse,
   SocketRoute,
+  UpdateLoadingFn,
+  VoidNoArgsFn,
 } from "~/types";
 import { AutoBind } from "~/types/utils";
+import { utils } from "~/utils";
+import { variables } from "~/variables";
 
-import { checkFieldErrors } from "~/variables/notification/error";
+interface Options {
+  timeout: number;
+}
 
-class EventHandler {
-  requestData: RequestData = {};
-  requestInterceptors: Interceptors = [];
-  requestTransformer: RequestTransformer = (requestData: RequestData) =>
-    requestData;
-  response: SocketResponse;
-  responseCallback: ResponseCallback;
-  responseInterceptors: Interceptors = [];
-  responseTransformer: ResponseTransformer = (response) => response;
-  route: SocketRoute;
+export class EventHandler<IOType extends IO> {
+  private defaultOptions: Options = {
+    timeout: appConfigs.getConfigs().api.defaultTimeout,
+  };
+
+  private errorCallback: SocketErrorCallback;
+  private requestData: IOType["input"];
+  private response: SocketResponse;
+  private responseCallback: ResponseCallback;
+  private route: SocketRoute;
+
+  constructor(
+    private loadingUpdater: UpdateLoadingFn,
+    private authErrorHandler: VoidNoArgsFn
+  ) {}
 
   getRequestData() {
     return this.requestData;
   }
-  setRequestData(requestData: RequestData) {
+  setRequestData(requestData: IOType["input"]) {
     this.requestData = requestData;
     return this;
   }
@@ -55,150 +62,135 @@ class EventHandler {
   getResponseData() {
     return this.getResponse().data;
   }
-  setResponseData(responseData: ResponseData) {
+  setResponseData(responseData: IOType["output"]) {
     this.response.data = responseData;
     return this;
   }
 
   async emit(
-    data: ResponseData = {},
-    callback: ResponseCallback = async () => {}
+    data: IOType["input"] = {},
+    options: Partial<Options> = this.defaultOptions
   ) {
-    const response: SocketResponse = await new Promise((resolve) => {
+    const mergedOptions = { ...this.defaultOptions, ...options };
+
+    this.loadingUpdater(true);
+
+    await Timeout.set(mergedOptions.timeout);
+
+    await new Promise((resolve, reject) => {
       websocket.client.emit(
         this.route.name,
         data,
         (response: SocketResponse) => {
-          resolve(response);
-          callback(response);
+          this.setResponse(response).setResponseData(response.data);
+
+          this.loadingUpdater(false);
+
+          if (response.ok) resolve(response);
+
+          reject(response);
         }
       );
     });
 
-    this.setResponse(response).setResponseData(response.data);
-
     return this;
   }
 
-  async emitFull(data: RequestData, responseCallback: ResponseCallback) {
+  async emitFull(
+    data: IOType["input"],
+    responseCallback: ResponseCallback<IOType["output"]> = () => undefined,
+    errorCallback: SocketErrorCallback = (_errors) => {},
+    options?: Partial<Options>
+  ): Promise<SocketResponse<IOType["output"]>> {
     this.requestData = data;
     this.responseCallback = responseCallback;
+    this.errorCallback = errorCallback;
 
-    return await trier(this.emitFull.name)
+    return await trier<IOType["output"]>(this.emitFull.name)
       .async()
-      .try(this.tryToEmitFull)
+      .try(this.tryToEmitFull, options)
       .catch(this.catchEmitFull)
       .run();
   }
 
   @AutoBind
-  async tryToEmitFull() {
-    return (
-      await this.executeRequestTransformer()
-        .executeRequestInterceptors()
-        .inputDataFieldsCheck()
-        .emit(this.requestData, this.responseCallback)
-    )
-      .responseErrorsHandler()
-      .outputDataFieldsCheck()
-      .executeResponseTransformer()
-      .executeResponseInterceptors()
+  private async tryToEmitFull(options?: Options) {
+    await this.emit(this.requestData, options);
+
+    await this.outputDataFieldsCheck()
       .logSuccessfulResponse()
-      .getResponse();
+      .executeResponseCallback();
+
+    return this.getResponse();
   }
 
   @AutoBind
-  private catchEmitFull(error: NativeError) {
-    this.logFailureResponse(error);
-    //TODO: Check connection abort error
-    throw error;
-  }
-
-  private executeRequestTransformer() {
-    this.requestData = this.requestTransformer(this.getRequestData());
-    return this;
-  }
-
-  private executeRequestInterceptors(requestData = this.getRequestData()) {
-    const newData = this.executeInterceptors(
-      this.requestInterceptors,
-      requestData
-    );
-    this.setRequestData(newData);
-    return this;
+  private catchEmitFull() {
+    this.errorCallback(this.response.errors);
+    utils.printResponseErrors(this.response.errors);
+    this.logFailureResponse();
+    this.handleAuthError();
   }
 
   private inputDataFieldsCheck(inputData = this.getRequestData()) {
     if (appConfigs.getConfigs().api.shouldCheckInputDataFields)
-      checkFields(inputData, this.route.inputFields, checkFieldErrors.input);
-
-    return this;
-  }
-
-  private responseErrorsHandler(response = this.getResponse()) {
-    const {
-      data: { errors },
-      ok,
-    } = response;
-
-    if (!ok) {
-      //TODO: Reset everything if there is a auth error
-
-      commonTasks.correctErrorsAndPrint(errors);
-
-      throw errors;
-    }
+      checkFields(
+        inputData,
+        this.route.inputFields,
+        variables.notifications.errors.checkFieldErrors.input
+      );
 
     return this;
   }
 
   private outputDataFieldsCheck(outputData = this.getResponseData()) {
     if (appConfigs.getConfigs().api.shouldCheckOutputDataFields)
-      checkFields(outputData, this.route.outputFields, checkFieldErrors.output);
+      checkFields(
+        outputData,
+        this.route.outputFields,
+        variables.notifications.errors.checkFieldErrors.output
+      );
 
-    return this;
-  }
-
-  private executeResponseTransformer() {
-    const transformedResponse = this.responseTransformer(this.getResponse());
-    this.setResponse(transformedResponse);
-    return this;
-  }
-
-  private executeResponseInterceptors(response = this.getResponse()) {
-    const newData = this.executeInterceptors(
-      this.responseInterceptors,
-      response
-    );
-    this.setResponseData(newData);
     return this;
   }
 
   private logSuccessfulResponse(response = this.getResponse()) {
     if (appConfigs.getConfigs().api.shouldLogSuccessfulResponse)
-      logger.debug("response:", response);
+      console.debug("response:", response);
 
     return this;
   }
 
-  logFailureResponse(error: NativeError) {
+  private logFailureResponse() {
     if (appConfigs.getConfigs().api.shouldLogFailureResponse)
-      logger.error(`Api:${this.route.name} Api catch, error:`, error);
+      console.error(
+        `Api:${this.route.name} Api catch, error:`,
+        this.resolveError()
+      );
   }
 
-  private executeInterceptors(interceptors: Interceptors, data: RequestData) {
-    let newData = data;
+  private resolveError() {
+    return (
+      Object.values(this.response.errors || [])[0] ||
+      notificationStore.find("UNKNOWN_ERROR")
+    );
+  }
 
-    interceptors.forEach((interceptor) => {
-      newData = interceptor(newData);
-    });
+  private async executeResponseCallback() {
+    await this.responseCallback(this.response);
+    return this;
+  }
 
-    return newData;
+  private handleAuthError() {
+    if (this.isAuthErrorHappened()) this.authErrorHandler();
+  }
+
+  private isAuthErrorHappened() {
+    return this.response.errors.some((i) => i.isAuthError);
   }
 }
 
-const eventHandler = {
-  create: () => new EventHandler(),
-};
-
-export { eventHandler, EventHandler };
+export const eventHandler = <IOType extends IO>(
+  loadingUpdater: UpdateLoadingFn,
+  authErrorHandler: VoidNoArgsFn
+) => new EventHandler<IOType>(loadingUpdater, authErrorHandler);

@@ -1,38 +1,37 @@
-import { AppProps } from "next/app";
-
-import { SnackbarProvider } from "notistack";
 import { EmotionCache } from "@emotion/react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { AppProps } from "next/app";
+import { SnackbarProvider } from "notistack";
 
 import { appConfigs } from "~/classes/AppConfigs";
-
-import Layout from "~/components/layout";
-
-import { MainContext } from "~/context/MainContext";
-
+import { DevLayout } from "~/layouts/Dev";
+import MainLayout from "~/layouts/Main";
 import MUIThemeProvider from "~/providers/MUIThemeProvider";
 import ReactQueryProvider from "~/providers/ReactQueryProvider";
-
-import createEmotionCache from "~/styles/createEmotionCache";
+import { utils } from "~/utils";
 
 export interface CustomAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
-const clientSideEmotionCache = createEmotionCache();
+const clientSideEmotionCache = utils.createEmotionCache();
 
 export default function _app(props: CustomAppProps) {
   const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
 
   return (
-    <SnackbarProvider maxSnack={appConfigs.getConfigs().ui.maxNotification}>
+    <SnackbarProvider
+      maxSnack={appConfigs.getConfigs().ui.maxNotification}
+      dense
+      preventDuplicate
+    >
       <ReactQueryProvider>
         <MUIThemeProvider emotionCache={emotionCache}>
-          <MainContext.Provider value={{}}>
-            <Layout>
+          <DevLayout>
+            <MainLayout>
               <Component {...pageProps} />
-            </Layout>
-          </MainContext.Provider>
+            </MainLayout>
+          </DevLayout>
         </MUIThemeProvider>
         <ReactQueryDevtools />
       </ReactQueryProvider>

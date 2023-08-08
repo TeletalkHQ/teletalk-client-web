@@ -1,3 +1,5 @@
+import createEmotionServer from "@emotion/server/create-instance";
+import { useTheme } from "@mui/material";
 import { AppType } from "next/app";
 import Document, {
   DocumentContext,
@@ -8,12 +10,8 @@ import Document, {
   NextScript,
 } from "next/document";
 
-import createEmotionServer from "@emotion/server/create-instance";
-import { useTheme } from "@mui/material";
-
 import { CustomAppProps } from "~/pages/_app";
-
-import createEmotionCache from "~/styles/createEmotionCache";
+import { utils } from "~/utils";
 
 interface MyDocumentProps extends DocumentProps {
   emotionStyleTags: JSX.Element[];
@@ -41,7 +39,7 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
 MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   const originalRenderPage = ctx.renderPage;
 
-  const cache = createEmotionCache();
+  const cache = utils.createEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
   ctx.renderPage = () =>

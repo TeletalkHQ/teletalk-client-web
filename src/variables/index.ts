@@ -1,11 +1,7 @@
-import { common } from "~/variables/common";
-import { notification } from "~/variables/notification";
-import { other } from "~/variables/other";
+import { notifications } from "./notifications";
+import { regex } from "./regex";
 
-const variables = {
-  common,
-  notification,
-  other,
+export const variables = {
+  notifications,
+  regex,
 };
-
-export { variables };

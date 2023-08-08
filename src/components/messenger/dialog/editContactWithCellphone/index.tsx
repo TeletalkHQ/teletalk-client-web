@@ -1,0 +1,77 @@
+import React from "react";
+
+import { maker } from "~/classes/Maker";
+import Actions from "~/components/messenger/dialog/editContactWithCellphone/Actions";
+import Content from "~/components/messenger/dialog/editContactWithCellphone/Content";
+import Title from "~/components/messenger/dialog/editContactWithCellphone/Title";
+import DialogTemplate from "~/components/messenger/dialog/template";
+import { useEmitter, useListener } from "~/hooks";
+import { useGlobalStore } from "~/store";
+import { CommonChangeEvent } from "~/types";
+import { utils } from "~/utils";
+
+const EditContactWithCellphone = () => {
+  const globalStore = useGlobalStore();
+  const { handler, loading } = useEmitter("editContact");
+
+  useListener({
+    evName: "editContact",
+    cb(response) {
+      globalStore.updateUser(response.data.editedContact);
+    },
+  });
+
+  const handleInputChange = (_value: string, event: CommonChangeEvent) => {
+    globalStore.setSelectedContactFromContext({
+      ...globalStore.selectedContactFromContext,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleAddContactClick = () => {
+    handler.emitFull(
+      globalStore.selectedContactFromContext,
+      returnToContactsDialog
+    );
+  };
+
+  const closeAddContactDialog = () => {
+    globalStore.closeDialog("editContactWithCellphone");
+    globalStore.setSelectedContactFromContext(maker.emptyContactWithUserId());
+  };
+
+  const returnToContactsDialog = () => {
+    closeAddContactDialog();
+    globalStore.openDialog("contacts");
+  };
+
+  const isSubmitDisabled = utils.isFullNameValid(
+    globalStore.selectedContactFromContext
+  );
+
+  return (
+    <>
+      <DialogTemplate
+        title={<Title />}
+        content={
+          <Content
+            fullName={globalStore.selectedContactFromContext}
+            onInputChange={handleInputChange}
+          />
+        }
+        actions={
+          <Actions
+            loading={loading}
+            onAddContactClick={handleAddContactClick}
+            onContactDialogCancelClick={returnToContactsDialog}
+            isAddContactButtonDisabled={isSubmitDisabled}
+          />
+        }
+        open={globalStore.dialogState.editContactWithCellphone.open}
+        onClose={closeAddContactDialog}
+      />
+    </>
+  );
+};
+
+export default EditContactWithCellphone;

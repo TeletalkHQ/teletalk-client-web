@@ -1,25 +1,29 @@
+import { evnLoader } from "configs/env/envLoader";
 import fs from "fs";
 import io from "socket.io-client";
+
+import { EventName } from "~/types";
+
+evnLoader();
 
 const run = async () => {
   saveStuff();
 };
 
 const saveStuff = () => {
-  io("http://localhost:8090", {
+  io(process.env.NEXT_PUBLIC_SERVER_BASE_URL, {
     autoConnect: false,
     withCredentials: true,
   })
     .connect()
-    .emit("getStuff", undefined, (response: any) => {
+    .emit<EventName>("getStuff", {}, (response: any) => {
       console.log("saving stuff...");
 
-      fs.writeFileSync(
-        "./src/data/stuff.ts",
-        JSON.stringify(`
-          export const stuff = ${response.data} as const;
-          `)
-      );
+      const data = `
+          export const stuff = ${JSON.stringify(response.data)} as const;
+          `;
+
+      fs.writeFileSync("./src/data/stuff.ts", data);
 
       console.log("done!");
 

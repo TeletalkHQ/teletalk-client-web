@@ -1,4 +1,8 @@
 {
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "explorerExclude.backup": {},
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -55,13 +59,14 @@
     ".next": true,
     "configs": true,
     "scripts": true,
-    "pnpm-lock.yaml": true
+    "pnpm-lock.yaml": true,
+    ".eslintrc.cjs": true,
+    ".lintstagedrc.cjs": true
   },
-  "explorerExclude.backup": {},
   "marquee.widgets.npm-stats.packageNames": ["teletalk-client"],
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  },
-  "typescript.tsdk": "node_modules/.pnpm/typescript@5.0.2/node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "prettier.configPath": ".prettierrc.json",
+  "prettier.endOfLine": "lf",
+  "prettier.useTabs": false,
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

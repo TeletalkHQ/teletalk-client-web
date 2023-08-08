@@ -1,14 +1,15 @@
-import match from "autosuggest-highlight/match";
-import parse from "autosuggest-highlight/parse";
+//@ts-nocheck
 import {
-  Autocomplete as MuiAutocomplete,
   Box,
   ListItem,
+  Autocomplete as MuiAutocomplete,
   TextField,
-  Tooltip,
   Theme,
+  Tooltip,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import match from "autosuggest-highlight/match";
+import parse from "autosuggest-highlight/parse";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
