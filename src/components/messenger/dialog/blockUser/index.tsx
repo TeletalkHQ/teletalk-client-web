@@ -47,9 +47,13 @@ const BlockUser = () => {
     );
   };
 
+  const handleBack = () => {
+    handleClose();
+    globalStore.openDialog("contacts");
+  };
+
   const handleClose = () => {
     globalStore.closeDialog("blockUser");
-    globalStore.openDialog("contacts");
   };
 
   const loading = addBlockLoading || removeBlockLoading;
@@ -61,7 +65,7 @@ const BlockUser = () => {
         actions={
           <Actions
             loading={loading}
-            onClose={handleClose}
+            onClose={handleBack}
             onConfirm={handleConfirm}
           />
         }
