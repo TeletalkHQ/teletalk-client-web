@@ -1,36 +1,46 @@
 import { ContactItem } from "utility-store/lib/types";
 
-import { extractor } from "~/classes/Extractor";
 import Actions from "~/components/messenger/dialog/contacts/Actions";
 import Content from "~/components/messenger/dialog/contacts/Content";
 import Title from "~/components/messenger/dialog/contacts/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useContextMenu } from "~/hooks";
 import { useGlobalStore, useMessageStore } from "~/store";
-import { ExtendedOnContextMenu } from "~/types";
+import {
+  ContextMenuList,
+  DialogName,
+  ExtendedOnContextMenu,
+  UserItem,
+} from "~/types";
 
 const Contacts = () => {
   const globalStore = useGlobalStore();
   const messageStore = useMessageStore();
 
-  const { onContextMenu } = useContextMenu([
+  const createContextMenuList = ({
+    isBlocked,
+  }: Partial<UserItem> = {}): ContextMenuList => [
     {
       text: "Edit Contact",
-      handler: () => {
-        globalStore.closeContextMenu();
-        globalStore.closeDialog("contacts");
-        globalStore.openDialog("editContactWithCellphone");
-      },
+      handler: onContextMenuHandler("editContactWithCellphone"),
     },
     {
       text: "Remove Contact",
-      handler: () => {
-        globalStore.closeContextMenu();
-        globalStore.closeDialog("contacts");
-        globalStore.openDialog("removeContact");
-      },
+      handler: onContextMenuHandler("removeContact"),
     },
-  ]);
+    {
+      text: `${isBlocked ? "Remove Block" : "Block Contact"}`,
+      handler: onContextMenuHandler("blockUser"),
+    },
+  ];
+
+  const onContextMenuHandler = (dn: DialogName) => () => {
+    globalStore.closeContextMenu();
+    globalStore.closeDialog("contacts");
+    globalStore.openDialog(dn);
+  };
+
+  const { onContextMenu } = useContextMenu(createContextMenuList());
 
   const handleAddContactClick = () => {
     globalStore.closeDialog("contacts");
@@ -49,12 +59,9 @@ const Contacts = () => {
     });
   };
 
-  const handleContextMenu: ExtendedOnContextMenu<ContactItem> = (event, c) => {
-    globalStore.setSelectedContactFromContext({
-      ...extractor.fullName(c),
-      userId: c.userId,
-    });
-    onContextMenu(event);
+  const handleContextMenu: ExtendedOnContextMenu<UserItem> = (event, u) => {
+    globalStore.setSelectedContactFromContext(u);
+    onContextMenu(event, createContextMenuList(u));
   };
 
   return (

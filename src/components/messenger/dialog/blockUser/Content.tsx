@@ -4,7 +4,7 @@ interface Props {
   fullName: string;
 }
 
-const RemoveContactContent: React.FC<Props> = ({ fullName }) => (
+const BlockUserContent: React.FC<Props> = ({ fullName }) => (
   <>
     <Box.Div style={{ textAlign: "center", fontSize: 18 }}>
       <Box.Span>Are you sure you want to</Box.Span>{" "}
@@ -13,7 +13,7 @@ const RemoveContactContent: React.FC<Props> = ({ fullName }) => (
           fontWeight: 600,
         }}
       >
-        remove
+        block
       </Box.Span>{" "}
       <Box.Span>user</Box.Span>{" "}
       <Box.Span
@@ -21,11 +21,11 @@ const RemoveContactContent: React.FC<Props> = ({ fullName }) => (
           fontWeight: 600,
         }}
       >
-        {fullName}{" "}
+        {fullName}
       </Box.Span>
-      <Box.Span>from your contacts?</Box.Span>
+      <Box.Span>?</Box.Span>
     </Box.Div>
   </>
 );
 
-export default RemoveContactContent;
+export default BlockUserContent;

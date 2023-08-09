@@ -28,6 +28,9 @@ const Auth = () => {
             ...maker.emptyUser(),
             ...item,
             isContact: true,
+            isBlocked: data.user.blacklist.some(
+              (i) => i.userId === item.userId
+            ),
           }))
         );
         router.push("messenger");

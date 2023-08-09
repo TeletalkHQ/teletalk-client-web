@@ -9,10 +9,6 @@ const RemoveContact = () => {
   const globalStore = useGlobalStore();
   const { handler, loading } = useEmitter("removeContact");
 
-  const handleClose = () => {
-    globalStore.closeDialog("removeContact");
-  };
-
   useListener({
     evName: "removeContact",
     cb(response) {
@@ -28,6 +24,11 @@ const RemoveContact = () => {
         globalStore.openDialog("contacts");
       }
     );
+  };
+
+  const handleClose = () => {
+    globalStore.closeDialog("removeContact");
+    globalStore.openDialog("contacts");
   };
 
   return (

@@ -3,7 +3,6 @@ import { CSSProperties } from "react";
 import {
   Cellphone,
   CountryItem,
-  FullNameWithUserId,
   PublicUserData,
 } from "utility-store/lib/types";
 
@@ -15,6 +14,7 @@ export type DialogName =
   | "addContact"
   | "addServer"
   | "advanced"
+  | "blockUser"
   | "callSettings"
   | "chatSettings"
   | "contacts"
@@ -55,8 +55,14 @@ export type ExtendedOnContextMenu<T extends any = any> = (
   arg: T
 ) => void;
 
+type ContextMenuText =
+  | "Edit Contact"
+  | "Remove Contact"
+  | "Block Contact"
+  | "Remove Block";
+
 export interface ContextMenuItem {
-  text: string;
+  text: ContextMenuText;
   handler: (...args: any[]) => void;
 }
 
@@ -73,6 +79,7 @@ export type ContextMenuState = {
 export type UserItem = PublicUserData &
   Cellphone & {
     isContact: boolean;
+    isBlocked: boolean;
     originalFirstName: string;
     originalLastName: string;
   };
@@ -80,23 +87,24 @@ export type UserItem = PublicUserData &
 export type Users = UserItem[];
 
 export interface GlobalHandlers {
-  openLoading: (type?: LoadingType) => void;
-  closeLoading: (type?: LoadingType) => void;
-  changeDrawerOpen: (o: boolean) => void;
   // updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
-  updateOnlineStatus: (isOnline: boolean) => void;
-  openDialog: (dialogName: DialogName, props?: DialogProps) => void;
-  closeDialog: (dialogName: DialogName, props?: DialogProps) => void;
-  openOverlayLoading: VoidNoArgsFn;
-  closeOverlayLoading: VoidNoArgsFn;
-  openFullPageLoading: VoidNoArgsFn;
-  closeFullPageLoading: VoidNoArgsFn;
-  handleContextMenu: (e: React.MouseEvent, list: ContextMenuList) => void;
+  changeDrawerOpen: (o: boolean) => void;
   closeContextMenu: () => void;
-  setSelectedContactFromContext: (c: FullNameWithUserId) => void;
-  updateUser: (u: Partial<UserItem>) => void;
+  closeDialog: (dialogName: DialogName, props?: DialogProps) => void;
+  closeFullPageLoading: VoidNoArgsFn;
+  closeLoading: (type?: LoadingType) => void;
+  closeOverlayLoading: VoidNoArgsFn;
+  handleContextMenu: (e: React.MouseEvent, list: ContextMenuList) => void;
+  openDialog: (dialogName: DialogName, props?: DialogProps) => void;
+  openFullPageLoading: VoidNoArgsFn;
+  openLoading: (type?: LoadingType) => void;
+  openOverlayLoading: VoidNoArgsFn;
   removeContact: (u: RemoveContactIO["output"]["removedContact"]) => void;
+  setSelectedContactFromContext: (c: UserItem) => void;
   setUsers: (u: Users) => void;
+  updateContextMenuList: (list: ContextMenuList) => void;
+  updateOnlineStatus: (isOnline: boolean) => void;
+  updateUser: (u: Partial<UserItem>) => void;
 }
 
 export interface LoadingState {
@@ -113,6 +121,7 @@ export interface GlobalState {
   dialogState: {
     addContact: DialogState;
     addServer: DialogState;
+    blockUser: DialogState;
     contacts: DialogState;
     editBio: DialogState;
     editContact: DialogState;
@@ -130,7 +139,7 @@ export interface GlobalState {
     anchor: DrawerAnchor;
     open: boolean;
   };
-  selectedContactFromContext: FullNameWithUserId;
+  selectedContactFromContext: UserItem;
   isOnline: boolean;
   loading: {
     color: CSSProperties["color"];

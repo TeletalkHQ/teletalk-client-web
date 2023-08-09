@@ -15,12 +15,9 @@ const RemoveContactActions: React.FC<Props> = ({
   <>
     <Input.CloseButton onClick={onClose} />
 
-    <Input.ErrorButton
-      loadingIndicatorText="Removing..."
-      loading={loading}
-      onClick={onRemove}
-    >
-      Remove
+    <Input.ErrorButton loading={loading} onClick={onRemove}>
+      {/* CLEANME:  Error confirm button */}
+      Confirm
     </Input.ErrorButton>
   </>
 );

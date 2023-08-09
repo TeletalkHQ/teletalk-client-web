@@ -45,6 +45,7 @@ export class Maker extends MakerMain {
       ...this.emptyUserPublicData(),
       ...this.emptyCellphone(),
       isContact: false,
+      isBlocked: false,
       originalFirstName: "",
       originalLastName: "",
     };
