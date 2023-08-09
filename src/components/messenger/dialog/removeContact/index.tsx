@@ -26,9 +26,13 @@ const RemoveContact = () => {
     );
   };
 
+  const handleBack = () => {
+    handleClose();
+    globalStore.openDialog("contacts");
+  };
+
   const handleClose = () => {
     globalStore.closeDialog("removeContact");
-    globalStore.openDialog("contacts");
   };
 
   return (
@@ -38,7 +42,7 @@ const RemoveContact = () => {
         actions={
           <Actions
             loading={loading}
-            onClose={handleClose}
+            onClose={handleBack}
             onRemove={handleRemoveContact}
           />
         }
