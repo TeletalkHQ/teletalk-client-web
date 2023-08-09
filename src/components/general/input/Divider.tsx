@@ -1,18 +1,20 @@
+import Box from "~/components/general/box";
+
 interface Props {
   label: string;
 }
 
 const Divider: React.FC<Props> = ({ label }) => {
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <div
+    <Box.Div style={{ display: "flex", alignItems: "center" }}>
+      <Box.Div
         style={{
           borderBottom: "2px solid lightgray",
           width: "95%",
           marginRight: "5px",
         }}
       />
-      <div
+      <Box.Div
         style={{
           padding: label ? "0px 10px" : "",
           margin: "5px 0px 10px",
@@ -22,15 +24,15 @@ const Divider: React.FC<Props> = ({ label }) => {
         }}
       >
         {label}
-      </div>
-      <div
+      </Box.Div>
+      <Box.Div
         style={{
           borderBottom: "2px solid lightgray",
           width: "95%",
           marginLeft: "5px",
         }}
       />
-    </div>
+    </Box.Div>
   );
 };
 

@@ -1,5 +1,6 @@
 import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
+import { Typography } from "~/components/general/typography";
 import GreyTextParagraph from "~/components/general/typography/GreyTextParagraph";
 
 interface Props {
@@ -20,19 +21,17 @@ const SettingsProfileOverview: React.FC<Props> = ({
       </Box.Div>
 
       <Box.Flex col>
-        <Box.Div
+        <Typography.Bold
           style={{
             fontSize: 20,
-            fontWeight: "500",
           }}
         >
           {fullName}
-        </Box.Div>
+        </Typography.Bold>
 
         <Box.Div
           style={{
             fontSize: 14,
-            fontWeight: "400",
           }}
         >
           {fullNumber}
@@ -42,7 +41,6 @@ const SettingsProfileOverview: React.FC<Props> = ({
           <Box.Div
             style={{
               fontSize: 16,
-              fontWeight: "400",
             }}
           >
             <GreyTextParagraph>@{username}</GreyTextParagraph>

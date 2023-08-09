@@ -1,5 +1,7 @@
+import Box from "~/components/general/box";
+
 const UserInfoTitle = () => {
-  return <div>User Info</div>;
+  return <Box.Div>User Info</Box.Div>;
 };
 
 export default UserInfoTitle;

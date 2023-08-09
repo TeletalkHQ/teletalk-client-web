@@ -1,7 +1,7 @@
 import { userUtils } from "~/classes/UserUtils";
 import Box from "~/components/general/box";
 import IconButton from "~/components/general/other/IconButton";
-import Typography from "~/components/general/typography/Typography";
+import { Typography } from "~/components/general/typography";
 import { Icons } from "~/components/other/Icons";
 import { useUserPublicData } from "~/hooks";
 import { useGlobalStore, useMessageStore } from "~/store";
@@ -51,14 +51,13 @@ const ChatBar: React.FC<Props> = () => {
         </Box.Div>
 
         <Box.Flex ai="center">
-          <Typography
+          <Typography.Bold
             style={{
               fontSize: 18,
-              fontWeight: "500",
             }}
           >
             {fullName}
-          </Typography>
+          </Typography.Bold>
         </Box.Flex>
 
         <Box.Div

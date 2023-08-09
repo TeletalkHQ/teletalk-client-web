@@ -1,3 +1,4 @@
+import Box from "~/components/general/box";
 import { Style } from "~/types";
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 
 const SquareBadge: React.FC<Props> = ({ children, overrideStyle = {} }) => {
   return (
-    <span
+    <Box.Span
       style={{
         backgroundColor: "#4e6883",
         color: "white",
@@ -18,7 +19,7 @@ const SquareBadge: React.FC<Props> = ({ children, overrideStyle = {} }) => {
       }}
     >
       {children}
-    </span>
+    </Box.Span>
   );
 };
 

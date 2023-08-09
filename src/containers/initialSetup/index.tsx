@@ -67,6 +67,9 @@ const InitialSetup = () => {
           style={{
             width: "100%",
             maxWidth: "400px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
           }}
         >
           <ServerStatus
@@ -75,32 +78,22 @@ const InitialSetup = () => {
             status={status}
           />
 
-          <div style={{ marginTop: "10px" }}></div>
-
           <Input.PrimaryButton onClick={handleServersClick}>
             Servers
           </Input.PrimaryButton>
-
-          <div style={{ marginTop: "10px" }}></div>
 
           <ServerSelect
             onServerSelectChange={handleServerSelectChange}
             selectedServer={selectedServer}
           />
 
-          <div style={{ marginTop: "10px" }}></div>
-
           <AddServerButton onAddServerClick={handleAddServerClick} />
-
-          <div style={{ marginTop: "10px" }}></div>
 
           <SetupButton
             indicatorText={status === "online" ? "Forwarding..." : "Trying..."}
             loading={loading}
             onSetup={handleSetup}
           />
-
-          <div style={{ marginTop: "10px" }}></div>
 
           <Input.PrimaryButton
             onClick={handleAuthenticateClick}
