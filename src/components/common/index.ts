@@ -5,6 +5,7 @@ import CloseButton from "~/components/common/CloseButton";
 import ConfirmButton from "~/components/common/ConfirmButton";
 import CountryCode from "~/components/common/CountryCode";
 import ErrorButton from "~/components/common/ErrorButton";
+import ErrorConfirmButton from "~/components/common/ErrorConfirmButton";
 import ErrorTextButton from "~/components/common/ErrorTextButton";
 import FirstName from "~/components/common/FirstName";
 import FullName from "~/components/common/FullName";
@@ -25,6 +26,7 @@ export const CommonInput = {
   CountryCode,
   CountrySelector,
   ErrorButton,
+  ErrorConfirmButton,
   ErrorTextButton,
   FirstName,
   FullName,

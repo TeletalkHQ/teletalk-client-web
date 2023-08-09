@@ -12,9 +12,7 @@ const BlockUserActions: React.FC<Props> = ({ loading, onClose, onConfirm }) => {
     <>
       <Input.CloseButton onClick={onClose} />
 
-      <Input.ErrorButton loading={loading} onClick={onConfirm}>
-        Confirm
-      </Input.ErrorButton>
+      <Input.ErrorConfirmButton loading={loading} onClick={onConfirm} />
     </>
   );
 };
