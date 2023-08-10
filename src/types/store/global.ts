@@ -26,6 +26,7 @@ export type DialogName =
   | "editProfile"
   | "editProfile"
   | "editUsername"
+  | "initialSetup"
   | "language"
   | "logout"
   | "notificationsAndSounds"
@@ -129,6 +130,7 @@ export interface GlobalState {
     editFullName: DialogState;
     editProfile: DialogState;
     editUsername: DialogState;
+    initialSetup: DialogState;
     logout: DialogState;
     removeContact: DialogState;
     servers: DialogState;

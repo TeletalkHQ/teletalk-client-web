@@ -136,13 +136,7 @@ export type Status = "idle" | "pending" | "offline" | "online";
 
 export type StatusColors = { [key in Status]: string };
 
-export type UrlName =
-  | "auth"
-  | "create"
-  | "initialSetup"
-  | "messenger"
-  | "signIn"
-  | "verify";
+export type UrlName = "create" | "messenger" | "signIn" | "verify";
 
 export type CamelCase<S extends string> =
   S extends `${infer P1}_${infer P2}${infer P3}`

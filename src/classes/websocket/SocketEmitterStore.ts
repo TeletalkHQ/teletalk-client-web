@@ -17,4 +17,4 @@ export class SocketEmitterStore {
   }, {} as Events);
 }
 
-export const socketEmitterStore = new SocketEmitterStore();
+export const socketEmitterStore = () => new SocketEmitterStore();
