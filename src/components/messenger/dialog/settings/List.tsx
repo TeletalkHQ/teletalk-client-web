@@ -5,10 +5,11 @@ import CircleNotificationsIcon from "@mui/icons-material/CircleNotificationsTwoT
 import LanguageIcon from "@mui/icons-material/LanguageTwoTone";
 import LockIcon from "@mui/icons-material/LockTwoTone";
 import PieChartIcon from "@mui/icons-material/PieChartTwoTone";
+import StorageIcon from "@mui/icons-material/Storage";
 
 import ListItem from "~/components/messenger/dialog/settings/ListItem";
 
-import { OnSettingItemClick } from "./types";
+import { OnSettingItemClick, SettingsList as SettingsListType } from "./types";
 
 interface Props {
   onSettingItemClick: OnSettingItemClick;
@@ -30,7 +31,7 @@ const SettingsList: React.FC<Props> = ({ onSettingItemClick }) => {
   );
 };
 
-export const settingsList = [
+export const settingsList: SettingsListType = [
   {
     disabled: false,
     displayName: "Edit Profile",
@@ -40,39 +41,45 @@ export const settingsList = [
   {
     disabled: true,
     displayName: "Notifications and Sounds",
-    name: "notificationsAndSounds",
     Icon: CircleNotificationsIcon,
+    name: "notificationsAndSounds",
   },
   {
     disabled: true,
     displayName: "Privacy and Security",
-    name: "privacyAndSecurity",
     Icon: LockIcon,
+    name: "privacyAndSecurity",
   },
   {
     disabled: true,
     displayName: "Chat Settings",
-    name: "chatSettings",
     Icon: ChatIcon,
+    name: "chatSettings",
   },
   {
     disabled: true,
     displayName: "Advanced",
-    name: "advanced",
     Icon: PieChartIcon,
+    name: "advanced",
   },
   {
     disabled: true,
     displayName: "Call Settings",
-    name: "callSettings",
     Icon: CallIcon,
+    name: "callSettings",
   },
   {
     disabled: true,
     displayName: "Language",
-    name: "language",
     Icon: LanguageIcon,
+    name: "language",
   },
-] as const;
+  {
+    disabled: false,
+    displayName: "Server Setup",
+    Icon: StorageIcon,
+    name: "serverSetup",
+  },
+];
 
 export default SettingsList;

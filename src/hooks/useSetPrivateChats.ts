@@ -9,9 +9,9 @@ export const useSetPrivateChats = () => {
   const userStore = useUserStore();
   const { handler } = useEmitter("getPrivateChats");
   useEffect(() => {
-    if (userStore.userId) updater();
+    if (userStore.currentUserData.userId) updater();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userStore.userId]);
+  }, [userStore.currentUserData.userId]);
 
   const updater = () => {
     handler.emitFull({}, ({ data }) => {

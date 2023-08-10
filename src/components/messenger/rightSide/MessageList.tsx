@@ -49,7 +49,7 @@ const MessageList: React.FC<Props> = () => {
             chatDate=""
             message={messageItem.messageText}
             justify={
-              userStore.userId === messageItem.sender.senderId
+              userStore.currentUserData.userId === messageItem.sender.senderId
                 ? "flex-end"
                 : "flex-start"
             }

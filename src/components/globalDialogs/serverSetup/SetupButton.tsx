@@ -2,23 +2,27 @@ import { Input } from "~/components";
 import { VoidNoArgsFn } from "~/types";
 
 interface Props {
+  disabled: boolean;
   indicatorText: string;
   loading: boolean;
   onSetup: VoidNoArgsFn;
 }
 
-const SetupButton: React.FC<Props> = ({ indicatorText, loading, onSetup }) => {
+const SetupButton: React.FC<Props> = ({
+  disabled,
+  indicatorText,
+  loading,
+  onSetup,
+}) => {
   return (
-    <Input.LoadingButton
+    <Input.PrimaryButton
+      disabled={disabled}
       loading={loading}
-      onClick={onSetup}
-      style={{
-        textAlign: "center",
-      }}
       loadingIndicatorText={indicatorText}
+      onClick={onSetup}
     >
       Setup
-    </Input.LoadingButton>
+    </Input.PrimaryButton>
   );
 };
 

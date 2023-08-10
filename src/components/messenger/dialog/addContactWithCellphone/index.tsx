@@ -8,7 +8,7 @@ import Content from "~/components/messenger/dialog/addContactWithCellphone/Conte
 import Title from "~/components/messenger/dialog/addContactWithCellphone/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useEmitter, useListener } from "~/hooks";
-import { useGlobalStore } from "~/store";
+import { useGlobalStore, useUserStore } from "~/store";
 import {
   AddContactWithCellphoneIO,
   CommonChangeEvent,
@@ -18,12 +18,13 @@ import { utils } from "~/utils";
 
 const AddContactWithCellphone = () => {
   const globalStore = useGlobalStore();
+  const userStore = useUserStore();
   const { handler, loading } = useEmitter("addContactWithCellphone");
 
   useListener({
     evName: "addContactWithCellphone",
     cb(response) {
-      globalStore.updateUser({
+      userStore.updateUser({
         ...response.data.addedContact,
         isContact: true,
       });

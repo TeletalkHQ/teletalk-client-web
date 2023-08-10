@@ -14,7 +14,7 @@ interface Props {
   actions: JSX.Element;
   content: JSX.Element;
   dialogStyle?: Style;
-  onClose: VoidNoArgsFn;
+  onClose?: VoidNoArgsFn;
   onKeyDown?: VoidNoArgsFn;
   open: boolean;
   paperStyle?: Style;

@@ -1,6 +1,19 @@
-import { Cellphone, FullNameWithUserId, Status } from "utility-store/lib/types";
+import {
+  Cellphone,
+  FullNameWithUserId,
+  PublicUserData,
+  Status,
+} from "utility-store/lib/types";
 
-import { Bio, StoreSetFn, StringMap, UserId, Username } from "~/types";
+import {
+  Bio,
+  RemoveContactIO,
+  StoreSetFn,
+  StringMap,
+  UserId,
+  Username,
+  VoidNoArgsFn,
+} from "~/types";
 
 export interface BlacklistItem {
   userId: UserId;
@@ -8,17 +21,40 @@ export interface BlacklistItem {
 
 export type Blacklist = BlacklistItem[];
 
-export interface UserState extends FullNameWithUserId, Cellphone {
-  bio: Bio;
-  username: Username;
-  status: Status;
-  createdAt: number;
+export type UserItem = PublicUserData &
+  Cellphone & {
+    isContact: boolean;
+    isBlocked: boolean;
+    originalFirstName: string;
+    originalLastName: string;
+  };
+
+export type CurrentUserData = FullNameWithUserId &
+  Cellphone & {
+    bio: Bio;
+    username: Username;
+    status: Status;
+    createdAt: number;
+  };
+
+export type Users = UserItem[];
+
+export interface UserState {
+  currentUserData: CurrentUserData;
+
+  selectedContactFromContext: UserItem;
+  users: Users;
 }
 
-export type ExtendedUserState = UserState & StringMap;
+export type ExtendedCurrentUserData = CurrentUserData & StringMap;
 
 export interface UserHandlers {
-  setUserData: (u: UserState) => void;
+  setCurrentUserData: (u: CurrentUserData) => void;
+  removeContact: (u: RemoveContactIO["output"]["removedContact"]) => void;
+  setSelectedContactFromContext: (c: UserItem) => void;
+  setUsers: (u: Users) => void;
+  updateUser: (u: Partial<UserItem>) => void;
+  reset: VoidNoArgsFn;
 }
 
 export type UserSetState = StoreSetFn<UserState>;

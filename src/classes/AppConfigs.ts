@@ -21,7 +21,7 @@ export class AppConfigs {
   getDefaultConfigs() {
     return {
       api: {
-        defaultTimeout: this.RUNTIME_MODE === "development" ? 2000 : 0,
+        defaultTimeout: this.RUNTIME_MODE === "development" ? 1 : 0,
         clientBaseUrl: this.CLIENT_BASE_URLS[this.RUNTIME_MODE],
         defaultHeaders: {
           "Content-Type": "application/json",

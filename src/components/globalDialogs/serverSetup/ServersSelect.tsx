@@ -7,19 +7,22 @@ import Box from "~/components/general/box";
 import { Url } from "~/types";
 
 interface Props {
+  disabled: boolean;
   onServerSelectChange: (url: Url) => void;
   selectedServer: string;
 }
 
 const ServerSelect: React.FC<Props> = ({
+  disabled,
   onServerSelectChange,
   selectedServer,
 }) => {
   return (
     <>
-      <FormControl fullWidth>
+      <FormControl disabled={disabled} fullWidth>
         <InputLabel id="labelId">Selected server</InputLabel>
         <Input.Select
+          size="small"
           defaultValue={selectedServer}
           labelId="labelId"
           value={selectedServer}

@@ -21,7 +21,7 @@ export interface SocketResponse<Data = IO["output"]> {
   ok: boolean;
 }
 
-export type ResponseCallback<Data = IO["output"]> = (
+export type SocketResponseCallback<Data = IO["output"]> = (
   response: SocketResponse<Data>
 ) => Promise<void> | void;
 

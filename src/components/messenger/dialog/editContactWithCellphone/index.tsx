@@ -1,52 +1,57 @@
 import React from "react";
 
+import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";
 import Actions from "~/components/messenger/dialog/editContactWithCellphone/Actions";
 import Content from "~/components/messenger/dialog/editContactWithCellphone/Content";
 import Title from "~/components/messenger/dialog/editContactWithCellphone/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useEmitter, useListener } from "~/hooks";
-import { useGlobalStore } from "~/store";
+import { useGlobalStore, useUserStore } from "~/store";
 import { CommonChangeEvent } from "~/types";
 import { utils } from "~/utils";
 
 const EditContactWithCellphone = () => {
   const globalStore = useGlobalStore();
+  const userStore = useUserStore();
   const { handler, loading } = useEmitter("editContact");
 
   useListener({
     evName: "editContact",
     cb(response) {
-      globalStore.updateUser(response.data.editedContact);
+      userStore.updateUser(response.data.editedContact);
     },
   });
 
   const handleInputChange = (_value: string, event: CommonChangeEvent) => {
-    globalStore.setSelectedContactFromContext({
-      ...globalStore.selectedContactFromContext,
+    userStore.setSelectedContactFromContext({
+      ...userStore.selectedContactFromContext,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleAddContactClick = () => {
     handler.emitFull(
-      globalStore.selectedContactFromContext,
+      {
+        ...extractor.fullName(userStore.selectedContactFromContext),
+        userId: userStore.selectedContactFromContext.userId,
+      },
       returnToContactsDialog
     );
   };
 
-  const closeAddContactDialog = () => {
+  const handleClose = () => {
     globalStore.closeDialog("editContactWithCellphone");
-    globalStore.setSelectedContactFromContext(maker.emptyUser());
+    userStore.setSelectedContactFromContext(maker.emptyUser());
   };
 
   const returnToContactsDialog = () => {
-    closeAddContactDialog();
+    handleClose();
     globalStore.openDialog("contacts");
   };
 
   const isSubmitDisabled = utils.isFullNameValid(
-    globalStore.selectedContactFromContext
+    userStore.selectedContactFromContext
   );
 
   return (
@@ -55,7 +60,7 @@ const EditContactWithCellphone = () => {
         title={<Title />}
         content={
           <Content
-            fullName={globalStore.selectedContactFromContext}
+            fullName={userStore.selectedContactFromContext}
             onInputChange={handleInputChange}
           />
         }
@@ -68,7 +73,7 @@ const EditContactWithCellphone = () => {
           />
         }
         open={globalStore.dialogState.editContactWithCellphone.open}
-        onClose={closeAddContactDialog}
+        onClose={handleClose}
       />
     </>
   );

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { maker } from "~/classes/Maker";
-import { useGlobalStore } from "~/store";
+import { useUserStore } from "~/store";
 import { UserId, UserItem } from "~/types";
 
 import { useEmitter } from "./useEmitter";
@@ -21,7 +21,7 @@ type UseUserPublicData = (userId: UserId) => {
 };
 
 export const useUserPublicData: UseUserPublicData = (userId) => {
-  const globalStore = useGlobalStore();
+  const userStore = useUserStore();
   const { handler, loading } = useEmitter("getPublicUserData");
 
   useEffect(() => {
@@ -36,13 +36,13 @@ export const useUserPublicData: UseUserPublicData = (userId) => {
       data: { publicUserData },
     } = await handler.emitFull({ userId });
 
-    const item = globalStore.users.find(
+    const item = userStore.users.find(
       (i) => i.userId === publicUserData.userId
     );
 
     const userItem: UserItem = maker.user(publicUserData, item);
 
-    globalStore.updateUser(userItem);
+    userStore.updateUser(userItem);
 
     return {
       publicData: userItem,
@@ -52,7 +52,7 @@ export const useUserPublicData: UseUserPublicData = (userId) => {
   return {
     loading,
     publicData:
-      globalStore.users.find((i) => i.userId === userId) || maker.emptyUser(),
+      userStore.users.find((i) => i.userId === userId) || maker.emptyUser(),
     updater,
   };
 };

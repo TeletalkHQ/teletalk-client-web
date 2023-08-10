@@ -19,7 +19,10 @@ const ChatList: React.FC<Props> = ({
   return (
     <>
       {messageStore.privateChats.map((p, index) => {
-        const targetUserId = findTargetUserId(p, userStore.userId);
+        const targetUserId = findTargetUserId(
+          p,
+          userStore.currentUserData.userId
+        );
         const lastMessage = getLastMessage(p);
 
         return (

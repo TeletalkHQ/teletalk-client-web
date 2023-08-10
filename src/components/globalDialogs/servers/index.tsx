@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import DialogTemplate from "~/components/messenger/dialog/template";
-import { usePing } from "~/hooks";
+import { useLoading, usePing } from "~/hooks";
 import { useGlobalStore } from "~/store";
 import { ServerTestResult, Url } from "~/types";
 
@@ -12,36 +12,55 @@ import Title from "./Title";
 
 const Servers = () => {
   const globalStore = useGlobalStore();
-  const [loading, setLoading] = useState(false);
-  const [list, setList] = useState<ServerTestResult[]>([]);
+  const list = useRef<ServerTestResult[]>([]);
+  const [forceUpdate, setForceUpdate] = useState(false);
+  const { loading, startLoading, finishLoading } = useLoading();
   const { pinger } = usePing();
 
   useEffect(() => {
+    handleForceUpdate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading]);
+
+  useEffect(() => {
     if (globalStore.dialogState.servers.open) handleResetList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalStore.dialogState.servers.open]);
 
   const handleResetList = () => {
-    setList(
-      appConfigs.getConfigs().api.servers.map((item) => ({
-        ping: -1,
-        status: "idle",
-        url: item.url,
-      }))
-    );
+    list.current = appConfigs.getConfigs().api.servers.map((item) => ({
+      ping: -1,
+      status: "idle",
+      url: item.url,
+    }));
+    handleForceUpdate();
+  };
+
+  const handleForceUpdate = () => {
+    setForceUpdate(!forceUpdate);
   };
 
   const handleClose = () => {
     globalStore.closeDialog("servers");
+    globalStore.openDialog("serverSetup");
   };
 
   const handlePingAllServers = async () => {
-    setLoading(true);
+    startLoading();
 
-    for (const item of list) {
+    handleResetList();
+
+    for (const item of list.current) {
       await handlePingOneServer(item.url);
     }
 
-    setLoading(false);
+    finishLoading();
+  };
+
+  const handleServerItemClick = async (url: Url) => {
+    startLoading();
+    await handlePingOneServer(url);
+    finishLoading();
   };
 
   const handlePingOneServer = async (url: Url) => {
@@ -54,16 +73,12 @@ const Servers = () => {
     url: Url,
     restResult: Partial<Omit<ServerTestResult, "url">> = {}
   ) => {
-    const index = list.findIndex((i) => i.url === url);
+    const index = list.current.findIndex((i) => i.url === url);
 
-    const copyList = [...list];
-
-    copyList.splice(index, 1, { ...list[index], ...restResult });
-
-    setList(copyList);
+    list.current[index] = { ...list.current[index], ...restResult };
   };
 
-  const isPinging = list.some((item) => item.status === "pending") || loading;
+  const isPinging = list.current.some((item) => item.status === "pending");
 
   return (
     <DialogTemplate
@@ -73,8 +88,8 @@ const Servers = () => {
       content={
         <Content
           disabled={isPinging}
-          onListItemClick={handlePingOneServer}
-          list={list}
+          onListItemClick={handleServerItemClick}
+          list={list.current}
         />
       }
       title={<Title />}

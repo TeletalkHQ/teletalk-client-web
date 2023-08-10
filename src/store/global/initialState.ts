@@ -1,5 +1,4 @@
 import { appConfigs } from "~/classes/AppConfigs";
-import { maker } from "~/classes/Maker";
 import { GlobalState } from "~/types";
 
 export const defaultDialogState = {
@@ -26,7 +25,7 @@ export const initialState: GlobalState = {
     editFullName: defaultDialogState,
     editProfile: defaultDialogState,
     editUsername: defaultDialogState,
-    initialSetup: defaultDialogState,
+    serverSetup: defaultDialogState,
     logout: defaultDialogState,
     removeContact: defaultDialogState,
     servers: defaultDialogState,
@@ -37,7 +36,6 @@ export const initialState: GlobalState = {
     anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
     open: false,
   },
-  selectedContactFromContext: maker.emptyUser(),
   isOnline: false,
   loading: {
     color: "wheat",
@@ -47,5 +45,4 @@ export const initialState: GlobalState = {
     speedMultiplier: 1,
     type: "FULL_PAGE",
   },
-  users: [],
 };

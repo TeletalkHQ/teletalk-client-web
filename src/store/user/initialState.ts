@@ -1,16 +1,22 @@
+import { maker } from "~/classes/Maker";
 import { UserState } from "~/types";
 
 export const initialState: UserState = {
-  bio: "",
-  countryCode: "",
-  countryName: "",
-  createdAt: 0,
-  firstName: "",
-  lastName: "",
-  phoneNumber: "",
-  status: {
-    isActive: false,
+  currentUserData: {
+    bio: "",
+    countryCode: "",
+    countryName: "",
+    createdAt: 0,
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    status: {
+      isActive: false,
+    },
+    userId: "",
+    username: "",
   },
-  userId: "",
-  username: "",
+
+  selectedContactFromContext: maker.emptyUser(),
+  users: [],
 };

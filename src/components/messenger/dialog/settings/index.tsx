@@ -28,9 +28,13 @@ const Settings = () => {
       title={<Title />}
       content={
         <Content
-          fullName={userUtils.concatFirstNameWithLastName(userState)}
-          fullNumber={userUtils.concatCountryCodeWithPhoneNumber(userState)}
-          username={userState.username}
+          fullName={userUtils.concatFirstNameWithLastName(
+            userState.currentUserData
+          )}
+          fullNumber={userUtils.concatCountryCodeWithPhoneNumber(
+            userState.currentUserData
+          )}
+          username={userState.currentUserData.username}
           onSettingItemClick={handleSettingItemClick}
         />
       }

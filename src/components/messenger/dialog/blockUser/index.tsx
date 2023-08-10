@@ -3,10 +3,11 @@ import Actions from "~/components/messenger/dialog/blockUser/Actions";
 import Content from "~/components/messenger/dialog/blockUser/Content";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useEmitter, useListener } from "~/hooks";
-import { useGlobalStore } from "~/store";
+import { useGlobalStore, useUserStore } from "~/store";
 
 const BlockUser = () => {
   const globalStore = useGlobalStore();
+  const userStore = useUserStore();
 
   const { handler: addBlockHandler, loading: addBlockLoading } =
     useEmitter("addBlock");
@@ -14,7 +15,7 @@ const BlockUser = () => {
   useListener({
     evName: "addBlock",
     cb(response) {
-      globalStore.updateUser({
+      userStore.updateUser({
         userId: response.data.blockedUser.userId,
         isBlocked: true,
       });
@@ -27,7 +28,7 @@ const BlockUser = () => {
   useListener({
     evName: "removeBlock",
     cb(response) {
-      globalStore.updateUser({
+      userStore.updateUser({
         userId: response.data.removedBlock.userId,
         isBlocked: false,
       });
@@ -35,16 +36,13 @@ const BlockUser = () => {
   });
 
   const handleConfirm = () => {
-    (globalStore.selectedContactFromContext.isBlocked
+    (userStore.selectedContactFromContext.isBlocked
       ? removeBlockHandler
       : addBlockHandler
-    ).emitFull(
-      { userId: globalStore.selectedContactFromContext.userId },
-      () => {
-        handleClose();
-        globalStore.openDialog("contacts");
-      }
-    );
+    ).emitFull({ userId: userStore.selectedContactFromContext.userId }, () => {
+      handleClose();
+      globalStore.openDialog("contacts");
+    });
   };
 
   const handleBack = () => {
@@ -72,7 +70,7 @@ const BlockUser = () => {
         content={
           <Content
             fullName={userUtils.concatFirstNameWithLastName(
-              globalStore.selectedContactFromContext
+              userStore.selectedContactFromContext
             )}
           />
         }

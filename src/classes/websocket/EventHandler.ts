@@ -7,9 +7,9 @@ import { notificationStore } from "~/classes/NotificationStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import type {
   IO,
-  ResponseCallback,
   SocketErrorCallback,
   SocketResponse,
+  SocketResponseCallback,
   SocketRoute,
   UpdateLoadingFn,
   VoidNoArgsFn,
@@ -30,7 +30,7 @@ export class EventHandler<IOType extends IO> {
   private errorCallback: SocketErrorCallback;
   private requestData: IOType["input"];
   private response: SocketResponse;
-  private responseCallback: ResponseCallback;
+  private responseCallback: SocketResponseCallback;
   private route: SocketRoute;
 
   constructor(
@@ -98,7 +98,8 @@ export class EventHandler<IOType extends IO> {
 
   async emitFull(
     data: IOType["input"],
-    responseCallback: ResponseCallback<IOType["output"]> = () => undefined,
+    responseCallback: SocketResponseCallback<IOType["output"]> = () =>
+      undefined,
     errorCallback: SocketErrorCallback = (_errors) => {},
     options?: Partial<Options>
   ): Promise<SocketResponse<IOType["output"]>> {
