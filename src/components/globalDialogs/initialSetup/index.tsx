@@ -34,6 +34,9 @@ const InitialSetup = () => {
             ...maker.emptyUser(),
             ...item,
             isContact: true,
+            isBlocked: data.user.blacklist.some(
+              (i) => i.userId === item.userId
+            ),
           }))
         );
         globalStore.closeFullPageLoading();
