@@ -23,13 +23,11 @@ const nextConfig = {
   },
 
   async redirects() {
-    return ["/", "/auth", "/create", "/messenger", "/signIn", "/verify"].map(
-      (item) => ({
-        destination: "/initialSetup",
-        permanent: true,
-        source: item,
-      })
-    );
+    return ["/", "/create", "/signIn", "/verify"].map((item) => ({
+      destination: "/messenger",
+      permanent: false,
+      source: item,
+    }));
   },
 };
 

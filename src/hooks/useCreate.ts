@@ -14,7 +14,7 @@ export const useCreate = () => {
       authState.updateFirstName("");
       authState.updateLastName("");
 
-      router.push("initialSetup");
+      router.push("messenger");
     });
   };
 

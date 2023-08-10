@@ -18,7 +18,7 @@ export const useVerify = () => {
         authStore.updateVerificationCode("");
 
         if (data.newUser) router.replace("create");
-        else router.push("initialSetup");
+        else router.push("messenger");
       },
       () => {
         domUtils()

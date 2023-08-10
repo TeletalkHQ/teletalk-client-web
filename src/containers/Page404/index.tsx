@@ -6,7 +6,7 @@ const Page404Container = () => {
   const router = useCustomRouter();
 
   useEffect(() => {
-    router.push("initialSetup");
+    router.push("messenger");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

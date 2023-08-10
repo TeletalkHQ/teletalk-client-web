@@ -25,6 +25,7 @@ export const initialState: GlobalState = {
     editFullName: defaultDialogState,
     editProfile: defaultDialogState,
     editUsername: defaultDialogState,
+    initialSetup: defaultDialogState,
     logout: defaultDialogState,
     removeContact: defaultDialogState,
     servers: defaultDialogState,
