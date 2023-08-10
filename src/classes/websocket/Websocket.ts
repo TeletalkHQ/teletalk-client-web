@@ -9,6 +9,10 @@ interface Options {
 export class Websocket {
   client: Socket = this.initialize();
 
+  setAndInitialize(options = this.getDefaultOptions()) {
+    this.setClient(this.initialize(options));
+  }
+
   initialize(options = this.getDefaultOptions()) {
     return io(options.url, {
       autoConnect: false,

@@ -1,5 +1,7 @@
 import { AuthHandlers, AuthSetState } from "~/types";
 
+import { initialState } from "./initialState";
+
 export const handlers: (set: AuthSetState) => AuthHandlers = (set) => ({
   updateCountryCode(countryCode) {
     set({
@@ -33,5 +35,9 @@ export const handlers: (set: AuthSetState) => AuthHandlers = (set) => ({
   },
   updateSelectedCountry(selectedCountry) {
     set({ selectedCountry });
+  },
+
+  reset() {
+    set(initialState);
   },
 });

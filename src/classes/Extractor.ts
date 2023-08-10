@@ -1,9 +1,9 @@
 import { Extractor as ExtractorMain } from "utility-store";
 
-import { ExtendedUserState, UserState } from "~/types";
+import { CurrentUserData, ExtendedCurrentUserData } from "~/types";
 
 export class Extractor extends ExtractorMain {
-  userState(data: ExtendedUserState): UserState {
+  currentUserData(data: ExtendedCurrentUserData): CurrentUserData {
     return {
       ...super.cellphone(data),
       ...super.fullName(data),

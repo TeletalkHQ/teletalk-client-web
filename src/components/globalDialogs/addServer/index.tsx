@@ -24,6 +24,7 @@ const AddServer = () => {
 
   const handleClose = () => {
     globalStore.closeDialog("addServer");
+    globalStore.openDialog("serverSetup");
   };
 
   const handleInputChange = (event: CommonChangeEvent) => {
@@ -47,7 +48,7 @@ const AddServer = () => {
   };
 
   const handleReset = () => {
-    globalStore.closeDialog("addServer");
+    handleClose();
     setInputValue("");
     setStatus("idle");
   };
@@ -60,24 +61,36 @@ const AddServer = () => {
     pinger(fixServerUrl());
   };
 
+  const isPending = status === "pending";
+  const isAddDisabled = isPending || !inputValue || status !== "online";
+  const isTestDisabled = isPending || !inputValue;
+  const isCloseDisabled = isPending;
+  const isInputsDisabled = isPending;
+
   return (
     <DialogTemplate
+      title={<Title />}
       actions={
-        <Actions disabled={status !== "online"} onAddClick={handleAddClick} />
+        <Actions
+          isAddDisabled={isAddDisabled}
+          isCloseDisabled={isCloseDisabled}
+          isTestDisabled={isTestDisabled}
+          loading={loading}
+          onAddClick={handleAddClick}
+          onClose={handleClose}
+          onTestClick={handleTestClick}
+        />
       }
       content={
         <Content
-          disabled={status === "pending"}
+          disabled={isInputsDisabled}
           inputValue={inputValue}
-          loading={loading}
           onInputChange={handleInputChange}
           onSelectChange={handleSelectChange}
-          onTestClick={handleTestClick}
           protocol={protocol}
           status={status}
         />
       }
-      title={<Title />}
       onClose={handleClose}
       open={globalStore.dialogState.addServer.open}
     />

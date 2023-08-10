@@ -5,7 +5,7 @@ import Content from "~/components/messenger/dialog/contacts/Content";
 import Title from "~/components/messenger/dialog/contacts/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useContextMenu } from "~/hooks";
-import { useGlobalStore, useMessageStore } from "~/store";
+import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import {
   ContextMenuList,
   DialogName,
@@ -16,6 +16,7 @@ import {
 const Contacts = () => {
   const globalStore = useGlobalStore();
   const messageStore = useMessageStore();
+  const userStore = useUserStore();
 
   const createContextMenuList = ({
     isBlocked,
@@ -60,7 +61,7 @@ const Contacts = () => {
   };
 
   const handleContextMenu: ExtendedOnContextMenu<UserItem> = (event, u) => {
-    globalStore.setSelectedContactFromContext(u);
+    userStore.setSelectedContactFromContext(u);
     onContextMenu(event, createContextMenuList(u));
   };
 
@@ -69,7 +70,7 @@ const Contacts = () => {
       title={<Title />}
       content={
         <Content
-          contacts={globalStore.users.filter((i) => i.isContact)}
+          contacts={userStore.users.filter((i) => i.isContact)}
           onContactItemClicked={handleContactItemClicked}
           onContextMenu={handleContextMenu}
         />

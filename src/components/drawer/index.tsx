@@ -11,7 +11,7 @@ import { utils } from "~/utils";
 
 const Drawer = () => {
   const globalState = useGlobalStore();
-  const userState = useUserStore();
+  const userStore = useUserStore();
 
   const toggleDrawer = (
     event: SyntheticEvent<{}, Event> | KeyboardEvent<HTMLDivElement>,
@@ -33,8 +33,12 @@ const Drawer = () => {
       globalState.openDialog(elementName as DialogName);
   };
 
-  const fullName = userUtils.concatFirstNameWithLastName(userState);
-  const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(userState);
+  const fullName = userUtils.concatFirstNameWithLastName(
+    userStore.currentUserData
+  );
+  const fullNumber = userUtils.concatCountryCodeWithPhoneNumber(
+    userStore.currentUserData
+  );
 
   return (
     <SwipeableDrawer

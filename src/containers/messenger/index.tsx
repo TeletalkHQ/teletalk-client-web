@@ -14,8 +14,12 @@ const Messenger = () => {
   useListener({
     evName: "updatePublicUserData",
     cb: (response) => {
-      userStore.setUserData({
-        ...extractor.userState({ ...userStore, blacklist: [], clients: [] }),
+      userStore.setCurrentUserData({
+        ...extractor.currentUserData({
+          ...userStore.currentUserData,
+          blacklist: [],
+          clients: [],
+        }),
         ...extractor.publicUserData(response.data.publicUserData),
       });
     },

@@ -16,10 +16,10 @@ const EditProfile = () => {
   useEffect(() => {
     if (globalState.dialogState.editProfile.open)
       settingsStore.updateProfile({
-        ...extractor.cellphone(userStore),
-        ...extractor.fullName(userStore),
-        bio: userStore.bio,
-        username: userStore.username,
+        ...extractor.cellphone(userStore.currentUserData),
+        ...extractor.fullName(userStore.currentUserData),
+        bio: userStore.currentUserData.bio,
+        username: userStore.currentUserData.username,
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalState.dialogState.editProfile.open, userStore]);

@@ -1,11 +1,10 @@
-import { ButtonProps } from "@mui/material";
-
 import { Input } from "~/components";
+import { CustomLoadingButtonProps } from "~/types";
 
-interface Props extends ButtonProps {}
+interface Props extends CustomLoadingButtonProps {}
 
 const PrimaryButton: React.FC<Props> = (props) => (
-  <Input.Button {...props} color="primary" />
+  <Input.LoadingButton {...props} color="primary" />
 );
 
 export default PrimaryButton;

@@ -2,21 +2,14 @@ import { FormControl, InputLabel } from "@mui/material";
 
 import { Input } from "~/components";
 import Box from "~/components/general/box";
-import ServerStatus from "~/components/initialSetup/ServerStatus";
-import {
-  CommonOnChange,
-  CommonSelectOnChange,
-  Status,
-  VoidNoArgsFn,
-} from "~/types";
+import ServerStatus from "~/components/globalDialogs/ServerStatus";
+import { CommonOnChange, CommonSelectOnChange, Status } from "~/types";
 
 interface Props {
   disabled: boolean;
   inputValue: string;
-  loading: boolean;
   onInputChange: CommonOnChange;
   onSelectChange: CommonSelectOnChange;
-  onTestClick: VoidNoArgsFn;
   protocol: string;
   status: Status;
 }
@@ -24,15 +17,15 @@ interface Props {
 const Content: React.FC<Props> = ({
   disabled,
   inputValue,
-  loading,
   onInputChange,
   onSelectChange,
-  onTestClick,
   protocol,
   status,
 }) => {
   return (
     <Box.Flex col gap="5px" style={{ maxWidth: "400px" }}>
+      <ServerStatus status={status} />
+
       <Box.Flex width="100%" jc="space-between" ai="center">
         <FormControl style={{ width: "25%" }} fullWidth>
           <InputLabel>Protocol</InputLabel>
@@ -59,13 +52,6 @@ const Content: React.FC<Props> = ({
           onChange={onInputChange}
         />
       </Box.Flex>
-      <ServerStatus
-        indicatorValue="Pinging..."
-        disabled={!inputValue}
-        loading={loading}
-        onClick={onTestClick}
-        status={status}
-      />
     </Box.Flex>
   );
 };

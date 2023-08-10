@@ -1,5 +1,7 @@
 import { MessageHandlers, MessageSetState, PrivateChatItem } from "~/types";
 
+import { initialState } from "./initialState";
+
 export const handlers: (set: MessageSetState) => MessageHandlers = (set) => ({
   setPrivateChats(privateChats) {
     set({
@@ -64,5 +66,9 @@ export const handlers: (set: MessageSetState) => MessageHandlers = (set) => ({
     set({
       messageInputTextValue: value,
     });
+  },
+
+  reset() {
+    set(initialState);
   },
 });

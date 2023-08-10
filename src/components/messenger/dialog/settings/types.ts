@@ -1,7 +1,24 @@
-import { settingsList } from "./List";
+import { SvgIconComponent } from "@mui/icons-material";
 
-export type SettingItem = (typeof settingsList)[number];
+import { DialogName } from "~/types";
 
-export type SettingDisplayName = SettingItem["displayName"];
+export type SettingDisplayName =
+  | "Edit Profile"
+  | "Notifications and Sounds"
+  | "Privacy and Security"
+  | "Chat Settings"
+  | "Advanced"
+  | "Call Settings"
+  | "Language"
+  | "Server Setup";
+
+export type SettingItem = {
+  disabled: boolean;
+  displayName: SettingDisplayName;
+  Icon: SvgIconComponent;
+  name: DialogName;
+};
+
+export type SettingsList = SettingItem[];
 
 export type OnSettingItemClick = (item: SettingItem) => void;

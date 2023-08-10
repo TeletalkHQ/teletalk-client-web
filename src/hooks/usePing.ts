@@ -1,5 +1,7 @@
+import Timeout from "await-timeout";
 import { useState } from "react";
 
+import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
 import { ServerTestResult, Status, Url } from "~/types";
 
@@ -13,6 +15,9 @@ export const usePing = () => {
   const pinger = async (url: Url) => {
     setLoading(true);
     setStatus("pending");
+
+    await Timeout.set(appConfigs.getConfigs().api.defaultTimeout);
+
     await setClientId(url);
 
     return new Promise<ServerTestResult>((resolve) => {
@@ -26,6 +31,7 @@ export const usePing = () => {
           status: "online",
           url,
         });
+        websocket.client.disconnect();
       });
 
       websocket.client.on("connect_error", () => {
@@ -35,9 +41,11 @@ export const usePing = () => {
           status: "offline",
           url,
         });
+        websocket.client.disconnect();
       });
 
       const startTime = Date.now();
+
       websocket.client.connect();
     });
   };
@@ -64,7 +72,9 @@ export const usePing = () => {
   };
 
   const emitPingEvent = () => {
-    return handler.emitFull({}, successPingCallback, failPingCallback);
+    return handler.emitFull({}, successPingCallback, failPingCallback, {
+      timeout: 0,
+    });
   };
 
   const successPingCallback = () => {

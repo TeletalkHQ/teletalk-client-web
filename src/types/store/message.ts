@@ -6,6 +6,7 @@ import {
   PrivateChats,
   StoreSetFn,
   UserId,
+  VoidNoArgsFn,
 } from "~/types";
 
 export interface SelectedChatInfo {
@@ -32,6 +33,7 @@ export interface MessageHandlers {
   messageInputOnChange: (v: MessageText) => void;
   setPrivateChats: (p: PrivateChats) => void;
   updateSelectedChatInfo: (d: { chatId: ChatId; userId: UserId }) => void;
+  reset: VoidNoArgsFn;
 }
 
 export type MessageSetState = StoreSetFn<MessageState>;

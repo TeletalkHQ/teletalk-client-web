@@ -1,12 +1,8 @@
 import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
-import {
-  Cellphone,
-  CountryItem,
-  PublicUserData,
-} from "utility-store/lib/types";
+import { CountryItem } from "utility-store/lib/types";
 
-import { RemoveContactIO, StoreSetFn, VoidNoArgsFn } from "~/types";
+import { StoreSetFn, VoidNoArgsFn } from "~/types";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -26,13 +22,13 @@ export type DialogName =
   | "editProfile"
   | "editProfile"
   | "editUsername"
-  | "initialSetup"
   | "language"
   | "logout"
   | "notificationsAndSounds"
   | "privacyAndSecurity"
   | "removeContact"
   | "servers"
+  | "serverSetup"
   | "settings"
   | "userInfo";
 
@@ -77,16 +73,6 @@ export type ContextMenuState = {
   list: ContextMenuList;
 };
 
-export type UserItem = PublicUserData &
-  Cellphone & {
-    isContact: boolean;
-    isBlocked: boolean;
-    originalFirstName: string;
-    originalLastName: string;
-  };
-
-export type Users = UserItem[];
-
 export interface GlobalHandlers {
   // updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
   changeDrawerOpen: (o: boolean) => void;
@@ -100,12 +86,9 @@ export interface GlobalHandlers {
   openFullPageLoading: VoidNoArgsFn;
   openLoading: (type?: LoadingType) => void;
   openOverlayLoading: VoidNoArgsFn;
-  removeContact: (u: RemoveContactIO["output"]["removedContact"]) => void;
-  setSelectedContactFromContext: (c: UserItem) => void;
-  setUsers: (u: Users) => void;
   updateContextMenuList: (list: ContextMenuList) => void;
   updateOnlineStatus: (isOnline: boolean) => void;
-  updateUser: (u: Partial<UserItem>) => void;
+  reset: VoidNoArgsFn;
 }
 
 export interface LoadingState {
@@ -130,7 +113,7 @@ export interface GlobalState {
     editFullName: DialogState;
     editProfile: DialogState;
     editUsername: DialogState;
-    initialSetup: DialogState;
+    serverSetup: DialogState;
     logout: DialogState;
     removeContact: DialogState;
     servers: DialogState;
@@ -141,7 +124,6 @@ export interface GlobalState {
     anchor: DrawerAnchor;
     open: boolean;
   };
-  selectedContactFromContext: UserItem;
   isOnline: boolean;
   loading: {
     color: CSSProperties["color"];
@@ -151,8 +133,6 @@ export interface GlobalState {
     speedMultiplier: number;
     type: LoadingType;
   };
-
-  users: Users;
 }
 
 export type GlobalSetState = StoreSetFn<GlobalState>;

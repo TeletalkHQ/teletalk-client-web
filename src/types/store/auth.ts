@@ -5,6 +5,7 @@ import {
   SelectedCountry,
   StoreSetFn,
   VerificationCode,
+  VoidNoArgsFn,
 } from "~/types";
 
 export interface AuthHandlers {
@@ -15,6 +16,7 @@ export interface AuthHandlers {
   updatePhoneNumber: (value: string) => void;
   updateVerificationCode: (value: string) => void;
   updateSelectedCountry: (value: SelectedCountry) => void;
+  reset: VoidNoArgsFn;
 }
 
 export interface AuthState {
