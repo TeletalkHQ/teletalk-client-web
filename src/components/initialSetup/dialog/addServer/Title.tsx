@@ -1,5 +1,7 @@
+import Box from "~/components/general/box";
+
 const Title = () => {
-  return <div>Add Server</div>;
+  return <Box.Div>Add Server</Box.Div>;
 };
 
 export default Title;

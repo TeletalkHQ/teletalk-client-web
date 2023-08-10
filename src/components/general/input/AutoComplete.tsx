@@ -52,12 +52,12 @@ const AutoComplete = ({
               <ListItem className={classes.activityItem} {...props}>
                 <Box dir="ltr">
                   {parts.map((part, index) => (
-                    <span
+                    <Box.Span
                       key={index}
                       style={{ fontWeight: part.highlight ? 700 : 400 }}
                     >
                       {part.text}
-                    </span>
+                    </Box.Span>
                   ))}
                 </Box>
               </ListItem>

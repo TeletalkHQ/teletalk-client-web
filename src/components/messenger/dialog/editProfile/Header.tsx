@@ -1,5 +1,6 @@
 import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
+import { Typography } from "~/components/general/typography";
 
 interface Props {
   fullName: string;
@@ -8,7 +9,7 @@ interface Props {
 const Header: React.FC<Props> = ({ fullName }) => (
   <Box.Flex col gap={1} jc="center" ai="center">
     <Avatar style={{ width: "100px", height: "100px" }} />
-    <Box.Div style={{ fontWeight: "500", fontSize: 20 }}>{fullName}</Box.Div>
+    <Typography.Bold style={{ fontSize: 20 }}>{fullName}</Typography.Bold>
   </Box.Flex>
 );
 

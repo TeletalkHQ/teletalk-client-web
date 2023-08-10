@@ -37,7 +37,7 @@ const EditContactWithCellphone = () => {
 
   const closeAddContactDialog = () => {
     globalStore.closeDialog("editContactWithCellphone");
-    globalStore.setSelectedContactFromContext(maker.emptyContactWithUserId());
+    globalStore.setSelectedContactFromContext(maker.emptyUser());
   };
 
   const returnToContactsDialog = () => {

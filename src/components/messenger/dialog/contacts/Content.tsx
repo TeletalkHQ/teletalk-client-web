@@ -1,12 +1,12 @@
 import { ContactItem } from "utility-store/lib/types";
 
 import ListItem from "~/components/messenger/dialog/contacts/ListItem";
-import { Contacts, ExtendedOnContextMenu } from "~/types";
+import { ExtendedOnContextMenu, UserItem, Users } from "~/types";
 
 interface Props {
-  contacts: Contacts;
+  contacts: Users;
   onContactItemClicked: (contact: ContactItem) => void;
-  onContextMenu: ExtendedOnContextMenu<ContactItem>;
+  onContextMenu: ExtendedOnContextMenu<UserItem>;
 }
 
 const ContactsContent: React.FC<Props> = ({

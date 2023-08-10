@@ -1,5 +1,6 @@
 import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
+import { Typography } from "~/components/general/typography";
 import { OnContextMenu, VoidNoArgsFn } from "~/types";
 
 interface Props {
@@ -20,10 +21,10 @@ const ListItem: React.FC<Props> = ({
     <Box.ListItemButton
       onContextMenu={onContextMenu}
       style={{
-        display: "flex",
-        height: "65px",
         borderRadius: "10px",
+        display: "flex",
         gap: 10,
+        height: "65px",
       }}
       onClick={onContactClick}
     >
@@ -33,9 +34,7 @@ const ListItem: React.FC<Props> = ({
 
       <Box.Div style={{ width: "100%" }}>
         <Box.Flex jc="space-between" ai="center">
-          <Box.Div style={{ fontWeight: 500, fontSize: 18 }}>
-            {fullName}
-          </Box.Div>
+          <Typography.Bold style={{ fontSize: 18 }}>{fullName}</Typography.Bold>
           {/* <Box.Div>time</Box.Div> */}
         </Box.Flex>
 

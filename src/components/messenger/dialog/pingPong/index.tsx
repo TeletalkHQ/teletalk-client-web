@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 import { websocket } from "~/classes/websocket/Websocket";
+import { Input } from "~/components";
+import Box from "~/components/general/box";
+import { Typography } from "~/components/general/typography";
 import { useEmitter, useListener } from "~/hooks";
 
 const PingPong = () => {
@@ -34,11 +37,15 @@ const PingPong = () => {
   };
 
   return (
-    <div>
-      <p>Connected: {"" + isConnected}</p>
-      <p>Last pong: {lastPong || "-"}</p>
-      <button onClick={sendPing}>Send ping</button>
-    </div>
+    <Box.Div>
+      <Typography.GreyTextParagraph>
+        Connected: {"" + isConnected}
+      </Typography.GreyTextParagraph>
+      <Typography.GreyTextParagraph>
+        Last pong: {lastPong || "-"}
+      </Typography.GreyTextParagraph>
+      <Input.Button onClick={sendPing}>Send ping</Input.Button>
+    </Box.Div>
   );
 };
 

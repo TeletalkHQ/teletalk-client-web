@@ -9,10 +9,6 @@ const RemoveContact = () => {
   const globalStore = useGlobalStore();
   const { handler, loading } = useEmitter("removeContact");
 
-  const handleClose = () => {
-    globalStore.closeDialog("removeContact");
-  };
-
   useListener({
     evName: "removeContact",
     cb(response) {
@@ -30,6 +26,15 @@ const RemoveContact = () => {
     );
   };
 
+  const handleBack = () => {
+    handleClose();
+    globalStore.openDialog("contacts");
+  };
+
+  const handleClose = () => {
+    globalStore.closeDialog("removeContact");
+  };
+
   return (
     <>
       <DialogTemplate
@@ -37,7 +42,7 @@ const RemoveContact = () => {
         actions={
           <Actions
             loading={loading}
-            onClose={handleClose}
+            onClose={handleBack}
             onRemove={handleRemoveContact}
           />
         }

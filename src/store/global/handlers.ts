@@ -117,6 +117,15 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
     }));
   },
 
+  updateContextMenuList(list) {
+    set((prevState) => ({
+      contextMenu: {
+        ...prevState.contextMenu,
+        list,
+      },
+    }));
+  },
+
   closeContextMenu() {
     set((prevState) => ({
       contextMenu: {
@@ -126,9 +135,9 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
     }));
   },
 
-  setSelectedContactFromContext(c) {
+  setSelectedContactFromContext(u) {
     set(() => ({
-      selectedContactFromContext: c,
+      selectedContactFromContext: u,
     }));
   },
 

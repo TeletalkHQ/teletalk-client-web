@@ -1,4 +1,5 @@
 import { Input } from "~/components";
+import Box from "~/components/general/box";
 import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";
 
@@ -16,7 +17,7 @@ const CountryCode: React.FC<Props> = ({ value, onChange }) => {
       InputProps={{
         startAdornment: (
           <>
-            <span>+</span>
+            <Box.Span>+</Box.Span>
           </>
         ),
       }}

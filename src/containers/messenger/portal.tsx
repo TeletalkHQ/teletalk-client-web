@@ -1,5 +1,6 @@
 import Drawer from "~/components/drawer";
 import AddContactWithCellphone from "~/components/messenger/dialog/addContactWithCellphone";
+import BlockUser from "~/components/messenger/dialog/blockUser";
 import Contacts from "~/components/messenger/dialog/contacts";
 import EditBio from "~/components/messenger/dialog/editBio";
 import EditContactWithCellphone from "~/components/messenger/dialog/editContactWithCellphone";
@@ -18,6 +19,7 @@ const Portal = () => {
 
       {[
         AddContactWithCellphone,
+        BlockUser,
         Contacts,
         EditBio,
         EditContactWithCellphone,
