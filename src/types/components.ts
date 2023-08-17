@@ -37,8 +37,6 @@ export type CommonChangeEvent = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement
 >;
 
-export type OnChangeValidatorFn = (value: any, e: CommonChangeEvent) => void;
-
 export type HTMLProps = HTMLAttributes<HTMLLIElement>;
 
 export type ElementName =
@@ -78,6 +76,18 @@ export type ElementName =
   | "unread"
   | "username"
   | "verificationCode";
+
+export type OnChangeValidatorFn = (
+  value: any,
+  e:
+    | {
+        target: {
+          value: any;
+          name: ElementName;
+        };
+      }
+    | CommonChangeEvent
+) => void;
 
 export type ElementLabel =
   | "Bio"

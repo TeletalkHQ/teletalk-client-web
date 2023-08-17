@@ -1,5 +1,3 @@
-import { countries } from "utility-store/lib/variables/countries";
-
 import { Input } from "~/components";
 import Box from "~/components/general/box";
 import Avatar from "~/components/general/other/Avatar";
@@ -9,36 +7,12 @@ import AuthFooter from "~/components/other/AuthFooter";
 import { Icons } from "~/components/other/Icons";
 import { useSignIn } from "~/hooks";
 import { useAuthStore } from "~/store";
-import { SelectedCountry } from "~/types";
+import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";
 
 const SignIn = () => {
   const authStore = useAuthStore();
   const { updater, loading } = useSignIn();
-
-  const handlePhoneNumberInputChange = (value: string) => {
-    authStore.updatePhoneNumber(value);
-  };
-
-  const handleCountryCodeInputChange = (value: string) => {
-    authStore.updateCountryCode(value);
-  };
-
-  const handleSelectedCountryByCountryCodeInput = (value: string) => {
-    authStore.updateSelectedCountry(
-      countries.find((i) => i.countryCode === value) || null
-    );
-  };
-
-  const handleSelectedCountryChange = (value: SelectedCountry) => {
-    authStore.updateSelectedCountry(value);
-    authStore.updateCountryCode(value?.countryCode || "");
-    authStore.updateCountryName(value?.countryName || "");
-  };
-
-  const handleCountryNameInputChange = (value: string) => {
-    authStore.updateCountryName(value);
-  };
 
   const isSignInSubmitButtonDisabled = () =>
     utils.isCellphoneValid(
@@ -46,6 +20,12 @@ const SignIn = () => {
       authStore.countryName,
       authStore.phoneNumber
     );
+
+  const handleChange: OnChangeValidatorFn = (_value: string, event) => {
+    authStore.updateCellphone({
+      [event.target.name]: event.target.value,
+    });
+  };
 
   return (
     <Box.Container mw="xl">
@@ -71,15 +51,8 @@ const SignIn = () => {
             <Input.Cellphone
               countryCode={authStore.countryCode}
               countryName={authStore.countryName}
-              onCountryCodeInputChange={(value) => {
-                handleSelectedCountryByCountryCodeInput(value);
-                handleCountryCodeInputChange(value);
-              }}
-              onCountryNameInputChange={handleCountryNameInputChange}
-              onPhoneNumberInputChange={handlePhoneNumberInputChange}
-              onSelectedCountryChange={handleSelectedCountryChange}
+              onChange={handleChange}
               phoneNumber={authStore.phoneNumber}
-              selectedCountry={authStore.selectedCountry}
             />
 
             <Input.LoadingButton

@@ -85,7 +85,7 @@ const AddServer = () => {
         <Content
           disabled={isInputsDisabled}
           inputValue={inputValue}
-          onInputChange={handleInputChange}
+          onChange={handleInputChange}
           onSelectChange={handleSelectChange}
           protocol={protocol}
           status={status}

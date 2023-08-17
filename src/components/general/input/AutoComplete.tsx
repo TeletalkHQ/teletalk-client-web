@@ -23,18 +23,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   activityItem: { fontSize: 14, padding: "3px", direction: "ltr" },
 }));
 
-const AutoComplete = ({
-  activityInputValue,
-  finalActivities,
-  onInputChange,
-}) => {
+const AutoComplete = ({ activityInputValue, finalActivities, onChange }) => {
   const classes = useStyles();
 
   return (
     <>
       <MuiAutocomplete
         inputValue={activityInputValue}
-        onInputChange={(_e, value) => onInputChange(value)}
+        onInputChange={(_e, value) => onChange(value)}
         options={finalActivities}
         groupBy={(activity) => activity.header}
         getOptionLabel={(activity) => activity.headerContent}

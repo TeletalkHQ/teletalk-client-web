@@ -18,8 +18,8 @@ import {
   NativeModel,
   NativeModelKey,
   PhoneNumber,
-  SelectedCountry,
   SocketResponseErrors,
+  WeirdSelectedCountry,
 } from "~/types";
 import { validators } from "~/validators";
 
@@ -52,7 +52,7 @@ const isValueLengthEqualToLength = (modelName: ModelName, value: string) => {
 
 const createOnChangeValidator =
   (fieldName: Field, onChangeFn: any) =>
-  (e: CommonChangeEvent, value?: any) => {
+  (e: CommonChangeEvent | React.SyntheticEvent, value?: any) => {
     validators[fieldName]
       .onChangeValidator()
       .checkValue(e, value)
@@ -70,7 +70,7 @@ const isIos = () => {
   );
 };
 
-const isCountrySelected = (c: SelectedCountry) => {
+const isCountrySelected = (c: WeirdSelectedCountry) => {
   return !!(c?.countryCode && c?.countryName && c?.countryShortName);
 };
 

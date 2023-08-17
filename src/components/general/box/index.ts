@@ -8,6 +8,7 @@ import ListItem from "~/components/general/box/ListItem";
 import ListItemButton from "~/components/general/box/ListItemButton";
 import ListItemText from "~/components/general/box/ListItemText";
 import Main from "~/components/general/box/Main";
+import Menu from "~/components/general/box/Menu";
 import MenuItem from "~/components/general/box/MenuItem";
 import Paper from "~/components/general/box/Paper";
 import Span from "~/components/general/box/Span";
@@ -23,6 +24,7 @@ const Box = {
   ListItemButton,
   ListItemText,
   Main,
+  Menu,
   MenuItem,
   Paper,
   Span,

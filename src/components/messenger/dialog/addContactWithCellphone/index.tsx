@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { CountryCode, CountryName } from "utility-store/lib/types";
-import { countries } from "utility-store/lib/variables/countries";
+import React from "react";
 
 import { maker } from "~/classes/Maker";
 import Actions from "~/components/messenger/dialog/addContactWithCellphone/Actions";
@@ -9,11 +7,7 @@ import Title from "~/components/messenger/dialog/addContactWithCellphone/Title";
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useEmitter, useListener } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
-import {
-  AddContactWithCellphoneIO,
-  CommonChangeEvent,
-  SelectedCountry,
-} from "~/types";
+import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";
 
 const AddContactWithCellphone = () => {
@@ -31,64 +25,35 @@ const AddContactWithCellphone = () => {
     },
   });
 
-  const [addingContact, setAddingContact] = useState<
-    AddContactWithCellphoneIO["input"]
-  >(maker.emptyContactWithCellphone);
-  const [selectedCountry, setSelectedCountry] = useState<SelectedCountry>(null);
-
-  const handleInputChange = (_value: string, event: CommonChangeEvent) => {
-    setAddingContact({
-      ...addingContact,
+  const handleChange: OnChangeValidatorFn = (_value: string, event) => {
+    userStore.setAddingContactWithCellphone({
+      ...userStore.addingContactWithCellphone,
       [event.target.name]: event.target.value,
     });
   };
 
-  const handleAddContactClick = () => {
-    handler.emitFull(addingContact, returnToContactsDialog);
+  const handleAddClick = () => {
+    handler.emitFull(
+      userStore.addingContactWithCellphone,
+      returnToContactsDialog
+    );
   };
 
-  const closeAddContactDialog = () => {
-    globalStore.closeDialog("addContact");
-    setSelectedCountry(null);
-    setAddingContact(maker.emptyContactWithCellphone);
+  const closeDialog = () => {
+    globalStore.closeDialog("addContactWithCellphone");
+    userStore.setAddingContactWithCellphone(
+      maker.emptyAddingContactWithCellphone()
+    );
   };
 
   const returnToContactsDialog = () => {
-    closeAddContactDialog();
+    closeDialog();
     globalStore.openDialog("contacts");
   };
 
-  const handleCountryNameInputChange = (
-    countryName: CountryName,
-    _e: CommonChangeEvent
-  ) => {
-    setAddingContact({ ...addingContact, countryName });
-  };
-
-  const handleSelectedCountryChange = (value: SelectedCountry) => {
-    setSelectedCountry(value);
-
-    setAddingContact({
-      ...addingContact,
-      countryName: value?.countryName || "",
-      countryCode: value?.countryCode || "",
-    });
-  };
-
-  const selectCountryByCountryCodeInputChange = (value: string) => {
-    const country = countries.find((i) => i.countryCode === value);
-    setSelectedCountry(country || null);
-  };
-
-  const handleOnCountryCodeChange = (
-    value: CountryCode,
-    event: CommonChangeEvent
-  ) => {
-    handleInputChange(value, event);
-    selectCountryByCountryCodeInputChange(value);
-  };
-
-  const isSubmitDisabled = utils.isContactWithCellphoneValid(addingContact);
+  const isSubmitDisabled = utils.isContactWithCellphoneValid(
+    userStore.addingContactWithCellphone
+  );
 
   return (
     <>
@@ -96,30 +61,23 @@ const AddContactWithCellphone = () => {
         title={<Title />}
         content={
           <Content
-            contact={addingContact}
-            countryName={addingContact.countryName}
-            onCountryNameInputChange={handleCountryNameInputChange}
-            onSelectedCountryChange={handleSelectedCountryChange}
-            onCountryCodeInputChange={handleOnCountryCodeChange}
-            onInputChange={handleInputChange}
-            selectedCountry={
-              utils.isCountrySelected(selectedCountry) ? selectedCountry : null
-            }
+            contact={userStore.addingContactWithCellphone}
+            onChange={handleChange}
           />
         }
         actions={
           <Actions
             loading={loading}
-            onAddContactClick={handleAddContactClick}
+            onAddContactClick={handleAddClick}
             onContactDialogCancelClick={returnToContactsDialog}
             isAddContactButtonDisabled={isSubmitDisabled}
           />
         }
-        open={globalStore.dialogState.addContact.open}
+        open={globalStore.dialogState.addContactWithCellphone.open}
         paperStyle={{
           height: "50vh",
         }}
-        onClose={closeAddContactDialog}
+        onClose={closeDialog}
       />
     </>
   );

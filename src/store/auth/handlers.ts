@@ -18,6 +18,9 @@ export const handlers: (set: AuthSetState) => AuthHandlers = (set) => ({
       phoneNumber,
     });
   },
+  updateCellphone(c) {
+    set(c);
+  },
   updateVerificationCode(verificationCode) {
     set({
       verificationCode,

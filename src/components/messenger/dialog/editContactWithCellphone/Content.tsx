@@ -7,11 +7,11 @@ import { OnChangeValidatorFn } from "~/types";
 
 interface Props {
   fullName: FullName;
-  onInputChange: OnChangeValidatorFn;
+  onChange: OnChangeValidatorFn;
 }
 const EditContactWithCellphoneContent: React.FC<Props> = ({
   fullName,
-  onInputChange,
+  onChange,
 }) => {
   return (
     <>
@@ -20,8 +20,8 @@ const EditContactWithCellphoneContent: React.FC<Props> = ({
           <Input.FullName
             firstName={fullName.firstName}
             lastName={fullName.lastName}
-            onFirstNameInputChange={onInputChange}
-            onLastNameInputChange={onInputChange}
+            onFirstNameInputChange={onChange}
+            onLastNameInputChange={onChange}
           />
         </Box.Flex>
       </Box.Div>

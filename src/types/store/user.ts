@@ -1,5 +1,7 @@
 import {
   Cellphone,
+  CountryItem,
+  FullName,
   FullNameWithUserId,
   PublicUserData,
   Status,
@@ -39,22 +41,26 @@ export type CurrentUserData = FullNameWithUserId &
 
 export type Users = UserItem[];
 
+export type AddingContactWithCellphone = FullName & Cellphone;
 export interface UserState {
   currentUserData: CurrentUserData;
-
   selectedContactFromContext: UserItem;
   users: Users;
+  addingContactWithCellphone: AddingContactWithCellphone;
 }
 
 export type ExtendedCurrentUserData = CurrentUserData & StringMap;
 
+export type ExtendedCountryItem = CountryItem & StringMap;
+
 export interface UserHandlers {
-  setCurrentUserData: (u: CurrentUserData) => void;
   removeContact: (u: RemoveContactIO["output"]["removedContact"]) => void;
+  reset: VoidNoArgsFn;
+  setAddingContactWithCellphone: (item: AddingContactWithCellphone) => void;
+  setCurrentUserData: (u: CurrentUserData) => void;
   setSelectedContactFromContext: (c: UserItem) => void;
   setUsers: (u: Users) => void;
   updateUser: (u: Partial<UserItem>) => void;
-  reset: VoidNoArgsFn;
 }
 
 export type UserSetState = StoreSetFn<UserState>;

@@ -5,7 +5,7 @@ import {
   PublicUserData,
 } from "utility-store/lib/types";
 
-import { UserItem } from "~/types";
+import { AddingContactWithCellphone, UserItem } from "~/types";
 
 export class Maker extends MakerMain {
   //@ts-ignore
@@ -17,7 +17,7 @@ export class Maker extends MakerMain {
     };
   }
 
-  emptyContactWithCellphone() {
+  emptyAddingContactWithCellphone(): AddingContactWithCellphone {
     return {
       ...super.emptyCellphone(),
       ...super.emptyFullName(),

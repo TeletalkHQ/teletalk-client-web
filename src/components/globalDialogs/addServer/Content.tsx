@@ -8,7 +8,7 @@ import { CommonOnChange, CommonSelectOnChange, Status } from "~/types";
 interface Props {
   disabled: boolean;
   inputValue: string;
-  onInputChange: CommonOnChange;
+  onChange: CommonOnChange;
   onSelectChange: CommonSelectOnChange;
   protocol: string;
   status: Status;
@@ -17,7 +17,7 @@ interface Props {
 const Content: React.FC<Props> = ({
   disabled,
   inputValue,
-  onInputChange,
+  onChange,
   onSelectChange,
   protocol,
   status,
@@ -49,7 +49,7 @@ const Content: React.FC<Props> = ({
           disabled={disabled}
           label="Url"
           value={inputValue}
-          onChange={onInputChange}
+          onChange={onChange}
         />
       </Box.Flex>
     </Box.Flex>

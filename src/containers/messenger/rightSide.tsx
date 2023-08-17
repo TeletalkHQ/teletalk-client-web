@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 import Box from "~/components/general/box";
-import ChatBar from "~/components/messenger/rightSide/ChatBar";
 import MessageInput from "~/components/messenger/rightSide/MessageInput";
 import MessageList from "~/components/messenger/rightSide/MessageList";
+import ChatBar from "~/components/messenger/rightSide/chatBar";
 import {
   useEmitter,
   useNewPrivateChatMessage,

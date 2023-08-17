@@ -1,48 +1,44 @@
 import { ListItemProps } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import { SyntheticEvent } from "react";
-import { CountryItem, CountryName } from "utility-store/lib/types";
+import { CountryItem } from "utility-store/lib/types";
 import { countries } from "utility-store/lib/variables/countries";
 
 import Option from "~/components/common/countrySelector/Option";
 import SelectorInput from "~/components/common/countrySelector/SelectorInput";
-import {
-  CommonChangeEvent,
-  OnChangeValidatorFn,
-  SelectedCountry,
-} from "~/types";
+import { OnChangeValidatorFn, SelectedCountry } from "~/types";
+import { utils } from "~/utils";
 
-export type CountrySelectInputChange = (value: SelectedCountry) => void;
-
-export type OnCountryNameInputChange = (
-  value: CountryName,
-  e: CommonChangeEvent
-) => void;
+export type SelectCountryOnChange = (value: SelectedCountry) => void;
 
 interface Props {
+  countryCode: string;
   countryName: string;
-  selectedCountry: SelectedCountry;
-  onCountryNameInputChange: OnChangeValidatorFn;
-  onSelectChange: CountrySelectInputChange;
+  countryNameOnChange: OnChangeValidatorFn;
+  onSelectChange: SelectCountryOnChange;
 }
 
 const CountrySelector: React.FC<Props> = ({
+  countryCode,
   countryName,
-  onCountryNameInputChange,
+  countryNameOnChange,
   onSelectChange,
-  selectedCountry,
 }) => {
   const getOptionLabel = (option: CountryItem) => option.countryName;
 
-  const handleCountryNameInputChange = (
-    _event: SyntheticEvent,
-    value: CountryName
-  ) => {
-    onCountryNameInputChange(value, _event as CommonChangeEvent);
-  };
+  const handleCountryNameOnChange = utils.createOnChangeValidator(
+    "countryName",
+    (value: string) => {
+      countryNameOnChange(value, {
+        target: {
+          value,
+          name: "countryName",
+        },
+      });
+    }
+  );
 
-  const handleSelectedCountryChange = (
-    _event: SyntheticEvent,
+  const handleSelectCountryOnChange = (
+    _e: React.SyntheticEvent,
     newValue: SelectedCountry
   ) => {
     onSelectChange(newValue);
@@ -52,14 +48,17 @@ const CountrySelector: React.FC<Props> = ({
     <Option key={option.countryName} props={props} option={option} />
   );
 
+  const selectedCountry =
+    countries.find((i) => i.countryCode === countryCode) || null;
+
   return (
     <Autocomplete
       autoHighlight
       fullWidth
       getOptionLabel={getOptionLabel}
       inputValue={countryName}
-      onChange={handleSelectedCountryChange}
-      onInputChange={handleCountryNameInputChange}
+      onChange={handleSelectCountryOnChange}
+      onInputChange={handleCountryNameOnChange}
       options={countries}
       renderInput={SelectorInput}
       renderOption={renderOption}

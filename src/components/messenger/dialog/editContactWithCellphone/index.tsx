@@ -8,7 +8,7 @@ import Title from "~/components/messenger/dialog/editContactWithCellphone/Title"
 import DialogTemplate from "~/components/messenger/dialog/template";
 import { useEmitter, useListener } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
-import { CommonChangeEvent } from "~/types";
+import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";
 
 const EditContactWithCellphone = () => {
@@ -23,7 +23,7 @@ const EditContactWithCellphone = () => {
     },
   });
 
-  const handleInputChange = (_value: string, event: CommonChangeEvent) => {
+  const handleInputChange: OnChangeValidatorFn = (_value: string, event) => {
     userStore.setSelectedContactFromContext({
       ...userStore.selectedContactFromContext,
       [event.target.name]: event.target.value,
@@ -61,7 +61,7 @@ const EditContactWithCellphone = () => {
         content={
           <Content
             fullName={userStore.selectedContactFromContext}
-            onInputChange={handleInputChange}
+            onChange={handleInputChange}
           />
         }
         actions={

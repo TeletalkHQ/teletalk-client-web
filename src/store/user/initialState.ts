@@ -2,6 +2,7 @@ import { maker } from "~/classes/Maker";
 import { UserState } from "~/types";
 
 export const initialState: UserState = {
+  addingContactWithCellphone: maker.emptyAddingContactWithCellphone(),
   currentUserData: {
     bio: "",
     countryCode: "",
@@ -16,7 +17,6 @@ export const initialState: UserState = {
     userId: "",
     username: "",
   },
-
   selectedContactFromContext: maker.emptyUser(),
   users: [],
 };

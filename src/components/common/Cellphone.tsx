@@ -1,50 +1,71 @@
+import { countries } from "utility-store/lib/variables/countries";
+
 import { Input } from "~/components";
-import type {
-  CountrySelectInputChange,
-  OnCountryNameInputChange,
-} from "~/components/common/countrySelector";
 import Box from "~/components/general/box";
 import { OnChangeValidatorFn, SelectedCountry } from "~/types";
-import { utils } from "~/utils";
 
 interface Props {
   countryCode: string;
   countryName: string;
-  onCountryCodeInputChange: OnChangeValidatorFn;
-  onCountryNameInputChange: OnCountryNameInputChange;
-  onPhoneNumberInputChange: OnChangeValidatorFn;
-  onSelectedCountryChange: CountrySelectInputChange;
   phoneNumber: string;
-  selectedCountry: SelectedCountry;
+  onChange: OnChangeValidatorFn;
 }
 
 const Cellphone: React.FC<Props> = ({
   countryCode,
   countryName,
-  onCountryCodeInputChange,
-  onCountryNameInputChange,
-  onPhoneNumberInputChange,
-  onSelectedCountryChange,
+  onChange,
   phoneNumber,
-  selectedCountry,
 }) => {
+  const handleCountryNameOnChange: OnChangeValidatorFn = (countryName, e) => {
+    onChange(countryName, e);
+  };
+
+  const handleSelectedCountryOnChange = (value: SelectedCountry) => {
+    const { countryCode = "", countryName = "" } = value || {};
+
+    onChange(countryName, {
+      target: {
+        name: "countryName",
+        value: countryName,
+      },
+    });
+
+    onChange(countryCode, {
+      target: {
+        name: "countryCode",
+        value: countryCode,
+      },
+    });
+  };
+
+  const handleCountryCodeOnChange: OnChangeValidatorFn = (value, e) => {
+    const country = countries.find((i) => i.countryCode === value);
+
+    onChange(value, e);
+    onChange(country?.countryName || "", e);
+  };
+
+  const handlePhoneNumberOnChange: OnChangeValidatorFn = (value, e) => {
+    onChange(value, e);
+  };
+
   return (
     <>
       <Input.CountrySelector
+        countryCode={countryCode}
         countryName={countryName}
-        onSelectChange={onSelectedCountryChange}
-        onCountryNameInputChange={onCountryNameInputChange}
-        selectedCountry={
-          utils.isCountrySelected(selectedCountry) ? selectedCountry : null
-        }
+        onSelectChange={handleSelectedCountryOnChange}
+        countryNameOnChange={handleCountryNameOnChange}
       />
+
       <Box.Flex jc="space-between" style={{ width: "100%" }}>
         <Input.CountryCode
           value={countryCode}
-          onChange={onCountryCodeInputChange}
+          onChange={handleCountryCodeOnChange}
         />
         <Input.PhoneNumber
-          onChange={onPhoneNumberInputChange}
+          onChange={handlePhoneNumberOnChange}
           value={phoneNumber}
         />
       </Box.Flex>

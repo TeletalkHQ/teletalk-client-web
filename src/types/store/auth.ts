@@ -1,3 +1,5 @@
+import { Cellphone } from "utility-store/lib/types";
+
 import {
   FirstName,
   LastName,
@@ -9,14 +11,15 @@ import {
 } from "~/types";
 
 export interface AuthHandlers {
+  reset: VoidNoArgsFn;
+  updateCellphone: (c: Partial<Cellphone>) => void;
   updateCountryCode: (value: string) => void;
   updateCountryName: (value: string) => void;
   updateFirstName: (value: string) => void;
   updateLastName: (value: string) => void;
   updatePhoneNumber: (value: string) => void;
-  updateVerificationCode: (value: string) => void;
   updateSelectedCountry: (value: SelectedCountry) => void;
-  reset: VoidNoArgsFn;
+  updateVerificationCode: (value: string) => void;
 }
 
 export interface AuthState {

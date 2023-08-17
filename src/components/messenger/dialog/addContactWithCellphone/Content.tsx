@@ -1,33 +1,13 @@
 import { Input } from "~/components";
-import {
-  CountrySelectInputChange,
-  OnCountryNameInputChange,
-} from "~/components/common/countrySelector";
 import Box from "~/components/general/box";
-import {
-  AddContactWithCellphoneIO,
-  OnChangeValidatorFn,
-  SelectedCountry,
-} from "~/types";
+import { AddContactWithCellphoneIO, OnChangeValidatorFn } from "~/types";
 
 interface Props {
   contact: AddContactWithCellphoneIO["input"];
-  countryName: string;
-  onCountryCodeInputChange: OnChangeValidatorFn;
-  onCountryNameInputChange: OnCountryNameInputChange;
-  onInputChange: OnChangeValidatorFn;
-  onSelectedCountryChange: CountrySelectInputChange;
-  selectedCountry: SelectedCountry;
+  onChange: OnChangeValidatorFn;
 }
-const AddContactContent: React.FC<Props> = ({
-  contact,
-  countryName,
-  onCountryCodeInputChange,
-  onCountryNameInputChange,
-  onInputChange,
-  onSelectedCountryChange,
-  selectedCountry,
-}) => {
+
+const AddContactContent: React.FC<Props> = ({ contact, onChange }) => {
   return (
     <>
       <Box.Div>
@@ -37,19 +17,15 @@ const AddContactContent: React.FC<Props> = ({
           <Input.FullName
             firstName={contact.firstName}
             lastName={contact.lastName}
-            onFirstNameInputChange={onInputChange}
-            onLastNameInputChange={onInputChange}
+            onFirstNameInputChange={onChange}
+            onLastNameInputChange={onChange}
           />
 
           <Input.Cellphone
             countryCode={contact.countryCode}
-            countryName={countryName}
-            onCountryCodeInputChange={onCountryCodeInputChange}
-            onCountryNameInputChange={onCountryNameInputChange}
-            onPhoneNumberInputChange={onInputChange}
-            onSelectedCountryChange={onSelectedCountryChange}
+            countryName={contact.countryName}
+            onChange={onChange}
             phoneNumber={contact.phoneNumber}
-            selectedCountry={selectedCountry}
           />
         </Box.Flex>
       </Box.Div>

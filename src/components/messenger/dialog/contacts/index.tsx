@@ -45,7 +45,7 @@ const Contacts = () => {
 
   const handleAddContactClick = () => {
     globalStore.closeDialog("contacts");
-    globalStore.openDialog("addContact");
+    globalStore.openDialog("addContactWithCellphone");
   };
 
   const handleCloseContactDialog = () => {
