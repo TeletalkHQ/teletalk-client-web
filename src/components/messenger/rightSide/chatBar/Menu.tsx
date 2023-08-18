@@ -68,7 +68,13 @@ const ChatBarMenu = () => {
             onClick: isContact ? handleRemoveFromContacts : handleAddToContacts,
           },
         ].map((option, index) => (
-          <Box.MenuItem key={index} onClick={handleClose}>
+          <Box.MenuItem
+            key={index}
+            onClick={() => {
+              handleClose();
+              option.onClick();
+            }}
+          >
             {option.label}
           </Box.MenuItem>
         ))}

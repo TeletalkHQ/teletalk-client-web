@@ -47,6 +47,7 @@ export interface UserState {
   selectedContactFromContext: UserItem;
   users: Users;
   addingContactWithCellphone: AddingContactWithCellphone;
+  addingContactWithUserId: FullName;
 }
 
 export type ExtendedCurrentUserData = CurrentUserData & StringMap;
@@ -56,7 +57,10 @@ export type ExtendedCountryItem = CountryItem & StringMap;
 export interface UserHandlers {
   removeContact: (u: RemoveContactIO["output"]["removedContact"]) => void;
   reset: VoidNoArgsFn;
-  setAddingContactWithCellphone: (item: AddingContactWithCellphone) => void;
+  setAddingContactWithCellphone: (
+    item: Partial<AddingContactWithCellphone>
+  ) => void;
+  setAddingContactWithUserId: (item: Partial<FullName>) => void;
   setCurrentUserData: (u: CurrentUserData) => void;
   setSelectedContactFromContext: (c: UserItem) => void;
   setUsers: (u: Users) => void;

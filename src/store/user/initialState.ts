@@ -3,6 +3,7 @@ import { UserState } from "~/types";
 
 export const initialState: UserState = {
   addingContactWithCellphone: maker.emptyAddingContactWithCellphone(),
+  addingContactWithUserId: maker.emptyFullName(),
   currentUserData: {
     bio: "",
     countryCode: "",
