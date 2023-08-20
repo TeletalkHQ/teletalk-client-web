@@ -1,4 +1,4 @@
-import CreateContainer from "~/containers/create";
+import CreateContainer from "~/containers/Create";
 
 const Create = () => {
   return <CreateContainer />;

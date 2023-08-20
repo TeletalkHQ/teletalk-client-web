@@ -9,7 +9,7 @@ import { ScreamingSnakeCase } from "type-fest";
 import { Cellphone, ContactItem } from "utility-store/lib/types";
 
 import { stuffStore } from "~/classes/StuffStore";
-import { Transitions } from "~/components/other/Transitions";
+import { Transition } from "~/components";
 import { stuff } from "~/data/stuff";
 
 import { DrawerAnchor } from "./store/global";
@@ -18,7 +18,7 @@ export interface StringMap {
   [prop: string]: any;
 }
 
-export type TransitionName = keyof typeof Transitions;
+export type TransitionName = keyof typeof Transition;
 
 export interface UiConfig {
   drawerDefaultAnchor: DrawerAnchor;

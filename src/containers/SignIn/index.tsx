@@ -1,0 +1,73 @@
+import { Box, Button, Components, Icon, Input, Typography } from "~/components";
+import { useSignIn } from "~/hooks";
+import { useAuthStore } from "~/store";
+import { OnChangeValidatorFn } from "~/types";
+import { utils } from "~/utils";
+
+const SignIn = () => {
+  const authStore = useAuthStore();
+  const { updater, loading } = useSignIn();
+
+  const isSignInSubmitButtonDisabled = () =>
+    utils.isCellphoneValid(
+      authStore.countryCode,
+      authStore.countryName,
+      authStore.phoneNumber
+    );
+
+  const handleChange: OnChangeValidatorFn = (_value: string, event) => {
+    authStore.updateCellphone({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  return (
+    <Box.Container mw="xl">
+      <Box.Flex mt={8} ai="center" col>
+        <Box.Avatar
+          sx={(theme) => ({
+            m: 1,
+            backgroundColor: theme.palette.secondary.main,
+          })}
+        >
+          <Icon.LockOutlined.Element />
+        </Box.Avatar>
+
+        <Typography.H5>Teletalk</Typography.H5>
+
+        <Box.Container mw="xs">
+          <Box.Div style={{ marginTop: 1 }}>
+            <Typography.GreyTextParagraph>
+              Please verify your country code and enter your mobile phone
+              number.
+            </Typography.GreyTextParagraph>
+
+            <Input.Text.Cellphone
+              countryCode={authStore.countryCode}
+              countryName={authStore.countryName}
+              onChange={handleChange}
+              phoneNumber={authStore.phoneNumber}
+            />
+
+            <Button.Loading
+              disabled={isSignInSubmitButtonDisabled()}
+              loading={loading}
+              loadingIndicatorText="Sign in..."
+              onClick={updater}
+              sx={{
+                mb: 1,
+                mt: 2,
+              }}
+            >
+              Next
+            </Button.Loading>
+          </Box.Div>
+        </Box.Container>
+      </Box.Flex>
+
+      <Components.AuthFooter />
+    </Box.Container>
+  );
+};
+
+export default SignIn;
