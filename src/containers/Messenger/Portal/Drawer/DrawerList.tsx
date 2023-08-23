@@ -1,0 +1,44 @@
+import { Box, Icon } from "~/components";
+import { ElementName, HTMLDivMouseEvent } from "~/types";
+
+const drawerList = [
+  { Icon: Icon.Calls, disabled: true },
+  { Icon: Icon.Contacts, disabled: false },
+  { Icon: Icon.LogoutOutlined, disabled: false },
+  { Icon: Icon.NewChannelOutlined, disabled: true },
+  { Icon: Icon.NewGroupOutlined, disabled: true },
+  { Icon: Icon.NightModeOutlined, disabled: true },
+  { Icon: Icon.SettingsOutlined, disabled: false },
+];
+
+interface Props {
+  toggleDrawer: (event: HTMLDivMouseEvent, open: boolean) => void;
+  onClick: (elName: ElementName) => void;
+}
+
+const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
+  <Box.List style={{ padding: 10 }}>
+    {drawerList.map(({ Icon, disabled }, index) => (
+      <Box.ListItemButton
+        disabled={disabled}
+        style={{
+          alignItems: "center",
+          borderRadius: "10px",
+          height: "40px",
+        }}
+        key={index}
+        onClick={(event) => {
+          toggleDrawer(event, false);
+          onClick(Icon.name);
+        }}
+      >
+        <Box.ListItemIcon>
+          <Icon.Element />
+        </Box.ListItemIcon>
+        <Box.ListItemText primary={Icon.text} />
+      </Box.ListItemButton>
+    ))}
+  </Box.List>
+);
+
+export default DrawerList;

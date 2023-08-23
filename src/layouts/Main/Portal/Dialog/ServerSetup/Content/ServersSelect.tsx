@@ -1,0 +1,42 @@
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+
+import { appConfigs } from "~/classes/AppConfigs";
+import { Box, Input } from "~/components";
+import { Url } from "~/types";
+
+interface Props {
+  disabled: boolean;
+  onServerSelectChange: (url: Url) => void;
+  selectedServer: string;
+}
+
+const ServerSelect: React.FC<Props> = ({
+  disabled,
+  onServerSelectChange,
+  selectedServer,
+}) => {
+  return (
+    <>
+      <FormControl disabled={disabled} fullWidth>
+        <InputLabel id="labelId">Selected server</InputLabel>
+        <Input.Base.Select
+          size="small"
+          defaultValue={selectedServer}
+          labelId="labelId"
+          value={selectedServer}
+          label="Selected server"
+          onChange={(props) => onServerSelectChange(props.target.value as Url)}
+        >
+          {appConfigs.getConfigs().api.servers.map((item, index) => (
+            <Box.MenuItem key={index} value={item.url}>
+              {item.url}
+            </Box.MenuItem>
+          ))}
+        </Input.Base.Select>
+      </FormControl>
+    </>
+  );
+};
+
+export default ServerSelect;

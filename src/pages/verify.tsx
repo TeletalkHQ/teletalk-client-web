@@ -1,4 +1,4 @@
-import VerifyContainer from "~/containers/verify";
+import VerifyContainer from "~/containers/Verify";
 
 const Verify = () => {
   return <VerifyContainer />;

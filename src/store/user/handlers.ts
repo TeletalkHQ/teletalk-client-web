@@ -77,4 +77,22 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
   reset() {
     set(initialState);
   },
+
+  setAddingContactWithCellphone(item) {
+    set((prevState) => ({
+      addingContactWithCellphone: {
+        ...prevState.addingContactWithCellphone,
+        ...item,
+      },
+    }));
+  },
+
+  setAddingContactWithUserId(item) {
+    set((prevState) => ({
+      addingContactWithUserId: {
+        ...prevState.addingContactWithUserId,
+        ...item,
+      },
+    }));
+  },
 });

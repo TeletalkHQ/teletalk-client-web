@@ -2,35 +2,12 @@ import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
 import { CountryItem } from "utility-store/lib/types";
 
+import { dialogNames } from "~/store/global/initialState";
 import { StoreSetFn, VoidNoArgsFn } from "~/types";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
-export type DialogName =
-  | "addContact"
-  | "addServer"
-  | "advanced"
-  | "blockUser"
-  | "callSettings"
-  | "chatSettings"
-  | "contacts"
-  | "editBio"
-  | "editContact"
-  | "editContactWithCellphone"
-  | "editFullName"
-  | "editPhoneNumber"
-  | "editProfile"
-  | "editProfile"
-  | "editUsername"
-  | "language"
-  | "logout"
-  | "notificationsAndSounds"
-  | "privacyAndSecurity"
-  | "removeContact"
-  | "servers"
-  | "serverSetup"
-  | "settings"
-  | "userInfo";
+export type DialogName = (typeof dialogNames)[number];
 
 export interface DialogProps {
   zIndex: number;
@@ -41,7 +18,25 @@ export interface DialogState {
   props: DialogProps;
 }
 
+export type EmptyCountryItem = {
+  countryCode: "";
+  countryName: "";
+  countryShortName: "";
+};
+
+export type IllegalCountryItem = {
+  countryCode: string;
+  countryName: string;
+  countryShortName: string;
+};
+
 export type SelectedCountry = CountryItem | null;
+
+export type WeirdSelectedCountry =
+  | EmptyCountryItem
+  | IllegalCountryItem
+  | Partial<CountryItem>
+  | null;
 
 export type LoadingType = "FULL_PAGE" | "OVERLAY";
 
@@ -102,24 +97,7 @@ export interface LoadingState {
 
 export interface GlobalState {
   contextMenu: ContextMenuState;
-  dialogState: {
-    addContact: DialogState;
-    addServer: DialogState;
-    blockUser: DialogState;
-    contacts: DialogState;
-    editBio: DialogState;
-    editContact: DialogState;
-    editContactWithCellphone: DialogState;
-    editFullName: DialogState;
-    editProfile: DialogState;
-    editUsername: DialogState;
-    serverSetup: DialogState;
-    logout: DialogState;
-    removeContact: DialogState;
-    servers: DialogState;
-    settings: DialogState;
-    userInfo: DialogState;
-  };
+  dialogState: { [key in DialogName]: DialogState };
   drawer: {
     anchor: DrawerAnchor;
     open: boolean;

@@ -10,10 +10,16 @@ import {
 import { Validator } from "./Validator";
 
 export class OnChangeValidator extends Validator {
-  changeEvent: CommonChangeEvent;
+  changeEvent: CommonChangeEvent | React.SyntheticEvent;
 
-  checkValue(e: CommonChangeEvent, value?: string) {
-    this.value = value ?? e.target.value;
+  checkValue(e: CommonChangeEvent | React.SyntheticEvent, value?: string) {
+    this.value =
+      value ??
+      {
+        value: "",
+        ...e.target,
+      }.value;
+
     this.changeEvent = e;
 
     const validationResult = this.compiledValidator(
@@ -48,7 +54,9 @@ export class OnChangeValidator extends Validator {
     return this;
   }
 
-  executeIfNoError(cb: (value: any, e: CommonChangeEvent) => void) {
+  executeIfNoError(
+    cb: (value: any, e: CommonChangeEvent | React.SyntheticEvent) => void
+  ) {
     if (
       Array.isArray(this.validationResult) &&
       this.validationResult.length === 0

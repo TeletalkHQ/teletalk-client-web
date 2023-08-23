@@ -37,8 +37,6 @@ export type CommonChangeEvent = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement
 >;
 
-export type OnChangeValidatorFn = (value: any, e: CommonChangeEvent) => void;
-
 export type HTMLProps = HTMLAttributes<HTMLLIElement>;
 
 export type ElementName =
@@ -74,28 +72,68 @@ export type ElementName =
   | "phoneNumber"
   | "search"
   | "settings"
-  | "telegram"
+  | "send"
   | "unread"
   | "username"
   | "verificationCode";
 
+export type OnChangeValidatorFn = (
+  value: any,
+  e:
+    | {
+        target: {
+          value: any;
+          name: ElementName;
+        };
+      }
+    | CommonChangeEvent
+) => void;
+
 export type ElementLabel =
+  | "Account"
+  | "All Chats"
+  | "Attach File"
+  | "Back"
   | "Bio"
+  | "Bot"
+  | "Calls"
+  | "Channels"
+  | "Check"
   | "Choose a country"
+  | "Close"
   | "Code"
+  | "Contacts"
   | "Create"
   | "Creating..."
+  | "Edit Chats"
+  | "Emoji Emotions"
+  | "Fingerprint"
   | "First Name"
+  | "Groups"
   | "Last Name"
-  | "Url"
+  | "Lock"
+  | "Logout"
+  | "Menu"
+  | "MicNone"
+  | "More"
   | "Name"
+  | "New Channel"
+  | "New Group"
   | "Next"
+  | "Night Mode"
+  | "Personal"
   | "Phone Number"
+  | "Search"
+  | "Settings"
   | "Sign in..."
+  | "Send"
+  | "Unread Messages"
+  | "Url"
   | "Username"
+  | "Verification Code"
+  | "Verified User"
   | "Verify"
-  | "Verifying..."
-  | "Verification Code";
+  | "Verifying...";
 
 export type ElementId = ElementName;
 

@@ -3,8 +3,8 @@ import { DomUtils as DomUtilsMain } from "utility-store";
 import { ElementId, ElementName } from "~/types";
 
 export class DomUtils extends DomUtilsMain {
-  setElementByName(elementName: ElementName) {
-    super.setElementByName(elementName);
+  setElementByName(n: ElementName) {
+    super.setElementByName(n);
     return this;
   }
 

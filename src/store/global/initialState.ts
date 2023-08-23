@@ -1,5 +1,5 @@
 import { appConfigs } from "~/classes/AppConfigs";
-import { GlobalState } from "~/types";
+import { DialogName, DialogState, GlobalState } from "~/types";
 
 export const defaultDialogState = {
   open: false,
@@ -9,29 +9,45 @@ export const defaultDialogState = {
   },
 };
 
+export const dialogNames = [
+  "addContactWithCellphone",
+  "addContactWithUserId",
+  "addServer",
+  "advanced",
+  "blockUser",
+  "callSettings",
+  "chatSettings",
+  "contacts",
+  "editBio",
+  "editContact",
+  "editContactWithCellphone",
+  "editFullName",
+  "editPhoneNumber",
+  "editProfile",
+  "editUsername",
+  "language",
+  "logout",
+  "notificationsAndSounds",
+  "privacyAndSecurity",
+  "removeContact",
+  "servers",
+  "serverSetup",
+  "settings",
+  "userInfo",
+] as const;
+
 export const initialState: GlobalState = {
   contextMenu: {
     list: [],
     position: null,
   },
-  dialogState: {
-    addContact: defaultDialogState,
-    addServer: defaultDialogState,
-    blockUser: defaultDialogState,
-    contacts: defaultDialogState,
-    editBio: defaultDialogState,
-    editContact: defaultDialogState,
-    editContactWithCellphone: defaultDialogState,
-    editFullName: defaultDialogState,
-    editProfile: defaultDialogState,
-    editUsername: defaultDialogState,
-    serverSetup: defaultDialogState,
-    logout: defaultDialogState,
-    removeContact: defaultDialogState,
-    servers: defaultDialogState,
-    settings: defaultDialogState,
-    userInfo: defaultDialogState,
-  },
+  dialogState: dialogNames.reduce(
+    (prevValue, currValue) => {
+      prevValue[currValue] = defaultDialogState;
+      return prevValue;
+    },
+    {} as { [key in DialogName]: DialogState }
+  ),
   drawer: {
     anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
     open: false,

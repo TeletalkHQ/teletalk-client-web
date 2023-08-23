@@ -1,4 +1,4 @@
-import SignInContainer from "~/containers/signIn";
+import SignInContainer from "~/containers/SignIn";
 
 const SignIn = () => {
   return <SignInContainer />;
