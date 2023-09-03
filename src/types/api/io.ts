@@ -8,13 +8,13 @@ import {
   FullName,
   FullNameWithUserId,
   NewUser,
-  PublicUserData,
   UserData,
   UserId,
   Username,
   VerificationCode,
 } from "utility-store/lib/types";
 
+import { IO } from "..";
 import {
   ChatId,
   ContactItemWithCellphone,
@@ -23,25 +23,26 @@ import {
   ParticipantId,
   PrivateChatItem,
   PrivateChats,
+  UserPublicData,
   WelcomeMessage,
-} from "~/types/datatypes";
+} from "../datatypes";
 
-export interface CreateNewUserIO {
+export interface CreateNewUserIO extends IO {
   input: FullName;
   output: object;
 }
 
-export interface LogoutIO {
+export interface LogoutIO extends IO {
   input: object;
   output: object;
 }
 
-export interface SignInIO {
+export interface SignInIO extends IO {
   input: Cellphone;
   output: object;
 }
 
-export interface VerifyIO {
+export interface VerifyIO extends IO {
   input: {
     verificationCode: VerificationCode;
   };
@@ -50,25 +51,32 @@ export interface VerifyIO {
   };
 }
 
-export interface GetCountriesIO {
+export interface GetCountriesIO extends IO {
   input: object;
   output: {
     countries: Countries;
   };
 }
 
-export interface GetWelcomeMessageIO {
+export interface GetWelcomeMessageIO extends IO {
   input: object;
   output: {
     welcomeMessage: WelcomeMessage;
   };
 }
-export interface PingIO {
+export interface PingIO extends IO {
   input: object;
-  output: object;
+  output: {
+    pong: string;
+  };
 }
 
-export interface GetChatInfoIO {
+export interface PongIO extends IO {
+  input: object;
+  output: { pong: string };
+}
+
+export interface GetChatInfoIO extends IO {
   input: {
     chatId: ChatId;
   };
@@ -77,7 +85,7 @@ export interface GetChatInfoIO {
   };
 }
 
-export interface GetPrivateChatIO {
+export interface GetPrivateChatIO extends IO {
   input: {
     chatId: ChatId;
   };
@@ -86,22 +94,22 @@ export interface GetPrivateChatIO {
   };
 }
 
-export interface GetPrivateChatsIO {
+export interface GetPrivateChatsIO extends IO {
   input: object;
   output: {
     privateChats: PrivateChats;
   };
 }
 
-export interface JoinRoomIO {
+export interface JoinRoomIO extends IO {
   input: object;
   output: object;
 }
 
-export interface SendPrivateMessageIO {
+export interface SendMessageIO extends IO {
   input: {
     messageText: MessageText;
-    participantId: ParticipantId;
+    targetParticipantId: ParticipantId;
   };
   output: {
     chatId: ChatId;
@@ -109,7 +117,7 @@ export interface SendPrivateMessageIO {
   };
 }
 
-export interface AddBlockIO {
+export interface AddBlockIO extends IO {
   input: {
     userId: UserId;
   };
@@ -118,58 +126,58 @@ export interface AddBlockIO {
   };
 }
 
-export interface AddContactIO {
+export interface AddContactIO extends IO {
   input: ContactItem;
   output: {
-    addedContact: ContactItem;
+    newContact: ContactItem;
   };
 }
 
-export interface AddContactWithCellphoneIO {
+export interface AddContactWithCellphoneIO extends IO {
   input: ContactItemWithCellphone;
   output: {
-    addedContact: ContactItem;
+    newContact: ContactItem;
   };
 }
 
-export interface AddContactWithUserIdIO {
+export interface AddContactWithUserIdIO extends IO {
   input: FullNameWithUserId;
   output: {
-    addedContact: ContactItem;
+    newContact: ContactItem;
   };
 }
 
-export interface EditContactIO {
+export interface UpdateContactIO extends IO {
   input: FullNameWithUserId;
   output: {
     editedContact: FullNameWithUserId;
   };
 }
 
-export interface GetContactsIO {
+export interface GetContactsIO extends IO {
   input: object;
   output: {
     contacts: Contacts;
   };
 }
 
-export interface GetUserDataIO {
+export interface GetUserDataIO extends IO {
   input: object;
   output: {
     user: UserData;
   };
 }
 
-export interface GetPublicUserDataIO {
+export interface GetPublicDataIO extends IO {
   input: {
     userId: UserId;
   };
   output: {
-    publicUserData: PublicUserData;
+    publicData: UserPublicData;
   };
 }
 
-export interface RemoveBlockIO {
+export interface RemoveBlockIO extends IO {
   input: {
     userId: UserId;
   };
@@ -180,7 +188,7 @@ export interface RemoveBlockIO {
   };
 }
 
-export interface RemoveContactIO {
+export interface RemoveContactIO extends IO {
   input: {
     userId: UserId;
   };
@@ -191,38 +199,39 @@ export interface RemoveContactIO {
   };
 }
 
-export interface UpdatePublicUserDataIO {
+export interface UpdatePublicDataIO extends IO {
   input: FullName & {
     bio: Bio;
     username: Username;
   };
   output: {
-    publicUserData: PublicUserData;
+    userPublicData: UserPublicData;
   };
 }
 
-export interface IOCollection {
+export type IOCollection = {
   addBlock: AddBlockIO;
   addContact: AddContactIO;
   addContactWithCellphone: AddContactWithCellphoneIO;
   addContactWithUserId: AddContactWithUserIdIO;
   createNewUser: CreateNewUserIO;
-  editContact: EditContactIO;
+  updateContact: UpdateContactIO;
   getChatInfo: GetChatInfoIO;
   getContacts: GetContactsIO;
   getCountries: GetCountriesIO;
   getPrivateChat: GetPrivateChatIO;
   getPrivateChats: GetPrivateChatsIO;
-  getPublicUserData: GetPublicUserDataIO;
   getUserData: GetUserDataIO;
+  getPublicData: GetPublicDataIO;
   getWelcomeMessage: GetWelcomeMessageIO;
   joinRoom: JoinRoomIO;
   logout: LogoutIO;
   ping: PingIO;
+  pong: PongIO;
   removeBlock: RemoveBlockIO;
   removeContact: RemoveContactIO;
-  sendPrivateMessage: SendPrivateMessageIO;
+  sendMessage: SendMessageIO;
   signIn: SignInIO;
-  updatePublicUserData: UpdatePublicUserDataIO;
+  updatePublicData: UpdatePublicDataIO;
   verify: VerifyIO;
-}
+};

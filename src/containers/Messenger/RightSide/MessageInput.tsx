@@ -5,7 +5,7 @@ import { CommonChangeEvent } from "~/types";
 
 const MessageInput = () => {
   const messageStore = useMessageStore();
-  const { handler, loading } = useEmitter("sendPrivateMessage");
+  const { handler, loading } = useEmitter("sendMessage");
 
   const handleInputChange = (event: CommonChangeEvent) => {
     messageStore.messageInputOnChange(event.target.value);
@@ -15,7 +15,7 @@ const MessageInput = () => {
     handler.emitFull(
       {
         messageText: messageStore.messageInputTextValue,
-        participantId: messageStore.selectedChatInfo.userId,
+        targetParticipantId: messageStore.selectedChatInfo.userId,
       },
       () => {
         messageStore.messageInputOnChange("");

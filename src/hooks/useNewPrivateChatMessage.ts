@@ -8,7 +8,7 @@ export const useNewPrivateChatMessage = () => {
   const { updater: privateChatUpdater } = useAddPrivateChat();
 
   useListener({
-    evName: "sendPrivateMessage",
+    evName: "sendMessage",
     cb: async (response) => {
       if (
         messageStore.privateChats.some((i) => i.chatId === response.data.chatId)

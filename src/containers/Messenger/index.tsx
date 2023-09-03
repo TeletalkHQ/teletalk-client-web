@@ -13,7 +13,7 @@ const Messenger = () => {
   useUnmount(resetAllStores);
 
   useListener({
-    evName: "updatePublicUserData",
+    evName: "updatePublicData",
     cb: (response) => {
       userStore.setCurrentUserData({
         ...extractor.currentUserData({
@@ -21,7 +21,7 @@ const Messenger = () => {
           blacklist: [],
           clients: [],
         }),
-        ...extractor.publicUserData(response.data.publicUserData),
+        ...extractor.publicUserData(response.data.userPublicData),
       });
     },
   });
