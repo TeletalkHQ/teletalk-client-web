@@ -70,7 +70,7 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     });
   },
 
-  updatePublicData(publicData) {
+  updateCurrentUserPublicData(publicData) {
     set((prevState) => ({
       currentUserData: {
         ...extractor.currentUserData({

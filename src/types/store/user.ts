@@ -70,8 +70,8 @@ export interface UserHandlers {
   setCurrentUserData: VoidWithArg<CurrentUserData>;
   setSelectedContactFromContext: VoidWithArg<UserItem>;
   setUsers: VoidWithArg<Users>;
-  updatePublicData: VoidWithArg<PublicUserData>;
-  updateUser: VoidWithArg<Partial<UserItem>>;
+  updateCurrentUserPublicData: VoidWithArg<PublicUserData>;
+  updateUser: VoidWithArg<Partial<UserItem> & { userId: UserId }>;
 }
 
 export type UserSetState = StoreSetFn<UserState>;

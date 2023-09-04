@@ -48,7 +48,16 @@ const Messenger = () => {
 
   useListener({
     evName: "updatePublicData",
-    cb: (response) => userStore.updatePublicData(response.data.userPublicData),
+    cb: ({ data: { userPublicData } }) =>
+      userStore.currentUserData.userId === userPublicData.userId
+        ? userStore.updateCurrentUserPublicData(userPublicData)
+        : userStore.updateUser({
+            bio: userPublicData.bio,
+            originalFirstName: userPublicData.firstName,
+            originalLastName: userPublicData.lastName,
+            userId: userPublicData.userId,
+            username: userPublicData.username,
+          }),
   });
 
   return (
