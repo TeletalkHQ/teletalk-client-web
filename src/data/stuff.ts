@@ -863,7 +863,7 @@ export const stuff = {
         userId: { required: true, type: "string" },
       },
       outputFields: {
-        editedContact: {
+        updatedContact: {
           required: true,
           type: "object",
           value: {

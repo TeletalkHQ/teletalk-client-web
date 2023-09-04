@@ -34,6 +34,10 @@ export type FullContact = ContactItem & Cellphone;
 
 export type VoidNoArgsFn = () => void;
 
+export type VoidWithArg<Arg> = (arg: Arg) => void;
+
+export type VoidWithTwoArgs<Arg1, Arg2> = (arg1: Arg1, arg2: Arg2) => void;
+
 export * from "~/types/components";
 
 export interface Route {
@@ -52,7 +56,7 @@ export type EventName =
 
 export type ValidatorType = SyncCheckFunction | AsyncCheckFunction;
 
-export type ErrorChecker = (validationResult: any, value: any) => void;
+export type ErrorChecker = VoidWithTwoArgs<any, any>;
 
 export type ValidationErrors = ValidationError[];
 
@@ -164,7 +168,7 @@ export interface ServerTestResult {
   status: Status;
 }
 
-export type UpdateLoadingFn = (l: boolean) => void;
+export type UpdateLoadingFn = VoidWithArg<boolean>;
 
 export type * from "./api";
 export type * from "./components";

@@ -1,6 +1,6 @@
 import { SvgIconComponent } from "@mui/icons-material";
 
-import { DialogName } from "~/types";
+import { DialogName, VoidWithArg } from "~/types";
 
 export type SettingDisplayName =
   | "Edit Profile"
@@ -21,4 +21,4 @@ export type SettingItem = {
 
 export type SettingsList = SettingItem[];
 
-export type OnSettingItemClick = (item: SettingItem) => void;
+export type OnSettingItemClick = VoidWithArg<SettingItem>;

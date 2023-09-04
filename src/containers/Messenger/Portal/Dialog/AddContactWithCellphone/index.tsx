@@ -2,7 +2,7 @@ import React from "react";
 
 import { maker } from "~/classes/Maker";
 import { Template } from "~/components";
-import { useEmitter, useListener } from "~/hooks";
+import { useEmitter } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";
@@ -15,16 +15,6 @@ const AddContactWithCellphone = () => {
   const globalStore = useGlobalStore();
   const userStore = useUserStore();
   const { handler, loading } = useEmitter("addContactWithCellphone");
-
-  useListener({
-    evName: "addContactWithCellphone",
-    cb(response) {
-      userStore.updateUser({
-        ...response.data.newContact,
-        isContact: true,
-      });
-    },
-  });
 
   const handleChange: OnChangeValidatorFn = (_value: string, event) => {
     userStore.setAddingContactWithCellphone({

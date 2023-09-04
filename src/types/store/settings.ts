@@ -3,7 +3,7 @@ import { Cellphone, FullName } from "utility-store/lib/types";
 import { Bio, Username } from "~/types/datatypes";
 
 import { StoreSetFn } from ".";
-import { VoidNoArgsFn } from "..";
+import { VoidNoArgsFn, VoidWithArg } from "..";
 
 export interface Profile extends Cellphone, FullName {
   bio: Bio;
@@ -15,7 +15,7 @@ export interface SettingsState {
 }
 
 export interface SettingsHandlers {
-  updateProfile: (p: Partial<Profile>) => void;
+  updateProfile: VoidWithArg<Partial<Profile>>;
   reset: VoidNoArgsFn;
 }
 

@@ -14,6 +14,13 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     }));
   },
 
+  addBlock(userId) {
+    this.updateUser({
+      userId,
+      isBlocked: true,
+    });
+  },
+
   updateUser(updatedUser) {
     set((prevState) => {
       const index = prevState.users.findIndex(
@@ -22,20 +29,18 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
 
       const newUsers = [...prevState.users];
 
-      const userItem =
-        index < 0
-          ? {
-              ...maker.emptyUser(),
-              ...updatedUser,
-              ...maker.originalFullName(updatedUser),
-            }
-          : {
-              ...newUsers[index],
-              ...updatedUser,
-            };
-
-      if (index < 0) newUsers.push(userItem);
-      else newUsers[index] = userItem;
+      if (index < 0) {
+        newUsers.push({
+          ...maker.emptyUser(),
+          ...updatedUser,
+          ...maker.originalFullName(updatedUser),
+        });
+      } else {
+        newUsers[index] = {
+          ...newUsers[index],
+          ...updatedUser,
+        };
+      }
 
       return {
         users: newUsers,
@@ -68,30 +73,30 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     });
   },
 
+  reset() {
+    set(initialState);
+  },
+
   setUsers(u) {
     set((prevState) => ({
       users: [...prevState.users, ...u],
     }));
   },
 
-  reset() {
-    set(initialState);
-  },
-
-  setAddingContactWithCellphone(item) {
+  setAddingContactWithCellphone(addingContact) {
     set((prevState) => ({
       addingContactWithCellphone: {
         ...prevState.addingContactWithCellphone,
-        ...item,
+        ...addingContact,
       },
     }));
   },
 
-  setAddingContactWithUserId(item) {
+  setAddingContactWithUserId(addingContact) {
     set((prevState) => ({
       addingContactWithUserId: {
         ...prevState.addingContactWithUserId,
-        ...item,
+        ...addingContact,
       },
     }));
   },

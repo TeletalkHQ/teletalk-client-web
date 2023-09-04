@@ -150,7 +150,7 @@ export interface AddContactWithUserIdIO extends IO {
 export interface UpdateContactIO extends IO {
   input: FullNameWithUserId;
   output: {
-    editedContact: FullNameWithUserId;
+    updatedContact: FullNameWithUserId;
   };
 }
 

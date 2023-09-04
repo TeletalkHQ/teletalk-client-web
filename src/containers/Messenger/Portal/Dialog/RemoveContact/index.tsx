@@ -1,6 +1,6 @@
 import { userUtils } from "~/classes/UserUtils";
 import { Template } from "~/components";
-import { useEmitter, useListener } from "~/hooks";
+import { useEmitter } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 
 import Actions from "./Actions";
@@ -10,13 +10,6 @@ const RemoveContact = () => {
   const globalStore = useGlobalStore();
   const userStore = useUserStore();
   const { handler, loading } = useEmitter("removeContact");
-
-  useListener({
-    evName: "removeContact",
-    cb(response) {
-      userStore.removeContact(response.data.removedContact);
-    },
-  });
 
   const handleRemoveContact = () => {
     handler.emitFull(

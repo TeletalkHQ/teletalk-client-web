@@ -1,6 +1,6 @@
 import { userUtils } from "~/classes/UserUtils";
 import { Template } from "~/components";
-import { useEmitter, useListener } from "~/hooks";
+import { useEmitter } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 
 import Actions from "./Actions";
@@ -13,28 +13,8 @@ const BlockUser = () => {
   const { handler: addBlockHandler, loading: addBlockLoading } =
     useEmitter("addBlock");
 
-  useListener({
-    evName: "addBlock",
-    cb(response) {
-      userStore.updateUser({
-        userId: response.data.blockedUser.userId,
-        isBlocked: true,
-      });
-    },
-  });
-
   const { handler: removeBlockHandler, loading: removeBlockLoading } =
     useEmitter("removeBlock");
-
-  useListener({
-    evName: "removeBlock",
-    cb(response) {
-      userStore.updateUser({
-        userId: response.data.removedBlock.userId,
-        isBlocked: false,
-      });
-    },
-  });
 
   const handleConfirm = () => {
     (userStore.selectedContactFromContext.isBlocked

@@ -3,13 +3,13 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { CountryItem } from "utility-store/lib/types";
 import { countries } from "utility-store/lib/variables/countries";
 
-import { OnChangeValidatorFn, SelectedCountry } from "~/types";
+import { OnChangeValidatorFn, SelectedCountry, VoidWithArg } from "~/types";
 import { utils } from "~/utils";
 
 import Option from "./Option";
 import SelectorInput from "./SelectorInput";
 
-export type SelectCountryOnChange = (value: SelectedCountry) => void;
+export type SelectCountryOnChange = VoidWithArg<SelectedCountry>;
 
 interface Props {
   countryCode: string;

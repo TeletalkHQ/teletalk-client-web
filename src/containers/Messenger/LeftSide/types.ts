@@ -1,6 +1,6 @@
-import { ChatId, UserId } from "~/types";
+import { ChatId, UserId, VoidWithArg } from "~/types";
 
-export type HandleChatListItemClick = (data: {
+export type HandleChatListItemClick = VoidWithArg<{
   userId: UserId;
   chatId: ChatId;
-}) => void;
+}>;
