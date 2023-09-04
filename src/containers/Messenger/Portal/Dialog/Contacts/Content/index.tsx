@@ -1,12 +1,12 @@
 import { ContactItem } from "utility-store/lib/types";
 
-import { ExtendedOnContextMenu, UserItem, Users } from "~/types";
+import { ExtendedOnContextMenu, UserItem, Users, VoidWithArg } from "~/types";
 
 import ListItem from "./ListItem";
 
 interface Props {
   contacts: Users;
-  onContactItemClicked: (contact: ContactItem) => void;
+  onContactItemClicked: VoidWithArg<ContactItem>;
   onContextMenu: ExtendedOnContextMenu<UserItem>;
 }
 

@@ -1,4 +1,4 @@
-import { NativeError } from "~/types";
+import { NativeError, VoidWithArg } from "~/types";
 
 export type IO = {
   input: object;
@@ -25,7 +25,7 @@ export type SocketResponseCallback<Data = IO["output"]> = (
   response: SocketResponse<Data>
 ) => Promise<void> | void;
 
-export type SocketErrorCallback = (errors: SocketResponseErrors) => void;
+export type SocketErrorCallback = VoidWithArg<SocketResponseErrors>;
 
 export type RequestTransformer<Data = IO["input"]> = (
   requestData: Data

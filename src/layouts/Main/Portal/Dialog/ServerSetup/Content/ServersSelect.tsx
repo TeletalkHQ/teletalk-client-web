@@ -3,11 +3,11 @@ import InputLabel from "@mui/material/InputLabel";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { Box, Input } from "~/components";
-import { Url } from "~/types";
+import { Url, VoidWithArg } from "~/types";
 
 interface Props {
   disabled: boolean;
-  onServerSelectChange: (url: Url) => void;
+  onServerSelectChange: VoidWithArg<Url>;
   selectedServer: string;
 }
 

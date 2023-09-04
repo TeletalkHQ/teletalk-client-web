@@ -1,3 +1,4 @@
+import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";
 import { UserHandlers, UserSetState } from "~/types/store/user";
 
@@ -14,6 +15,34 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     }));
   },
 
+  addContactWithCellphone(newContact) {
+    this.updateUser({
+      ...newContact,
+      isContact: true,
+    });
+  },
+
+  addContactWithUserId(newContact) {
+    this.updateUser({
+      ...newContact,
+      isContact: true,
+    });
+  },
+
+  addBlock({ userId }) {
+    this.updateUser({
+      userId,
+      isBlocked: true,
+    });
+  },
+
+  removeBlock({ userId }) {
+    this.updateUser({
+      userId,
+      isBlocked: false,
+    });
+  },
+
   updateUser(updatedUser) {
     set((prevState) => {
       const index = prevState.users.findIndex(
@@ -22,25 +51,34 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
 
       const newUsers = [...prevState.users];
 
-      const userItem =
-        index < 0
-          ? {
-              ...maker.emptyUser(),
-              ...updatedUser,
-              ...maker.originalFullName(updatedUser),
-            }
-          : {
-              ...newUsers[index],
-              ...updatedUser,
-            };
-
-      if (index < 0) newUsers.push(userItem);
-      else newUsers[index] = userItem;
+      if (index < 0) {
+        newUsers.push({
+          ...maker.emptyUser(),
+          ...updatedUser,
+          ...maker.originalFullName(updatedUser),
+        });
+      } else {
+        newUsers[index] = {
+          ...newUsers[index],
+          ...updatedUser,
+        };
+      }
 
       return {
         users: newUsers,
       };
     });
+  },
+
+  updateCurrentUserPublicData(publicData) {
+    set((prevState) => ({
+      currentUserData: {
+        ...extractor.currentUserData({
+          ...prevState.currentUserData,
+        }),
+        ...publicData,
+      },
+    }));
   },
 
   removeContact(removedContact) {
@@ -57,9 +95,12 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
 
       newUsers.splice(index, 1, {
         ...item,
+        countryCode: "",
+        countryName: "",
         firstName: "",
         isContact: false,
         lastName: "",
+        phoneNumber: "",
       });
 
       return {
@@ -68,30 +109,30 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     });
   },
 
+  reset() {
+    set(initialState);
+  },
+
   setUsers(u) {
     set((prevState) => ({
       users: [...prevState.users, ...u],
     }));
   },
 
-  reset() {
-    set(initialState);
-  },
-
-  setAddingContactWithCellphone(item) {
+  setAddingContactWithCellphone(addingContact) {
     set((prevState) => ({
       addingContactWithCellphone: {
         ...prevState.addingContactWithCellphone,
-        ...item,
+        ...addingContact,
       },
     }));
   },
 
-  setAddingContactWithUserId(item) {
+  setAddingContactWithUserId(addingContact) {
     set((prevState) => ({
       addingContactWithUserId: {
         ...prevState.addingContactWithUserId,
-        ...item,
+        ...addingContact,
       },
     }));
   },

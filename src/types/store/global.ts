@@ -3,7 +3,12 @@ import { CSSProperties } from "react";
 import { CountryItem } from "utility-store/lib/types";
 
 import { dialogNames } from "~/store/global/initialState";
-import { StoreSetFn, VoidNoArgsFn } from "~/types";
+import {
+  StoreSetFn,
+  VoidNoArgsFn,
+  VoidWithArg,
+  VoidWithTwoArgs,
+} from "~/types";
 
 export type DrawerAnchor = "bottom" | "left" | "right" | "top";
 
@@ -40,18 +45,14 @@ export type WeirdSelectedCountry =
 
 export type LoadingType = "FULL_PAGE" | "OVERLAY";
 
-export type OnContextMenu = (e: React.MouseEvent) => void;
+export type OnContextMenu = VoidWithArg<React.MouseEvent>;
 
-export type ExtendedOnContextMenu<T extends any = any> = (
-  e: React.MouseEvent,
-  arg: T
-) => void;
+export type ExtendedOnContextMenu<T extends any = any> = VoidWithTwoArgs<
+  React.MouseEvent,
+  T
+>;
 
-type ContextMenuText =
-  | "Edit Contact"
-  | "Remove Contact"
-  | "Block Contact"
-  | "Remove Block";
+type ContextMenuText = "Edit" | "Remove" | "Block" | "Unblock";
 
 export interface ContextMenuItem {
   text: ContextMenuText;
@@ -70,19 +71,19 @@ export type ContextMenuState = {
 
 export interface GlobalHandlers {
   // updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
-  changeDrawerOpen: (o: boolean) => void;
-  closeContextMenu: () => void;
+  changeDrawerOpen: VoidWithArg<boolean>;
+  closeContextMenu: VoidNoArgsFn;
   closeDialog: (dialogName: DialogName, props?: DialogProps) => void;
   closeFullPageLoading: VoidNoArgsFn;
-  closeLoading: (type?: LoadingType) => void;
+  closeLoading: VoidWithArg<LoadingType>;
   closeOverlayLoading: VoidNoArgsFn;
-  handleContextMenu: (e: React.MouseEvent, list: ContextMenuList) => void;
+  handleContextMenu: VoidWithTwoArgs<React.MouseEvent, ContextMenuList>;
   openDialog: (dialogName: DialogName, props?: DialogProps) => void;
   openFullPageLoading: VoidNoArgsFn;
-  openLoading: (type?: LoadingType) => void;
+  openLoading: VoidWithArg<LoadingType>;
   openOverlayLoading: VoidNoArgsFn;
-  updateContextMenuList: (list: ContextMenuList) => void;
-  updateOnlineStatus: (isOnline: boolean) => void;
+  updateContextMenuList: VoidWithArg<ContextMenuList>;
+  updateOnlineStatus: VoidWithArg<boolean>;
   reset: VoidNoArgsFn;
 }
 

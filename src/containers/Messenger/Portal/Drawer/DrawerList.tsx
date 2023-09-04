@@ -1,5 +1,10 @@
 import { Box, Icon } from "~/components";
-import { ElementName, HTMLDivMouseEvent } from "~/types";
+import {
+  ElementName,
+  HTMLDivMouseEvent,
+  VoidWithArg,
+  VoidWithTwoArgs,
+} from "~/types";
 
 const drawerList = [
   { Icon: Icon.Calls, disabled: true },
@@ -12,8 +17,8 @@ const drawerList = [
 ];
 
 interface Props {
-  toggleDrawer: (event: HTMLDivMouseEvent, open: boolean) => void;
-  onClick: (elName: ElementName) => void;
+  toggleDrawer: VoidWithTwoArgs<HTMLDivMouseEvent, boolean>;
+  onClick: VoidWithArg<ElementName>;
 }
 
 const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (

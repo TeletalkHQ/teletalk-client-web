@@ -9,6 +9,7 @@ import {
   MouseEvent,
 } from "react";
 
+import { VoidNoArgsFn, VoidWithArg } from ".";
 import { DialogName } from "./store";
 
 export type DivProps = DetailedHTMLProps<
@@ -21,8 +22,6 @@ export type SpanProps = DetailedHTMLProps<
   HTMLSpanElement
 >;
 
-export type VoidNoArgsFn = () => void;
-
 export type CommonOnClose = VoidNoArgsFn;
 
 export type CommonOnChange = ChangeEventHandler<
@@ -31,7 +30,7 @@ export type CommonOnChange = ChangeEventHandler<
 
 export type CommonSelectChangeEvent = SelectChangeEvent<unknown>;
 
-export type CommonSelectOnChange = (e: CommonSelectChangeEvent) => void;
+export type CommonSelectOnChange = VoidWithArg<CommonSelectChangeEvent>;
 
 export type CommonChangeEvent = ChangeEvent<
   HTMLInputElement | HTMLTextAreaElement
@@ -146,7 +145,7 @@ export type HTMLDivMouseEvent = MouseEvent<
   globalThis.MouseEvent
 >;
 
-export type OnDialogClose = (n: DialogName) => void;
+export type OnDialogClose = VoidWithArg<DialogName>;
 
 export interface CustomLoadingButtonProps extends LoadingButtonProps {
   loadingIndicatorText?: string;

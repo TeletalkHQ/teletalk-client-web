@@ -23,15 +23,15 @@ const Contacts = () => {
     isBlocked,
   }: Partial<UserItem> = {}): ContextMenuList => [
     {
-      text: "Edit Contact",
+      text: "Edit",
       handler: onContextMenuHandler("editContactWithCellphone"),
     },
     {
-      text: "Remove Contact",
+      text: "Remove",
       handler: onContextMenuHandler("removeContact"),
     },
     {
-      text: `${isBlocked ? "Remove Block" : "Block Contact"}`,
+      text: `${isBlocked ? "Unblock" : "Block"}`,
       handler: onContextMenuHandler("blockUser"),
     },
   ];

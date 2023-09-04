@@ -9,18 +9,20 @@ import {
   useNewPrivateChatMessage,
   useSetPrivateChats,
 } from "~/hooks";
-import { useMessageStore } from "~/store";
+import { useMessageStore, useUserStore } from "~/store";
 
 const RightSide = () => {
   const messageStore = useMessageStore();
   useNewPrivateChatMessage();
   useSetPrivateChats();
   const { handler } = useEmitter("joinRoom");
+  const userStore = useUserStore();
 
   useEffect(() => {
     handler.emit();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userStore.currentUserData.userId]);
 
   return (
     <Box.Grid

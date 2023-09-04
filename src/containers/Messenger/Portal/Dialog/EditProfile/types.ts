@@ -1,4 +1,4 @@
-import { DialogName, ElementLabel, IconType } from "~/types";
+import { DialogName, ElementLabel, IconType, VoidWithArg } from "~/types";
 
 export interface EditProfileListItem {
   name: DialogName;
@@ -8,4 +8,4 @@ export interface EditProfileListItem {
   Icon: IconType;
 }
 
-export type EditProfileListItemOnClick = (item: EditProfileListItem) => void;
+export type EditProfileListItemOnClick = VoidWithArg<EditProfileListItem>;

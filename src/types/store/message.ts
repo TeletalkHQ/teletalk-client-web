@@ -7,6 +7,7 @@ import {
   StoreSetFn,
   UserId,
   VoidNoArgsFn,
+  VoidWithArg,
 } from "~/types";
 
 export interface SelectedChatInfo {
@@ -26,13 +27,13 @@ export interface MessageState {
 }
 
 export interface MessageHandlers {
-  addMessage: (m: AddMessagePayload) => void;
-  addPrivateChat: (p: PrivateChatItem) => void;
-  createNewPrivateChat: (p: PrivateChatItem) => void;
-  deselectChat: () => void;
-  messageInputOnChange: (v: MessageText) => void;
-  setPrivateChats: (p: PrivateChats) => void;
-  updateSelectedChatInfo: (d: { chatId: ChatId; userId: UserId }) => void;
+  addMessage: VoidWithArg<AddMessagePayload>;
+  addPrivateChat: VoidWithArg<PrivateChatItem>;
+  createNewPrivateChat: VoidWithArg<PrivateChatItem>;
+  deselectChat: VoidNoArgsFn;
+  messageInputOnChange: VoidWithArg<MessageText>;
+  setPrivateChats: VoidWithArg<PrivateChats>;
+  updateSelectedChatInfo: VoidWithArg<{ chatId: ChatId; userId: UserId }>;
   reset: VoidNoArgsFn;
 }
 

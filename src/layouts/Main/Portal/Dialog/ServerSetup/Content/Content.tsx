@@ -1,5 +1,5 @@
 import { Box, Button, Components } from "~/components";
-import { Status, Url, VoidNoArgsFn } from "~/types";
+import { Status, Url, VoidNoArgsFn, VoidWithArg } from "~/types";
 
 import AddServerButton from "./AddServerButton";
 import ServerSelect from "./ServersSelect";
@@ -10,7 +10,7 @@ interface Props {
   loading: boolean;
   onAddServerClick: VoidNoArgsFn;
   onServersClick: VoidNoArgsFn;
-  onServerSelectChange: (url: Url) => void;
+  onServerSelectChange: VoidWithArg<Url>;
   onSetup: VoidNoArgsFn;
   selectedServer: string;
   status: Status;

@@ -1,5 +1,6 @@
 import {
   Cellphone,
+  ContactItem,
   CountryItem,
   FullName,
   FullNameWithUserId,
@@ -15,6 +16,7 @@ import {
   UserId,
   Username,
   VoidNoArgsFn,
+  VoidWithArg,
 } from "~/types";
 
 export interface BlacklistItem {
@@ -55,16 +57,21 @@ export type ExtendedCurrentUserData = CurrentUserData & StringMap;
 export type ExtendedCountryItem = CountryItem & StringMap;
 
 export interface UserHandlers {
-  removeContact: (u: RemoveContactIO["output"]["removedContact"]) => void;
+  addBlock: VoidWithArg<BlacklistItem>;
+  addContactWithCellphone: VoidWithArg<ContactItem>;
+  addContactWithUserId: VoidWithArg<ContactItem>;
+  removeBlock: VoidWithArg<BlacklistItem>;
+  removeContact: VoidWithArg<RemoveContactIO["output"]["removedContact"]>;
   reset: VoidNoArgsFn;
-  setAddingContactWithCellphone: (
-    item: Partial<AddingContactWithCellphone>
-  ) => void;
-  setAddingContactWithUserId: (item: Partial<FullName>) => void;
-  setCurrentUserData: (u: CurrentUserData) => void;
-  setSelectedContactFromContext: (c: UserItem) => void;
-  setUsers: (u: Users) => void;
-  updateUser: (u: Partial<UserItem>) => void;
+  setAddingContactWithCellphone: VoidWithArg<
+    Partial<AddingContactWithCellphone>
+  >;
+  setAddingContactWithUserId: VoidWithArg<Partial<FullName>>;
+  setCurrentUserData: VoidWithArg<CurrentUserData>;
+  setSelectedContactFromContext: VoidWithArg<UserItem>;
+  setUsers: VoidWithArg<Users>;
+  updateCurrentUserPublicData: VoidWithArg<PublicUserData>;
+  updateUser: VoidWithArg<Partial<UserItem> & { userId: UserId }>;
 }
 
 export type UserSetState = StoreSetFn<UserState>;
