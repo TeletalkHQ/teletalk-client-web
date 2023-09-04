@@ -52,11 +52,7 @@ export type ExtendedOnContextMenu<T extends any = any> = VoidWithTwoArgs<
   T
 >;
 
-type ContextMenuText =
-  | "Edit Contact"
-  | "Remove Contact"
-  | "Block Contact"
-  | "Remove Block";
+type ContextMenuText = "Edit" | "Remove" | "Block" | "Unblock";
 
 export interface ContextMenuItem {
   text: ContextMenuText;

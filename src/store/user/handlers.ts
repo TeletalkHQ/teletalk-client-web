@@ -1,3 +1,4 @@
+import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";
 import { UserHandlers, UserSetState } from "~/types/store/user";
 
@@ -14,10 +15,31 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     }));
   },
 
-  addBlock(userId) {
+  addContactWithCellphone(newContact) {
+    this.updateUser({
+      ...newContact,
+      isContact: true,
+    });
+  },
+
+  addContactWithUserId(newContact) {
+    this.updateUser({
+      ...newContact,
+      isContact: true,
+    });
+  },
+
+  addBlock({ userId }) {
     this.updateUser({
       userId,
       isBlocked: true,
+    });
+  },
+
+  removeBlock({ userId }) {
+    this.updateUser({
+      userId,
+      isBlocked: false,
     });
   },
 
@@ -46,6 +68,17 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
         users: newUsers,
       };
     });
+  },
+
+  updatePublicData(publicData) {
+    set((prevState) => ({
+      currentUserData: {
+        ...extractor.currentUserData({
+          ...prevState.currentUserData,
+        }),
+        ...publicData,
+      },
+    }));
   },
 
   removeContact(removedContact) {

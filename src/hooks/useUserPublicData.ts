@@ -30,7 +30,10 @@ export const useUserPublicData: UseUserPublicData = (userId) => {
   }, [userId]);
 
   const updater: Updater = async (userId: UserId) => {
-    if (!userId) return { publicData: maker.emptyUser() };
+    if (!userId)
+      return {
+        publicData: maker.emptyUser(),
+      };
 
     const {
       data: { publicData },

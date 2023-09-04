@@ -1,4 +1,3 @@
-import { extractor } from "~/classes/Extractor";
 import { websocket } from "~/classes/websocket/Websocket";
 import { Box } from "~/components";
 import RightSide from "~/containers/Messenger/RightSide";
@@ -19,67 +18,37 @@ const Messenger = () => {
 
   useListener({
     evName: "addContactWithUserId",
-    cb: (response) => {
-      userStore.updateUser({
-        ...response.data.newContact,
-        isContact: true,
-      });
-    },
+    cb: (response) =>
+      userStore.addContactWithCellphone(response.data.newContact),
   });
 
   useListener({
     evName: "addContactWithCellphone",
-    cb(response) {
-      userStore.updateUser({
-        ...response.data.newContact,
-        isContact: true,
-      });
-    },
+    cb: (response) => userStore.addContactWithUserId(response.data.newContact),
   });
 
   useListener({
     evName: "updateContact",
-    cb(response) {
-      userStore.updateUser(response.data.updatedContact);
-    },
+    cb: (response) => userStore.updateUser(response.data.updatedContact),
   });
 
   useListener({
     evName: "removeContact",
-    cb(response) {
-      userStore.removeContact(response.data.removedContact);
-    },
+    cb: (response) => userStore.removeContact(response.data.removedContact),
   });
 
   useListener({
     evName: "addBlock",
-    cb(response) {
-      userStore.updateUser({
-        userId: response.data.blockedUser.userId,
-        isBlocked: true,
-      });
-    },
+    cb: (response) => userStore.addBlock(response.data.blockedUser),
   });
   useListener({
     evName: "removeBlock",
-    cb(response) {
-      userStore.updateUser({
-        userId: response.data.removedBlock.userId,
-        isBlocked: false,
-      });
-    },
+    cb: (response) => userStore.removeBlock(response.data.removedBlock),
   });
 
   useListener({
     evName: "updatePublicData",
-    cb: (response) => {
-      userStore.setCurrentUserData({
-        ...extractor.currentUserData({
-          ...userStore.currentUserData,
-        }),
-        ...extractor.publicUserData(response.data.userPublicData),
-      });
-    },
+    cb: (response) => userStore.updatePublicData(response.data.userPublicData),
   });
 
   return (

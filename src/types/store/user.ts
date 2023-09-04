@@ -1,5 +1,6 @@
 import {
   Cellphone,
+  ContactItem,
   CountryItem,
   FullName,
   FullNameWithUserId,
@@ -56,6 +57,10 @@ export type ExtendedCurrentUserData = CurrentUserData & StringMap;
 export type ExtendedCountryItem = CountryItem & StringMap;
 
 export interface UserHandlers {
+  addBlock: VoidWithArg<BlacklistItem>;
+  addContactWithCellphone: VoidWithArg<ContactItem>;
+  addContactWithUserId: VoidWithArg<ContactItem>;
+  removeBlock: VoidWithArg<BlacklistItem>;
   removeContact: VoidWithArg<RemoveContactIO["output"]["removedContact"]>;
   reset: VoidNoArgsFn;
   setAddingContactWithCellphone: VoidWithArg<
@@ -65,8 +70,8 @@ export interface UserHandlers {
   setCurrentUserData: VoidWithArg<CurrentUserData>;
   setSelectedContactFromContext: VoidWithArg<UserItem>;
   setUsers: VoidWithArg<Users>;
+  updatePublicData: VoidWithArg<PublicUserData>;
   updateUser: VoidWithArg<Partial<UserItem>>;
-  addBlock: VoidWithArg<UserId>;
 }
 
 export type UserSetState = StoreSetFn<UserState>;
