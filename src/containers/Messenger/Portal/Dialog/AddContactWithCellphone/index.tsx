@@ -20,7 +20,7 @@ const AddContactWithCellphone = () => {
     evName: "addContactWithCellphone",
     cb(response) {
       userStore.updateUser({
-        ...response.data.addedContact,
+        ...response.data.newContact,
         isContact: true,
       });
     },

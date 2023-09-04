@@ -22,7 +22,7 @@ type UseUserPublicData = (userId: UserId) => {
 
 export const useUserPublicData: UseUserPublicData = (userId) => {
   const userStore = useUserStore();
-  const { handler, loading } = useEmitter("getPublicUserData");
+  const { handler, loading } = useEmitter("getPublicData");
 
   useEffect(() => {
     updater(userId);
@@ -33,14 +33,12 @@ export const useUserPublicData: UseUserPublicData = (userId) => {
     if (!userId) return { publicData: maker.emptyUser() };
 
     const {
-      data: { publicUserData },
+      data: { publicData },
     } = await handler.emitFull({ userId });
 
-    const item = userStore.users.find(
-      (i) => i.userId === publicUserData.userId
-    );
+    const item = userStore.users.find((i) => i.userId === publicData.userId);
 
-    const userItem: UserItem = maker.user(publicUserData, item);
+    const userItem: UserItem = maker.user(publicData, item);
 
     userStore.updateUser(userItem);
 

@@ -15,10 +15,10 @@ import Title from "./Title";
 const EditContactWithCellphone = () => {
   const globalStore = useGlobalStore();
   const userStore = useUserStore();
-  const { handler, loading } = useEmitter("editContact");
+  const { handler, loading } = useEmitter("updateContact");
 
   useListener({
-    evName: "editContact",
+    evName: "updateContact",
     cb(response) {
       userStore.updateUser(response.data.editedContact);
     },
