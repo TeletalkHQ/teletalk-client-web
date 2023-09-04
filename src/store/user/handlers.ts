@@ -95,9 +95,12 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
 
       newUsers.splice(index, 1, {
         ...item,
+        countryCode: "",
+        countryName: "",
         firstName: "",
         isContact: false,
         lastName: "",
+        phoneNumber: "",
       });
 
       return {
