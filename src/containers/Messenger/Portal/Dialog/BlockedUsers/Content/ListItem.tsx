@@ -49,6 +49,7 @@ const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
         <Button.Icon
           onClick={(e) => {
             e.stopPropagation();
+            onItemLick();
           }}
         >
           <LockOpenTwoToneIcon color="error" />
