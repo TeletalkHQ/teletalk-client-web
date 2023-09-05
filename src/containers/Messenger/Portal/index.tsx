@@ -8,6 +8,7 @@ import EditFullName from "./Dialog/EditFullName";
 import EditProfile from "./Dialog/EditProfile";
 import EditUsername from "./Dialog/EditUsername";
 import Logout from "./Dialog/Logout";
+import PrivacyAndSecurity from "./Dialog/PrivacyAndSecurity";
 import RemoveContact from "./Dialog/RemoveContact";
 import Settings from "./Dialog/Settings";
 import UserInfo from "./Dialog/UserInfo";
@@ -29,6 +30,7 @@ const Portal = () => {
         EditProfile,
         EditUsername,
         Logout,
+        PrivacyAndSecurity,
         RemoveContact,
         Settings,
         UserInfo,
