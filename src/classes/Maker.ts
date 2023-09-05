@@ -51,7 +51,10 @@ export class Maker extends MakerMain {
     };
   }
 
-  user(publicData: PublicUserData, userItem?: UserItem): UserItem {
+  userWithPublicData(
+    publicData: PublicUserData,
+    userItem?: UserItem
+  ): UserItem {
     return {
       ...this.emptyUser(),
       ...publicData,

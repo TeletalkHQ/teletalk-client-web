@@ -20,14 +20,14 @@ type UseUserPublicData = (userId: UserId) => {
   updater: Updater;
 };
 
-export const useUserPublicData: UseUserPublicData = (userId) => {
+export const useUserPublicData: UseUserPublicData = (externalUserId) => {
   const userStore = useUserStore();
   const { handler, loading } = useEmitter("getPublicData");
 
   useEffect(() => {
-    updater(userId);
+    updater(externalUserId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
+  }, [externalUserId]);
 
   const updater: Updater = async (userId: UserId) => {
     if (!userId)
@@ -37,11 +37,13 @@ export const useUserPublicData: UseUserPublicData = (userId) => {
 
     const {
       data: { publicData },
-    } = await handler.emitFull({ userId });
+    } = await handler.emitFull({
+      userId,
+    });
 
-    const item = userStore.users.find((i) => i.userId === publicData.userId);
+    const item = findByUserId(publicData.userId);
 
-    const userItem: UserItem = maker.user(publicData, item);
+    const userItem: UserItem = maker.userWithPublicData(publicData, item);
 
     userStore.updateUser(userItem);
 
@@ -50,10 +52,12 @@ export const useUserPublicData: UseUserPublicData = (userId) => {
     };
   };
 
+  const findByUserId = (userId: UserId) =>
+    userStore.users.find((item) => item.userId === userId);
+
   return {
     loading,
-    publicData:
-      userStore.users.find((i) => i.userId === userId) || maker.emptyUser(),
+    publicData: findByUserId(externalUserId) || maker.emptyUser(),
     updater,
   };
 };

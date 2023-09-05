@@ -30,6 +30,7 @@ export const dialogNames = [
   "notificationsAndSounds",
   "privacyAndSecurity",
   "privacyAndSecurity",
+  "removeBlock",
   "removeContact",
   "servers",
   "serverSetup",

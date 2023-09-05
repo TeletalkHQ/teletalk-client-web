@@ -1,6 +1,7 @@
 import AddContactWithCellphone from "./Dialog/AddContactWithCellphone";
 import AddContactWithUserId from "./Dialog/AddContactWithUserId";
 import BlockUser from "./Dialog/BlockUser";
+import BlockedUsers from "./Dialog/BlockedUsers";
 import Contacts from "./Dialog/Contacts";
 import EditBio from "./Dialog/EditBio";
 import EditContactWithCellphone from "./Dialog/EditContactWithCellphone";
@@ -22,6 +23,7 @@ const Portal = () => {
       {[
         AddContactWithCellphone,
         AddContactWithUserId,
+        BlockedUsers,
         BlockUser,
         Contacts,
         EditBio,
