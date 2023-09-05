@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { Template } from "~/components";
-import { useLoading, usePing } from "~/hooks";
-import { useDialogState } from "~/hooks/useDialogState";
+import { useDialogState, useLoading, usePing } from "~/hooks";
 import { ServerTestResult, Url } from "~/types";
 
 import Actions from "./Actions";

@@ -1,6 +1,5 @@
 import { Template } from "~/components";
-import { useEmitter } from "~/hooks";
-import { useDialogState } from "~/hooks/useDialogState";
+import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";

@@ -1,6 +1,5 @@
 import { Template } from "~/components";
-import { useCustomRouter, useEmitter } from "~/hooks";
-import { useDialogState } from "~/hooks/useDialogState";
+import { useCustomRouter, useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore } from "~/store";
 
 import Actions from "./Actions";

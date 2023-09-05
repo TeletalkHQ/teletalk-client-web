@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { FullName } from "utility-store/lib/types";
 
 import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";
 import { Template } from "~/components";
-import { useEmitter } from "~/hooks";
-import { useDialogState } from "~/hooks/useDialogState";
+import {
+  useDialogState,
+  useEmitter,
+  useFindSelectedUserForActions,
+} from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";
@@ -18,10 +22,17 @@ const EditContactWithCellphone = () => {
   const userStore = useUserStore();
   const dialogState = useDialogState("editContactWithCellphone");
   const { handler, loading } = useEmitter("updateContact");
+  const selectedUserForActions = useFindSelectedUserForActions();
+  const [fullName, setFullName] = useState<FullName>(maker.emptyFullName());
+
+  useEffect(() => {
+    if (dialogState.open)
+      setFullName(extractor.fullName(selectedUserForActions));
+  }, [dialogState.open, selectedUserForActions, selectedUserForActions.userId]);
 
   const handleInputChange: OnChangeValidatorFn = (_value: string, event) => {
-    userStore.setSelectedContactFromContext({
-      ...userStore.selectedContactFromContext,
+    setFullName({
+      ...fullName,
       [event.target.name]: event.target.value,
     });
   };
@@ -29,8 +40,8 @@ const EditContactWithCellphone = () => {
   const handleAddContactClick = () => {
     handler.emitFull(
       {
-        ...extractor.fullName(userStore.selectedContactFromContext),
-        userId: userStore.selectedContactFromContext.userId,
+        ...extractor.fullName(fullName),
+        userId: selectedUserForActions.userId,
       },
       handleClose
     );
@@ -42,23 +53,17 @@ const EditContactWithCellphone = () => {
   };
 
   const resetStates = () => {
-    userStore.setSelectedContactFromContext(maker.emptyUser());
+    userStore.setSelectedUserIdForActions("");
+    setFullName(maker.emptyFullName());
   };
 
-  const isSubmitDisabled = utils.isFullNameValid(
-    userStore.selectedContactFromContext
-  );
+  const isSubmitDisabled = utils.isFullNameValid(fullName);
 
   return (
     <>
       <Template.Dialog
         title={<Title />}
-        content={
-          <Content
-            fullName={userStore.selectedContactFromContext}
-            onChange={handleInputChange}
-          />
-        }
+        content={<Content fullName={fullName} onChange={handleInputChange} />}
         actions={
           <Actions
             loading={loading}

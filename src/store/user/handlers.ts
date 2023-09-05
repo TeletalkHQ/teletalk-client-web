@@ -9,9 +9,9 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     set({ currentUserData: userData });
   },
 
-  setSelectedContactFromContext(u) {
+  setSelectedUserIdForActions(u) {
     set(() => ({
-      selectedContactFromContext: u,
+      selectedUserIdForActions: u,
     }));
   },
 

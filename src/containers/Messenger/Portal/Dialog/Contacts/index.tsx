@@ -1,8 +1,7 @@
 import { ContactItem } from "utility-store/lib/types";
 
 import { Template } from "~/components";
-import { useContextMenu } from "~/hooks";
-import { useDialogState } from "~/hooks/useDialogState";
+import { useContextMenu, useDialogState } from "~/hooks";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import {
   ContextMenuList,
@@ -58,7 +57,7 @@ const Contacts = () => {
   };
 
   const handleContextMenu: ExtendedOnContextMenu<UserItem> = (event, u) => {
-    userStore.setSelectedContactFromContext(u);
+    userStore.setSelectedUserIdForActions(u.userId);
     onContextMenu(event, createContextMenuList(u));
   };
 

@@ -18,6 +18,6 @@ export const initialState: UserState = {
     userId: "",
     username: "",
   },
-  selectedContactFromContext: maker.emptyUser(),
+  selectedUserIdForActions: "",
   users: [],
 };

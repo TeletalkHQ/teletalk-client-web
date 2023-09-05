@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { appConfigs } from "~/classes/AppConfigs";
 import { notificationManager } from "~/classes/NotificationManager";
 import { Template } from "~/components";
-import { usePing } from "~/hooks";
-import { useDialogState } from "~/hooks/useDialogState";
+import { useDialogState, usePing } from "~/hooks";
 import { useGlobalStore } from "~/store";
 import {
   CommonChangeEvent,

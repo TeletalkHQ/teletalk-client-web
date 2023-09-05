@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { extractor } from "utility-store";
 
 import { Template } from "~/components";
-import { useDialogState } from "~/hooks/useDialogState";
+import { useDialogState } from "~/hooks";
 import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
 
 import Actions from "./Actions";

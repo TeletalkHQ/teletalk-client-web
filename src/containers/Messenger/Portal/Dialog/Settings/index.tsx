@@ -1,6 +1,6 @@
 import { userUtils } from "~/classes/UserUtils";
 import { Template } from "~/components";
-import { useDialogState } from "~/hooks/useDialogState";
+import { useDialogState } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 
 import Actions from "./Actions";

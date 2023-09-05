@@ -1,6 +1,5 @@
 import { Template } from "~/components";
-import { useUpdateProfile } from "~/hooks";
-import { useDialogState } from "~/hooks/useDialogState";
+import { useDialogState, useUpdateProfile } from "~/hooks";
 import { useGlobalStore, useSettingsStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 

@@ -2,8 +2,7 @@ import React from "react";
 
 import { maker } from "~/classes/Maker";
 import { Template } from "~/components";
-import { useEmitter } from "~/hooks";
-import { useDialogState } from "~/hooks/useDialogState";
+import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";

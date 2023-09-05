@@ -46,7 +46,7 @@ export type Users = UserItem[];
 export type AddingContactWithCellphone = FullName & Cellphone;
 export interface UserState {
   currentUserData: CurrentUserData;
-  selectedContactFromContext: UserItem;
+  selectedUserIdForActions: UserId;
   users: Users;
   addingContactWithCellphone: AddingContactWithCellphone;
   addingContactWithUserId: FullName;
@@ -68,7 +68,7 @@ export interface UserHandlers {
   >;
   setAddingContactWithUserId: VoidWithArg<Partial<FullName>>;
   setCurrentUserData: VoidWithArg<CurrentUserData>;
-  setSelectedContactFromContext: VoidWithArg<UserItem>;
+  setSelectedUserIdForActions: VoidWithArg<UserId>;
   setUsers: VoidWithArg<Users>;
   updateCurrentUserPublicData: VoidWithArg<PublicUserData>;
   updateUser: VoidWithArg<Partial<UserItem> & { userId: UserId }>;

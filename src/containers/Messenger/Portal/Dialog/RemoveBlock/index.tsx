@@ -10,11 +10,11 @@ import { useGlobalStore } from "~/store";
 import Actions from "./Actions";
 import Content from "./Content";
 
-const RemoveContact = () => {
+const RemoveBlock = () => {
   const globalStore = useGlobalStore();
-  const dialogState = useDialogState("removeContact");
   const selectedUserForActions = useFindSelectedUserForActions();
-  const { handler, loading } = useEmitter("removeContact");
+  const dialogState = useDialogState("removeBlock");
+  const { handler, loading } = useEmitter("removeBlock");
 
   const handleRemoveContact = () => {
     handler.emitFull(
@@ -50,4 +50,4 @@ const RemoveContact = () => {
   );
 };
 
-export default RemoveContact;
+export default RemoveBlock;
