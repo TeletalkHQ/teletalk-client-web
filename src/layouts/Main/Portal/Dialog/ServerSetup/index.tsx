@@ -5,6 +5,7 @@ import { websocket } from "~/classes/websocket/Websocket";
 import { Template } from "~/components";
 import { events } from "~/events";
 import { usePing, useStore } from "~/hooks";
+import { useDialogState } from "~/hooks/useDialogState";
 import { useSetUserData } from "~/hooks/useSetUserData";
 import { Url } from "~/types";
 import { utils } from "~/utils";
@@ -14,13 +15,14 @@ import ServerSetupContent from "./Content/Content";
 
 const ServerSetup = () => {
   const stores = useStore();
+  const dialogState = useDialogState("serverSetup");
   const [selectedServer, setSelectedServer] = useState<Url>(
     appConfigs.getConfigs().api.selectedServerUrl
   );
   const { loading, pinger, status } = usePing();
   const { updater: setUserData, loading: authLoading } = useSetUserData({
     successCb: () => {
-      handleClose();
+      stores.global.closeDialog();
     },
   });
 
@@ -47,7 +49,6 @@ const ServerSetup = () => {
   };
 
   const handleServersClick = () => {
-    handleClose();
     stores.global.openDialog("servers");
   };
 
@@ -57,7 +58,6 @@ const ServerSetup = () => {
   };
 
   const handleAddServerClick = () => {
-    handleClose();
     stores.global.openDialog("addServer");
   };
 
@@ -73,10 +73,6 @@ const ServerSetup = () => {
     websocket.client.connect();
 
     setUserData();
-  };
-
-  const handleClose = () => {
-    stores.global.closeDialog("serverSetup");
   };
 
   const isPending = status === "pending";
@@ -106,7 +102,8 @@ const ServerSetup = () => {
             status={status}
           />
         }
-        open={stores.global.dialogState.serverSetup.open}
+        open={dialogState.open}
+        isClosable={false}
       />
     </>
   );

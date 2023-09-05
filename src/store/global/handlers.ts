@@ -74,25 +74,31 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
 
   openDialog(dialogName, props = defaultDialogState.props) {
     set((prevState) => ({
-      dialogState: {
-        ...prevState.dialogState,
-        [dialogName]: {
+      dialogStates: [
+        ...prevState.dialogStates,
+        {
+          name: dialogName,
           open: true,
           props,
         },
-      },
+      ],
     }));
   },
 
-  closeDialog(dialogName, props = defaultDialogState.props) {
-    set((prevState) => ({
-      dialogState: {
-        ...prevState.dialogState,
-        [dialogName]: {
-          open: false,
-          props,
-        },
-      },
+  closeDialog() {
+    set((prevState) => {
+      const newDialogStates = [...prevState.dialogStates];
+      newDialogStates.pop();
+
+      return {
+        dialogStates: newDialogStates,
+      };
+    });
+  },
+
+  closeAllDialog() {
+    set(() => ({
+      dialogStates: [],
     }));
   },
 

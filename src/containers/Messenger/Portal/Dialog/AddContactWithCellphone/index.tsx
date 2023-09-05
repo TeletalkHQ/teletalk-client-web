@@ -3,6 +3,7 @@ import React from "react";
 import { maker } from "~/classes/Maker";
 import { Template } from "~/components";
 import { useEmitter } from "~/hooks";
+import { useDialogState } from "~/hooks/useDialogState";
 import { useGlobalStore, useUserStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";
@@ -15,6 +16,7 @@ const AddContactWithCellphone = () => {
   const globalStore = useGlobalStore();
   const userStore = useUserStore();
   const { handler, loading } = useEmitter("addContactWithCellphone");
+  const dialogState = useDialogState("addContactWithCellphone");
 
   const handleChange: OnChangeValidatorFn = (_value: string, event) => {
     userStore.setAddingContactWithCellphone({
@@ -23,22 +25,18 @@ const AddContactWithCellphone = () => {
   };
 
   const handleAddClick = () => {
-    handler.emitFull(
-      userStore.addingContactWithCellphone,
-      returnToContactsDialog
-    );
+    handler.emitFull(userStore.addingContactWithCellphone, handleClose);
   };
 
-  const closeDialog = () => {
-    globalStore.closeDialog("addContactWithCellphone");
+  const handleClose = () => {
+    globalStore.closeDialog();
+    resetStates();
+  };
+
+  const resetStates = () => {
     userStore.setAddingContactWithCellphone(
       maker.emptyAddingContactWithCellphone()
     );
-  };
-
-  const returnToContactsDialog = () => {
-    closeDialog();
-    globalStore.openDialog("contacts");
   };
 
   const isSubmitDisabled = utils.isContactWithCellphoneValid(
@@ -59,15 +57,15 @@ const AddContactWithCellphone = () => {
           <Actions
             loading={loading}
             onAddContactClick={handleAddClick}
-            onContactDialogCancelClick={returnToContactsDialog}
+            onCancelClick={handleClose}
             isAddContactButtonDisabled={isSubmitDisabled}
           />
         }
-        open={globalStore.dialogState.addContactWithCellphone.open}
+        open={dialogState.open}
         paperStyle={{
           height: "50vh",
         }}
-        onClose={closeDialog}
+        onAfterClose={resetStates}
       />
     </>
   );

@@ -1,8 +1,7 @@
 import { appConfigs } from "~/classes/AppConfigs";
-import { DialogName, DialogState, GlobalState } from "~/types";
+import { GlobalState } from "~/types";
 
 export const defaultDialogState = {
-  open: false,
   //TODO: read default value from mui
   props: {
     zIndex: 1300,
@@ -41,13 +40,7 @@ export const initialState: GlobalState = {
     list: [],
     position: null,
   },
-  dialogState: dialogNames.reduce(
-    (prevValue, currValue) => {
-      prevValue[currValue] = defaultDialogState;
-      return prevValue;
-    },
-    {} as { [key in DialogName]: DialogState }
-  ),
+  dialogStates: [],
   drawer: {
     anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
     open: false,

@@ -2,6 +2,7 @@ import { ContactItem } from "utility-store/lib/types";
 
 import { Template } from "~/components";
 import { useContextMenu } from "~/hooks";
+import { useDialogState } from "~/hooks/useDialogState";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import {
   ContextMenuList,
@@ -18,6 +19,7 @@ const Contacts = () => {
   const globalStore = useGlobalStore();
   const messageStore = useMessageStore();
   const userStore = useUserStore();
+  const dialogState = useDialogState("contacts");
 
   const createContextMenuList = ({
     isBlocked,
@@ -38,23 +40,17 @@ const Contacts = () => {
 
   const onContextMenuHandler = (dn: DialogName) => () => {
     globalStore.closeContextMenu();
-    globalStore.closeDialog("contacts");
     globalStore.openDialog(dn);
   };
 
   const { onContextMenu } = useContextMenu(createContextMenuList());
 
   const handleAddContactClick = () => {
-    globalStore.closeDialog("contacts");
     globalStore.openDialog("addContactWithCellphone");
   };
 
-  const handleCloseContactDialog = () => {
-    globalStore.closeDialog("contacts");
-  };
-
   const handleContactItemClicked = (contact: ContactItem) => {
-    handleCloseContactDialog();
+    globalStore.closeDialog();
     messageStore.updateSelectedChatInfo({
       userId: contact.userId,
       chatId: "",
@@ -78,15 +74,14 @@ const Contacts = () => {
       }
       actions={
         <Actions
-          onClose={handleCloseContactDialog}
+          onClose={globalStore.closeDialog}
           onAddContactClick={handleAddContactClick}
         />
       }
-      open={globalStore.dialogState.contacts.open}
+      open={dialogState.open}
       paperStyle={{
         height: "90vh",
       }}
-      onClose={handleCloseContactDialog}
     />
   );
 };

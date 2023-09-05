@@ -4,6 +4,7 @@ import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";
 import { Template } from "~/components";
 import { useEmitter } from "~/hooks";
+import { useDialogState } from "~/hooks/useDialogState";
 import { useGlobalStore, useUserStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";
@@ -15,6 +16,7 @@ import Title from "./Title";
 const EditContactWithCellphone = () => {
   const globalStore = useGlobalStore();
   const userStore = useUserStore();
+  const dialogState = useDialogState("editContactWithCellphone");
   const { handler, loading } = useEmitter("updateContact");
 
   const handleInputChange: OnChangeValidatorFn = (_value: string, event) => {
@@ -30,18 +32,17 @@ const EditContactWithCellphone = () => {
         ...extractor.fullName(userStore.selectedContactFromContext),
         userId: userStore.selectedContactFromContext.userId,
       },
-      returnToContactsDialog
+      handleClose
     );
   };
 
   const handleClose = () => {
-    globalStore.closeDialog("editContactWithCellphone");
-    userStore.setSelectedContactFromContext(maker.emptyUser());
+    globalStore.closeDialog();
+    resetStates();
   };
 
-  const returnToContactsDialog = () => {
-    handleClose();
-    globalStore.openDialog("contacts");
+  const resetStates = () => {
+    userStore.setSelectedContactFromContext(maker.emptyUser());
   };
 
   const isSubmitDisabled = utils.isFullNameValid(
@@ -62,12 +63,12 @@ const EditContactWithCellphone = () => {
           <Actions
             loading={loading}
             onAddContactClick={handleAddContactClick}
-            onContactDialogCancelClick={returnToContactsDialog}
+            onCancel={handleClose}
             isAddContactButtonDisabled={isSubmitDisabled}
           />
         }
-        open={globalStore.dialogState.editContactWithCellphone.open}
-        onClose={handleClose}
+        open={dialogState.open}
+        onAfterClose={resetStates}
       />
     </>
   );

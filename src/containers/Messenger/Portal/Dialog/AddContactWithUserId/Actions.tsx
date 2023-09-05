@@ -4,14 +4,14 @@ import { VoidNoArgsFn } from "~/types";
 interface Props {
   isConfirmDisabled: boolean;
   loading: boolean;
-  onCancelClick: VoidNoArgsFn;
+  onCancel: VoidNoArgsFn;
   onConfirm: VoidNoArgsFn;
 }
 
 const Actions: React.FC<Props> = ({
   isConfirmDisabled,
   loading,
-  onCancelClick,
+  onCancel,
   onConfirm,
 }) => {
   return (
@@ -24,7 +24,7 @@ const Actions: React.FC<Props> = ({
         jc="flex-end"
         ai="center"
       >
-        <Button.Cancel onClick={onCancelClick} />
+        <Button.Cancel onClick={onCancel} />
 
         <Button.Confirm
           disabled={isConfirmDisabled}

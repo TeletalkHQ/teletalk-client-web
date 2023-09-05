@@ -1,5 +1,6 @@
 import { Template } from "~/components";
 import { useUpdateProfile } from "~/hooks";
+import { useDialogState } from "~/hooks/useDialogState";
 import { useGlobalStore, useSettingsStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 
@@ -8,44 +9,35 @@ import Content from "./Content";
 import Title from "./Title";
 
 const EditBio = () => {
-  const globalState = useGlobalStore();
-  const settingsState = useSettingsStore();
+  const globalStore = useGlobalStore();
+  const settingsStore = useSettingsStore();
   const { updater: profileUpdater, loading } = useUpdateProfile();
+  const dialogState = useDialogState("editBio");
 
   const handleInputChange: OnChangeValidatorFn = (value, event) => {
-    settingsState.updateProfile({ [event.target.name]: value });
+    settingsStore.updateProfile({ [event.target.name]: value });
   };
 
   const handleSaveClick = async () => {
-    profileUpdater(handleBack);
-  };
-
-  const handleBack = () => {
-    handleClose();
-    globalState.openDialog("editProfile");
-  };
-
-  const handleClose = () => {
-    globalState.closeDialog("editBio");
+    profileUpdater(globalStore.closeDialog);
   };
 
   return (
     <>
       <Template.Dialog
         title={<Title />}
-        open={globalState.dialogState.editBio.open}
+        open={dialogState.open}
         content={
           <Content
-            bio={settingsState.profile.bio}
+            bio={settingsStore.profile.bio}
             onChange={handleInputChange}
           />
         }
-        onClose={handleClose}
         actions={
           <Actions
             loading={loading}
             onSaveClick={handleSaveClick}
-            onCancel={handleBack}
+            onCancel={globalStore.closeDialog}
           />
         }
       />
