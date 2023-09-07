@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { websocket } from "~/classes/websocket/Websocket";
 import { Box } from "~/components";
 import RightSide from "~/containers/Messenger/RightSide";
@@ -12,8 +14,30 @@ const Messenger = () => {
   const userStore = useUserStore();
   useUnmount(resetAllStores);
 
-  websocket.client.onAny((event, data) => {
-    console.log("coming event:", event, "data:", data);
+  useEffect(() => {
+    websocket.client.onAny((event, data) => {
+      console.log("coming event:", event, "data:", data);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [websocket.client]);
+
+  useListener({
+    evName: "getClientStatus",
+    cb: (response) => {
+      userStore.updateOnlineUser(response.data);
+    },
+  });
+
+  useListener({
+    evName: "getOnlineClients",
+    cb: (response) => {
+      userStore.updateOnlineUserList(
+        response.data.onlineClients.map((i) => ({
+          ...i,
+          isOnline: true,
+        }))
+      );
+    },
   });
 
   useListener({

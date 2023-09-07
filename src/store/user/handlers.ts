@@ -70,6 +70,35 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     });
   },
 
+  updateOnlineUser(item) {
+    set((prevState) => {
+      const index = prevState.onlineUsers.findIndex(
+        (i) => i.userId === item.userId
+      );
+
+      if (index < 0) {
+        return {
+          onlineUsers: [...prevState.onlineUsers, item],
+        };
+      }
+
+      const copyOnlineUsers = [...prevState.onlineUsers];
+      copyOnlineUsers[index] = item;
+
+      return {
+        onlineUsers: copyOnlineUsers,
+      };
+    });
+  },
+
+  updateOnlineUserList(onlineUsers) {
+    set(() => {
+      return {
+        onlineUsers,
+      };
+    });
+  },
+
   updateCurrentUserPublicData(publicData) {
     set((prevState) => ({
       currentUserData: {

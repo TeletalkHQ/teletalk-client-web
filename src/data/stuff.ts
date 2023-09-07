@@ -500,7 +500,7 @@ export const stuff = {
       empty: false,
       required: true,
       minLength: 100,
-      maxLength: 500,
+      maxLength: 150,
       unique: true,
       trim: true,
     },
@@ -658,7 +658,7 @@ export const stuff = {
     {
       method: "customOn",
       inputFields: {},
-      outputFields: {},
+      outputFields: { pong: { required: true, type: "string" } },
       isAuthRequired: false,
       name: "ping",
     },
@@ -794,6 +794,13 @@ export const stuff = {
     },
     {
       method: "customOn",
+      inputFields: {},
+      outputFields: { isOnline: { required: true, type: "boolean" } },
+      isAuthRequired: true,
+      name: "disconnecting",
+    },
+    {
+      method: "customOn",
       inputFields: { userId: { required: true, type: "string" } },
       outputFields: {
         blockedUser: {
@@ -857,24 +864,13 @@ export const stuff = {
     },
     {
       method: "customOn",
-      inputFields: {
-        firstName: { required: true, type: "string" },
-        lastName: { required: true, type: "string" },
+      inputFields: { userId: { required: true, type: "string" } },
+      outputFields: {
+        isOnline: { required: true, type: "boolean" },
         userId: { required: true, type: "string" },
       },
-      outputFields: {
-        updatedContact: {
-          required: true,
-          type: "object",
-          value: {
-            firstName: { required: true, type: "string" },
-            lastName: { required: true, type: "string" },
-            userId: { required: true, type: "string" },
-          },
-        },
-      },
       isAuthRequired: true,
-      name: "updateContact",
+      name: "getClientStatus",
     },
     {
       method: "customOn",
@@ -897,6 +893,19 @@ export const stuff = {
       },
       isAuthRequired: true,
       name: "getContacts",
+    },
+    {
+      method: "customOn",
+      inputFields: {},
+      outputFields: {
+        onlineClients: {
+          required: true,
+          type: "array",
+          value: [{ userId: { required: true, type: "string" } }],
+        },
+      },
+      isAuthRequired: true,
+      name: "getOnlineClients",
     },
     {
       method: "customOn",
@@ -929,13 +938,7 @@ export const stuff = {
             blacklist: {
               required: true,
               type: "array",
-              value: [
-                {
-                  countryCode: { required: true, type: "string" },
-                  countryName: { required: true, type: "string" },
-                  phoneNumber: { required: true, type: "string" },
-                },
-              ],
+              value: [{ userId: { required: true, type: "string" } }],
             },
             contacts: {
               required: true,
@@ -1000,6 +1003,27 @@ export const stuff = {
       },
       isAuthRequired: true,
       name: "removeContact",
+    },
+    {
+      method: "customOn",
+      inputFields: {
+        firstName: { required: true, type: "string" },
+        lastName: { required: true, type: "string" },
+        userId: { required: true, type: "string" },
+      },
+      outputFields: {
+        updatedContact: {
+          required: true,
+          type: "object",
+          value: {
+            firstName: { required: true, type: "string" },
+            lastName: { required: true, type: "string" },
+            userId: { required: true, type: "string" },
+          },
+        },
+      },
+      isAuthRequired: true,
+      name: "updateContact",
     },
     {
       method: "customOn",
@@ -1219,7 +1243,7 @@ export const stuff = {
         unique: "CLIENT_ID_UNIQUE_ERROR",
       },
       empty: false,
-      max: 500,
+      max: 150,
       min: 100,
       required: true,
       trim: true,

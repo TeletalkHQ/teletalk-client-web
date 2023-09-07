@@ -3,9 +3,14 @@ import { Box, Typography } from "~/components";
 interface Props {
   fullName: string;
   fullNumber: string;
+  connectionStatus: string;
 }
 
-const Content: React.FC<Props> = ({ fullName, fullNumber }) => {
+const Content: React.FC<Props> = ({
+  connectionStatus,
+  fullName,
+  fullNumber,
+}) => {
   return (
     <Box.Flex ai="center" gap={2}>
       <Box.Div>
@@ -23,7 +28,7 @@ const Content: React.FC<Props> = ({ fullName, fullNumber }) => {
             fontSize: 20,
           }}
         >
-          {fullName}
+          {fullName} : {connectionStatus}
         </Typography.Bold>
 
         <Box.Div

@@ -18,6 +18,7 @@ export const initialState: UserState = {
     userId: "",
     username: "",
   },
+  onlineUsers: [],
   selectedUserIdForActions: "",
   users: [],
 };

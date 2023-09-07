@@ -1,6 +1,6 @@
 import { userUtils } from "~/classes/UserUtils";
 import { Template } from "~/components";
-import { useDialogState, useUserPublicData } from "~/hooks";
+import { useDialogState, useIsOnline, useUserPublicData } from "~/hooks";
 import { useGlobalStore, useMessageStore } from "~/store";
 
 import Actions from "./Actions";
@@ -11,9 +11,12 @@ const UserInfo = () => {
   const globalState = useGlobalStore();
   const messageStore = useMessageStore();
   const dialogState = useDialogState("userInfo");
+  const { isOnline } = useIsOnline(messageStore.selectedChatInfo.userId);
   const { publicData } = useUserPublicData(
     messageStore.selectedChatInfo.userId
   );
+
+  const connectionStatus = isOnline ? "online" : "offline";
 
   return (
     <>
@@ -22,6 +25,7 @@ const UserInfo = () => {
         open={dialogState.open}
         content={
           <Content
+            connectionStatus={connectionStatus}
             fullName={userUtils.concatFirstNameWithLastName(publicData)}
             fullNumber={userUtils.concatCountryCodeWithPhoneNumber(publicData)}
           />

@@ -32,6 +32,14 @@ export type UserItem = PublicUserData &
     originalFirstName: string;
     originalLastName: string;
   };
+export type Users = UserItem[];
+
+export interface OnlineUser {
+  userId: UserId;
+  isOnline: boolean;
+}
+
+export type OnlineUserList = OnlineUser[];
 
 export type CurrentUserData = FullNameWithUserId &
   Cellphone & {
@@ -41,8 +49,6 @@ export type CurrentUserData = FullNameWithUserId &
     createdAt: number;
   };
 
-export type Users = UserItem[];
-
 export type AddingContactWithCellphone = FullName & Cellphone;
 export interface UserState {
   currentUserData: CurrentUserData;
@@ -50,6 +56,7 @@ export interface UserState {
   users: Users;
   addingContactWithCellphone: AddingContactWithCellphone;
   addingContactWithUserId: FullName;
+  onlineUsers: OnlineUserList;
 }
 
 export type ExtendedCurrentUserData = CurrentUserData & StringMap;
@@ -72,6 +79,8 @@ export interface UserHandlers {
   setUsers: VoidWithArg<Users>;
   updateCurrentUserPublicData: VoidWithArg<PublicUserData>;
   updateUser: VoidWithArg<Partial<UserItem> & { userId: UserId }>;
+  updateOnlineUser: VoidWithArg<OnlineUser>;
+  updateOnlineUserList: VoidWithArg<OnlineUserList>;
 }
 
 export type UserSetState = StoreSetFn<UserState>;
