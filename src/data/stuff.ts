@@ -656,6 +656,13 @@ export const stuff = {
       name: "getWelcomeMessage",
     },
     {
+      method: "once",
+      inputFields: {},
+      outputFields: {},
+      isAuthRequired: true,
+      name: "join",
+    },
+    {
       method: "customOn",
       inputFields: {},
       outputFields: { pong: { required: true, type: "string" } },
@@ -760,13 +767,6 @@ export const stuff = {
       name: "getPrivateChats",
     },
     {
-      method: "once",
-      inputFields: {},
-      outputFields: {},
-      isAuthRequired: true,
-      name: "joinRoom",
-    },
-    {
       method: "customOn",
       inputFields: {
         messageText: { required: true, type: "string" },
@@ -791,13 +791,6 @@ export const stuff = {
       },
       isAuthRequired: true,
       name: "sendMessage",
-    },
-    {
-      method: "customOn",
-      inputFields: {},
-      outputFields: { isOnline: { required: true, type: "boolean" } },
-      isAuthRequired: true,
-      name: "disconnecting",
     },
     {
       method: "customOn",
@@ -861,6 +854,13 @@ export const stuff = {
       },
       isAuthRequired: true,
       name: "addContactWithUserId",
+    },
+    {
+      method: "customOn",
+      inputFields: {},
+      outputFields: {},
+      isAuthRequired: false,
+      name: "disconnect",
     },
     {
       method: "customOn",
