@@ -9,9 +9,9 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     set({ currentUserData: userData });
   },
 
-  setSelectedContactFromContext(u) {
+  setSelectedUserIdForActions(u) {
     set(() => ({
-      selectedContactFromContext: u,
+      selectedUserIdForActions: u,
     }));
   },
 
@@ -66,6 +66,35 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
 
       return {
         users: newUsers,
+      };
+    });
+  },
+
+  updateOnlineUser(item) {
+    set((prevState) => {
+      const index = prevState.onlineUsers.findIndex(
+        (i) => i.userId === item.userId
+      );
+
+      if (index < 0) {
+        return {
+          onlineUsers: [...prevState.onlineUsers, item],
+        };
+      }
+
+      const copyOnlineUsers = [...prevState.onlineUsers];
+      copyOnlineUsers[index] = item;
+
+      return {
+        onlineUsers: copyOnlineUsers,
+      };
+    });
+  },
+
+  updateOnlineUserList(onlineUsers) {
+    set(() => {
+      return {
+        onlineUsers,
       };
     });
   },

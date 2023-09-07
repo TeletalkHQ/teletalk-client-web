@@ -1,5 +1,5 @@
 import { Template } from "~/components";
-import { useEmitter } from "~/hooks";
+import { useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 import { utils } from "~/utils";
@@ -13,10 +13,7 @@ const AddContactWithUserId = () => {
   const userStore = useUserStore();
   const messageStore = useMessageStore();
   const { loading, handler } = useEmitter("addContactWithUserId");
-
-  const closeDialog = () => {
-    globalStore.closeDialog("addContactWithUserId");
-  };
+  const dialogState = useDialogState("addContactWithUserId");
 
   const handleChange: OnChangeValidatorFn = (_value: string, event) => {
     userStore.setAddingContactWithUserId({
@@ -34,9 +31,7 @@ const AddContactWithUserId = () => {
         ...userStore.addingContactWithUserId,
         userId: messageStore.selectedChatInfo.userId,
       },
-      () => {
-        closeDialog();
-      }
+      globalStore.closeDialog
     );
   };
 
@@ -52,14 +47,13 @@ const AddContactWithUserId = () => {
         }
         actions={
           <Actions
-            onCancelClick={closeDialog}
+            onCancel={globalStore.closeDialog}
             onConfirm={handleConfirm}
             loading={loading}
             isConfirmDisabled={isConfirmDisabled}
           />
         }
-        open={globalStore.dialogState.addContactWithUserId.open}
-        onClose={closeDialog}
+        open={dialogState.open}
       />
     </>
   );

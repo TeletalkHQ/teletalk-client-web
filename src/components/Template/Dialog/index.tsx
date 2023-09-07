@@ -1,9 +1,9 @@
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { customTypeof } from "custom-typeof";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { BaseComponent } from "~/components/Base";
+import { useGlobalStore } from "~/store";
 import { Style, TransitionName, VoidNoArgsFn } from "~/types";
 
 import Actions from "./Actions";
@@ -12,6 +12,7 @@ import Title from "./Title";
 
 interface Props {
   actions: JSX.Element;
+  isClosable?: boolean;
   content: JSX.Element;
   dialogStyle?: Style;
   onClose?: VoidNoArgsFn;
@@ -19,8 +20,9 @@ interface Props {
   open: boolean;
   paperStyle?: Style;
   title?: string | JSX.Element;
-  transitionName?: TransitionName;
   transitionDuration?: number;
+  transitionName?: TransitionName;
+  onAfterClose?: VoidNoArgsFn;
 }
 
 const Dialog: React.FC<Props> = ({
@@ -28,13 +30,17 @@ const Dialog: React.FC<Props> = ({
   content,
   dialogStyle,
   onClose,
+  onAfterClose,
   onKeyDown,
   open,
   paperStyle,
   title,
-  transitionName = appConfigs.getConfigs().ui.dialogDefaultTransition,
   transitionDuration,
+  isClosable = true,
+  transitionName = appConfigs.getConfigs().ui.dialogDefaultTransition,
 }) => {
+  const globalStore = useGlobalStore();
+
   const theme = useTheme();
 
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -45,13 +51,19 @@ const Dialog: React.FC<Props> = ({
       appConfigs.getConfigs().ui.dialogDefaultTransition
     ];
 
+  const handleClose = () => {
+    const oc = onClose || globalStore.closeAllDialog;
+    oc();
+    onAfterClose?.();
+  };
+
   return (
     <BaseComponent.Box.Dialog
       fullScreen={fullScreen}
       keepMounted
-      {...(customTypeof.isFunction(onClose) && {
-        onClose,
-      })}
+      {...{
+        onClose: isClosable ? handleClose : undefined,
+      }}
       // onEscapeKeyDown={onEscapeKeyDown}
       onKeyDown={onKeyDown}
       open={open}

@@ -1,18 +1,32 @@
 import { UserUtils as userUtilsMain } from "utility-store";
 import { ExtendedCellphone } from "utility-store/lib/types";
 
-import { UserItem } from "~/types";
+import { UserItem, UserPublicData } from "~/types";
 
 export class UserUtils extends userUtilsMain {
-  concatFirstNameWithLastName(userItem: Partial<UserItem>) {
-    const fn = userItem.firstName || userItem.originalFirstName || "";
-    const ln = userItem.lastName || userItem.originalLastName || "";
+  concatFirstNameWithLastName(
+    userItem: Partial<UserItem>,
+    publicData?: UserPublicData
+  ) {
+    const fn =
+      userItem.firstName ||
+      userItem.originalFirstName ||
+      publicData?.firstName ||
+      "";
+    const ln =
+      userItem.lastName ||
+      userItem.originalLastName ||
+      publicData?.lastName ||
+      "";
 
     return `${fn} ${ln}`;
   }
 
-  concatCountryCodeWithPhoneNumber(data: ExtendedCellphone) {
-    if (!data.countryCode || !data.phoneNumber) return "";
+  concatCountryCodeWithPhoneNumber(
+    data: ExtendedCellphone,
+    fallbackValue = ""
+  ) {
+    if (!data.countryCode || !data.phoneNumber) return fallbackValue;
     return `+${data.countryCode} ${data.phoneNumber}`;
   }
 }

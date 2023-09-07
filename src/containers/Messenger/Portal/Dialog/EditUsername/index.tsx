@@ -1,6 +1,6 @@
 import { stuffStore } from "~/classes/StuffStore";
 import { Template } from "~/components";
-import { useUpdateProfile } from "~/hooks";
+import { useDialogState, useUpdateProfile } from "~/hooks";
 import { useGlobalStore, useSettingsStore } from "~/store";
 import { OnChangeValidatorFn } from "~/types";
 
@@ -11,28 +11,24 @@ import Title from "./Title";
 const EditUsername = () => {
   const globalState = useGlobalStore();
   const settingsState = useSettingsStore();
+  const dialogState = useDialogState("editUsername");
   const { updater: profileUpdater, loading } = useUpdateProfile();
 
   const handleInputChange: OnChangeValidatorFn = (value, event) => {
-    settingsState.updateProfile({ [event.target.name]: value });
+    settingsState.updateProfile({
+      [event.target.name]: value,
+    });
   };
 
   const handleSaveClick = async () => {
-    profileUpdater(handleBack);
-  };
-  const handleClose = () => {
-    globalState.closeDialog("editUsername");
-  };
-  const handleBack = () => {
-    handleClose();
-    globalState.openDialog("editProfile");
+    profileUpdater(globalState.closeDialog);
   };
 
   return (
     <>
       <Template.Dialog
         title={<Title />}
-        open={globalState.dialogState.editUsername.open}
+        open={dialogState.open}
         content={
           <Content
             usernameLength={stuffStore.models.username.minLength}
@@ -40,12 +36,11 @@ const EditUsername = () => {
             onChange={handleInputChange}
           />
         }
-        onClose={handleClose}
         actions={
           <Actions
             loading={loading}
             onSaveClick={handleSaveClick}
-            onCancel={handleBack}
+            onCancel={globalState.closeDialog}
           />
         }
       />

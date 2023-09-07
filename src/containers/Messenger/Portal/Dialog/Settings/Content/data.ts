@@ -1,3 +1,4 @@
+//CLEANME: Move to icons
 import AccountBoxIcon from "@mui/icons-material/AccountBoxTwoTone";
 import CallIcon from "@mui/icons-material/CallTwoTone";
 import ChatIcon from "@mui/icons-material/ChatTwoTone";
@@ -23,7 +24,7 @@ export const settingsList: SettingsList = [
     name: "notificationsAndSounds",
   },
   {
-    disabled: true,
+    disabled: false,
     displayName: "Privacy and Security",
     Icon: LockIcon,
     name: "privacyAndSecurity",

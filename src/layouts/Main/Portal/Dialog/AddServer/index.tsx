@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { appConfigs } from "~/classes/AppConfigs";
 import { notificationManager } from "~/classes/NotificationManager";
 import { Template } from "~/components";
-import { usePing } from "~/hooks";
+import { useDialogState, usePing } from "~/hooks";
 import { useGlobalStore } from "~/store";
 import {
   CommonChangeEvent,
@@ -18,14 +18,10 @@ import Title from "./Title";
 
 const AddServer = () => {
   const globalStore = useGlobalStore();
+  const dialogState = useDialogState("addServer");
   const [inputValue, setInputValue] = useState("");
   const [protocol, setProtocol] = useState<Protocol>("https");
   const { loading, pinger, setStatus, status } = usePing();
-
-  const handleClose = () => {
-    globalStore.closeDialog("addServer");
-    globalStore.openDialog("serverSetup");
-  };
 
   const handleInputChange = (event: CommonChangeEvent) => {
     setInputValue(event.target.value);
@@ -39,6 +35,7 @@ const AddServer = () => {
       notificationManager.printError("SERVER_ALREADY_EXIST");
     else {
       appConfigs.addServerUrl(fixServerUrl());
+      globalStore.closeDialog();
       handleReset();
     }
   };
@@ -48,7 +45,6 @@ const AddServer = () => {
   };
 
   const handleReset = () => {
-    handleClose();
     setInputValue("");
     setStatus("idle");
   };
@@ -77,7 +73,7 @@ const AddServer = () => {
           isTestDisabled={isTestDisabled}
           loading={loading}
           onAddClick={handleAddClick}
-          onClose={handleClose}
+          onClose={globalStore.closeDialog}
           onTestClick={handleTestClick}
         />
       }
@@ -91,8 +87,7 @@ const AddServer = () => {
           status={status}
         />
       }
-      onClose={handleClose}
-      open={globalStore.dialogState.addServer.open}
+      open={dialogState.open}
     />
   );
 };

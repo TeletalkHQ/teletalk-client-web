@@ -5,13 +5,13 @@ interface Props {
   isAddContactButtonDisabled: boolean;
   loading: boolean;
   onAddContactClick: VoidNoArgsFn;
-  onContactDialogCancelClick: VoidNoArgsFn;
+  onCancel: VoidNoArgsFn;
 }
 const Actions: React.FC<Props> = ({
   isAddContactButtonDisabled,
   loading,
   onAddContactClick,
-  onContactDialogCancelClick,
+  onCancel,
 }) => {
   return (
     <>
@@ -23,7 +23,7 @@ const Actions: React.FC<Props> = ({
         jc="flex-end"
         ai="center"
       >
-        <Button.Cancel onClick={onContactDialogCancelClick} />
+        <Button.Cancel onClick={onCancel} />
 
         <Button.Confirm
           disabled={isAddContactButtonDisabled}

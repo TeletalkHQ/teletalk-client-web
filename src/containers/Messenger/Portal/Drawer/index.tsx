@@ -4,6 +4,7 @@ import { KeyboardEvent, SyntheticEvent } from "react";
 import { userUtils } from "~/classes/UserUtils";
 import { Box } from "~/components";
 import { useGlobalStore, useUserStore } from "~/store";
+import { dialogNames } from "~/store/global/initialState";
 import { DialogName, ElementName } from "~/types";
 import { utils } from "~/utils";
 
@@ -30,7 +31,8 @@ const Drawer = () => {
   };
 
   const handleDrawerItemClick = (n: ElementName) => {
-    if (n in globalState.dialogState) globalState.openDialog(n as DialogName);
+    if (dialogNames.some((i) => i === n))
+      globalState.openDialog(n as DialogName);
   };
 
   const fullName = userUtils.concatFirstNameWithLastName(

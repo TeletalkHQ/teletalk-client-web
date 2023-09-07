@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { extractor } from "utility-store";
 
 import { Template } from "~/components";
+import { useDialogState } from "~/hooks";
 import { useGlobalStore, useSettingsStore, useUserStore } from "~/store";
 
 import Actions from "./Actions";
@@ -13,9 +14,10 @@ const EditProfile = () => {
   const globalState = useGlobalStore();
   const settingsStore = useSettingsStore();
   const userStore = useUserStore();
+  const dialogState = useDialogState("editProfile");
 
   useEffect(() => {
-    if (globalState.dialogState.editProfile.open)
+    if (dialogState.open)
       settingsStore.updateProfile({
         ...extractor.cellphone(userStore.currentUserData),
         ...extractor.fullName(userStore.currentUserData),
@@ -23,32 +25,23 @@ const EditProfile = () => {
         username: userStore.currentUserData.username,
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globalState.dialogState.editProfile.open, userStore]);
+  }, [dialogState.open, userStore]);
 
   const handleItemClick = (item: EditProfileListItem) => {
-    handleClose();
-    globalState.openDialog(item.name, { zIndex: 1500 });
-  };
-
-  const handleCancel = () => {
-    handleClose();
-    globalState.openDialog("settings");
-  };
-
-  const handleClose = () => {
-    globalState.closeDialog("editProfile");
+    globalState.openDialog(item.name, {
+      zIndex: 1500,
+    });
   };
 
   return (
     <>
       <Template.Dialog
         title={<Title />}
-        open={globalState.dialogState.editProfile.open}
+        open={dialogState.open}
         content={
           <Content profile={settingsStore.profile} onClick={handleItemClick} />
         }
-        actions={<Actions onCancel={handleCancel} />}
-        onClose={handleClose}
+        actions={<Actions onCancel={globalState.closeDialog} />}
       />
     </>
   );

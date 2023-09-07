@@ -5,6 +5,7 @@ import {
   GetUserDataIO,
   SocketErrorCallback,
   SocketResponseCallback,
+  UserItem,
 } from "~/types";
 
 import { useEmitter } from "./useEmitter";
@@ -26,16 +27,28 @@ export const useSetUserData = ({
         userStore.setCurrentUserData(
           extractor.currentUserData(response.data.user)
         );
-        userStore.setUsers(
-          response.data.user.contacts.map((item) => ({
-            ...maker.emptyUser(),
-            ...item,
-            isContact: true,
-            isBlocked: response.data.user.blacklist.some(
-              (i) => i.userId === item.userId
-            ),
-          }))
-        );
+
+        const users: UserItem[] = response.data.user.contacts.map((item) => ({
+          ...maker.emptyUser(),
+          ...item,
+          isContact: true,
+          isBlocked: response.data.user.blacklist.some(
+            (i) => i.userId === item.userId
+          ),
+        }));
+
+        const usersThatExistOnlyInTheBlacklist: UserItem[] =
+          response.data.user.blacklist
+            .filter((i) => !users.some((j) => i.userId === j.userId))
+            .map((item) => ({
+              ...maker.emptyUser(),
+              ...item,
+              isBlocked: true,
+            }));
+
+        users.push(...usersThatExistOnlyInTheBlacklist);
+
+        userStore.setUsers(users);
 
         successCb?.(response);
       },

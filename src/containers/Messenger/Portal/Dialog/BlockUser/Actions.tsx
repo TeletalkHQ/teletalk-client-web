@@ -3,14 +3,14 @@ import { CommonOnClose, VoidNoArgsFn } from "~/types";
 
 interface Props {
   loading: boolean;
-  onClose: CommonOnClose;
+  onCancel: CommonOnClose;
   onConfirm: VoidNoArgsFn;
 }
 
-const Actions: React.FC<Props> = ({ loading, onClose, onConfirm }) => {
+const Actions: React.FC<Props> = ({ loading, onCancel, onConfirm }) => {
   return (
     <>
-      <Button.Close onClick={onClose} />
+      <Button.Close onClick={onCancel} />
 
       <Button.ErrorConfirm loading={loading} onClick={onConfirm} />
     </>

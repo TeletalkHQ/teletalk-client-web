@@ -1,54 +1,50 @@
 import { userUtils } from "~/classes/UserUtils";
 import { Template } from "~/components";
-import { useEmitter } from "~/hooks";
-import { useGlobalStore, useUserStore } from "~/store";
+import {
+  useDialogState,
+  useEmitter,
+  useFindSelectedUserForActions,
+} from "~/hooks";
+import { useGlobalStore } from "~/store";
 
 import Actions from "./Actions";
 import Content from "./Content";
 
 const RemoveContact = () => {
   const globalStore = useGlobalStore();
-  const userStore = useUserStore();
+  const dialogState = useDialogState("removeContact");
+  const selectedUserForActions = useFindSelectedUserForActions();
   const { handler, loading } = useEmitter("removeContact");
 
   const handleRemoveContact = () => {
     handler.emitFull(
-      { userId: userStore.selectedContactFromContext.userId },
+      {
+        userId: selectedUserForActions.userId,
+      },
       () => {
-        handleClose();
-        globalStore.openDialog("contacts");
+        globalStore.closeDialog();
       }
     );
-  };
-
-  const handleBack = () => {
-    handleClose();
-    globalStore.openDialog("contacts");
-  };
-
-  const handleClose = () => {
-    globalStore.closeDialog("removeContact");
   };
 
   return (
     <>
       <Template.Dialog
-        open={globalStore.dialogState.removeContact.open}
+        open={dialogState.open}
         actions={
           <Actions
             loading={loading}
-            onClose={handleBack}
+            onClose={globalStore.closeDialog}
             onRemove={handleRemoveContact}
           />
         }
         content={
           <Content
             fullName={userUtils.concatFirstNameWithLastName(
-              userStore.selectedContactFromContext
+              selectedUserForActions
             )}
           />
         }
-        onClose={handleClose}
       />
     </>
   );

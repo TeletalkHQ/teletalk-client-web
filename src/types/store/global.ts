@@ -19,7 +19,7 @@ export interface DialogProps {
 }
 
 export interface DialogState {
-  open: boolean;
+  name: DialogName;
   props: DialogProps;
 }
 
@@ -73,7 +73,8 @@ export interface GlobalHandlers {
   // updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
   changeDrawerOpen: VoidWithArg<boolean>;
   closeContextMenu: VoidNoArgsFn;
-  closeDialog: (dialogName: DialogName, props?: DialogProps) => void;
+  closeDialog: VoidNoArgsFn;
+  closeAllDialog: VoidNoArgsFn;
   closeFullPageLoading: VoidNoArgsFn;
   closeLoading: VoidWithArg<LoadingType>;
   closeOverlayLoading: VoidNoArgsFn;
@@ -98,7 +99,7 @@ export interface LoadingState {
 
 export interface GlobalState {
   contextMenu: ContextMenuState;
-  dialogState: { [key in DialogName]: DialogState };
+  dialogStates: DialogState[];
   drawer: {
     anchor: DrawerAnchor;
     open: boolean;

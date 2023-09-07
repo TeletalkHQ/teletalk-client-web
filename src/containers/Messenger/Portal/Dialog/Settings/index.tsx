@@ -1,5 +1,6 @@
 import { userUtils } from "~/classes/UserUtils";
 import { Template } from "~/components";
+import { useDialogState } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
 
 import Actions from "./Actions";
@@ -10,14 +11,9 @@ import { SettingItem } from "./types";
 const Settings = () => {
   const globalState = useGlobalStore();
   const userState = useUserStore();
-
-  const handleCloseDialog = () => {
-    globalState.closeDialog("settings");
-  };
+  const dialogState = useDialogState("settings");
 
   const handleSettingItemClick = (item: SettingItem) => {
-    handleCloseDialog();
-
     globalState.openDialog(item.name, {
       zIndex: 1500,
     });
@@ -38,9 +34,8 @@ const Settings = () => {
           onSettingItemClick={handleSettingItemClick}
         />
       }
-      actions={<Actions onClose={handleCloseDialog} />}
-      open={globalState.dialogState.settings.open}
-      onClose={handleCloseDialog}
+      actions={<Actions onClose={globalState.closeDialog} />}
+      open={dialogState.open}
     />
   );
 };

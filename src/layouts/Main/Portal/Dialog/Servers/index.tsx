@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { Template } from "~/components";
-import { useLoading, usePing } from "~/hooks";
-import { useGlobalStore } from "~/store";
+import { useDialogState, useLoading, usePing } from "~/hooks";
 import { ServerTestResult, Url } from "~/types";
 
 import Actions from "./Actions";
@@ -11,7 +10,7 @@ import Content from "./Content";
 import Title from "./Title";
 
 const Servers = () => {
-  const globalStore = useGlobalStore();
+  const dialogState = useDialogState("servers");
   const list = useRef<ServerTestResult[]>([]);
   const [forceUpdate, setForceUpdate] = useState(false);
   const { loading, startLoading, finishLoading } = useLoading();
@@ -23,9 +22,9 @@ const Servers = () => {
   }, [loading]);
 
   useEffect(() => {
-    if (globalStore.dialogState.servers.open) handleResetList();
+    if (dialogState.open) handleResetList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globalStore.dialogState.servers.open]);
+  }, [dialogState.open]);
 
   const handleResetList = () => {
     list.current = appConfigs.getConfigs().api.servers.map((item) => ({
@@ -38,11 +37,6 @@ const Servers = () => {
 
   const handleForceUpdate = () => {
     setForceUpdate(!forceUpdate);
-  };
-
-  const handleClose = () => {
-    globalStore.closeDialog("servers");
-    globalStore.openDialog("serverSetup");
   };
 
   const handlePingAllServers = async () => {
@@ -93,8 +87,7 @@ const Servers = () => {
         />
       }
       title={<Title />}
-      onClose={handleClose}
-      open={globalStore.dialogState.servers.open}
+      open={dialogState.open}
     />
   );
 };

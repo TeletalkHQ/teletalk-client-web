@@ -11,10 +11,8 @@ export const useEmitter = <EvName extends EventName>(evName: EvName) => {
 
   const handleAuthError = () => router.push("signIn");
 
-  //@ts-ignore
   type IOType = IOCollection[EvName];
 
-  //@ts-ignore
   const handler = eventHandler<IOType>(updateLoading, handleAuthError).setRoute(
     stuffStore.events.find((i) => i.name === evName) as SocketRoute
   );
