@@ -15,11 +15,14 @@ const RightSide = () => {
   const messageStore = useMessageStore();
   useNewPrivateChatMessage();
   useSetPrivateChats();
-  const { handler } = useEmitter("joinRoom");
+  const { handler: joinHandler } = useEmitter("join");
+  const { handler: getOnlineClientsHandler } = useEmitter("getOnlineClients");
   const userStore = useUserStore();
 
   useEffect(() => {
-    handler.emit();
+    joinHandler.emitFull({}, () => {
+      getOnlineClientsHandler.emitFull({});
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userStore.currentUserData.userId]);
