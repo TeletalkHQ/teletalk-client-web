@@ -15,7 +15,7 @@ const RightSide = () => {
   const messageStore = useMessageStore();
   useNewPrivateChatMessage();
   useSetPrivateChats();
-  const { handler } = useEmitter("joinRoom");
+  const { handler } = useEmitter("join");
   const userStore = useUserStore();
 
   useEffect(() => {

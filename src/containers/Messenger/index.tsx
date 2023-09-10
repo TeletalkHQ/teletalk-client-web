@@ -10,6 +10,7 @@ import { resetAllStores } from "~/store/utils";
 import LeftSide from "./LeftSide";
 import Portal from "./Portal";
 
+//REFACTOR
 const Messenger = () => {
   const userStore = useUserStore();
   useUnmount(resetAllStores);
@@ -68,6 +69,13 @@ const Messenger = () => {
   useListener({
     evName: "removeBlock",
     cb: (response) => userStore.removeBlock(response.data.removedBlock),
+  });
+
+  useListener({
+    evName: "getPublicData",
+    cb: async (response) => {
+      userStore.updateUser(response.data.publicData);
+    },
   });
 
   useListener({

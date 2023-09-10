@@ -13,7 +13,7 @@ export const useFindUserById = (userId: UserId) => {
   };
 
   return {
-    finder,
     data: finder(userId),
+    finder,
   };
 };

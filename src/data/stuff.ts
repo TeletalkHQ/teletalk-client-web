@@ -342,7 +342,8 @@ export const stuff = {
     { isAuthError: true, side: "CLIENT", reason: "CLIENT_COOKIE_REQUIRED" },
     { isAuthError: false, side: "CLIENT", reason: "BLACKLIST_ITEM_EXIST" },
     { isAuthError: false, side: "CLIENT", reason: "BLACKLIST_ITEM_NOT_EXIST" },
-    { isAuthError: false, side: "CLIENT", reason: "CHAT_NOT_EXIST" },
+    { isAuthError: false, side: "CLIENT", reason: "PRIVATE_CHAT_NOT_EXIST" },
+    { isAuthError: false, side: "CLIENT", reason: "PRIVATE_CHAT_EXIST" },
     { isAuthError: true, side: "CLIENT", reason: "CLIENT_ID_CAN_NOT_VERIFIED" },
     { isAuthError: true, side: "CLIENT", reason: "CLIENT_INVALID" },
     { isAuthError: true, side: "CLIENT", reason: "CLIENT_NOT_FOUND" },
@@ -656,6 +657,13 @@ export const stuff = {
       name: "getWelcomeMessage",
     },
     {
+      method: "once",
+      inputFields: {},
+      outputFields: {},
+      isAuthRequired: true,
+      name: "join",
+    },
+    {
       method: "customOn",
       inputFields: {},
       outputFields: { pong: { required: true, type: "string" } },
@@ -760,13 +768,6 @@ export const stuff = {
       name: "getPrivateChats",
     },
     {
-      method: "once",
-      inputFields: {},
-      outputFields: {},
-      isAuthRequired: true,
-      name: "joinRoom",
-    },
-    {
       method: "customOn",
       inputFields: {
         messageText: { required: true, type: "string" },
@@ -791,13 +792,6 @@ export const stuff = {
       },
       isAuthRequired: true,
       name: "sendMessage",
-    },
-    {
-      method: "customOn",
-      inputFields: {},
-      outputFields: { isOnline: { required: true, type: "boolean" } },
-      isAuthRequired: true,
-      name: "disconnecting",
     },
     {
       method: "customOn",
@@ -861,6 +855,13 @@ export const stuff = {
       },
       isAuthRequired: true,
       name: "addContactWithUserId",
+    },
+    {
+      method: "customOn",
+      inputFields: {},
+      outputFields: {},
+      isAuthRequired: false,
+      name: "disconnect",
     },
     {
       method: "customOn",

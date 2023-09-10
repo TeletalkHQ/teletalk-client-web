@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 
-import { maker } from "~/classes/Maker";
-import { useUserStore } from "~/store";
 import { UserId, UserItem } from "~/types";
 
 import { useEmitter } from "./useEmitter";
@@ -12,41 +10,21 @@ type UseUserPublicData = (userId: UserId) => {
   publicData: UserItem;
 };
 
-export const useUserPublicData: UseUserPublicData = (externalUserId) => {
-  const userStore = useUserStore();
-  const { data: user, finder } = useFindUserById(externalUserId);
+export const useUserPublicData: UseUserPublicData = (userId) => {
+  const { data: publicData } = useFindUserById(userId);
   const { handler, loading } = useEmitter("getPublicData");
 
   useEffect(() => {
-    updater(externalUserId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [externalUserId]);
+    if (!userId) return;
 
-  const updater = async (userId: UserId) => {
-    if (!userId)
-      return {
-        publicData: maker.emptyUser(),
-      };
-
-    const {
-      data: { publicData },
-    } = await handler.emitFull({
+    handler.emitFull({
       userId,
     });
-
-    const item = finder(publicData.userId);
-
-    const userItem: UserItem = maker.userWithPublicData(publicData, item);
-
-    userStore.updateUser(userItem);
-
-    return {
-      publicData: userItem,
-    };
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
 
   return {
     loading,
-    publicData: user,
+    publicData,
   };
 };

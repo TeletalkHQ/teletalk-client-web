@@ -23,6 +23,8 @@ const ChatListItem: React.FC<Props> = ({
 }) => {
   const { publicData } = useUserPublicData(userId);
 
+  console.log("publicData:::", publicData);
+
   const fullName = userUtils.concatFirstNameWithLastName(publicData);
 
   return (
