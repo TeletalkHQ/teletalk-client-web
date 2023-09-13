@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+
+import { websocket } from "~/classes/websocket/Websocket";
 import { Box, Button, Components, Icon, Input, Typography } from "~/components";
 import { useSignIn } from "~/hooks";
 import { useAuthStore } from "~/store";
@@ -14,6 +17,10 @@ const SignIn = () => {
       authStore.countryName,
       authStore.phoneNumber
     );
+
+  useEffect(() => {
+    if (websocket.client.disconnected) websocket.client.connect();
+  }, []);
 
   const handleChange: OnChangeValidatorFn = (_value: string, event) => {
     authStore.updateCellphone({

@@ -342,6 +342,16 @@ export const stuff = {
     { isAuthError: true, side: "CLIENT", reason: "CLIENT_COOKIE_REQUIRED" },
     { isAuthError: false, side: "CLIENT", reason: "BLACKLIST_ITEM_EXIST" },
     { isAuthError: false, side: "CLIENT", reason: "BLACKLIST_ITEM_NOT_EXIST" },
+    {
+      isAuthError: false,
+      side: "CLIENT",
+      reason: "TARGET_USER_IS_BLACKLISTED",
+    },
+    {
+      isAuthError: false,
+      side: "CLIENT",
+      reason: "CURRENT_USER_IS_BLACKLISTED",
+    },
     { isAuthError: false, side: "CLIENT", reason: "PRIVATE_CHAT_NOT_EXIST" },
     { isAuthError: false, side: "CLIENT", reason: "PRIVATE_CHAT_EXIST" },
     { isAuthError: true, side: "CLIENT", reason: "CLIENT_ID_CAN_NOT_VERIFIED" },
