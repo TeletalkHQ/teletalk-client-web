@@ -15,7 +15,7 @@ const Actions: React.FC<Props> = ({ onClose, onAddContactClick }) => (
       jc="space-between"
       ai="center"
     >
-      <Button.Close onClick={onClose} />
+      <Button.PrimaryClose onClick={onClose} />
 
       <Button.PrimaryText onClick={onAddContactClick}>
         Add Contact

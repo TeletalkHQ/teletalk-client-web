@@ -1,5 +1,7 @@
+import { IOCollection } from "teletalk-type-store";
+
 import { websocket } from "~/classes/websocket/Websocket";
-import { EventName, IOCollection, SocketResponse } from "~/types";
+import { EventName, SocketResponse } from "~/types";
 
 export const useListener = <EvName extends EventName>({
   evName,

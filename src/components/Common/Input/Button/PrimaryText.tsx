@@ -1,6 +1,6 @@
 import { ButtonProps } from "@mui/material";
 
-import PrimaryButton from "./PrimaryButton";
+import PrimaryButton from "./Primary";
 
 interface Props extends ButtonProps {}
 

@@ -1,4 +1,6 @@
-import { UserId, VoidWithArg } from "~/types";
+import { UserId } from "teletalk-type-store";
+
+import { VoidWithArg } from "~/types";
 
 import List from "./List";
 

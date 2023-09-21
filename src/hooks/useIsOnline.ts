@@ -1,5 +1,6 @@
+import { UserId } from "teletalk-type-store";
+
 import { useUserStore } from "~/store";
-import { UserId } from "~/types";
 
 export const useIsOnline = (userId: UserId) => {
   const userStore = useUserStore();

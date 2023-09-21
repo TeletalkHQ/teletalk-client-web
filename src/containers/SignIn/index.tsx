@@ -11,12 +11,7 @@ const SignIn = () => {
   const authStore = useAuthStore();
   const { updater, loading } = useSignIn();
 
-  const isSignInSubmitButtonDisabled = () =>
-    utils.isCellphoneValid(
-      authStore.countryCode,
-      authStore.countryName,
-      authStore.phoneNumber
-    );
+  const isSignInSubmitButtonDisabled = () => utils.isCellphoneValid(authStore);
 
   useEffect(() => {
     if (websocket.client.disconnected) websocket.client.connect();

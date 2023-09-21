@@ -1,7 +1,8 @@
+import { UserId } from "teletalk-type-store";
+
 import { Template } from "~/components";
 import { useDialogState } from "~/hooks";
 import { useGlobalStore, useUserStore } from "~/store";
-import { UserId } from "~/types";
 
 import Actions from "./Actions";
 import Content from "./Content";

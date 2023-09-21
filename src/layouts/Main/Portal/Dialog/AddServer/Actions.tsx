@@ -22,7 +22,7 @@ const Actions: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <Button.Close disabled={isCloseDisabled} onClick={onClose} />
+      <Button.PrimaryClose disabled={isCloseDisabled} onClick={onClose} />
       <Button.Primary
         disabled={isTestDisabled}
         loading={loading}

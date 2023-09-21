@@ -6,15 +6,15 @@ import SearchBar from "./SearchBar";
 import { HandleChatListItemClick } from "./types";
 
 const LeftSide = () => {
-  const globalState = useGlobalStore();
-  const messageState = useMessageStore();
+  const globalStore = useGlobalStore();
+  const messageStore = useMessageStore();
 
   const handleDrawerIconClick = () => {
-    globalState.changeDrawerOpen(true);
+    globalStore.changeDrawerOpen(true);
   };
 
   const handleChatListItemClick: HandleChatListItemClick = (data) => {
-    messageState.updateSelectedChatInfo(data);
+    messageStore.updateSelectedChatInfo(data);
   };
 
   return (
@@ -41,7 +41,7 @@ const LeftSide = () => {
             }}
           >
             <ChatList
-              selectedUserToChat={messageState.selectedChatInfo}
+              selectedUserToChat={messageStore.selectedChatInfo}
               onChatListItemClick={handleChatListItemClick}
             />
           </Box.List>

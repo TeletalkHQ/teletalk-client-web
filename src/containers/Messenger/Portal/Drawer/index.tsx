@@ -12,7 +12,7 @@ import DrawerList from "./DrawerList";
 import PersonalData from "./PersonalData";
 
 const Drawer = () => {
-  const globalState = useGlobalStore();
+  const globalStore = useGlobalStore();
   const userStore = useUserStore();
 
   const toggleDrawer = (
@@ -27,12 +27,12 @@ const Drawer = () => {
       return;
     }
 
-    globalState.changeDrawerOpen(open);
+    globalStore.changeDrawerOpen(open);
   };
 
   const handleDrawerItemClick = (n: ElementName) => {
     if (dialogNames.some((i) => i === n))
-      globalState.openDialog(n as DialogName);
+      globalStore.openDialog(n as DialogName);
   };
 
   const fullName = userUtils.concatFirstNameWithLastName(
@@ -46,23 +46,27 @@ const Drawer = () => {
     <SwipeableDrawer
       disableBackdropTransition={!utils.isIos()}
       disableDiscovery={utils.isIos()}
-      anchor={globalState.drawer.anchor}
-      open={globalState.drawer.open}
+      anchor={globalStore.drawer.anchor}
+      open={globalStore.drawer.open}
       onClose={(event) => toggleDrawer(event, false)}
       onOpen={(event) => toggleDrawer(event, true)}
     >
       <Box.Div
         style={{
           width:
-            globalState.drawer.anchor === "top" ||
-            globalState.drawer.anchor === "bottom"
+            globalStore.drawer.anchor === "top" ||
+            globalStore.drawer.anchor === "bottom"
               ? "auto"
               : 250,
         }}
         role="presentation"
         onKeyDown={(event) => toggleDrawer(event, false)}
       >
-        <PersonalData fullNumber={fullNumber} fullName={fullName} />
+        <PersonalData
+          avatarSrc={userStore.currentUserData.avatarSrc}
+          fullNumber={fullNumber}
+          fullName={fullName}
+        />
 
         <Divider />
 

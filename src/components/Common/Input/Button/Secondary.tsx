@@ -3,8 +3,8 @@ import { CustomLoadingButtonProps } from "~/types";
 
 interface Props extends CustomLoadingButtonProps {}
 
-const ErrorButton: React.FC<Props> = (props) => (
+const SecondaryButton: React.FC<Props> = (props) => (
   <BaseComponent.Input.LoadingButton {...props} color="error" />
 );
 
-export default ErrorButton;
+export default SecondaryButton;

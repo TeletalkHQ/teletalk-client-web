@@ -1,7 +1,7 @@
 import createCache from "@emotion/cache";
 import lodash from "lodash";
+import { FullName, UnknownCellphone } from "teletalk-type-store";
 import { ScreamingSnakeCase } from "type-fest";
-import { CountryCode, CountryName, FullName } from "utility-store/lib/types";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { envManager } from "~/classes/EnvironmentManager";
@@ -11,13 +11,11 @@ import { socketEmitterStore } from "~/classes/websocket/SocketEmitterStore";
 import { websocket } from "~/classes/websocket/Websocket";
 import {
   CommonChangeEvent,
-  ContactItemWithCellphone,
   Field,
   ModelErrorReason,
   ModelName,
   NativeModel,
   NativeModelKey,
-  PhoneNumber,
   SocketResponseErrors,
   WeirdSelectedCountry,
 } from "~/types";
@@ -99,23 +97,16 @@ const makeModelErrorReason = (
   )}_ERROR` as ModelErrorReason;
 };
 
-const isCellphoneValid = (
-  countryCode: CountryCode,
-  countryName: CountryName,
-  phoneNumber: PhoneNumber
-) => {
+const isCellphoneValid = (c: UnknownCellphone) => {
   return [
-    validators.countryName.submitValidator().checkValue(countryName).hasError,
-    validators.countryCode.submitValidator().checkValue(countryCode).hasError,
-    validators.phoneNumber.submitValidator().checkValue(phoneNumber).hasError,
+    validators.countryName.submitValidator().checkValue(c.countryName).hasError,
+    validators.countryCode.submitValidator().checkValue(c.countryCode).hasError,
+    validators.phoneNumber.submitValidator().checkValue(c.phoneNumber).hasError,
   ].some(Boolean);
 };
 
-const isContactWithCellphoneValid = (c: ContactItemWithCellphone) => {
-  return (
-    isCellphoneValid(c.countryCode, c.countryName, c.phoneNumber) ||
-    isFullNameValid(c)
-  );
+const isContactWithCellphoneValid = (c: UnknownCellphone & FullName) => {
+  return isCellphoneValid(c) || isFullNameValid(c);
 };
 
 const isFullNameValid = (fullName: FullName) =>
@@ -192,7 +183,21 @@ const printResponseErrors = (errors: SocketResponseErrors) => {
   });
 };
 
+const convertFileToBase64 = (file: File | Blob) => {
+  return new Promise((resolve, reject) => {
+    if (file) {
+      const Reader = new FileReader();
+      Reader.readAsDataURL(file);
+      Reader.onloadend = () => {
+        resolve(Reader.result);
+      };
+      Reader.onerror = reject;
+    }
+  });
+};
+
 export const utils = {
+  convertFileToBase64,
   createEmotionCache,
   createOnChangeValidator,
   getDefaultValidatorErrorTypes,

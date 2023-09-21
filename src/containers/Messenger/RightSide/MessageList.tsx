@@ -1,10 +1,10 @@
 import { useEffect } from "react";
+import { PrivateChats, UserId } from "teletalk-type-store";
 
 import { domUtils } from "~/classes/DomUtils";
 import { Box } from "~/components";
 import MessageListItem from "~/containers/Messenger/RightSide/MessageListItem";
 import { useMessageStore, useUserStore } from "~/store";
-import { PrivateChats, UserId } from "~/types";
 
 interface Props {}
 

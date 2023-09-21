@@ -4,21 +4,21 @@ import { Progress } from "..";
 import Backdrop from "./Backdrop";
 
 const OverlayLoading = () => {
-  const globalState = useGlobalStore();
+  const globalStore = useGlobalStore();
 
   return (
     <>
       <Backdrop
         sx={{
-          color: globalState.loading.color,
+          color: globalStore.loading.color,
           // zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
         open={
-          globalState.loading.open && globalState.loading.type === "OVERLAY"
+          globalStore.loading.open && globalStore.loading.type === "OVERLAY"
         }
-        onClick={globalState.closeOverlayLoading}
+        onClick={globalStore.closeOverlayLoading}
       >
-        <Progress.Circular color={globalState.loading.progressColor} />
+        <Progress.Circular color={globalStore.loading.progressColor} />
       </Backdrop>
     </>
   );

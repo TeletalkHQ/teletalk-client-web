@@ -9,7 +9,7 @@ import Content from "./Content";
 import Title from "./Title";
 
 const EditUsername = () => {
-  const globalState = useGlobalStore();
+  const globalStore = useGlobalStore();
   const settingsState = useSettingsStore();
   const dialogState = useDialogState("editUsername");
   const { updater: profileUpdater, loading } = useUpdateProfile();
@@ -21,7 +21,7 @@ const EditUsername = () => {
   };
 
   const handleSaveClick = async () => {
-    profileUpdater(globalState.closeDialog);
+    profileUpdater(globalStore.closeDialog);
   };
 
   return (
@@ -40,7 +40,7 @@ const EditUsername = () => {
           <Actions
             loading={loading}
             onSaveClick={handleSaveClick}
-            onCancel={globalState.closeDialog}
+            onCancel={globalStore.closeDialog}
           />
         }
       />

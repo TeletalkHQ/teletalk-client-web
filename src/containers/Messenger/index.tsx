@@ -42,9 +42,20 @@ const Messenger = () => {
   });
 
   useListener({
+    evName: "updateAvatar",
+    cb: (response) => {
+      if (response.data.userId === userStore.currentUserData.userId)
+        userStore.updateCurrentUserAvatarSrc({
+          avatarSrc: response.data.avatarSrc,
+        });
+      else userStore.updateUser(response.data);
+    },
+  });
+
+  useListener({
     evName: "addContactWithUserId",
     cb: (response) =>
-      userStore.addContactWithCellphone(response.data.newContact),
+      userStore.addContactWithEmptyCellphone(response.data.newContact),
   });
 
   useListener({

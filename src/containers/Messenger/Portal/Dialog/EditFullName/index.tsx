@@ -8,7 +8,7 @@ import Content from "./Content";
 import Title from "./Title";
 
 const EditFullName = () => {
-  const globalState = useGlobalStore();
+  const globalStore = useGlobalStore();
   const settingsState = useSettingsStore();
   const dialogState = useDialogState("editFullName");
   const { updater: profileUpdater, loading } = useUpdateProfile();
@@ -20,7 +20,7 @@ const EditFullName = () => {
   };
 
   const handleSaveClick = async () => {
-    profileUpdater(globalState.closeDialog);
+    profileUpdater(globalStore.closeDialog);
   };
 
   return (
@@ -38,7 +38,7 @@ const EditFullName = () => {
           <Actions
             loading={loading}
             onSaveClick={handleSaveClick}
-            onCancel={globalState.closeDialog}
+            onCancel={globalStore.closeDialog}
           />
         }
       />

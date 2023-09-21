@@ -1,5 +1,5 @@
 import { ListItemProps } from "@mui/material";
-import { CountryItem } from "utility-store/lib/types";
+import { CountryItem } from "teletalk-type-store";
 
 import { BaseComponent } from "~/components/Base";
 

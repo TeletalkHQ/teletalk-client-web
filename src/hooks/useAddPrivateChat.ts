@@ -1,5 +1,6 @@
+import { ChatId } from "teletalk-type-store";
+
 import { useMessageStore } from "~/store";
-import { ChatId } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 

@@ -1,6 +1,7 @@
+import { UserId } from "teletalk-type-store";
+
 import { maker } from "~/classes/Maker";
 import { useUserStore } from "~/store";
-import { UserId } from "~/types";
 
 export const useFindUserById = (userId: UserId) => {
   const userStore = useUserStore();

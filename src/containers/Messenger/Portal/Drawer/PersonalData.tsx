@@ -1,11 +1,14 @@
+import { AvatarSrc } from "teletalk-type-store";
+
 import { Box, Typography } from "~/components";
 
 interface Props {
   fullNumber: string;
   fullName: string;
+  avatarSrc: AvatarSrc;
 }
 
-const PersonalData: React.FC<Props> = ({ fullName, fullNumber }) => (
+const PersonalData: React.FC<Props> = ({ fullName, fullNumber, avatarSrc }) => (
   <Box.Flex
     col
     ai="center"
@@ -16,7 +19,7 @@ const PersonalData: React.FC<Props> = ({ fullName, fullNumber }) => (
     gap={1}
   >
     <Box.Div>
-      <Box.Avatar />
+      <Box.Avatar src={avatarSrc} />
     </Box.Div>
     <Typography.Bold
       style={{

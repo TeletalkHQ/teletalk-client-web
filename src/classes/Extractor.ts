@@ -7,6 +7,7 @@ export class Extractor extends ExtractorMain {
     return {
       ...super.cellphone(data),
       ...super.fullName(data),
+      avatarSrc: data.avatarSrc,
       bio: data.bio,
       createdAt: data.createdAt,
       status: data.status,

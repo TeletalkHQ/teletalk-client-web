@@ -11,7 +11,7 @@ export const useSignIn = () => {
 
   const updater = () => {
     handler.emitFull(
-      extractor.cellphone(authStore),
+      extractor.unknownCellphone(authStore),
       () => {
         router.push("verify");
       },

@@ -6,14 +6,14 @@ import Actions from "./Actions";
 import Content from "./Content";
 
 const Logout = () => {
-  const globalState = useGlobalStore();
+  const globalStore = useGlobalStore();
   const dialogState = useDialogState("logout");
   const { handler, loading } = useEmitter("logout");
   const router = useCustomRouter();
 
   const handleLogout = () => {
     handler.emitFull({}, () => {
-      globalState.closeDialog();
+      globalStore.closeDialog();
       router.push("signIn");
     });
   };
@@ -25,7 +25,7 @@ const Logout = () => {
         actions={
           <Actions
             loading={loading}
-            onClose={globalState.closeDialog}
+            onClose={globalStore.closeDialog}
             onLogout={handleLogout}
           />
         }

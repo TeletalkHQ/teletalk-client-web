@@ -1,6 +1,7 @@
 import { useEffect } from "react";
+import { UserId } from "teletalk-type-store";
 
-import { UserId, UserItem } from "~/types";
+import { UserItem } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 import { useFindUserById } from "./useFindUserById";

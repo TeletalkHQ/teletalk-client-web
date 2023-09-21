@@ -1,6 +1,8 @@
+import { UserId } from "teletalk-type-store";
+
 import { Box } from "~/components";
 import { useUserStore } from "~/store";
-import { UserId, VoidWithArg } from "~/types";
+import { VoidWithArg } from "~/types";
 
 import ListItem from "./ListItem";
 

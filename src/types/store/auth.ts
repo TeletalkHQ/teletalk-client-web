@@ -1,12 +1,18 @@
-import { Cellphone, CountryCode, CountryName } from "utility-store/lib/types";
-
 import {
+  Cellphone,
+  CountryCode,
+  CountryName,
   FirstName,
+  FullName,
   LastName,
   PhoneNumber,
+  UnknownCellphone,
+  VerificationCode,
+} from "teletalk-type-store";
+
+import {
   SelectedCountry,
   StoreSetFn,
-  VerificationCode,
   VoidNoArgsFn,
   VoidWithArg,
 } from "~/types";
@@ -23,12 +29,7 @@ export interface AuthHandlers {
   updateVerificationCode: VoidWithArg<VerificationCode>;
 }
 
-export interface AuthState {
-  countryCode: CountryCode;
-  countryName: CountryName;
-  firstName: FirstName;
-  lastName: LastName;
-  phoneNumber: PhoneNumber;
+export interface AuthState extends UnknownCellphone, FullName {
   selectedCountry: SelectedCountry;
   verificationCode: VerificationCode;
 }

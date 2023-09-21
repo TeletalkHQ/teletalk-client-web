@@ -1,23 +1,24 @@
 import {
+  Bio,
+  ContactItemWithEmptyCellphone,
+  EmptyCellphone,
+  RemoveContactIO,
+  UnknownCellphone,
+  UserId,
+  Username,
+} from "teletalk-type-store";
+import {
+  AvatarSrc,
   Cellphone,
   ContactItem,
   CountryItem,
   FullName,
   FullNameWithUserId,
-  PublicUserData,
   Status,
-} from "utility-store/lib/types";
+  UserPublicData,
+} from "teletalk-type-store";
 
-import {
-  Bio,
-  RemoveContactIO,
-  StoreSetFn,
-  StringMap,
-  UserId,
-  Username,
-  VoidNoArgsFn,
-  VoidWithArg,
-} from "~/types";
+import { StoreSetFn, StringMap, VoidNoArgsFn, VoidWithArg } from "~/types";
 
 export interface BlacklistItem {
   userId: UserId;
@@ -25,8 +26,9 @@ export interface BlacklistItem {
 
 export type Blacklist = BlacklistItem[];
 
-export type UserItem = PublicUserData &
-  Cellphone & {
+export type UserItem = UserPublicData &
+  UnknownCellphone & {
+    avatarSrc: AvatarSrc;
     isContact: boolean;
     isBlocked: boolean;
     originalFirstName: string;
@@ -47,9 +49,10 @@ export type CurrentUserData = FullNameWithUserId &
     username: Username;
     status: Status;
     createdAt: number;
+    avatarSrc: AvatarSrc;
   };
 
-export type AddingContactWithCellphone = FullName & Cellphone;
+export type AddingContactWithCellphone = FullName & EmptyCellphone;
 export interface UserState {
   currentUserData: CurrentUserData;
   selectedUserIdForActions: UserId;
@@ -65,7 +68,7 @@ export type ExtendedCountryItem = CountryItem & StringMap;
 
 export interface UserHandlers {
   addBlock: VoidWithArg<BlacklistItem>;
-  addContactWithCellphone: VoidWithArg<ContactItem>;
+  addContactWithEmptyCellphone: VoidWithArg<ContactItemWithEmptyCellphone>;
   addContactWithUserId: VoidWithArg<ContactItem>;
   removeBlock: VoidWithArg<BlacklistItem>;
   removeContact: VoidWithArg<RemoveContactIO["output"]["removedContact"]>;
@@ -77,7 +80,10 @@ export interface UserHandlers {
   setCurrentUserData: VoidWithArg<CurrentUserData>;
   setSelectedUserIdForActions: VoidWithArg<UserId>;
   setUsers: VoidWithArg<Users>;
-  updateCurrentUserPublicData: VoidWithArg<PublicUserData>;
+  updateCurrentUserPublicData: VoidWithArg<UserPublicData>;
+  updateCurrentUserAvatarSrc: VoidWithArg<{
+    avatarSrc: AvatarSrc;
+  }>;
   updateUser: VoidWithArg<Partial<UserItem> & { userId: UserId }>;
   updateOnlineUser: VoidWithArg<OnlineUser>;
   updateOnlineUserList: VoidWithArg<OnlineUserList>;

@@ -11,10 +11,16 @@ import Title from "./Title";
 import { EditProfileListItem } from "./types";
 
 const EditProfile = () => {
-  const globalState = useGlobalStore();
+  const globalStore = useGlobalStore();
   const settingsStore = useSettingsStore();
   const userStore = useUserStore();
   const dialogState = useDialogState("editProfile");
+
+  const handleAvatarClick = () => {
+    if (userStore.currentUserData.avatarSrc)
+      globalStore.openDialog("avatarViewer");
+    else globalStore.openDialog("avatarSelector");
+  };
 
   useEffect(() => {
     if (dialogState.open)
@@ -28,7 +34,7 @@ const EditProfile = () => {
   }, [dialogState.open, userStore]);
 
   const handleItemClick = (item: EditProfileListItem) => {
-    globalState.openDialog(item.name, {
+    globalStore.openDialog(item.name, {
       zIndex: 1500,
     });
   };
@@ -39,9 +45,14 @@ const EditProfile = () => {
         title={<Title />}
         open={dialogState.open}
         content={
-          <Content profile={settingsStore.profile} onClick={handleItemClick} />
+          <Content
+            avatarSrc={userStore.currentUserData.avatarSrc}
+            onAvatarClick={handleAvatarClick}
+            onClick={handleItemClick}
+            profile={settingsStore.profile}
+          />
         }
-        actions={<Actions onCancel={globalState.closeDialog} />}
+        actions={<Actions onCancel={globalStore.closeDialog} />}
       />
     </>
   );

@@ -1,11 +1,11 @@
 import { ButtonProps } from "@mui/material";
 
-import PrimaryTextButton from "./PrimaryTextButton";
+import PrimaryTextButton from "./PrimaryText";
 
 interface Props extends ButtonProps {}
 
-const CloseButton: React.FC<Props> = (props) => (
+const PrimaryCloseButton: React.FC<Props> = (props) => (
   <PrimaryTextButton {...props}>Close</PrimaryTextButton>
 );
 
-export default CloseButton;
+export default PrimaryCloseButton;
