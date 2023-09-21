@@ -19,9 +19,12 @@ const Messenger = () => {
 
   useListener({
     evName: "verify",
-    cb: () => !userStore.currentUserData.userId && updater(),
+    cb: updater,
   });
-  useListener({ evName: "createNewUser", cb: updater });
+  useListener({
+    cb: updater,
+    evName: "createNewUser",
+  });
 
   useEffect(() => {
     websocket.client.onAny((event, data) => {
