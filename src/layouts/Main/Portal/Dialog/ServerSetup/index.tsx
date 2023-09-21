@@ -4,8 +4,8 @@ import { appConfigs } from "~/classes/AppConfigs";
 import { websocket } from "~/classes/websocket/Websocket";
 import { Template } from "~/components";
 import { events } from "~/events";
-import { useDialogState, usePing, useStore } from "~/hooks";
-import { useSetUserData } from "~/hooks/useSetUserData";
+import { useDialogState, usePing, useSetUserData, useStore } from "~/hooks";
+import "~/hooks";
 import { Url } from "~/types";
 import { utils } from "~/utils";
 

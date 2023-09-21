@@ -18,4 +18,5 @@ export { useFindSelectedUserForActions } from "./useFindSelectedUserForActions";
 export { useDialogState } from "./useDialogState";
 export { useIsOnline } from "./useIsOnline";
 export { useFindUserById } from "./useFindUserById";
+export { useSetUserData } from "./useSetUserData";
 export { useGetClientStatus } from "./useGetClientStatus";

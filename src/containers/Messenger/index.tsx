@@ -4,6 +4,7 @@ import { websocket } from "~/classes/websocket/Websocket";
 import { Box } from "~/components";
 import RightSide from "~/containers/Messenger/RightSide";
 import { useListener, useUnmount } from "~/hooks";
+import { useSetUserData } from "~/hooks";
 import { useUserStore } from "~/store";
 import { resetAllStores } from "~/store/utils";
 
@@ -13,7 +14,14 @@ import Portal from "./Portal";
 //REFACTOR
 const Messenger = () => {
   const userStore = useUserStore();
+  const { updater } = useSetUserData();
   useUnmount(resetAllStores);
+
+  useListener({
+    evName: "verify",
+    cb: () => !userStore.currentUserData.userId && updater(),
+  });
+  useListener({ evName: "createNewUser", cb: updater });
 
   useEffect(() => {
     websocket.client.onAny((event, data) => {

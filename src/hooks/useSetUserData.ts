@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { GetUserDataIO } from "teletalk-type-store";
 
 import { extractor } from "~/classes/Extractor";
@@ -52,6 +53,13 @@ export const useSetUserData = ({
       errorCb
     );
   };
+
+  useEffect(() => {
+    if (!userStore.currentUserData.userId) return;
+
+    updater();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userStore.currentUserData.userId]);
 
   return {
     loading,
