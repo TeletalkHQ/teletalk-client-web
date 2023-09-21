@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { PrivateChats, UserId } from "teletalk-type-store";
+import type { PrivateChats, UserId } from "teletalk-type-store";
 
 import { domUtils } from "~/classes/DomUtils";
 import { Box } from "~/components";

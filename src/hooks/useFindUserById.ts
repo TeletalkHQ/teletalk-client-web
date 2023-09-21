@@ -1,4 +1,4 @@
-import { UserId } from "teletalk-type-store";
+import type { UserId } from "teletalk-type-store";
 
 import { maker } from "~/classes/Maker";
 import { useUserStore } from "~/store";

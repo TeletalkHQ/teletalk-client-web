@@ -522,10 +522,11 @@ export const stuff = {
     avatarSrc: {
       type: "string",
       required: true,
-      empty: false,
+      empty: true,
+      defaultValue: "",
       trim: true,
-      minLength: 100,
-      maxLength: 1000000,
+      minLength: 0,
+      maxLength: 800000,
     },
     blacklist: { type: "array", required: true, empty: true },
     clientId: {
@@ -967,6 +968,7 @@ export const stuff = {
           required: true,
           type: "object",
           value: {
+            avatarSrc: { required: true, type: "string" },
             bio: { required: true, type: "string" },
             blacklist: {
               required: true,
@@ -1040,7 +1042,10 @@ export const stuff = {
     {
       method: "customOn",
       inputFields: { avatarSrc: { required: true, type: "string" } },
-      outputFields: {},
+      outputFields: {
+        avatarSrc: { required: true, type: "string" },
+        userId: { required: true, type: "string" },
+      },
       isAuthRequired: true,
       name: "updateAvatar",
     },
@@ -1271,9 +1276,9 @@ export const stuff = {
         required: "AVATAR_SRC_REQUIRED_ERROR",
         string: "AVATAR_SRC_TYPE_ERROR",
       },
-      empty: false,
-      max: 1000000,
-      min: 100,
+      empty: true,
+      max: 800000,
+      min: 0,
       required: true,
       trim: true,
       type: "string",

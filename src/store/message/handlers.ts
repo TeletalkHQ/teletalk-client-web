@@ -1,4 +1,4 @@
-import { PrivateChatItem } from "teletalk-type-store";
+import type { PrivateChatItem } from "teletalk-type-store";
 
 import { MessageHandlers, MessageSetState } from "~/types";
 

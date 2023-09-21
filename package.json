@@ -75,8 +75,7 @@
     "react-spinners": "^0.13.8",
     "simple-trier": "^4.0.3",
     "socket.io-client": "^4.7.2",
-    "teletalk-type-store": "^1.0.33",
-    "utility-store": "^14.0.20",
+    "utility-store": "^14.0.23",
     "web-vitals": "^3.4.0",
     "zustand": "^4.4.1"
   },
@@ -120,6 +119,7 @@
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "resolve": "^1.22.4",
+    "teletalk-type-store": "^1.0.61",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "type-fest": "^4.3.1",

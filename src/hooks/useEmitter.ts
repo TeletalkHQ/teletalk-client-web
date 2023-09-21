@@ -1,4 +1,4 @@
-import { EventName, IOCollection } from "teletalk-type-store";
+import type { EventName, IOCollection } from "teletalk-type-store";
 
 import { stuffStore } from "~/classes/StuffStore";
 import { eventHandler } from "~/classes/websocket/EventHandler";

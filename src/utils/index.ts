@@ -1,6 +1,6 @@
 import createCache from "@emotion/cache";
 import lodash from "lodash";
-import { FullName, UnknownCellphone } from "teletalk-type-store";
+import type { FullName, UnknownCellphone } from "teletalk-type-store";
 import { ScreamingSnakeCase } from "type-fest";
 
 import { appConfigs } from "~/classes/AppConfigs";

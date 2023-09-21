@@ -1,4 +1,4 @@
-import { AvatarSrc } from "teletalk-type-store";
+import type { AvatarSrc } from "teletalk-type-store";
 
 import { Box, Typography } from "~/components";
 import { VoidNoArgsFn } from "~/types";

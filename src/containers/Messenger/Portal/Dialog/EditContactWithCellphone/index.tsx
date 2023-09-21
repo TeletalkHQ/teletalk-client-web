@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FullName } from "teletalk-type-store";
+import type { FullName } from "teletalk-type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";

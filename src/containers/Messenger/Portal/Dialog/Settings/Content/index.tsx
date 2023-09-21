@@ -1,5 +1,5 @@
 import { Divider } from "@mui/material";
-import { AvatarSrc, Username } from "teletalk-type-store";
+import type { AvatarSrc, Username } from "teletalk-type-store";
 
 import { Box } from "~/components";
 
