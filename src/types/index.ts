@@ -5,7 +5,7 @@ import {
   ValidationError,
 } from "fastest-validator";
 import { CSSProperties } from "react";
-import {
+import type {
   Cellphone,
   ContactItem,
   EventName as MainEventName,

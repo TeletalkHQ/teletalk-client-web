@@ -10,6 +10,7 @@ const env = Object.keys(process.env).reduce((prev, curr) => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  swcMinify: true,
   images: {
     remotePatterns: [
       {
@@ -18,10 +19,6 @@ const nextConfig = {
     ],
   },
   env,
-  experimental: {
-    appDir: false,
-  },
-
   async redirects() {
     return ["/", "/create", "/signIn", "/verify"].map((item) => ({
       destination: "/messenger",

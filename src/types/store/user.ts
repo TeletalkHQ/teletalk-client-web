@@ -1,21 +1,19 @@
-import {
-  Bio,
-  ContactItemWithEmptyCellphone,
-  EmptyCellphone,
-  RemoveContactIO,
-  UnknownCellphone,
-  UserId,
-  Username,
-} from "teletalk-type-store";
-import {
+import type {
   AvatarSrc,
+  Bio,
   Cellphone,
   ContactItem,
+  ContactItemWithEmptyCellphone,
   CountryItem,
+  EmptyCellphone,
   FullName,
   FullNameWithUserId,
+  RemoveContactIO,
   Status,
+  UnknownCellphone,
+  UserId,
   UserPublicData,
+  Username,
 } from "teletalk-type-store";
 
 import { StoreSetFn, StringMap, VoidNoArgsFn, VoidWithArg } from "~/types";

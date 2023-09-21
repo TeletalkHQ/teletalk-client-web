@@ -1,6 +1,6 @@
 import { CircularProgressProps } from "@mui/material";
 import { CSSProperties } from "react";
-import { CountryItem } from "teletalk-type-store";
+import type { CountryItem } from "teletalk-type-store";
 
 import { dialogNames } from "~/store/global/initialState";
 import {

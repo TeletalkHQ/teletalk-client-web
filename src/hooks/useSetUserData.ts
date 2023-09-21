@@ -1,4 +1,4 @@
-import { GetUserDataIO } from "teletalk-type-store";
+import type { GetUserDataIO } from "teletalk-type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";

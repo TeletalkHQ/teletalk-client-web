@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { UserId } from "teletalk-type-store";
+import type { UserId } from "teletalk-type-store";
 
 import { UserItem } from "~/types";
 

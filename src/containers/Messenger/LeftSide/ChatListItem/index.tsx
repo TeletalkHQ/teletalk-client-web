@@ -1,5 +1,5 @@
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-import { MessageText, UserId } from "teletalk-type-store";
+import type { MessageText, UserId } from "teletalk-type-store";
 
 import { userUtils } from "~/classes/UserUtils";
 import { Box } from "~/components";

@@ -1,4 +1,4 @@
-import { FullName, UnknownCellphone } from "teletalk-type-store";
+import type { FullName, UnknownCellphone } from "teletalk-type-store";
 
 import { Box, Input } from "~/components";
 import { OnChangeValidatorFn } from "~/types";

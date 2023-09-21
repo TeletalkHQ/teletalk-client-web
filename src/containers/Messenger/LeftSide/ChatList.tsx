@@ -1,4 +1,4 @@
-import { PrivateChatItem, UserId } from "teletalk-type-store";
+import type { PrivateChatItem, UserId } from "teletalk-type-store";
 
 import { useMessageStore, useUserStore } from "~/store";
 import { SelectedChatInfo } from "~/types";

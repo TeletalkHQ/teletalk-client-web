@@ -1,4 +1,4 @@
-import { UserId } from "teletalk-type-store";
+import type { UserId } from "teletalk-type-store";
 
 import { Box } from "~/components";
 import { useUserStore } from "~/store";
