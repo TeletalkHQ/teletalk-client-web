@@ -1,4 +1,6 @@
-import { ChatId, UserId, VoidWithArg } from "~/types";
+import { ChatId, UserId } from "teletalk-type-store";
+
+import { VoidWithArg } from "~/types";
 
 export type HandleChatListItemClick = VoidWithArg<{
   userId: UserId;

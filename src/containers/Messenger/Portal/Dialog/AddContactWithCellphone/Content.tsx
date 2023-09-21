@@ -1,8 +1,10 @@
+import { FullName, UnknownCellphone } from "teletalk-type-store";
+
 import { Box, Input } from "~/components";
-import { AddContactWithCellphoneIO, OnChangeValidatorFn } from "~/types";
+import { OnChangeValidatorFn } from "~/types";
 
 interface Props {
-  contact: AddContactWithCellphoneIO["input"];
+  contact: UnknownCellphone & FullName;
   onChange: OnChangeValidatorFn;
 }
 

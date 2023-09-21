@@ -1,5 +1,3 @@
-import { ContactItem } from "utility-store/lib/types";
-
 import { Template } from "~/components";
 import { useContextMenu, useDialogState } from "~/hooks";
 import { useGlobalStore, useMessageStore, useUserStore } from "~/store";
@@ -48,7 +46,7 @@ const Contacts = () => {
     globalStore.openDialog("addContactWithCellphone");
   };
 
-  const handleContactItemClicked = (contact: ContactItem) => {
+  const handleContactItemClicked = (contact: UserItem) => {
     globalStore.closeDialog();
     messageStore.updateSelectedChatInfo({
       userId: contact.userId,

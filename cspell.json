@@ -3,7 +3,7 @@
   "ignorePaths": [],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": [],
+  "words": ["compressorjs", "Croppie", "Zoomer"],
   "ignoreWords": [
     "ABCDEFGHIJKLMNOPQRSTUFWXYZ",
     "Alphadash",

@@ -2,7 +2,7 @@ import { useGlobalStore } from "~/store";
 import { DialogName, DialogProps } from "~/types";
 
 export const useDialogState = (
-  d: DialogName
+  dialogName: DialogName
 ): {
   open: boolean;
   props: DialogProps;
@@ -11,7 +11,7 @@ export const useDialogState = (
 
   const ds = globalStore.dialogStates.at(-1);
 
-  return ds?.name === d
+  return ds?.name === dialogName
     ? {
         ...ds,
         open: true,

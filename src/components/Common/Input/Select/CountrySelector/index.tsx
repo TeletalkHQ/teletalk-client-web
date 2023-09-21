@@ -1,6 +1,6 @@
 import { ListItemProps } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import { CountryItem } from "utility-store/lib/types";
+import { CountryItem } from "teletalk-type-store";
 import { countries } from "utility-store/lib/variables/countries";
 
 import { OnChangeValidatorFn, SelectedCountry, VoidWithArg } from "~/types";

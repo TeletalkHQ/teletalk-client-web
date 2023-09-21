@@ -5,8 +5,12 @@ import {
   ValidationError,
 } from "fastest-validator";
 import { CSSProperties } from "react";
+import {
+  Cellphone,
+  ContactItem,
+  EventName as MainEventName,
+} from "teletalk-type-store";
 import { ScreamingSnakeCase } from "type-fest";
-import { Cellphone, ContactItem } from "utility-store/lib/types";
 
 import { stuffStore } from "~/classes/StuffStore";
 import { Transition } from "~/components";
@@ -46,9 +50,8 @@ export interface Route {
   isAuthRequired: boolean;
 }
 
-export type Events = typeof stuff.events;
 export type EventName =
-  | Events[number]["name"]
+  | MainEventName
   | "connect"
   | "connect_error"
   | "disconnect"
@@ -172,7 +175,6 @@ export type UpdateLoadingFn = VoidWithArg<boolean>;
 
 export type * from "./api";
 export type * from "./components";
-export type * from "./datatypes";
 export type * from "./models";
 export type * from "./store";
 export type * from "./utils";

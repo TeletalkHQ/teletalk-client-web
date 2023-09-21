@@ -1,7 +1,7 @@
+import { ExtendedUnknownCellphone, UserPublicData } from "teletalk-type-store";
 import { UserUtils as userUtilsMain } from "utility-store";
-import { ExtendedCellphone } from "utility-store/lib/types";
 
-import { UserItem, UserPublicData } from "~/types";
+import { UserItem } from "~/types";
 
 export class UserUtils extends userUtilsMain {
   concatFirstNameWithLastName(
@@ -23,7 +23,7 @@ export class UserUtils extends userUtilsMain {
   }
 
   concatCountryCodeWithPhoneNumber(
-    data: ExtendedCellphone,
+    data: ExtendedUnknownCellphone,
     fallbackValue = ""
   ) {
     if (!data.countryCode || !data.phoneNumber) return fallbackValue;

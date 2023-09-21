@@ -9,9 +9,9 @@ interface Props {
 
 const Actions: React.FC<Props> = ({ loading, onClose, onRemove }) => (
   <>
-    <Button.Close onClick={onClose} />
+    <Button.PrimaryClose onClick={onClose} />
 
-    <Button.ErrorConfirm loading={loading} onClick={onRemove} />
+    <Button.SecondaryConfirm loading={loading} onClick={onRemove} />
   </>
 );
 

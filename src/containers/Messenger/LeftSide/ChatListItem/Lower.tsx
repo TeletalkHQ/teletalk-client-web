@@ -1,7 +1,7 @@
 import PushPinTwoToneIcon from "@mui/icons-material/PushPinTwoTone";
+import { MessageText } from "teletalk-type-store";
 
 import { Box, Typography } from "~/components";
-import { MessageText } from "~/types";
 
 interface Props {
   messageText: MessageText;

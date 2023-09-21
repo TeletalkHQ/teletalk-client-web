@@ -1,4 +1,5 @@
 import { Divider } from "@mui/material";
+import { AvatarSrc, Username } from "teletalk-type-store";
 
 import { Box } from "~/components";
 
@@ -7,13 +8,15 @@ import List from "./List";
 import ProfileOverview from "./ProfileOverview";
 
 interface Props {
+  avatarSrc: AvatarSrc;
   fullName: string;
   fullNumber: string;
-  username: string;
+  username: Username;
   onSettingItemClick: OnSettingItemClick;
 }
 
 const Content: React.FC<Props> = ({
+  avatarSrc,
   fullName,
   fullNumber,
   onSettingItemClick,
@@ -22,6 +25,7 @@ const Content: React.FC<Props> = ({
   return (
     <>
       <ProfileOverview
+        avatarSrc={avatarSrc}
         fullName={fullName}
         fullNumber={fullNumber}
         username={username}

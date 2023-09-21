@@ -9,13 +9,19 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     set({ currentUserData: userData });
   },
 
+  updateCurrentUserAvatarSrc({ avatarSrc: src }) {
+    set((prevState) => ({
+      currentUserData: { ...prevState.currentUserData, avatarSrc: src },
+    }));
+  },
+
   setSelectedUserIdForActions(u) {
     set(() => ({
       selectedUserIdForActions: u,
     }));
   },
 
-  addContactWithCellphone(newContact) {
+  addContactWithEmptyCellphone(newContact) {
     this.updateUser({
       ...newContact,
       isContact: true,

@@ -5,8 +5,11 @@ export const initialState: UserState = {
   addingContactWithCellphone: maker.emptyAddingContactWithCellphone(),
   addingContactWithUserId: maker.emptyFullName(),
   currentUserData: {
+    avatarSrc: "",
     bio: "",
+    //@ts-ignore
     countryCode: "",
+    //@ts-ignore
     countryName: "",
     createdAt: 0,
     firstName: "",

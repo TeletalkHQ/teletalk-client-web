@@ -1,8 +1,11 @@
 import AddContactWithCellphone from "./Dialog/AddContactWithCellphone";
 import AddContactWithUserId from "./Dialog/AddContactWithUserId";
+import AvatarSelector from "./Dialog/AvatarSelector";
+import AvatarViewer from "./Dialog/AvatarViewer";
 import BlockUser from "./Dialog/BlockUser";
 import BlockedUsers from "./Dialog/BlockedUsers";
 import Contacts from "./Dialog/Contacts";
+import DeleteAvatar from "./Dialog/DeleteAvatar";
 import EditBio from "./Dialog/EditBio";
 import EditContactWithCellphone from "./Dialog/EditContactWithCellphone";
 import EditFullName from "./Dialog/EditFullName";
@@ -24,10 +27,12 @@ const Portal = () => {
       {[
         AddContactWithCellphone,
         AddContactWithUserId,
-        RemoveBlock,
+        AvatarSelector,
+        AvatarViewer,
         BlockedUsers,
         BlockUser,
         Contacts,
+        DeleteAvatar,
         EditBio,
         EditContactWithCellphone,
         EditFullName,
@@ -35,6 +40,7 @@ const Portal = () => {
         EditUsername,
         Logout,
         PrivacyAndSecurity,
+        RemoveBlock,
         RemoveContact,
         Settings,
         UserInfo,

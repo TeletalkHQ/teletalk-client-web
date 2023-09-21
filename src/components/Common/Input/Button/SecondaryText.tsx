@@ -1,11 +1,11 @@
 import { CustomLoadingButtonProps } from "~/types";
 
-import ErrorButton from "./ErrorButton";
+import ErrorButton from "./Secondary";
 
 interface Props extends CustomLoadingButtonProps {}
 
-const ErrorTextButton: React.FC<Props> = (props) => (
+const SecondaryTextButton: React.FC<Props> = (props) => (
   <ErrorButton {...props} variant="text" />
 );
 
-export default ErrorTextButton;
+export default SecondaryTextButton;

@@ -1,6 +1,4 @@
-import { Cellphone, FullName } from "utility-store/lib/types";
-
-import { Bio, Username } from "~/types/datatypes";
+import { Bio, Cellphone, FullName, Username } from "teletalk-type-store";
 
 import { StoreSetFn } from ".";
 import { VoidNoArgsFn, VoidWithArg } from "..";

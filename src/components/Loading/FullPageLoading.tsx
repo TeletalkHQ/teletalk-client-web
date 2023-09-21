@@ -5,11 +5,11 @@ import { useGlobalStore } from "~/store";
 import { Box } from "..";
 
 const FullPageLoading = () => {
-  const globalState = useGlobalStore();
+  const globalStore = useGlobalStore();
 
   return (
     <>
-      {globalState.loading.open && globalState.loading.type === "FULL_PAGE" && (
+      {globalStore.loading.open && globalStore.loading.type === "FULL_PAGE" && (
         <Box.Flex
           jc={"center"}
           ai={"center"}
@@ -24,10 +24,10 @@ const FullPageLoading = () => {
           })}
         >
           <MoonLoader
-            color={globalState.loading.color}
+            color={globalStore.loading.color}
             loading
-            size={globalState.loading.size}
-            speedMultiplier={globalState.loading.speedMultiplier}
+            size={globalStore.loading.size}
+            speedMultiplier={globalStore.loading.speedMultiplier}
           />
         </Box.Flex>
       )}

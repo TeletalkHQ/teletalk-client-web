@@ -9,12 +9,12 @@ import Title from "./Title";
 import { SettingItem } from "./types";
 
 const Settings = () => {
-  const globalState = useGlobalStore();
-  const userState = useUserStore();
+  const globalStore = useGlobalStore();
+  const userStore = useUserStore();
   const dialogState = useDialogState("settings");
 
   const handleSettingItemClick = (item: SettingItem) => {
-    globalState.openDialog(item.name, {
+    globalStore.openDialog(item.name, {
       zIndex: 1500,
     });
   };
@@ -24,17 +24,18 @@ const Settings = () => {
       title={<Title />}
       content={
         <Content
+          avatarSrc={userStore.currentUserData.avatarSrc}
           fullName={userUtils.concatFirstNameWithLastName(
-            userState.currentUserData
+            userStore.currentUserData
           )}
           fullNumber={userUtils.concatCountryCodeWithPhoneNumber(
-            userState.currentUserData
+            userStore.currentUserData
           )}
-          username={userState.currentUserData.username}
+          username={userStore.currentUserData.username}
           onSettingItemClick={handleSettingItemClick}
         />
       }
-      actions={<Actions onClose={globalState.closeDialog} />}
+      actions={<Actions onClose={globalStore.closeDialog} />}
       open={dialogState.open}
     />
   );

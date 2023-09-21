@@ -24,9 +24,9 @@ const Actions: React.FC<Props> = ({
         jc="flex-end"
         ai="center"
       >
-        <Button.Cancel onClick={onCancelClick} />
+        <Button.SecondaryCancel onClick={onCancelClick} />
 
-        <Button.Confirm
+        <Button.PrimaryConfirm
           disabled={isAddContactButtonDisabled}
           loading={loading}
           onClick={onAddContactClick}

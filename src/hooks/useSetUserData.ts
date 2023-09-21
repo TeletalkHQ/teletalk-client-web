@@ -1,12 +1,9 @@
+import { GetUserDataIO } from "teletalk-type-store";
+
 import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";
 import { useUserStore } from "~/store";
-import {
-  GetUserDataIO,
-  SocketErrorCallback,
-  SocketResponseCallback,
-  UserItem,
-} from "~/types";
+import { SocketErrorCallback, SocketResponseCallback, UserItem } from "~/types";
 
 import { useEmitter } from "./useEmitter";
 

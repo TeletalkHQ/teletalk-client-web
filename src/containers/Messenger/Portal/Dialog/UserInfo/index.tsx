@@ -8,7 +8,7 @@ import Content from "./Content";
 import Title from "./Title";
 
 const UserInfo = () => {
-  const globalState = useGlobalStore();
+  const globalStore = useGlobalStore();
   const messageStore = useMessageStore();
   const dialogState = useDialogState("userInfo");
   const { isOnline } = useIsOnline(messageStore.selectedChatInfo.userId);
@@ -26,11 +26,12 @@ const UserInfo = () => {
         content={
           <Content
             connectionStatus={connectionStatus}
+            avatarSrc={publicData.avatarSrc}
             fullName={userUtils.concatFirstNameWithLastName(publicData)}
             fullNumber={userUtils.concatCountryCodeWithPhoneNumber(publicData)}
           />
         }
-        actions={<Actions onClose={globalState.closeDialog} />}
+        actions={<Actions onClose={globalStore.closeDialog} />}
       />
     </>
   );

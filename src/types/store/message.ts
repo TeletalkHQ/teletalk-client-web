@@ -4,11 +4,10 @@ import {
   MessageText,
   PrivateChatItem,
   PrivateChats,
-  StoreSetFn,
   UserId,
-  VoidNoArgsFn,
-  VoidWithArg,
-} from "~/types";
+} from "teletalk-type-store";
+
+import { StoreSetFn, VoidNoArgsFn, VoidWithArg } from "~/types";
 
 export interface SelectedChatInfo {
   chatId: ChatId;

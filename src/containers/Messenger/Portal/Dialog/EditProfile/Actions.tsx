@@ -7,7 +7,7 @@ interface Props {
 
 const Actions: React.FC<Props> = ({ onCancel }) => (
   <>
-    <Button.Close onClick={onCancel} />
+    <Button.PrimaryClose onClick={onCancel} />
   </>
 );
 

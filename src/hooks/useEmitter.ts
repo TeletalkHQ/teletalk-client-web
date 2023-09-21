@@ -1,6 +1,8 @@
+import { EventName, IOCollection } from "teletalk-type-store";
+
 import { stuffStore } from "~/classes/StuffStore";
 import { eventHandler } from "~/classes/websocket/EventHandler";
-import { EventName, IOCollection, SocketRoute } from "~/types";
+import { SocketRoute } from "~/types";
 
 import { useCustomRouter } from "./useCustomRouter";
 import { useLoading } from "./useLoading";

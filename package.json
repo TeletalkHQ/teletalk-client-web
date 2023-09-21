@@ -2,7 +2,7 @@
   "name": "teletalk-client-web",
   "author": "S_STALWART_S",
   "description": "teletalk messenger app (client)",
-  "license": "GPL-3",
+  "license": "LGPL-3.0-or-later",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -21,7 +21,7 @@
     "dev": "npm run start:dev",
     "setup:app": "husky install",
     "lint": "next lint",
-    "production:build": "cross-env NEXT_PUBLIC_RUNTIME_MODE=production react-scripts build",
+    "production:build": "cross-env NEXT_PUBLIC_RUNTIME_MODE=production next build",
     "production:deploy": "gh-pages -d build",
     "production:prebuild": "node --loader ./loader.js ./scripts/prebuild/index.ts",
     "setup:alias:load": "./scripts/alias/loader.sh",
@@ -32,8 +32,7 @@
     "start:dev:2": "cross-env PORT=4092 NEXT_PUBLIC_DEVELOPMENT_SERVER_BASE_URL_INDEX=2 npm run start:dev",
     "start:production": "cross-env NEXT_PUBLIC_RUNTIME_MODE=production PORT=${PORT:-4080} next start",
     "start:production1": "cross-env PORT=4081 NEXT_PUBLIC_PRODUCTION_SERVER_BASE_URL_INDEX=1 npm run start:production",
-    "start:production2": "cross-env PORT=4082 NEXT_PUBLIC_PRODUCTION_SERVER_BASE_URL_INDEX=2 npm run start:production",
-    "test": "react-scripts test"
+    "start:production2": "cross-env PORT=4082 NEXT_PUBLIC_PRODUCTION_SERVER_BASE_URL_INDEX=2 npm run start:production"
   },
   "keywords": [
     "teletalk",
@@ -55,6 +54,7 @@
     "await-timeout": "^1.1.1",
     "axios": "^1.5.0",
     "check-fields": "^5.0.1",
+    "compressorjs": "^1.2.1",
     "cross-env": "^7.0.3",
     "custom-typeof": "^3.0.4",
     "fastest-validator": "^1.17.0",
@@ -66,6 +66,7 @@
     "notistack": "^3.0.1",
     "p-timeout": "^6.1.2",
     "react": "^18.2.0",
+    "react-avatar-editor": "^13.0.0",
     "react-dnd": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
@@ -74,7 +75,8 @@
     "react-spinners": "^0.13.8",
     "simple-trier": "^4.0.3",
     "socket.io-client": "^4.7.2",
-    "utility-store": "^14.0.4",
+    "teletalk-type-store": "^1.0.33",
+    "utility-store": "^14.0.20",
     "web-vitals": "^3.4.0",
     "zustand": "^4.4.1"
   },
@@ -94,6 +96,7 @@
     "@types/lodash": "^4.14.197",
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
+    "@types/react-avatar-editor": "^13.0.0",
     "@types/react-dom": "18.2.7",
     "@types/resolve": "^1.20.2",
     "@typescript-eslint/eslint-plugin": "^6.5.0",
@@ -121,9 +124,6 @@
     "tsconfig-paths": "^4.2.0",
     "type-fest": "^4.3.1",
     "typescript": "5.2.2"
-  },
-  "peerDependencies": {
-    "react": "^17.0.0"
   },
   "browserslist": {
     "production": [

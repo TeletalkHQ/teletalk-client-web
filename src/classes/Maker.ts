@@ -1,9 +1,9 @@
-import { Maker as MakerMain } from "utility-store";
 import {
   ExtendedFullName,
   FullNameWithUserId,
-  PublicUserData,
-} from "utility-store/lib/types";
+  UserPublicData,
+} from "teletalk-type-store";
+import { Maker as MakerMain } from "utility-store";
 
 import { AddingContactWithCellphone, UserItem } from "~/types";
 
@@ -24,7 +24,7 @@ export class Maker extends MakerMain {
     };
   }
 
-  emptyUserPublicData(): PublicUserData {
+  emptyUserPublicData(): UserPublicData {
     return {
       ...super.emptyFullName(),
       bio: "",
@@ -44,15 +44,16 @@ export class Maker extends MakerMain {
     return {
       ...this.emptyUserPublicData(),
       ...this.emptyCellphone(),
-      isContact: false,
+      avatarSrc: "",
       isBlocked: false,
+      isContact: false,
       originalFirstName: "",
       originalLastName: "",
     };
   }
 
   userWithPublicData(
-    publicData: PublicUserData,
+    publicData: UserPublicData,
     userItem?: UserItem
   ): UserItem {
     return {

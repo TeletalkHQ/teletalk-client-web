@@ -1,19 +1,19 @@
-import CancelButton from "./CancelButton";
-import CloseButton from "./CloseButton";
-import ConfirmButton from "./ConfirmButton";
-import ErrorButton from "./ErrorButton";
-import ErrorConfirmButton from "./ErrorConfirmButton";
-import ErrorTextButton from "./ErrorTextButton";
-import PrimaryButton from "./PrimaryButton";
-import PrimaryTextButton from "./PrimaryTextButton";
+import Primary from "./Primary";
+import PrimaryClose from "./PrimaryClose";
+import PrimaryConfirm from "./PrimaryConfirm";
+import PrimaryText from "./PrimaryText";
+import Secondary from "./Secondary";
+import SecondaryCancel from "./SecondaryCancel";
+import SecondaryConfirm from "./SecondaryConfirm";
+import SecondaryText from "./SecondaryText";
 
 export const Button = {
-  Cancel: CancelButton,
-  Close: CloseButton,
-  Confirm: ConfirmButton,
-  Error: ErrorButton,
-  ErrorConfirm: ErrorConfirmButton,
-  ErrorText: ErrorTextButton,
-  Primary: PrimaryButton,
-  PrimaryText: PrimaryTextButton,
+  Primary,
+  PrimaryClose,
+  PrimaryConfirm,
+  PrimaryText,
+  Secondary,
+  SecondaryCancel,
+  SecondaryConfirm,
+  SecondaryText,
 };

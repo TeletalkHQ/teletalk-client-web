@@ -21,7 +21,7 @@ export class AppConfigs {
   getDefaultConfigs() {
     return {
       api: {
-        defaultTimeout: this.RUNTIME_MODE === "development" ? 1 : 0,
+        defaultTimeout: this.RUNTIME_MODE === "development" ? 2000 : 0,
         clientBaseUrl: this.CLIENT_BASE_URLS[this.RUNTIME_MODE],
         defaultHeaders: {
           "Content-Type": "application/json",
@@ -68,11 +68,8 @@ export class AppConfigs {
 
     if (typeof localStorage === "undefined") return defaultConfigs;
 
-    const oldConfigs = localStorage.getItem("configs");
-    return merge(
-      this.getDefaultConfigs(),
-      JSON.parse(oldConfigs || "{}") || this.getDefaultConfigs()
-    ) as Configs;
+    const oldConfigs = localStorage.getItem("configs") || "{}";
+    return merge(JSON.parse(oldConfigs), this.getDefaultConfigs()) as Configs;
   }
 
   addServerUrl(url: Url) {

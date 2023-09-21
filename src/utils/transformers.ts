@@ -1,5 +1,5 @@
+import { Countries } from "teletalk-type-store";
 import { randomMaker } from "utility-store";
-import { Countries } from "utility-store/lib/types";
 
 const addUniqueIdToEachCountry = (countries: Countries) => {
   return {
