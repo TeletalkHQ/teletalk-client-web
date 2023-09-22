@@ -21,14 +21,14 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     }));
   },
 
-  addContactWithEmptyCellphone(newContact) {
+  addContactWithUserId(newContact) {
     this.updateUser({
       ...newContact,
       isContact: true,
     });
   },
 
-  addContactWithUserId(newContact) {
+  addContactWithCellphone(newContact) {
     this.updateUser({
       ...newContact,
       isContact: true,

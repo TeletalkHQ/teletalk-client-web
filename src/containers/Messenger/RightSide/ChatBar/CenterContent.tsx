@@ -1,14 +1,12 @@
 import { userUtils } from "~/classes/UserUtils";
 import { Box, Typography } from "~/components";
-import { useUserPublicData } from "~/hooks";
+import { useGetPublicData } from "~/hooks";
 import { useMessageStore } from "~/store";
 
 const ChatBarCenterContent = () => {
   const messageStore = useMessageStore();
 
-  const { publicData } = useUserPublicData(
-    messageStore.selectedChatInfo.userId
-  );
+  const { publicData } = useGetPublicData(messageStore.selectedChatInfo.userId);
 
   const fullName = userUtils.concatFirstNameWithLastName(publicData);
 

@@ -6,15 +6,15 @@ import { useEmitter } from "./useEmitter";
 
 export const useAddPrivateChat = () => {
   const messageStore = useMessageStore();
-  const { handler } = useEmitter("getPrivateChat");
+  const { handler: getPrivateChatHandler } = useEmitter("getPrivateChat");
 
-  const updater = (chatId: ChatId) => {
-    return handler.emitFull({ chatId }, ({ data }) => {
+  const handler = (chatId: ChatId) => {
+    return getPrivateChatHandler.emitFull({ chatId }, ({ data }) => {
       messageStore.addPrivateChat(data.privateChat);
     });
   };
 
   return {
-    updater,
+    handler,
   };
 };

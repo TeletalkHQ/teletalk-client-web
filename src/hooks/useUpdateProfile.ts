@@ -5,17 +5,18 @@ import { useEmitter } from "./useEmitter";
 
 export const useUpdateProfile = () => {
   const settingsStore = useSettingsStore();
-  const { handler, loading } = useEmitter("updatePublicData");
+  const { handler: updatePublicDataHandler, loading } =
+    useEmitter("updatePublicData");
 
-  const updater = (cb?: VoidNoArgsFn) => {
+  const handler = (cb?: VoidNoArgsFn) => {
     const { countryCode, countryName, phoneNumber, ...restProfile } =
       settingsStore.profile;
 
-    handler.emitFull(restProfile, cb);
+    updatePublicDataHandler.emitFull(restProfile, cb);
   };
 
   return {
     loading,
-    updater,
+    handler,
   };
 };

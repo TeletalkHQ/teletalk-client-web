@@ -1,32 +1,30 @@
 import { Button } from "~/components";
-import { VoidNoArgsFn } from "~/types";
+import { Status, VoidNoArgsFn } from "~/types";
 
 interface Props {
-  // isCloseDisabled: boolean;
-  isAuthDisabled: boolean;
+  disabled: boolean;
   loading: boolean;
-  onAuthenticateClick: VoidNoArgsFn;
-  // onClose: VoidNoArgsFn;
+  onSetup: VoidNoArgsFn;
+  status: Status;
 }
 
 const ServerSetupActions: React.FC<Props> = ({
-  isAuthDisabled,
-  // isCloseDisabled,
+  disabled,
   loading,
-  onAuthenticateClick,
-  // onClose,
+  onSetup,
+  status,
 }) => {
   return (
     <>
-      {/* <Button.Close disabled={isCloseDisabled} onClick={onClose} /> */}
-
       <Button.Primary
+        disabled={disabled}
         loading={loading}
-        onClick={onAuthenticateClick}
-        disabled={isAuthDisabled}
-        loadingIndicatorText="Authenticating..."
+        loadingIndicatorText={
+          status === "online" ? "Forwarding..." : "Trying..."
+        }
+        onClick={onSetup}
       >
-        Authenticate
+        Setup
       </Button.Primary>
     </>
   );

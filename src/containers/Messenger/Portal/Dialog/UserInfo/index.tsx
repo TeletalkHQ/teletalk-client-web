@@ -1,6 +1,6 @@
 import { userUtils } from "~/classes/UserUtils";
 import { Template } from "~/components";
-import { useDialogState, useIsOnline, useUserPublicData } from "~/hooks";
+import { useDialogState, useGetPublicData, useIsOnline } from "~/hooks";
 import { useGlobalStore, useMessageStore } from "~/store";
 
 import Actions from "./Actions";
@@ -12,9 +12,7 @@ const UserInfo = () => {
   const messageStore = useMessageStore();
   const dialogState = useDialogState("userInfo");
   const { isOnline } = useIsOnline(messageStore.selectedChatInfo.userId);
-  const { publicData } = useUserPublicData(
-    messageStore.selectedChatInfo.userId
-  );
+  const { publicData } = useGetPublicData(messageStore.selectedChatInfo.userId);
 
   const connectionStatus = isOnline ? "online" : "offline";
 

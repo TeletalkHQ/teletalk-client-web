@@ -10,7 +10,7 @@ import Title from "./Title";
 const EditBio = () => {
   const globalStore = useGlobalStore();
   const settingsStore = useSettingsStore();
-  const { updater: profileUpdater, loading } = useUpdateProfile();
+  const { handler: profileUpdater, loading } = useUpdateProfile();
   const dialogState = useDialogState("editBio");
 
   const handleInputChange: OnChangeValidatorFn = (value, event) => {

@@ -12,7 +12,7 @@ const EditUsername = () => {
   const globalStore = useGlobalStore();
   const settingsState = useSettingsStore();
   const dialogState = useDialogState("editUsername");
-  const { updater: profileUpdater, loading } = useUpdateProfile();
+  const { handler: profileUpdater, loading } = useUpdateProfile();
 
   const handleInputChange: OnChangeValidatorFn = (value, event) => {
     settingsState.updateProfile({

@@ -7,10 +7,10 @@ import { useEmitter } from "./useEmitter";
 export const useCreate = () => {
   const authStore = useAuthStore();
   const router = useCustomRouter();
-  const { handler, loading } = useEmitter("createNewUser");
+  const { handler: createHandler, loading } = useEmitter("createNewUser");
 
-  const updater = async () => {
-    handler.emitFull(extractor.fullName(authStore), () => {
+  const handler = async () => {
+    createHandler.emitFull(extractor.fullName(authStore), () => {
       authStore.updateFirstName("");
       authStore.updateLastName("");
 
@@ -19,7 +19,7 @@ export const useCreate = () => {
   };
 
   return {
-    updater,
+    handler,
     loading,
   };
 };

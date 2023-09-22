@@ -70,11 +70,10 @@ export type ContextMenuState = {
 };
 
 export interface GlobalHandlers {
-  // updateDialog: (dialogState: DialogState & { dialogName: DialogName }) => void;
   changeDrawerOpen: VoidWithArg<boolean>;
+  closeAllDialog: VoidNoArgsFn;
   closeContextMenu: VoidNoArgsFn;
   closeDialog: VoidNoArgsFn;
-  closeAllDialog: VoidNoArgsFn;
   closeFullPageLoading: VoidNoArgsFn;
   closeLoading: VoidWithArg<LoadingType>;
   closeOverlayLoading: VoidNoArgsFn;
@@ -83,9 +82,10 @@ export interface GlobalHandlers {
   openFullPageLoading: VoidNoArgsFn;
   openLoading: VoidWithArg<LoadingType>;
   openOverlayLoading: VoidNoArgsFn;
-  updateContextMenuList: VoidWithArg<ContextMenuList>;
-  updateOnlineStatus: VoidWithArg<boolean>;
   reset: VoidNoArgsFn;
+  updateContextMenuList: VoidWithArg<ContextMenuList>;
+  updateIsInitialized: VoidWithArg<boolean>;
+  updateOnlineStatus: VoidWithArg<boolean>;
 }
 
 export interface LoadingState {
@@ -113,6 +113,7 @@ export interface GlobalState {
     speedMultiplier: number;
     type: LoadingType;
   };
+  isInitialized: boolean;
 }
 
 export type GlobalSetState = StoreSetFn<GlobalState>;

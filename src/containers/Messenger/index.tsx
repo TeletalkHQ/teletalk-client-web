@@ -14,15 +14,15 @@ import Portal from "./Portal";
 //REFACTOR
 const Messenger = () => {
   const userStore = useUserStore();
-  const { updater } = useSetUserData();
+  const { handler } = useSetUserData();
   useUnmount(resetAllStores);
 
   useListener({
     evName: "verify",
-    cb: updater,
+    cb: handler,
   });
   useListener({
-    cb: updater,
+    cb: handler,
     evName: "createNewUser",
   });
 
@@ -65,13 +65,13 @@ const Messenger = () => {
 
   useListener({
     evName: "addContactWithUserId",
-    cb: (response) =>
-      userStore.addContactWithEmptyCellphone(response.data.newContact),
+    cb: (response) => userStore.addContactWithUserId(response.data.newContact),
   });
 
   useListener({
     evName: "addContactWithCellphone",
-    cb: (response) => userStore.addContactWithUserId(response.data.newContact),
+    cb: (response) =>
+      userStore.addContactWithCellphone(response.data.newContact),
   });
 
   useListener({

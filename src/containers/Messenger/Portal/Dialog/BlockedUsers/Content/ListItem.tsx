@@ -2,7 +2,7 @@ import LockOpenTwoToneIcon from "@mui/icons-material/LockOpenTwoTone";
 
 import { userUtils } from "~/classes/UserUtils";
 import { Box, Button } from "~/components";
-import { useUserPublicData } from "~/hooks";
+import { useGetPublicData } from "~/hooks";
 import { UserItem, VoidNoArgsFn } from "~/types";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
-  const { publicData } = useUserPublicData(userItem.userId);
+  const { publicData } = useGetPublicData(userItem.userId);
 
   return (
     <Box.ListItemButton

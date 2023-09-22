@@ -17,6 +17,7 @@ const Content: React.FC<Props> = ({
     <>
       {contacts.map((item, index) => (
         <ListItem
+          userId={item.userId}
           onContextMenu={(e) => {
             onContextMenu(e, item);
           }}

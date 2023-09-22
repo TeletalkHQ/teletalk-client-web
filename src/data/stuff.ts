@@ -900,6 +900,16 @@ export const stuff = {
       method: "customOn",
       inputFields: { userId: { required: true, type: "string" } },
       outputFields: {
+        avatarSrc: { required: true, type: "string" },
+        userId: { required: true, type: "string" },
+      },
+      isAuthRequired: true,
+      name: "getAvatar",
+    },
+    {
+      method: "customOn",
+      inputFields: { userId: { required: true, type: "string" } },
+      outputFields: {
         isOnline: { required: true, type: "boolean" },
         userId: { required: true, type: "string" },
       },
