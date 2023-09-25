@@ -1,4 +1,6 @@
 import { domUtils } from "~/classes/DomUtils";
+import { storage } from "~/classes/Storage";
+import { websocket } from "~/classes/websocket/Websocket";
 import { useAuthStore } from "~/store";
 
 import { useCustomRouter } from "./useCustomRouter";
@@ -7,10 +9,10 @@ import { useEmitter } from "./useEmitter";
 export const useVerify = () => {
   const authStore = useAuthStore();
   const router = useCustomRouter();
-  const { handler, loading } = useEmitter("verify");
+  const { handler: verifyHandler, loading } = useEmitter("verify");
 
-  const updater = () => {
-    handler.emitFull(
+  const handler = () => {
+    verifyHandler.emitFull(
       {
         verificationCode: authStore.verificationCode,
       },
@@ -18,7 +20,11 @@ export const useVerify = () => {
         authStore.updateVerificationCode("");
 
         if (data.newUser) router.replace("create");
-        else router.push("messenger");
+        else {
+          storage.set("session", data.session);
+          websocket.updateSession(data.session);
+          router.push("messenger");
+        }
       },
       () => {
         domUtils()
@@ -31,6 +37,6 @@ export const useVerify = () => {
 
   return {
     loading,
-    updater,
+    handler,
   };
 };

@@ -4,6 +4,7 @@ import { websocket } from "~/classes/websocket/Websocket";
 import { Box } from "~/components";
 import RightSide from "~/containers/Messenger/RightSide";
 import { useListener, useUnmount } from "~/hooks";
+import { useSetUserData } from "~/hooks";
 import { useUserStore } from "~/store";
 import { resetAllStores } from "~/store/utils";
 
@@ -13,7 +14,17 @@ import Portal from "./Portal";
 //REFACTOR
 const Messenger = () => {
   const userStore = useUserStore();
+  const { handler } = useSetUserData();
   useUnmount(resetAllStores);
+
+  useListener({
+    evName: "verify",
+    cb: handler,
+  });
+  useListener({
+    cb: handler,
+    evName: "createNewUser",
+  });
 
   useEffect(() => {
     websocket.client.onAny((event, data) => {
@@ -54,13 +65,13 @@ const Messenger = () => {
 
   useListener({
     evName: "addContactWithUserId",
-    cb: (response) =>
-      userStore.addContactWithEmptyCellphone(response.data.newContact),
+    cb: (response) => userStore.addContactWithUserId(response.data.newContact),
   });
 
   useListener({
     evName: "addContactWithCellphone",
-    cb: (response) => userStore.addContactWithUserId(response.data.newContact),
+    cb: (response) =>
+      userStore.addContactWithCellphone(response.data.newContact),
   });
 
   useListener({

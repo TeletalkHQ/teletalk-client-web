@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { appConfigs } from "~/classes/AppConfigs";
 import { Template } from "~/components";
 import { useDialogState, useLoading, usePing } from "~/hooks";
+import { useGlobalStore } from "~/store";
 import { ServerTestResult, Url } from "~/types";
 
 import Actions from "./Actions";
@@ -10,11 +11,12 @@ import Content from "./Content";
 import Title from "./Title";
 
 const Servers = () => {
+  const globalStore = useGlobalStore();
   const dialogState = useDialogState("servers");
   const list = useRef<ServerTestResult[]>([]);
   const [forceUpdate, setForceUpdate] = useState(false);
   const { loading, startLoading, finishLoading } = useLoading();
-  const { pinger } = usePing();
+  const { handler: pinger } = usePing();
 
   useEffect(() => {
     handleForceUpdate();
@@ -72,6 +74,10 @@ const Servers = () => {
     list.current[index] = { ...list.current[index], ...restResult };
   };
 
+  const handleClose = () => {
+    globalStore.closeDialog();
+  };
+
   const isPinging = list.current.some((item) => item.status === "pending");
 
   return (
@@ -88,6 +94,7 @@ const Servers = () => {
       }
       title={<Title />}
       open={dialogState.open}
+      onClose={handleClose}
     />
   );
 };

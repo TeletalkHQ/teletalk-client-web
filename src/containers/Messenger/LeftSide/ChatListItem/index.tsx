@@ -1,9 +1,10 @@
+//TODO: Move to components
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import type { MessageText, UserId } from "teletalk-type-store";
 
 import { userUtils } from "~/classes/UserUtils";
 import { Box } from "~/components";
-import { useUserPublicData } from "~/hooks";
+import { useGetAvatar, useGetPublicData } from "~/hooks";
 import { VoidNoArgsFn } from "~/types";
 
 import Lower from "./Lower";
@@ -22,7 +23,8 @@ const ChatListItem: React.FC<Props> = ({
   selected,
   userId,
 }) => {
-  const { publicData } = useUserPublicData(userId);
+  const { publicData } = useGetPublicData(userId);
+  const { avatarSrc } = useGetAvatar(userId);
 
   const fullName = userUtils.concatFirstNameWithLastName(publicData);
 
@@ -41,10 +43,7 @@ const ChatListItem: React.FC<Props> = ({
       onClick={onClick}
     >
       <ListItemAvatar>
-        <Box.Avatar
-          src={publicData.avatarSrc}
-          style={{ width: 45, height: 45 }}
-        />
+        <Box.Avatar src={avatarSrc} style={{ width: 45, height: 45 }} />
       </ListItemAvatar>
 
       <Box.Flex col style={{ width: "80%" }}>

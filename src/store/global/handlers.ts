@@ -51,20 +51,11 @@ export const handlers: (set: GlobalSetState) => GlobalHandlers = (set) => ({
     });
   },
 
-  // updateDialog(payload) {
-  //   set((prevState) => {
-  //     return {
-  //       dialogState: {
-  //         ...prevState.dialogState,
-  //         [payload.dialogName]: {
-  //           ...prevState.dialogState[payload.dialogName],
-  //           open: payload.open,
-  //           props: payload.props,
-  //         },
-  //       },
-  //     };
-  //   });
-  // },
+  updateIsInitialized(isInitialized) {
+    set({
+      isInitialized,
+    });
+  },
 
   updateOnlineStatus(isOnline) {
     set({

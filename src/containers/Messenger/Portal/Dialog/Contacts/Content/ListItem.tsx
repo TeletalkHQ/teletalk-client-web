@@ -1,4 +1,7 @@
+import { UserId } from "teletalk-type-store";
+
 import { Box, Typography } from "~/components";
+import { useGetAvatar } from "~/hooks";
 import { OnContextMenu, VoidNoArgsFn } from "~/types";
 
 interface Props {
@@ -7,6 +10,7 @@ interface Props {
   lastSeen: string;
   onContactClick: VoidNoArgsFn;
   onContextMenu: OnContextMenu;
+  userId: UserId;
 }
 
 const ListItem: React.FC<Props> = ({
@@ -14,7 +18,10 @@ const ListItem: React.FC<Props> = ({
   lastSeen,
   onContactClick,
   onContextMenu,
+  userId,
 }) => {
+  const { avatarSrc } = useGetAvatar(userId);
+
   return (
     <Box.ListItemButton
       onContextMenu={onContextMenu}
@@ -27,7 +34,7 @@ const ListItem: React.FC<Props> = ({
       onClick={onContactClick}
     >
       <Box.Div>
-        <Box.Avatar />
+        <Box.Avatar src={avatarSrc} />
       </Box.Div>
 
       <Box.Div style={{ width: "100%" }}>

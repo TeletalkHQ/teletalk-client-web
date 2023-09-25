@@ -9,7 +9,7 @@ import { utils } from "~/utils";
 
 const SignIn = () => {
   const authStore = useAuthStore();
-  const { updater, loading } = useSignIn();
+  const { handler, loading } = useSignIn();
 
   const isSignInSubmitButtonDisabled = () => utils.isCellphoneValid(authStore);
 
@@ -55,7 +55,7 @@ const SignIn = () => {
               disabled={isSignInSubmitButtonDisabled()}
               loading={loading}
               loadingIndicatorText="Sign in..."
-              onClick={updater}
+              onClick={handler}
               sx={{
                 mb: 1,
                 mt: 2,

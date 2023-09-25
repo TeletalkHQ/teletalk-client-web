@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import type { GetUserDataIO } from "teletalk-type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";
-import { useUserStore } from "~/store";
+import { storage } from "~/classes/Storage";
+import { useGlobalStore, useUserStore } from "~/store";
 import { SocketErrorCallback, SocketResponseCallback, UserItem } from "~/types";
 
 import { useEmitter } from "./useEmitter";
@@ -14,11 +16,12 @@ export const useSetUserData = ({
   successCb?: SocketResponseCallback<GetUserDataIO["output"]>;
   errorCb?: SocketErrorCallback;
 } = {}) => {
-  const { handler, loading } = useEmitter("getUserData");
+  const { handler: getUserDataHandler, loading } = useEmitter("getUserData");
   const userStore = useUserStore();
+  const globalStore = useGlobalStore();
 
-  const updater = () => {
-    return handler.emitFull(
+  const handler = () => {
+    return getUserDataHandler.emitFull(
       {},
       (response) => {
         userStore.setCurrentUserData(
@@ -53,8 +56,13 @@ export const useSetUserData = ({
     );
   };
 
+  useEffect(() => {
+    if (globalStore.isInitialized && storage.get("session")) handler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [globalStore.isInitialized]);
+
   return {
     loading,
-    updater,
+    handler,
   };
 };

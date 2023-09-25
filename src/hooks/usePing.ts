@@ -10,15 +10,13 @@ import { useEmitter } from "./useEmitter";
 export const usePing = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
-  const { handler } = useEmitter("ping");
+  const { handler: pingHandler } = useEmitter("ping");
 
-  const pinger = async (url: Url) => {
+  const handler = async (url: Url) => {
     setLoading(true);
     setStatus("pending");
 
     await Timeout.set(appConfigs.getConfigs().api.defaultTimeout);
-
-    await setClientId(url);
 
     return new Promise<ServerTestResult>((resolve) => {
       setWebsocketClient(url);
@@ -60,19 +58,8 @@ export const usePing = () => {
     websocket.setClient(client);
   };
 
-  const setClientId = async (url: Url) => {
-    try {
-      await fetch(`${url}/setClientId`, {
-        method: "GET",
-        credentials: "include",
-      });
-    } catch (error) {
-      handleSettled("offline");
-    }
-  };
-
   const emitPingEvent = () => {
-    return handler.emitFull({}, successPingCallback, failPingCallback, {
+    return pingHandler.emitFull({}, successPingCallback, failPingCallback, {
       timeout: 0,
     });
   };
@@ -92,8 +79,7 @@ export const usePing = () => {
 
   return {
     loading,
-    pinger,
-    setClientId,
+    handler,
     setStatus,
     status,
   };

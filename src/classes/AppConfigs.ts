@@ -2,6 +2,8 @@ import { merge } from "lodash";
 
 import { RuntimeMode, UiConfig, Url } from "~/types";
 
+import { storage } from "./Storage";
+
 type BaseUrl = {
   [key in RuntimeMode]: Url;
 };
@@ -21,7 +23,7 @@ export class AppConfigs {
   getDefaultConfigs() {
     return {
       api: {
-        defaultTimeout: this.RUNTIME_MODE === "development" ? 2000 : 0,
+        defaultTimeout: this.RUNTIME_MODE === "development" ? 1000 : 0,
         clientBaseUrl: this.CLIENT_BASE_URLS[this.RUNTIME_MODE],
         defaultHeaders: {
           "Content-Type": "application/json",
@@ -66,16 +68,14 @@ export class AppConfigs {
     const defaultConfigs = this.getDefaultConfigs();
     type Configs = typeof defaultConfigs;
 
-    if (typeof localStorage === "undefined") return defaultConfigs;
-
-    const oldConfigs = localStorage.getItem("configs") || "{}";
+    const oldConfigs = storage.get("configs") || "{}";
     return merge(JSON.parse(oldConfigs), this.getDefaultConfigs()) as Configs;
   }
 
   addServerUrl(url: Url) {
     const configs = this.getConfigs();
     configs.api.servers.push({ url });
-    localStorage.setItem("configs", JSON.stringify(configs));
+    storage.set("configs", configs);
   }
 
   updateSelectedServer(url: Url) {
@@ -85,7 +85,7 @@ export class AppConfigs {
   }
 
   private updateConfigs(configs: object) {
-    localStorage.setItem("configs", JSON.stringify(configs));
+    storage.set("configs", configs);
   }
 
   setDebugLevel() {}

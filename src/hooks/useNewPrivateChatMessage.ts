@@ -5,7 +5,7 @@ import { useListener } from "./useListener";
 
 export const useNewPrivateChatMessage = () => {
   const messageStore = useMessageStore();
-  const { updater: privateChatUpdater } = useAddPrivateChat();
+  const { handler: privateChatUpdater } = useAddPrivateChat();
 
   useListener({
     evName: "sendMessage",

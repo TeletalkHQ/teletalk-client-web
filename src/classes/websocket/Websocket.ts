@@ -1,6 +1,9 @@
 import io, { Socket } from "socket.io-client";
+import { EncryptedSession } from "teletalk-type-store";
 
 import { appConfigs } from "~/classes/AppConfigs";
+
+import { storage } from "../Storage";
 
 interface Options {
   url: string;
@@ -16,7 +19,9 @@ export class Websocket {
   initialize(options = this.getDefaultOptions()) {
     return io(options.url, {
       autoConnect: false,
-      withCredentials: true,
+      auth: {
+        session: storage.get("session"),
+      },
     });
   }
   getDefaultOptions() {
@@ -27,6 +32,15 @@ export class Websocket {
 
   setClient(client: Socket) {
     this.client = client;
+  }
+
+  updateSession(session: EncryptedSession) {
+    this.client.disconnect();
+    this.client.auth = {
+      ...this.client.auth,
+      session,
+    };
+    this.client.connect();
   }
 }
 

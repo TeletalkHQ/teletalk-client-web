@@ -3,26 +3,21 @@ import { Status, Url, VoidNoArgsFn, VoidWithArg } from "~/types";
 
 import AddServerButton from "./AddServerButton";
 import ServerSelect from "./ServersSelect";
-import SetupButton from "./SetupButton";
 
 interface Props {
   disabled: boolean;
-  loading: boolean;
   onAddServerClick: VoidNoArgsFn;
   onServersClick: VoidNoArgsFn;
   onServerSelectChange: VoidWithArg<Url>;
-  onSetup: VoidNoArgsFn;
   selectedServer: string;
   status: Status;
 }
 
 const ServerSetupContent: React.FC<Props> = ({
   disabled,
-  loading,
   onAddServerClick,
   onServersClick,
   onServerSelectChange,
-  onSetup,
   selectedServer,
   status,
 }) => {
@@ -44,13 +39,6 @@ const ServerSetupContent: React.FC<Props> = ({
       <Button.Primary disabled={disabled} onClick={onServersClick}>
         Servers
       </Button.Primary>
-
-      <SetupButton
-        indicatorText={status === "online" ? "Forwarding..." : "Trying..."}
-        loading={loading}
-        onSetup={onSetup}
-        disabled={disabled}
-      />
     </Box.Flex>
   );
 };

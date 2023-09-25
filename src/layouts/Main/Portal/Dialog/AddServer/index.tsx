@@ -21,7 +21,7 @@ const AddServer = () => {
   const dialogState = useDialogState("addServer");
   const [inputValue, setInputValue] = useState("");
   const [protocol, setProtocol] = useState<Protocol>("https");
-  const { loading, pinger, setStatus, status } = usePing();
+  const { loading, handler: pinger, setStatus, status } = usePing();
 
   const handleInputChange = (event: CommonChangeEvent) => {
     setInputValue(event.target.value);
@@ -57,6 +57,10 @@ const AddServer = () => {
     pinger(fixServerUrl());
   };
 
+  const handleClose = () => {
+    globalStore.closeDialog();
+  };
+
   const isPending = status === "pending";
   const isAddDisabled = isPending || !inputValue || status !== "online";
   const isTestDisabled = isPending || !inputValue;
@@ -88,6 +92,7 @@ const AddServer = () => {
         />
       }
       open={dialogState.open}
+      onClose={handleClose}
     />
   );
 };
