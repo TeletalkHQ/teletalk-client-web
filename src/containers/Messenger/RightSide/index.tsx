@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 
+import { storage } from "~/classes/Storage";
 import { Box } from "~/components";
 import ChatBar from "~/containers/Messenger/RightSide/ChatBar";
 import MessageInput from "~/containers/Messenger/RightSide/MessageInput";
 import MessageList from "~/containers/Messenger/RightSide/MessageList";
 import {
+  useCustomRouter,
   useEmitter,
   useNewPrivateChatMessage,
   useSetPrivateChats,
@@ -18,11 +20,18 @@ const RightSide = () => {
   const { handler: joinHandler } = useEmitter("join");
   const { handler: getOnlineClientsHandler } = useEmitter("getOnlineClients");
   const userStore = useUserStore();
+  const router = useCustomRouter();
 
   useEffect(() => {
-    joinHandler.emitFull({}, () => {
-      getOnlineClientsHandler.emitFull({});
-    });
+    if (!storage.get("session")) router.push("signIn");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (userStore.currentUserData.userId)
+      joinHandler.emitFull({}, () => {
+        getOnlineClientsHandler.emitFull({});
+      });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userStore.currentUserData.userId]);

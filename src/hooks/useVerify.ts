@@ -1,4 +1,6 @@
 import { domUtils } from "~/classes/DomUtils";
+import { storage } from "~/classes/Storage";
+import { websocket } from "~/classes/websocket/Websocket";
 import { useAuthStore } from "~/store";
 
 import { useCustomRouter } from "./useCustomRouter";
@@ -18,7 +20,11 @@ export const useVerify = () => {
         authStore.updateVerificationCode("");
 
         if (data.newUser) router.replace("create");
-        else router.push("messenger");
+        else {
+          storage.set("session", data.session);
+          websocket.updateSession(data.session);
+          router.push("messenger");
+        }
       },
       () => {
         domUtils()

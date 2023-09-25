@@ -1,5 +1,6 @@
 import type { EventName, IOCollection } from "teletalk-type-store";
 
+import { storage } from "~/classes/Storage";
 import { stuffStore } from "~/classes/StuffStore";
 import { eventHandler } from "~/classes/websocket/EventHandler";
 import { SocketRoute } from "~/types";
@@ -11,7 +12,10 @@ export const useEmitter = <EvName extends EventName>(evName: EvName) => {
   const { loading, updateLoading } = useLoading();
   const router = useCustomRouter();
 
-  const handleAuthError = () => router.push("signIn");
+  const handleAuthError = () => {
+    storage.remove("session");
+    router.push("signIn");
+  };
 
   type IOType = IOCollection[EvName];
 

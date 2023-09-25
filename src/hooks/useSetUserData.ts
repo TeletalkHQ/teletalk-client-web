@@ -3,6 +3,7 @@ import type { GetUserDataIO } from "teletalk-type-store";
 
 import { extractor } from "~/classes/Extractor";
 import { maker } from "~/classes/Maker";
+import { storage } from "~/classes/Storage";
 import { useGlobalStore, useUserStore } from "~/store";
 import { SocketErrorCallback, SocketResponseCallback, UserItem } from "~/types";
 
@@ -56,7 +57,7 @@ export const useSetUserData = ({
   };
 
   useEffect(() => {
-    if (globalStore.isInitialized) handler();
+    if (globalStore.isInitialized && storage.get("session")) handler();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalStore.isInitialized]);
 

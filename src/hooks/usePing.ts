@@ -18,8 +18,6 @@ export const usePing = () => {
 
     await Timeout.set(appConfigs.getConfigs().api.defaultTimeout);
 
-    await setClientId(url);
-
     return new Promise<ServerTestResult>((resolve) => {
       setWebsocketClient(url);
 
@@ -60,17 +58,6 @@ export const usePing = () => {
     websocket.setClient(client);
   };
 
-  const setClientId = async (url: Url) => {
-    try {
-      await fetch(`${url}/setClientId`, {
-        method: "GET",
-        credentials: "include",
-      });
-    } catch (error) {
-      handleSettled("offline");
-    }
-  };
-
   const emitPingEvent = () => {
     return pingHandler.emitFull({}, successPingCallback, failPingCallback, {
       timeout: 0,
@@ -93,7 +80,6 @@ export const usePing = () => {
   return {
     loading,
     handler,
-    setClientId,
     setStatus,
     status,
   };

@@ -1,3 +1,4 @@
+import { storage } from "~/classes/Storage";
 import { Template } from "~/components";
 import { useCustomRouter, useDialogState, useEmitter } from "~/hooks";
 import { useGlobalStore } from "~/store";
@@ -14,6 +15,7 @@ const Logout = () => {
   const handleLogout = () => {
     handler.emitFull({}, () => {
       globalStore.closeDialog();
+      storage.remove("session");
       router.push("signIn");
     });
   };
