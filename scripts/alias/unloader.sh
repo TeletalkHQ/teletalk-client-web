@@ -1,3 +1,5 @@
+#! LINUX|MAC USERS ONLY. I haven't tested it on Mac, so use with caution
+
 ROOT_DIR=$(pwd)
 
 COMMAND="source $ROOT_DIR/scripts/alias/aliases.sh"

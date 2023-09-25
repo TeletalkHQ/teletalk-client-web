@@ -1,12 +1,9 @@
 import dotenv from "dotenv";
 
 export const evnLoader = () => {
-  [
-    "./configs/env/base.env",
-    `./configs/env/${process.env.NODE_ENV}.env`,
-  ].forEach((path) => {
+  ["base", process.env.NODE_ENV].forEach((fileName) => {
     dotenv.config({
-      path,
+      path: `./configs/env/.env.${fileName}`,
       override: true,
     });
   });

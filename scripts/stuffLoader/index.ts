@@ -7,9 +7,10 @@ import { EventName } from "~/types";
 evnLoader();
 
 const saveStuff = () => {
+  console.log("starting...");
+
   io(process.env.NEXT_PUBLIC_SERVER_BASE_URL, {
     autoConnect: false,
-    withCredentials: true,
   })
     .connect()
     .emit<EventName>("getStuff", {}, (response: any) => {
