@@ -64,16 +64,14 @@ const ServerSetup = () => {
   };
 
   const isPending = status === "pending";
-  const isOffline = status === "offline";
   const isGloballyDisabled = isPending || pingLoading;
-  const isSetupDisabled = isPending || isOffline || pingLoading;
 
   return (
     <>
       <Template.Dialog
         actions={
           <Actions
-            disabled={isSetupDisabled}
+            disabled={isGloballyDisabled}
             loading={pingLoading}
             onSetup={handleSetup}
             status={status}

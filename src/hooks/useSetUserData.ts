@@ -7,6 +7,7 @@ import { storage } from "~/classes/Storage";
 import { useGlobalStore, useUserStore } from "~/store";
 import { SocketErrorCallback, SocketResponseCallback, UserItem } from "~/types";
 
+import { useCustomRouter } from "./useCustomRouter";
 import { useEmitter } from "./useEmitter";
 
 export const useSetUserData = ({
@@ -19,45 +20,51 @@ export const useSetUserData = ({
   const { handler: getUserDataHandler, loading } = useEmitter("getUserData");
   const userStore = useUserStore();
   const globalStore = useGlobalStore();
+  const router = useCustomRouter();
 
   const handler = () => {
-    return getUserDataHandler.emitFull(
-      {},
-      (response) => {
-        userStore.setCurrentUserData(
-          extractor.currentUserData(response.data.user)
-        );
+    if (
+      globalStore.isInitialized &&
+      router.pathname.includes("messenger") &&
+      storage.get("session")
+    )
+      return getUserDataHandler.emitFull(
+        {},
+        (response) => {
+          userStore.setCurrentUserData(
+            extractor.currentUserData(response.data.user)
+          );
 
-        const users: UserItem[] = response.data.user.contacts.map((item) => ({
-          ...maker.emptyUser(),
-          ...item,
-          isContact: true,
-          isBlocked: response.data.user.blacklist.some(
-            (i) => i.userId === item.userId
-          ),
-        }));
+          const users: UserItem[] = response.data.user.contacts.map((item) => ({
+            ...maker.emptyUser(),
+            ...item,
+            isContact: true,
+            isBlocked: response.data.user.blacklist.some(
+              (i) => i.userId === item.userId
+            ),
+          }));
 
-        const usersThatExistOnlyInTheBlacklist: UserItem[] =
-          response.data.user.blacklist
-            .filter((i) => !users.some((j) => i.userId === j.userId))
-            .map((item) => ({
-              ...maker.emptyUser(),
-              ...item,
-              isBlocked: true,
-            }));
+          const usersThatExistOnlyInTheBlacklist: UserItem[] =
+            response.data.user.blacklist
+              .filter((i) => !users.some((j) => i.userId === j.userId))
+              .map((item) => ({
+                ...maker.emptyUser(),
+                ...item,
+                isBlocked: true,
+              }));
 
-        users.push(...usersThatExistOnlyInTheBlacklist);
+          users.push(...usersThatExistOnlyInTheBlacklist);
 
-        userStore.setUsers(users);
+          userStore.setUsers(users);
 
-        successCb?.(response);
-      },
-      errorCb
-    );
+          successCb?.(response);
+        },
+        errorCb
+      );
   };
 
   useEffect(() => {
-    if (globalStore.isInitialized && storage.get("session")) handler();
+    handler();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalStore.isInitialized]);
 

@@ -19,7 +19,7 @@ const Messenger = () => {
 
   useListener({
     evName: "verify",
-    cb: handler,
+    cb: (response) => response.data.newUser === false && handler(),
   });
   useListener({
     cb: handler,
@@ -28,7 +28,7 @@ const Messenger = () => {
 
   useEffect(() => {
     websocket.client.onAny((event, data) => {
-      console.log("coming event:", event, "data:", data);
+      console.log("incoming event:", event, "data:", data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [websocket.client]);
