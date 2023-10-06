@@ -114,8 +114,8 @@ dependencies:
     specifier: ^4.7.2
     version: 4.7.2
   utility-store:
-    specifier: ^14.0.33
-    version: 14.0.33
+    specifier: ^14.0.42
+    version: 14.0.42
   web-vitals:
     specifier: ^3.4.0
     version: 3.4.0
@@ -12722,9 +12722,10 @@ packages:
     resolution: {integrity: sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==}
     dev: false
 
-  /utility-store@14.0.33:
-    resolution: {integrity: sha512-gIJ3q9OUQADbt8WUaBAmclBI6VrTRdmBV3wrsnX1z+OZZQ+/GkHXxEEcdbCpGBI/mWfohxzCcxiFb+kuhCHctA==}
+  /utility-store@14.0.42:
+    resolution: {integrity: sha512-GwDXQdbSwiktpp2awV4QM8JFlP1YYWYjLTy+MkWUsUW/neQn8Ez5Az6B5BTa8ZRe3j1fAXKLH1e7teBtBxqCKA==}
     dependencies:
+      compressorjs: 1.2.1
       custom-typeof: 2.0.2
       nanoid: 3.3.6
     dev: false

@@ -18,7 +18,7 @@ const AddContactWithCellphone = () => {
   const dialogState = useDialogState("addContactWithCellphone");
 
   const handleChange: OnChangeValidatorFn = (_value: string, event) => {
-    userStore.setAddingContactWithCellphone({
+    userStore.updateAddingContactWithCellphone({
       [event.target.name]: event.target.value,
     });
   };
@@ -33,7 +33,7 @@ const AddContactWithCellphone = () => {
   };
 
   const resetStates = () => {
-    userStore.setAddingContactWithCellphone(
+    userStore.updateAddingContactWithCellphone(
       maker.emptyAddingContactWithCellphone()
     );
   };

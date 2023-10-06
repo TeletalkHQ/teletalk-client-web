@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { UserId } from "teletalk-type-store";
 
+import defaultAvatar from "~/assets/images/default-avatar.png";
 import { useUserStore } from "~/store";
 
 import { useEmitter } from "./useEmitter";
@@ -14,21 +15,27 @@ export const useGetAvatar = (userId: UserId) => {
   } = useFindUserById(userId);
 
   useEffect(() => {
+    if (!userId || !userStore.isUserDataSettled) return;
+
     handler();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
+  }, [userId, userStore.isUserDataSettled]);
 
   const handler = () => {
-    if (!userId) return;
-    if (userStore.users.find((i) => i.userId === userId)?.avatarSrc) return;
+    const user = userStore.users.find((i) => i.userId === userId);
+    if (user?.avatarSrc) return;
 
     getAvatarHandler.emitFull({ userId }, (response) => {
-      userStore.updateUser(response.data);
+      userStore.updateUser({
+        userId: response.data.userId,
+        avatarSrc: response.data.avatarSrc || defaultAvatar.src,
+      });
     });
   };
 
   return {
-    avatarSrc,
+    avatarSrc: avatarSrc || defaultAvatar.src,
     handler,
     loading,
   };

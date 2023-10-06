@@ -16,7 +16,7 @@ const AddContactWithUserId = () => {
   const dialogState = useDialogState("addContactWithUserId");
 
   const handleChange: OnChangeValidatorFn = (_value: string, event) => {
-    userStore.setAddingContactWithUserId({
+    userStore.updateAddingContactWithUserId({
       [event.target.name]: event.target.value,
     });
   };

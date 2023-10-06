@@ -53,7 +53,7 @@ const EditContactWithCellphone = () => {
   };
 
   const resetStates = () => {
-    userStore.setSelectedUserIdForActions("");
+    userStore.updateSelectedUserIdForActions("");
     setFullName(maker.emptyFullName());
   };
 

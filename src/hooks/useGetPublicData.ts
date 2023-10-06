@@ -15,19 +15,25 @@ type UseUserPublicData = (userId: UserId) => {
 export const useGetPublicData: UseUserPublicData = (userId) => {
   const userStore = useUserStore();
   const { data: publicData } = useFindUserById(userId);
-  const { handler, loading } = useEmitter("getPublicData");
+  const { handler: getPublicData, loading } = useEmitter("getPublicData");
   useEffect(() => {
-    if (!userId) return;
+    if (!userId || !userStore.isUserDataSettled) return;
+
+    handler();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId, userStore.isUserDataSettled]);
+
+  const handler = () => {
     if (userStore.users.some((i) => i.userId === userId)) return;
 
-    handler.emitFull({
+    getPublicData.emitFull({
       userId,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
+  };
 
   return {
     loading,
     publicData,
+    handler,
   };
 };

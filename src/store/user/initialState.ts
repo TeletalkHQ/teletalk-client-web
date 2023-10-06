@@ -21,6 +21,7 @@ export const initialState: UserState = {
     userId: "",
     username: "",
   },
+  isUserDataSettled: false,
   onlineUsers: [],
   selectedUserIdForActions: "",
   users: [],

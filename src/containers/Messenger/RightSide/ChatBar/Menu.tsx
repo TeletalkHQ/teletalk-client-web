@@ -25,7 +25,7 @@ const ChatBarMenu = () => {
       (i) => i.userId === messageStore.selectedChatInfo.userId
     )!;
 
-    userStore.setSelectedUserIdForActions(userItem.userId);
+    userStore.updateSelectedUserIdForActions(userItem.userId);
     globalStore.openDialog("removeContact");
   };
 

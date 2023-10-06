@@ -58,6 +58,7 @@ export interface UserState {
   addingContactWithCellphone: AddingContactWithCellphone;
   addingContactWithUserId: FullName;
   onlineUsers: OnlineUserList;
+  isUserDataSettled: boolean;
 }
 
 export type ExtendedCurrentUserData = CurrentUserData & StringMap;
@@ -71,20 +72,21 @@ export interface UserHandlers {
   removeBlock: VoidWithArg<BlacklistItem>;
   removeContact: VoidWithArg<RemoveContactIO["output"]["removedContact"]>;
   reset: VoidNoArgsFn;
-  setAddingContactWithCellphone: VoidWithArg<
+  updateAddingContactWithCellphone: VoidWithArg<
     Partial<AddingContactWithCellphone>
   >;
-  setAddingContactWithUserId: VoidWithArg<Partial<FullName>>;
-  setCurrentUserData: VoidWithArg<CurrentUserData>;
-  setSelectedUserIdForActions: VoidWithArg<UserId>;
-  setUsers: VoidWithArg<Users>;
+  updateAddingContactWithUserId: VoidWithArg<Partial<FullName>>;
+  updateCurrentUserData: VoidWithArg<CurrentUserData>;
+  updateIsUserDataSettled: VoidWithArg<boolean>;
+  updateSelectedUserIdForActions: VoidWithArg<UserId>;
+  addNewUsers: VoidWithArg<Users>;
   updateCurrentUserPublicData: VoidWithArg<UserPublicData>;
   updateCurrentUserAvatarSrc: VoidWithArg<{
     avatarSrc: AvatarSrc;
   }>;
-  updateUser: VoidWithArg<Partial<UserItem> & { userId: UserId }>;
   updateOnlineUser: VoidWithArg<OnlineUser>;
   updateOnlineUserList: VoidWithArg<OnlineUserList>;
+  updateUser: VoidWithArg<Partial<UserItem> & { userId: UserId }>;
 }
 
 export type UserSetState = StoreSetFn<UserState>;

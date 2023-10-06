@@ -52,7 +52,7 @@ export const initialState: GlobalState = {
     anchor: appConfigs.getConfigs().ui.drawerDefaultAnchor,
     open: false,
   },
-  isInitialized: true,
+  isInitialized: false,
   isOnline: false,
   loading: {
     color: "wheat",

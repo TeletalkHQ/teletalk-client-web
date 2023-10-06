@@ -27,11 +27,11 @@ export const useSetUserData = ({
       globalStore.isInitialized &&
       router.pathname.includes("messenger") &&
       storage.get("session")
-    )
+    ) {
       return getUserDataHandler.emitFull(
         {},
         (response) => {
-          userStore.setCurrentUserData(
+          userStore.updateCurrentUserData(
             extractor.currentUserData(response.data.user)
           );
 
@@ -55,12 +55,14 @@ export const useSetUserData = ({
 
           users.push(...usersThatExistOnlyInTheBlacklist);
 
-          userStore.setUsers(users);
+          userStore.addNewUsers(users);
+          userStore.updateIsUserDataSettled(true);
 
           successCb?.(response);
         },
         errorCb
       );
+    }
   };
 
   useEffect(() => {

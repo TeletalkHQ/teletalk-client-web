@@ -55,7 +55,7 @@ const Contacts = () => {
   };
 
   const handleContextMenu: ExtendedOnContextMenu<UserItem> = (event, u) => {
-    userStore.setSelectedUserIdForActions(u.userId);
+    userStore.updateSelectedUserIdForActions(u.userId);
     onContextMenu(event, createContextMenuList(u));
   };
 

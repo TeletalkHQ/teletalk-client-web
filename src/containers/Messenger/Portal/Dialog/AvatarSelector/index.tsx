@@ -1,6 +1,6 @@
-import Compressor from "compressorjs";
 import { useRef, useState } from "react";
 import AvatarEditor from "react-avatar-editor";
+import { compressor } from "utility-store";
 
 import { Template } from "~/components";
 import { useDialogState, useEmitter } from "~/hooks";
@@ -28,11 +28,7 @@ const AvatarSelector = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    new Compressor(file, {
-      maxWidth: 350,
-      maxHeight: 350,
-      mimeType: "png",
-      convertSize: 0.5,
+    compressor(file, {
       async success(file) {
         const src = await utils.convertFileToBase64(file);
         if (typeof src === "string") setAvatarSrc(src as string);

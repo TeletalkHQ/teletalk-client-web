@@ -2,6 +2,7 @@ import createCache from "@emotion/cache";
 import lodash from "lodash";
 import type { FullName, UnknownCellphone } from "teletalk-type-store";
 import { ScreamingSnakeCase } from "type-fest";
+import { utils as storeUtils } from "utility-store";
 
 import { appConfigs } from "~/classes/AppConfigs";
 import { envManager } from "~/classes/EnvironmentManager";
@@ -183,21 +184,8 @@ const printResponseErrors = (errors: SocketResponseErrors) => {
   });
 };
 
-const convertFileToBase64 = (file: File | Blob) => {
-  return new Promise((resolve, reject) => {
-    if (file) {
-      const Reader = new FileReader();
-      Reader.readAsDataURL(file);
-      Reader.onloadend = () => {
-        resolve(Reader.result);
-      };
-      Reader.onerror = reject;
-    }
-  });
-};
-
 export const utils = {
-  convertFileToBase64,
+  ...storeUtils,
   createEmotionCache,
   createOnChangeValidator,
   getDefaultValidatorErrorTypes,

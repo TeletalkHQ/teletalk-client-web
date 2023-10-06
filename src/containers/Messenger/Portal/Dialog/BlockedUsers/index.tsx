@@ -13,7 +13,7 @@ const BlockedUsers = () => {
   const dialogState = useDialogState("blockedUsers");
 
   const handleItemClick = (userId: UserId) => {
-    userStore.setSelectedUserIdForActions(userId);
+    userStore.updateSelectedUserIdForActions(userId);
     globalStore.openDialog("removeBlock");
   };
 

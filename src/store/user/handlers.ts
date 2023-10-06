@@ -5,17 +5,20 @@ import { UserHandlers, UserSetState } from "~/types/store/user";
 import { initialState } from "./initialState";
 
 export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
-  setCurrentUserData(userData) {
+  updateCurrentUserData(userData) {
     set({ currentUserData: userData });
   },
 
   updateCurrentUserAvatarSrc({ avatarSrc: src }) {
     set((prevState) => ({
-      currentUserData: { ...prevState.currentUserData, avatarSrc: src },
+      currentUserData: {
+        ...prevState.currentUserData,
+        avatarSrc: src,
+      },
     }));
   },
 
-  setSelectedUserIdForActions(u) {
+  updateSelectedUserIdForActions(u) {
     set(() => ({
       selectedUserIdForActions: u,
     }));
@@ -46,6 +49,12 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     this.updateUser({
       userId,
       isBlocked: false,
+    });
+  },
+
+  updateIsUserDataSettled(isUserDataSettled) {
+    set({
+      isUserDataSettled,
     });
   },
 
@@ -148,13 +157,13 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     set(initialState);
   },
 
-  setUsers(u) {
+  addNewUsers(u) {
     set((prevState) => ({
       users: [...prevState.users, ...u],
     }));
   },
 
-  setAddingContactWithCellphone(addingContact) {
+  updateAddingContactWithCellphone(addingContact) {
     set((prevState) => ({
       addingContactWithCellphone: {
         ...prevState.addingContactWithCellphone,
@@ -163,7 +172,7 @@ export const handlers: (set: UserSetState) => UserHandlers = (set) => ({
     }));
   },
 
-  setAddingContactWithUserId(addingContact) {
+  updateAddingContactWithUserId(addingContact) {
     set((prevState) => ({
       addingContactWithUserId: {
         ...prevState.addingContactWithUserId,
