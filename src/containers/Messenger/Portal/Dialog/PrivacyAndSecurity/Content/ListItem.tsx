@@ -10,7 +10,6 @@ interface Props {
 
 const ListItem: React.FC<Props> = ({ item, onItemClick }) => (
   <Box.ListItemButton
-    onClick={() => onItemClick(item.name)}
     style={{
       display: "flex",
       height: "65px",
@@ -18,6 +17,7 @@ const ListItem: React.FC<Props> = ({ item, onItemClick }) => (
       gap: 10,
       alignItems: "center",
     }}
+    onClick={() => onItemClick(item.name)}
   >
     <Box.Span
       style={{

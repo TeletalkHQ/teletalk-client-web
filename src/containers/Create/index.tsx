@@ -34,11 +34,11 @@ const Create = () => {
           <Icon.ArrowBack.Element />
         </Button.Icon>
       </Box.Div>
-      <Box.Flex sx={{ marginTop: 8 }} col ai="center">
+      <Box.Flex ai="center" col sx={{ marginTop: 8 }}>
         <Box.Div>
           <Icon.AccountCircleOutlined.Element
-            fontSize="large"
             color="primary"
+            fontSize="large"
           />
         </Box.Div>
         <Box.Container mw="xs">
@@ -57,10 +57,10 @@ const Create = () => {
             disabled={isCreateNewUserConfirmButtonDisabled()}
             loading={loading}
             loadingIndicatorText="Creating..."
-            onClick={handler}
             sx={{
               mt: 1,
             }}
+            onClick={handler}
           >
             Create
           </Button.Loading>

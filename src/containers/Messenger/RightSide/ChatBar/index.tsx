@@ -17,7 +17,6 @@ const ChatBar: React.FC<Props> = () => {
   return (
     <>
       <Box.Paper
-        onClick={handleChatBarClick}
         style={{
           alignItems: "center",
           borderRadius: 0,
@@ -27,6 +26,7 @@ const ChatBar: React.FC<Props> = () => {
           justifyContent: "space-between",
           padding: 5,
         }}
+        onClick={handleChatBarClick}
       >
         <ChatBarCloseButton />
 

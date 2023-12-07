@@ -15,10 +15,10 @@ const PhoneNumber: React.FC<Props> = ({ value, onChange }) => {
       autoComplete="tel-national"
       label="Phone Number"
       name="phoneNumber"
-      onChange={handleChange}
       required
       style={{ marginLeft: "5px" }}
       value={value}
+      onChange={handleChange}
     />
   );
 };

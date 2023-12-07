@@ -45,25 +45,25 @@ const AddContactWithCellphone = () => {
   return (
     <>
       <Template.Dialog
-        title={<Title />}
+        actions={
+          <Actions
+            isAddContactButtonDisabled={isSubmitDisabled}
+            loading={loading}
+            onAddContactClick={handleAddClick}
+            onCancelClick={handleClose}
+          />
+        }
         content={
           <Content
             contact={userStore.addingContactWithCellphone}
             onChange={handleChange}
           />
         }
-        actions={
-          <Actions
-            loading={loading}
-            onAddContactClick={handleAddClick}
-            onCancelClick={handleClose}
-            isAddContactButtonDisabled={isSubmitDisabled}
-          />
-        }
         open={dialogState.open}
         paperStyle={{
           height: "50vh",
         }}
+        title={<Title />}
         onAfterClose={resetStates}
       />
     </>

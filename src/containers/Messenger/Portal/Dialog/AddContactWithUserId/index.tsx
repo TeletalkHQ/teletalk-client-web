@@ -38,22 +38,22 @@ const AddContactWithUserId = () => {
   return (
     <>
       <Template.Dialog
-        title={<Title />}
+        actions={
+          <Actions
+            isConfirmDisabled={isConfirmDisabled}
+            loading={loading}
+            onCancel={globalStore.closeDialog}
+            onConfirm={handleConfirm}
+          />
+        }
         content={
           <Content
             contact={userStore.addingContactWithUserId}
             onChange={handleChange}
           />
         }
-        actions={
-          <Actions
-            onCancel={globalStore.closeDialog}
-            onConfirm={handleConfirm}
-            loading={loading}
-            isConfirmDisabled={isConfirmDisabled}
-          />
-        }
         open={dialogState.open}
+        title={<Title />}
       />
     </>
   );

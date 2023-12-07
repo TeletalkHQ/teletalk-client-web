@@ -7,7 +7,7 @@ interface Props {
   messageText: MessageText;
 }
 const Lower: React.FC<Props> = ({ messageText }) => (
-  <Box.Flex jc="space-between" style={{ width: "100%" }} ai="center">
+  <Box.Flex ai="center" jc="space-between" style={{ width: "100%" }}>
     <Typography.GreyTextParagraph>{messageText}</Typography.GreyTextParagraph>
     <Box.Div>
       <PushPinTwoToneIcon fontSize="medium" />

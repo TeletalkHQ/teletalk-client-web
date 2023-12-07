@@ -20,14 +20,14 @@ const LeftSide = () => {
   return (
     <>
       <Box.Grid
+        container
+        item
+        lg={3}
+        md={4}
+        sm={12}
         style={{
           height: "100vh",
         }}
-        container
-        item
-        sm={12}
-        md={4}
-        lg={3}
       >
         <Box.Flex col style={{ width: "100%", height: "100%" }}>
           <SearchBar onDrawerIconClick={handleDrawerIconClick} />

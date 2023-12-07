@@ -24,13 +24,13 @@ const Content: React.FC<Props> = ({
     <Box.Flex col gap="5px" style={{ maxWidth: "400px" }}>
       <Components.ServerStatus status={status} />
 
-      <Box.Flex width="100%" jc="space-between" ai="center">
-        <FormControl style={{ width: "25%" }} fullWidth>
+      <Box.Flex ai="center" jc="space-between" width="100%">
+        <FormControl fullWidth style={{ width: "25%" }}>
           <InputLabel>Protocol</InputLabel>
           <Input.Base.Select
             defaultValue={protocol}
-            label="Protocol"
             disabled={disabled}
+            label="Protocol"
             value={protocol}
             onChange={onSelectChange}
           >
@@ -43,9 +43,9 @@ const Content: React.FC<Props> = ({
         </FormControl>
 
         <Input.Base.Text
-          style={{ width: "73%" }}
           disabled={disabled}
           label="Url"
+          style={{ width: "73%" }}
           value={inputValue}
           onChange={onChange}
         />

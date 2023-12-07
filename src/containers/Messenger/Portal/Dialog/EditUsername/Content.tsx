@@ -9,7 +9,7 @@ interface Props {
 
 const Content: React.FC<Props> = ({ onChange, username, usernameLength }) => {
   return (
-    <Box.Flex style={{ maxWidth: 400 }} col>
+    <Box.Flex col style={{ maxWidth: 400 }}>
       <Input.Text.Username value={username} onChange={onChange} />
 
       <Typography.GreyTextParagraph>

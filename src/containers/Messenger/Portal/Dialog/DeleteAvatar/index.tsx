@@ -22,7 +22,6 @@ const DeleteAvatar = () => {
   return (
     <>
       <Template.Dialog
-        open={dialogState.open}
         actions={
           <Actions
             loading={loading}
@@ -31,6 +30,7 @@ const DeleteAvatar = () => {
           />
         }
         content={<Content />}
+        open={dialogState.open}
       />
     </>
   );

@@ -12,8 +12,8 @@ interface Props extends Omit<TextFieldProps, ""> {
 const Text: React.FC<Props> = ({ m = "dense", ...rest }) => {
   return (
     <TextField
-      margin={m || rest.margin}
       fullWidth
+      margin={m || rest.margin}
       {...rest}
       InputProps={{
         ...rest.InputProps,

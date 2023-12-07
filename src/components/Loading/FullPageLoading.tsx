@@ -11,8 +11,8 @@ const FullPageLoading = () => {
     <>
       {globalStore.loading.open && globalStore.loading.type === "FULL_PAGE" && (
         <Box.Flex
-          jc={"center"}
           ai={"center"}
+          jc={"center"}
           sx={(theme) => ({
             zIndex: theme.zIndex.tooltip + 1000,
             top: "0",

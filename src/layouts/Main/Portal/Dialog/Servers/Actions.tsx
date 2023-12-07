@@ -9,8 +9,8 @@ interface Props {
 const Actions: React.FC<Props> = ({ loading, onPingAllClick }) => {
   return (
     <Button.Loading
-      loadingIndicatorText="Pinging..."
       loading={loading}
+      loadingIndicatorText="Pinging..."
       onClick={onPingAllClick}
     >
       Ping all servers

@@ -62,17 +62,17 @@ const EditContactWithCellphone = () => {
   return (
     <>
       <Template.Dialog
-        title={<Title />}
-        content={<Content fullName={fullName} onChange={handleInputChange} />}
         actions={
           <Actions
+            isAddContactButtonDisabled={isSubmitDisabled}
             loading={loading}
             onAddContactClick={handleAddContactClick}
             onCancel={handleClose}
-            isAddContactButtonDisabled={isSubmitDisabled}
           />
         }
+        content={<Content fullName={fullName} onChange={handleInputChange} />}
         open={dialogState.open}
+        title={<Title />}
         onAfterClose={resetStates}
       />
     </>

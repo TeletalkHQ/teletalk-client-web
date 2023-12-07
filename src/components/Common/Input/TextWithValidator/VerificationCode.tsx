@@ -16,10 +16,10 @@ const VerificationCode: React.FC<Props> = ({ value, onChange }) => {
 
   return (
     <BaseComponent.Input.Text
-      required
+      autoFocus
       label="Verification Code"
       name="verificationCode"
-      autoFocus
+      required
       value={value}
       onChange={handleChange}
     />

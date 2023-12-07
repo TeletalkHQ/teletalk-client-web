@@ -25,13 +25,13 @@ const DrawerList: React.FC<Props> = ({ toggleDrawer, onClick }) => (
   <Box.List style={{ padding: 10 }}>
     {drawerList.map(({ Icon, disabled }, index) => (
       <Box.ListItemButton
+        key={index}
         disabled={disabled}
         style={{
           alignItems: "center",
           borderRadius: "10px",
           height: "40px",
         }}
-        key={index}
         onClick={(event) => {
           toggleDrawer(event, false);
           onClick(Icon.name);

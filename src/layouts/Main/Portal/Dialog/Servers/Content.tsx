@@ -13,10 +13,10 @@ const Content: React.FC<Props> = ({ list, onListItemClick, disabled }) => {
       {list.map((item, index) => {
         return (
           <Box.ListItemButton
-            disabled={disabled}
-            onClick={() => onListItemClick(item.url)}
-            style={{ borderRadius: "10px" }}
             key={index}
+            disabled={disabled}
+            style={{ borderRadius: "10px" }}
+            onClick={() => onListItemClick(item.url)}
           >
             <Box.ListItemText>{item.url}</Box.ListItemText>
             <Box.ListItemText style={{ textAlign: "end" }}>

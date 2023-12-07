@@ -21,8 +21,8 @@ export default function _app(props: CustomAppProps) {
 
   return (
     <SnackbarProvider
-      maxSnack={appConfigs.getConfigs().ui.maxNotification}
       dense
+      maxSnack={appConfigs.getConfigs().ui.maxNotification}
       preventDuplicate
     >
       <ReactQueryProvider>

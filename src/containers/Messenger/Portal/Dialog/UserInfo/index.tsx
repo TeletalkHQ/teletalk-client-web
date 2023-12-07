@@ -19,17 +19,17 @@ const UserInfo = () => {
   return (
     <>
       <Template.Dialog
-        title={<Title />}
-        open={dialogState.open}
+        actions={<Actions onClose={globalStore.closeDialog} />}
         content={
           <Content
-            connectionStatus={connectionStatus}
             avatarSrc={publicData.avatarSrc}
+            connectionStatus={connectionStatus}
             fullName={userUtils.concatFirstNameWithLastName(publicData)}
             fullNumber={userUtils.concatCountryCodeWithPhoneNumber(publicData)}
           />
         }
-        actions={<Actions onClose={globalStore.closeDialog} />}
+        open={dialogState.open}
+        title={<Title />}
       />
     </>
   );

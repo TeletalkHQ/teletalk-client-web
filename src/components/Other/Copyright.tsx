@@ -9,9 +9,9 @@ interface Props extends TypographyProps {}
 const Copyright: React.FC<Props> = (props) => {
   return (
     <BaseComponent.Typography.Base
-      variant="body2"
-      color="text.secondary"
       align="center"
+      color="text.secondary"
+      variant="body2"
       {...props}
     >
       {"Copyright © "}

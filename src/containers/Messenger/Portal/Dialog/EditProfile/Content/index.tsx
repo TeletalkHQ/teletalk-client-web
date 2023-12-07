@@ -27,11 +27,11 @@ const Content: React.FC<Props> = ({
   return (
     <>
       <Box.Flex
-        gap={1}
+        ai="center"
         col
+        gap={1}
         jc="center"
         style={{ maxWidth: "400px" }}
-        ai="center"
       >
         <Header
           avatarSrc={avatarSrc}

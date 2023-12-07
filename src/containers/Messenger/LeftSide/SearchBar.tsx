@@ -17,10 +17,10 @@ const SearchBar: React.FC<Props> = ({ onDrawerIconClick }) => {
       }}
     >
       <Box.Flex
-        gap={1}
-        style={{ width: "100%" }}
-        jc="space-between"
         ai="center"
+        gap={1}
+        jc="space-between"
+        style={{ width: "100%" }}
       >
         <Box.Div style={{ padding: "5px 15px" }}>
           <Button.Icon onClick={onDrawerIconClick}>

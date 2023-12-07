@@ -10,11 +10,11 @@ interface Props {
 }
 const Header: React.FC<Props> = ({ avatarSrc, fullName, onAvatarClick }) => {
   return (
-    <Box.Flex col gap={1} jc="center" ai="center">
+    <Box.Flex ai="center" col gap={1} jc="center">
       <Box.Avatar
         src={avatarSrc}
-        onClick={onAvatarClick}
         style={{ width: "100px", height: "100px" }}
+        onClick={onAvatarClick}
       />
 
       <Typography.Bold

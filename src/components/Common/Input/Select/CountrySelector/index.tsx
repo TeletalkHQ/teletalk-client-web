@@ -46,7 +46,7 @@ const CountrySelector: React.FC<Props> = ({
   };
 
   const renderOption = (props: ListItemProps, option: CountryItem) => (
-    <Option key={option.countryName} props={props} option={option} />
+    <Option key={option.countryName} option={option} props={props} />
   );
 
   const selectedCountry =
@@ -58,12 +58,12 @@ const CountrySelector: React.FC<Props> = ({
       fullWidth
       getOptionLabel={getOptionLabel}
       inputValue={countryName}
-      onChange={handleSelectCountryOnChange}
-      onInputChange={handleCountryNameOnChange}
       options={countries}
       renderInput={SelectorInput}
       renderOption={renderOption}
       value={selectedCountry}
+      onChange={handleSelectCountryOnChange}
+      onInputChange={handleCountryNameOnChange}
     />
   );
 };

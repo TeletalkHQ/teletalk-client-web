@@ -11,8 +11,8 @@ const List: React.FC<Props> = ({ onSettingItemClick }) => {
     <>
       {settingsList.map((item, i) => (
         <ListItem
-          disabled={item.disabled}
           key={i}
+          disabled={item.disabled}
           displayName={item.displayName}
           Icon={item.Icon}
           onClick={() => onSettingItemClick(item)}

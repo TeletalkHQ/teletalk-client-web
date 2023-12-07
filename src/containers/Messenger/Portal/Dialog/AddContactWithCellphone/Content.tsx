@@ -25,8 +25,8 @@ const Content: React.FC<Props> = ({ contact, onChange }) => {
           <Input.Text.Cellphone
             countryCode={contact.countryCode}
             countryName={contact.countryName}
-            onChange={onChange}
             phoneNumber={contact.phoneNumber}
+            onChange={onChange}
           />
         </Box.Flex>
       </Box.Div>

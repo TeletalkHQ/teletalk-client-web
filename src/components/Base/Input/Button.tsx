@@ -10,12 +10,12 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <MuiButton
       {...rest}
+      fullWidth={fullWidth}
+      size={size}
       style={{
         borderRadius: "10px",
         ...style,
       }}
-      fullWidth={fullWidth}
-      size={size}
       variant={variant}
     />
   );

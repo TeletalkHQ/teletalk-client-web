@@ -20,11 +20,11 @@ const H5: React.FC<Props> = ({
   return (
     <Base
       {...rest}
-      variant={v || variant || "h5"}
       sx={{
         fontWeight: fw || fontWeight || "900",
         textAlign: ta || textAlign || "center",
       }}
+      variant={v || variant || "h5"}
     />
   );
 };

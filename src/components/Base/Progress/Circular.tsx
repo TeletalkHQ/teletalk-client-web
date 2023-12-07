@@ -8,7 +8,7 @@ const Circular: React.FC<CircularProgressProps> = ({
   color = "info",
   ...rest
 }) => {
-  return <MuiCircularProgress {...rest} size={size} color={color} />;
+  return <MuiCircularProgress {...rest} color={color} size={size} />;
 };
 
 export default Circular;

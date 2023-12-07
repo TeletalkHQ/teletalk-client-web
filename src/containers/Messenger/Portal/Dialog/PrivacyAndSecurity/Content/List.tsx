@@ -11,7 +11,7 @@ interface Props {
 const List: React.FC<Props> = ({ onItemClick }) => (
   <Box.List>
     {privacyAndSecurityList.map((item, index) => (
-      <ListItem key={index} onItemClick={onItemClick} item={item} />
+      <ListItem key={index} item={item} onItemClick={onItemClick} />
     ))}
   </Box.List>
 );

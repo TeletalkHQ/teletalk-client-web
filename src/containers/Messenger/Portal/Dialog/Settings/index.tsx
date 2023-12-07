@@ -21,7 +21,7 @@ const Settings = () => {
 
   return (
     <Template.Dialog
-      title={<Title />}
+      actions={<Actions onClose={globalStore.closeDialog} />}
       content={
         <Content
           avatarSrc={userStore.currentUserData.avatarSrc}
@@ -35,8 +35,8 @@ const Settings = () => {
           onSettingItemClick={handleSettingItemClick}
         />
       }
-      actions={<Actions onClose={globalStore.closeDialog} />}
       open={dialogState.open}
+      title={<Title />}
     />
   );
 };

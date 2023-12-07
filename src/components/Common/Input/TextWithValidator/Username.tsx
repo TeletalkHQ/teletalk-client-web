@@ -14,10 +14,6 @@ const Username: React.FC<Props> = ({ value, onChange }) => {
   return (
     <BaseComponent.Input.Text
       autoFocus
-      name="username"
-      label="Username"
-      onChange={handleChange}
-      value={value}
       InputProps={{
         startAdornment: (
           <BaseComponent.Input.Adornment position="start">
@@ -25,6 +21,10 @@ const Username: React.FC<Props> = ({ value, onChange }) => {
           </BaseComponent.Input.Adornment>
         ),
       }}
+      label="Username"
+      name="username"
+      value={value}
+      onChange={handleChange}
     />
   );
 };

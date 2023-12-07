@@ -30,7 +30,6 @@ const RemoveContact = () => {
   return (
     <>
       <Template.Dialog
-        open={dialogState.open}
         actions={
           <Actions
             loading={loading}
@@ -45,6 +44,7 @@ const RemoveContact = () => {
             )}
           />
         }
+        open={dialogState.open}
       />
     </>
   );

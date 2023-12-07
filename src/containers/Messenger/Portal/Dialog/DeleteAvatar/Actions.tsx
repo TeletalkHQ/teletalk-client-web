@@ -19,8 +19,8 @@ const Actions: React.FC<Props> = ({ loading, onClose, onDelete }) => (
       }}
     >
       <Button.SecondaryConfirm
-        loadingIndicatorText="Deleting..."
         loading={loading}
+        loadingIndicatorText="Deleting..."
         onClick={onDelete}
       />
     </Box.Div>

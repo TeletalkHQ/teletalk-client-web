@@ -2,7 +2,7 @@ import { Box, Typography } from "~/components";
 
 const Title = () => (
   <>
-    <Box.Flex jc="center" ai="center">
+    <Box.Flex ai="center" jc="center">
       <Typography.H5>Contacts</Typography.H5>
     </Box.Flex>
   </>

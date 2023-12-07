@@ -14,10 +14,7 @@ const LoadingButton: React.FC<CustomLoadingButtonProps> = ({
   return (
     <MuiLoadingButton
       {...props}
-      style={{
-        borderRadius: "10px",
-        ...props.style,
-      }}
+      fullWidth
       loadingIndicator={
         <>
           <Box.Span
@@ -34,8 +31,11 @@ const LoadingButton: React.FC<CustomLoadingButtonProps> = ({
           />
         </>
       }
-      fullWidth
       size={size}
+      style={{
+        borderRadius: "10px",
+        ...props.style,
+      }}
       variant={variant}
     />
   );

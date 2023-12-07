@@ -25,7 +25,7 @@ const SignIn = () => {
 
   return (
     <Box.Container mw="xl">
-      <Box.Flex mt={8} ai="center" col>
+      <Box.Flex ai="center" col mt={8}>
         <Box.Avatar
           sx={(theme) => ({
             m: 1,
@@ -47,19 +47,19 @@ const SignIn = () => {
             <Input.Text.Cellphone
               countryCode={authStore.countryCode}
               countryName={authStore.countryName}
-              onChange={handleChange}
               phoneNumber={authStore.phoneNumber}
+              onChange={handleChange}
             />
 
             <Button.Loading
               disabled={isSignInSubmitButtonDisabled()}
               loading={loading}
               loadingIndicatorText="Sign in..."
-              onClick={handler}
               sx={{
                 mb: 1,
                 mt: 2,
               }}
+              onClick={handler}
             >
               Next
             </Button.Loading>

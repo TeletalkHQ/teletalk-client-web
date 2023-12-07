@@ -9,11 +9,11 @@ interface Props {
 const Actions: React.FC<Props> = ({ onClose, onAddContactClick }) => (
   <>
     <Box.Flex
+      ai="center"
+      jc="space-between"
       sx={{
         width: "100%",
       }}
-      jc="space-between"
-      ai="center"
     >
       <Button.PrimaryClose onClick={onClose} />
 

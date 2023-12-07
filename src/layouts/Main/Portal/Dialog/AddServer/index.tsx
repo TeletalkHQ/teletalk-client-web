@@ -69,7 +69,6 @@ const AddServer = () => {
 
   return (
     <Template.Dialog
-      title={<Title />}
       actions={
         <Actions
           isAddDisabled={isAddDisabled}
@@ -85,13 +84,14 @@ const AddServer = () => {
         <Content
           disabled={isInputsDisabled}
           inputValue={inputValue}
-          onChange={handleInputChange}
-          onSelectChange={handleSelectChange}
           protocol={protocol}
           status={status}
+          onChange={handleInputChange}
+          onSelectChange={handleSelectChange}
         />
       }
       open={dialogState.open}
+      title={<Title />}
       onClose={handleClose}
     />
   );

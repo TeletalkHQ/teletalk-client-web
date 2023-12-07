@@ -22,10 +22,10 @@ const CountryCode: React.FC<Props> = ({ value, onChange }) => {
       }}
       label="Code"
       name="countryCode"
-      onChange={handleChange}
       required
       style={{ width: "90px" }}
       value={value}
+      onChange={handleChange}
     />
   );
 };

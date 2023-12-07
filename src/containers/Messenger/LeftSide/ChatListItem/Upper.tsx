@@ -6,11 +6,11 @@ interface Props {
 
 const Upper: React.FC<Props> = ({ fullName }) => (
   <Box.Flex
+    ai="center"
+    jc="space-between"
     style={{
       width: "100%",
     }}
-    jc="space-between"
-    ai="center"
   >
     <Typography.Bold>{fullName}</Typography.Bold>
     <Box.Div>

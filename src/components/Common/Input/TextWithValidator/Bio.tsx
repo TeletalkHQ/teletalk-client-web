@@ -13,12 +13,6 @@ const Bio: React.FC<Props> = ({ onChange, value }) => {
 
   return (
     <BaseComponent.Input.Text
-      name="bio"
-      multiline
-      maxRows={3}
-      label="Bio"
-      onChange={handleChange}
-      value={value}
       InputProps={{
         endAdornment: (
           <BaseComponent.Input.Adornment position="end">
@@ -26,6 +20,12 @@ const Bio: React.FC<Props> = ({ onChange, value }) => {
           </BaseComponent.Input.Adornment>
         ),
       }}
+      label="Bio"
+      maxRows={3}
+      multiline
+      name="bio"
+      value={value}
+      onChange={handleChange}
     />
   );
 };

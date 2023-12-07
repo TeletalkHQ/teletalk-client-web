@@ -61,7 +61,12 @@ const Contacts = () => {
 
   return (
     <Template.Dialog
-      title={<Title />}
+      actions={
+        <Actions
+          onAddContactClick={handleAddContactClick}
+          onClose={globalStore.closeDialog}
+        />
+      }
       content={
         <Content
           contacts={userStore.users.filter((i) => i.isContact)}
@@ -69,16 +74,11 @@ const Contacts = () => {
           onContextMenu={handleContextMenu}
         />
       }
-      actions={
-        <Actions
-          onClose={globalStore.closeDialog}
-          onAddContactClick={handleAddContactClick}
-        />
-      }
       open={dialogState.open}
       paperStyle={{
         height: "90vh",
       }}
+      title={<Title />}
     />
   );
 };

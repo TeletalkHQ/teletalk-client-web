@@ -21,9 +21,9 @@ const Content: React.FC<Props> = ({
   return (
     <>
       <Box.Flex
+        ai="center"
         col
         jc="center"
-        ai="center"
         style={{
           width: "100%",
           minWidth: "300px",
@@ -32,18 +32,18 @@ const Content: React.FC<Props> = ({
       >
         {avatarSrc ? (
           <AvatarEditor
-            ref={editor}
-            style={{
-              borderRadius: "10px",
-            }}
-            image={avatarSrc}
-            width={200}
-            height={200}
             border={25}
             borderRadius={222}
             color={[255, 255, 255, 0.6]} // RGBA
-            scale={1.2}
+            height={200}
+            image={avatarSrc}
+            ref={editor}
             rotate={0}
+            scale={1.2}
+            style={{
+              borderRadius: "10px",
+            }}
+            width={200}
           />
         ) : (
           <>
@@ -59,10 +59,10 @@ const Content: React.FC<Props> = ({
         )}
 
         <input
-          type="file"
-          ref={fileInputRef}
           accept="image/png, image/jpeg"
+          ref={fileInputRef}
           style={{ display: "none" }}
+          type="file"
           onChange={onFileChange}
         />
       </Box.Flex>

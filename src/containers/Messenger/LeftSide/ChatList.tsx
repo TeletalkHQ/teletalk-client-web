@@ -29,16 +29,16 @@ const ChatList: React.FC<Props> = ({
 
         return (
           <ChatListItem
+            key={index}
+            messageText={lastMessage.messageText}
+            selected={selectedUserToChat.userId === targetUserId}
+            userId={targetUserId}
             onClick={() =>
               onChatListItemClick({
                 chatId: p.chatId,
                 userId: targetUserId,
               })
             }
-            key={index}
-            userId={targetUserId}
-            messageText={lastMessage.messageText}
-            selected={selectedUserToChat.userId === targetUserId}
           />
         );
       })}

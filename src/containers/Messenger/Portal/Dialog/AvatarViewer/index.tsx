@@ -21,7 +21,6 @@ const AvatarViewer = () => {
   return (
     <>
       <Template.Dialog
-        open={dialogState.open}
         actions={
           <Actions
             onClose={globalStore.closeDialog}
@@ -30,6 +29,7 @@ const AvatarViewer = () => {
           />
         }
         content={<Content avatarSrc={userStore.currentUserData.avatarSrc} />}
+        open={dialogState.open}
       />
     </>
   );

@@ -10,13 +10,13 @@ interface Props {
 
 const PersonalData: React.FC<Props> = ({ fullName, fullNumber, avatarSrc }) => (
   <Box.Flex
-    col
     ai="center"
+    col
+    gap={1}
     jc="center"
     style={{
       padding: 10,
     }}
-    gap={1}
   >
     <Box.Div>
       <Box.Avatar src={avatarSrc} />

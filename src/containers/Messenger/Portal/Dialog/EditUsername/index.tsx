@@ -27,22 +27,22 @@ const EditUsername = () => {
   return (
     <>
       <Template.Dialog
-        title={<Title />}
-        open={dialogState.open}
-        content={
-          <Content
-            usernameLength={stuffStore.models.username.minLength}
-            username={settingsState.profile.username}
-            onChange={handleInputChange}
-          />
-        }
         actions={
           <Actions
             loading={loading}
-            onSaveClick={handleSaveClick}
             onCancel={globalStore.closeDialog}
+            onSaveClick={handleSaveClick}
           />
         }
+        content={
+          <Content
+            username={settingsState.profile.username}
+            usernameLength={stuffStore.models.username.minLength}
+            onChange={handleInputChange}
+          />
+        }
+        open={dialogState.open}
+        title={<Title />}
       />
     </>
   );

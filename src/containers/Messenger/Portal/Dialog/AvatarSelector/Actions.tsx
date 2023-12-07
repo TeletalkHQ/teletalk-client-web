@@ -19,8 +19,8 @@ const Actions: React.FC<Props> = ({
 
     <Button.Primary
       disabled={isSaveDisabled}
-      loadingIndicatorText="Saving..."
       loading={loading}
+      loadingIndicatorText="Saving..."
       onClick={onSave}
     >
       Save

@@ -9,10 +9,10 @@ interface Props {
 const Content: React.FC<Props> = ({ bio, onChange }) => {
   return (
     <Box.Flex
+      col
       style={{
         maxWidth: 400,
       }}
-      col
     >
       <Input.Text.Bio value={bio} onChange={onChange} />
       <Typography.GreyTextParagraph>

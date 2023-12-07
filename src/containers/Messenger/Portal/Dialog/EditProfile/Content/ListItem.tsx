@@ -21,7 +21,6 @@ const ListItem: React.FC<Props> = ({
   <Box.ListItemButton
     {...rest}
     disabled={disabled}
-    onClick={onClick}
     style={{
       alignItems: "center",
       borderRadius: "10px",
@@ -30,15 +29,16 @@ const ListItem: React.FC<Props> = ({
       height: "65px",
       width: "100%",
     }}
+    onClick={onClick}
   >
     <Icon style={{ fontSize: 30 }} />
     <Box.Flex
+      jc="space-between"
       style={{
         gap: 10,
         minWidth: 0,
         width: "90%",
       }}
-      jc="space-between"
     >
       <Box.Span style={{ minWidth: "50px" }}>{label}</Box.Span>
       <Box.Span

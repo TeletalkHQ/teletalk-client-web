@@ -30,10 +30,10 @@ const Flex: React.FC<Props> = ({
 
   return (
     <Box
-      gap={gap}
-      flexDirection={boxFlexDirection}
-      justifyContent={boxJustifyContent}
       alignItems={boxAlignItems}
+      flexDirection={boxFlexDirection}
+      gap={gap}
+      justifyContent={boxJustifyContent}
       {...props}
       display="flex"
     />

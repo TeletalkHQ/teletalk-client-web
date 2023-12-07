@@ -24,7 +24,6 @@ const ListItem: React.FC<Props> = ({
 
   return (
     <Box.ListItemButton
-      onContextMenu={onContextMenu}
       style={{
         borderRadius: "10px",
         display: "flex",
@@ -32,18 +31,19 @@ const ListItem: React.FC<Props> = ({
         height: "65px",
       }}
       onClick={onContactClick}
+      onContextMenu={onContextMenu}
     >
       <Box.Div>
         <Box.Avatar src={avatarSrc} />
       </Box.Div>
 
       <Box.Div style={{ width: "100%" }}>
-        <Box.Flex jc="space-between" ai="center">
+        <Box.Flex ai="center" jc="space-between">
           <Typography.Bold style={{ fontSize: 18 }}>{fullName}</Typography.Bold>
           {/* <Box.Div>time</Box.Div> */}
         </Box.Flex>
 
-        <Box.Flex jc="space-between" ai="center">
+        <Box.Flex ai="center" jc="space-between">
           <Box.Div>{lastSeen}</Box.Div>
           {/* <Box.Div>icons</Box.Div> */}
         </Box.Flex>

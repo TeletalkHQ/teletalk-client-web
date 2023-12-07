@@ -42,21 +42,21 @@ const ChatBarMenu = () => {
       }}
     >
       <Button.Icon
-        aria-label="more"
-        id="long-button"
         aria-controls={isOpen ? "long-menu" : undefined}
         aria-expanded={isOpen ? "true" : undefined}
         aria-haspopup="true"
+        aria-label="more"
+        id="long-button"
         onClick={handleClick}
       >
         <Icon.MoreVertical.Element />
       </Button.Icon>
       <Box.Menu
+        anchorEl={anchorEl}
         id="long-menu"
         MenuListProps={{
           "aria-labelledby": "long-button",
         }}
-        anchorEl={anchorEl}
         open={isOpen}
         onClose={handleClose}
       >

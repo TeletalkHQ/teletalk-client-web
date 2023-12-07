@@ -60,7 +60,6 @@ const AvatarSelector = () => {
   return (
     <>
       <Template.Dialog
-        open={dialogState.open}
         actions={
           <Actions
             isSaveDisabled={!avatarSrc}
@@ -71,13 +70,14 @@ const AvatarSelector = () => {
         }
         content={
           <Content
-            onOpenFileSelector={handleOpenFileSelector}
-            fileInputRef={fileInputRef}
             avatarSrc={avatarSrc}
             editor={editor}
+            fileInputRef={fileInputRef}
             onFileChange={handleFileChange}
+            onOpenFileSelector={handleOpenFileSelector}
           />
         }
+        open={dialogState.open}
       />
     </>
   );

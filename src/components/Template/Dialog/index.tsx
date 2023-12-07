@@ -65,7 +65,6 @@ const Dialog: React.FC<Props> = ({
         onClose: isClosable ? handleClose : undefined,
       }}
       // onEscapeKeyDown={onEscapeKeyDown}
-      onKeyDown={onKeyDown}
       open={open}
       PaperProps={{
         style: {
@@ -78,6 +77,7 @@ const Dialog: React.FC<Props> = ({
       sx={{ ...dialogStyle }}
       TransitionComponent={Transition}
       transitionDuration={transitionDuration || 500}
+      onKeyDown={onKeyDown}
     >
       <Title>{title}</Title>
       <Content>{content}</Content>

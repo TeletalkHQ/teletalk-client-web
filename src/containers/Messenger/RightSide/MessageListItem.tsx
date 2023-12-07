@@ -21,7 +21,7 @@ const MessageListItem: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <Box.Flex style={{ padding: 3 }} justifyContent={justify}>
+      <Box.Flex justifyContent={justify} style={{ padding: 3 }}>
         {/* <Transitions.Slide
           direction={transitionDirection}
           in={true}
@@ -38,10 +38,10 @@ const MessageListItem: React.FC<Props> = ({
           </Typography.Base>
 
           <Box.Flex
-            style={{ fontSize: 12 }}
-            justifyContent="flex-end"
-            gap={0.2}
             alignItems="center"
+            gap={0.2}
+            justifyContent="flex-end"
+            style={{ fontSize: 12 }}
           >
             <Typography.GreyTextParagraph>
               {messageTime || "12:24"}

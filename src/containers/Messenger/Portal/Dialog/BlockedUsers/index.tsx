@@ -20,9 +20,9 @@ const BlockedUsers = () => {
   return (
     <>
       <Template.Dialog
-        open={dialogState.open}
         actions={<Actions onClose={globalStore.closeDialog} />}
         content={<Content onItemLick={handleItemClick} />}
+        open={dialogState.open}
       />
     </>
   );

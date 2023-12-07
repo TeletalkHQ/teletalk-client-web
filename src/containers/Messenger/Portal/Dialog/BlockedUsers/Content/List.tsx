@@ -19,9 +19,9 @@ const List: React.FC<Props> = ({ onItemLick }) => {
         .filter((item) => item.isBlocked)
         .map((item, index) => (
           <ListItem
-            onItemLick={() => onItemLick(item.userId)}
             key={index}
             userItem={item}
+            onItemLick={() => onItemLick(item.userId)}
           />
         ))}
     </Box.List>

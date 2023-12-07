@@ -64,11 +64,11 @@ const Verify = () => {
               disabled={isVerifySubmitButtonDisabled()}
               loading={loading}
               loadingIndicatorText="Verifying..."
-              onClick={handler}
               sx={{
                 mb: 2,
                 mt: 2,
               }}
+              onClick={handler}
             >
               Verify
             </Button.Loading>

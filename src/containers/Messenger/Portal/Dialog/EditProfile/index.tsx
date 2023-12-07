@@ -42,17 +42,17 @@ const EditProfile = () => {
   return (
     <>
       <Template.Dialog
-        title={<Title />}
-        open={dialogState.open}
+        actions={<Actions onCancel={globalStore.closeDialog} />}
         content={
           <Content
             avatarSrc={userStore.currentUserData.avatarSrc}
+            profile={settingsStore.profile}
             onAvatarClick={handleAvatarClick}
             onClick={handleItemClick}
-            profile={settingsStore.profile}
           />
         }
-        actions={<Actions onCancel={globalStore.closeDialog} />}
+        open={dialogState.open}
+        title={<Title />}
       />
     </>
   );

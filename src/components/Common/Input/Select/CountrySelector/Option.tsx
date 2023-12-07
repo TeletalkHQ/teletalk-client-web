@@ -21,10 +21,10 @@ const Option: React.FC<Props> = ({ option, props }) => (
         }}
       >
         <BaseComponent.Box.Img
-          loading="lazy"
           alt={`${option.countryName}`}
-          src={`https://flagcdn.com/w20/${option.countryShortName.toLowerCase()}.png`}
           height={20}
+          loading="lazy"
+          src={`https://flagcdn.com/w20/${option.countryShortName.toLowerCase()}.png`}
           width={20}
         />
       </BaseComponent.Box.Span>

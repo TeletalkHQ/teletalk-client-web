@@ -88,12 +88,12 @@ const Servers = () => {
       content={
         <Content
           disabled={isPinging}
-          onListItemClick={handleServerItemClick}
           list={list.current}
+          onListItemClick={handleServerItemClick}
         />
       }
-      title={<Title />}
       open={dialogState.open}
+      title={<Title />}
       onClose={handleClose}
     />
   );

@@ -29,13 +29,10 @@ const AutoComplete = ({ activityInputValue, finalActivities, onChange }) => {
   return (
     <>
       <MuiAutocomplete
-        inputValue={activityInputValue}
-        onInputChange={(_e, value) => onChange(value)}
-        options={finalActivities}
-        groupBy={(activity) => activity.header}
         getOptionLabel={(activity) => activity.headerContent}
-        style={{ width: 300 }}
-        size="small"
+        groupBy={(activity) => activity.header}
+        inputValue={activityInputValue}
+        options={finalActivities}
         renderInput={(params) => (
           <TextField variant="outlined" {...params} label={"activities"} />
         )}
@@ -44,7 +41,7 @@ const AutoComplete = ({ activityInputValue, finalActivities, onChange }) => {
           const parts = parse(headerContent, matches);
 
           return (
-            <Tooltip title={headerContent} placement="top">
+            <Tooltip placement="top" title={headerContent}>
               <ListItem className={classes.activityItem} {...props}>
                 <Box dir="ltr">
                   {parts.map((part, index) => (
@@ -60,6 +57,9 @@ const AutoComplete = ({ activityInputValue, finalActivities, onChange }) => {
             </Tooltip>
           );
         }}
+        size="small"
+        style={{ width: 300 }}
+        onInputChange={(_e, value) => onChange(value)}
       />
     </>
   );

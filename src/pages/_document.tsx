@@ -23,9 +23,9 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
   return (
     <Html lang="en">
       <Head>
-        <meta name="theme-color" content={theme.palette.primary.main} />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <meta name="emotion-insertion-point" content="" />
+        <meta content={theme.palette.primary.main} name="theme-color" />
+        <link href="/favicon.ico" rel="shortcut icon" />
+        <meta content="" name="emotion-insertion-point" />
         {emotionStyleTags}
       </Head>
       <body>
@@ -56,9 +56,9 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   const emotionStyles = extractCriticalToChunks(initialProps.html);
   const emotionStyleTags = emotionStyles.styles.map((style: any) => (
     <style
-      data-emotion={`${style.key} ${style.ids.join(" ")}`}
       key={style.key}
       dangerouslySetInnerHTML={{ __html: style.css }}
+      data-emotion={`${style.key} ${style.ids.join(" ")}`}
     />
   ));
 

@@ -19,8 +19,8 @@ const Actions: React.FC<Props> = ({ loading, onClose, onLogout }) => (
       }}
     >
       <Button.Secondary
-        loadingIndicatorText="Logging out..."
         loading={loading}
+        loadingIndicatorText="Logging out..."
         onClick={onLogout}
       >
         Log out

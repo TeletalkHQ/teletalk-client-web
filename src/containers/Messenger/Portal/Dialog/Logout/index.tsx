@@ -23,7 +23,6 @@ const Logout = () => {
   return (
     <>
       <Template.Dialog
-        open={dialogState.open}
         actions={
           <Actions
             loading={loading}
@@ -32,6 +31,7 @@ const Logout = () => {
           />
         }
         content={<Content />}
+        open={dialogState.open}
       />
     </>
   );

@@ -26,21 +26,21 @@ const EditFullName = () => {
   return (
     <>
       <Template.Dialog
-        title={<Title />}
-        open={dialogState.open}
+        actions={
+          <Actions
+            loading={loading}
+            onCancel={globalStore.closeDialog}
+            onSaveClick={handleSaveClick}
+          />
+        }
         content={
           <Content
             fullName={settingsState.profile}
             onChange={handleInputChange}
           />
         }
-        actions={
-          <Actions
-            loading={loading}
-            onSaveClick={handleSaveClick}
-            onCancel={globalStore.closeDialog}
-          />
-        }
+        open={dialogState.open}
+        title={<Title />}
       />
     </>
   );

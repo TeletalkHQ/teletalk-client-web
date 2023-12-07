@@ -58,13 +58,13 @@ const Cellphone: React.FC<Props> = ({
       <CountrySelector
         countryCode={countryCode}
         countryName={countryName}
-        onSelectChange={handleSelectedCountryOnChange}
         countryNameOnChange={handleCountryNameOnChange}
+        onSelectChange={handleSelectedCountryOnChange}
       />
 
       <BaseComponent.Box.Flex jc="space-between" style={{ width: "100%" }}>
         <CountryCode value={countryCode} onChange={handleCountryCodeOnChange} />
-        <PhoneNumber onChange={handlePhoneNumberOnChange} value={phoneNumber} />
+        <PhoneNumber value={phoneNumber} onChange={handlePhoneNumberOnChange} />
       </BaseComponent.Box.Flex>
     </>
   );

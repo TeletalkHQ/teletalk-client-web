@@ -25,7 +25,7 @@ const MessageInput = () => {
 
   return (
     <Box.Paper style={{ borderRadius: 0 }}>
-      <Box.Flex gap={1} style={{ padding: 5 }} jc="space-between" ai="center">
+      <Box.Flex ai="center" gap={1} jc="space-between" style={{ padding: 5 }}>
         <Box.Div>
           <Button.Icon onClick={() => {}}>
             <Icon.AttachFile.Element />
@@ -34,14 +34,14 @@ const MessageInput = () => {
 
         <Box.Div style={{ width: "100%" }}>
           <Input.Base.Text
+            autoFocus
+            maxRows={8}
+            multiline
             placeholder={
               !messageStore.messageInputTextValue ? "Message..." : " "
             }
-            multiline
-            maxRows={8}
-            autoFocus
-            onChange={handleInputChange}
             value={messageStore.messageInputTextValue}
+            onChange={handleInputChange}
           />
         </Box.Div>
 

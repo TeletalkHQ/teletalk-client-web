@@ -17,12 +17,12 @@ const Actions: React.FC<Props> = ({
   return (
     <>
       <Box.Flex
+        ai="center"
+        gap={1}
+        jc="flex-end"
         style={{
           width: "100%",
         }}
-        gap={1}
-        jc="flex-end"
-        ai="center"
       >
         <Button.SecondaryCancel onClick={onCancel} />
 

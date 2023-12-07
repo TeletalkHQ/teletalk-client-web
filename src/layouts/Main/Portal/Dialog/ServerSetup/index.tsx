@@ -73,22 +73,22 @@ const ServerSetup = () => {
           <Actions
             disabled={isGloballyDisabled}
             loading={pingLoading}
-            onSetup={handleSetup}
             status={status}
+            onSetup={handleSetup}
           />
         }
         content={
           <Content
             disabled={isGloballyDisabled}
-            onAddServerClick={handleAddServerClick}
-            onServerSelectChange={handleServerSelectChange}
-            onServersClick={handleServersClick}
             selectedServer={selectedServer}
             status={status}
+            onAddServerClick={handleAddServerClick}
+            onServersClick={handleServersClick}
+            onServerSelectChange={handleServerSelectChange}
           />
         }
-        open={dialogState.open}
         isClosable={false}
+        open={dialogState.open}
       />
     </>
   );

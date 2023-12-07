@@ -38,7 +38,6 @@ const BlockUser = () => {
   return (
     <>
       <Template.Dialog
-        open={dialogState.open}
         actions={
           <Actions
             loading={loading}
@@ -53,6 +52,7 @@ const BlockUser = () => {
             )}
           />
         }
+        open={dialogState.open}
       />
     </>
   );

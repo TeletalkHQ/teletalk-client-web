@@ -15,7 +15,6 @@ const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
 
   return (
     <Box.ListItemButton
-      onClick={onItemLick}
       style={{
         alignItems: "center",
         borderRadius: "10px",
@@ -24,6 +23,7 @@ const ListItem: React.FC<Props> = ({ userItem, onItemLick }) => {
         height: "65px",
         justifyContent: "space-between",
       }}
+      onClick={onItemLick}
     >
       <Box.Span>
         <Box.Avatar style={{ width: "50px", height: "50px" }} />

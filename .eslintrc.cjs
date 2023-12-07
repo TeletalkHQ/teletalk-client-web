@@ -22,6 +22,16 @@ module.exports = defineConfig({
   },
   plugins: ["sonarjs", "@cspell", "unused-imports"],
   rules: {
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        callbacksLast: true,
+        ignoreCase: true,
+        locale: "en",
+        noSortAlphabetically: false,
+        reservedFirst: ["key"],
+      },
+    ],
     "@cspell/spellchecker": [
       "warn",
       {

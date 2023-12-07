@@ -8,12 +8,12 @@ const SelectorInput = (props: AutocompleteRenderInputParams) => {
   return (
     <BaseComponent.Input.Text
       {...rest}
-      required
-      name="countryName"
-      label="Choose a country"
       InputProps={{
         ...props.InputProps,
       }}
+      label="Choose a country"
+      name="countryName"
+      required
     />
   );
 };

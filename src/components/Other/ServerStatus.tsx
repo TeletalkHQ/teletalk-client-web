@@ -10,11 +10,11 @@ interface Props {
 const ServerStatus: React.FC<Props> = ({ status }) => {
   return (
     <Box.Flex
+      bgcolor={(theme) => theme.palette.background.paper}
+      borderRadius="10px"
       jc="space-around"
       padding="10px"
-      borderRadius="10px"
       width="100%"
-      bgcolor={(theme) => theme.palette.background.paper}
     >
       <Box.Span>Status:</Box.Span>
       <Box.Span style={{ textAlign: "end" }}>

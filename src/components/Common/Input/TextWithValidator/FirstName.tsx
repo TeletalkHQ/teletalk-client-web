@@ -17,9 +17,9 @@ const FirstName: React.FC<Props> = ({ value, onChange, required = true }) => {
       id="firstName"
       label="First Name"
       name="firstName"
-      onChange={handleChange}
       required={required}
       value={value}
+      onChange={handleChange}
     />
   );
 };

@@ -13,9 +13,6 @@ export default function ContextMenu() {
 
   return (
     <Menu
-      open={globalStore.contextMenu.position !== null}
-      onClose={handleClose}
-      anchorReference="anchorPosition"
       anchorPosition={
         globalStore.contextMenu.position !== null
           ? {
@@ -24,6 +21,9 @@ export default function ContextMenu() {
             }
           : undefined
       }
+      anchorReference="anchorPosition"
+      open={globalStore.contextMenu.position !== null}
+      onClose={handleClose}
     >
       {globalStore.contextMenu.list.map((item, index) => (
         <MenuItem key={index} onClick={item.handler}>

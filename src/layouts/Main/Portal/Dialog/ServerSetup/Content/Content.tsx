@@ -22,13 +22,13 @@ const ServerSetupContent: React.FC<Props> = ({
   status,
 }) => {
   return (
-    <Box.Flex gap="10px" padding="10px" col maxWidth="400px">
+    <Box.Flex col gap="10px" maxWidth="400px" padding="10px">
       <Components.ServerStatus status={status} />
 
       <ServerSelect
         disabled={disabled}
-        onServerSelectChange={onServerSelectChange}
         selectedServer={selectedServer}
+        onServerSelectChange={onServerSelectChange}
       />
 
       <AddServerButton

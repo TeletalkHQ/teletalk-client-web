@@ -44,14 +44,15 @@ const Drawer = () => {
 
   return (
     <SwipeableDrawer
+      anchor={globalStore.drawer.anchor}
       disableBackdropTransition={!utils.isIos()}
       disableDiscovery={utils.isIos()}
-      anchor={globalStore.drawer.anchor}
       open={globalStore.drawer.open}
       onClose={(event) => toggleDrawer(event, false)}
       onOpen={(event) => toggleDrawer(event, true)}
     >
       <Box.Div
+        role="presentation"
         style={{
           width:
             globalStore.drawer.anchor === "top" ||
@@ -59,20 +60,19 @@ const Drawer = () => {
               ? "auto"
               : 250,
         }}
-        role="presentation"
         onKeyDown={(event) => toggleDrawer(event, false)}
       >
         <PersonalData
           avatarSrc={userStore.currentUserData.avatarSrc}
-          fullNumber={fullNumber}
           fullName={fullName}
+          fullNumber={fullNumber}
         />
 
         <Divider />
 
         <DrawerList
-          onClick={handleDrawerItemClick}
           toggleDrawer={toggleDrawer}
+          onClick={handleDrawerItemClick}
         />
       </Box.Div>
     </SwipeableDrawer>

@@ -27,11 +27,11 @@ const List: React.FC<Props> = ({
       }).map((item, i) => (
         <ListItem
           key={i}
-          Icon={item.Icon}
           disabled={item.disabled}
+          Icon={item.Icon}
           label={item.label}
-          onClick={() => onClick(item)}
           value={item.value}
+          onClick={() => onClick(item)}
         />
       ))}
     </>

@@ -43,11 +43,11 @@ const MessageList: React.FC<Props> = () => {
       {messages.map((messageItem, index: number) => {
         return (
           <MessageListItem
+            chatDate=""
+            message={messageItem.messageText}
             key={index}
             //TODO: Update message time and chat date
             messageTime={"" ?? messageItem.createdAt.toString()}
-            chatDate=""
-            message={messageItem.messageText}
             justify={
               userStore.currentUserData.userId === messageItem.sender.senderId
                 ? "flex-end"

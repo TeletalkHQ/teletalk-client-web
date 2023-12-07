@@ -17,9 +17,9 @@ const PrivacyAndSecurity = () => {
   return (
     <>
       <Template.Dialog
-        open={dialogState.open}
         actions={<Actions onClose={globalStore.closeDialog} />}
         content={<Content onItemClick={handleItemClick} />}
+        open={dialogState.open}
       />
     </>
   );

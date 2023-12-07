@@ -39,22 +39,22 @@ const RightSide = () => {
   return (
     <Box.Grid
       container
-      sx={{
-        height: "100%",
-      }}
       item
       lg={9}
       md={8}
+      sx={{
+        height: "100%",
+      }}
     >
       {messageStore.selectedChatInfo.userId && (
         <Box.Flex
+          ai="center"
           col
+          jc="space-between"
           sx={{
             height: "100%",
             width: "100%",
           }}
-          jc="space-between"
-          ai="center"
         >
           <Box.Div
             style={{

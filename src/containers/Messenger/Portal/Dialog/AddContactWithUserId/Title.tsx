@@ -3,7 +3,7 @@ import { Box, Typography } from "~/components";
 const Title = () => {
   return (
     <>
-      <Box.Flex jc="space-between" ai="center">
+      <Box.Flex ai="center" jc="space-between">
         <Box.Div>
           <Typography.H5>Add Contact</Typography.H5>
         </Box.Div>

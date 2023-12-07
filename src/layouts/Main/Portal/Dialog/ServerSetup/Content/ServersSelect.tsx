@@ -21,11 +21,11 @@ const ServerSelect: React.FC<Props> = ({
       <FormControl disabled={disabled} fullWidth>
         <InputLabel id="labelId">Selected server</InputLabel>
         <Input.Base.Select
-          size="small"
           defaultValue={selectedServer}
-          labelId="labelId"
-          value={selectedServer}
           label="Selected server"
+          labelId="labelId"
+          size="small"
+          value={selectedServer}
           onChange={(props) => onServerSelectChange(props.target.value as Url)}
         >
           {appConfigs.getConfigs().api.servers.map((item, index) => (
